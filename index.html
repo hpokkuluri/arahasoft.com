@@ -252,6 +252,27 @@
     .nav-chevron { display: none; }
   }
 
+
+  /* OUR STORY */
+  .story-section { margin-top: 4rem; padding-top: 4rem; border-top: 1px solid var(--border); }
+  .story-content { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: start; margin-top: 2rem; }
+  .story-text p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.1rem; }
+  .story-text p:last-child { margin-bottom: 0; }
+  .story-text strong { color: var(--navy); font-weight: 600; }
+  .story-text em { color: var(--accent); font-style: normal; font-weight: 500; }
+  .story-emblem { display: flex; flex-direction: column; gap: 0.75rem; }
+  .emblem-box { background: var(--gray-50); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem; transition: box-shadow 0.2s; }
+  .emblem-box:hover { box-shadow: 0 4px 16px rgba(15,35,86,0.07); }
+  .featured-box { border-left: 3px solid var(--accent); }
+  .emblem-letter { font-family: "Manrope", sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--navy); min-width: 40px; text-align: center; }
+  .emblem-name { font-family: "Manrope", sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--navy); flex: 1; }
+  .emblem-element { font-size: 0.75rem; color: var(--gray-400); font-weight: 500; }
+  .emblem-meaning { background: var(--navy); border-radius: 12px; padding: 1.5rem; text-align: center; display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.25rem; }
+  .meaning-sanskrit { font-size: 1.75rem; color: white; font-family: serif; }
+  .meaning-text { font-size: 0.95rem; color: rgba(255,255,255,0.85); font-weight: 500; font-style: italic; }
+  .meaning-source { font-size: 0.72rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; }
+  @media (max-width: 900px) { .story-content { grid-template-columns: 1fr; gap: 2.5rem; } }
+
 </style>
 </head>
 <body>
@@ -425,6 +446,43 @@
         </div>
 
       </div>
+
+      <div class="story-section">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">The meaning behind the name</h2>
+        <div class="story-content">
+          <div class="story-text">
+            <p>Arahasoft was founded on something deeply personal — our name.</p>
+            <p>The three hexagons in our logo represent three people: <strong>A</strong> for Abhinav, our son; <strong>Ra</strong> for Ramani; and <strong>Ha</strong> for Hari. Together they form Araha — a family that built this firm together, united by a shared belief that technology consulting should be done with integrity, precision, and genuine care for the client.</p>
+            <p>The hexagon shape is no coincidence. In chemistry, hexagons represent molecular bonds — the strongest structural form in nature. The three elements encoded in our name — Argon (A), Radium (Ra), and Hassium (Ha) — each carry their own significance on the periodic table, just as each member of our family brings something essential to what we do.</p>
+            <p>But perhaps the most fitting meaning comes from ancient Sanskrit, where <strong>Araha (अरह)</strong> means <em>&ldquo;worthy&rdquo;</em> — deserving of trust, deserving of reverence. Across thousands of years this single word has carried one consistent meaning.</p>
+            <p>That is the promise we make to every client: <strong>Arahasoft is worthy of your trust.</strong> We earn it through accountability, transparency, and delivering Oracle ERP solutions that truly work — not just at go-live, but long after.</p>
+          </div>
+          <div class="story-emblem">
+            <div class="emblem-box">
+              <div class="emblem-letter">A</div>
+              <div class="emblem-name">Abhinav</div>
+              <div class="emblem-element">Argon &middot; Ar</div>
+            </div>
+            <div class="emblem-box">
+              <div class="emblem-letter">Ra</div>
+              <div class="emblem-name">Ramani</div>
+              <div class="emblem-element">Radium &middot; Ra</div>
+            </div>
+            <div class="emblem-box featured-box">
+              <div class="emblem-letter">Ha</div>
+              <div class="emblem-name">Hari</div>
+              <div class="emblem-element">Hassium &middot; Hs</div>
+            </div>
+            <div class="emblem-meaning">
+              <span class="meaning-sanskrit">अरह</span>
+              <span class="meaning-text">&ldquo;Worthy of trust&rdquo;</span>
+              <span class="meaning-source">Ancient Sanskrit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
