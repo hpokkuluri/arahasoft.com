@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Login — Arahasoft</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f4fb; min-height: 100vh; display: flex; flex-direction: column; }
+    .status-bar { background: #0047CC; color: #fff; text-align: center; padding: 8px; font-size: 12px; letter-spacing: .04em; }
+    .status-bar.offline { background: #CC0000; }
+    .portal-header { background: #fff; border-bottom: 1px solid #e0e6f0; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(0,40,120,.06); }
+    .portal-header h2 { font-size: 18px; color: #0047CC; font-weight: 700; }
+    .portal-header p { font-size: 12px; color: #8a9ab4; margin-top: 2px; }
+    .frame-wrap { width: 100%; flex: 1; }
+    #afs-frame { width: 100%; height: calc(100vh - 105px); border: none; display: block; }
+    .offline-msg { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 105px); padding: 40px 20px; text-align: center; }
+    .offline-msg h3 { font-size: 24px; font-weight: 700; color: #1a2030; margin-bottom: 10px; margin-top: 20px; }
+    .offline-msg p { font-size: 14px; color: #5a6a82; max-width: 400px; line-height: 1.7; }
+    .retry-btn { margin-top: 24px; background: #0047CC; color: #fff; border: none; border-radius: 8px; padding: 12px 28px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  </style>
+</head>
+<body>
+<div class="status-bar" id="statusBar">🔒 Secure Employee Portal — Arahasoft Financial Systems</div>
+<div class="portal-header">
+  <div><h2>Employee Financial Portal</h2><p>Arahasoft Financial Systems — Private &amp; Secure</p></div>
+  <div style="font-size:12px;color:#8a9ab4;text-align:right;">🔐 2FA Protected<br><span style="color:#16a34a;">● Encrypted Connection</span></div>
+</div>
+<div class="frame-wrap" id="frameWrap">
+  <iframe id="afs-frame" src="https://app.arahasoft.com" title="Arahasoft Financial Systems"
+    sandbox="allow-forms allow-scripts allow-same-origin allow-top-navigation-by-user-activation"
+    onload="frameLoaded()" onerror="showOffline()"></iframe>
+</div>
+<div class="offline-msg" id="offlineMsg">
+  <div style="font-size:64px;">🔌</div>
+  <h3>System Currently Offline</h3>
+  <p>The Arahasoft Financial System is temporarily unavailable. Please try again in a few minutes.</p>
+  <button class="retry-btn" onclick="retryConnection()">↻ Try Again</button>
+  <p style="margin-top:16px;font-size:12px;color:#b0bdd0;">Need urgent access? Contact hpokkuluri@arahasoft.com</p>
+</div>
+<script>
+  var frame = document.getElementById('afs-frame');
+  var offlineMsg = document.getElementById('offlineMsg');
+  var frameWrap = document.getElementById('frameWrap');
+  var statusBar = document.getElementById('statusBar');
+  function frameLoaded() { statusBar.textContent = '🔒 Secure Employee Portal — Connected'; }
+  function showOffline() {
+    frameWrap.style.display = 'none';
+    offlineMsg.style.display = 'flex';
+    statusBar.textContent = '⚠ System Offline — Please try again later';
+    statusBar.className = 'status-bar offline';
+  }
+  function retryConnection() {
+    frameWrap.style.display = 'block';
+    offlineMsg.style.display = 'none';
+    frame.src = 'https://app.arahasoft.com?t=' + Date.now();
+  }
+  setTimeout(function() {
+    fetch('https://app.arahasoft.com', { mode: 'no-cors', cache: 'no-store' })
+      .catch(function() { showOffline(); });
+  }, 10000);
+</script>
+</body>
+</html>
