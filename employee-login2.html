@@ -135,23 +135,16 @@
   }
 
   function checkPortal() {
-    // Image probe — completely bypasses CORS restrictions
-    // Uses the arahasoft logo which is served by Flask static files
-    var img = new Image();
-    var timer = setTimeout(function() {
-      img.src = ''; // cancel
-      showOffline();
-    }, 8000); // 8 second timeout
-    img.onload = function() {
-      clearTimeout(timer);
-      frame.src = PORTAL_URL + '?t=' + Date.now();
-      showOnline();
-    };
-    img.onerror = function() {
-      clearTimeout(timer);
-      showOffline();
-    };
-    img.src = 'https://app.arahasoft.com/static/arahasoft_logo.png?t=' + Date.now();
+    // Use no-cors — we can't read the response but if it doesn't throw, server is reachable
+    fetch(HEALTH_URL, { mode: 'no-cors', cache: 'no-store' })
+      .then(function() {
+        // Reachable — load iframe
+        frame.src = PORTAL_URL + '?t=' + Date.now();
+        showOnline();
+      })
+      .catch(function() {
+        showOffline();
+      });
   }
 
   function retryNow() {
@@ -167,9 +160,8 @@
   // Also recheck every 5 minutes when online to detect if it goes down
   setInterval(function() {
     if (frame.style.display !== 'none') {
-      var img = new Image();
-      img.onerror = function() { showOffline(); };
-      img.src = 'https://app.arahasoft.com/static/arahasoft_logo.png?t=' + Date.now();
+      fetch(HEALTH_URL, { mode: 'no-cors', cache: 'no-store' })
+        .catch(function() { showOffline(); });
     }
   }, 300000);
 </script>
