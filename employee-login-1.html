@@ -135,12 +135,17 @@
   }
 
   function checkPortal() {
-    // Use no-cors — we can't read the response but if it doesn't throw, server is reachable
-    fetch(HEALTH_URL, { mode: 'no-cors', cache: 'no-store' })
-      .then(function() {
-        // Reachable — load iframe
-        frame.src = PORTAL_URL + '?t=' + Date.now();
-        showOnline();
+    // Fetch the health endpoint from the PUBLIC URL (app.arahasoft.com)
+    // This confirms the tunnel is up, not just Flask locally
+    fetch(HEALTH_URL, { cache: 'no-store' })
+      .then(function(r) {
+        if (r.ok) {
+          // Portal is reachable — load iframe
+          frame.src = PORTAL_URL + '?t=' + Date.now();
+          showOnline();
+        } else {
+          showOffline();
+        }
       })
       .catch(function() {
         showOffline();
@@ -160,7 +165,7 @@
   // Also recheck every 5 minutes when online to detect if it goes down
   setInterval(function() {
     if (frame.style.display !== 'none') {
-      fetch(HEALTH_URL, { mode: 'no-cors', cache: 'no-store' })
+      fetch(HEALTH_URL, { cache: 'no-store' })
         .catch(function() { showOffline(); });
     }
   }, 300000);
