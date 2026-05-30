@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ title }} — Arahasoft Financial Systems</title>
+  <style>
+    :root { --primary:#0047CC; --bg:#f0f4fb; --card:#fff; --border:#e0e8f5; --text:#1a2030; --dim:#5a6a82; --faint:#a0b0c8; }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;}
+    .topbar{background:#fff;border-bottom:1px solid var(--border);padding:0 28px;height:58px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 4px rgba(0,40,120,.06);}
+    .topbar img{height:34px;width:auto;}
+    .main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center;}
+    .code{font-size:80px;font-weight:800;color:var(--primary);opacity:.15;line-height:1;margin-bottom:16px;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px 44px;max-width:480px;width:100%;box-shadow:0 4px 24px rgba(0,40,120,.08);}
+    .card h1{font-size:22px;font-weight:700;color:var(--text);margin-bottom:10px;}
+    .card p{font-size:14px;color:var(--dim);line-height:1.7;margin-bottom:24px;}
+    .btn{display:inline-flex;align-items:center;gap:6px;background:var(--primary);color:#fff;border:none;border-radius:8px;padding:11px 24px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;font-family:inherit;}
+    .btn:hover{background:#0055f5;}
+    .btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--border);margin-left:8px;}
+    .btn-ghost:hover{border-color:var(--primary);background:var(--bg);}
+    footer{text-align:center;padding:18px;font-size:11px;color:var(--faint);border-top:1px solid var(--border);background:#fff;}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <img src="/static/arahasoft_logo.png" alt="Arahasoft" onerror="this.style.display='none'">
+</header>
+<div class="main">
+  <div class="code">{{ code }}</div>
+  <div class="card">
+    <h1>{{ title }}</h1>
+    <p>{{ message }}<br><br>If this problem persists, please contact your system administrator.</p>
+    <a href="/dashboard" class="btn">← Go to Dashboard</a>
+    <a href="javascript:history.back()" class="btn btn-ghost">Go Back</a>
+  </div>
+</div>
+<footer>© 2026 Arahasoft Financial Systems · <span style="color:#16a34a;">🔒 Secure Connection</span></footer>
+</body>
+</html>

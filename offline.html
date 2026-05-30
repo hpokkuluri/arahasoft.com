@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arahasoft Financial Systems — Temporarily Unavailable</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --primary: #0047CC;
+      --bg: #f0f4fb;
+      --card: #ffffff;
+      --border: #e0e8f5;
+      --text: #1a2030;
+      --dim: #5a6a82;
+      --faint: #a0b0c8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 4px rgba(0,40,120,.06);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-hex {
+      width: 36px;
+      height: 36px;
+    }
+    .brand-text {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .brand-sub {
+      font-size: 10px;
+      color: var(--faint);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff3f3;
+      border: 1px solid #fca5a5;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #dc2626;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #dc2626;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+
+    /* ── Main content ── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    /* ── Icon ── */
+    .icon-wrap {
+      width: 100px;
+      height: 100px;
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(0,40,120,.08);
+      font-size: 48px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 44px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 32px rgba(0,40,120,.08);
+      margin-bottom: 24px;
+    }
+
+    .card h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: -.02em;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: var(--dim);
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 24px 0;
+    }
+
+    /* ── Info rows ── */
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .info-label { font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .info-desc { color: var(--dim); line-height: 1.5; }
+
+    /* ── Retry button ── */
+    .retry-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 28px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background .15s, transform .1s;
+      margin-top: 24px;
+      text-decoration: none;
+    }
+    .retry-btn:hover { background: #0055f5; transform: translateY(-1px); }
+    .retry-btn:active { transform: translateY(0); }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 28px;
+      max-width: 520px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 2px 12px rgba(0,40,120,.05);
+    }
+    .contact-card .label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--faint);
+      margin-bottom: 4px;
+    }
+    .contact-card .email {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .contact-card .email:hover { text-decoration: underline; }
+
+    /* ── Countdown ── */
+    .countdown {
+      font-size: 12px;
+      color: var(--faint);
+      margin-top: 12px;
+    }
+    .countdown span { color: var(--primary); font-weight: 600; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 11px;
+      color: var(--faint);
+      border-top: 1px solid var(--border);
+      background: #fff;
+    }
+    .secure-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 6px;
+      font-size: 11px;
+      color: #16a34a;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<header class="topbar">
+  <div class="brand">
+    <svg class="brand-hex" viewBox="0 0 80 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,2 59,13 59,35 40,46 21,35 21,13" fill="#0a0a0a" stroke="#CC0000" stroke-width="3" stroke-linejoin="round"/>
+      <text x="40" y="31" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="14" fill="#0047CC">ra</text>
+      <polygon points="20,38 39,49 39,71 20,82 1,71 1,49" fill="#0a0a0a" stroke="#CC0000" stroke-width="3" stroke-linejoin="round"/>
+      <text x="20" y="67" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="14" fill="#0047CC">a</text>
+      <polygon points="60,38 79,49 79,71 60,82 41,71 41,49" fill="#0a0a0a" stroke="#CC0000" stroke-width="3" stroke-linejoin="round"/>
+      <text x="60" y="67" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="14" fill="#0047CC">ha</text>
+    </svg>
+    <div>
+      <div class="brand-text">Arahasoft</div>
+      <div class="brand-sub">Financial Systems</div>
+    </div>
+  </div>
+  <div class="status-pill">
+    <div class="status-dot"></div>
+    System Offline
+  </div>
+</header>
+
+<!-- Main -->
+<div class="main">
+
+  <div class="icon-wrap">🔒</div>
+
+  <div class="card">
+    <h1>System Temporarily Unavailable</h1>
+    <p>
+      The Arahasoft Financial Portal is currently offline for scheduled
+      maintenance or is undergoing a restart. Your data is safe and secure.
+    </p>
+
+    <hr class="divider">
+
+    <div class="info-row">
+      <div class="info-icon">⏱</div>
+      <div>
+        <div class="info-label">Expected Downtime</div>
+        <div class="info-desc">Typically less than 15 minutes. The system restarts automatically and will be available shortly.</div>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-icon">🛡</div>
+      <div>
+        <div class="info-label">Your Data is Safe</div>
+        <div class="info-desc">All financial data is encrypted and stored securely. No data is at risk during maintenance periods.</div>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-icon">🔄</div>
+      <div>
+        <div class="info-label">Auto-Recovery</div>
+        <div class="info-desc">The portal will automatically come back online. No action is required on your part.</div>
+      </div>
+    </div>
+
+    <a href="javascript:location.reload()" class="retry-btn">
+      ↻ &nbsp;Refresh Page
+    </a>
+
+    <div class="countdown" id="countdown">
+      Auto-refreshing in <span id="timer">30</span> seconds...
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div>
+      <div class="label">Need Urgent Assistance?</div>
+      <a href="mailto:hpokkuluri@arahasoft.com" class="email">
+        hpokkuluri@arahasoft.com
+      </a>
+    </div>
+    <div style="font-size:28px;">✉️</div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2026 Arahasoft Financial Systems. All rights reserved.
+  <br>
+  <span class="secure-badge">
+    🔒 256-bit SSL Encrypted &nbsp;·&nbsp; Data never leaves your secure server
+  </span>
+</footer>
+
+<script>
+  // Auto-refresh countdown
+  var seconds = 30;
+  var timer = document.getElementById('timer');
+  var interval = setInterval(function() {
+    seconds--;
+    if (timer) timer.textContent = seconds;
+    if (seconds <= 0) {
+      clearInterval(interval);
+      location.reload();
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
