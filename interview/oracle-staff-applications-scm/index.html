@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff, Oracle Applications – SCM Interview Questions (60) | Interview Edge by Arahasoft</title>
+<meta name="description" content="60 Staff, Oracle Applications – SCM interview questions with full answers: why they ask, what to say, and a tip. Interview Edge by Arahasoft.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://arahasoft.com/interview/oracle-staff-applications-scm/">
+<meta property="og:title" content="Staff, Oracle Applications – SCM Interview Questions (60) | Interview Edge by Arahasoft">
+<meta property="og:description" content="60 Staff, Oracle Applications – SCM interview questions with full answers: why they ask, what to say, and a tip. Interview Edge by Arahasoft.">
+<meta property="og:url" content="https://arahasoft.com/interview/oracle-staff-applications-scm/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Arahasoft">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does a Staff-level SCM applications leader contribute beyond an architect?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: to see if you understand staff-level scope in supply chain.\n\nAnswer:\n\"I own the supply chain platform strategy across programs: Fusion SCM, planning, logistics, partner networks, analytics and AI. I set standards: the global template, integration patterns and master data governance. I take the hardest problems: costing discrepancies, orchestration failures at scale, planning performance and integration integrity. I influence across supply chain, finance, IT, quality and compliance. I grow SCM architects and leads and build the center of excellence. And I advise executives on supply chain technology investments.\"\n\nTip: Mention cross-functional influence. Supply chain problems rarely stay in one team."}},{"@type":"Question","name":"How do you set a 3-year supply chain technology strategy?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: staff roles set direction.\n\nAnswer:\n\"I start with the business strategy: growth markets, service promise, cost, resilience and regulation. I assess current capabilities and pain points in planning maturity, visibility, automation and data. The target architecture has Fusion SCM at the core, planning, WMS and TMS choices, partner networks, a control tower, a data platform and AI agents. The roadmap runs in value waves, foundations first, like master data and the integration platform. Each initiative has a business case and KPIs, like OTIF, inventory days and cost to serve. And it's governed with supply chain leadership.\"\n\nTip: Say \"foundations first\". It's why many SCM strategies fail without it."}},{"@type":"Question","name":"Inventory value in GL and the cost management valuation report differ by $4M. How do you investigate?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a high-stakes reconciliation problem.\n\nAnswer:\n\"I slice the difference by cost org, valuation unit, item category and period, and find when it started. Then I check for unprocessed items: transactions not costed, or cost accounting not created, transferred or posted. Then manual GL journals to inventory accounts. Then account mapping: cost accounting rules sending some transactions to the wrong accounts, like expense subinventories or in-transit. Then in-transit or intercompany inventory included in one view but not the other. Then revaluations from standard cost updates or landed cost adjustments posted differently. I fix the causes, book corrections, and set up a monthly reconciliation with tolerances and owners.\"\n\nTip: Start by slicing the number. A $4M total is usually a few clear pieces."}},{"@type":"Question","name":"Sales orders are stuck in \"awaiting shipping\" for hours after pick release. What do you check?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: order flow problems hit revenue directly.\n\nAnswer:\n\"I check the orchestration status of the fulfillment lines for errors or jeopardy. Then shipping: were lines released, is pick confirm done, are move orders pending? Then inventory: allocation failures from material status or reservations. Then background processes: ESS jobs, like the shipping and inventory interfaces, failing or queued. Then WMS or 3PL integration: confirmations not received. Then recent changes to rules or the release. Once resolved, I add alerts for lines stuck by age.\"\n\nTip: Mention background jobs. They're often the silent cause."}},{"@type":"Question","name":"A supply plan run went from 2 hours to 9 hours. How do you approach it?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: planning performance troubleshooting.\n\nAnswer:\n\"I compare the runs: data volumes like items, orgs and demands; plan options; horizon; and constraints enabled. Then collections: more data, like forecasts at a lower level or many new items. Then plan design: unnecessary detail like daily buckets far into the future, or too many orgs or constraints. Then data issues: BOM loops, huge sourcing networks, or items with zero lead time causing churn. Then infrastructure: competing jobs, or Oracle-side capacity through an SR. Fixes include segmenting the plan, a bucket strategy and data cleanup, measuring each change.\"\n\nTip: Start with \"what changed between the runs\". It narrows it fast."}},{"@type":"Question","name":"How do you design a global supply chain template that still allows regional differences?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: global templates need controlled flexibility.\n\nAnswer:\n\"The global core covers processes, data standards, orchestration patterns, costing policies and integration patterns. A regional layer covers legal and tax documents, carrier integrations, language, and local regulations like e-way bills and customs. A variation registry documents every deviation with a reason and an owner. A template governance board approves changes. And template updates roll out to regions on a release cadence.\"\n\nTip: Mention the variation registry. It keeps exceptions from quietly growing."}},{"@type":"Question","name":"How would you lead an enterprise item master transformation?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a leadership question.\n\nAnswer:\n\"I'd set a vision: one item master in Product Hub, with a governed life cycle from PLM to retirement. Then assess the current state: duplicates, attribute completeness and classification gaps. Design the data model: item classes, attribute groups, structures and cross-references. Set the process: NIRs and change orders with data stewards and target times. Migrate: cleanse, consolidate and keep history through cross-references. Drive adoption by connecting every consumer, WMS, MES, e-commerce and CPQ, to Product Hub. And track duplicate rate, creation cycle time and completeness.\"\n\nTip: Mention connecting every consumer. A master that systems don't use isn't a master."}},{"@type":"Question","name":"How would you design costing for a vertically integrated pharma company (API, formulation, packaging, distribution)?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a specialist design question.\n\nAnswer:\n\"Process manufacturing for API and formulation, with recipes, yields and by-products; discrete or process for packaging. Cost orgs per plant, standard cost with a yearly cycle and roll-ups across all levels. Lot-level valuation where costs vary by lot, if needed. Intercompany through SFO between manufacturing and distribution entities, with transfer pricing. Variance analysis for yield, usage and PPV, and inventory reserves for expiry and quarantine. Landed costs for imported materials. And GxP and finance controls on any cost change.\"\n\nTip: Mention yield variances. They're the variance pharma finance watches most."}},{"@type":"Question","name":"How do you ensure an Oracle SCM platform stays validated in a GxP environment with quarterly updates?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: validated SaaS is a hard problem.\n\nAnswer:\n\"I use risk-based validation, CSA, classifying functions by GxP impact. High-risk processes get automated regression every quarter with evidence. Each release gets a documented assessment of GxP impact. Configuration goes through change control. Oracle's development process and audit reports are assessed as a vendor. The validated state is reviewed periodically. And I work with QA early, so validation doesn't block every update.\"\n\nTip: Say \"work with QA early\". It's what makes quarterly updates possible in GxP."}},{"@type":"Question","name":"What is your integration strategy for a supply chain with hundreds of partners?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: partner integration at scale.\n\nAnswer:\n\"I tier partners: high-volume ones on B2B or EDI networks, smaller ones on portals. A canonical data model with reusable maps. An onboarding factory with templates and testing tools. Business-facing monitoring dashboards. SLAs and partner scorecards. And API-first for modern partners like carriers and marketplaces.\"\n\nTip: Mention the onboarding factory. It's how hundreds of partners become manageable."}},{"@type":"Question","name":"How do you mature a company from spreadsheet planning to integrated business planning?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a transformation question.\n\nAnswer:\n\"In stages. First, clean data and one demand plan in the system, with basic supply planning. Second, constrained supply planning, inventory policies and an S&OP process. Third, integrated business planning with financial plans, scenario modeling and machine-learning forecasting. People and process matter as much as tools: planning roles, meeting cadence and KPIs. And I'd show value at each stage, in forecast accuracy, inventory and service, so the business keeps investing.\"\n\nTip: Say you show value at each stage. It's how transformations keep their funding."}},{"@type":"Question","name":"How would you design a supply chain risk management capability?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: risk management is now a board topic.\n\nAnswer:\n\"Risk data comes from providers: supplier financial health, geopolitical, weather, sanctions and cyber. It's mapped to our supply network, which items and sites depend on which tier-1 and tier-2 suppliers. Alerts come with impact analysis, like affected orders and revenue at risk. Playbooks cover alternate sources, safety stock and expedites. Scenario planning runs in the planning tools. And risk owners hold periodic reviews.\"\n\nTip: Mention revenue at risk. It's how leaders prioritize."}},{"@type":"Question","name":"How would you lead AI adoption in supply chain operations?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a leadership question in SCM.\n\nAnswer:\n\"I'd build a use-case portfolio by value and feasibility: better forecasts, PO exception handling, supplier communication, order exception triage and quality anomaly detection. Data readiness comes first. Pilots have clear metrics and a human in the loop. Governance covers approvals, auditability and model monitoring. Planners and buyers co-design the solutions. And we scale what works and stop what doesn't.\"\n\nTip: Say \"planners and buyers co-design\". Adoption depends on it."}},{"@type":"Question","name":"How do you govern changes to orchestration processes and sourcing rules in production?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: these changes affect orders in flight.\n\nAnswer:\n\"Every change request has an impact analysis, including orders already in flight and other processes. It's tested in a refreshed environment with realistic orders. Processes are effective-dated and version-controlled. Deployments happen outside peak shipping times. After the change, I monitor for stuck lines and jeopardy. And there's a rollback plan.\"\n\nTip: Mention orders in flight. It's what makes these changes risky."}},{"@type":"Question","name":"How do you get supply chain and finance to agree on inventory accounting policies?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: policy alignment avoids recurring conflict.\n\nAnswer:\n\"I bring both sides together to define the policies: costing method, reserves for excess and obsolete, capitalizing freight and duties, and intercompany profit. I show the impact with data: margin, inventory value and volatility. The policies and how the system implements them, cost books, accounts and processes, are documented. And we review them yearly.\"\n\nTip: Show impacts with data. It moves the debate from opinions to numbers."}},{"@type":"Question","name":"Intercompany invoices from SFO are not being generated for some shipments. How do you troubleshoot?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: SFO problems create intercompany mismatches.\n\nAnswer:\n\"I check whether the shipment was assigned to a financial orchestration flow: do the assignment rules match on BU, org and item? Do the trade relationship and transfer pricing rules exist and are they effective? Did the SFO processes run, like creating intercompany AR and AP invoices and interfacing them, and were there errors? Are there AutoInvoice or AP import errors for the intercompany transactions? Is the costing of the logical transactions done? Then I fix the rules or data, reprocess, and add a reconciliation of shipments against intercompany invoices.\"\n\nTip: Start with assignment rules. A flow that never matched creates nothing."}},{"@type":"Question","name":"How do you decide between Oracle-native planning and a third-party planning tool?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a major platform decision.\n\nAnswer:\n\"I look at requirements, especially industry specifics like pharma campaign planning or retail allocation, plus scale and optimization needs. Then integration cost and latency with Fusion. Then planner experience and adoption. Then the roadmap of Oracle's planning versus the competitor. Then five-year TCO. And I run a structured evaluation with real data and scenarios.\"\n\nTip: Mention industry specifics. They're usually the deciding factor."}},{"@type":"Question","name":"How do you make supply chain data trustworthy for executives?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: executives stop using data they don't trust.\n\nAnswer:\n\"KPI definitions, like OTIF, fill rate and inventory turns, are governed and signed off by the business. Data lineage goes from transaction to dashboard. Analytics reconcile to the ERP. Data quality is monitored with owners. And there's one version of each metric, not competing spreadsheets.\"\n\nTip: Say \"one version of each metric\". It's the core of trust."}},{"@type":"Question","name":"How do you mentor SCM architects?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: staff engineers develop the next level.\n\nAnswer:\n\"Design reviews focus on trade-offs and end-to-end impact, including finance and the customer. I give them cross-module problems to stretch them. I share incident post-mortems as learning. I encourage time in warehouses and plants. And I give feedback on how they communicate with executives.\"\n\nTip: Mention time on the floor. Architects who've seen the warehouse design better."}},{"@type":"Question","name":"Tell me about a large supply chain problem you solved through technology and process together.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: real impact requires both.\n\nAnswer (example):\n\"OTIF was at 82%, mostly because promise dates were inaccurate. I led the fix across planning, order management and warehouses. We fixed lead times and calendars, tuned GOP rules and collections frequency, introduced allocation for constrained items, and set up a daily exception review with customer service. OTIF reached 93% in six months, and expedite costs fell 30%.\"\n\nTip: Show both the data fix and the process change. That's the point of the question."}},{"@type":"Question","name":"How do you handle pressure when operations are down and executives want answers?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: calm leadership in incidents.\n\nAnswer:\n\"I run structured incident command: one leader, clear roles, and a set communication rhythm, like every 30 minutes. Business continuity comes first, with manual workarounds to keep shipping and receiving. Updates are facts only: what we know, what we're doing, and when the next update is. And afterwards, a post-incident review and lasting fixes.\"\n\nTip: Mention the update rhythm. It stops executives from interrupting the people fixing it."}},{"@type":"Question","name":"How do you build the business case for an SCM platform investment?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: investments need justification.\n\nAnswer:\n\"I baseline current KPIs and costs. Benefits include inventory reduction for working capital, freight savings, labor productivity, better service and revenue, fewer expedites, and retired systems. Costs include licenses, implementation, integration, change management and run costs. I add risk and sensitivity analysis. Value realization is phased with named owners. And benefits are tracked after go-live.\"\n\nTip: Mention tracking benefits after go-live. It builds credibility for the next case."}},{"@type":"Question","name":"How would you reduce excess and obsolete inventory using the platform?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: E&O ties up cash and causes write-offs.\n\nAnswer:\n\"First visibility: aging, days of supply and slow movers by item and location. Then root causes: forecast bias, minimum order quantities and lot sizes, and life-cycle changes nobody communicated. Then planning policies: adjust safety stock and order modifiers, and plan phase-outs for end-of-life items. Then disposition workflows: rebalance across DCs, sell, return to vendor or scrap. A reserve policy agreed with finance. And KPIs with a monthly review.\"\n\nTip: Mention forecast bias. It's the most common cause."}},{"@type":"Question","name":"How would you transform procurement with digital tools on Oracle?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a leadership question about vision.\n\nAnswer:\n\"I'd start with guided buying, catalogs and smart forms, to increase compliance. Then sourcing automation and contract life cycle management. Supplier risk and ESG built into onboarding and monitoring. Touchless P2P with automatic POs and e-invoicing. AI agents for supplier questions, contract analysis and preparing for negotiations. Spend analytics with automatic classification. And I'd measure it with spend under management, savings and cycle times.\"\n\nTip: Tie each tool to a KPI. Leaders fund transformations that show results."}},{"@type":"Question","name":"What is the biggest mistake you see companies make with Oracle SCM, and how do you avoid it?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: experience shows in knowing the traps.\n\nAnswer:\n\"Treating it as an IT project instead of an operations transformation. That leads to poor master data and planning parameters, so the system 'doesn't work'; under-investment in warehouse and plant user readiness; and legacy processes replicated with extensions. I avoid it with business ownership, data foundations first, standard processes, thorough day-in-the-life testing and strong hypercare.\"\n\nTip: Lead with \"operations transformation, not IT project\". It's the memorable line."}},{"@type":"Question","name":"Customers receive the wrong lots despite FEFO rules. How do you investigate?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a quality and compliance problem.\n\nAnswer:\n\"I check the picking rule assignment at org and item level, and the rule logic, sorting by expiry. Then material status and lot attributes, for example converted lots missing expiry dates. Then manual overrides at pick confirm, users scanning other lots, using the audit trail. Then reservations made earlier on specific lots. Then whether a WMS or 3PL is doing its own allocation. The fix may be data, rules or user controls like lot validation on scan, plus exception reporting.\"\n\nTip: Mention converted lots without expiry dates. It's a common hidden cause."}},{"@type":"Question","name":"Standard cost update revalued inventory by an unexpected $10M. What do you do?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a high-impact finance incident.\n\nAnswer:\n\"First I stop any further publishes and tell finance. Then I analyze the cost scenario: the items with the largest changes, roll-up errors from BOM quantities or UOM conversions, missing component costs, or wrong resource or overhead rates. If it's already posted, I correct the costs in a new scenario that revalues back at an agreed date, with the accounting handled as finance decides. To prevent it, I add pre-publish what-if reports with thresholds, finance sign-off, and peer review of rate changes.\"\n\nTip: Mention UOM conversion errors. They cause huge swings from tiny mistakes."}},{"@type":"Question","name":"How would you design an order-to-cash platform for a company moving from products to subscriptions?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a business model shift needs platform changes.\n\nAnswer:\n\"CPQ handles hybrid quotes with products, subscriptions and services. Order Management handles physical fulfillment, and Subscription Management handles recurring billing, usage and renewals. Revenue Management handles allocation and recognition. Billing is consolidated with a customer portal. The customer master is unified. Analytics covers ARR, MRR, churn and renewals. And sales, finance and support processes change too.\"\n\nTip: Mention process change for sales and support. It's as big as the system change."}},{"@type":"Question","name":"How do you approach a decision to consolidate multiple WMS solutions?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a portfolio rationalization decision.\n\nAnswer:\n\"I inventory WMS by site with capabilities, cost, contracts and satisfaction. I define requirements by site type: automated DC, small warehouse or 3PL. The options might be Fusion Warehouse Management for simpler sites and one best-of-breed WMS for complex DCs. I standardize integration to Fusion. The transition plan avoids peak seasons. And the business case covers licenses, support, skills and process standardization.\"\n\nTip: Recommend \"fit by site type\". One size rarely fits every warehouse."}},{"@type":"Question","name":"What KPIs would you use to run an SCM applications CoE?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: CoEs need measures.\n\nAnswer:\n\"Stability: incidents by severity, time to restore, and integration failure rate. Delivery: enhancement cycle time and backlog health. Release: regression pass rate and defects escaping to production. Business: OTIF impact, inventory accuracy and touchless rates. Data: item and supplier data quality. And user satisfaction surveys.\"\n\nTip: Include business KPIs. A CoE should be measured by business results too."}},{"@type":"Question","name":"How do you influence a supply chain VP who prefers manual workarounds?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: influencing senior operations leaders.\n\nAnswer:\n\"I first understand why: trust, flexibility, or a past failure. I quantify the cost of the workarounds in time, errors and delays. I fix the root cause that created the workaround. I pilot an automated approach with their team and show results. And I make their team co-owners of the design.\"\n\nTip: Say \"fix the root cause of the workaround\". People keep workarounds for a reason."}},{"@type":"Question","name":"How would you design recall readiness in Oracle SCM?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: recalls must be fast and complete.\n\nAnswer:\n\"End-to-end lot and serial genealogy: supplier lots to production to finished lots to customer shipments. Fast where-used and where-shipped queries, with reports and dashboards. Customer contact data linked to shipments. A quarantine process using material status for affected lots everywhere, including 3PLs. Mock recalls run periodically to test speed and completeness. And regulatory documentation.\"\n\nTip: Mention mock recalls. They're how you prove readiness."}},{"@type":"Question","name":"How would you integrate commercial and supply planning with finance in an IBP process?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: IBP is where planning becomes a leadership tool.\n\nAnswer:\n\"First a common data model: product families, customers and regions, and time buckets that match the financial calendar. Then the chain: demand plan to supply plan to financial projection, revenue, margin, inventory and cash, using standard costs and prices. Gaps against budget are highlighted for executive decisions. Scenario modeling covers things like price changes and capacity limits. EPM integration feeds the financial forecast. And a monthly cadence with clear decision rights.\"\n\nTip: Mention aligning time buckets with the financial calendar. Without it, finance can't use the numbers."}},{"@type":"Question","name":"Describe a technical standard you introduced that changed how teams worked.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: staff engineers lead through standards.\n\nAnswer (example):\n\"Each integration team built its own error handling, and outages went unnoticed for hours. I introduced a common OIC integration framework: correlation IDs, idempotency checks, a central error queue with a business-facing dashboard, and alert thresholds. Adoption came through a reference implementation, templates and a design review gate. Mean time to detect dropped from hours to minutes, and business users could reprocess errors without raising IT tickets.\"\n\nTip: Explain how you drove adoption. Standards only matter if people use them."}},{"@type":"Question","name":"How do you decide when to step in on a struggling project versus letting the team work it out?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: judgment as a senior leader.\n\nAnswer:\n\"I watch for signals: missed milestones, quality issues, repeated escalations and team stress. I coach first by asking questions and reviewing plans. I step in when business risk is high, like go-live or compliance in jeopardy, or when the team lacks a specific expertise. And I step back once it's stable, leaving the team stronger, not dependent on me.\"\n\nTip: Say \"leave the team stronger\". It's the goal of stepping in."}},{"@type":"Question","name":"How do you approach freight cost reduction through systems?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: freight is a big, visible cost.\n\nAnswer:\n\"First visibility of freight cost by lane, carrier, mode and customer. Then TMS optimization: load consolidation, mode selection and routing. Carrier procurement using rate analytics. Freight audit and pay to catch billing errors, which often recovers a few percent alone. Order policies, like minimum order quantities and set delivery days. And network design studies for the bigger structural savings.\"\n\nTip: Mention freight audit. It's the quickest win."}},{"@type":"Question","name":"How would you design SCM for a company with both make-to-stock and engineer-to-order businesses?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: mixed business models need careful design.\n\nAnswer:\n\"Make-to-stock uses standard items, forecasts, planning and stock replenishment. Engineer-to-order is project-driven: project-specific items and BOMs, Project-Driven Supply Chain for project-specific inventory and costs, and engineering change management. They get separate orchestration and planning segmentation. ETO is costed by project, MTS uses standard cost. And they share master data and procurement.\"\n\nTip: Mention Project-Driven Supply Chain. It's the key Fusion capability for ETO."}},{"@type":"Question","name":"How would you build a supply chain digital twin?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a forward-looking question.\n\nAnswer:\n\"A network model of sites, lanes, capacities, lead times and costs. Live data from ERP, WMS and TMS for the current state. Simulation and optimization engines for scenarios like disruptions or demand shifts, using planning tools or network design software. And I'd start with a focused question, like a DC network redesign, rather than trying to model everything.\"\n\nTip: Say \"start with a focused question\". Digital twins fail when they try to do everything."}},{"@type":"Question","name":"How do you approach a request to cut SCM application run costs by 25%?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: cost pressure is common.\n\nAnswer:\n\"I break down the costs: licenses, support staff, partners, infrastructure and integrations. Then rationalize unused licenses and modules, redundant tools and custom objects. Automate support with monitoring, self-healing and user self-service. Shift left with better training and a knowledge base to cut tickets. Renegotiate with vendors. And protect the investments that drive business value.\"\n\nTip: Mention protecting value-driving investments. Blind cuts cost more later."}},{"@type":"Question","name":"Users complain GOP promise dates are unreliable. What do you look at?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: promise accuracy drives customer trust.\n\nAnswer:\n\"Supply data freshness: how often collections run. Lead times and calendars. Sourcing rules and assignment sets. ATP rules: which supply types count and the time fences. Allocations consuming supply. And execution: supplier delays not updated on POs. Then I measure promise accuracy by root cause and fix the top drivers.\"\n\nTip: Mention supplier delays not updated on POs. It's the execution gap planners forget."}},{"@type":"Question","name":"Why should we hire you as Staff, Oracle Applications for supply chain?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a closing question.\n\nAnswer:\n\"Depth: years across Fusion and EBS SCM, planning and logistics, and the hardest problems I've solved. Breadth: finance integration, GxP compliance, partners and data. Impact: KPIs improved, platforms stabilized and standards adopted. And I'm a multiplier: the architects and leads I've developed. I'd close with: 'I'll make your supply chain platform reliable, scalable and ready for AI.'\"\n\nTip: Back each point with one example from your career."}},{"@type":"Question","name":"How do you communicate a complex technical risk to a COO?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: executive communication.\n\nAnswer:\n\"Business impact first, for example: 'There's a 30% chance shipping stops for a day during peak because of this.' Then likelihood and consequence, not technical details. Then options to reduce it, with cost and time. Then my recommendation and the decision needed. One page and one picture.\"\n\nTip: Use a probability and an impact. COOs think in risk, not technology."}},{"@type":"Question","name":"How do you manage the SCM roadmap against constant operational requests?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: balancing strategy and daily demand.\n\nAnswer:\n\"I allocate capacity, for example 50% roadmap, 30% enhancements and 20% sustaining. An intake and prioritization board includes supply chain leaders. Trade-offs are transparent: adding a request means something else moves. And quarterly planning follows the business calendar, avoiding peak periods.\"\n\nTip: Say \"adding a request means something else moves\". It makes trade-offs visible."}},{"@type":"Question","name":"What have you learned from a failed or troubled SCM implementation?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: honesty and learning.\n\nAnswer:\n\"I'd be honest about the context and my role. Typical lessons I've seen: data readiness was underestimated, warehouse users weren't involved early, integrations were tested too late, and go-live landed in peak season. What I do now: data readiness gates, day-in-the-life testing, integration partner readiness checks, avoiding peak windows, and stronger hypercare.\"\n\nTip: Name what you do differently now. It turns failure into credibility."}},{"@type":"Question","name":"How would you approach a migration from on-premise EBS ASCP to Oracle Supply Chain Planning Cloud?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a common planning migration.\n\nAnswer:\n\"I assess the current plans, customizations, data flows and planner workflows. I redesign plan types and parameters for Planning Cloud rather than copying them one-for-one. Collections come from EBS if it's still the execution system, or from Fusion. I run parallel plans to compare. I train planners on the new UI and exception-based planning. And I cut over at a planning cycle boundary.\"\n\nTip: Mention parallel runs. Planners need to see the new plan is right."}},{"@type":"Question","name":"How do you evaluate new Oracle SCM capabilities each quarter?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: staying current is part of the role.\n\nAnswer:\n\"I review What's New and the roadmap and shortlist relevant features. I assess value and effort, including opt-in configuration, process change and training. Power users try them in a sandbox. Good ones go into the backlog with a priority. And adopted features are communicated to users.\"\n\nTip: Mention power users trying them. Their feedback decides adoption."}},{"@type":"Question","name":"How do you stay technically deep at this level?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: staff roles need depth.\n\nAnswer:\n\"I keep a personal sandbox and test new features. I take on hard problems personally each quarter. I read release notes and attend Oracle and industry events. I write internal guides, because teaching keeps knowledge sharp. And I keep a network of senior practitioners.\"\n\nTip: Mention teaching. It's a good way to show you stay sharp."}},{"@type":"Question","name":"How do you design for trade compliance in a global supply chain?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: compliance failures are costly.\n\nAnswer:\n\"Screening of restricted parties for customers, suppliers, ship-to addresses and banks. Classification of items with HTS and ECCN, and license determination. Holds on orders and shipments until they're compliant. Documentation: commercial invoices, certificates of origin and export filings. Duty management, like free trade agreements and drawback. And audit trails with periodic compliance reviews. Tools are Oracle GTM or a third party integrated with OM and Shipping.\"\n\nTip: Mention holds until compliant. It's the control that prevents violations."}},{"@type":"Question","name":"How would you modernize a heavily customized EBS SCM landscape?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a common modernization challenge.\n\nAnswer:\n\"I catalog the customizations and map each one to retire, a standard Fusion feature, or an extension. I simplify processes with business leaders before migrating. I run a data cleanup program. I phase the migration, finance first or by region, with coexistence. I modernize integrations onto OIC. And I manage change for users who are used to custom screens.\"\n\nTip: Say \"simplify before migrating\". Migrating complexity just moves it."}},{"@type":"Question","name":"Tell me about a time you had to rebuild trust after a major SCM outage.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: recovering from failure.\n\nAnswer (example):\n\"An integration failure stopped shipments for six hours on a peak day. I led the recovery and communicated hourly. Afterwards I ran a blameless post-mortem and delivered a 30-day hardening plan with monitoring, failover and runbooks, reporting progress weekly to the COO. There were no repeat incidents, and the business later asked our team to lead the next integration program.\"\n\nTip: Show the follow-through. Trust is rebuilt by actions after the incident."}},{"@type":"Question","name":"How would you build a roadmap of AI agents for a global supply chain?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a roadmap question that shows maturity.\n\nAnswer:\n\"Wave one assists: order and PO status agents, policy and procedure Q&A, and item description generation. Wave two prepares: turning supplier quotes and emails into draft requisitions, order exception triage, and drafts for supplier delay follow-ups. Wave three acts with guardrails: automatic rescheduling within rules and automatic low-value POs under agreements, with monitoring and approval thresholds. Every wave has value cases, evaluation, controls and change management.\"\n\nTip: The assist, prepare, act structure is easy to remember. Use it."}},{"@type":"Question","name":"How do you govern agents across Fusion and other platforms (WMS, TMS, partners)?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: cross-platform governance is new territory.\n\nAnswer:\n\"A registry of every agent with its owner, purpose, tools, data and risk tier. Interoperability standards: MCP for tools, A2A for agent-to-agent, and the credential store for secrets. Security with least privilege, identity propagation and logging across platforms. Monitoring in one view where possible, and an incident process for agent errors. And contracts with partners covering how their agents behave and use our data.\"\n\nTip: Mention partner contracts. It's often forgotten."}},{"@type":"Question","name":"An order exception agent is rescheduling lines incorrectly for one region. How do you approach it?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: an incident handling question.\n\nAnswer:\n\"First I pause autonomous actions for that region and switch it to draft-and-approve. Then I review traces to see which data and rules led to the decisions, comparing with correct cases from other regions. Typical causes are regional sourcing rules, calendars, time zones, units of measure, or incomplete data in the tools. I fix the tools, instructions or data, add regional cases to the evaluation set, and re-enable gradually.\"\n\nTip: Start with \"pause for that region\". Containment comes before diagnosis."}},{"@type":"Question","name":"How would you manage Redwood adoption across 30 warehouses and plants?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a multi-site rollout question.\n\nAnswer:\n\"A pilot site first, testing on the floor with real devices, scanners and printers. Then a wave plan that avoids peaks, with a readiness checklist per site. Standard VBS extensions for every site, with no site-specific variants unless approved. Training kits and a champion at each site. And monitoring task times and errors after each wave.\"\n\nTip: Mention no site-specific variants. It keeps 30 sites supportable."}},{"@type":"Question","name":"How do you balance adopting Oracle's new SCM AI features vs third-party tools?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a build-vs-buy question for AI.\n\nAnswer:\n\"Embedded first when it covers the need, because Oracle handles security, data and upgrades. Third-party when there's a clear capability gap, like advanced optimization or specialized warehouse AI. I evaluate both with real data and the same KPIs. And I consider integration cost, data duplication and lock-in.\"\n\nTip: Say \"same KPIs, real data\". It's how a fair comparison is made."}},{"@type":"Question","name":"How would you measure ROI of AI in supply chain?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: AI investments need proof.\n\nAnswer:\n\"Service: OTIF, order cycle time and promise accuracy. Productivity: buyer, planner and customer service time per transaction. Cost: expedites, freight and inventory carrying cost. Quality: data errors and exceptions per order. The cost of AI itself: tokens, build and maintenance. And attribution through pilots compared with control groups.\"\n\nTip: Mention control groups. It's how you prove the AI caused the gain."}},{"@type":"Question","name":"How would you use AI to clean a large legacy item master before migration?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a current, practical AI question.\n\nAnswer:\n\"AI matching finds duplicates using descriptions, manufacturer part numbers and attributes. AI classification sorts items into the new item classes. AI extraction pulls attributes out of descriptions and spec sheets. Data stewards review the proposals, sorted by confidence score, so they spend time on the uncertain ones. Then the clean data loads through import, and I track how accurate the AI proposals were.\"\n\nTip: Mention sorting by confidence. It's how you make steward time count."}},{"@type":"Question","name":"How do AI agents fit into GxP-regulated SCM processes?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: AI in regulated environments needs care.\n\nAnswer:\n\"I treat agents as part of the validated system: a risk assessment, intended use, and testing evidence, with evaluation sets acting as test scripts. GxP actions like QA release and deviations stay human decisions. Agent outputs and traces are kept as audit trails. Changes to instructions, tools or models go through change control. And performance is reviewed periodically.\"\n\nTip: Say evaluation sets act as test scripts. It connects AI to validation practice."}},{"@type":"Question","name":"How do you get skeptical supply chain leaders to trust AI agents?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: adoption depends on trust.\n\nAnswer:\n\"I start with low-risk, visible wins like status questions and drafting emails. I show traces and sources so the reasoning is visible. People stay in control of commitments. I share metrics from the pilots. And I involve the leaders in setting the guardrails.\"\n\nTip: Mention involving leaders in guardrails. People trust what they helped design."}},{"@type":"Question","name":"After moving to Redwood receiving pages, receiving throughput dropped 20%. What do you do?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a real Redwood adoption issue.\n\nAnswer:\n\"I go to the floor and observe: extra clicks, scanning issues, page load times and device problems. Quick fixes in VBS: defaults, hidden fields and field order. Device and browser settings, and network checks. Training refreshers. And an Oracle SR or enhancement request for product gaps. I keep measuring until throughput recovers.\"\n\nTip: Say \"go to the floor\". The cause is visible there, not in a ticket."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#0F2356; --accent:#1A4FCC; --accent-hover:#1340AA; --blue-light:#EEF3FF; --gray-50:#F8F9FC; --gray-100:#F0F2F7; --gray-200:#E2E6F0; --gray-600:#5A6480; --text:#111827; --text-muted:#4B5563; --border:#E2E6F0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Inter",sans-serif; color:var(--text); background:#fff; font-size:15px; line-height:1.7; }
+a { color:var(--accent); }
+nav { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.97); border-bottom:1px solid var(--border); padding:0 1.25rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+nav img { height:44px; width:auto; display:block; }
+nav .links { display:flex; gap:0.25rem; align-items:center; }
+nav .links a { color:var(--gray-600); text-decoration:none; font-size:0.88rem; font-weight:500; padding:0.45rem 0.75rem; border-radius:6px; }
+nav .links a:hover { background:var(--gray-100); color:var(--navy); }
+nav .links a.on { color:var(--accent); background:var(--blue-light); }
+.wrap { max-width:820px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+.crumb { font-size:0.8rem; color:var(--gray-600); margin-bottom:0.75rem; }
+.crumb a { color:var(--gray-600); text-decoration:none; }
+.brand { display:inline-block; font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); background:var(--blue-light); border:1px solid rgba(26,79,204,0.2); padding:0.2rem 0.6rem; border-radius:999px; margin-bottom:0.75rem; }
+h1 { font-family:"Manrope",sans-serif; font-weight:800; color:var(--navy); font-size:clamp(1.5rem,4vw,2.1rem); line-height:1.2; letter-spacing:-0.02em; margin-bottom:0.6rem; }
+.lead { color:var(--text-muted); margin-bottom:1.25rem; }
+.stats { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+.stat { background:var(--gray-50); border:1px solid var(--border); border-radius:8px; padding:0.4rem 0.8rem; font-size:0.85rem; color:var(--navy); }
+.stat b { font-family:"Manrope",sans-serif; }
+.filters { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem; }
+.filters button { font:inherit; font-size:0.82rem; border:1px solid var(--gray-200); background:#fff; color:var(--gray-600); border-radius:999px; padding:0.3rem 0.8rem; cursor:pointer; }
+.filters button.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+.tools { display:flex; justify-content:flex-end; margin-bottom:0.5rem; }
+.tools button { font:inherit; font-size:0.82rem; background:none; border:none; color:var(--accent); cursor:pointer; }
+details.q { border:1px solid var(--border); border-radius:10px; margin-bottom:0.6rem; background:#fff; }
+details.q[open] { border-color:rgba(26,79,204,0.35); }
+summary { list-style:none; cursor:pointer; padding:0.85rem 1rem; display:grid; grid-template-columns:auto 1fr; gap:0.2rem 0.75rem; align-items:start; }
+summary::-webkit-details-marker { display:none; }
+.qn { font-family:"Manrope",sans-serif; font-weight:800; color:var(--accent); font-size:0.9rem; min-width:1.6rem; padding-top:0.05rem; }
+.qt { font-weight:600; color:var(--navy); }
+.meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
+.tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
+.tag.lvl { background:var(--blue-light); color:var(--accent); }
+summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
+details[open] summary::after { content:"Hide answer"; }
+.ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
+.ans p { margin:0.35rem 0; }
+.ans .sub { font-weight:600; color:var(--navy); margin-top:0.6rem; }
+.ans ul, .ans ol { padding-left:1.15rem; margin:0.35rem 0; }
+.ans li { margin:0.2rem 0; }
+.ans strong { color:var(--navy); }
+.ans .tip { background:var(--blue-light); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; padding:0.5rem 0.75rem; margin-top:0.75rem; }
+.ans code { font-size:0.85em; background:var(--gray-100); padding:0.05rem 0.3rem; border-radius:4px; }
+.cta { margin-top:2.5rem; background:var(--navy); color:#fff; border-radius:12px; padding:1.5rem; }
+.cta h2 { font-family:"Manrope",sans-serif; font-size:1.2rem; margin-bottom:0.35rem; }
+.cta p { color:#C9D3EC; margin-bottom:1rem; }
+.cta a { display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; font-size:0.9rem; padding:0.65rem 1.4rem; border-radius:8px; }
+.cta a:hover { background:var(--accent-hover); }
+footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2rem 1rem; border-top:1px solid var(--border); }
+@media (max-width:640px) { nav .links a.hide-sm { display:none; } .ans { padding-left:1rem; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/"><img src="/Logo/arahasoft_logo1.png" alt="Arahasoft"></a>
+  <div class="links">
+    <a href="/" class="hide-sm">Home</a>
+    <a href="/interview/" class="on">Interview Edge</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</nav>
+<main class="wrap">
+  <div class="crumb"><a href="/">Arahasoft</a> › <a href="/interview/">Interview Edge</a> › Oracle ERP Roles</div>
+  <span class="brand">Interview Edge by Arahasoft</span>
+  <h1>Staff, Oracle Applications – SCM Interview Questions</h1>
+  <p class="lead">The questions interviewers ask for a Staff Oracle Applications role in Supply Chain (15–20 years), with why they ask, a full answer you can say in the room, and a tip. Tap a question to see the answer.</p>
+  <div class="stats">
+    <span class="stat"><b>60</b> questions</span>
+    <span class="stat"><b>23</b> basic</span>
+    <span class="stat"><b>37</b> in-depth</span>
+  </div>
+  <div class="filters" id="filters">
+    <button class="on" data-f="all">All</button>
+    <button data-f="Role">Role</button>
+    <button data-f="Strategy">Strategy</button>
+    <button data-f="Problem Solving">Problem Solving</button>
+    <button data-f="Architecture">Architecture</button>
+    <button data-f="Master Data">Master Data</button>
+    <button data-f="Costing">Costing</button>
+    <button data-f="Compliance">Compliance</button>
+    <button data-f="Integration">Integration</button>
+    <button data-f="Planning">Planning</button>
+    <button data-f="Resilience">Resilience</button>
+    <button data-f="AI">AI</button>
+    <button data-f="Governance">Governance</button>
+    <button data-f="Leadership">Leadership</button>
+    <button data-f="Data Architecture">Data Architecture</button>
+    <button data-f="Behavioral">Behavioral</button>
+    <button data-f="Inventory">Inventory</button>
+    <button data-f="Procurement">Procurement</button>
+    <button data-f="Logistics">Logistics</button>
+    <button data-f="AI Agent Studio">AI Agent Studio</button>
+    <button data-f="Redwood">Redwood</button>
+    <button data-f="Fusion Platform">Fusion Platform</button>
+    <button data-f="Product Hub">Product Hub</button>
+  </div>
+  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div id="list">
+<details class="q" data-topic="Role" data-level="B">
+  <summary><span class="qn">1</span><span class="qt">What does a Staff-level SCM applications leader contribute beyond an architect?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> to see if you understand staff-level scope in supply chain.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I own the supply chain platform strategy across programs: Fusion SCM, planning, logistics, partner networks, analytics and AI. I set standards: the global template, integration patterns and master data governance. I take the hardest problems: costing discrepancies, orchestration failures at scale, planning performance and integration integrity. I influence across supply chain, finance, IT, quality and compliance. I grow SCM architects and leads and build the center of excellence. And I advise executives on supply chain technology investments.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention cross-functional influence. Supply chain problems rarely stay in one team.</p></div>
+</details>
+<details class="q" data-topic="Strategy" data-level="D">
+  <summary><span class="qn">2</span><span class="qt">How do you set a 3-year supply chain technology strategy?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> staff roles set direction.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I start with the business strategy: growth markets, service promise, cost, resilience and regulation. I assess current capabilities and pain points in planning maturity, visibility, automation and data. The target architecture has Fusion SCM at the core, planning, WMS and TMS choices, partner networks, a control tower, a data platform and AI agents. The roadmap runs in value waves, foundations first, like master data and the integration platform. Each initiative has a business case and KPIs, like OTIF, inventory days and cost to serve. And it's governed with supply chain leadership.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;foundations first&quot;. It's why many SCM strategies fail without it.</p></div>
+</details>
+<details class="q" data-topic="Problem Solving" data-level="D">
+  <summary><span class="qn">3</span><span class="qt">Inventory value in GL and the cost management valuation report differ by $4M. How do you investigate?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a high-stakes reconciliation problem.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I slice the difference by cost org, valuation unit, item category and period, and find when it started. Then I check for unprocessed items: transactions not costed, or cost accounting not created, transferred or posted. Then manual GL journals to inventory accounts. Then account mapping: cost accounting rules sending some transactions to the wrong accounts, like expense subinventories or in-transit. Then in-transit or intercompany inventory included in one view but not the other. Then revaluations from standard cost updates or landed cost adjustments posted differently. I fix the causes, book corrections, and set up a monthly reconciliation with tolerances and owners.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Start by slicing the number. A $4M total is usually a few clear pieces.</p></div>
+</details>
+<details class="q" data-topic="Problem Solving" data-level="D">
+  <summary><span class="qn">4</span><span class="qt">Sales orders are stuck in &quot;awaiting shipping&quot; for hours after pick release. What do you check?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> order flow problems hit revenue directly.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I check the orchestration status of the fulfillment lines for errors or jeopardy. Then shipping: were lines released, is pick confirm done, are move orders pending? Then inventory: allocation failures from material status or reservations. Then background processes: ESS jobs, like the shipping and inventory interfaces, failing or queued. Then WMS or 3PL integration: confirmations not received. Then recent changes to rules or the release. Once resolved, I add alerts for lines stuck by age.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention background jobs. They're often the silent cause.</p></div>
+</details>
+<details class="q" data-topic="Problem Solving" data-level="D">
+  <summary><span class="qn">5</span><span class="qt">A supply plan run went from 2 hours to 9 hours. How do you approach it?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> planning performance troubleshooting.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I compare the runs: data volumes like items, orgs and demands; plan options; horizon; and constraints enabled. Then collections: more data, like forecasts at a lower level or many new items. Then plan design: unnecessary detail like daily buckets far into the future, or too many orgs or constraints. Then data issues: BOM loops, huge sourcing networks, or items with zero lead time causing churn. Then infrastructure: competing jobs, or Oracle-side capacity through an SR. Fixes include segmenting the plan, a bucket strategy and data cleanup, measuring each change.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Start with &quot;what changed between the runs&quot;. It narrows it fast.</p></div>
+</details>
+<details class="q" data-topic="Architecture" data-level="B">
+  <summary><span class="qn">6</span><span class="qt">How do you design a global supply chain template that still allows regional differences?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> global templates need controlled flexibility.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;The global core covers processes, data standards, orchestration patterns, costing policies and integration patterns. A regional layer covers legal and tax documents, carrier integrations, language, and local regulations like e-way bills and customs. A variation registry documents every deviation with a reason and an owner. A template governance board approves changes. And template updates roll out to regions on a release cadence.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the variation registry. It keeps exceptions from quietly growing.</p></div>
+</details>
+<details class="q" data-topic="Master Data" data-level="D">
+  <summary><span class="qn">7</span><span class="qt">How would you lead an enterprise item master transformation?</span><span class="meta"><span class="tag">Master Data</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a leadership question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I'd set a vision: one item master in Product Hub, with a governed life cycle from PLM to retirement. Then assess the current state: duplicates, attribute completeness and classification gaps. Design the data model: item classes, attribute groups, structures and cross-references. Set the process: NIRs and change orders with data stewards and target times. Migrate: cleanse, consolidate and keep history through cross-references. Drive adoption by connecting every consumer, WMS, MES, e-commerce and CPQ, to Product Hub. And track duplicate rate, creation cycle time and completeness.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention connecting every consumer. A master that systems don't use isn't a master.</p></div>
+</details>
+<details class="q" data-topic="Costing" data-level="D">
+  <summary><span class="qn">8</span><span class="qt">How would you design costing for a vertically integrated pharma company (API, formulation, packaging, distribution)?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a specialist design question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Process manufacturing for API and formulation, with recipes, yields and by-products; discrete or process for packaging. Cost orgs per plant, standard cost with a yearly cycle and roll-ups across all levels. Lot-level valuation where costs vary by lot, if needed. Intercompany through SFO between manufacturing and distribution entities, with transfer pricing. Variance analysis for yield, usage and PPV, and inventory reserves for expiry and quarantine. Landed costs for imported materials. And GxP and finance controls on any cost change.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention yield variances. They're the variance pharma finance watches most.</p></div>
+</details>
+<details class="q" data-topic="Compliance" data-level="D">
+  <summary><span class="qn">9</span><span class="qt">How do you ensure an Oracle SCM platform stays validated in a GxP environment with quarterly updates?</span><span class="meta"><span class="tag">Compliance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> validated SaaS is a hard problem.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I use risk-based validation, CSA, classifying functions by GxP impact. High-risk processes get automated regression every quarter with evidence. Each release gets a documented assessment of GxP impact. Configuration goes through change control. Oracle's development process and audit reports are assessed as a vendor. The validated state is reviewed periodically. And I work with QA early, so validation doesn't block every update.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;work with QA early&quot;. It's what makes quarterly updates possible in GxP.</p></div>
+</details>
+<details class="q" data-topic="Integration" data-level="D">
+  <summary><span class="qn">10</span><span class="qt">What is your integration strategy for a supply chain with hundreds of partners?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> partner integration at scale.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I tier partners: high-volume ones on B2B or EDI networks, smaller ones on portals. A canonical data model with reusable maps. An onboarding factory with templates and testing tools. Business-facing monitoring dashboards. SLAs and partner scorecards. And API-first for modern partners like carriers and marketplaces.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the onboarding factory. It's how hundreds of partners become manageable.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">11</span><span class="qt">How do you mature a company from spreadsheet planning to integrated business planning?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a transformation question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;In stages. First, clean data and one demand plan in the system, with basic supply planning. Second, constrained supply planning, inventory policies and an S&amp;OP process. Third, integrated business planning with financial plans, scenario modeling and machine-learning forecasting. People and process matter as much as tools: planning roles, meeting cadence and KPIs. And I'd show value at each stage, in forecast accuracy, inventory and service, so the business keeps investing.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say you show value at each stage. It's how transformations keep their funding.</p></div>
+</details>
+<details class="q" data-topic="Resilience" data-level="D">
+  <summary><span class="qn">12</span><span class="qt">How would you design a supply chain risk management capability?</span><span class="meta"><span class="tag">Resilience</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> risk management is now a board topic.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Risk data comes from providers: supplier financial health, geopolitical, weather, sanctions and cyber. It's mapped to our supply network, which items and sites depend on which tier-1 and tier-2 suppliers. Alerts come with impact analysis, like affected orders and revenue at risk. Playbooks cover alternate sources, safety stock and expedites. Scenario planning runs in the planning tools. And risk owners hold periodic reviews.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention revenue at risk. It's how leaders prioritize.</p></div>
+</details>
+<details class="q" data-topic="AI" data-level="D">
+  <summary><span class="qn">13</span><span class="qt">How would you lead AI adoption in supply chain operations?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a leadership question in SCM.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I'd build a use-case portfolio by value and feasibility: better forecasts, PO exception handling, supplier communication, order exception triage and quality anomaly detection. Data readiness comes first. Pilots have clear metrics and a human in the loop. Governance covers approvals, auditability and model monitoring. Planners and buyers co-design the solutions. And we scale what works and stop what doesn't.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;planners and buyers co-design&quot;. Adoption depends on it.</p></div>
+</details>
+<details class="q" data-topic="Governance" data-level="D">
+  <summary><span class="qn">14</span><span class="qt">How do you govern changes to orchestration processes and sourcing rules in production?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> these changes affect orders in flight.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Every change request has an impact analysis, including orders already in flight and other processes. It's tested in a refreshed environment with realistic orders. Processes are effective-dated and version-controlled. Deployments happen outside peak shipping times. After the change, I monitor for stuck lines and jeopardy. And there's a rollback plan.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention orders in flight. It's what makes these changes risky.</p></div>
+</details>
+<details class="q" data-topic="Leadership" data-level="B">
+  <summary><span class="qn">15</span><span class="qt">How do you get supply chain and finance to agree on inventory accounting policies?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> policy alignment avoids recurring conflict.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I bring both sides together to define the policies: costing method, reserves for excess and obsolete, capitalizing freight and duties, and intercompany profit. I show the impact with data: margin, inventory value and volatility. The policies and how the system implements them, cost books, accounts and processes, are documented. And we review them yearly.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Show impacts with data. It moves the debate from opinions to numbers.</p></div>
+</details>
+<details class="q" data-topic="Problem Solving" data-level="D">
+  <summary><span class="qn">16</span><span class="qt">Intercompany invoices from SFO are not being generated for some shipments. How do you troubleshoot?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> SFO problems create intercompany mismatches.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I check whether the shipment was assigned to a financial orchestration flow: do the assignment rules match on BU, org and item? Do the trade relationship and transfer pricing rules exist and are they effective? Did the SFO processes run, like creating intercompany AR and AP invoices and interfacing them, and were there errors? Are there AutoInvoice or AP import errors for the intercompany transactions? Is the costing of the logical transactions done? Then I fix the rules or data, reprocess, and add a reconciliation of shipments against intercompany invoices.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Start with assignment rules. A flow that never matched creates nothing.</p></div>
+</details>
+<details class="q" data-topic="Architecture" data-level="B">
+  <summary><span class="qn">17</span><span class="qt">How do you decide between Oracle-native planning and a third-party planning tool?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a major platform decision.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I look at requirements, especially industry specifics like pharma campaign planning or retail allocation, plus scale and optimization needs. Then integration cost and latency with Fusion. Then planner experience and adoption. Then the roadmap of Oracle's planning versus the competitor. Then five-year TCO. And I run a structured evaluation with real data and scenarios.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention industry specifics. They're usually the deciding factor.</p></div>
+</details>
+<details class="q" data-topic="Data Architecture" data-level="B">
+  <summary><span class="qn">18</span><span class="qt">How do you make supply chain data trustworthy for executives?</span><span class="meta"><span class="tag">Data Architecture</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> executives stop using data they don't trust.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;KPI definitions, like OTIF, fill rate and inventory turns, are governed and signed off by the business. Data lineage goes from transaction to dashboard. Analytics reconcile to the ERP. Data quality is monitored with owners. And there's one version of each metric, not competing spreadsheets.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;one version of each metric&quot;. It's the core of trust.</p></div>
+</details>
+<details class="q" data-topic="Leadership" data-level="B">
+  <summary><span class="qn">19</span><span class="qt">How do you mentor SCM architects?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> staff engineers develop the next level.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Design reviews focus on trade-offs and end-to-end impact, including finance and the customer. I give them cross-module problems to stretch them. I share incident post-mortems as learning. I encourage time in warehouses and plants. And I give feedback on how they communicate with executives.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention time on the floor. Architects who've seen the warehouse design better.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">20</span><span class="qt">Tell me about a large supply chain problem you solved through technology and process together.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> real impact requires both.</p>
+<p><strong>Answer (example):</strong></p>
+<p>&quot;OTIF was at 82%, mostly because promise dates were inaccurate. I led the fix across planning, order management and warehouses. We fixed lead times and calendars, tuned GOP rules and collections frequency, introduced allocation for constrained items, and set up a daily exception review with customer service. OTIF reached 93% in six months, and expedite costs fell 30%.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Show both the data fix and the process change. That's the point of the question.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">21</span><span class="qt">How do you handle pressure when operations are down and executives want answers?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> calm leadership in incidents.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I run structured incident command: one leader, clear roles, and a set communication rhythm, like every 30 minutes. Business continuity comes first, with manual workarounds to keep shipping and receiving. Updates are facts only: what we know, what we're doing, and when the next update is. And afterwards, a post-incident review and lasting fixes.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the update rhythm. It stops executives from interrupting the people fixing it.</p></div>
+</details>
+<details class="q" data-topic="Strategy" data-level="D">
+  <summary><span class="qn">22</span><span class="qt">How do you build the business case for an SCM platform investment?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> investments need justification.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I baseline current KPIs and costs. Benefits include inventory reduction for working capital, freight savings, labor productivity, better service and revenue, fewer expedites, and retired systems. Costs include licenses, implementation, integration, change management and run costs. I add risk and sensitivity analysis. Value realization is phased with named owners. And benefits are tracked after go-live.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention tracking benefits after go-live. It builds credibility for the next case.</p></div>
+</details>
+<details class="q" data-topic="Inventory" data-level="D">
+  <summary><span class="qn">23</span><span class="qt">How would you reduce excess and obsolete inventory using the platform?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> E&amp;O ties up cash and causes write-offs.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;First visibility: aging, days of supply and slow movers by item and location. Then root causes: forecast bias, minimum order quantities and lot sizes, and life-cycle changes nobody communicated. Then planning policies: adjust safety stock and order modifiers, and plan phase-outs for end-of-life items. Then disposition workflows: rebalance across DCs, sell, return to vendor or scrap. A reserve policy agreed with finance. And KPIs with a monthly review.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention forecast bias. It's the most common cause.</p></div>
+</details>
+<details class="q" data-topic="Procurement" data-level="D">
+  <summary><span class="qn">24</span><span class="qt">How would you transform procurement with digital tools on Oracle?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a leadership question about vision.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I'd start with guided buying, catalogs and smart forms, to increase compliance. Then sourcing automation and contract life cycle management. Supplier risk and ESG built into onboarding and monitoring. Touchless P2P with automatic POs and e-invoicing. AI agents for supplier questions, contract analysis and preparing for negotiations. Spend analytics with automatic classification. And I'd measure it with spend under management, savings and cycle times.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Tie each tool to a KPI. Leaders fund transformations that show results.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">25</span><span class="qt">What is the biggest mistake you see companies make with Oracle SCM, and how do you avoid it?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> experience shows in knowing the traps.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Treating it as an IT project instead of an operations transformation. That leads to poor master data and planning parameters, so the system 'doesn't work'; under-investment in warehouse and plant user readiness; and legacy processes replicated with extensions. I avoid it with business ownership, data foundations first, standard processes, thorough day-in-the-life testing and strong hypercare.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Lead with &quot;operations transformation, not IT project&quot;. It's the memorable line.</p></div>
+</details>
+<details class="q" data-topic="Problem Solving" data-level="D">
+  <summary><span class="qn">26</span><span class="qt">Customers receive the wrong lots despite FEFO rules. How do you investigate?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a quality and compliance problem.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I check the picking rule assignment at org and item level, and the rule logic, sorting by expiry. Then material status and lot attributes, for example converted lots missing expiry dates. Then manual overrides at pick confirm, users scanning other lots, using the audit trail. Then reservations made earlier on specific lots. Then whether a WMS or 3PL is doing its own allocation. The fix may be data, rules or user controls like lot validation on scan, plus exception reporting.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention converted lots without expiry dates. It's a common hidden cause.</p></div>
+</details>
+<details class="q" data-topic="Problem Solving" data-level="D">
+  <summary><span class="qn">27</span><span class="qt">Standard cost update revalued inventory by an unexpected $10M. What do you do?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a high-impact finance incident.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;First I stop any further publishes and tell finance. Then I analyze the cost scenario: the items with the largest changes, roll-up errors from BOM quantities or UOM conversions, missing component costs, or wrong resource or overhead rates. If it's already posted, I correct the costs in a new scenario that revalues back at an agreed date, with the accounting handled as finance decides. To prevent it, I add pre-publish what-if reports with thresholds, finance sign-off, and peer review of rate changes.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention UOM conversion errors. They cause huge swings from tiny mistakes.</p></div>
+</details>
+<details class="q" data-topic="Architecture" data-level="D">
+  <summary><span class="qn">28</span><span class="qt">How would you design an order-to-cash platform for a company moving from products to subscriptions?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a business model shift needs platform changes.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;CPQ handles hybrid quotes with products, subscriptions and services. Order Management handles physical fulfillment, and Subscription Management handles recurring billing, usage and renewals. Revenue Management handles allocation and recognition. Billing is consolidated with a customer portal. The customer master is unified. Analytics covers ARR, MRR, churn and renewals. And sales, finance and support processes change too.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention process change for sales and support. It's as big as the system change.</p></div>
+</details>
+<details class="q" data-topic="Strategy" data-level="D">
+  <summary><span class="qn">29</span><span class="qt">How do you approach a decision to consolidate multiple WMS solutions?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a portfolio rationalization decision.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I inventory WMS by site with capabilities, cost, contracts and satisfaction. I define requirements by site type: automated DC, small warehouse or 3PL. The options might be Fusion Warehouse Management for simpler sites and one best-of-breed WMS for complex DCs. I standardize integration to Fusion. The transition plan avoids peak seasons. And the business case covers licenses, support, skills and process standardization.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Recommend &quot;fit by site type&quot;. One size rarely fits every warehouse.</p></div>
+</details>
+<details class="q" data-topic="Governance" data-level="B">
+  <summary><span class="qn">30</span><span class="qt">What KPIs would you use to run an SCM applications CoE?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> CoEs need measures.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Stability: incidents by severity, time to restore, and integration failure rate. Delivery: enhancement cycle time and backlog health. Release: regression pass rate and defects escaping to production. Business: OTIF impact, inventory accuracy and touchless rates. Data: item and supplier data quality. And user satisfaction surveys.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Include business KPIs. A CoE should be measured by business results too.</p></div>
+</details>
+<details class="q" data-topic="Leadership" data-level="B">
+  <summary><span class="qn">31</span><span class="qt">How do you influence a supply chain VP who prefers manual workarounds?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> influencing senior operations leaders.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I first understand why: trust, flexibility, or a past failure. I quantify the cost of the workarounds in time, errors and delays. I fix the root cause that created the workaround. I pilot an automated approach with their team and show results. And I make their team co-owners of the design.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;fix the root cause of the workaround&quot;. People keep workarounds for a reason.</p></div>
+</details>
+<details class="q" data-topic="Compliance" data-level="D">
+  <summary><span class="qn">32</span><span class="qt">How would you design recall readiness in Oracle SCM?</span><span class="meta"><span class="tag">Compliance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> recalls must be fast and complete.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;End-to-end lot and serial genealogy: supplier lots to production to finished lots to customer shipments. Fast where-used and where-shipped queries, with reports and dashboards. Customer contact data linked to shipments. A quarantine process using material status for affected lots everywhere, including 3PLs. Mock recalls run periodically to test speed and completeness. And regulatory documentation.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention mock recalls. They're how you prove readiness.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">33</span><span class="qt">How would you integrate commercial and supply planning with finance in an IBP process?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> IBP is where planning becomes a leadership tool.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;First a common data model: product families, customers and regions, and time buckets that match the financial calendar. Then the chain: demand plan to supply plan to financial projection, revenue, margin, inventory and cash, using standard costs and prices. Gaps against budget are highlighted for executive decisions. Scenario modeling covers things like price changes and capacity limits. EPM integration feeds the financial forecast. And a monthly cadence with clear decision rights.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention aligning time buckets with the financial calendar. Without it, finance can't use the numbers.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">34</span><span class="qt">Describe a technical standard you introduced that changed how teams worked.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> staff engineers lead through standards.</p>
+<p><strong>Answer (example):</strong></p>
+<p>&quot;Each integration team built its own error handling, and outages went unnoticed for hours. I introduced a common OIC integration framework: correlation IDs, idempotency checks, a central error queue with a business-facing dashboard, and alert thresholds. Adoption came through a reference implementation, templates and a design review gate. Mean time to detect dropped from hours to minutes, and business users could reprocess errors without raising IT tickets.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Explain how you drove adoption. Standards only matter if people use them.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">35</span><span class="qt">How do you decide when to step in on a struggling project versus letting the team work it out?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> judgment as a senior leader.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I watch for signals: missed milestones, quality issues, repeated escalations and team stress. I coach first by asking questions and reviewing plans. I step in when business risk is high, like go-live or compliance in jeopardy, or when the team lacks a specific expertise. And I step back once it's stable, leaving the team stronger, not dependent on me.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;leave the team stronger&quot;. It's the goal of stepping in.</p></div>
+</details>
+<details class="q" data-topic="Logistics" data-level="D">
+  <summary><span class="qn">36</span><span class="qt">How do you approach freight cost reduction through systems?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> freight is a big, visible cost.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;First visibility of freight cost by lane, carrier, mode and customer. Then TMS optimization: load consolidation, mode selection and routing. Carrier procurement using rate analytics. Freight audit and pay to catch billing errors, which often recovers a few percent alone. Order policies, like minimum order quantities and set delivery days. And network design studies for the bigger structural savings.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention freight audit. It's the quickest win.</p></div>
+</details>
+<details class="q" data-topic="Architecture" data-level="D">
+  <summary><span class="qn">37</span><span class="qt">How would you design SCM for a company with both make-to-stock and engineer-to-order businesses?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> mixed business models need careful design.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Make-to-stock uses standard items, forecasts, planning and stock replenishment. Engineer-to-order is project-driven: project-specific items and BOMs, Project-Driven Supply Chain for project-specific inventory and costs, and engineering change management. They get separate orchestration and planning segmentation. ETO is costed by project, MTS uses standard cost. And they share master data and procurement.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention Project-Driven Supply Chain. It's the key Fusion capability for ETO.</p></div>
+</details>
+<details class="q" data-topic="Data Architecture" data-level="D">
+  <summary><span class="qn">38</span><span class="qt">How would you build a supply chain digital twin?</span><span class="meta"><span class="tag">Data Architecture</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a forward-looking question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A network model of sites, lanes, capacities, lead times and costs. Live data from ERP, WMS and TMS for the current state. Simulation and optimization engines for scenarios like disruptions or demand shifts, using planning tools or network design software. And I'd start with a focused question, like a DC network redesign, rather than trying to model everything.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;start with a focused question&quot;. Digital twins fail when they try to do everything.</p></div>
+</details>
+<details class="q" data-topic="Strategy" data-level="B">
+  <summary><span class="qn">39</span><span class="qt">How do you approach a request to cut SCM application run costs by 25%?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> cost pressure is common.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I break down the costs: licenses, support staff, partners, infrastructure and integrations. Then rationalize unused licenses and modules, redundant tools and custom objects. Automate support with monitoring, self-healing and user self-service. Shift left with better training and a knowledge base to cut tickets. Renegotiate with vendors. And protect the investments that drive business value.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention protecting value-driving investments. Blind cuts cost more later.</p></div>
+</details>
+<details class="q" data-topic="Problem Solving" data-level="D">
+  <summary><span class="qn">40</span><span class="qt">Users complain GOP promise dates are unreliable. What do you look at?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> promise accuracy drives customer trust.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Supply data freshness: how often collections run. Lead times and calendars. Sourcing rules and assignment sets. ATP rules: which supply types count and the time fences. Allocations consuming supply. And execution: supplier delays not updated on POs. Then I measure promise accuracy by root cause and fix the top drivers.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention supplier delays not updated on POs. It's the execution gap planners forget.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">41</span><span class="qt">Why should we hire you as Staff, Oracle Applications for supply chain?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a closing question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Depth: years across Fusion and EBS SCM, planning and logistics, and the hardest problems I've solved. Breadth: finance integration, GxP compliance, partners and data. Impact: KPIs improved, platforms stabilized and standards adopted. And I'm a multiplier: the architects and leads I've developed. I'd close with: 'I'll make your supply chain platform reliable, scalable and ready for AI.'&quot;</p>
+<p class="tip"><strong>Tip:</strong> Back each point with one example from your career.</p></div>
+</details>
+<details class="q" data-topic="Leadership" data-level="B">
+  <summary><span class="qn">42</span><span class="qt">How do you communicate a complex technical risk to a COO?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> executive communication.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Business impact first, for example: 'There's a 30% chance shipping stops for a day during peak because of this.' Then likelihood and consequence, not technical details. Then options to reduce it, with cost and time. Then my recommendation and the decision needed. One page and one picture.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Use a probability and an impact. COOs think in risk, not technology.</p></div>
+</details>
+<details class="q" data-topic="Governance" data-level="B">
+  <summary><span class="qn">43</span><span class="qt">How do you manage the SCM roadmap against constant operational requests?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> balancing strategy and daily demand.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I allocate capacity, for example 50% roadmap, 30% enhancements and 20% sustaining. An intake and prioritization board includes supply chain leaders. Trade-offs are transparent: adding a request means something else moves. And quarterly planning follows the business calendar, avoiding peak periods.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;adding a request means something else moves&quot;. It makes trade-offs visible.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">44</span><span class="qt">What have you learned from a failed or troubled SCM implementation?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> honesty and learning.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I'd be honest about the context and my role. Typical lessons I've seen: data readiness was underestimated, warehouse users weren't involved early, integrations were tested too late, and go-live landed in peak season. What I do now: data readiness gates, day-in-the-life testing, integration partner readiness checks, avoiding peak windows, and stronger hypercare.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Name what you do differently now. It turns failure into credibility.</p></div>
+</details>
+<details class="q" data-topic="Architecture" data-level="D">
+  <summary><span class="qn">45</span><span class="qt">How would you approach a migration from on-premise EBS ASCP to Oracle Supply Chain Planning Cloud?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a common planning migration.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I assess the current plans, customizations, data flows and planner workflows. I redesign plan types and parameters for Planning Cloud rather than copying them one-for-one. Collections come from EBS if it's still the execution system, or from Fusion. I run parallel plans to compare. I train planners on the new UI and exception-based planning. And I cut over at a planning cycle boundary.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention parallel runs. Planners need to see the new plan is right.</p></div>
+</details>
+<details class="q" data-topic="Strategy" data-level="B">
+  <summary><span class="qn">46</span><span class="qt">How do you evaluate new Oracle SCM capabilities each quarter?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> staying current is part of the role.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I review What's New and the roadmap and shortlist relevant features. I assess value and effort, including opt-in configuration, process change and training. Power users try them in a sandbox. Good ones go into the backlog with a priority. And adopted features are communicated to users.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention power users trying them. Their feedback decides adoption.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">47</span><span class="qt">How do you stay technically deep at this level?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> staff roles need depth.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I keep a personal sandbox and test new features. I take on hard problems personally each quarter. I read release notes and attend Oracle and industry events. I write internal guides, because teaching keeps knowledge sharp. And I keep a network of senior practitioners.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention teaching. It's a good way to show you stay sharp.</p></div>
+</details>
+<details class="q" data-topic="Compliance" data-level="D">
+  <summary><span class="qn">48</span><span class="qt">How do you design for trade compliance in a global supply chain?</span><span class="meta"><span class="tag">Compliance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> compliance failures are costly.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Screening of restricted parties for customers, suppliers, ship-to addresses and banks. Classification of items with HTS and ECCN, and license determination. Holds on orders and shipments until they're compliant. Documentation: commercial invoices, certificates of origin and export filings. Duty management, like free trade agreements and drawback. And audit trails with periodic compliance reviews. Tools are Oracle GTM or a third party integrated with OM and Shipping.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention holds until compliant. It's the control that prevents violations.</p></div>
+</details>
+<details class="q" data-topic="Architecture" data-level="D">
+  <summary><span class="qn">49</span><span class="qt">How would you modernize a heavily customized EBS SCM landscape?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a common modernization challenge.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I catalog the customizations and map each one to retire, a standard Fusion feature, or an extension. I simplify processes with business leaders before migrating. I run a data cleanup program. I phase the migration, finance first or by region, with coexistence. I modernize integrations onto OIC. And I manage change for users who are used to custom screens.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;simplify before migrating&quot;. Migrating complexity just moves it.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">50</span><span class="qt">Tell me about a time you had to rebuild trust after a major SCM outage.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> recovering from failure.</p>
+<p><strong>Answer (example):</strong></p>
+<p>&quot;An integration failure stopped shipments for six hours on a peak day. I led the recovery and communicated hourly. Afterwards I ran a blameless post-mortem and delivered a 30-day hardening plan with monitoring, failover and runbooks, reporting progress weekly to the COO. There were no repeat incidents, and the business later asked our team to lead the next integration program.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Show the follow-through. Trust is rebuilt by actions after the incident.</p></div>
+</details>
+<details class="q" data-topic="AI Agent Studio" data-level="D">
+  <summary><span class="qn">51</span><span class="qt">How would you build a roadmap of AI agents for a global supply chain?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a roadmap question that shows maturity.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Wave one assists: order and PO status agents, policy and procedure Q&amp;A, and item description generation. Wave two prepares: turning supplier quotes and emails into draft requisitions, order exception triage, and drafts for supplier delay follow-ups. Wave three acts with guardrails: automatic rescheduling within rules and automatic low-value POs under agreements, with monitoring and approval thresholds. Every wave has value cases, evaluation, controls and change management.&quot;</p>
+<p class="tip"><strong>Tip:</strong> The assist, prepare, act structure is easy to remember. Use it.</p></div>
+</details>
+<details class="q" data-topic="AI Agent Studio" data-level="D">
+  <summary><span class="qn">52</span><span class="qt">How do you govern agents across Fusion and other platforms (WMS, TMS, partners)?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> cross-platform governance is new territory.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A registry of every agent with its owner, purpose, tools, data and risk tier. Interoperability standards: MCP for tools, A2A for agent-to-agent, and the credential store for secrets. Security with least privilege, identity propagation and logging across platforms. Monitoring in one view where possible, and an incident process for agent errors. And contracts with partners covering how their agents behave and use our data.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention partner contracts. It's often forgotten.</p></div>
+</details>
+<details class="q" data-topic="AI Agent Studio" data-level="D">
+  <summary><span class="qn">53</span><span class="qt">An order exception agent is rescheduling lines incorrectly for one region. How do you approach it?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> an incident handling question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;First I pause autonomous actions for that region and switch it to draft-and-approve. Then I review traces to see which data and rules led to the decisions, comparing with correct cases from other regions. Typical causes are regional sourcing rules, calendars, time zones, units of measure, or incomplete data in the tools. I fix the tools, instructions or data, add regional cases to the evaluation set, and re-enable gradually.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Start with &quot;pause for that region&quot;. Containment comes before diagnosis.</p></div>
+</details>
+<details class="q" data-topic="Redwood" data-level="D">
+  <summary><span class="qn">54</span><span class="qt">How would you manage Redwood adoption across 30 warehouses and plants?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a multi-site rollout question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A pilot site first, testing on the floor with real devices, scanners and printers. Then a wave plan that avoids peaks, with a readiness checklist per site. Standard VBS extensions for every site, with no site-specific variants unless approved. Training kits and a champion at each site. And monitoring task times and errors after each wave.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention no site-specific variants. It keeps 30 sites supportable.</p></div>
+</details>
+<details class="q" data-topic="Fusion Platform" data-level="B">
+  <summary><span class="qn">55</span><span class="qt">How do you balance adopting Oracle's new SCM AI features vs third-party tools?</span><span class="meta"><span class="tag">Fusion Platform</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a build-vs-buy question for AI.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Embedded first when it covers the need, because Oracle handles security, data and upgrades. Third-party when there's a clear capability gap, like advanced optimization or specialized warehouse AI. I evaluate both with real data and the same KPIs. And I consider integration cost, data duplication and lock-in.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;same KPIs, real data&quot;. It's how a fair comparison is made.</p></div>
+</details>
+<details class="q" data-topic="Strategy" data-level="D">
+  <summary><span class="qn">56</span><span class="qt">How would you measure ROI of AI in supply chain?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> AI investments need proof.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Service: OTIF, order cycle time and promise accuracy. Productivity: buyer, planner and customer service time per transaction. Cost: expedites, freight and inventory carrying cost. Quality: data errors and exceptions per order. The cost of AI itself: tokens, build and maintenance. And attribution through pilots compared with control groups.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention control groups. It's how you prove the AI caused the gain.</p></div>
+</details>
+<details class="q" data-topic="Product Hub" data-level="D">
+  <summary><span class="qn">57</span><span class="qt">How would you use AI to clean a large legacy item master before migration?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a current, practical AI question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;AI matching finds duplicates using descriptions, manufacturer part numbers and attributes. AI classification sorts items into the new item classes. AI extraction pulls attributes out of descriptions and spec sheets. Data stewards review the proposals, sorted by confidence score, so they spend time on the uncertain ones. Then the clean data loads through import, and I track how accurate the AI proposals were.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention sorting by confidence. It's how you make steward time count.</p></div>
+</details>
+<details class="q" data-topic="Compliance" data-level="D">
+  <summary><span class="qn">58</span><span class="qt">How do AI agents fit into GxP-regulated SCM processes?</span><span class="meta"><span class="tag">Compliance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> AI in regulated environments needs care.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I treat agents as part of the validated system: a risk assessment, intended use, and testing evidence, with evaluation sets acting as test scripts. GxP actions like QA release and deviations stay human decisions. Agent outputs and traces are kept as audit trails. Changes to instructions, tools or models go through change control. And performance is reviewed periodically.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say evaluation sets act as test scripts. It connects AI to validation practice.</p></div>
+</details>
+<details class="q" data-topic="Leadership" data-level="B">
+  <summary><span class="qn">59</span><span class="qt">How do you get skeptical supply chain leaders to trust AI agents?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> adoption depends on trust.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I start with low-risk, visible wins like status questions and drafting emails. I show traces and sources so the reasoning is visible. People stay in control of commitments. I share metrics from the pilots. And I involve the leaders in setting the guardrails.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention involving leaders in guardrails. People trust what they helped design.</p></div>
+</details>
+<details class="q" data-topic="Problem Solving" data-level="D">
+  <summary><span class="qn">60</span><span class="qt">After moving to Redwood receiving pages, receiving throughput dropped 20%. What do you do?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a real Redwood adoption issue.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I go to the floor and observe: extra clicks, scanning issues, page load times and device problems. Quick fixes in VBS: defaults, hidden fields and field order. Device and browser settings, and network checks. Training refreshers. And an Oracle SR or enhancement request for product gaps. I keep measuring until throughput recovers.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;go to the floor&quot;. The cause is visible there, not in a ticket.</p></div>
+</details>
+  </div>
+  <section class="cta">
+    <h2>Need Oracle help?</h2>
+    <p>Arahasoft implements and supports Oracle Fusion Cloud and E-Business Suite: Financials, SCM, Procurement and HCM.</p>
+    <a href="/#contact">Contact Arahasoft</a>
+  </section>
+</main>
+<footer>© 2026 Arahasoft · Interview Edge by Arahasoft</footer>
+<script>
+(function () {
+  var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
+  document.getElementById('filters').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    var f = b.getAttribute('data-f');
+    qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+  });
+  var open = false, t = document.getElementById('toggleAll');
+  t.addEventListener('click', function () {
+    open = !open; qs.forEach(function (q) { if (q.style.display !== 'none') q.open = open; });
+    t.textContent = open ? 'Hide all answers' : 'Show all answers';
+  });
+})();
+</script>
+</body>
+</html>
