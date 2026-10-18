@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oracle Technical Consultant (Fusion) Interview Questions (50) | Interview Edge by Arahasoft</title>
+<meta name="description" content="50 Oracle Technical Consultant (Fusion) interview questions with full answers: why they ask, what to say, and a tip. Interview Edge by Arahasoft.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://arahasoft.com/interview/oracle-technical-consultant-fusion/">
+<meta property="og:title" content="Oracle Technical Consultant (Fusion) Interview Questions (50) | Interview Edge by Arahasoft">
+<meta property="og:description" content="50 Oracle Technical Consultant (Fusion) interview questions with full answers: why they ask, what to say, and a tip. Interview Edge by Arahasoft.">
+<meta property="og:url" content="https://arahasoft.com/interview/oracle-technical-consultant-fusion/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Arahasoft">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is Oracle Fusion Cloud different from EBS for a technical consultant?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: checks that you understand SaaS constraints.\n\nAnswer: Fusion is SaaS: no direct database access, no custom PL/SQL in the application schema, no direct table inserts, and Oracle applies quarterly updates. Technical work shifts to reports (BI Publisher, OTBI), data loads (FBDI, HDL, ADFdi spreadsheets), REST/SOAP APIs, integrations (OIC), and extensions (Visual Builder, Application Composer, sandboxes). In EBS you'd write PL/SQL, concurrent programs, Forms and direct interfaces.\n\nTip: Say \"extend, don't customize\" — the Fusion mindset."}},{"@type":"Question","name":"How do you build a BI Publisher report in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: BIP reports are the most common technical task in Fusion.\n\nAnswer:\n\"I start with the data model: a SQL query against Fusion views or tables through the BI data source, with parameters and lists of values. I run it, check the results, and save sample XML. Then I build the layout: an RTF template in Word with the BI Publisher add-in, an Excel template, or the online layout editor. I create the report, set the output formats, put it in a catalog folder secured to the right roles, and schedule it if needed. For example, an AP invoice aging report with parameters for business unit and as-of date.\"\n\nTip: Mention bursting, like emailing each supplier their own report. It shows you've gone past the basics."}},{"@type":"Question","name":"OTBI vs BI Publisher — when do you use each?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: picking the right tool saves weeks.\n\nAnswer:\n\"OTBI is self-service, real-time analysis on subject areas: drag and drop, no SQL, and security is applied automatically. It's best for ad-hoc analysis and dashboards. BI Publisher is for pixel-perfect documents and complex SQL: checks, invoices, statutory reports, bursting, and extracts for integrations. I use OTBI first when a subject area covers the need, and BIP when formatting or data complexity requires it.\"\n\nTip: Say \"OTBI first if a subject area exists\". It shows good judgment."}},{"@type":"Question","name":"What is bursting in BI Publisher?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a practical BIP feature.\n\nAnswer:\n\"Bursting splits one report run into many outputs by a key and sends each to a different destination. The classic example is remittance advices: one run, and each supplier gets an email with only their payments. In the data model I define a bursting query with the key, the template, the output format and the delivery channel, like email, FTP or printer.\"\n\nTip: Give the remittance example. A real use case makes the answer stick."}},{"@type":"Question","name":"How do you find which tables or views to query in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: Fusion has thousands of objects; finding the right one is a skill.\n\nAnswer:\n\"I use Oracle's Tables and Views documentation for each module on docs.oracle.com. I can also take an OTBI analysis on the same subject area and look at the logical SQL to see which objects sit behind it. Seeded BIP data models are another good source. Then I test my query in the BI data model editor. Some key tables I use often are AP_INVOICES_ALL, PO_HEADERS_ALL, GL_JE_LINES and HZ_PARTIES.\"\n\nTip: Name a few key tables. It proves hands-on experience."}},{"@type":"Question","name":"How is data security handled in BI Publisher reports?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: BIP security mistakes expose data.\n\nAnswer:\n\"Unlike OTBI, BIP SQL against base tables doesn't apply data security automatically. So I add it in the SQL, for example by joining to the business unit access tables or using secured views. I restrict who can run the report through catalog folder permissions and roles. And I'm careful with parameters, so a user can't simply type in a business unit they shouldn't see.\"\n\nTip: Security awareness is what separates good developers. Lead with it."}},{"@type":"Question","name":"Write a SQL query to list unpaid AP invoices over 60 days old.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a hands-on SQL test.\n\nAnswer:\n\"I'd query AP_INVOICES_ALL joined to the supplier view, filtering on unpaid or partly paid and older than 60 days:\"\n\n`SELECT ai.invoice_num, ps.vendor_name, ai.invoice_amount, ai.invoice_date FROM ap_invoices_all ai JOIN poz_suppliers_v ps ON ps.vendor_id = ai.vendor_id WHERE ai.payment_status_flag IN ('N','P') AND ai.cancelled_date IS NULL AND ai.invoice_date \u003c SYSDATE - 60 ORDER BY ai.invoice_date;`\n\n\"Payment status flag N means unpaid, P partly paid and Y fully paid. For the amount still due on partly paid invoices, I'd add AP_PAYMENT_SCHEDULES_ALL and sum amount remaining.\"\n\nTip: Explain the Y, N, P flags. It shows you know the data, not just SQL."}},{"@type":"Question","name":"What SQL skills matter most in Fusion technical work?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: SQL is the core skill.\n\nAnswer:\n\"Joins, inner and outer. Aggregates with GROUP BY. Analytic functions like ROW_NUMBER, RANK and LAG. Subqueries and WITH clauses. Date handling and CASE expressions. Performance awareness, like avoiding functions on indexed columns and using bind parameters. And understanding Oracle's table patterns, like _TL translation tables and _ALL multi-org tables.\"\n\nTip: Expect a follow-up on analytic functions. Have a ROW_NUMBER example ready."}},{"@type":"Question","name":"Explain the FBDI process.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: FBDI is the main bulk load method.\n\nAnswer:\n\"First I download the FBDI Excel template for the object, say AP invoices. I fill in the data and use the template's macro to generate the CSV and ZIP. I upload the ZIP to UCM in the right account. Then I run Load Interface File for Import to fill the interface tables, and then the object's import process, like Import Payables Invoices. I review errors in the output and logs, correct and reload. The whole thing can be automated through the ERP Integration Service with importBulkData.\"\n\nTip: Mention purging the interface tables after loads. It's a step people forget."}},{"@type":"Question","name":"How do you troubleshoot FBDI load errors?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: load errors are daily work.\n\nAnswer:\n\"I check the Load Interface File output first, for file format problems like wrong columns, date formats or delimiters. Then the import process report and log, for validation errors like an invalid supplier, a bad account combination or a closed period. Where available, I query the interface or rejection tables in BIP. Then I fix the source data, purge the failed records and reload. The most common errors I see are date formats and missing required columns.\"\n\nTip: Separate file errors from validation errors. They're fixed in different places."}},{"@type":"Question","name":"What is HCM Data Loader?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: HDL is the main HCM load tool.\n\nAnswer:\n\"HDL loads HCM data, like workers, assignments, salaries and elements, using .dat files in a business object format with METADATA and MERGE lines. The files are zipped and uploaded through Data Exchange, or automated with web services. It supports create, update and delete, identifying records with source keys or GUIDs. HSDL, the spreadsheet loader, is the version for business users.\"\n\nTip: Mention source keys. They make updates much easier later."}},{"@type":"Question","name":"What are ADFdi spreadsheets?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a common tool for business users.\n\nAnswer:\n\"ADF Desktop Integration spreadsheets let users create or update records in Fusion directly from Excel, for example journal entries with Create Journal in Spreadsheet, invoices, or some setups. Users download the spreadsheet from the page, enter data, and upload it with validation. It's good for moderate volumes entered by business users. GL journals are the most common use.\"\n\nTip: Mention journals. It's the use everyone recognizes."}},{"@type":"Question","name":"How do you use Fusion REST APIs?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: REST is the standard integration method.\n\nAnswer:\n\"Fusion exposes REST resources per module, for example /fscmRestApi/resources/11.13.18.05/invoices. I authenticate with basic auth or OAuth using an integration user with the right roles. Then I GET with q filters, fields, limit and offset, and expand for child data; POST to create; and PATCH to update. I check the REST API guide for each resource's required fields. For example, GET /purchaseOrders?q=Supplier='ACME'&limit=50. For large result sets, I page using hasMore and offset.\"\n\nTip: Mention pagination with hasMore. It's the follow-up question."}},{"@type":"Question","name":"REST vs SOAP in Fusion — when do you use each?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: both still exist.\n\nAnswer:\n\"REST is the default for most modern integrations: it's simpler, uses JSON and covers most objects. SOAP is still used for some operations, like the ERP Integration Service for bulk import and export, such as loadAndImportData, some HCM services, and older integrations. Some ERP Integration Service operations now have REST equivalents.\"\n\nTip: Know that the ERP Integration Service started as SOAP. It's often asked."}},{"@type":"Question","name":"What is Oracle Integration Cloud (OIC)?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: OIC is Oracle's integration platform.\n\nAnswer:\n\"OIC is Oracle's integration platform as a service. It connects Fusion with other systems using adapters, like ERP Cloud, REST, SOAP, FTP, database and Salesforce, plus mappings, orchestration, scheduling, error handling and monitoring. OIC Gen 3 is the current version, with Process Automation and Visual Builder on the same platform. For example, I've used it to bring bank statements and supplier invoices into Fusion.\"\n\nTip: Mention an integration you built. It turns the definition into experience."}},{"@type":"Question","name":"How would you build a scheduled integration to import invoices from an FTP file?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a classic OIC design question.\n\nAnswer:\n\"I'd build a scheduled orchestration in OIC. The FTP adapter lists and reads the files. A mapping transforms them into the FBDI format, or stage file actions build the ZIP. The ERP Cloud adapter uploads and imports with loadAndImportData or importBulkData. Then I subscribe to the callback, or poll the job status, send success or error notifications, and archive the file. I add fault handlers and logging throughout.\"\n\nTip: Mention the callback from ERP. It's how you know the import finished."}},{"@type":"Question","name":"How do you handle errors in OIC integrations?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: error handling decides how supportable an integration is.\n\nAnswer:\n\"I use scope-level fault handlers plus a global fault handler, with meaningful error messages. I log tracking fields with business identifiers, like the invoice number, so support can find an instance quickly. Support teams get notifications. Failed instances can be resubmitted. And for temporary errors, I use retry or dead-letter patterns.\"\n\nTip: Mention tracking fields. They make support much faster."}},{"@type":"Question","name":"How does Fusion security work for technical users?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: integrations fail when security is wrong.\n\nAnswer:\n\"Fusion uses role-based access. Job roles, like Accounts Payable Specialist, contain duty roles and privileges. Data roles or data access sets restrict which data, like business units, ledgers or inventory orgs. Integration users need specific roles for APIs and loads. Custom roles are made by copying seeded roles in the Security Console. And I never run integrations under a personal account.\"\n\nTip: Say \"never a personal account for integrations\". It's a key practice."}},{"@type":"Question","name":"What are ESS jobs and how do you create a custom one?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: scheduled custom reports are a common request.\n\nAnswer:\n\"ESS, the Enterprise Scheduler Service, runs background processes in Fusion. To run a custom BIP report as a job, I create an ESS job definition in Manage Enterprise Scheduler Job Definitions, pointing to the BIP report path, with its parameters. Then users can schedule it like any seeded process.\"\n\nTip: Mention that users then schedule it themselves. That's the benefit."}},{"@type":"Question","name":"What is Application Composer?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a Fusion extension tool.\n\nAnswer:\n\"Application Composer is a Fusion tool for extending certain applications, mainly CX Sales and some HCM and SCM objects. You can add custom fields and objects, page layouts, triggers and Groovy scripts without deploying code. Changes are made in a sandbox and published.\"\n\nTip: Know which modules support it. It isn't available everywhere."}},{"@type":"Question","name":"What are flexfields?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: flexfields are basic extension tools.\n\nAnswer:\n\"Descriptive flexfields add extra attributes to existing objects, like a custom field on an invoice header. Key flexfields define structured codes, like the chart of accounts or item categories. Extensible flexfields support multiple attribute groups and are used heavily in HCM and Product Hub. After any change, the flexfield must be deployed.\"\n\nTip: Mention deploying flexfields and using them in reports."}},{"@type":"Question","name":"What is a sandbox in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: sandboxes control configuration changes.\n\nAnswer:\n\"A sandbox is an isolated workspace inside Fusion where you make and test changes, like page composer edits, flexfields, Application Composer changes or structure changes, before publishing them for all users.\"\n\nTip: Mention sandbox conflicts and publishing order. It shows real experience."}},{"@type":"Question","name":"What is Visual Builder and when is it used?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: Visual Builder is how Fusion is extended now.\n\nAnswer:\n\"Oracle Visual Builder, and Visual Builder Studio for Fusion extensions, let you build web and mobile apps or extend Redwood pages with a low-code designer, JavaScript and REST services. I'd use it for a custom app that calls Fusion APIs, or to extend a Redwood page, like adding a field or a rule.\"\n\nTip: Mention Redwood page extensions. It's the most common use now."}},{"@type":"Question","name":"What is Redwood and how does it affect technical work?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: Redwood changes extension work.\n\nAnswer:\n\"Redwood is Oracle's new UX design system, replacing the classic ADF pages in Fusion. Personalizations and extensions on Redwood pages use Visual Builder Studio instead of page composer. Automated test scripts and training materials need updating when pages switch. So I check Oracle's readiness notes each quarter to see which pages convert.\"\n\nTip: Mention checking readiness notes. It shows you plan ahead."}},{"@type":"Question","name":"What is BICC?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: BICC is the bulk extract tool.\n\nAnswer:\n\"BI Cloud Connector extracts large volumes of Fusion data through view objects to Object Storage or UCM as CSV files, with full and incremental loads. It's used to feed data warehouses and analytics platforms. For bulk extracts it's preferred over BIP, which puts more load on production.\"\n\nTip: Say why it's preferred over BIP. That's the follow-up."}},{"@type":"Question","name":"What are common outbound integration options from Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: choosing the outbound pattern.\n\nAnswer:\n\"Scheduled BIP reports delivered to SFTP or called by OIC. BICC extracts for data warehouses. REST API queries. Business events subscribed in OIC, like invoice approved. And HCM Extracts for HR data. I choose based on volume and frequency: events for real time, BICC for bulk, BIP for formatted files.\"\n\nTip: Give the selection rule. It shows judgment."}},{"@type":"Question","name":"What are business events in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: event-driven integration.\n\nAnswer:\n\"Fusion publishes events when certain actions happen, like a purchase order created, a supplier updated or an invoice validated. OIC subscribes to them through the ERP Cloud adapter and triggers real-time integrations, so we don't have to poll.\"\n\nTip: Contrast events with polling. It's the reason they exist."}},{"@type":"Question","name":"How do you troubleshoot an issue in a Fusion report or integration?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: troubleshooting method.\n\nAnswer:\n\"First I reproduce it. Then I check parameters, roles and data security. I review ESS job logs and the BIP data model output, and run the SQL separately. For OIC, I check the tracking and activity stream. I compare with an environment where it works. And if it's product behavior, I raise an SR with diagnostics.\"\n\nTip: Present it as a sequence. Interviewers want a method."}},{"@type":"Question","name":"How do you improve BIP report performance?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: slow reports hurt users and production.\n\nAnswer:\n\"Efficient SQL: filters on indexed columns, no unnecessary joins, and bind parameters. Parameters that limit rows. Avoiding large lists of values. Scheduling heavy reports off-peak. And using BICC for bulk extracts instead of BIP.\"\n\nTip: Mention Oracle's limits on report runtime and size. It explains why tuning matters."}},{"@type":"Question","name":"How do you migrate reports and configurations between pods?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: moving changes safely between environments.\n\nAnswer:\n\"BI catalog objects are archived and unarchived, or exported. Setups move with configuration packages. Page changes move through sandbox migration. OIC integrations are exported and imported as .iar files or packages. Extensions move through Visual Builder Studio pipelines. I keep version control and a migration checklist, and test in each environment after the move.\"\n\nTip: Mention testing after each migration. Moves break things silently."}},{"@type":"Question","name":"How do quarterly updates affect technical objects?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: quarterly updates are a constant risk.\n\nAnswer:\n\"Updates can change tables, views, REST API versions, page layouts and seeded reports. So I regression-test custom reports, integrations and extensions in the test environment during the update window, and fix issues before production gets the update. Keeping an inventory of custom objects makes this manageable.\"\n\nTip: Mention the custom object inventory. You can't test what you can't list."}},{"@type":"Question","name":"What is UCM used for in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: UCM is part of most loads.\n\nAnswer:\n\"Universal Content Management stores files: FBDI ZIPs for import, HDL files, BIP output for external delivery, and attachments. Files go into specific accounts, for example fin/payables/import for Payables invoice loads.\"\n\nTip: Know the account names for common imports. It shows hands-on work."}},{"@type":"Question","name":"Where is Groovy used in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a knowledge check.\n\nAnswer:\n\"Groovy is used in Application Composer for business logic, like validations, triggers and calculated fields, and in some HCM areas. It's a restricted version of Groovy with Oracle-provided functions, not full Groovy.\"\n\nTip: Keep it brief and accurate. That's what this question rewards."}},{"@type":"Question","name":"What are fast formulas?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: fast formulas matter in HCM technical work.\n\nAnswer:\n\"Fast formulas are a formula language used mainly in HCM and Payroll, for eligibility, calculations, validations and absence accruals, and in a few other areas. They're written in the Fast Formulas work area, compiled, and attached to rules.\"\n\nTip: Mention the HCM context. That's where they're used most."}},{"@type":"Question","name":"How do you approach a data conversion to Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: conversions are a big part of technical work.\n\nAnswer:\n\"I map source fields to target fields, cleanse the data, and use FBDI or HDL templates. I load in dependency order, for example suppliers before invoices. I validate with reconciliation reports on counts and totals. I run several mock conversions. And the business signs off.\"\n\nTip: Say \"dependency order matters\". It's where conversions break."}},{"@type":"Question","name":"What technical documentation do you produce?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: documentation affects supportability.\n\nAnswer:\n\"Technical design documents, in MD070 style. Mapping documents for integrations and conversions. Unit test scripts and results. Deployment and migration steps. And support runbooks.\"\n\nTip: Mention runbooks. They're what support teams actually use."}},{"@type":"Question","name":"What does RICEW stand for?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a basic project vocabulary check.\n\nAnswer:\n\"Reports, Interfaces, Conversions, Extensions and Workflows: the categories of technical objects on an ERP project. For example, an aging report, a bank statement interface, a supplier conversion, a Visual Builder page and an approval workflow.\"\n\nTip: Give one example of each. It makes a definition memorable."}},{"@type":"Question","name":"How are approval workflows configured in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: technical consultants often help with approvals.\n\nAnswer:\n\"Approvals are configured through BPM Worklist approval rules, using Manage Approval Transactions or Configure Approval Rules depending on the module. Rules use attributes like amount, cost center or category, and route through approval groups or the supervisor hierarchy. As a technical consultant, I help test and troubleshoot the rules.\"\n\nTip: Mention the newer Redwood approval configuration where it applies."}},{"@type":"Question","name":"Tell me about a challenging report or integration you built.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: proof of experience.\n\nAnswer (example):\n\"I built an OIC integration to load about 30,000 bank statement lines a day into Fusion Cash Management. Each bank's file was different, so I created a canonical mapping, added validation and error notifications, and used callbacks to confirm each import. It removed about six hours of manual uploads every day.\"\n\nTip: Use problem, solution, impact. Keep it under a minute."}},{"@type":"Question","name":"How do you work with functional consultants?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: technical and functional collaboration.\n\nAnswer:\n\"I clarify requirements early with sample data and expected outputs. I ask about business rules and edge cases. I share prototypes quickly so they can react. And we test together. That collaboration prevents most rework.\"\n\nTip: Mention sharing prototypes early. It surfaces misunderstandings fast."}},{"@type":"Question","name":"Tell me about a production issue you fixed.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: support experience.\n\nAnswer (example):\n\"An outbound payment file integration failed after a quarterly update because a REST field changed. I found the change in the release notes, updated the mapping, tested it in the test environment and redeployed the same day. Then I added that integration to our quarterly regression list.\"\n\nTip: Show speed, root cause and prevention."}},{"@type":"Question","name":"How do you keep up with Fusion changes?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: Fusion changes every quarter.\n\nAnswer:\n\"I read the quarterly What's New and readiness material, follow Oracle Cloud Customer Connect and My Oracle Support, use Oracle University learning paths, and test new features hands-on in the test environment.\"\n\nTip: Mention hands-on testing. Reading alone isn't enough."}},{"@type":"Question","name":"How are AI features changing Fusion technical work?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a current trend question.\n\nAnswer:\n\"Oracle is embedding AI features and agents, built with AI Agent Studio, into Fusion. Technical consultants now configure agents, expose tools and APIs for them, test their outputs, and connect them to business processes, alongside traditional reports and integrations.\"\n\nTip: Mention your interest in AI Agent Studio. It shows you're growing with the platform."}},{"@type":"Question","name":"Where do you want to grow as a Fusion technical consultant?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: career direction.\n\nAnswer:\n\"I want to grow into a senior technical consultant and then an integration architect: deeper OIC, Visual Builder, BICC and analytics, and AI agents, and eventually leading technical workstreams.\"\n\nTip: Give a clear path. Vague answers sound unmotivated."}},{"@type":"Question","name":"Why should we hire you?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a closing question.\n\nAnswer (sample):\n\"I deliver reliable reports, data loads and integrations in Fusion, using BIP, OTBI, FBDI, REST and OIC, and I understand the business processes behind them, so what I build works for users the first time.\"\n\nTip: Combine technical skill with business awareness. That's what they want."}},{"@type":"Question","name":"What are _ALL, _TL and _B tables in Oracle?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a classic Oracle data model question.\n\nAnswer:\n\"_ALL tables hold data for all business units or operating units, the multi-org tables. _B, or base, tables hold the core non-translated data. _TL tables hold translated descriptions for each language, so I join them with LANGUAGE = USERENV('LANG'). And _VL views combine the base and translated data.\"\n\nTip: Mention the language join. It's the mistake people make."}},{"@type":"Question","name":"What are lookups and value sets?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: both appear in reports and setups.\n\nAnswer:\n\"Lookups are lists of codes and meanings used in the application, like payment methods. Value sets define the valid values for flexfield segments and parameters, and can be independent, dependent, table-validated or format-only. Lookups can be queried from FND_LOOKUP_VALUES.\"\n\nTip: Name the table. It shows you've queried them."}},{"@type":"Question","name":"How do you unit test a BIP report or OIC integration?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: testing quality.\n\nAnswer:\n\"I test with representative data and edge cases: no data, large volumes, special characters and multiple currencies. I check outputs against the source transactions. I test security with different roles. And I document the results.\"\n\nTip: Mention special characters. They break files often."}},{"@type":"Question","name":"How do you schedule a report to send to an SFTP server?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a common delivery requirement.\n\nAnswer:\n\"I configure the SFTP delivery channel in BI Publisher administration with the server, credentials and directory. Then I schedule the report with SFTP as the destination, the output format and a naming convention, usually including the date. If I need more control, OIC can call the report and handle delivery.\"\n\nTip: Mention dated file names. Receivers need them."}},{"@type":"Question","name":"Where do you find logs for ESS jobs and imports?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a basic support skill.\n\nAnswer:\n\"In Scheduled Processes I select the job and view its log and output files. Child jobs often hold the detailed errors, so I always check them. For BIP, I check the report job history.\"\n\nTip: Say \"check child jobs\". It's where the real error usually is."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#0F2356; --accent:#1A4FCC; --accent-hover:#1340AA; --blue-light:#EEF3FF; --gray-50:#F8F9FC; --gray-100:#F0F2F7; --gray-200:#E2E6F0; --gray-600:#5A6480; --text:#111827; --text-muted:#4B5563; --border:#E2E6F0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Inter",sans-serif; color:var(--text); background:#fff; font-size:15px; line-height:1.7; }
+a { color:var(--accent); }
+nav { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.97); border-bottom:1px solid var(--border); padding:0 1.25rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+nav img { height:44px; width:auto; display:block; }
+nav .links { display:flex; gap:0.25rem; align-items:center; }
+nav .links a { color:var(--gray-600); text-decoration:none; font-size:0.88rem; font-weight:500; padding:0.45rem 0.75rem; border-radius:6px; }
+nav .links a:hover { background:var(--gray-100); color:var(--navy); }
+nav .links a.on { color:var(--accent); background:var(--blue-light); }
+.wrap { max-width:820px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+.crumb { font-size:0.8rem; color:var(--gray-600); margin-bottom:0.75rem; }
+.crumb a { color:var(--gray-600); text-decoration:none; }
+.brand { display:inline-block; font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); background:var(--blue-light); border:1px solid rgba(26,79,204,0.2); padding:0.2rem 0.6rem; border-radius:999px; margin-bottom:0.75rem; }
+h1 { font-family:"Manrope",sans-serif; font-weight:800; color:var(--navy); font-size:clamp(1.5rem,4vw,2.1rem); line-height:1.2; letter-spacing:-0.02em; margin-bottom:0.6rem; }
+.lead { color:var(--text-muted); margin-bottom:1.25rem; }
+.stats { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+.stat { background:var(--gray-50); border:1px solid var(--border); border-radius:8px; padding:0.4rem 0.8rem; font-size:0.85rem; color:var(--navy); }
+.stat b { font-family:"Manrope",sans-serif; }
+.filters { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem; }
+.filters button { font:inherit; font-size:0.82rem; border:1px solid var(--gray-200); background:#fff; color:var(--gray-600); border-radius:999px; padding:0.3rem 0.8rem; cursor:pointer; }
+.filters button.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+.tools { display:flex; justify-content:flex-end; margin-bottom:0.5rem; }
+.tools button { font:inherit; font-size:0.82rem; background:none; border:none; color:var(--accent); cursor:pointer; }
+details.q { border:1px solid var(--border); border-radius:10px; margin-bottom:0.6rem; background:#fff; }
+details.q[open] { border-color:rgba(26,79,204,0.35); }
+summary { list-style:none; cursor:pointer; padding:0.85rem 1rem; display:grid; grid-template-columns:auto 1fr; gap:0.2rem 0.75rem; align-items:start; }
+summary::-webkit-details-marker { display:none; }
+.qn { font-family:"Manrope",sans-serif; font-weight:800; color:var(--accent); font-size:0.9rem; min-width:1.6rem; padding-top:0.05rem; }
+.qt { font-weight:600; color:var(--navy); }
+.meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
+.tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
+.tag.lvl { background:var(--blue-light); color:var(--accent); }
+summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
+details[open] summary::after { content:"Hide answer"; }
+.ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
+.ans p { margin:0.35rem 0; }
+.ans .sub { font-weight:600; color:var(--navy); margin-top:0.6rem; }
+.ans ul, .ans ol { padding-left:1.15rem; margin:0.35rem 0; }
+.ans li { margin:0.2rem 0; }
+.ans strong { color:var(--navy); }
+.ans .tip { background:var(--blue-light); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; padding:0.5rem 0.75rem; margin-top:0.75rem; }
+.ans code { font-size:0.85em; background:var(--gray-100); padding:0.05rem 0.3rem; border-radius:4px; }
+.cta { margin-top:2.5rem; background:var(--navy); color:#fff; border-radius:12px; padding:1.5rem; }
+.cta h2 { font-family:"Manrope",sans-serif; font-size:1.2rem; margin-bottom:0.35rem; }
+.cta p { color:#C9D3EC; margin-bottom:1rem; }
+.cta a { display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; font-size:0.9rem; padding:0.65rem 1.4rem; border-radius:8px; }
+.cta a:hover { background:var(--accent-hover); }
+footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2rem 1rem; border-top:1px solid var(--border); }
+@media (max-width:640px) { nav .links a.hide-sm { display:none; } .ans { padding-left:1rem; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/"><img src="/Logo/arahasoft_logo1.png" alt="Arahasoft"></a>
+  <div class="links">
+    <a href="/" class="hide-sm">Home</a>
+    <a href="/interview/" class="on">Interview Edge</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</nav>
+<main class="wrap">
+  <div class="crumb"><a href="/">Arahasoft</a> › <a href="/interview/">Interview Edge</a> › ERP Technical</div>
+  <span class="brand">Interview Edge by Arahasoft</span>
+  <h1>Oracle Technical Consultant (Fusion) Interview Questions</h1>
+  <p class="lead">The questions interviewers ask for Oracle Fusion technical consultants: SQL on Fusion views, BI Publisher, OTBI, FBDI, HDL, REST and OIC basics, with why they ask, a full answer you can say in the room, and a tip. Tap a question to see the answer.</p>
+  <div class="stats">
+    <span class="stat"><b>50</b> questions</span>
+    <span class="stat"><b>27</b> basic</span>
+    <span class="stat"><b>23</b> in-depth</span>
+  </div>
+  
+  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div id="list">
+<details class="q" data-topic="Architecture" data-level="B">
+  <summary><span class="qn">1</span><span class="qt">How is Oracle Fusion Cloud different from EBS for a technical consultant?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> checks that you understand SaaS constraints.</p>
+<p><strong>Answer:</strong> Fusion is SaaS: no direct database access, no custom PL/SQL in the application schema, no direct table inserts, and Oracle applies quarterly updates. Technical work shifts to <strong>reports</strong> (BI Publisher, OTBI), <strong>data loads</strong> (FBDI, HDL, ADFdi spreadsheets), <strong>REST/SOAP APIs</strong>, <strong>integrations</strong> (OIC), and <strong>extensions</strong> (Visual Builder, Application Composer, sandboxes). In EBS you'd write PL/SQL, concurrent programs, Forms and direct interfaces.</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;extend, don't customize&quot; — the Fusion mindset.</p></div>
+</details>
+<details class="q" data-topic="Reports" data-level="B">
+  <summary><span class="qn">2</span><span class="qt">How do you build a BI Publisher report in Fusion?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> BIP reports are the most common technical task in Fusion.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I start with the data model: a SQL query against Fusion views or tables through the BI data source, with parameters and lists of values. I run it, check the results, and save sample XML. Then I build the layout: an RTF template in Word with the BI Publisher add-in, an Excel template, or the online layout editor. I create the report, set the output formats, put it in a catalog folder secured to the right roles, and schedule it if needed. For example, an AP invoice aging report with parameters for business unit and as-of date.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention bursting, like emailing each supplier their own report. It shows you've gone past the basics.</p></div>
+</details>
+<details class="q" data-topic="Reports" data-level="B">
+  <summary><span class="qn">3</span><span class="qt">OTBI vs BI Publisher — when do you use each?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> picking the right tool saves weeks.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;OTBI is self-service, real-time analysis on subject areas: drag and drop, no SQL, and security is applied automatically. It's best for ad-hoc analysis and dashboards. BI Publisher is for pixel-perfect documents and complex SQL: checks, invoices, statutory reports, bursting, and extracts for integrations. I use OTBI first when a subject area covers the need, and BIP when formatting or data complexity requires it.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;OTBI first if a subject area exists&quot;. It shows good judgment.</p></div>
+</details>
+<details class="q" data-topic="Reports" data-level="D">
+  <summary><span class="qn">4</span><span class="qt">What is bursting in BI Publisher?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a practical BIP feature.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Bursting splits one report run into many outputs by a key and sends each to a different destination. The classic example is remittance advices: one run, and each supplier gets an email with only their payments. In the data model I define a bursting query with the key, the template, the output format and the delivery channel, like email, FTP or printer.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give the remittance example. A real use case makes the answer stick.</p></div>
+</details>
+<details class="q" data-topic="Reports" data-level="B">
+  <summary><span class="qn">5</span><span class="qt">How do you find which tables or views to query in Fusion?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> Fusion has thousands of objects; finding the right one is a skill.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I use Oracle's Tables and Views documentation for each module on docs.oracle.com. I can also take an OTBI analysis on the same subject area and look at the logical SQL to see which objects sit behind it. Seeded BIP data models are another good source. Then I test my query in the BI data model editor. Some key tables I use often are AP_INVOICES_ALL, PO_HEADERS_ALL, GL_JE_LINES and HZ_PARTIES.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Name a few key tables. It proves hands-on experience.</p></div>
+</details>
+<details class="q" data-topic="Reports" data-level="D">
+  <summary><span class="qn">6</span><span class="qt">How is data security handled in BI Publisher reports?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> BIP security mistakes expose data.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Unlike OTBI, BIP SQL against base tables doesn't apply data security automatically. So I add it in the SQL, for example by joining to the business unit access tables or using secured views. I restrict who can run the report through catalog folder permissions and roles. And I'm careful with parameters, so a user can't simply type in a business unit they shouldn't see.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Security awareness is what separates good developers. Lead with it.</p></div>
+</details>
+<details class="q" data-topic="SQL" data-level="D">
+  <summary><span class="qn">7</span><span class="qt">Write a SQL query to list unpaid AP invoices over 60 days old.</span><span class="meta"><span class="tag">SQL</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a hands-on SQL test.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I'd query AP_INVOICES_ALL joined to the supplier view, filtering on unpaid or partly paid and older than 60 days:&quot;</p>
+<p><code>SELECT ai.invoice_num, ps.vendor_name, ai.invoice_amount, ai.invoice_date FROM ap_invoices_all ai JOIN poz_suppliers_v ps ON ps.vendor_id = ai.vendor_id WHERE ai.payment_status_flag IN ('N','P') AND ai.cancelled_date IS NULL AND ai.invoice_date &lt; SYSDATE - 60 ORDER BY ai.invoice_date;</code></p>
+<p>&quot;Payment status flag N means unpaid, P partly paid and Y fully paid. For the amount still due on partly paid invoices, I'd add AP_PAYMENT_SCHEDULES_ALL and sum amount remaining.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Explain the Y, N, P flags. It shows you know the data, not just SQL.</p></div>
+</details>
+<details class="q" data-topic="SQL" data-level="B">
+  <summary><span class="qn">8</span><span class="qt">What SQL skills matter most in Fusion technical work?</span><span class="meta"><span class="tag">SQL</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> SQL is the core skill.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Joins, inner and outer. Aggregates with GROUP BY. Analytic functions like ROW_NUMBER, RANK and LAG. Subqueries and WITH clauses. Date handling and CASE expressions. Performance awareness, like avoiding functions on indexed columns and using bind parameters. And understanding Oracle's table patterns, like _TL translation tables and _ALL multi-org tables.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Expect a follow-up on analytic functions. Have a ROW_NUMBER example ready.</p></div>
+</details>
+<details class="q" data-topic="FBDI" data-level="B">
+  <summary><span class="qn">9</span><span class="qt">Explain the FBDI process.</span><span class="meta"><span class="tag">FBDI</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> FBDI is the main bulk load method.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;First I download the FBDI Excel template for the object, say AP invoices. I fill in the data and use the template's macro to generate the CSV and ZIP. I upload the ZIP to UCM in the right account. Then I run Load Interface File for Import to fill the interface tables, and then the object's import process, like Import Payables Invoices. I review errors in the output and logs, correct and reload. The whole thing can be automated through the ERP Integration Service with importBulkData.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention purging the interface tables after loads. It's a step people forget.</p></div>
+</details>
+<details class="q" data-topic="FBDI" data-level="D">
+  <summary><span class="qn">10</span><span class="qt">How do you troubleshoot FBDI load errors?</span><span class="meta"><span class="tag">FBDI</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> load errors are daily work.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I check the Load Interface File output first, for file format problems like wrong columns, date formats or delimiters. Then the import process report and log, for validation errors like an invalid supplier, a bad account combination or a closed period. Where available, I query the interface or rejection tables in BIP. Then I fix the source data, purge the failed records and reload. The most common errors I see are date formats and missing required columns.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Separate file errors from validation errors. They're fixed in different places.</p></div>
+</details>
+<details class="q" data-topic="HDL" data-level="D">
+  <summary><span class="qn">11</span><span class="qt">What is HCM Data Loader?</span><span class="meta"><span class="tag">HDL</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> HDL is the main HCM load tool.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;HDL loads HCM data, like workers, assignments, salaries and elements, using .dat files in a business object format with METADATA and MERGE lines. The files are zipped and uploaded through Data Exchange, or automated with web services. It supports create, update and delete, identifying records with source keys or GUIDs. HSDL, the spreadsheet loader, is the version for business users.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention source keys. They make updates much easier later.</p></div>
+</details>
+<details class="q" data-topic="ADFdi" data-level="B">
+  <summary><span class="qn">12</span><span class="qt">What are ADFdi spreadsheets?</span><span class="meta"><span class="tag">ADFdi</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a common tool for business users.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;ADF Desktop Integration spreadsheets let users create or update records in Fusion directly from Excel, for example journal entries with Create Journal in Spreadsheet, invoices, or some setups. Users download the spreadsheet from the page, enter data, and upload it with validation. It's good for moderate volumes entered by business users. GL journals are the most common use.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention journals. It's the use everyone recognizes.</p></div>
+</details>
+<details class="q" data-topic="REST" data-level="B">
+  <summary><span class="qn">13</span><span class="qt">How do you use Fusion REST APIs?</span><span class="meta"><span class="tag">REST</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> REST is the standard integration method.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Fusion exposes REST resources per module, for example /fscmRestApi/resources/11.13.18.05/invoices. I authenticate with basic auth or OAuth using an integration user with the right roles. Then I GET with q filters, fields, limit and offset, and expand for child data; POST to create; and PATCH to update. I check the REST API guide for each resource's required fields. For example, GET /purchaseOrders?q=Supplier='ACME'&amp;limit=50. For large result sets, I page using hasMore and offset.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention pagination with hasMore. It's the follow-up question.</p></div>
+</details>
+<details class="q" data-topic="REST" data-level="D">
+  <summary><span class="qn">14</span><span class="qt">REST vs SOAP in Fusion — when do you use each?</span><span class="meta"><span class="tag">REST</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> both still exist.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;REST is the default for most modern integrations: it's simpler, uses JSON and covers most objects. SOAP is still used for some operations, like the ERP Integration Service for bulk import and export, such as loadAndImportData, some HCM services, and older integrations. Some ERP Integration Service operations now have REST equivalents.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Know that the ERP Integration Service started as SOAP. It's often asked.</p></div>
+</details>
+<details class="q" data-topic="OIC" data-level="B">
+  <summary><span class="qn">15</span><span class="qt">What is Oracle Integration Cloud (OIC)?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> OIC is Oracle's integration platform.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;OIC is Oracle's integration platform as a service. It connects Fusion with other systems using adapters, like ERP Cloud, REST, SOAP, FTP, database and Salesforce, plus mappings, orchestration, scheduling, error handling and monitoring. OIC Gen 3 is the current version, with Process Automation and Visual Builder on the same platform. For example, I've used it to bring bank statements and supplier invoices into Fusion.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention an integration you built. It turns the definition into experience.</p></div>
+</details>
+<details class="q" data-topic="OIC" data-level="D">
+  <summary><span class="qn">16</span><span class="qt">How would you build a scheduled integration to import invoices from an FTP file?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a classic OIC design question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I'd build a scheduled orchestration in OIC. The FTP adapter lists and reads the files. A mapping transforms them into the FBDI format, or stage file actions build the ZIP. The ERP Cloud adapter uploads and imports with loadAndImportData or importBulkData. Then I subscribe to the callback, or poll the job status, send success or error notifications, and archive the file. I add fault handlers and logging throughout.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the callback from ERP. It's how you know the import finished.</p></div>
+</details>
+<details class="q" data-topic="OIC" data-level="D">
+  <summary><span class="qn">17</span><span class="qt">How do you handle errors in OIC integrations?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> error handling decides how supportable an integration is.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I use scope-level fault handlers plus a global fault handler, with meaningful error messages. I log tracking fields with business identifiers, like the invoice number, so support can find an instance quickly. Support teams get notifications. Failed instances can be resubmitted. And for temporary errors, I use retry or dead-letter patterns.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention tracking fields. They make support much faster.</p></div>
+</details>
+<details class="q" data-topic="Security" data-level="B">
+  <summary><span class="qn">18</span><span class="qt">How does Fusion security work for technical users?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> integrations fail when security is wrong.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Fusion uses role-based access. Job roles, like Accounts Payable Specialist, contain duty roles and privileges. Data roles or data access sets restrict which data, like business units, ledgers or inventory orgs. Integration users need specific roles for APIs and loads. Custom roles are made by copying seeded roles in the Security Console. And I never run integrations under a personal account.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;never a personal account for integrations&quot;. It's a key practice.</p></div>
+</details>
+<details class="q" data-topic="ESS" data-level="D">
+  <summary><span class="qn">19</span><span class="qt">What are ESS jobs and how do you create a custom one?</span><span class="meta"><span class="tag">ESS</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> scheduled custom reports are a common request.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;ESS, the Enterprise Scheduler Service, runs background processes in Fusion. To run a custom BIP report as a job, I create an ESS job definition in Manage Enterprise Scheduler Job Definitions, pointing to the BIP report path, with its parameters. Then users can schedule it like any seeded process.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention that users then schedule it themselves. That's the benefit.</p></div>
+</details>
+<details class="q" data-topic="Extensions" data-level="D">
+  <summary><span class="qn">20</span><span class="qt">What is Application Composer?</span><span class="meta"><span class="tag">Extensions</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a Fusion extension tool.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Application Composer is a Fusion tool for extending certain applications, mainly CX Sales and some HCM and SCM objects. You can add custom fields and objects, page layouts, triggers and Groovy scripts without deploying code. Changes are made in a sandbox and published.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Know which modules support it. It isn't available everywhere.</p></div>
+</details>
+<details class="q" data-topic="Extensions" data-level="B">
+  <summary><span class="qn">21</span><span class="qt">What are flexfields?</span><span class="meta"><span class="tag">Extensions</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> flexfields are basic extension tools.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Descriptive flexfields add extra attributes to existing objects, like a custom field on an invoice header. Key flexfields define structured codes, like the chart of accounts or item categories. Extensible flexfields support multiple attribute groups and are used heavily in HCM and Product Hub. After any change, the flexfield must be deployed.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention deploying flexfields and using them in reports.</p></div>
+</details>
+<details class="q" data-topic="Extensions" data-level="B">
+  <summary><span class="qn">22</span><span class="qt">What is a sandbox in Fusion?</span><span class="meta"><span class="tag">Extensions</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> sandboxes control configuration changes.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A sandbox is an isolated workspace inside Fusion where you make and test changes, like page composer edits, flexfields, Application Composer changes or structure changes, before publishing them for all users.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention sandbox conflicts and publishing order. It shows real experience.</p></div>
+</details>
+<details class="q" data-topic="Visual Builder" data-level="D">
+  <summary><span class="qn">23</span><span class="qt">What is Visual Builder and when is it used?</span><span class="meta"><span class="tag">Visual Builder</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> Visual Builder is how Fusion is extended now.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Oracle Visual Builder, and Visual Builder Studio for Fusion extensions, let you build web and mobile apps or extend Redwood pages with a low-code designer, JavaScript and REST services. I'd use it for a custom app that calls Fusion APIs, or to extend a Redwood page, like adding a field or a rule.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention Redwood page extensions. It's the most common use now.</p></div>
+</details>
+<details class="q" data-topic="Redwood" data-level="D">
+  <summary><span class="qn">24</span><span class="qt">What is Redwood and how does it affect technical work?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> Redwood changes extension work.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Redwood is Oracle's new UX design system, replacing the classic ADF pages in Fusion. Personalizations and extensions on Redwood pages use Visual Builder Studio instead of page composer. Automated test scripts and training materials need updating when pages switch. So I check Oracle's readiness notes each quarter to see which pages convert.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention checking readiness notes. It shows you plan ahead.</p></div>
+</details>
+<details class="q" data-topic="BICC" data-level="D">
+  <summary><span class="qn">25</span><span class="qt">What is BICC?</span><span class="meta"><span class="tag">BICC</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> BICC is the bulk extract tool.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;BI Cloud Connector extracts large volumes of Fusion data through view objects to Object Storage or UCM as CSV files, with full and incremental loads. It's used to feed data warehouses and analytics platforms. For bulk extracts it's preferred over BIP, which puts more load on production.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say why it's preferred over BIP. That's the follow-up.</p></div>
+</details>
+<details class="q" data-topic="Integrations" data-level="D">
+  <summary><span class="qn">26</span><span class="qt">What are common outbound integration options from Fusion?</span><span class="meta"><span class="tag">Integrations</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> choosing the outbound pattern.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Scheduled BIP reports delivered to SFTP or called by OIC. BICC extracts for data warehouses. REST API queries. Business events subscribed in OIC, like invoice approved. And HCM Extracts for HR data. I choose based on volume and frequency: events for real time, BICC for bulk, BIP for formatted files.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give the selection rule. It shows judgment.</p></div>
+</details>
+<details class="q" data-topic="Events" data-level="D">
+  <summary><span class="qn">27</span><span class="qt">What are business events in Fusion?</span><span class="meta"><span class="tag">Events</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> event-driven integration.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Fusion publishes events when certain actions happen, like a purchase order created, a supplier updated or an invoice validated. OIC subscribes to them through the ERP Cloud adapter and triggers real-time integrations, so we don't have to poll.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Contrast events with polling. It's the reason they exist.</p></div>
+</details>
+<details class="q" data-topic="Troubleshooting" data-level="B">
+  <summary><span class="qn">28</span><span class="qt">How do you troubleshoot an issue in a Fusion report or integration?</span><span class="meta"><span class="tag">Troubleshooting</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> troubleshooting method.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;First I reproduce it. Then I check parameters, roles and data security. I review ESS job logs and the BIP data model output, and run the SQL separately. For OIC, I check the tracking and activity stream. I compare with an environment where it works. And if it's product behavior, I raise an SR with diagnostics.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Present it as a sequence. Interviewers want a method.</p></div>
+</details>
+<details class="q" data-topic="Performance" data-level="D">
+  <summary><span class="qn">29</span><span class="qt">How do you improve BIP report performance?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> slow reports hurt users and production.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Efficient SQL: filters on indexed columns, no unnecessary joins, and bind parameters. Parameters that limit rows. Avoiding large lists of values. Scheduling heavy reports off-peak. And using BICC for bulk extracts instead of BIP.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention Oracle's limits on report runtime and size. It explains why tuning matters.</p></div>
+</details>
+<details class="q" data-topic="Environments" data-level="D">
+  <summary><span class="qn">30</span><span class="qt">How do you migrate reports and configurations between pods?</span><span class="meta"><span class="tag">Environments</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> moving changes safely between environments.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;BI catalog objects are archived and unarchived, or exported. Setups move with configuration packages. Page changes move through sandbox migration. OIC integrations are exported and imported as .iar files or packages. Extensions move through Visual Builder Studio pipelines. I keep version control and a migration checklist, and test in each environment after the move.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention testing after each migration. Moves break things silently.</p></div>
+</details>
+<details class="q" data-topic="Quarterly Updates" data-level="B">
+  <summary><span class="qn">31</span><span class="qt">How do quarterly updates affect technical objects?</span><span class="meta"><span class="tag">Quarterly Updates</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> quarterly updates are a constant risk.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Updates can change tables, views, REST API versions, page layouts and seeded reports. So I regression-test custom reports, integrations and extensions in the test environment during the update window, and fix issues before production gets the update. Keeping an inventory of custom objects makes this manageable.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the custom object inventory. You can't test what you can't list.</p></div>
+</details>
+<details class="q" data-topic="UCM" data-level="D">
+  <summary><span class="qn">32</span><span class="qt">What is UCM used for in Fusion?</span><span class="meta"><span class="tag">UCM</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> UCM is part of most loads.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Universal Content Management stores files: FBDI ZIPs for import, HDL files, BIP output for external delivery, and attachments. Files go into specific accounts, for example fin/payables/import for Payables invoice loads.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Know the account names for common imports. It shows hands-on work.</p></div>
+</details>
+<details class="q" data-topic="Groovy" data-level="D">
+  <summary><span class="qn">33</span><span class="qt">Where is Groovy used in Fusion?</span><span class="meta"><span class="tag">Groovy</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a knowledge check.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Groovy is used in Application Composer for business logic, like validations, triggers and calculated fields, and in some HCM areas. It's a restricted version of Groovy with Oracle-provided functions, not full Groovy.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Keep it brief and accurate. That's what this question rewards.</p></div>
+</details>
+<details class="q" data-topic="Fast Formula" data-level="D">
+  <summary><span class="qn">34</span><span class="qt">What are fast formulas?</span><span class="meta"><span class="tag">Fast Formula</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> fast formulas matter in HCM technical work.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Fast formulas are a formula language used mainly in HCM and Payroll, for eligibility, calculations, validations and absence accruals, and in a few other areas. They're written in the Fast Formulas work area, compiled, and attached to rules.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the HCM context. That's where they're used most.</p></div>
+</details>
+<details class="q" data-topic="Data Migration" data-level="B">
+  <summary><span class="qn">35</span><span class="qt">How do you approach a data conversion to Fusion?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> conversions are a big part of technical work.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I map source fields to target fields, cleanse the data, and use FBDI or HDL templates. I load in dependency order, for example suppliers before invoices. I validate with reconciliation reports on counts and totals. I run several mock conversions. And the business signs off.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;dependency order matters&quot;. It's where conversions break.</p></div>
+</details>
+<details class="q" data-topic="Documentation" data-level="B">
+  <summary><span class="qn">36</span><span class="qt">What technical documentation do you produce?</span><span class="meta"><span class="tag">Documentation</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> documentation affects supportability.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Technical design documents, in MD070 style. Mapping documents for integrations and conversions. Unit test scripts and results. Deployment and migration steps. And support runbooks.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention runbooks. They're what support teams actually use.</p></div>
+</details>
+<details class="q" data-topic="RICEW" data-level="B">
+  <summary><span class="qn">37</span><span class="qt">What does RICEW stand for?</span><span class="meta"><span class="tag">RICEW</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a basic project vocabulary check.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Reports, Interfaces, Conversions, Extensions and Workflows: the categories of technical objects on an ERP project. For example, an aging report, a bank statement interface, a supplier conversion, a Visual Builder page and an approval workflow.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give one example of each. It makes a definition memorable.</p></div>
+</details>
+<details class="q" data-topic="Approvals" data-level="D">
+  <summary><span class="qn">38</span><span class="qt">How are approval workflows configured in Fusion?</span><span class="meta"><span class="tag">Approvals</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> technical consultants often help with approvals.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Approvals are configured through BPM Worklist approval rules, using Manage Approval Transactions or Configure Approval Rules depending on the module. Rules use attributes like amount, cost center or category, and route through approval groups or the supervisor hierarchy. As a technical consultant, I help test and troubleshoot the rules.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the newer Redwood approval configuration where it applies.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">39</span><span class="qt">Tell me about a challenging report or integration you built.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> proof of experience.</p>
+<p><strong>Answer (example):</strong></p>
+<p>&quot;I built an OIC integration to load about 30,000 bank statement lines a day into Fusion Cash Management. Each bank's file was different, so I created a canonical mapping, added validation and error notifications, and used callbacks to confirm each import. It removed about six hours of manual uploads every day.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Use problem, solution, impact. Keep it under a minute.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">40</span><span class="qt">How do you work with functional consultants?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> technical and functional collaboration.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I clarify requirements early with sample data and expected outputs. I ask about business rules and edge cases. I share prototypes quickly so they can react. And we test together. That collaboration prevents most rework.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention sharing prototypes early. It surfaces misunderstandings fast.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">41</span><span class="qt">Tell me about a production issue you fixed.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> support experience.</p>
+<p><strong>Answer (example):</strong></p>
+<p>&quot;An outbound payment file integration failed after a quarterly update because a REST field changed. I found the change in the release notes, updated the mapping, tested it in the test environment and redeployed the same day. Then I added that integration to our quarterly regression list.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Show speed, root cause and prevention.</p></div>
+</details>
+<details class="q" data-topic="Learning" data-level="B">
+  <summary><span class="qn">42</span><span class="qt">How do you keep up with Fusion changes?</span><span class="meta"><span class="tag">Learning</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> Fusion changes every quarter.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I read the quarterly What's New and readiness material, follow Oracle Cloud Customer Connect and My Oracle Support, use Oracle University learning paths, and test new features hands-on in the test environment.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention hands-on testing. Reading alone isn't enough.</p></div>
+</details>
+<details class="q" data-topic="AI" data-level="D">
+  <summary><span class="qn">43</span><span class="qt">How are AI features changing Fusion technical work?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a current trend question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Oracle is embedding AI features and agents, built with AI Agent Studio, into Fusion. Technical consultants now configure agents, expose tools and APIs for them, test their outputs, and connect them to business processes, alongside traditional reports and integrations.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention your interest in AI Agent Studio. It shows you're growing with the platform.</p></div>
+</details>
+<details class="q" data-topic="Career" data-level="B">
+  <summary><span class="qn">44</span><span class="qt">Where do you want to grow as a Fusion technical consultant?</span><span class="meta"><span class="tag">Career</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> career direction.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I want to grow into a senior technical consultant and then an integration architect: deeper OIC, Visual Builder, BICC and analytics, and AI agents, and eventually leading technical workstreams.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give a clear path. Vague answers sound unmotivated.</p></div>
+</details>
+<details class="q" data-topic="Closing" data-level="B">
+  <summary><span class="qn">45</span><span class="qt">Why should we hire you?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a closing question.</p>
+<p><strong>Answer (sample):</strong></p>
+<p>&quot;I deliver reliable reports, data loads and integrations in Fusion, using BIP, OTBI, FBDI, REST and OIC, and I understand the business processes behind them, so what I build works for users the first time.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Combine technical skill with business awareness. That's what they want.</p></div>
+</details>
+<details class="q" data-topic="SQL" data-level="B">
+  <summary><span class="qn">46</span><span class="qt">What are _ALL, _TL and _B tables in Oracle?</span><span class="meta"><span class="tag">SQL</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a classic Oracle data model question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;_ALL tables hold data for all business units or operating units, the multi-org tables. _B, or base, tables hold the core non-translated data. _TL tables hold translated descriptions for each language, so I join them with LANGUAGE = USERENV('LANG'). And _VL views combine the base and translated data.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the language join. It's the mistake people make.</p></div>
+</details>
+<details class="q" data-topic="Lookups" data-level="B">
+  <summary><span class="qn">47</span><span class="qt">What are lookups and value sets?</span><span class="meta"><span class="tag">Lookups</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> both appear in reports and setups.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Lookups are lists of codes and meanings used in the application, like payment methods. Value sets define the valid values for flexfield segments and parameters, and can be independent, dependent, table-validated or format-only. Lookups can be queried from FND_LOOKUP_VALUES.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Name the table. It shows you've queried them.</p></div>
+</details>
+<details class="q" data-topic="Testing" data-level="B">
+  <summary><span class="qn">48</span><span class="qt">How do you unit test a BIP report or OIC integration?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> testing quality.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I test with representative data and edge cases: no data, large volumes, special characters and multiple currencies. I check outputs against the source transactions. I test security with different roles. And I document the results.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention special characters. They break files often.</p></div>
+</details>
+<details class="q" data-topic="Scheduling" data-level="D">
+  <summary><span class="qn">49</span><span class="qt">How do you schedule a report to send to an SFTP server?</span><span class="meta"><span class="tag">Scheduling</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a common delivery requirement.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I configure the SFTP delivery channel in BI Publisher administration with the server, credentials and directory. Then I schedule the report with SFTP as the destination, the output format and a naming convention, usually including the date. If I need more control, OIC can call the report and handle delivery.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention dated file names. Receivers need them.</p></div>
+</details>
+<details class="q" data-topic="Logs" data-level="B">
+  <summary><span class="qn">50</span><span class="qt">Where do you find logs for ESS jobs and imports?</span><span class="meta"><span class="tag">Logs</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a basic support skill.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;In Scheduled Processes I select the job and view its log and output files. Child jobs often hold the detailed errors, so I always check them. For BIP, I check the report job history.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;check child jobs&quot;. It's where the real error usually is.</p></div>
+</details>
+  </div>
+  <section class="cta">
+    <h2>Need Oracle help?</h2>
+    <p>Arahasoft implements and supports Oracle Fusion Cloud and E-Business Suite: Financials, SCM, Procurement and HCM.</p>
+    <a href="/#contact">Contact Arahasoft</a>
+  </section>
+</main>
+<footer>© 2026 Arahasoft · Interview Edge by Arahasoft</footer>
+<script>
+(function () {
+  var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
+  var fl = document.getElementById('filters'); if (fl) fl.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    var f = b.getAttribute('data-f');
+    qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+  });
+  var open = false, t = document.getElementById('toggleAll');
+  t.addEventListener('click', function () {
+    open = !open; qs.forEach(function (q) { if (q.style.display !== 'none') q.open = open; });
+    t.textContent = open ? 'Hide all answers' : 'Show all answers';
+  });
+})();
+</script>
+</body>
+</html>

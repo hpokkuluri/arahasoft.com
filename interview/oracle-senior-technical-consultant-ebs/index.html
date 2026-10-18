@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oracle Senior Technical Consultant (EBS) Interview Questions (50) | Interview Edge by Arahasoft</title>
+<meta name="description" content="50 Oracle Senior Technical Consultant (EBS) interview questions with full answers: why they ask, what to say, and a tip. Interview Edge by Arahasoft.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://arahasoft.com/interview/oracle-senior-technical-consultant-ebs/">
+<meta property="og:title" content="Oracle Senior Technical Consultant (EBS) Interview Questions (50) | Interview Edge by Arahasoft">
+<meta property="og:description" content="50 Oracle Senior Technical Consultant (EBS) interview questions with full answers: why they ask, what to say, and a tip. Interview Edge by Arahasoft.">
+<meta property="og:url" content="https://arahasoft.com/interview/oracle-senior-technical-consultant-ebs/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Arahasoft">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you design a RICEW object end to end?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: senior consultants own technical design.\n\nAnswer: Understand the business requirement and process, identify the standard Oracle option first (interface, API, personalization), define data flow and mappings, error handling and logging, security, performance (volumes), restart/recovery, and deployment approach; document in an MD070 technical design; review with functional leads; build with standards; unit test with edge cases; and support SIT/UAT.\n\nTip: \"Standard first, custom last.\""}},{"@type":"Question","name":"How do you choose between interfaces and APIs?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a design choice in EBS integrations.\n\nAnswer:\n\"Open interfaces suit batch loads, because they have built-in validation and error reporting. Public APIs suit transactional, real-time processing from custom code or middleware. Either way, I check Oracle's Integration Repository to confirm the interface or API is supported.\"\n\nTip: Say \"iRep is the source of truth\". Unsupported APIs break on patches."}},{"@type":"Question","name":"How do you call Oracle APIs correctly?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: API calls fail silently when done wrong.\n\nAnswer:\n\"I initialize the context with FND_GLOBAL.APPS_INITIALIZE and MO_GLOBAL.SET_POLICY_CONTEXT. I populate the record types and call the API with p_init_msg_list set to FND_API.G_TRUE. I check x_return_status: S for success, E for error, U for unexpected. On error I loop through the FND_MSG_PUB messages and log them. And I commit or roll back as appropriate.\"\n\nTip: Show the message handling loop. That's what separates experienced developers."}},{"@type":"Question","name":"What is the Oracle Integration Repository?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: integration knowledge.\n\nAnswer:\n\"It's a catalog inside EBS of the supported integration interfaces: PL/SQL APIs, open interfaces, business events, XML Gateway messages and web services, with documentation. Integrated SOA Gateway can expose them as REST or SOAP services.\"\n\nTip: Mention supported versus unsupported APIs. It's why iRep matters."}},{"@type":"Question","name":"How do you use business events in EBS?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: event-driven EBS integration.\n\nAnswer:\n\"I subscribe to seeded events, like oracle.apps.ar.hz.CustAccount.create, with a PL/SQL rule function or a workflow, or raise custom events with WF_EVENT.RAISE. Subscriptions can run synchronously or be deferred through the Workflow Deferred Agent Listener.\"\n\nTip: Say it gives event-driven integration without database triggers."}},{"@type":"Question","name":"How do you customize an Oracle Workflow process?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: workflow customization skill.\n\nAnswer:\n\"I download the item type .wft file with Workflow Builder, and copy seeded processes into custom ones where possible. I add functions in PL/SQL with the standard signature: itemtype, itemkey, actid, funcmode and resultout. I set attributes, upload, and test. Then I monitor with Status Monitor and the workflow tables.\"\n\nTip: Name the function signature. It proves hands-on work."}},{"@type":"Question","name":"How do you troubleshoot a stuck workflow?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a common support issue.\n\nAnswer:\n\"I check WF_ITEM_ACTIVITY_STATUSES for errored activities. I make sure the workflow background process and agent listeners are running, and the notification mailer is up. I read the error messages. Then I retry or rewind through Status Monitor, after fixing the underlying data.\"\n\nTip: Mention background engines. They're often the cause."}},{"@type":"Question","name":"How do you approach performance tuning in EBS?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: tuning depth.\n\nAnswer:\n\"I identify the slow component: a concurrent program, a form or an OAF page. I trace with binds and waits and analyze with TKPROF and DBMS_XPLAN execution plans. I check statistics, indexes and bind peeking. I rewrite SQL to avoid functions on indexed columns and implicit conversions. I use bulk processing, and parallelize where it makes sense. For example, replacing a row-by-row cursor update with FORALL cut one program from three hours to nine minutes.\"\n\nTip: Give a concrete before-and-after. It's convincing."}},{"@type":"Question","name":"What is the impact of bind variables?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: database fundamentals.\n\nAnswer:\n\"Bind variables let Oracle reuse parsed SQL, which cuts hard parsing and CPU use, and they protect against SQL injection. The thing to watch is bind peeking with skewed data, where one plan doesn't fit all values. Adaptive cursor sharing in newer versions helps with that.\"\n\nTip: Mention bind peeking. It shows depth."}},{"@type":"Question","name":"How do you parallelize a large data process?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: scaling batch processing.\n\nAnswer:\n\"I split the work by ranges or org IDs into multiple child requests, using parent-child concurrent requests with FND_REQUEST sub-requests. Or I use DBMS_PARALLEL_EXECUTE, or parallel DML and queries where appropriate. I balance the load and avoid locking conflicts between the parallel workers.\"\n\nTip: Mention DBMS_PARALLEL_EXECUTE. It's a strong answer."}},{"@type":"Question","name":"How do you extend an OAF controller safely?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: OAF extension standards.\n\nAnswer:\n\"I create a custom controller class that extends the seeded one and override processRequest or processFormRequest, calling super first and then adding my logic. I deploy the class files to JAVA_TOP and attach the custom controller through personalization, using the Controller Class property. And I retest after every patch.\"\n\nTip: Say \"call super first\". It keeps seeded behavior intact."}},{"@type":"Question","name":"How do you substitute a View Object?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: OAF extension depth.\n\nAnswer:\n\"I create a new VO in JDeveloper that extends the seeded one, with extra attributes or a modified query. I create a substitution in the .jpx file, import it with JPXImporter, deploy the files, and bounce the application tier so it takes effect.\"\n\nTip: Mention the bounce. It's a common forgotten step."}},{"@type":"Question","name":"When do you use CUSTOM.pll vs Forms Personalization?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: choosing the right customization.\n\nAnswer:\n\"Forms Personalization is for declarative changes: property settings, messages, simple validations and builtins. CUSTOM.pll is for complex logic that needs PL/SQL across events. I prefer personalization, because it's easier to maintain and upgrade-safe.\"\n\nTip: Say \"prefer personalization\". It shows good judgment."}},{"@type":"Question","name":"What is XML Gateway?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: B2B integration knowledge.\n\nAnswer:\n\"XML Gateway is the EBS component for exchanging XML documents with trading partners, like OAG standard messages. You define maps and trading partner setups, and inbound and outbound processing runs through queues.\"\n\nTip: Tie it to B2B integration. That's its use."}},{"@type":"Question","name":"How is EDI handled with EBS?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: EDI is common in supply chain.\n\nAnswer:\n\"EDI translators or middleware convert X12 or EDIFACT documents into EBS interfaces: Order Import for 850 purchase orders, the Payables interface for 810 invoices, and ASNs for 856s. Older setups used e-Commerce Gateway, and XML Gateway is also used.\"\n\nTip: Name the transaction sets. It shows real EDI work."}},{"@type":"Question","name":"How have you used Oracle SOA Suite or OIC with EBS?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: middleware experience.\n\nAnswer:\n\"I've used the EBS adapter to call PL/SQL APIs and subscribe to business events, file and database adapters, and BPEL orchestrations in SOA Suite. With OIC, I've used the EBS adapter through Integrated SOA Gateway or the on-premises connectivity agent.\"\n\nTip: Mention the connectivity agent. OIC needs it for on-premise EBS."}},{"@type":"Question","name":"How do you secure custom code and data access?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: security practices.\n\nAnswer:\n\"I use standard EBS security, responsibilities and MOAC. I never hard-code credentials. Integrations use proxy users. Grants go through RBAC. And sensitive data is masked in non-production.\"\n\nTip: Mention masking clones. It's a common gap."}},{"@type":"Question","name":"What should developers check after an EBS clone?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: clone mistakes cause real damage.\n\nAnswer:\n\"Profile options pointing to non-production endpoints. The workflow mailer disabled or redirected. Scheduled requests put on hold. Integration endpoints and credentials changed. Printers. And data masking applied.\"\n\nTip: Say \"avoid emailing real suppliers from test\". It's the classic incident."}},{"@type":"Question","name":"What coding standards apply for R12.2 online patching?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: R12.2 compliance.\n\nAnswer:\n\"I don't reference editioned objects incorrectly. Custom tables get editioning views through AD_ZD_TABLE.UPGRADE. I avoid DDL that breaks online patching. Custom schemas are registered. Deployments go through adop. And I follow Oracle's guide on developing and deploying customizations in R12.2.\"\n\nTip: Mention the AD_ZD utilities. It proves R12.2 experience."}},{"@type":"Question","name":"What happens in an adop cycle?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: R12.2 patching knowledge.\n\nAnswer:\n\"Prepare creates the patch edition. Apply puts the patches into the patch edition. Finalize gets ready for cutover. Cutover switches editions, with a short downtime. Cleanup removes obsolete objects. Users keep working on the run edition until cutover.\"\n\nTip: Say \"downtime only at cutover\". It's the benefit."}},{"@type":"Question","name":"How do you customize accounting with Subledger Accounting?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: functional-technical crossover.\n\nAnswer:\n\"I use SLA setups rather than custom code: journal line types, account derivation rules, mapping sets, journal entry descriptions and application accounting definitions, copied from the seeded ones. I validate them and assign them to the subledger accounting method.\"\n\nTip: Say \"avoid custom code for accounting logic\". It's the right principle."}},{"@type":"Question","name":"How do you trace a GL journal back to the source transaction?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a classic drill-down question.\n\nAnswer:\n\"From GL_JE_LINES to GL_IMPORT_REFERENCES using gl_sl_link_id and gl_sl_link_table, then to XLA_AE_LINES and XLA_AE_HEADERS, then XLA_EVENTS, then XLA_TRANSACTION_ENTITIES, where source_id_int_1 is the transaction ID, like the invoice ID.\"\n\nTip: Say the chain in order. It's a recall test."}},{"@type":"Question","name":"How do you design a high-volume report?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: reporting at scale.\n\nAnswer:\n\"I optimize the SQL and use data templates with efficient queries. Large outputs go to CSV or Excel. If needed, a scheduled program pre-aggregates into staging tables, and the report reads from those. And heavy reports run off-peak.\"\n\nTip: Say \"separate extraction from formatting\". It's the design idea."}},{"@type":"Question","name":"How do you design a conversion strategy?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: conversion design.\n\nAnswer:\n\"I inventory the objects and set the load sequence: setups, master data, open transactions, then balances. I define mapping and cleansing. Scripts are automated with staging tables and validations. Errors are reported, and results reconciled. I run mock loads with timings and build the cutover plan from them.\"\n\nTip: Mention staging tables with a validation status. It makes reruns safe."}},{"@type":"Question","name":"How do you convert open AR invoices?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a common conversion.\n\nAnswer:\n\"I load RA_INTERFACE_LINES_ALL and RA_INTERFACE_DISTRIBUTIONS_ALL with an imported batch source, then run AutoInvoice. I review errors in RA_INTERFACE_ERRORS_ALL. I reconcile totals to the legacy aging. And the offset goes to a conversion clearing account.\"\n\nTip: Mention the clearing account. It keeps revenue clean."}},{"@type":"Question","name":"How do you assess customizations for an EBS-to-Fusion migration?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: migration planning.\n\nAnswer:\n\"I inventory the customizations and classify each one: retire it, replace it with standard Fusion functionality, or rebuild it as an extension, integration or report. Then I estimate the effort and design the target with SaaS principles.\"\n\nTip: Say \"many customizations can be retired\". It's usually true and saves money."}},{"@type":"Question","name":"How do you review a junior developer's code?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: mentoring and quality.\n\nAnswer:\n\"I check standards, error handling, performance like bulk processing and index use, security, logging and maintainability. And I explain each improvement and why, so they learn rather than just fix.\"\n\nTip: Say \"explain why\". It's the teaching mindset."}},{"@type":"Question","name":"How do you handle restartability in batch programs?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: robust design.\n\nAnswer:\n\"I process in committed chunks, track each record's status in a staging table, skip records already processed when the program reruns, and log errors without stopping the whole batch.\"\n\nTip: Robust batch design saves support nights. Say so."}},{"@type":"Question","name":"How do you design error handling for interfaces?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: supportability.\n\nAnswer:\n\"Staging tables have status and error message columns. Validations run before calling APIs or interfaces. Error reports are emailed to the owners. Records can be reprocessed after correction. And logs show summary counts.\"\n\nTip: Mention reprocessing after correction. It's what support needs."}},{"@type":"Question","name":"How do you resolve locking issues in EBS?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: database troubleshooting.\n\nAnswer:\n\"I find blocking sessions with V$LOCK, V$SESSION and DBA_BLOCKERS, and identify which program holds the locks. Then I fix the cause: avoid long transactions, commit appropriately, and schedule conflicting programs apart using incompatibilities.\"\n\nTip: Mention concurrent program incompatibilities. It's the EBS-specific fix."}},{"@type":"Question","name":"What are concurrent program incompatibilities?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a practical control.\n\nAnswer:\n\"They're rules that stop certain programs running at the same time, for example a custom program and Create Accounting, to avoid data conflicts or locking. They're defined on the program, at domain or global level.\"\n\nTip: Give a real example pair. It makes it concrete."}},{"@type":"Question","name":"How do you plan technical testing?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: testing discipline.\n\nAnswer:\n\"Unit tests with edge cases, volume tests, negative tests, integration tests with connected systems, regression after patches, and documented results.\"\n\nTip: Mention volume testing for interfaces. It's where problems hide."}},{"@type":"Question","name":"How do Oracle patches affect custom code?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: patch impact awareness.\n\nAnswer:\n\"Patches can change seeded objects my code depends on: APIs, views, tables or OAF pages. So I review the patch impact through the readme and file lists, retest customizations, and keep a customization inventory.\"\n\nTip: Say \"impact analysis\". It's the process."}},{"@type":"Question","name":"How do you implement row-level security in custom reports?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: data security.\n\nAnswer:\n\"I use secured, MOAC-enabled views, or join to security tables based on the user's responsibility or security profile. For custom tables, I can use VPD policies.\"\n\nTip: Say \"use standard security\". Don't reinvent it."}},{"@type":"Question","name":"Tell me about a difficult performance problem you solved.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: proof of tuning skill.\n\nAnswer (example):\n\"AutoInvoice was taking five hours for 200,000 lines. I analyzed the trace and found missing indexes on interface columns used in the grouping rules, plus stale statistics. I worked with the DBA to fix both and split the run by batch source. Runtime dropped to 45 minutes.\"\n\nTip: Show root cause and collaboration with the DBA."}},{"@type":"Question","name":"Tell me about leading a technical workstream.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: leadership readiness.\n\nAnswer (example):\n\"I led five developers on 60 RICEW objects for an R12.2 upgrade. I set coding standards, reviewed designs, tracked progress daily, and we delivered on schedule with a low defect rate.\"\n\nTip: Give the team size and object count. Scale matters."}},{"@type":"Question","name":"How do you handle a disagreement with a functional consultant?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: collaboration.\n\nAnswer:\n\"I make sure I understand their requirement and the business need behind it. I explain the technical constraints and the options. And we pick the solution that meets the need with the least customization.\"\n\nTip: Focus on the business need. It ends most disagreements."}},{"@type":"Question","name":"How would you prepare for moving from EBS to Fusion as a technical consultant?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: cloud readiness.\n\nAnswer:\n\"I'd learn FBDI and HDL, REST and SOAP services, OIC, BI Publisher in Fusion, OTBI, VB Studio and SaaS security, and practice mapping EBS customizations to Fusion patterns.\"\n\nTip: Show you've already started. It's more convincing than plans."}},{"@type":"Question","name":"How do you integrate EBS with Fusion during a phased migration?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: coexistence design.\n\nAnswer:\n\"I use OIC with the EBS adapter through the connectivity agent, plus the ERP Cloud adapter. For example, EBS Financials with Fusion Procurement or HCM. Master data is synchronized, and each data element has a clear system of record.\"\n\nTip: Mention system-of-record decisions. Coexistence fails without them."}},{"@type":"Question","name":"How do you work with DBAs?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: cross-team collaboration.\n\nAnswer:\n\"I share traces and SQL for tuning, coordinate deployments and patch windows, request statistics or index changes with a justification, and follow change management.\"\n\nTip: Say \"with justification\". DBAs respond to evidence."}},{"@type":"Question","name":"What does an MD070 contain?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: documentation standards.\n\nAnswer:\n\"It's the technical design document from Oracle's AIM methodology: an overview, the approach, the objects like tables, packages and programs, the logic, data mapping, error handling, security, performance and testing considerations.\"\n\nTip: Mention AIM. It shows you know where the term comes from."}},{"@type":"Question","name":"How do you estimate a complex interface?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: planning skill.\n\nAnswer:\n\"I break it into analysis, design, staging and validation, API calls, error handling, reports, unit testing and deployment. I adjust by complexity and data volume. And I add contingency.\"\n\nTip: Show the task breakdown. It makes estimates believable."}},{"@type":"Question","name":"Where do you want to go next?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: career direction.\n\nAnswer:\n\"Toward a technical lead or architect role, guiding EBS-to-cloud transitions and integration strategy.\"\n\nTip: Point toward cloud leadership. It's in demand."}},{"@type":"Question","name":"Why should we hire you?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a closing question.\n\nAnswer (sample):\n\"I deliver reliable reports, data loads and integrations in Fusion, using BIP, OTBI, FBDI, REST and OIC, and I understand the business processes behind them, so what I build works for users the first time.\"\n\nTip: Combine technical skill with business awareness. That's what they want."}},{"@type":"Question","name":"Give examples of commonly used EBS public APIs.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a rapid-fire recall check.\n\nAnswer:\n\"HZ_PARTY_V2PUB and HZ_CUST_ACCOUNT_V2PUB for customers. AP_SUPPLIERS_PUB and POS_VENDOR_PUB for suppliers. PO_DOCUMENT_UPDATE_GRP for PO changes. OE_ORDER_PUB.PROCESS_ORDER for sales orders. INV_ITEM_GRP and EGO_ITEM_PUB for items. The GL interface for journals. And AR_RECEIPT_API_PUB for receipts.\"\n\nTip: Practice saying the list. It's a recall test."}},{"@type":"Question","name":"How does Order Import work?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a common interface.\n\nAnswer:\n\"I load OE_HEADERS_IFACE_ALL and OE_LINES_IFACE_ALL, plus related tables like price adjustments. Then I run the Order Import concurrent program. Errors are reviewed and fixed in the Order Import Corrections window. Imported orders then follow their workflow.\"\n\nTip: Mention the corrections window. It's where support fixes errors."}},{"@type":"Question","name":"How do you protect sensitive data like bank accounts in custom code?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: PII and PCI awareness.\n\nAnswer:\n\"I use Oracle Payments secure storage, which encrypts bank data in the IBY schema, instead of storing it in custom tables. I restrict reports that show it. And I mask it in non-production.\"\n\nTip: Say \"never store it in custom tables\". It's the key rule."}},{"@type":"Question","name":"How do you design a custom approval for a non-standard document?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: reuse versus build.\n\nAnswer:\n\"I use AME for the rules and approver lists, Oracle Workflow for the process, with notifications, responses and timeouts, and a custom table with a form or OAF page for the document. It integrates with standard notifications and delegation.\"\n\nTip: Say \"reuse AME and Workflow\". Building approvals from scratch is a mistake."}},{"@type":"Question","name":"How do you handle data masking for non-production clones?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: compliance.\n\nAnswer:\n\"After cloning, I scramble or mask PII and sensitive data, like bank accounts, SSNs, salaries and emails, with Oracle Data Masking and Subsetting or custom scripts, while keeping the data usable for testing.\"\n\nTip: Mention keeping data usable. Masking that breaks testing gets skipped."}},{"@type":"Question","name":"What are key HRMS/HCM tables in EBS?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: HR data model recall.\n\nAnswer:\n\"PER_ALL_PEOPLE_F and PER_ALL_ASSIGNMENTS_F, which are date-tracked, plus PER_JOBS, HR_ALL_ORGANIZATION_UNITS and PAY_ELEMENT_ENTRIES_F. Date-tracked tables need filters on EFFECTIVE_START_DATE and EFFECTIVE_END_DATE, or you get duplicate rows.\"\n\nTip: Mention the date-track filter. It's the classic bug."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#0F2356; --accent:#1A4FCC; --accent-hover:#1340AA; --blue-light:#EEF3FF; --gray-50:#F8F9FC; --gray-100:#F0F2F7; --gray-200:#E2E6F0; --gray-600:#5A6480; --text:#111827; --text-muted:#4B5563; --border:#E2E6F0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Inter",sans-serif; color:var(--text); background:#fff; font-size:15px; line-height:1.7; }
+a { color:var(--accent); }
+nav { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.97); border-bottom:1px solid var(--border); padding:0 1.25rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+nav img { height:44px; width:auto; display:block; }
+nav .links { display:flex; gap:0.25rem; align-items:center; }
+nav .links a { color:var(--gray-600); text-decoration:none; font-size:0.88rem; font-weight:500; padding:0.45rem 0.75rem; border-radius:6px; }
+nav .links a:hover { background:var(--gray-100); color:var(--navy); }
+nav .links a.on { color:var(--accent); background:var(--blue-light); }
+.wrap { max-width:820px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+.crumb { font-size:0.8rem; color:var(--gray-600); margin-bottom:0.75rem; }
+.crumb a { color:var(--gray-600); text-decoration:none; }
+.brand { display:inline-block; font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); background:var(--blue-light); border:1px solid rgba(26,79,204,0.2); padding:0.2rem 0.6rem; border-radius:999px; margin-bottom:0.75rem; }
+h1 { font-family:"Manrope",sans-serif; font-weight:800; color:var(--navy); font-size:clamp(1.5rem,4vw,2.1rem); line-height:1.2; letter-spacing:-0.02em; margin-bottom:0.6rem; }
+.lead { color:var(--text-muted); margin-bottom:1.25rem; }
+.stats { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+.stat { background:var(--gray-50); border:1px solid var(--border); border-radius:8px; padding:0.4rem 0.8rem; font-size:0.85rem; color:var(--navy); }
+.stat b { font-family:"Manrope",sans-serif; }
+.filters { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem; }
+.filters button { font:inherit; font-size:0.82rem; border:1px solid var(--gray-200); background:#fff; color:var(--gray-600); border-radius:999px; padding:0.3rem 0.8rem; cursor:pointer; }
+.filters button.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+.tools { display:flex; justify-content:flex-end; margin-bottom:0.5rem; }
+.tools button { font:inherit; font-size:0.82rem; background:none; border:none; color:var(--accent); cursor:pointer; }
+details.q { border:1px solid var(--border); border-radius:10px; margin-bottom:0.6rem; background:#fff; }
+details.q[open] { border-color:rgba(26,79,204,0.35); }
+summary { list-style:none; cursor:pointer; padding:0.85rem 1rem; display:grid; grid-template-columns:auto 1fr; gap:0.2rem 0.75rem; align-items:start; }
+summary::-webkit-details-marker { display:none; }
+.qn { font-family:"Manrope",sans-serif; font-weight:800; color:var(--accent); font-size:0.9rem; min-width:1.6rem; padding-top:0.05rem; }
+.qt { font-weight:600; color:var(--navy); }
+.meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
+.tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
+.tag.lvl { background:var(--blue-light); color:var(--accent); }
+summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
+details[open] summary::after { content:"Hide answer"; }
+.ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
+.ans p { margin:0.35rem 0; }
+.ans .sub { font-weight:600; color:var(--navy); margin-top:0.6rem; }
+.ans ul, .ans ol { padding-left:1.15rem; margin:0.35rem 0; }
+.ans li { margin:0.2rem 0; }
+.ans strong { color:var(--navy); }
+.ans .tip { background:var(--blue-light); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; padding:0.5rem 0.75rem; margin-top:0.75rem; }
+.ans code { font-size:0.85em; background:var(--gray-100); padding:0.05rem 0.3rem; border-radius:4px; }
+.cta { margin-top:2.5rem; background:var(--navy); color:#fff; border-radius:12px; padding:1.5rem; }
+.cta h2 { font-family:"Manrope",sans-serif; font-size:1.2rem; margin-bottom:0.35rem; }
+.cta p { color:#C9D3EC; margin-bottom:1rem; }
+.cta a { display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; font-size:0.9rem; padding:0.65rem 1.4rem; border-radius:8px; }
+.cta a:hover { background:var(--accent-hover); }
+footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2rem 1rem; border-top:1px solid var(--border); }
+@media (max-width:640px) { nav .links a.hide-sm { display:none; } .ans { padding-left:1rem; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/"><img src="/Logo/arahasoft_logo1.png" alt="Arahasoft"></a>
+  <div class="links">
+    <a href="/" class="hide-sm">Home</a>
+    <a href="/interview/" class="on">Interview Edge</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</nav>
+<main class="wrap">
+  <div class="crumb"><a href="/">Arahasoft</a> › <a href="/interview/">Interview Edge</a> › ERP Technical</div>
+  <span class="brand">Interview Edge by Arahasoft</span>
+  <h1>Oracle Senior Technical Consultant (EBS) Interview Questions</h1>
+  <p class="lead">The questions interviewers ask for senior Oracle EBS technical consultants: APIs, workflow, OAF, performance tuning, conversions, AME and upgrades, with why they ask, a full answer you can say in the room, and a tip. Tap a question to see the answer.</p>
+  <div class="stats">
+    <span class="stat"><b>50</b> questions</span>
+    <span class="stat"><b>11</b> basic</span>
+    <span class="stat"><b>39</b> in-depth</span>
+  </div>
+  
+  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div id="list">
+<details class="q" data-topic="Design" data-level="D">
+  <summary><span class="qn">1</span><span class="qt">How do you design a RICEW object end to end?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> senior consultants own technical design.</p>
+<p><strong>Answer:</strong> Understand the business requirement and process, identify the standard Oracle option first (interface, API, personalization), define data flow and mappings, error handling and logging, security, performance (volumes), restart/recovery, and deployment approach; document in an MD070 technical design; review with functional leads; build with standards; unit test with edge cases; and support SIT/UAT.</p>
+<p class="tip"><strong>Tip:</strong> &quot;Standard first, custom last.&quot;</p></div>
+</details>
+<details class="q" data-topic="APIs" data-level="D">
+  <summary><span class="qn">2</span><span class="qt">How do you choose between interfaces and APIs?</span><span class="meta"><span class="tag">APIs</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a design choice in EBS integrations.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Open interfaces suit batch loads, because they have built-in validation and error reporting. Public APIs suit transactional, real-time processing from custom code or middleware. Either way, I check Oracle's Integration Repository to confirm the interface or API is supported.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;iRep is the source of truth&quot;. Unsupported APIs break on patches.</p></div>
+</details>
+<details class="q" data-topic="APIs" data-level="D">
+  <summary><span class="qn">3</span><span class="qt">How do you call Oracle APIs correctly?</span><span class="meta"><span class="tag">APIs</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> API calls fail silently when done wrong.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I initialize the context with FND_GLOBAL.APPS_INITIALIZE and MO_GLOBAL.SET_POLICY_CONTEXT. I populate the record types and call the API with p_init_msg_list set to FND_API.G_TRUE. I check x_return_status: S for success, E for error, U for unexpected. On error I loop through the FND_MSG_PUB messages and log them. And I commit or roll back as appropriate.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Show the message handling loop. That's what separates experienced developers.</p></div>
+</details>
+<details class="q" data-topic="Integration Repository" data-level="D">
+  <summary><span class="qn">4</span><span class="qt">What is the Oracle Integration Repository?</span><span class="meta"><span class="tag">Integration Repository</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> integration knowledge.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;It's a catalog inside EBS of the supported integration interfaces: PL/SQL APIs, open interfaces, business events, XML Gateway messages and web services, with documentation. Integrated SOA Gateway can expose them as REST or SOAP services.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention supported versus unsupported APIs. It's why iRep matters.</p></div>
+</details>
+<details class="q" data-topic="Business Events" data-level="D">
+  <summary><span class="qn">5</span><span class="qt">How do you use business events in EBS?</span><span class="meta"><span class="tag">Business Events</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> event-driven EBS integration.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I subscribe to seeded events, like oracle.apps.ar.hz.CustAccount.create, with a PL/SQL rule function or a workflow, or raise custom events with WF_EVENT.RAISE. Subscriptions can run synchronously or be deferred through the Workflow Deferred Agent Listener.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say it gives event-driven integration without database triggers.</p></div>
+</details>
+<details class="q" data-topic="Workflow" data-level="D">
+  <summary><span class="qn">6</span><span class="qt">How do you customize an Oracle Workflow process?</span><span class="meta"><span class="tag">Workflow</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> workflow customization skill.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I download the item type .wft file with Workflow Builder, and copy seeded processes into custom ones where possible. I add functions in PL/SQL with the standard signature: itemtype, itemkey, actid, funcmode and resultout. I set attributes, upload, and test. Then I monitor with Status Monitor and the workflow tables.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Name the function signature. It proves hands-on work.</p></div>
+</details>
+<details class="q" data-topic="Workflow" data-level="D">
+  <summary><span class="qn">7</span><span class="qt">How do you troubleshoot a stuck workflow?</span><span class="meta"><span class="tag">Workflow</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a common support issue.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I check WF_ITEM_ACTIVITY_STATUSES for errored activities. I make sure the workflow background process and agent listeners are running, and the notification mailer is up. I read the error messages. Then I retry or rewind through Status Monitor, after fixing the underlying data.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention background engines. They're often the cause.</p></div>
+</details>
+<details class="q" data-topic="Performance" data-level="D">
+  <summary><span class="qn">8</span><span class="qt">How do you approach performance tuning in EBS?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> tuning depth.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I identify the slow component: a concurrent program, a form or an OAF page. I trace with binds and waits and analyze with TKPROF and DBMS_XPLAN execution plans. I check statistics, indexes and bind peeking. I rewrite SQL to avoid functions on indexed columns and implicit conversions. I use bulk processing, and parallelize where it makes sense. For example, replacing a row-by-row cursor update with FORALL cut one program from three hours to nine minutes.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give a concrete before-and-after. It's convincing.</p></div>
+</details>
+<details class="q" data-topic="Performance" data-level="D">
+  <summary><span class="qn">9</span><span class="qt">What is the impact of bind variables?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> database fundamentals.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Bind variables let Oracle reuse parsed SQL, which cuts hard parsing and CPU use, and they protect against SQL injection. The thing to watch is bind peeking with skewed data, where one plan doesn't fit all values. Adaptive cursor sharing in newer versions helps with that.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention bind peeking. It shows depth.</p></div>
+</details>
+<details class="q" data-topic="Performance" data-level="D">
+  <summary><span class="qn">10</span><span class="qt">How do you parallelize a large data process?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> scaling batch processing.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I split the work by ranges or org IDs into multiple child requests, using parent-child concurrent requests with FND_REQUEST sub-requests. Or I use DBMS_PARALLEL_EXECUTE, or parallel DML and queries where appropriate. I balance the load and avoid locking conflicts between the parallel workers.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention DBMS_PARALLEL_EXECUTE. It's a strong answer.</p></div>
+</details>
+<details class="q" data-topic="OAF" data-level="D">
+  <summary><span class="qn">11</span><span class="qt">How do you extend an OAF controller safely?</span><span class="meta"><span class="tag">OAF</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> OAF extension standards.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I create a custom controller class that extends the seeded one and override processRequest or processFormRequest, calling super first and then adding my logic. I deploy the class files to JAVA_TOP and attach the custom controller through personalization, using the Controller Class property. And I retest after every patch.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;call super first&quot;. It keeps seeded behavior intact.</p></div>
+</details>
+<details class="q" data-topic="OAF" data-level="D">
+  <summary><span class="qn">12</span><span class="qt">How do you substitute a View Object?</span><span class="meta"><span class="tag">OAF</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> OAF extension depth.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I create a new VO in JDeveloper that extends the seeded one, with extra attributes or a modified query. I create a substitution in the .jpx file, import it with JPXImporter, deploy the files, and bounce the application tier so it takes effect.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the bounce. It's a common forgotten step.</p></div>
+</details>
+<details class="q" data-topic="Forms" data-level="B">
+  <summary><span class="qn">13</span><span class="qt">When do you use CUSTOM.pll vs Forms Personalization?</span><span class="meta"><span class="tag">Forms</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> choosing the right customization.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Forms Personalization is for declarative changes: property settings, messages, simple validations and builtins. CUSTOM.pll is for complex logic that needs PL/SQL across events. I prefer personalization, because it's easier to maintain and upgrade-safe.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;prefer personalization&quot;. It shows good judgment.</p></div>
+</details>
+<details class="q" data-topic="XML Gateway" data-level="D">
+  <summary><span class="qn">14</span><span class="qt">What is XML Gateway?</span><span class="meta"><span class="tag">XML Gateway</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> B2B integration knowledge.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;XML Gateway is the EBS component for exchanging XML documents with trading partners, like OAG standard messages. You define maps and trading partner setups, and inbound and outbound processing runs through queues.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Tie it to B2B integration. That's its use.</p></div>
+</details>
+<details class="q" data-topic="EDI" data-level="D">
+  <summary><span class="qn">15</span><span class="qt">How is EDI handled with EBS?</span><span class="meta"><span class="tag">EDI</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> EDI is common in supply chain.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;EDI translators or middleware convert X12 or EDIFACT documents into EBS interfaces: Order Import for 850 purchase orders, the Payables interface for 810 invoices, and ASNs for 856s. Older setups used e-Commerce Gateway, and XML Gateway is also used.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Name the transaction sets. It shows real EDI work.</p></div>
+</details>
+<details class="q" data-topic="SOA" data-level="D">
+  <summary><span class="qn">16</span><span class="qt">How have you used Oracle SOA Suite or OIC with EBS?</span><span class="meta"><span class="tag">SOA</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> middleware experience.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I've used the EBS adapter to call PL/SQL APIs and subscribe to business events, file and database adapters, and BPEL orchestrations in SOA Suite. With OIC, I've used the EBS adapter through Integrated SOA Gateway or the on-premises connectivity agent.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the connectivity agent. OIC needs it for on-premise EBS.</p></div>
+</details>
+<details class="q" data-topic="Security" data-level="D">
+  <summary><span class="qn">17</span><span class="qt">How do you secure custom code and data access?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> security practices.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I use standard EBS security, responsibilities and MOAC. I never hard-code credentials. Integrations use proxy users. Grants go through RBAC. And sensitive data is masked in non-production.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention masking clones. It's a common gap.</p></div>
+</details>
+<details class="q" data-topic="Cloning" data-level="D">
+  <summary><span class="qn">18</span><span class="qt">What should developers check after an EBS clone?</span><span class="meta"><span class="tag">Cloning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> clone mistakes cause real damage.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Profile options pointing to non-production endpoints. The workflow mailer disabled or redirected. Scheduled requests put on hold. Integration endpoints and credentials changed. Printers. And data masking applied.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;avoid emailing real suppliers from test&quot;. It's the classic incident.</p></div>
+</details>
+<details class="q" data-topic="R12.2" data-level="D">
+  <summary><span class="qn">19</span><span class="qt">What coding standards apply for R12.2 online patching?</span><span class="meta"><span class="tag">R12.2</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> R12.2 compliance.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I don't reference editioned objects incorrectly. Custom tables get editioning views through AD_ZD_TABLE.UPGRADE. I avoid DDL that breaks online patching. Custom schemas are registered. Deployments go through adop. And I follow Oracle's guide on developing and deploying customizations in R12.2.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the AD_ZD utilities. It proves R12.2 experience.</p></div>
+</details>
+<details class="q" data-topic="R12.2" data-level="D">
+  <summary><span class="qn">20</span><span class="qt">What happens in an adop cycle?</span><span class="meta"><span class="tag">R12.2</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> R12.2 patching knowledge.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Prepare creates the patch edition. Apply puts the patches into the patch edition. Finalize gets ready for cutover. Cutover switches editions, with a short downtime. Cleanup removes obsolete objects. Users keep working on the run edition until cutover.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;downtime only at cutover&quot;. It's the benefit.</p></div>
+</details>
+<details class="q" data-topic="SLA" data-level="D">
+  <summary><span class="qn">21</span><span class="qt">How do you customize accounting with Subledger Accounting?</span><span class="meta"><span class="tag">SLA</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> functional-technical crossover.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I use SLA setups rather than custom code: journal line types, account derivation rules, mapping sets, journal entry descriptions and application accounting definitions, copied from the seeded ones. I validate them and assign them to the subledger accounting method.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;avoid custom code for accounting logic&quot;. It's the right principle.</p></div>
+</details>
+<details class="q" data-topic="SLA" data-level="D">
+  <summary><span class="qn">22</span><span class="qt">How do you trace a GL journal back to the source transaction?</span><span class="meta"><span class="tag">SLA</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a classic drill-down question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;From GL_JE_LINES to GL_IMPORT_REFERENCES using gl_sl_link_id and gl_sl_link_table, then to XLA_AE_LINES and XLA_AE_HEADERS, then XLA_EVENTS, then XLA_TRANSACTION_ENTITIES, where source_id_int_1 is the transaction ID, like the invoice ID.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say the chain in order. It's a recall test.</p></div>
+</details>
+<details class="q" data-topic="Reports" data-level="D">
+  <summary><span class="qn">23</span><span class="qt">How do you design a high-volume report?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> reporting at scale.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I optimize the SQL and use data templates with efficient queries. Large outputs go to CSV or Excel. If needed, a scheduled program pre-aggregates into staging tables, and the report reads from those. And heavy reports run off-peak.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;separate extraction from formatting&quot;. It's the design idea.</p></div>
+</details>
+<details class="q" data-topic="Conversions" data-level="D">
+  <summary><span class="qn">24</span><span class="qt">How do you design a conversion strategy?</span><span class="meta"><span class="tag">Conversions</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> conversion design.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I inventory the objects and set the load sequence: setups, master data, open transactions, then balances. I define mapping and cleansing. Scripts are automated with staging tables and validations. Errors are reported, and results reconciled. I run mock loads with timings and build the cutover plan from them.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention staging tables with a validation status. It makes reruns safe.</p></div>
+</details>
+<details class="q" data-topic="Conversions" data-level="D">
+  <summary><span class="qn">25</span><span class="qt">How do you convert open AR invoices?</span><span class="meta"><span class="tag">Conversions</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a common conversion.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I load RA_INTERFACE_LINES_ALL and RA_INTERFACE_DISTRIBUTIONS_ALL with an imported batch source, then run AutoInvoice. I review errors in RA_INTERFACE_ERRORS_ALL. I reconcile totals to the legacy aging. And the offset goes to a conversion clearing account.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the clearing account. It keeps revenue clean.</p></div>
+</details>
+<details class="q" data-topic="Upgrade" data-level="D">
+  <summary><span class="qn">26</span><span class="qt">How do you assess customizations for an EBS-to-Fusion migration?</span><span class="meta"><span class="tag">Upgrade</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> migration planning.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I inventory the customizations and classify each one: retire it, replace it with standard Fusion functionality, or rebuild it as an extension, integration or report. Then I estimate the effort and design the target with SaaS principles.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;many customizations can be retired&quot;. It's usually true and saves money.</p></div>
+</details>
+<details class="q" data-topic="Mentoring" data-level="B">
+  <summary><span class="qn">27</span><span class="qt">How do you review a junior developer's code?</span><span class="meta"><span class="tag">Mentoring</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> mentoring and quality.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I check standards, error handling, performance like bulk processing and index use, security, logging and maintainability. And I explain each improvement and why, so they learn rather than just fix.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;explain why&quot;. It's the teaching mindset.</p></div>
+</details>
+<details class="q" data-topic="Design" data-level="D">
+  <summary><span class="qn">28</span><span class="qt">How do you handle restartability in batch programs?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> robust design.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I process in committed chunks, track each record's status in a staging table, skip records already processed when the program reruns, and log errors without stopping the whole batch.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Robust batch design saves support nights. Say so.</p></div>
+</details>
+<details class="q" data-topic="Design" data-level="D">
+  <summary><span class="qn">29</span><span class="qt">How do you design error handling for interfaces?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> supportability.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Staging tables have status and error message columns. Validations run before calling APIs or interfaces. Error reports are emailed to the owners. Records can be reprocessed after correction. And logs show summary counts.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention reprocessing after correction. It's what support needs.</p></div>
+</details>
+<details class="q" data-topic="Locks" data-level="D">
+  <summary><span class="qn">30</span><span class="qt">How do you resolve locking issues in EBS?</span><span class="meta"><span class="tag">Locks</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> database troubleshooting.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I find blocking sessions with V$LOCK, V$SESSION and DBA_BLOCKERS, and identify which program holds the locks. Then I fix the cause: avoid long transactions, commit appropriately, and schedule conflicting programs apart using incompatibilities.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention concurrent program incompatibilities. It's the EBS-specific fix.</p></div>
+</details>
+<details class="q" data-topic="Incompatibilities" data-level="D">
+  <summary><span class="qn">31</span><span class="qt">What are concurrent program incompatibilities?</span><span class="meta"><span class="tag">Incompatibilities</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a practical control.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;They're rules that stop certain programs running at the same time, for example a custom program and Create Accounting, to avoid data conflicts or locking. They're defined on the program, at domain or global level.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give a real example pair. It makes it concrete.</p></div>
+</details>
+<details class="q" data-topic="Testing" data-level="B">
+  <summary><span class="qn">32</span><span class="qt">How do you plan technical testing?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> testing discipline.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Unit tests with edge cases, volume tests, negative tests, integration tests with connected systems, regression after patches, and documented results.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention volume testing for interfaces. It's where problems hide.</p></div>
+</details>
+<details class="q" data-topic="Patches" data-level="D">
+  <summary><span class="qn">33</span><span class="qt">How do Oracle patches affect custom code?</span><span class="meta"><span class="tag">Patches</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> patch impact awareness.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Patches can change seeded objects my code depends on: APIs, views, tables or OAF pages. So I review the patch impact through the readme and file lists, retest customizations, and keep a customization inventory.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;impact analysis&quot;. It's the process.</p></div>
+</details>
+<details class="q" data-topic="Security" data-level="D">
+  <summary><span class="qn">34</span><span class="qt">How do you implement row-level security in custom reports?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> data security.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I use secured, MOAC-enabled views, or join to security tables based on the user's responsibility or security profile. For custom tables, I can use VPD policies.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;use standard security&quot;. Don't reinvent it.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">35</span><span class="qt">Tell me about a difficult performance problem you solved.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> proof of tuning skill.</p>
+<p><strong>Answer (example):</strong></p>
+<p>&quot;AutoInvoice was taking five hours for 200,000 lines. I analyzed the trace and found missing indexes on interface columns used in the grouping rules, plus stale statistics. I worked with the DBA to fix both and split the run by batch source. Runtime dropped to 45 minutes.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Show root cause and collaboration with the DBA.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">36</span><span class="qt">Tell me about leading a technical workstream.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> leadership readiness.</p>
+<p><strong>Answer (example):</strong></p>
+<p>&quot;I led five developers on 60 RICEW objects for an R12.2 upgrade. I set coding standards, reviewed designs, tracked progress daily, and we delivered on schedule with a low defect rate.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give the team size and object count. Scale matters.</p></div>
+</details>
+<details class="q" data-topic="Behavioral" data-level="B">
+  <summary><span class="qn">37</span><span class="qt">How do you handle a disagreement with a functional consultant?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> collaboration.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I make sure I understand their requirement and the business need behind it. I explain the technical constraints and the options. And we pick the solution that meets the need with the least customization.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Focus on the business need. It ends most disagreements.</p></div>
+</details>
+<details class="q" data-topic="Cloud" data-level="B">
+  <summary><span class="qn">38</span><span class="qt">How would you prepare for moving from EBS to Fusion as a technical consultant?</span><span class="meta"><span class="tag">Cloud</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> cloud readiness.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I'd learn FBDI and HDL, REST and SOAP services, OIC, BI Publisher in Fusion, OTBI, VB Studio and SaaS security, and practice mapping EBS customizations to Fusion patterns.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Show you've already started. It's more convincing than plans.</p></div>
+</details>
+<details class="q" data-topic="Hybrid" data-level="D">
+  <summary><span class="qn">39</span><span class="qt">How do you integrate EBS with Fusion during a phased migration?</span><span class="meta"><span class="tag">Hybrid</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> coexistence design.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I use OIC with the EBS adapter through the connectivity agent, plus the ERP Cloud adapter. For example, EBS Financials with Fusion Procurement or HCM. Master data is synchronized, and each data element has a clear system of record.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention system-of-record decisions. Coexistence fails without them.</p></div>
+</details>
+<details class="q" data-topic="DBA Collaboration" data-level="B">
+  <summary><span class="qn">40</span><span class="qt">How do you work with DBAs?</span><span class="meta"><span class="tag">DBA Collaboration</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> cross-team collaboration.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I share traces and SQL for tuning, coordinate deployments and patch windows, request statistics or index changes with a justification, and follow change management.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;with justification&quot;. DBAs respond to evidence.</p></div>
+</details>
+<details class="q" data-topic="Documentation" data-level="B">
+  <summary><span class="qn">41</span><span class="qt">What does an MD070 contain?</span><span class="meta"><span class="tag">Documentation</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> documentation standards.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;It's the technical design document from Oracle's AIM methodology: an overview, the approach, the objects like tables, packages and programs, the logic, data mapping, error handling, security, performance and testing considerations.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention AIM. It shows you know where the term comes from.</p></div>
+</details>
+<details class="q" data-topic="Estimation" data-level="D">
+  <summary><span class="qn">42</span><span class="qt">How do you estimate a complex interface?</span><span class="meta"><span class="tag">Estimation</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> planning skill.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I break it into analysis, design, staging and validation, API calls, error handling, reports, unit testing and deployment. I adjust by complexity and data volume. And I add contingency.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Show the task breakdown. It makes estimates believable.</p></div>
+</details>
+<details class="q" data-topic="Career" data-level="B">
+  <summary><span class="qn">43</span><span class="qt">Where do you want to go next?</span><span class="meta"><span class="tag">Career</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> career direction.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Toward a technical lead or architect role, guiding EBS-to-cloud transitions and integration strategy.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Point toward cloud leadership. It's in demand.</p></div>
+</details>
+<details class="q" data-topic="Closing" data-level="B">
+  <summary><span class="qn">44</span><span class="qt">Why should we hire you?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a closing question.</p>
+<p><strong>Answer (sample):</strong></p>
+<p>&quot;I deliver reliable reports, data loads and integrations in Fusion, using BIP, OTBI, FBDI, REST and OIC, and I understand the business processes behind them, so what I build works for users the first time.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Combine technical skill with business awareness. That's what they want.</p></div>
+</details>
+<details class="q" data-topic="APIs" data-level="D">
+  <summary><span class="qn">45</span><span class="qt">Give examples of commonly used EBS public APIs.</span><span class="meta"><span class="tag">APIs</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a rapid-fire recall check.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;HZ_PARTY_V2PUB and HZ_CUST_ACCOUNT_V2PUB for customers. AP_SUPPLIERS_PUB and POS_VENDOR_PUB for suppliers. PO_DOCUMENT_UPDATE_GRP for PO changes. OE_ORDER_PUB.PROCESS_ORDER for sales orders. INV_ITEM_GRP and EGO_ITEM_PUB for items. The GL interface for journals. And AR_RECEIPT_API_PUB for receipts.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Practice saying the list. It's a recall test.</p></div>
+</details>
+<details class="q" data-topic="Order Import" data-level="D">
+  <summary><span class="qn">46</span><span class="qt">How does Order Import work?</span><span class="meta"><span class="tag">Order Import</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a common interface.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I load OE_HEADERS_IFACE_ALL and OE_LINES_IFACE_ALL, plus related tables like price adjustments. Then I run the Order Import concurrent program. Errors are reviewed and fixed in the Order Import Corrections window. Imported orders then follow their workflow.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the corrections window. It's where support fixes errors.</p></div>
+</details>
+<details class="q" data-topic="Security" data-level="D">
+  <summary><span class="qn">47</span><span class="qt">How do you protect sensitive data like bank accounts in custom code?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> PII and PCI awareness.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I use Oracle Payments secure storage, which encrypts bank data in the IBY schema, instead of storing it in custom tables. I restrict reports that show it. And I mask it in non-production.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;never store it in custom tables&quot;. It's the key rule.</p></div>
+</details>
+<details class="q" data-topic="Design" data-level="D">
+  <summary><span class="qn">48</span><span class="qt">How do you design a custom approval for a non-standard document?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> reuse versus build.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I use AME for the rules and approver lists, Oracle Workflow for the process, with notifications, responses and timeouts, and a custom table with a form or OAF page for the document. It integrates with standard notifications and delegation.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;reuse AME and Workflow&quot;. Building approvals from scratch is a mistake.</p></div>
+</details>
+<details class="q" data-topic="Security" data-level="D">
+  <summary><span class="qn">49</span><span class="qt">How do you handle data masking for non-production clones?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> compliance.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;After cloning, I scramble or mask PII and sensitive data, like bank accounts, SSNs, salaries and emails, with Oracle Data Masking and Subsetting or custom scripts, while keeping the data usable for testing.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention keeping data usable. Masking that breaks testing gets skipped.</p></div>
+</details>
+<details class="q" data-topic="Tables" data-level="D">
+  <summary><span class="qn">50</span><span class="qt">What are key HRMS/HCM tables in EBS?</span><span class="meta"><span class="tag">Tables</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> HR data model recall.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;PER_ALL_PEOPLE_F and PER_ALL_ASSIGNMENTS_F, which are date-tracked, plus PER_JOBS, HR_ALL_ORGANIZATION_UNITS and PAY_ELEMENT_ENTRIES_F. Date-tracked tables need filters on EFFECTIVE_START_DATE and EFFECTIVE_END_DATE, or you get duplicate rows.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the date-track filter. It's the classic bug.</p></div>
+</details>
+  </div>
+  <section class="cta">
+    <h2>Need Oracle help?</h2>
+    <p>Arahasoft implements and supports Oracle Fusion Cloud and E-Business Suite: Financials, SCM, Procurement and HCM.</p>
+    <a href="/#contact">Contact Arahasoft</a>
+  </section>
+</main>
+<footer>© 2026 Arahasoft · Interview Edge by Arahasoft</footer>
+<script>
+(function () {
+  var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
+  var fl = document.getElementById('filters'); if (fl) fl.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    var f = b.getAttribute('data-f');
+    qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+  });
+  var open = false, t = document.getElementById('toggleAll');
+  t.addEventListener('click', function () {
+    open = !open; qs.forEach(function (q) { if (q.style.display !== 'none') q.open = open; });
+    t.textContent = open ? 'Hide all answers' : 'Show all answers';
+  });
+})();
+</script>
+</body>
+</html>
