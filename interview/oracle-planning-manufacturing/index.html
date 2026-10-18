@@ -333,7 +333,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <script>
 (function () {
   var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
-  document.getElementById('filters').addEventListener('click', function (e) {
+  var fl = document.getElementById('filters'); if (fl) fl.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');

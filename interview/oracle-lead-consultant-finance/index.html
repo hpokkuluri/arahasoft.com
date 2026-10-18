@@ -87,38 +87,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>15</b> basic</span>
     <span class="stat"><b>46</b> in-depth</span>
   </div>
-  <div class="filters" id="filters">
-    <button class="on" data-f="all">All</button>
-    <button data-f="Enterprise Structures">Enterprise Structures</button>
-    <button data-f="Chart of Accounts">Chart of Accounts</button>
-    <button data-f="Subledger Accounting">Subledger Accounting</button>
-    <button data-f="Period Close">Period Close</button>
-    <button data-f="Accounts Payable">Accounts Payable</button>
-    <button data-f="Accounts Receivable">Accounts Receivable</button>
-    <button data-f="Fixed Assets">Fixed Assets</button>
-    <button data-f="Leadership">Leadership</button>
-    <button data-f="SOX &amp; Controls">SOX &amp; Controls</button>
-    <button data-f="Integrations &amp; Data">Integrations &amp; Data</button>
-    <button data-f="Workstream Leadership">Workstream Leadership</button>
-    <button data-f="Design">Design</button>
-    <button data-f="Tax">Tax</button>
-    <button data-f="Testing">Testing</button>
-    <button data-f="Cutover">Cutover</button>
-    <button data-f="Team Leadership">Team Leadership</button>
-    <button data-f="Stakeholders">Stakeholders</button>
-    <button data-f="Controls">Controls</button>
-    <button data-f="Reporting">Reporting</button>
-    <button data-f="AI">AI</button>
-    <button data-f="Projects">Projects</button>
-    <button data-f="Change Management">Change Management</button>
-    <button data-f="Quarterly Updates">Quarterly Updates</button>
-    <button data-f="Behavioral">Behavioral</button>
-    <button data-f="General Ledger">General Ledger</button>
-    <button data-f="Expenses">Expenses</button>
-    <button data-f="Cash Management">Cash Management</button>
-    <button data-f="Redwood">Redwood</button>
-    <button data-f="AI Agent Studio">AI Agent Studio</button>
-  </div>
+  
   <div class="tools"><button id="toggleAll">Show all answers</button></div>
   <div id="list">
 <details class="q" data-topic="Enterprise Structures" data-level="D">
@@ -575,7 +544,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <script>
 (function () {
   var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
-  document.getElementById('filters').addEventListener('click', function (e) {
+  var fl = document.getElementById('filters'); if (fl) fl.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');

@@ -87,31 +87,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>20</b> basic</span>
     <span class="stat"><b>36</b> in-depth</span>
   </div>
-  <div class="filters" id="filters">
-    <button class="on" data-f="all">All</button>
-    <button data-f="Core HR">Core HR</button>
-    <button data-f="Data Loads">Data Loads</button>
-    <button data-f="Payroll">Payroll</button>
-    <button data-f="Absence">Absence</button>
-    <button data-f="Time and Labor">Time and Labor</button>
-    <button data-f="Benefits">Benefits</button>
-    <button data-f="Talent">Talent</button>
-    <button data-f="Compensation">Compensation</button>
-    <button data-f="Recruiting">Recruiting</button>
-    <button data-f="Journeys">Journeys</button>
-    <button data-f="Security">Security</button>
-    <button data-f="Approvals">Approvals</button>
-    <button data-f="Integration">Integration</button>
-    <button data-f="Reporting">Reporting</button>
-    <button data-f="Learning">Learning</button>
-    <button data-f="Implementation">Implementation</button>
-    <button data-f="Quarterly Updates">Quarterly Updates</button>
-    <button data-f="Behavioral">Behavioral</button>
-    <button data-f="AI">AI</button>
-    <button data-f="Redwood">Redwood</button>
-    <button data-f="AI Agent Studio">AI Agent Studio</button>
-    <button data-f="Fusion Platform">Fusion Platform</button>
-  </div>
+  
   <div class="tools"><button id="toggleAll">Show all answers</button></div>
   <div id="list">
 <details class="q" data-topic="Core HR" data-level="B">
@@ -517,7 +493,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <script>
 (function () {
   var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
-  document.getElementById('filters').addEventListener('click', function (e) {
+  var fl = document.getElementById('filters'); if (fl) fl.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');

@@ -87,27 +87,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>50</b> basic</span>
     <span class="stat"><b>12</b> in-depth</span>
   </div>
-  <div class="filters" id="filters">
-    <button class="on" data-f="all">All</button>
-    <button data-f="Fusion Basics">Fusion Basics</button>
-    <button data-f="General Ledger">General Ledger</button>
-    <button data-f="Accounts Payable">Accounts Payable</button>
-    <button data-f="Accounts Receivable">Accounts Receivable</button>
-    <button data-f="Fixed Assets">Fixed Assets</button>
-    <button data-f="Cash Management">Cash Management</button>
-    <button data-f="Subledger Accounting">Subledger Accounting</button>
-    <button data-f="Tax">Tax</button>
-    <button data-f="Expenses">Expenses</button>
-    <button data-f="Security">Security</button>
-    <button data-f="Reporting">Reporting</button>
-    <button data-f="Period Close">Period Close</button>
-    <button data-f="Data Loads">Data Loads</button>
-    <button data-f="Testing">Testing</button>
-    <button data-f="Support">Support</button>
-    <button data-f="Behavioral">Behavioral</button>
-    <button data-f="Redwood">Redwood</button>
-    <button data-f="AI Agent Studio">AI Agent Studio</button>
-  </div>
+  
   <div class="tools"><button id="toggleAll">Show all answers</button></div>
   <div id="list">
 <details class="q" data-topic="Fusion Basics" data-level="B">
@@ -639,7 +619,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <script>
 (function () {
   var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
-  document.getElementById('filters').addEventListener('click', function (e) {
+  var fl = document.getElementById('filters'); if (fl) fl.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');

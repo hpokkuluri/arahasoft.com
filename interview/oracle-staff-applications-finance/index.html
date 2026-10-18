@@ -87,26 +87,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>22</b> basic</span>
     <span class="stat"><b>38</b> in-depth</span>
   </div>
-  <div class="filters" id="filters">
-    <button class="on" data-f="all">All</button>
-    <button data-f="Role">Role</button>
-    <button data-f="Strategy">Strategy</button>
-    <button data-f="Problem Solving">Problem Solving</button>
-    <button data-f="Accounting">Accounting</button>
-    <button data-f="Governance">Governance</button>
-    <button data-f="Data Integrity">Data Integrity</button>
-    <button data-f="Oracle Relationship">Oracle Relationship</button>
-    <button data-f="M&amp;A">M&amp;A</button>
-    <button data-f="Controls">Controls</button>
-    <button data-f="Architecture">Architecture</button>
-    <button data-f="Leadership">Leadership</button>
-    <button data-f="Behavioral">Behavioral</button>
-    <button data-f="Risk">Risk</button>
-    <button data-f="Data Migration">Data Migration</button>
-    <button data-f="AI Agent Studio">AI Agent Studio</button>
-    <button data-f="Redwood">Redwood</button>
-    <button data-f="Fusion Platform">Fusion Platform</button>
-  </div>
+  
   <div class="tools"><button id="toggleAll">Show all answers</button></div>
   <div id="list">
 <details class="q" data-topic="Role" data-level="B">
@@ -540,7 +521,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <script>
 (function () {
   var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
-  document.getElementById('filters').addEventListener('click', function (e) {
+  var fl = document.getElementById('filters'); if (fl) fl.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');

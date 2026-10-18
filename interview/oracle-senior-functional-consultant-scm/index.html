@@ -87,33 +87,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>14</b> basic</span>
     <span class="stat"><b>48</b> in-depth</span>
   </div>
-  <div class="filters" id="filters">
-    <button class="on" data-f="all">All</button>
-    <button data-f="Supply Chain Orchestration">Supply Chain Orchestration</button>
-    <button data-f="Order Management">Order Management</button>
-    <button data-f="Pricing">Pricing</button>
-    <button data-f="Procurement">Procurement</button>
-    <button data-f="B2B">B2B</button>
-    <button data-f="Receiving">Receiving</button>
-    <button data-f="Inventory">Inventory</button>
-    <button data-f="Costing">Costing</button>
-    <button data-f="Product Hub">Product Hub</button>
-    <button data-f="Quality">Quality</button>
-    <button data-f="Planning">Planning</button>
-    <button data-f="Shipping">Shipping</button>
-    <button data-f="Logistics">Logistics</button>
-    <button data-f="Manufacturing">Manufacturing</button>
-    <button data-f="Integration">Integration</button>
-    <button data-f="Reporting">Reporting</button>
-    <button data-f="Security">Security</button>
-    <button data-f="Data Migration">Data Migration</button>
-    <button data-f="Testing">Testing</button>
-    <button data-f="Behavioral">Behavioral</button>
-    <button data-f="SCM Basics">SCM Basics</button>
-    <button data-f="Quarterly Updates">Quarterly Updates</button>
-    <button data-f="Redwood">Redwood</button>
-    <button data-f="AI Agent Studio">AI Agent Studio</button>
-  </div>
+  
   <div class="tools"><button id="toggleAll">Show all answers</button></div>
   <div id="list">
 <details class="q" data-topic="Supply Chain Orchestration" data-level="D">
@@ -561,7 +535,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <script>
 (function () {
   var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
-  document.getElementById('filters').addEventListener('click', function (e) {
+  var fl = document.getElementById('filters'); if (fl) fl.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
