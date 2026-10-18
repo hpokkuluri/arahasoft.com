@@ -722,6 +722,10 @@ function show(page) {
   window.scrollTo({ top: 0, behavior: "smooth" });
   document.getElementById("navLinks").classList.remove("open");
 }
+(function () {
+  var h = location.hash.slice(1);
+  if (h && document.getElementById(h) && document.getElementById(h).tagName === 'SECTION') show(h);
+})();
 function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("open");
 }
