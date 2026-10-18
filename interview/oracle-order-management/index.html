@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oracle Order Management Interview Questions (32) | Interview Edge by Arahasoft</title>
+<meta name="description" content="32 Oracle Order Management interview questions with full answers, from Oracle Fusion Cloud setup to period close. Interview Edge by Arahasoft.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://arahasoft.com/interview/oracle-order-management/">
+<meta property="og:title" content="Oracle Order Management Interview Questions (32) | Interview Edge by Arahasoft">
+<meta property="og:description" content="32 Oracle Order Management interview questions with full answers, from Oracle Fusion Cloud setup to period close. Interview Edge by Arahasoft.">
+<meta property="og:url" content="https://arahasoft.com/interview/oracle-order-management/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Arahasoft">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the main Order Management setups?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: to see if you can stand up order-to-cash on the supply chain side.\n\nAnswer:\n\"I start with order types, transaction types and document numbering. Then orchestration processes and the assignment rules that route lines to them. Then fulfillment connectors to shipping, receiving, manufacturing or external systems. Then controls: hold codes, processing constraints and business rules like line defaults. Then pricing: price lists, discount lists, strategies and segments. Underneath, customers and items must be in place, and Global Order Promising needs sourcing rules.\"\n\nTip: Mention that customers, items and sourcing must exist first. Missing prerequisites stop testing on day one."}},{"@type":"Question","name":"What is jeopardy in order orchestration?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: jeopardy is how order managers catch late orders early.\n\nAnswer:\n\"Each orchestration step has a planned duration. Jeopardy compares the expected completion with the planned completion and flags lines as low, medium or high risk of missing the promised date. Order managers work the high-jeopardy lines, expediting or rescheduling, before the customer notices.\"\n\nTip: Say it's about acting before the customer notices. That's the business value."}},{"@type":"Question","name":"What are fulfillment lines?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: fulfillment lines are how Fusion OM actually tracks work.\n\nAnswer:\n\"A fulfillment line is the unit that orchestration works on. One sales order line can split into several fulfillment lines, for example a partial shipment, shipping from two warehouses, or components of a configured item. Each fulfillment line has its own status, schedule and orchestration process instance. So when someone asks where an order is, I look at the fulfillment lines, not the order line.\"\n\nTip: The last line is the practical point. It's what support people need to know."}},{"@type":"Question","name":"What are pricing segments and strategy assignments?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: Fusion pricing is built on these two ideas.\n\nAnswer:\n\"A pricing segment groups customers or orders for pricing, like 'Gold distributors'. Strategy assignment rules then assign a pricing strategy, which is a combination of price lists and discounts, to a segment or a context like customer, BU or channel. The pricing algorithm uses the assigned strategy to calculate prices on the order.\"\n\nTip: Give a segment example. It makes the concept easy to follow."}},{"@type":"Question","name":"How do you set up returns in Fusion OM?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: returns touch OM, receiving and AR.\n\nAnswer:\n\"I set up return orders that reference the original order, return reasons, and policies like credit only or replacement. The orchestration for returns is receive, inspect, then credit. The goods are received into a returns subinventory, and the credit memo comes from AR through billing.\"\n\nTip: Mention referencing the original order. It keeps the price and lot information right."}},{"@type":"Question","name":"How do orders flow from a third-party e-commerce site into Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: e-commerce integration is very common.\n\nAnswer:\n\"Orders come in through the sales order REST API or order import, usually through OIC. I map customers, items, prices, either frozen from the website or repriced in Fusion, and ship methods. Status updates go back to the website through business events or REST. And error handling and monitoring catch failed imports, because a failed order is a lost sale.\"\n\nTip: Mention the frozen vs repriced decision. It's the first design question in these integrations."}},{"@type":"Question","name":"What would you emphasize as an OM/O2C contractor?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a preparation question.\n\nAnswer:\n\"Orchestration design and change management. Global Order Promising and sourcing. Pricing setup. Integration with Shipping, AR and Revenue. And a real story about troubleshooting stuck orders, with what caused it and how I fixed it.\"\n\nTip: Prepare the stuck-order story. It's the question that comes up most."}},{"@type":"Question","name":"How would you architect Order Management for very high order volumes (e.g. 200k lines/day)?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a performance architecture question.\n\nAnswer:\n\"Orders come in through bulk or REST in parallel streams, with throttling and retry. Orchestration processes stay lean, with as few steps and waits as possible. Global Order Promising is tuned, with frequent collections and well-designed ATP rules, and non-urgent lines are scheduled in batches. Pick release runs in waves by warehouse with tested release rules. AutoInvoice is split by batch source and runs often. I'd do performance testing with production-like volumes and engage Oracle on capacity. And monitoring with alerts on backlog.\"\n\nTip: Mention performance testing at real volume. It's the step that prevents go-live failures."}},{"@type":"Question","name":"How would you design order orchestration to support omnichannel fulfillment (ship from store, BOPIS)?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a retail design question.\n\nAnswer:\n\"Fulfillment nodes, DCs, stores and suppliers for drop ship, are modeled as orgs or external fulfillment systems. Sourcing logic picks the node by distance, inventory, cost and capacity, using GOP rules or an external order-routing engine. There's an orchestration process per fulfillment type: ship from DC, ship from store, buy online pick up in store, and drop ship. Store inventory feeds give visibility across nodes. Changes and cancels are handled across systems. And returns can be made anywhere, routed to the right node.\"\n\nTip: Mention store inventory accuracy. Ship-from-store fails when store counts are wrong."}},{"@type":"Question","name":"How do you integrate CPQ with Oracle Order Management?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: CPQ to OM is a common integration.\n\nAnswer:\n\"CPQ owns configuration, pricing and quoting. An accepted quote becomes an order in OM through the native integration or OIC and REST, carrying the configuration, prices and discounts. I decide with the business whether OM reprices or freezes the CPQ prices; usually we freeze them. Configured items are created in OM and Configurator for assemble-to-order. Status updates go back to CPQ or CRM. And customer and item masters must match across the systems.\"\n\nTip: Recommend freezing CPQ prices. Repricing what sales already agreed causes disputes."}},{"@type":"Question","name":"How would you design order capture from multiple channels with agent support?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: AI-assisted order entry is a current topic.\n\nAnswer:\n\"E-commerce, CPQ and EDI orders come in through APIs. For emailed and PDF purchase orders, an AI agent extracts the lines, matches customer item numbers to ours, and creates draft orders for review. OM applies its normal validation and pricing. Low-confidence extractions go to a human review queue. And I'd monitor extraction accuracy and order cycle time to prove it's working.\"\n\nTip: Mention the human review queue. It's what makes AI order entry safe."}},{"@type":"Question","name":"Explain the Order-to-Cash flow from the SCM side.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a warm-up question for SCM roles.\n\nAnswer:\n\"A sales order is created manually, by import, or from CPQ or CRM. Orchestration starts: the order is validated, priced and scheduled, with Global Order Promising checking availability. Inventory is reserved, and pick release creates pick tasks. Items are picked and packed. Ship confirm issues inventory and fulfills the line. Billing sends the lines to Receivables through AutoInvoice. Revenue and COGS are recognized, and receipts are applied in AR.\"\n\nTip: Name the hand-off to AR. It shows you see the full chain."}},{"@type":"Question","name":"What is order orchestration in Fusion Order Management?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: orchestration is the core of Fusion OM.\n\nAnswer:\n\"Orchestration is the process engine that drives each order line through fulfillment. Orchestration processes define the steps, like schedule, reserve, ship and invoice, and their order. Fulfillment lines are assigned to a process by process assignment rules, for example by order type or item. Steps call fulfillment systems, like Shipping, Receiving, Manufacturing or a 3PL, through connectors. It also handles jeopardy, change management when an order changes mid-process, and holds. In EBS, the equivalent is Order Management workflows.\"\n\nTip: Mention change management. It's what makes orchestration powerful."}},{"@type":"Question","name":"What are holds in Order Management and how are they applied?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: holds are a key control.\n\nAnswer:\n\"Holds stop an order or line from moving forward. Credit check holds come from Credit Management when a customer is over their limit. Manual holds cover things like pricing review or export compliance. Each hold definition says where it stops the process, for example before shipping or before invoicing. Holds are applied by hand or by rules, and released by authorized users with a reason. I always check who can release which holds, because that's the control point.\"\n\nTip: Mention who can release holds. Auditors look at it."}},{"@type":"Question","name":"How does pricing work for sales orders in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: pricing is complex and different from EBS.\n\nAnswer:\n\"Fusion uses Pricing Administration. Price lists hold the base price by item and UOM. Discount lists hold percentage or amount discounts. Pricing strategies combine price lists and discounts, and are assigned to customers or segments through pricing segments and strategy assignment rules. Pricing algorithms calculate the final price, and charges like freight can be added. Cost-plus pricing is possible too. EBS uses Advanced Pricing modifiers and qualifiers instead.\"\n\nTip: Contrast with EBS. Many clients are migrating and want to know the difference."}},{"@type":"Question","name":"What is drop shipment?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a common fulfillment type.\n\nAnswer:\n\"In a drop shipment, the supplier ships straight to our customer, and the goods never enter our warehouse. A sales order line with a drop ship source creates a requisition and PO to the supplier. When the supplier confirms shipment, we record a logical receipt and shipment. AP pays the supplier and AR invoices the customer. Inventory isn't physically touched, but accounting still flows through receipt and cost.\"\n\nTip: Mention the logical receipt. It's how the accounting still happens."}},{"@type":"Question","name":"What is back-to-back ordering?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: often confused with drop ship.\n\nAnswer:\n\"A sales order line triggers a dedicated purchase or work order for that customer, and the supply is reserved to the order when it arrives. Unlike drop ship, the goods come into our warehouse first, then ship to the customer. It's used for items we don't stock but want to inspect or control. The reservation makes sure the incoming supply isn't used for another order.\"\n\nTip: Contrast it with drop ship in one line. That's what the interviewer wants."}},{"@type":"Question","name":"How do returns (RMA) work in Order Management?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a basic returns question.\n\nAnswer:\n\"I create a return order referencing the original sales order where possible, which keeps the price and lot or serial information. The customer ships it back, and it's received, with inspection if needed. Inventory goes up, or goes to a reject or MRB subinventory. A credit memo is created in AR when the return line is invoiced. Return reasons are tracked for analysis.\"\n\nTip: Mention return reason analysis. It's what turns returns into improvements."}},{"@type":"Question","name":"What are the main sales order statuses you see in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a basic support question.\n\nAnswer:\n\"An order starts as Draft, then Processing once submitted and orchestration is running. At line level you see Awaiting Shipping and Awaiting Billing, then Shipped, Billed and Closed. Lines can also be On Hold, Backordered or Canceled. The fulfillment line status tells you exactly which step a line is at.\"\n\nTip: Point to the fulfillment line status for detail. That's where support looks."}},{"@type":"Question","name":"How would you design the O2C process for a company selling through e-commerce and EDI?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a multi-channel design question.\n\nAnswer:\n\"Orders come in from e-commerce through REST order import or OIC, and EDI 850s through a B2B provider into OM. Pricing either runs in Fusion or honors the channel price. Orchestration covers standard ship, drop ship and back-to-back. GOP promises dates, and ATP is shown to customers. Shipping integrates with carriers, sends 856 ASNs to EDI customers and tracking to e-commerce. Invoicing sends 810s for EDI, and card payments settle for e-commerce. Returns work in both channels. And order import failures are monitored.\"\n\nTip: Name the EDI documents. It shows you've done real EDI work."}},{"@type":"Question","name":"How do you handle order holds for export compliance?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: export compliance is a legal requirement for many companies.\n\nAnswer:\n\"I integrate with a trade compliance solution, Oracle Global Trade Management or a third party, to screen parties against denied party lists and items for classification and licenses. An orchestration step triggers the screening, and a failure places an export compliance hold. The compliance team reviews it and releases or cancels. Everything is kept as an audit trail for regulators. It's common in tech and pharma companies selling internationally.\"\n\nTip: Mention the audit trail. Regulators can ask for it."}},{"@type":"Question","name":"How do you design GOP and sourcing for multi-warehouse fulfillment?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: promising accuracy depends on this design.\n\nAnswer:\n\"Sourcing rules by region send each ship-to zone to the nearest DC, with ranked alternates. ATP rules set which supply types count, the infinite time fence and lead times. Allocation protects constrained items for priority channels or customers. A split shipment policy says whether one line can ship from two places. Collections run frequently so supply data is current. And I measure promise accuracy and adjust the rules.\"\n\nTip: Mention measuring promise accuracy. Without it, nobody knows if the rules work."}},{"@type":"Question","name":"How do you design order holds and approvals for high-value or unusual orders?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a controls design question.\n\nAnswer:\n\"Credit check runs at booking or scheduling through Credit Management. Pricing approvals cover discounts beyond thresholds, through approval rules or upstream in CPQ. Manual review holds are triggered by rules, like order value over a set amount, a new customer, or a high-risk country. Holds are defined at the right step, before scheduling or before shipping. Each hold type has an owner and a target time to release. And a dashboard shows orders on hold by reason and age.\"\n\nTip: Mention owners and target release times. Holds without owners just sit."}},{"@type":"Question","name":"How would you design order hold management with AI assistance?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a current AI question.\n\nAnswer:\n\"Holds are still applied by rules, for credit, pricing or compliance. An AI agent summarizes each held order: the reason, the customer's history, and a recommended action. A credit analyst or order administrator decides and releases it, so a human stays in the loop. I'd track hold duration and reasons, and fix recurring root causes.\"\n\nTip: Stress human in the loop. It's what makes the design acceptable to finance."}},{"@type":"Question","name":"What is Supply Chain Financial Orchestration (SFO) and when do you need it?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: SFO is needed in most global supply chains, and many people find it confusing.\n\nAnswer:\n\"SFO handles the financial side of supply chain flows that cross legal entities or business units. For example, a US company buys goods that are received in its Mexican warehouse, or a sales BU sells goods shipped from another entity's warehouse. Financial orchestration flows, procurement or shipment flows, define the chain of entities, the transfer pricing rules and the documents, like intercompany AR and AP invoices. The goods move once physically, and SFO creates the logical intercompany transactions and accounting in each entity. It's common for global companies with central procurement or sales entities.\"\n\nTip: Describe one flow you configured and how you tested the intercompany invoices."}},{"@type":"Question","name":"How do you design orchestration processes for different order types?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a hands-on design question.\n\nAnswer:\n\"I group the fulfillment patterns: standard ship, drop ship, back-to-back, configured items, services or subscriptions, and returns. Each gets an orchestration process, often copied from a seeded one, with its steps, task types and change management rules. Process assignment rules route lines by order type, item type, BU or source. I set planned lead times per step so jeopardy works. Then I test change scenarios: quantity change after scheduling, cancel after pick, and change of ship-to after release.\"\n\nTip: List the change scenarios you'd test. They're where orchestration breaks."}},{"@type":"Question","name":"What is Global Order Promising (GOP) and how do sourcing rules affect it?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: GOP is behind every promised date.\n\nAnswer:\n\"GOP checks availability and promises a date for order lines. It considers on-hand, supply like POs, work orders and transfers, lead times and allocations. Sourcing rules and assignment sets tell GOP which warehouses and suppliers can fulfill, with ranks and percentages. It supports ATP, available to promise, and CTP, capable to promise, which checks components and resources for make items. Data comes into the planning repository through data collections, which must run regularly. A common issue is GOP not scheduling because collections didn't run or sourcing isn't assigned.\"\n\nTip: End with the common issue. It shows support experience."}},{"@type":"Question","name":"How do you handle changes to a sales order that is already in fulfillment?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: order changes are where orchestration earns its keep.\n\nAnswer:\n\"Fusion OM uses change management in the orchestration process. Each step defines whether a change is allowed and what compensation runs, for example cancel the reservation and reschedule, update the shipment line, or reject the change. Changes from source systems come in as revisions, and OM compares and applies them. After ship confirm, changes are blocked, so we use returns or credit memos instead. Processing constraints can also block specific changes by role or status.\"\n\nTip: Explain compensation patterns. It's the key Fusion concept here."}},{"@type":"Question","name":"What are processing constraints?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a control question.\n\nAnswer:\n\"Processing constraints are rules that stop changes or actions on orders under certain conditions. For example, 'the ship-to can't change once the line is pick released', or 'only order administrators can change the price after booking'. They're defined on entities, like the order header or line, and attributes, with conditions such as status, and the roles they apply to. There are seeded constraints, and I add custom ones for business rules. They protect data in the middle of fulfillment and enforce controls.\"\n\nTip: Give one example. It makes the concept clear right away."}},{"@type":"Question","name":"How would you set up customer-specific pricing with volume discounts?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a hands-on pricing question.\n\nAnswer:\n\"I create a price list with the base prices. Then a discount list with tiered volume adjustments, for example 1 to 99 units 0%, 100 to 499 units 5%, and 500 or more 10%. Then a pricing strategy that combines the price list and discount list. Then a pricing segment for the customer or customer class, and I assign the strategy to that segment. Then I test with orders at each tier and check the price breakdown on the order line.\"\n\nTip: Give the tiers with numbers. It shows you've built one."}},{"@type":"Question","name":"How do configured (ATO) items flow through Order Management?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: ATO crosses OM, Configurator and Manufacturing.\n\nAnswer:\n\"Assemble-to-order model items are configured by the customer in Configurator at order entry. When the order is scheduled, the chosen options create a configured item with its own structure. A work order, or a purchase for buy ATO, is created and reserved to the order. Once built, it ships like a normal item. Pricing comes from the model plus the options. Pick-to-order kits are different: they're picked from stock, not built.\"\n\nTip: Contrast ATO with PTO. It's the common follow-up."}},{"@type":"Question","name":"How do you troubleshoot a sales order line that won't schedule?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a daily support issue.\n\nAnswer:\n\"I check GOP first: is there supply, and are sourcing rules and assignment sets right for that ship-to and item? Have data collections run recently? Is the item enabled in the warehouse and for shipping, and is the customer ship-to valid? Are there holds on the order? Then the orchestration process assignment and any step errors.\"\n\nTip: Start with GOP and collections. That's where most scheduling problems are."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#0F2356; --accent:#1A4FCC; --accent-hover:#1340AA; --blue-light:#EEF3FF; --gray-50:#F8F9FC; --gray-100:#F0F2F7; --gray-200:#E2E6F0; --gray-600:#5A6480; --text:#111827; --text-muted:#4B5563; --border:#E2E6F0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Inter",sans-serif; color:var(--text); background:#fff; font-size:15px; line-height:1.7; }
+a { color:var(--accent); }
+nav { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.97); border-bottom:1px solid var(--border); padding:0 1.25rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+nav img { height:44px; width:auto; display:block; }
+nav .links { display:flex; gap:0.25rem; align-items:center; }
+nav .links a { color:var(--gray-600); text-decoration:none; font-size:0.88rem; font-weight:500; padding:0.45rem 0.75rem; border-radius:6px; }
+nav .links a:hover { background:var(--gray-100); color:var(--navy); }
+nav .links a.on { color:var(--accent); background:var(--blue-light); }
+.wrap { max-width:820px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+.crumb { font-size:0.8rem; color:var(--gray-600); margin-bottom:0.75rem; }
+.crumb a { color:var(--gray-600); text-decoration:none; }
+.brand { display:inline-block; font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); background:var(--blue-light); border:1px solid rgba(26,79,204,0.2); padding:0.2rem 0.6rem; border-radius:999px; margin-bottom:0.75rem; }
+h1 { font-family:"Manrope",sans-serif; font-weight:800; color:var(--navy); font-size:clamp(1.5rem,4vw,2.1rem); line-height:1.2; letter-spacing:-0.02em; margin-bottom:0.6rem; }
+.lead { color:var(--text-muted); margin-bottom:1.25rem; }
+.stats { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+.stat { background:var(--gray-50); border:1px solid var(--border); border-radius:8px; padding:0.4rem 0.8rem; font-size:0.85rem; color:var(--navy); }
+.stat b { font-family:"Manrope",sans-serif; }
+.filters { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem; }
+.filters button { font:inherit; font-size:0.82rem; border:1px solid var(--gray-200); background:#fff; color:var(--gray-600); border-radius:999px; padding:0.3rem 0.8rem; cursor:pointer; }
+.filters button.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+.tools { display:flex; justify-content:flex-end; margin-bottom:0.5rem; }
+.tools button { font:inherit; font-size:0.82rem; background:none; border:none; color:var(--accent); cursor:pointer; }
+details.q { border:1px solid var(--border); border-radius:10px; margin-bottom:0.6rem; background:#fff; }
+details.q[open] { border-color:rgba(26,79,204,0.35); }
+summary { list-style:none; cursor:pointer; padding:0.85rem 1rem; display:grid; grid-template-columns:auto 1fr; gap:0.2rem 0.75rem; align-items:start; }
+summary::-webkit-details-marker { display:none; }
+.qn { font-family:"Manrope",sans-serif; font-weight:800; color:var(--accent); font-size:0.9rem; min-width:1.6rem; padding-top:0.05rem; }
+.qt { font-weight:600; color:var(--navy); }
+.meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
+.tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
+.tag.lvl { background:var(--blue-light); color:var(--accent); }
+summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
+details[open] summary::after { content:"Hide answer"; }
+.ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
+.ans p { margin:0.35rem 0; }
+.ans .sub { font-weight:600; color:var(--navy); margin-top:0.6rem; }
+.ans ul, .ans ol { padding-left:1.15rem; margin:0.35rem 0; }
+.ans li { margin:0.2rem 0; }
+.ans strong { color:var(--navy); }
+.ans .tip { background:var(--blue-light); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; padding:0.5rem 0.75rem; margin-top:0.75rem; }
+.ans code { font-size:0.85em; background:var(--gray-100); padding:0.05rem 0.3rem; border-radius:4px; }
+.cta { margin-top:2.5rem; background:var(--navy); color:#fff; border-radius:12px; padding:1.5rem; }
+.cta h2 { font-family:"Manrope",sans-serif; font-size:1.2rem; margin-bottom:0.35rem; }
+.cta p { color:#C9D3EC; margin-bottom:1rem; }
+.cta a { display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; font-size:0.9rem; padding:0.65rem 1.4rem; border-radius:8px; }
+.cta a:hover { background:var(--accent-hover); }
+footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2rem 1rem; border-top:1px solid var(--border); }
+@media (max-width:640px) { nav .links a.hide-sm { display:none; } .ans { padding-left:1rem; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/"><img src="/Logo/arahasoft_logo1.png" alt="Arahasoft"></a>
+  <div class="links">
+    <a href="/" class="hide-sm">Home</a>
+    <a href="/interview/" class="on">Interview Edge</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</nav>
+<main class="wrap">
+  <div class="crumb"><a href="/">Arahasoft</a> › <a href="/interview/">Interview Edge</a> › Oracle Modules</div>
+  <span class="brand">Interview Edge by Arahasoft</span>
+  <h1>Oracle Order Management Interview Questions</h1>
+  <p class="lead">The questions interviewers ask on Oracle Fusion Payables, Payments and Expenses projects, with why they ask, a full answer you can say in the room, and a tip. Tap a question to see the answer.</p>
+  <div class="stats">
+    <span class="stat"><b>32</b> questions</span>
+    <span class="stat"><b>7</b> basic</span>
+    <span class="stat"><b>25</b> in-depth</span>
+  </div>
+  <div class="filters" id="filters">
+    <button class="on" data-f="all">All</button>
+    <button data-f="Setup">Setup</button>
+    <button data-f="Orchestration">Orchestration</button>
+    <button data-f="Pricing">Pricing</button>
+    <button data-f="Returns">Returns</button>
+    <button data-f="Integration">Integration</button>
+    <button data-f="Interview">Interview</button>
+    <button data-f="Order Management">Order Management</button>
+    <button data-f="Supply Chain Orchestration">Supply Chain Orchestration</button>
+  </div>
+  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div id="list">
+<details class="q" data-topic="Setup" data-level="B">
+  <summary><span class="qn">1</span><span class="qt">What are the main Order Management setups?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> to see if you can stand up order-to-cash on the supply chain side.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I start with order types, transaction types and document numbering. Then orchestration processes and the assignment rules that route lines to them. Then fulfillment connectors to shipping, receiving, manufacturing or external systems. Then controls: hold codes, processing constraints and business rules like line defaults. Then pricing: price lists, discount lists, strategies and segments. Underneath, customers and items must be in place, and Global Order Promising needs sourcing rules.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention that customers, items and sourcing must exist first. Missing prerequisites stop testing on day one.</p></div>
+</details>
+<details class="q" data-topic="Orchestration" data-level="D">
+  <summary><span class="qn">2</span><span class="qt">What is jeopardy in order orchestration?</span><span class="meta"><span class="tag">Orchestration</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> jeopardy is how order managers catch late orders early.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Each orchestration step has a planned duration. Jeopardy compares the expected completion with the planned completion and flags lines as low, medium or high risk of missing the promised date. Order managers work the high-jeopardy lines, expediting or rescheduling, before the customer notices.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say it's about acting before the customer notices. That's the business value.</p></div>
+</details>
+<details class="q" data-topic="Orchestration" data-level="D">
+  <summary><span class="qn">3</span><span class="qt">What are fulfillment lines?</span><span class="meta"><span class="tag">Orchestration</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> fulfillment lines are how Fusion OM actually tracks work.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A fulfillment line is the unit that orchestration works on. One sales order line can split into several fulfillment lines, for example a partial shipment, shipping from two warehouses, or components of a configured item. Each fulfillment line has its own status, schedule and orchestration process instance. So when someone asks where an order is, I look at the fulfillment lines, not the order line.&quot;</p>
+<p class="tip"><strong>Tip:</strong> The last line is the practical point. It's what support people need to know.</p></div>
+</details>
+<details class="q" data-topic="Pricing" data-level="D">
+  <summary><span class="qn">4</span><span class="qt">What are pricing segments and strategy assignments?</span><span class="meta"><span class="tag">Pricing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> Fusion pricing is built on these two ideas.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A pricing segment groups customers or orders for pricing, like 'Gold distributors'. Strategy assignment rules then assign a pricing strategy, which is a combination of price lists and discounts, to a segment or a context like customer, BU or channel. The pricing algorithm uses the assigned strategy to calculate prices on the order.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give a segment example. It makes the concept easy to follow.</p></div>
+</details>
+<details class="q" data-topic="Returns" data-level="B">
+  <summary><span class="qn">5</span><span class="qt">How do you set up returns in Fusion OM?</span><span class="meta"><span class="tag">Returns</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> returns touch OM, receiving and AR.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I set up return orders that reference the original order, return reasons, and policies like credit only or replacement. The orchestration for returns is receive, inspect, then credit. The goods are received into a returns subinventory, and the credit memo comes from AR through billing.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention referencing the original order. It keeps the price and lot information right.</p></div>
+</details>
+<details class="q" data-topic="Integration" data-level="D">
+  <summary><span class="qn">6</span><span class="qt">How do orders flow from a third-party e-commerce site into Fusion?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> e-commerce integration is very common.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Orders come in through the sales order REST API or order import, usually through OIC. I map customers, items, prices, either frozen from the website or repriced in Fusion, and ship methods. Status updates go back to the website through business events or REST. And error handling and monitoring catch failed imports, because a failed order is a lost sale.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the frozen vs repriced decision. It's the first design question in these integrations.</p></div>
+</details>
+<details class="q" data-topic="Interview" data-level="B">
+  <summary><span class="qn">7</span><span class="qt">What would you emphasize as an OM/O2C contractor?</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a preparation question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Orchestration design and change management. Global Order Promising and sourcing. Pricing setup. Integration with Shipping, AR and Revenue. And a real story about troubleshooting stuck orders, with what caused it and how I fixed it.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Prepare the stuck-order story. It's the question that comes up most.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">8</span><span class="qt">How would you architect Order Management for very high order volumes (e.g. 200k lines/day)?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a performance architecture question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Orders come in through bulk or REST in parallel streams, with throttling and retry. Orchestration processes stay lean, with as few steps and waits as possible. Global Order Promising is tuned, with frequent collections and well-designed ATP rules, and non-urgent lines are scheduled in batches. Pick release runs in waves by warehouse with tested release rules. AutoInvoice is split by batch source and runs often. I'd do performance testing with production-like volumes and engage Oracle on capacity. And monitoring with alerts on backlog.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention performance testing at real volume. It's the step that prevents go-live failures.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">9</span><span class="qt">How would you design order orchestration to support omnichannel fulfillment (ship from store, BOPIS)?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a retail design question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Fulfillment nodes, DCs, stores and suppliers for drop ship, are modeled as orgs or external fulfillment systems. Sourcing logic picks the node by distance, inventory, cost and capacity, using GOP rules or an external order-routing engine. There's an orchestration process per fulfillment type: ship from DC, ship from store, buy online pick up in store, and drop ship. Store inventory feeds give visibility across nodes. Changes and cancels are handled across systems. And returns can be made anywhere, routed to the right node.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention store inventory accuracy. Ship-from-store fails when store counts are wrong.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">10</span><span class="qt">How do you integrate CPQ with Oracle Order Management?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> CPQ to OM is a common integration.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;CPQ owns configuration, pricing and quoting. An accepted quote becomes an order in OM through the native integration or OIC and REST, carrying the configuration, prices and discounts. I decide with the business whether OM reprices or freezes the CPQ prices; usually we freeze them. Configured items are created in OM and Configurator for assemble-to-order. Status updates go back to CPQ or CRM. And customer and item masters must match across the systems.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Recommend freezing CPQ prices. Repricing what sales already agreed causes disputes.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">11</span><span class="qt">How would you design order capture from multiple channels with agent support?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> AI-assisted order entry is a current topic.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;E-commerce, CPQ and EDI orders come in through APIs. For emailed and PDF purchase orders, an AI agent extracts the lines, matches customer item numbers to ours, and creates draft orders for review. OM applies its normal validation and pricing. Low-confidence extractions go to a human review queue. And I'd monitor extraction accuracy and order cycle time to prove it's working.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the human review queue. It's what makes AI order entry safe.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="B">
+  <summary><span class="qn">12</span><span class="qt">Explain the Order-to-Cash flow from the SCM side.</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a warm-up question for SCM roles.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A sales order is created manually, by import, or from CPQ or CRM. Orchestration starts: the order is validated, priced and scheduled, with Global Order Promising checking availability. Inventory is reserved, and pick release creates pick tasks. Items are picked and packed. Ship confirm issues inventory and fulfills the line. Billing sends the lines to Receivables through AutoInvoice. Revenue and COGS are recognized, and receipts are applied in AR.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Name the hand-off to AR. It shows you see the full chain.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">13</span><span class="qt">What is order orchestration in Fusion Order Management?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> orchestration is the core of Fusion OM.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Orchestration is the process engine that drives each order line through fulfillment. Orchestration processes define the steps, like schedule, reserve, ship and invoice, and their order. Fulfillment lines are assigned to a process by process assignment rules, for example by order type or item. Steps call fulfillment systems, like Shipping, Receiving, Manufacturing or a 3PL, through connectors. It also handles jeopardy, change management when an order changes mid-process, and holds. In EBS, the equivalent is Order Management workflows.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention change management. It's what makes orchestration powerful.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="B">
+  <summary><span class="qn">14</span><span class="qt">What are holds in Order Management and how are they applied?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> holds are a key control.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Holds stop an order or line from moving forward. Credit check holds come from Credit Management when a customer is over their limit. Manual holds cover things like pricing review or export compliance. Each hold definition says where it stops the process, for example before shipping or before invoicing. Holds are applied by hand or by rules, and released by authorized users with a reason. I always check who can release which holds, because that's the control point.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention who can release holds. Auditors look at it.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">15</span><span class="qt">How does pricing work for sales orders in Fusion?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> pricing is complex and different from EBS.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Fusion uses Pricing Administration. Price lists hold the base price by item and UOM. Discount lists hold percentage or amount discounts. Pricing strategies combine price lists and discounts, and are assigned to customers or segments through pricing segments and strategy assignment rules. Pricing algorithms calculate the final price, and charges like freight can be added. Cost-plus pricing is possible too. EBS uses Advanced Pricing modifiers and qualifiers instead.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Contrast with EBS. Many clients are migrating and want to know the difference.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">16</span><span class="qt">What is drop shipment?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a common fulfillment type.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;In a drop shipment, the supplier ships straight to our customer, and the goods never enter our warehouse. A sales order line with a drop ship source creates a requisition and PO to the supplier. When the supplier confirms shipment, we record a logical receipt and shipment. AP pays the supplier and AR invoices the customer. Inventory isn't physically touched, but accounting still flows through receipt and cost.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the logical receipt. It's how the accounting still happens.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">17</span><span class="qt">What is back-to-back ordering?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> often confused with drop ship.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A sales order line triggers a dedicated purchase or work order for that customer, and the supply is reserved to the order when it arrives. Unlike drop ship, the goods come into our warehouse first, then ship to the customer. It's used for items we don't stock but want to inspect or control. The reservation makes sure the incoming supply isn't used for another order.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Contrast it with drop ship in one line. That's what the interviewer wants.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="B">
+  <summary><span class="qn">18</span><span class="qt">How do returns (RMA) work in Order Management?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a basic returns question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I create a return order referencing the original sales order where possible, which keeps the price and lot or serial information. The customer ships it back, and it's received, with inspection if needed. Inventory goes up, or goes to a reject or MRB subinventory. A credit memo is created in AR when the return line is invoiced. Return reasons are tracked for analysis.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention return reason analysis. It's what turns returns into improvements.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="B">
+  <summary><span class="qn">19</span><span class="qt">What are the main sales order statuses you see in Fusion?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a basic support question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;An order starts as Draft, then Processing once submitted and orchestration is running. At line level you see Awaiting Shipping and Awaiting Billing, then Shipped, Billed and Closed. Lines can also be On Hold, Backordered or Canceled. The fulfillment line status tells you exactly which step a line is at.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Point to the fulfillment line status for detail. That's where support looks.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">20</span><span class="qt">How would you design the O2C process for a company selling through e-commerce and EDI?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a multi-channel design question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Orders come in from e-commerce through REST order import or OIC, and EDI 850s through a B2B provider into OM. Pricing either runs in Fusion or honors the channel price. Orchestration covers standard ship, drop ship and back-to-back. GOP promises dates, and ATP is shown to customers. Shipping integrates with carriers, sends 856 ASNs to EDI customers and tracking to e-commerce. Invoicing sends 810s for EDI, and card payments settle for e-commerce. Returns work in both channels. And order import failures are monitored.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Name the EDI documents. It shows you've done real EDI work.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">21</span><span class="qt">How do you handle order holds for export compliance?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> export compliance is a legal requirement for many companies.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I integrate with a trade compliance solution, Oracle Global Trade Management or a third party, to screen parties against denied party lists and items for classification and licenses. An orchestration step triggers the screening, and a failure places an export compliance hold. The compliance team reviews it and releases or cancels. Everything is kept as an audit trail for regulators. It's common in tech and pharma companies selling internationally.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the audit trail. Regulators can ask for it.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">22</span><span class="qt">How do you design GOP and sourcing for multi-warehouse fulfillment?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> promising accuracy depends on this design.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Sourcing rules by region send each ship-to zone to the nearest DC, with ranked alternates. ATP rules set which supply types count, the infinite time fence and lead times. Allocation protects constrained items for priority channels or customers. A split shipment policy says whether one line can ship from two places. Collections run frequently so supply data is current. And I measure promise accuracy and adjust the rules.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention measuring promise accuracy. Without it, nobody knows if the rules work.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">23</span><span class="qt">How do you design order holds and approvals for high-value or unusual orders?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a controls design question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Credit check runs at booking or scheduling through Credit Management. Pricing approvals cover discounts beyond thresholds, through approval rules or upstream in CPQ. Manual review holds are triggered by rules, like order value over a set amount, a new customer, or a high-risk country. Holds are defined at the right step, before scheduling or before shipping. Each hold type has an owner and a target time to release. And a dashboard shows orders on hold by reason and age.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention owners and target release times. Holds without owners just sit.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">24</span><span class="qt">How would you design order hold management with AI assistance?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a current AI question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Holds are still applied by rules, for credit, pricing or compliance. An AI agent summarizes each held order: the reason, the customer's history, and a recommended action. A credit analyst or order administrator decides and releases it, so a human stays in the loop. I'd track hold duration and reasons, and fix recurring root causes.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Stress human in the loop. It's what makes the design acceptable to finance.</p></div>
+</details>
+<details class="q" data-topic="Supply Chain Orchestration" data-level="D">
+  <summary><span class="qn">25</span><span class="qt">What is Supply Chain Financial Orchestration (SFO) and when do you need it?</span><span class="meta"><span class="tag">Supply Chain Orchestration</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> SFO is needed in most global supply chains, and many people find it confusing.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;SFO handles the financial side of supply chain flows that cross legal entities or business units. For example, a US company buys goods that are received in its Mexican warehouse, or a sales BU sells goods shipped from another entity's warehouse. Financial orchestration flows, procurement or shipment flows, define the chain of entities, the transfer pricing rules and the documents, like intercompany AR and AP invoices. The goods move once physically, and SFO creates the logical intercompany transactions and accounting in each entity. It's common for global companies with central procurement or sales entities.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Describe one flow you configured and how you tested the intercompany invoices.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">26</span><span class="qt">How do you design orchestration processes for different order types?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a hands-on design question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I group the fulfillment patterns: standard ship, drop ship, back-to-back, configured items, services or subscriptions, and returns. Each gets an orchestration process, often copied from a seeded one, with its steps, task types and change management rules. Process assignment rules route lines by order type, item type, BU or source. I set planned lead times per step so jeopardy works. Then I test change scenarios: quantity change after scheduling, cancel after pick, and change of ship-to after release.&quot;</p>
+<p class="tip"><strong>Tip:</strong> List the change scenarios you'd test. They're where orchestration breaks.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">27</span><span class="qt">What is Global Order Promising (GOP) and how do sourcing rules affect it?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> GOP is behind every promised date.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;GOP checks availability and promises a date for order lines. It considers on-hand, supply like POs, work orders and transfers, lead times and allocations. Sourcing rules and assignment sets tell GOP which warehouses and suppliers can fulfill, with ranks and percentages. It supports ATP, available to promise, and CTP, capable to promise, which checks components and resources for make items. Data comes into the planning repository through data collections, which must run regularly. A common issue is GOP not scheduling because collections didn't run or sourcing isn't assigned.&quot;</p>
+<p class="tip"><strong>Tip:</strong> End with the common issue. It shows support experience.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">28</span><span class="qt">How do you handle changes to a sales order that is already in fulfillment?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> order changes are where orchestration earns its keep.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Fusion OM uses change management in the orchestration process. Each step defines whether a change is allowed and what compensation runs, for example cancel the reservation and reschedule, update the shipment line, or reject the change. Changes from source systems come in as revisions, and OM compares and applies them. After ship confirm, changes are blocked, so we use returns or credit memos instead. Processing constraints can also block specific changes by role or status.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Explain compensation patterns. It's the key Fusion concept here.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">29</span><span class="qt">What are processing constraints?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a control question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Processing constraints are rules that stop changes or actions on orders under certain conditions. For example, 'the ship-to can't change once the line is pick released', or 'only order administrators can change the price after booking'. They're defined on entities, like the order header or line, and attributes, with conditions such as status, and the roles they apply to. There are seeded constraints, and I add custom ones for business rules. They protect data in the middle of fulfillment and enforce controls.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give one example. It makes the concept clear right away.</p></div>
+</details>
+<details class="q" data-topic="Pricing" data-level="D">
+  <summary><span class="qn">30</span><span class="qt">How would you set up customer-specific pricing with volume discounts?</span><span class="meta"><span class="tag">Pricing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a hands-on pricing question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I create a price list with the base prices. Then a discount list with tiered volume adjustments, for example 1 to 99 units 0%, 100 to 499 units 5%, and 500 or more 10%. Then a pricing strategy that combines the price list and discount list. Then a pricing segment for the customer or customer class, and I assign the strategy to that segment. Then I test with orders at each tier and check the price breakdown on the order line.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give the tiers with numbers. It shows you've built one.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">31</span><span class="qt">How do configured (ATO) items flow through Order Management?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> ATO crosses OM, Configurator and Manufacturing.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Assemble-to-order model items are configured by the customer in Configurator at order entry. When the order is scheduled, the chosen options create a configured item with its own structure. A work order, or a purchase for buy ATO, is created and reserved to the order. Once built, it ships like a normal item. Pricing comes from the model plus the options. Pick-to-order kits are different: they're picked from stock, not built.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Contrast ATO with PTO. It's the common follow-up.</p></div>
+</details>
+<details class="q" data-topic="Order Management" data-level="D">
+  <summary><span class="qn">32</span><span class="qt">How do you troubleshoot a sales order line that won't schedule?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a daily support issue.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I check GOP first: is there supply, and are sourcing rules and assignment sets right for that ship-to and item? Have data collections run recently? Is the item enabled in the warehouse and for shipping, and is the customer ship-to valid? Are there holds on the order? Then the orchestration process assignment and any step errors.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Start with GOP and collections. That's where most scheduling problems are.</p></div>
+</details>
+  </div>
+  <section class="cta">
+    <h2>Need Oracle help?</h2>
+    <p>Arahasoft implements and supports Oracle Fusion Cloud and E-Business Suite: Financials, SCM, Procurement and HCM.</p>
+    <a href="/#contact">Contact Arahasoft</a>
+  </section>
+</main>
+<footer>© 2026 Arahasoft · Interview Edge by Arahasoft</footer>
+<script>
+(function () {
+  var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
+  document.getElementById('filters').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    var f = b.getAttribute('data-f');
+    qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+  });
+  var open = false, t = document.getElementById('toggleAll');
+  t.addEventListener('click', function () {
+    open = !open; qs.forEach(function (q) { if (q.style.display !== 'none') q.open = open; });
+    t.textContent = open ? 'Hide all answers' : 'Show all answers';
+  });
+})();
+</script>
+</body>
+</html>

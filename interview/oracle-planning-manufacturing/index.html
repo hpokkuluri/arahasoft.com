@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oracle Planning and Manufacturing Interview Questions (32) | Interview Edge by Arahasoft</title>
+<meta name="description" content="32 Oracle Planning and Manufacturing interview questions with full answers, from Oracle Fusion Cloud setup to period close. Interview Edge by Arahasoft.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://arahasoft.com/interview/oracle-planning-manufacturing/">
+<meta property="og:title" content="Oracle Planning and Manufacturing Interview Questions (32) | Interview Edge by Arahasoft">
+<meta property="og:description" content="32 Oracle Planning and Manufacturing interview questions with full answers, from Oracle Fusion Cloud setup to period close. Interview Edge by Arahasoft.">
+<meta property="og:url" content="https://arahasoft.com/interview/oracle-planning-manufacturing/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Arahasoft">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between Supply Planning, Replenishment Planning and Demand Management in Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: to see if you know the planning suite's pieces.\n\nAnswer:\n\"Demand Management builds statistical and machine-learning forecasts and the consensus demand plan. Supply Planning is the MRP-style engine: it nets demand against supply across orgs and decides what to make, buy or transfer, constrained or unconstrained. Replenishment Planning handles inventory policies and replenishment for distribution networks, like min-max and safety stock optimization. Sales and Operations Planning ties all of it to the financial plan.\"\n\nTip: Give one line per module. It's a map question, so keep it tidy."}},{"@type":"Question","name":"What are planning exceptions and how do planners use them?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: exceptions are how planners spend their day.\n\nAnswer:\n\"Exceptions are messages like late replenishment, items below safety stock, excess inventory, past due orders and resource overloads. Planners filter them by priority and act: expedite, reschedule or release. A good setup keeps exceptions actionable. If planners see 5,000 messages, they ignore all of them, so I tune the thresholds until the list is something a planner can work in a day.\"\n\nTip: Make the point about too many exceptions. It's the real problem in most implementations."}},{"@type":"Question","name":"What is data collection in Fusion planning?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: stale collections are the top cause of bad plans.\n\nAnswer:\n\"Collections copy reference data, like items, orgs, calendars and sourcing, and transactional data, like on-hand, POs, work orders and sales orders, into the planning data repository. Targeted collections do a full refresh; net change collections bring only what changed. They're scheduled often. If collections are stale, plans and promise dates are wrong, so it's the first thing I check when a plan looks odd.\"\n\nTip: Say it's the first thing you check. It shows real troubleshooting experience."}},{"@type":"Question","name":"What are work definitions and how do they relate to work orders?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a basic Fusion Manufacturing question.\n\nAnswer:\n\"A work definition describes how to make an item: the operations, resources, materials and outputs. It's versioned and has a priority when there's more than one. Work orders are created from a work definition, chosen explicitly or by default, and inherit its operations and materials. Changes to a work definition affect new work orders only, not ones already created.\"\n\nTip: Mention that existing work orders don't change. It's a common question from production teams."}},{"@type":"Question","name":"How is material supplied to work orders?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: supply types decide how components are issued.\n\nAnswer:\n\"Each component has a supply type. Push means it's issued manually before or during the job. Assembly pull backflushes it when the assembly is completed. Operation pull backflushes it when an operation is completed. Bulk means it's expensed and not tracked per job, like screws or glue. Phantom means a sub-assembly that's never stocked, so its components are pulled straight into the parent. Supply subinventory and locator default from the item or work definition, and push materials are picked with pick lists or move orders.\"\n\nTip: Give an example for bulk and phantom. They're the ones people mix up."}},{"@type":"Question","name":"What is the Quality Issues and Actions (QIA) flow?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: quality processes are key in manufacturing and regulated companies.\n\nAnswer:\n\"Quality issues, or nonconformances, are recorded from receiving, production or customer complaints. They're investigated, and actions are assigned, corrective or preventive. Issues link to items, lots and suppliers. Closure and effectiveness are tracked, and analytics show trends, like one supplier causing most receiving issues.\"\n\nTip: Mention effectiveness checks. A closed action that didn't fix anything is still a problem."}},{"@type":"Question","name":"What should a planning/manufacturing contractor be ready to discuss?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a preparation question.\n\nAnswer:\n\"Data foundations, like lead times, BOMs and sourcing, and collections. The plan types and parameters I've set up. Work order execution and costing. Integration with MES and quality systems. And a story where I improved plan accuracy or reduced inventory, with the numbers.\"\n\nTip: Have one improvement story with a number ready. It's what gets remembered."}},{"@type":"Question","name":"How would you architect supply chain planning for a global company?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a senior planning architecture question.\n\nAnswer:\n\"Demand Management for statistical and ML forecasts by product, customer and region, with a consensus process. Supply Planning for constrained plans across plants and DCs, with a master production schedule for key plants. Sales and Operations Planning linking demand, supply and finance. Replenishment Planning for DC inventory policies. Data comes from Fusion collections and external systems by file, and planning owns the item planning attributes. The cadence is a weekly plan with daily net change. Scenarios support what-if and risk. And it connects to Global Order Promising for customer promises.\"\n\nTip: Mention who owns planning attributes. Data ownership decides whether planning works."}},{"@type":"Question","name":"What data foundations must be in place before planning can work?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: planning fails on data more than on software.\n\nAnswer:\n\"Item attributes: processing and pre- and post-processing lead times, order modifiers, safety stock policy, planning method and make or buy. Accurate BOMs and work definitions. Sourcing rules and assignment sets. Shipping, receiving and manufacturing calendars. Clean demand history, adjusted for returns, promotions and stockouts. Accurate open supply: POs, work orders and transfers. And resource capacities if the plan is constrained. Without these, the plan produces noise and planners won't trust it.\"\n\nTip: End with trust. It's the real cost of bad data."}},{"@type":"Question","name":"How would you model contract manufacturers in Oracle Fusion?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: outsourcing is common, and modeling it right matters for cost and visibility.\n\nAnswer:\n\"I'd use Fusion Outsourced Manufacturing, where we own the material and design and the contract manufacturer builds. The CM site is modeled as a contract manufacturing inventory org with work definitions. A purchase order for the CM's service is tied to a work order, and components are shipped to the CM or bought by them on our behalf. The CM reports progress and completions through B2B messages, and we receive the finished goods. Cost is material plus the CM service cost rolled into the assembly. Visibility comes through the supplier portal or B2B.\"\n\nTip: Mention the PO tied to the work order. It's the key modeling idea."}},{"@type":"Question","name":"How do you architect manufacturing execution between Fusion and MES?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: most plants run an MES next to the ERP.\n\nAnswer:\n\"Fusion is the system of record for planning, work orders, costing, inventory and quality records. MES handles shop-floor detail: machine data, operator steps, and in pharma, electronic batch records. Work orders and BOMs or recipes go from Fusion to MES. Consumption, completions, labor and machine time, and quality results come back. I send summaries where ERP doesn't need the detail, near real time for inventory-critical transactions, and I build error handling and WIP reconciliation between the two.\"\n\nTip: Say \"send summaries where detail isn't needed\". Over-integrating is a common mistake."}},{"@type":"Question","name":"How does Oracle Maintenance fit into the SCM architecture?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: asset-heavy companies need maintenance tied to supply chain.\n\nAnswer:\n\"Oracle Maintenance manages equipment: assets, work orders, preventive maintenance schedules and meters. Spare parts come from inventory, and purchases go through procurement. Costs go to assets or cost centers, with integration to Fixed Assets. IoT data can trigger condition-based maintenance. The benefits are better uptime and optimized spare parts.\"\n\nTip: Mention IoT-triggered maintenance. It's where the field is going."}},{"@type":"Question","name":"How would you architect a closed-loop quality process with Oracle?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a quality architecture question.\n\nAnswer:\n\"Inspection plans run at receiving, production and shipping. Failures create nonconformance records, which lead to investigation and CAPA, corrective and preventive actions. Supplier quality uses supplier corrective action requests and scorecards that feed sourcing decisions. When a design or spec changes, a change order in Product Hub carries it. Customer complaints link to lots through genealogy. And analytics show defect trends. The loop is closed when what we learn changes specs, suppliers or processes.\"\n\nTip: Explain what \"closed loop\" means. It's the point of the question."}},{"@type":"Question","name":"What is S&OP and how would you support it with Oracle?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: S&OP connects planning to leadership decisions.\n\nAnswer:\n\"Sales and Operations Planning is a monthly process that aligns demand, supply and finance: demand review, supply review, financial reconciliation, then the executive S&OP meeting. Oracle Sales and Operations Planning in Fusion provides the plans, scenarios, financial views and collaboration. It brings together demand plans, supply plans and EPM financial plans. The outcome is one agreed plan that drives both execution and the finance forecast.\"\n\nTip: Name the four monthly steps. It shows you know the process, not just the tool."}},{"@type":"Question","name":"Where does AI help most in Fusion planning, and what are the limits?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a balanced question about AI.\n\nAnswer:\n\"AI helps most with machine-learning forecasting and demand sensing, finding anomalies in history, prioritizing and explaining exceptions for planners, and summarizing scenarios for S&OP. The limits are clear: bad master data, like wrong lead times or BOMs, still breaks plans; planners must understand and own the decisions; and explanations matter, because planners won't follow a recommendation they can't understand.\"\n\nTip: Give the limits honestly. Interviewers trust balanced answers more."}},{"@type":"Question","name":"What is a bill of materials (BOM) and a routing / work definition?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a basic manufacturing question.\n\nAnswer:\n\"A BOM, or item structure, is the list of components and quantities needed to make an item. A routing in EBS, or a work definition in Fusion, is the sequence of operations and resources, machines and labor, with components assigned to the operations where they're used. Together they drive work orders, cost roll-ups and planning. In Fusion, item structures live in Product Hub and work definitions in Manufacturing.\"\n\nTip: Mention where each lives in Fusion. It's a common follow-up."}},{"@type":"Question","name":"Describe the work order lifecycle in Fusion Manufacturing.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a core manufacturing process question.\n\nAnswer:\n\"A work order is created manually, from planning, or for a sales order. It's released, so components can be picked. Components are issued manually or backflushed. Operations and resources are reported as work is done. The assembly is completed into inventory, with any scrap reported. Then the work order is closed, and Cost Management calculates variances. The statuses go Unreleased, Released, Completed, Closed, and it can also be On Hold or Canceled.\"\n\nTip: Stress closing work orders on time. Late closes delay variances and month-end."}},{"@type":"Question","name":"What is the difference between MRP and min-max planning?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: to see if you can pick the right method.\n\nAnswer:\n\"Min-max looks only at on-hand and on-order against fixed minimum and maximum levels. No forecasts, no BOM explosion. MRP, in Fusion Supply Planning, uses demand from forecasts and sales orders, supply from on-hand, POs and work orders, plus BOMs and lead times, to calculate what to make or buy and when, exploding demand down to components. I use min-max for simple, stable items like spares, and MRP for manufactured items and variable demand.\"\n\nTip: Say when you'd use each. That's the real question."}},{"@type":"Question","name":"How would you approach implementing Fusion Supply Planning?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a delivery approach question.\n\nAnswer:\n\"Data readiness comes first: item planning attributes like lead times, order modifiers and safety stock, accurate BOMs and routings, and sourcing rules. Then collections setup and frequency. Then design plan types, supply plan, replenishment and MPS, and horizons. Then define the exceptions planners will act on. Then pilot one product line and compare the plan's recommendations with what planners would have done. Training focuses on trust: planners need to see why the plan recommends something. And I measure service level, inventory and expedites.\"\n\nTip: Mention the side-by-side comparison in the pilot. It's how trust is built."}},{"@type":"Question","name":"How do you set safety stock?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: safety stock is a direct trade-off between service and cash.\n\nAnswer:\n\"Safety stock can be a fixed quantity, days of supply, or statistical. The statistical method uses demand variability, lead-time variability and a target service level; for example, 95% service uses a z-value of about 1.65. Fusion can calculate safety stock from forecast error. I set higher service levels for A items and critical customers and lower for C items, and review them every quarter, because static safety stock goes stale.\"\n\nTip: Mention the z-value. It shows you understand the math."}},{"@type":"Question","name":"Discrete vs process manufacturing — what is different in Oracle?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: industries need different models.\n\nAnswer:\n\"Discrete manufacturing assembles items from components, like electronics or machinery, using BOMs, work definitions, work orders with operations, and serial tracking. Process manufacturing uses recipes and formulas with yields, by-products and co-products, batch sizes, and potency or grade, like chemicals, food and pharma. Fusion supports both, with process work orders that have multiple outputs. Costing differs too: process manufacturing handles yields and allocates cost across co-products.\"\n\nTip: Mention co-product costing. It's the hard part of process manufacturing."}},{"@type":"Question","name":"How would you integrate quality inspection into receiving for a regulated company?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a regulated-industry design question.\n\nAnswer:\n\"Regulated items use inspection receipt routing. Inspection plans by item and supplier set sampling, often AQL, and specifications. Received material goes to a quarantine subinventory or status until QA releases it. Failures create nonconformances and supplier corrective action requests. Release uses electronic signatures. And results feed supplier performance scores.\"\n\nTip: Mention quarantine until QA release. It's the core control."}},{"@type":"Question","name":"How do you get planners to trust a new planning system?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: adoption decides whether planning projects succeed.\n\nAnswer:\n\"Clean data first, because wrong lead times destroy trust fast. Then run the new plan in parallel and compare its recommendations with what planners would do, and explain the differences. Show pegging, so planners can see why a planned order exists. Start with the exceptions that matter instead of thousands of messages. Involve senior planners in tuning the parameters. And celebrate quick wins, like expedites avoided or inventory reduced.\"\n\nTip: Involving senior planners is the strongest point. They're the ones others follow."}},{"@type":"Question","name":"How would you approach a Fusion Manufacturing implementation for a mid-size plant?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a delivery approach question.\n\nAnswer:\n\"First the plant data: work centers, resources, calendars, item structures and work definitions, validated by engineering. Then work order types and execution: manual issue or backflush, and how detailed operation reporting should be, without overdoing it. Then shop-floor devices or tablets, and possibly MES integration. Then costing: standard cost with resource and overhead rates and variance reporting. Quality inspections at key operations. Planned orders from planning becoming work orders. And a pilot on one production line first.\"\n\nTip: Say \"don't overdo operation reporting\". Too much detail slows the shop floor."}},{"@type":"Question","name":"How does Oracle Quality Management support inspections?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a basic quality question.\n\nAnswer:\n\"Inspection plans define what to check, like a dimension or pH, the sampling, and the acceptance criteria. Inspections are triggered at receiving, at work order operations, or ad hoc in inventory. Results are recorded, and failures can create issues, nonconformances and corrective actions. Rejected material moves to a quarantine status or subinventory. It's integrated with Receiving through inspection routing and with Manufacturing.\"\n\nTip: Give one characteristic example. It makes it concrete."}},{"@type":"Question","name":"Describe how Supply Planning generates planned orders.","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a core planning engine question.\n\nAnswer:\n\"Data collections bring on-hand, POs, work orders, sales orders, forecasts, items and BOMs into the planning repository. A supply plan runs with its options: horizon, organizations, demand schedules and constraints. It nets demand against supply, explodes BOMs, and applies lead times, order modifiers like minimum, maximum and fixed lot multiple, and sourcing rules. It creates planned orders, buy, make or transfer, and recommendations to reschedule in, out or cancel. Planners review them in the Supply Planning work area and release planned orders to execution as requisitions, work orders or transfer orders.\"\n\nTip: End with the release to execution. That's where planning meets the real world."}},{"@type":"Question","name":"What are sourcing rules, bills of distribution and assignment sets?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: sourcing drives planning and promising.\n\nAnswer:\n\"A sourcing rule says where supply comes from for an org or item, for example buy 60% from supplier X and 40% from Y, or transfer from org A, with ranks for priority. A bill of distribution handles sourcing across several orgs, a global source chain. An assignment set assigns sourcing rules at different levels: global, org, category, item, or item-org, and the most specific level wins. Planning, GOP, min-max and automatic requisition sourcing all use them.\"\n\nTip: Say \"the most specific level wins\". It's how you debug sourcing."}},{"@type":"Question","name":"What is the difference between a forecast and a demand plan?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a basic demand planning question.\n\nAnswer:\n\"A forecast is a prediction of future demand, from history, statistical models or input. A demand plan, in Demand Management, manages forecasts across levels, like product family, region and customer, blends statistical forecasts with sales input into a consensus, and measures forecast accuracy. The approved demand plan feeds the supply plan. And forecast consumption matters: actual sales orders consume the forecast so demand isn't counted twice.\"\n\nTip: Mention forecast consumption. It's what separates a good answer."}},{"@type":"Question","name":"What is backflushing?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a common manufacturing concept with risks.\n\nAnswer:\n\"Backflushing issues components automatically when an operation or the assembly is reported complete, instead of issuing them beforehand. It's set by the component's supply type: assembly pull at completion, or operation pull at operation completion. It cuts transactions for high-volume, low-value components. The risk is inaccurate on-hand if actual usage differs, for example from scrap, so it needs accurate BOMs and good scrap reporting.\"\n\nTip: Name the risk. It shows judgment."}},{"@type":"Question","name":"How is work order cost calculated and how are variances recognized?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: manufacturing cost is a finance and operations meeting point.\n\nAnswer:\n\"Under standard cost, the assembly is valued at standard, and actual material, resources and overhead are charged to the work order. At close, variances are calculated: material usage, resource efficiency and rate. Under actual or average cost, the assembly cost is the actual cost charged. The accounting is Dr WIP for issues and resources, Cr WIP and Dr Inventory at completion, and variances to variance accounts at close. Closing work orders on time keeps month-end costing clean.\"\n\nTip: End with closing on time. It's the operational lesson."}},{"@type":"Question","name":"How do you mature a company from spreadsheet planning to integrated business planning?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: a transformation question.\n\nAnswer:\n\"In stages. First, clean data and one demand plan in the system, with basic supply planning. Second, constrained supply planning, inventory policies and an S&OP process. Third, integrated business planning with financial plans, scenario modeling and machine-learning forecasting. People and process matter as much as tools: planning roles, meeting cadence and KPIs. And I'd show value at each stage, in forecast accuracy, inventory and service, so the business keeps investing.\"\n\nTip: Say you show value at each stage. It's how transformations keep their funding."}},{"@type":"Question","name":"How would you integrate commercial and supply planning with finance in an IBP process?","acceptedAnswer":{"@type":"Answer","text":"Why they ask: IBP is where planning becomes a leadership tool.\n\nAnswer:\n\"First a common data model: product families, customers and regions, and time buckets that match the financial calendar. Then the chain: demand plan to supply plan to financial projection, revenue, margin, inventory and cash, using standard costs and prices. Gaps against budget are highlighted for executive decisions. Scenario modeling covers things like price changes and capacity limits. EPM integration feeds the financial forecast. And a monthly cadence with clear decision rights.\"\n\nTip: Mention aligning time buckets with the financial calendar. Without it, finance can't use the numbers."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#0F2356; --accent:#1A4FCC; --accent-hover:#1340AA; --blue-light:#EEF3FF; --gray-50:#F8F9FC; --gray-100:#F0F2F7; --gray-200:#E2E6F0; --gray-600:#5A6480; --text:#111827; --text-muted:#4B5563; --border:#E2E6F0; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Inter",sans-serif; color:var(--text); background:#fff; font-size:15px; line-height:1.7; }
+a { color:var(--accent); }
+nav { position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.97); border-bottom:1px solid var(--border); padding:0 1.25rem; display:flex; align-items:center; justify-content:space-between; height:64px; }
+nav img { height:44px; width:auto; display:block; }
+nav .links { display:flex; gap:0.25rem; align-items:center; }
+nav .links a { color:var(--gray-600); text-decoration:none; font-size:0.88rem; font-weight:500; padding:0.45rem 0.75rem; border-radius:6px; }
+nav .links a:hover { background:var(--gray-100); color:var(--navy); }
+nav .links a.on { color:var(--accent); background:var(--blue-light); }
+.wrap { max-width:820px; margin:0 auto; padding:2rem 1.25rem 4rem; }
+.crumb { font-size:0.8rem; color:var(--gray-600); margin-bottom:0.75rem; }
+.crumb a { color:var(--gray-600); text-decoration:none; }
+.brand { display:inline-block; font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); background:var(--blue-light); border:1px solid rgba(26,79,204,0.2); padding:0.2rem 0.6rem; border-radius:999px; margin-bottom:0.75rem; }
+h1 { font-family:"Manrope",sans-serif; font-weight:800; color:var(--navy); font-size:clamp(1.5rem,4vw,2.1rem); line-height:1.2; letter-spacing:-0.02em; margin-bottom:0.6rem; }
+.lead { color:var(--text-muted); margin-bottom:1.25rem; }
+.stats { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+.stat { background:var(--gray-50); border:1px solid var(--border); border-radius:8px; padding:0.4rem 0.8rem; font-size:0.85rem; color:var(--navy); }
+.stat b { font-family:"Manrope",sans-serif; }
+.filters { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem; }
+.filters button { font:inherit; font-size:0.82rem; border:1px solid var(--gray-200); background:#fff; color:var(--gray-600); border-radius:999px; padding:0.3rem 0.8rem; cursor:pointer; }
+.filters button.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+.tools { display:flex; justify-content:flex-end; margin-bottom:0.5rem; }
+.tools button { font:inherit; font-size:0.82rem; background:none; border:none; color:var(--accent); cursor:pointer; }
+details.q { border:1px solid var(--border); border-radius:10px; margin-bottom:0.6rem; background:#fff; }
+details.q[open] { border-color:rgba(26,79,204,0.35); }
+summary { list-style:none; cursor:pointer; padding:0.85rem 1rem; display:grid; grid-template-columns:auto 1fr; gap:0.2rem 0.75rem; align-items:start; }
+summary::-webkit-details-marker { display:none; }
+.qn { font-family:"Manrope",sans-serif; font-weight:800; color:var(--accent); font-size:0.9rem; min-width:1.6rem; padding-top:0.05rem; }
+.qt { font-weight:600; color:var(--navy); }
+.meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
+.tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
+.tag.lvl { background:var(--blue-light); color:var(--accent); }
+summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
+details[open] summary::after { content:"Hide answer"; }
+.ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
+.ans p { margin:0.35rem 0; }
+.ans .sub { font-weight:600; color:var(--navy); margin-top:0.6rem; }
+.ans ul, .ans ol { padding-left:1.15rem; margin:0.35rem 0; }
+.ans li { margin:0.2rem 0; }
+.ans strong { color:var(--navy); }
+.ans .tip { background:var(--blue-light); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; padding:0.5rem 0.75rem; margin-top:0.75rem; }
+.ans code { font-size:0.85em; background:var(--gray-100); padding:0.05rem 0.3rem; border-radius:4px; }
+.cta { margin-top:2.5rem; background:var(--navy); color:#fff; border-radius:12px; padding:1.5rem; }
+.cta h2 { font-family:"Manrope",sans-serif; font-size:1.2rem; margin-bottom:0.35rem; }
+.cta p { color:#C9D3EC; margin-bottom:1rem; }
+.cta a { display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; font-size:0.9rem; padding:0.65rem 1.4rem; border-radius:8px; }
+.cta a:hover { background:var(--accent-hover); }
+footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2rem 1rem; border-top:1px solid var(--border); }
+@media (max-width:640px) { nav .links a.hide-sm { display:none; } .ans { padding-left:1rem; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/"><img src="/Logo/arahasoft_logo1.png" alt="Arahasoft"></a>
+  <div class="links">
+    <a href="/" class="hide-sm">Home</a>
+    <a href="/interview/" class="on">Interview Edge</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</nav>
+<main class="wrap">
+  <div class="crumb"><a href="/">Arahasoft</a> › <a href="/interview/">Interview Edge</a> › Oracle Modules</div>
+  <span class="brand">Interview Edge by Arahasoft</span>
+  <h1>Oracle Planning and Manufacturing Interview Questions</h1>
+  <p class="lead">The questions interviewers ask on Oracle Fusion Payables, Payments and Expenses projects, with why they ask, a full answer you can say in the room, and a tip. Tap a question to see the answer.</p>
+  <div class="stats">
+    <span class="stat"><b>32</b> questions</span>
+    <span class="stat"><b>6</b> basic</span>
+    <span class="stat"><b>26</b> in-depth</span>
+  </div>
+  <div class="filters" id="filters">
+    <button class="on" data-f="all">All</button>
+    <button data-f="Planning">Planning</button>
+    <button data-f="Manufacturing">Manufacturing</button>
+    <button data-f="Quality">Quality</button>
+    <button data-f="Interview">Interview</button>
+    <button data-f="Outsourced Manufacturing">Outsourced Manufacturing</button>
+    <button data-f="Maintenance">Maintenance</button>
+  </div>
+  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div id="list">
+<details class="q" data-topic="Planning" data-level="B">
+  <summary><span class="qn">1</span><span class="qt">What is the difference between Supply Planning, Replenishment Planning and Demand Management in Fusion?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> to see if you know the planning suite's pieces.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Demand Management builds statistical and machine-learning forecasts and the consensus demand plan. Supply Planning is the MRP-style engine: it nets demand against supply across orgs and decides what to make, buy or transfer, constrained or unconstrained. Replenishment Planning handles inventory policies and replenishment for distribution networks, like min-max and safety stock optimization. Sales and Operations Planning ties all of it to the financial plan.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give one line per module. It's a map question, so keep it tidy.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">2</span><span class="qt">What are planning exceptions and how do planners use them?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> exceptions are how planners spend their day.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Exceptions are messages like late replenishment, items below safety stock, excess inventory, past due orders and resource overloads. Planners filter them by priority and act: expedite, reschedule or release. A good setup keeps exceptions actionable. If planners see 5,000 messages, they ignore all of them, so I tune the thresholds until the list is something a planner can work in a day.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Make the point about too many exceptions. It's the real problem in most implementations.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">3</span><span class="qt">What is data collection in Fusion planning?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> stale collections are the top cause of bad plans.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Collections copy reference data, like items, orgs, calendars and sourcing, and transactional data, like on-hand, POs, work orders and sales orders, into the planning data repository. Targeted collections do a full refresh; net change collections bring only what changed. They're scheduled often. If collections are stale, plans and promise dates are wrong, so it's the first thing I check when a plan looks odd.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say it's the first thing you check. It shows real troubleshooting experience.</p></div>
+</details>
+<details class="q" data-topic="Manufacturing" data-level="B">
+  <summary><span class="qn">4</span><span class="qt">What are work definitions and how do they relate to work orders?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a basic Fusion Manufacturing question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A work definition describes how to make an item: the operations, resources, materials and outputs. It's versioned and has a priority when there's more than one. Work orders are created from a work definition, chosen explicitly or by default, and inherit its operations and materials. Changes to a work definition affect new work orders only, not ones already created.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention that existing work orders don't change. It's a common question from production teams.</p></div>
+</details>
+<details class="q" data-topic="Manufacturing" data-level="D">
+  <summary><span class="qn">5</span><span class="qt">How is material supplied to work orders?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> supply types decide how components are issued.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Each component has a supply type. Push means it's issued manually before or during the job. Assembly pull backflushes it when the assembly is completed. Operation pull backflushes it when an operation is completed. Bulk means it's expensed and not tracked per job, like screws or glue. Phantom means a sub-assembly that's never stocked, so its components are pulled straight into the parent. Supply subinventory and locator default from the item or work definition, and push materials are picked with pick lists or move orders.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give an example for bulk and phantom. They're the ones people mix up.</p></div>
+</details>
+<details class="q" data-topic="Quality" data-level="D">
+  <summary><span class="qn">6</span><span class="qt">What is the Quality Issues and Actions (QIA) flow?</span><span class="meta"><span class="tag">Quality</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> quality processes are key in manufacturing and regulated companies.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Quality issues, or nonconformances, are recorded from receiving, production or customer complaints. They're investigated, and actions are assigned, corrective or preventive. Issues link to items, lots and suppliers. Closure and effectiveness are tracked, and analytics show trends, like one supplier causing most receiving issues.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention effectiveness checks. A closed action that didn't fix anything is still a problem.</p></div>
+</details>
+<details class="q" data-topic="Interview" data-level="B">
+  <summary><span class="qn">7</span><span class="qt">What should a planning/manufacturing contractor be ready to discuss?</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a preparation question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Data foundations, like lead times, BOMs and sourcing, and collections. The plan types and parameters I've set up. Work order execution and costing. Integration with MES and quality systems. And a story where I improved plan accuracy or reduced inventory, with the numbers.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Have one improvement story with a number ready. It's what gets remembered.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">8</span><span class="qt">How would you architect supply chain planning for a global company?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a senior planning architecture question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Demand Management for statistical and ML forecasts by product, customer and region, with a consensus process. Supply Planning for constrained plans across plants and DCs, with a master production schedule for key plants. Sales and Operations Planning linking demand, supply and finance. Replenishment Planning for DC inventory policies. Data comes from Fusion collections and external systems by file, and planning owns the item planning attributes. The cadence is a weekly plan with daily net change. Scenarios support what-if and risk. And it connects to Global Order Promising for customer promises.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention who owns planning attributes. Data ownership decides whether planning works.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="B">
+  <summary><span class="qn">9</span><span class="qt">What data foundations must be in place before planning can work?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> planning fails on data more than on software.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Item attributes: processing and pre- and post-processing lead times, order modifiers, safety stock policy, planning method and make or buy. Accurate BOMs and work definitions. Sourcing rules and assignment sets. Shipping, receiving and manufacturing calendars. Clean demand history, adjusted for returns, promotions and stockouts. Accurate open supply: POs, work orders and transfers. And resource capacities if the plan is constrained. Without these, the plan produces noise and planners won't trust it.&quot;</p>
+<p class="tip"><strong>Tip:</strong> End with trust. It's the real cost of bad data.</p></div>
+</details>
+<details class="q" data-topic="Outsourced Manufacturing" data-level="D">
+  <summary><span class="qn">10</span><span class="qt">How would you model contract manufacturers in Oracle Fusion?</span><span class="meta"><span class="tag">Outsourced Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> outsourcing is common, and modeling it right matters for cost and visibility.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;I'd use Fusion Outsourced Manufacturing, where we own the material and design and the contract manufacturer builds. The CM site is modeled as a contract manufacturing inventory org with work definitions. A purchase order for the CM's service is tied to a work order, and components are shipped to the CM or bought by them on our behalf. The CM reports progress and completions through B2B messages, and we receive the finished goods. Cost is material plus the CM service cost rolled into the assembly. Visibility comes through the supplier portal or B2B.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the PO tied to the work order. It's the key modeling idea.</p></div>
+</details>
+<details class="q" data-topic="Manufacturing" data-level="D">
+  <summary><span class="qn">11</span><span class="qt">How do you architect manufacturing execution between Fusion and MES?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> most plants run an MES next to the ERP.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Fusion is the system of record for planning, work orders, costing, inventory and quality records. MES handles shop-floor detail: machine data, operator steps, and in pharma, electronic batch records. Work orders and BOMs or recipes go from Fusion to MES. Consumption, completions, labor and machine time, and quality results come back. I send summaries where ERP doesn't need the detail, near real time for inventory-critical transactions, and I build error handling and WIP reconciliation between the two.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;send summaries where detail isn't needed&quot;. Over-integrating is a common mistake.</p></div>
+</details>
+<details class="q" data-topic="Maintenance" data-level="D">
+  <summary><span class="qn">12</span><span class="qt">How does Oracle Maintenance fit into the SCM architecture?</span><span class="meta"><span class="tag">Maintenance</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> asset-heavy companies need maintenance tied to supply chain.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Oracle Maintenance manages equipment: assets, work orders, preventive maintenance schedules and meters. Spare parts come from inventory, and purchases go through procurement. Costs go to assets or cost centers, with integration to Fixed Assets. IoT data can trigger condition-based maintenance. The benefits are better uptime and optimized spare parts.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention IoT-triggered maintenance. It's where the field is going.</p></div>
+</details>
+<details class="q" data-topic="Quality" data-level="D">
+  <summary><span class="qn">13</span><span class="qt">How would you architect a closed-loop quality process with Oracle?</span><span class="meta"><span class="tag">Quality</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a quality architecture question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Inspection plans run at receiving, production and shipping. Failures create nonconformance records, which lead to investigation and CAPA, corrective and preventive actions. Supplier quality uses supplier corrective action requests and scorecards that feed sourcing decisions. When a design or spec changes, a change order in Product Hub carries it. Customer complaints link to lots through genealogy. And analytics show defect trends. The loop is closed when what we learn changes specs, suppliers or processes.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Explain what &quot;closed loop&quot; means. It's the point of the question.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">14</span><span class="qt">What is S&amp;OP and how would you support it with Oracle?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> S&amp;OP connects planning to leadership decisions.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Sales and Operations Planning is a monthly process that aligns demand, supply and finance: demand review, supply review, financial reconciliation, then the executive S&amp;OP meeting. Oracle Sales and Operations Planning in Fusion provides the plans, scenarios, financial views and collaboration. It brings together demand plans, supply plans and EPM financial plans. The outcome is one agreed plan that drives both execution and the finance forecast.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Name the four monthly steps. It shows you know the process, not just the tool.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">15</span><span class="qt">Where does AI help most in Fusion planning, and what are the limits?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a balanced question about AI.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;AI helps most with machine-learning forecasting and demand sensing, finding anomalies in history, prioritizing and explaining exceptions for planners, and summarizing scenarios for S&amp;OP. The limits are clear: bad master data, like wrong lead times or BOMs, still breaks plans; planners must understand and own the decisions; and explanations matter, because planners won't follow a recommendation they can't understand.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give the limits honestly. Interviewers trust balanced answers more.</p></div>
+</details>
+<details class="q" data-topic="Manufacturing" data-level="B">
+  <summary><span class="qn">16</span><span class="qt">What is a bill of materials (BOM) and a routing / work definition?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a basic manufacturing question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A BOM, or item structure, is the list of components and quantities needed to make an item. A routing in EBS, or a work definition in Fusion, is the sequence of operations and resources, machines and labor, with components assigned to the operations where they're used. Together they drive work orders, cost roll-ups and planning. In Fusion, item structures live in Product Hub and work definitions in Manufacturing.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention where each lives in Fusion. It's a common follow-up.</p></div>
+</details>
+<details class="q" data-topic="Manufacturing" data-level="D">
+  <summary><span class="qn">17</span><span class="qt">Describe the work order lifecycle in Fusion Manufacturing.</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a core manufacturing process question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A work order is created manually, from planning, or for a sales order. It's released, so components can be picked. Components are issued manually or backflushed. Operations and resources are reported as work is done. The assembly is completed into inventory, with any scrap reported. Then the work order is closed, and Cost Management calculates variances. The statuses go Unreleased, Released, Completed, Closed, and it can also be On Hold or Canceled.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Stress closing work orders on time. Late closes delay variances and month-end.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">18</span><span class="qt">What is the difference between MRP and min-max planning?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> to see if you can pick the right method.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Min-max looks only at on-hand and on-order against fixed minimum and maximum levels. No forecasts, no BOM explosion. MRP, in Fusion Supply Planning, uses demand from forecasts and sales orders, supply from on-hand, POs and work orders, plus BOMs and lead times, to calculate what to make or buy and when, exploding demand down to components. I use min-max for simple, stable items like spares, and MRP for manufactured items and variable demand.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say when you'd use each. That's the real question.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">19</span><span class="qt">How would you approach implementing Fusion Supply Planning?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a delivery approach question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Data readiness comes first: item planning attributes like lead times, order modifiers and safety stock, accurate BOMs and routings, and sourcing rules. Then collections setup and frequency. Then design plan types, supply plan, replenishment and MPS, and horizons. Then define the exceptions planners will act on. Then pilot one product line and compare the plan's recommendations with what planners would have done. Training focuses on trust: planners need to see why the plan recommends something. And I measure service level, inventory and expedites.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the side-by-side comparison in the pilot. It's how trust is built.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">20</span><span class="qt">How do you set safety stock?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> safety stock is a direct trade-off between service and cash.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Safety stock can be a fixed quantity, days of supply, or statistical. The statistical method uses demand variability, lead-time variability and a target service level; for example, 95% service uses a z-value of about 1.65. Fusion can calculate safety stock from forecast error. I set higher service levels for A items and critical customers and lower for C items, and review them every quarter, because static safety stock goes stale.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention the z-value. It shows you understand the math.</p></div>
+</details>
+<details class="q" data-topic="Manufacturing" data-level="D">
+  <summary><span class="qn">21</span><span class="qt">Discrete vs process manufacturing — what is different in Oracle?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> industries need different models.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Discrete manufacturing assembles items from components, like electronics or machinery, using BOMs, work definitions, work orders with operations, and serial tracking. Process manufacturing uses recipes and formulas with yields, by-products and co-products, batch sizes, and potency or grade, like chemicals, food and pharma. Fusion supports both, with process work orders that have multiple outputs. Costing differs too: process manufacturing handles yields and allocates cost across co-products.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention co-product costing. It's the hard part of process manufacturing.</p></div>
+</details>
+<details class="q" data-topic="Quality" data-level="D">
+  <summary><span class="qn">22</span><span class="qt">How would you integrate quality inspection into receiving for a regulated company?</span><span class="meta"><span class="tag">Quality</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a regulated-industry design question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Regulated items use inspection receipt routing. Inspection plans by item and supplier set sampling, often AQL, and specifications. Received material goes to a quarantine subinventory or status until QA releases it. Failures create nonconformances and supplier corrective action requests. Release uses electronic signatures. And results feed supplier performance scores.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention quarantine until QA release. It's the core control.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="B">
+  <summary><span class="qn">23</span><span class="qt">How do you get planners to trust a new planning system?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">Basic</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> adoption decides whether planning projects succeed.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Clean data first, because wrong lead times destroy trust fast. Then run the new plan in parallel and compare its recommendations with what planners would do, and explain the differences. Show pegging, so planners can see why a planned order exists. Start with the exceptions that matter instead of thousands of messages. Involve senior planners in tuning the parameters. And celebrate quick wins, like expedites avoided or inventory reduced.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Involving senior planners is the strongest point. They're the ones others follow.</p></div>
+</details>
+<details class="q" data-topic="Manufacturing" data-level="D">
+  <summary><span class="qn">24</span><span class="qt">How would you approach a Fusion Manufacturing implementation for a mid-size plant?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a delivery approach question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;First the plant data: work centers, resources, calendars, item structures and work definitions, validated by engineering. Then work order types and execution: manual issue or backflush, and how detailed operation reporting should be, without overdoing it. Then shop-floor devices or tablets, and possibly MES integration. Then costing: standard cost with resource and overhead rates and variance reporting. Quality inspections at key operations. Planned orders from planning becoming work orders. And a pilot on one production line first.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;don't overdo operation reporting&quot;. Too much detail slows the shop floor.</p></div>
+</details>
+<details class="q" data-topic="Quality" data-level="D">
+  <summary><span class="qn">25</span><span class="qt">How does Oracle Quality Management support inspections?</span><span class="meta"><span class="tag">Quality</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a basic quality question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Inspection plans define what to check, like a dimension or pH, the sampling, and the acceptance criteria. Inspections are triggered at receiving, at work order operations, or ad hoc in inventory. Results are recorded, and failures can create issues, nonconformances and corrective actions. Rejected material moves to a quarantine status or subinventory. It's integrated with Receiving through inspection routing and with Manufacturing.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Give one characteristic example. It makes it concrete.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">26</span><span class="qt">Describe how Supply Planning generates planned orders.</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a core planning engine question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Data collections bring on-hand, POs, work orders, sales orders, forecasts, items and BOMs into the planning repository. A supply plan runs with its options: horizon, organizations, demand schedules and constraints. It nets demand against supply, explodes BOMs, and applies lead times, order modifiers like minimum, maximum and fixed lot multiple, and sourcing rules. It creates planned orders, buy, make or transfer, and recommendations to reschedule in, out or cancel. Planners review them in the Supply Planning work area and release planned orders to execution as requisitions, work orders or transfer orders.&quot;</p>
+<p class="tip"><strong>Tip:</strong> End with the release to execution. That's where planning meets the real world.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">27</span><span class="qt">What are sourcing rules, bills of distribution and assignment sets?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> sourcing drives planning and promising.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A sourcing rule says where supply comes from for an org or item, for example buy 60% from supplier X and 40% from Y, or transfer from org A, with ranks for priority. A bill of distribution handles sourcing across several orgs, a global source chain. An assignment set assigns sourcing rules at different levels: global, org, category, item, or item-org, and the most specific level wins. Planning, GOP, min-max and automatic requisition sourcing all use them.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say &quot;the most specific level wins&quot;. It's how you debug sourcing.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">28</span><span class="qt">What is the difference between a forecast and a demand plan?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a basic demand planning question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;A forecast is a prediction of future demand, from history, statistical models or input. A demand plan, in Demand Management, manages forecasts across levels, like product family, region and customer, blends statistical forecasts with sales input into a consensus, and measures forecast accuracy. The approved demand plan feeds the supply plan. And forecast consumption matters: actual sales orders consume the forecast so demand isn't counted twice.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention forecast consumption. It's what separates a good answer.</p></div>
+</details>
+<details class="q" data-topic="Manufacturing" data-level="D">
+  <summary><span class="qn">29</span><span class="qt">What is backflushing?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a common manufacturing concept with risks.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Backflushing issues components automatically when an operation or the assembly is reported complete, instead of issuing them beforehand. It's set by the component's supply type: assembly pull at completion, or operation pull at operation completion. It cuts transactions for high-volume, low-value components. The risk is inaccurate on-hand if actual usage differs, for example from scrap, so it needs accurate BOMs and good scrap reporting.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Name the risk. It shows judgment.</p></div>
+</details>
+<details class="q" data-topic="Manufacturing" data-level="D">
+  <summary><span class="qn">30</span><span class="qt">How is work order cost calculated and how are variances recognized?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> manufacturing cost is a finance and operations meeting point.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;Under standard cost, the assembly is valued at standard, and actual material, resources and overhead are charged to the work order. At close, variances are calculated: material usage, resource efficiency and rate. Under actual or average cost, the assembly cost is the actual cost charged. The accounting is Dr WIP for issues and resources, Cr WIP and Dr Inventory at completion, and variances to variance accounts at close. Closing work orders on time keeps month-end costing clean.&quot;</p>
+<p class="tip"><strong>Tip:</strong> End with closing on time. It's the operational lesson.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">31</span><span class="qt">How do you mature a company from spreadsheet planning to integrated business planning?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> a transformation question.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;In stages. First, clean data and one demand plan in the system, with basic supply planning. Second, constrained supply planning, inventory policies and an S&amp;OP process. Third, integrated business planning with financial plans, scenario modeling and machine-learning forecasting. People and process matter as much as tools: planning roles, meeting cadence and KPIs. And I'd show value at each stage, in forecast accuracy, inventory and service, so the business keeps investing.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Say you show value at each stage. It's how transformations keep their funding.</p></div>
+</details>
+<details class="q" data-topic="Planning" data-level="D">
+  <summary><span class="qn">32</span><span class="qt">How would you integrate commercial and supply planning with finance in an IBP process?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+  <div class="ans"><p><strong>Why they ask:</strong> IBP is where planning becomes a leadership tool.</p>
+<p><strong>Answer:</strong></p>
+<p>&quot;First a common data model: product families, customers and regions, and time buckets that match the financial calendar. Then the chain: demand plan to supply plan to financial projection, revenue, margin, inventory and cash, using standard costs and prices. Gaps against budget are highlighted for executive decisions. Scenario modeling covers things like price changes and capacity limits. EPM integration feeds the financial forecast. And a monthly cadence with clear decision rights.&quot;</p>
+<p class="tip"><strong>Tip:</strong> Mention aligning time buckets with the financial calendar. Without it, finance can't use the numbers.</p></div>
+</details>
+  </div>
+  <section class="cta">
+    <h2>Need Oracle help?</h2>
+    <p>Arahasoft implements and supports Oracle Fusion Cloud and E-Business Suite: Financials, SCM, Procurement and HCM.</p>
+    <a href="/#contact">Contact Arahasoft</a>
+  </section>
+</main>
+<footer>© 2026 Arahasoft · Interview Edge by Arahasoft</footer>
+<script>
+(function () {
+  var list = document.getElementById('list'), qs = list.querySelectorAll('details.q');
+  document.getElementById('filters').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    var f = b.getAttribute('data-f');
+    qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+  });
+  var open = false, t = document.getElementById('toggleAll');
+  t.addEventListener('click', function () {
+    open = !open; qs.forEach(function (q) { if (q.style.display !== 'none') q.open = open; });
+    t.textContent = open ? 'Hide all answers' : 'Show all answers';
+  });
+})();
+</script>
+</body>
+</html>
