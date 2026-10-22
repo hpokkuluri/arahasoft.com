@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,6 +97,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>34</b> questions</span>
     <span class="stat"><b>11</b> basic</span>
     <span class="stat"><b>23</b> in-depth</span>
+    <span class="stat"><b>8</b> top questions</span>
   </div>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button>
@@ -105,10 +112,10 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <button data-f="Interview">Interview</button>
     <button data-f="Accounts Receivable">Accounts Receivable</button>
   </div>
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 8 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Setup" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">What are the key Receivables setups in Fusion?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Setup" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">What are the key Receivables setups in Fusion?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to check that you have configured Receivables yourself, not only processed transactions in it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build them in layers. First the business-unit level: Receivables system options for accounting, AutoInvoice, tax and matching. Second the transaction side: transaction sources that control numbering and validation, transaction types for invoices, credit memos, debit memos, chargebacks and deposits, and AutoAccounting with SLA for the revenue, receivable, tax and freight accounts. Third the cash side: receipt classes, receipt methods and remittance bank accounts. Fourth the customer side: payment terms and customer profile classes, which carry credit, statement, dunning and collector settings. And I finish with receivables activities, because every adjustment, write-off and miscellaneous receipt needs one.&quot;</p>
@@ -119,21 +126,21 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Customers:</strong> payment terms, profile classes.</li>
 <li><strong>Activities:</strong> adjustments, write-offs, misc cash, refunds.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Give the setups as a build order. Ending on receivables activities shows you've hit the &quot;no activity defined&quot; error on a real project.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the setups as a build order. Ending on receivables activities shows you've hit the &quot;no activity defined&quot; error on a real project.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which AR setup decides whether invoices create accounting correctly?</p><p>AutoAccounting rules or SLA mappings, plus the transaction types with their receivable and revenue accounts. If those aren't right, every invoice lands in the wrong account.</p></div></div>
 </details>
-<details class="q" data-topic="AutoInvoice" data-level="D">
-  <summary><span class="qn">2</span><span class="qt">How do grouping rules and line ordering rules work in AutoInvoice?</span><span class="meta"><span class="tag">AutoInvoice</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AutoInvoice" data-level="D" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">How do grouping rules and line ordering rules work in AutoInvoice?</span><span class="meta"><span class="tag">AutoInvoice</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> grouping is the most common reason invoices come out wrong, and only people who have tuned AutoInvoice know it well.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Grouping rules decide which interface lines combine into one invoice. Some attributes are always mandatory, like currency, bill-to customer, transaction type and transaction source, so lines that differ on those can never be on the same invoice. Then I add optional attributes. For example, if the business wants one invoice per sales order, I add the sales order number; if a customer wants one invoice per PO, I add the customer PO number. Line ordering rules then sort the lines inside each invoice, usually by sales order line number, so the printed invoice reads in the same order as the order. When grouping is wrong you see one of two complaints: a customer gets fifty tiny invoices, or two different orders end up on one invoice and the customer can't match it to their PO.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tie the answer to a customer complaint you fixed. &quot;Too many invoices&quot; or &quot;mixed orders&quot; makes it real.</p></div>
+<p class="tip"><strong>Tip:</strong> Tie the answer to a customer complaint you fixed. &quot;Too many invoices&quot; or &quot;mixed orders&quot; makes it real.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you combine all of one customer's daily orders into one invoice?</p><p>Add sales order number to the grouping rule only as optional, not mandatory, and keep bill-to, currency and type the same. Lines with matching mandatory attributes then group into one invoice per customer per run.</p></div></div>
 </details>
-<details class="q" data-topic="AutoInvoice" data-level="D">
-  <summary><span class="qn">3</span><span class="qt">How do you resolve AutoInvoice errors?</span><span class="meta"><span class="tag">AutoInvoice</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AutoInvoice" data-level="D" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">How do you resolve AutoInvoice errors?</span><span class="meta"><span class="tag">AutoInvoice</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AutoInvoice errors land on the consultant's desk every month-end. They want a method, not guesswork.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start with the AutoInvoice execution report, which gives counts of lines processed and rejected, then open Manage AutoInvoice Lines to see each error. The usual causes are a bill-to or ship-to site that's inactive or missing, the GL date in a closed period, tax setup missing for a new ship-to state, an invalid item or unit of measure, bad payment terms, or a revenue scheduling rule that needs a duration and doesn't have one. I fix the data, either in the interface lines or in the setup, and resubmit. Then I fix the cause upstream. For example, if Order Management lets an order through with an inactive bill-to site, I add a validation there so the error never reaches AR again. At one client, about 70% of the rejections were inactive sites from a CRM sync, and one integration fix cleared most of them.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with prevention. Interviewers want to hear that you stop the same error from coming back.</p></div>
+<p class="tip"><strong>Tip:</strong> End with prevention. Interviewers want to hear that you stop the same error from coming back.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you stop the same AutoInvoice error from recurring?</p><p>Fix it at the source: correct customer site data or mapping in the upstream system, add validation before lines reach the interface, and report errors daily so they don't pile up at month end.</p></div></div>
 </details>
 <details class="q" data-topic="Receipts" data-level="D">
   <summary><span class="qn">4</span><span class="qt">Explain receipt classes, receipt methods and remittance banks.</span><span class="meta"><span class="tag">Receipts</span><span class="tag lvl">In-depth</span></span></summary>
@@ -145,84 +152,84 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Receipt method:</strong> numbering, linked banks.</li>
 <li><strong>Remittance bank account:</strong> where cash lands, plus its GL accounts.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Give one example with two classes. It proves you understand why there are three levels.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one example with two classes. It proves you understand why there are three levels.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why separate remittance and clearance steps for a receipt class?</p><p>It lets you account cash in stages: receipt confirmed, remitted to the bank, then cleared. Companies that want cash only booked when the bank confirms use clearance; simple cheque processes can skip it.</p></div></div>
 </details>
 <details class="q" data-topic="Receipts" data-level="D">
   <summary><span class="qn">5</span><span class="qt">How do automatic receipts (direct debit) work?</span><span class="meta"><span class="tag">Receipts</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> direct debit is common in Europe and for subscription businesses; they want to know you can run the full cycle.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The customer is set up with an automatic receipt method and a bank account, and for SEPA a signed mandate. Their invoices use a transaction type and terms that make them eligible. Then the cycle is: run Create Automatic Receipts, which picks invoices by due date and creates receipts; if the class needs confirmation, someone confirms them; then Create Receipt Remittance Batch builds the direct debit file that goes to the bank; finally the receipts clear when the bank statement comes in through Cash Management. If a debit is returned, we reverse the receipt and the invoice reopens. For SEPA we also send pre-notifications a few days before the debit.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention mandates and returned debits. They are the two things that go wrong in real direct debit projects.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention mandates and returned debits. They are the two things that go wrong in real direct debit projects.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens when a direct debit is rejected by the bank?</p><p>The receipt is reversed with a reason like insufficient funds, the invoice reopens, and collections follows up. With SEPA, the mandate rules also govern how and when you can collect again.</p></div></div>
 </details>
-<details class="q" data-topic="Receipts" data-level="D">
-  <summary><span class="qn">6</span><span class="qt">How do you handle a customer short payment?</span><span class="meta"><span class="tag">Receipts</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Receipts" data-level="D" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">How do you handle a customer short payment?</span><span class="meta"><span class="tag">Receipts</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> short payments are daily work for AR teams. They want to see you know the options and the controls.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It depends on why it's short and how much. If the difference is small, say under $25, and within the write-off tolerance, I apply the receipt and write off the difference using a receipt write-off activity, limited by user approval limits. If the customer took a deduction on purpose, like a pricing dispute or a damaged-goods claim, I create a chargeback or a deduction so the original invoice closes and the disputed amount sits on its own item, owned by collections and sales. If there's no reason, I leave the balance open on the invoice and the collector follows up. The important part is the reason code, because once you track deductions by reason, you find the root cause, like one product line always short-shipped.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a tolerance amount and name the reason codes. That's the difference between doing it and knowing it.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a tolerance amount and name the reason codes. That's the difference between doing it and knowing it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if a customer short pays by $5,000 for a disputed price?</p><p>Apply the receipt and leave the balance open, then create a dispute or credit memo request for the $5,000. That's far beyond write-off tolerance, so it needs investigation and approval.</p></div></div>
 </details>
 <details class="q" data-topic="Receipts" data-level="B">
   <summary><span class="qn">7</span><span class="qt">How do you reverse a receipt and when?</span><span class="meta"><span class="tag">Receipts</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic AR task, but they want to see you choose the right type of reversal.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I reverse a receipt when it was entered wrong, applied to the wrong customer, or the payment bounced, for example a cheque returned for insufficient funds. A standard reversal needs a reason and a reversal date; it backs out the cash and receivable accounting and reopens every invoice it was applied to, so collections sees the balance again. If the receipt is in a closed period or I want to charge a returned-cheque fee, I use a debit memo reversal instead, which leaves the original receipt and creates a new debit memo for the amount. One thing to check first: if the receipt is already reconciled in Cash Management, I unreconcile it before reversing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the two types and when you'd pick each. Mentioning the reconciliation check shows real experience.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the two types and when you'd pick each. Mentioning the reconciliation check shows real experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between a standard reversal and a debit memo reversal?</p><p>A standard reversal reopens the original applications. A debit memo reversal creates a new debit memo for the amount, used when the receipt was applied to closed invoices or across periods.</p></div></div>
 </details>
-<details class="q" data-topic="Collections" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">How does Fusion Advanced Collections assign work to collectors?</span><span class="meta"><span class="tag">Collections</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Collections" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">How does Fusion Advanced Collections assign work to collectors?</span><span class="meta"><span class="tag">Collections</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> collections setup is often handed to the AR consultant. They want to know you can design it, not just log in.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Each customer gets a collector, either from the customer profile or through territories. Then strategies decide what work gets created. For example, a low-risk strategy might send a reminder email at 5 days late and a dunning letter at 30, while a high-risk strategy adds a phone call task at day 1 and escalation to the credit manager at day 15. Scoring formulas rank customers by risk, using things like days late and payment history, and that score picks the strategy. Collectors then work from the Collections work area, where they see the customer's aging, record promises to pay, log disputes and send correspondence. Dunning plans send reminders automatically for anything the strategy doesn't cover by hand.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one example of a low-risk vs high-risk strategy. It shows you designed one.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one example of a low-risk vs high-risk strategy. It shows you designed one.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prioritize a collector's daily work?</p><p>By amount and risk: strategies create tasks, and the worklist is sorted by overdue value and customer risk score, so the biggest exposures get attention first.</p></div></div>
 </details>
 <details class="q" data-topic="Collections" data-level="D">
   <summary><span class="qn">9</span><span class="qt">How do disputes and credit memo requests work?</span><span class="meta"><span class="tag">Collections</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> disputes link collections, customer service and billing. A good answer shows you know the approval flow and why it matters.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A collector or customer service rep creates a dispute against the invoice, either on specific lines or on tax or freight, with a reason like pricing error or damaged goods and the disputed amount. That creates a credit memo request, which routes for approval through BPM rules, usually by amount and reason, for example a sales manager approves pricing disputes under $5,000 and the controller approves above that. When the last approver signs off, Fusion creates the credit memo automatically and applies it. While the dispute is open, that amount is excluded from dunning so we don't chase the customer for it. Every month I'd report disputes by reason, because if half are pricing errors the fix is in the price lists, not in AR.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that disputed amounts are left out of dunning. It's a detail that only comes from running it.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that disputed amounts are left out of dunning. It's a detail that only comes from running it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who approves a credit memo request?</p><p>It routes through approval rules, often by amount and reason: the collector or manager for small amounts and finance leadership above thresholds. Once approved, the credit memo is created automatically.</p></div></div>
 </details>
 <details class="q" data-topic="Credit" data-level="D">
   <summary><span class="qn">10</span><span class="qt">How do you set up credit checking for sales orders?</span><span class="meta"><span class="tag">Credit</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> credit checking crosses AR and Order Management, so they want to see you understand both sides.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In Credit Management I set up credit profiles with limits at the customer or account level, and enable credit checking for the business unit. In Order Management, credit check happens at booking and again before shipment if needed. Fusion calculates exposure, which is open receivables plus uninvoiced orders, and if the new order pushes exposure over the limit, or the customer has invoices past the overdue tolerance, the order goes on credit hold. Credit analysts then review it, often through a credit case folder that pulls in aging, payment history and an external score, and either release the hold or raise the limit through an approval. I always agree with sales which statuses count toward exposure, because that one decision drives how many holds they see.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain what exposure includes. Getting that agreement with sales is where real projects spend their time.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain what exposure includes. Getting that agreement with sales is where real projects spend their time.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to an order that fails credit check?</p><p>It goes on credit hold, and the credit team reviews it: release it, raise the limit, or ask for a prepayment. Order management can recheck automatically when payments arrive.</p></div></div>
 </details>
-<details class="q" data-topic="Revenue" data-level="D">
-  <summary><span class="qn">11</span><span class="qt">What is the difference between AR revenue scheduling rules and Revenue Management?</span><span class="meta"><span class="tag">Revenue</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Revenue" data-level="D" data-top="1">
+  <summary><span class="qn">11</span><span class="qt">What is the difference between AR revenue scheduling rules and Revenue Management?</span><span class="meta"><span class="tag">Revenue</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you know when simple deferral is enough and when you need the ASC 606 engine.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Revenue scheduling rules live on the AR invoice line. They spread one line's revenue over periods, for example a $12,000 annual support invoice recognized at $1,000 a month. That works when each invoice line is its own obligation. Revenue Management is the ASC 606 and IFRS 15 engine. It takes source documents from order management, AR and other systems, builds customer contracts with performance obligations, allocates the price using standalone selling prices, and recognizes revenue when each obligation is satisfied. So if a customer buys a bundle, say hardware, installation and a year of support at a discount, I need Revenue Management to allocate the discount across the three. If it's a simple subscription billed monthly, scheduling rules are enough.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use a bundle example. Allocation is the reason Revenue Management exists.</p></div>
+<p class="tip"><strong>Tip:</strong> Use a bundle example. Allocation is the reason Revenue Management exists.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Give an example where you'd need Revenue Management instead of scheduling rules.</p><p>A bundle of software, implementation and support sold together, where revenue must be allocated across the parts by standalone selling price. Scheduling rules can't reallocate between invoice lines.</p></div></div>
 </details>
 <details class="q" data-topic="Revenue" data-level="D">
   <summary><span class="qn">12</span><span class="qt">What are revenue contingencies?</span><span class="meta"><span class="tag">Revenue</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> contingencies show whether you understand revenue timing beyond billing.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A contingency is a condition that stops revenue from being recognized even though the invoice exists. Common ones are customer acceptance, a cancellation clause, extended payment terms beyond the normal limit, and doubtful collectibility. They're assigned by rules, for example every order for a certain customer or item gets an acceptance contingency. Revenue sits in deferred revenue until an event removes the contingency: the acceptance date is recorded, the payment arrives, or the cancellation period expires. Then revenue is released. They also link to costing, so cost of goods sold for that shipment is deferred too and recognized at the same time as the revenue.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the removal event for each contingency. Mentioning deferred COGS shows you see the full picture.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the removal event for each contingency. Mentioning deferred COGS shows you see the full picture.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How is a customer acceptance contingency released?</p><p>When acceptance is recorded, either by the user or an automatic expiration date, the contingency is removed and the deferred revenue is recognized.</p></div></div>
 </details>
-<details class="q" data-topic="Reporting" data-level="B">
-  <summary><span class="qn">13</span><span class="qt">Which AR reports do you use at month end?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Reporting" data-level="B" data-top="1">
+  <summary><span class="qn">13</span><span class="qt">Which AR reports do you use at month end?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a quick test of whether you've actually closed AR.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I run them in the order of the close. First the aging by customer and bucket, so collections and finance see what's outstanding. Then the Receivables to Ledger Reconciliation report, which is the key control: it ties the AR subledger to the GL receivable account and shows what's unaccounted or posted manually. Then the unapplied and on-account receipts report, because those are the balances that hide problems. Then the transaction and adjustment registers for review of what was booked and written off. Finally account analysis for the receivable accounts, and a DSO and collections effectiveness view for management.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say the reconciliation report is the control, not just one more report. That's what controllers want to hear.</p></div>
+<p class="tip"><strong>Tip:</strong> Say the reconciliation report is the control, not just one more report. That's what controllers want to hear.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do if the Receivables to Ledger Reconciliation shows a difference?</p><p>I check unposted subledger accounting, transactions accounted but not transferred, and manual journals to AR accounts in GL. The report drills down to show which category holds the difference.</p></div></div>
 </details>
-<details class="q" data-topic="Data Migration" data-level="D">
-  <summary><span class="qn">14</span><span class="qt">How do you convert open AR at go-live?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Data Migration" data-level="D" data-top="1">
+  <summary><span class="qn">14</span><span class="qt">How do you convert open AR at go-live?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> conversion is where projects slip. They want to see the sequence and the reconciliation.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Customers go first, with accounts, sites, site uses, profiles, and bank accounts for anyone on direct debit. Then I load open invoices and credit memos through AutoInvoice with FBDI, keeping the original transaction numbers, transaction dates and due dates so aging and dunning stay correct, but loading only the remaining balance. The offset goes to a conversion clearing account, not revenue. Unapplied and on-account receipts are loaded separately as receipts. Then I reconcile: aging by customer and bucket in the legacy system against Fusion, the clearing account to zero once the GL balances are loaded, and finance signs off. We did three mock conversions on my last project, and the third one tied to the cent.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the clearing account and keeping original due dates. Those two details prevent the classic go-live mistakes.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the clearing account and keeping original due dates. Those two details prevent the classic go-live mistakes.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prove the AR conversion is complete?</p><p>Reconcile total open AR by customer and aging bucket to the legacy aging report, and tie the total to the GL control account at cutover. Any difference is investigated before go-live sign-off.</p></div></div>
 </details>
 <details class="q" data-topic="Interview" data-level="B">
   <summary><span class="qn">15</span><span class="qt">What makes a strong AR/O2C contractor answer in interviews?</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> sometimes a recruiter or hiring manager asks this directly to see how you sell yourself.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Three things. First, show the whole order-to-cash chain, not just AR: order, AutoInvoice, receipts, collections, revenue and accounting to GL, and where each one breaks. Second, give numbers. For example, 'I took auto-applied receipts from 45% to 80%' or 'we cut DSO by 6 days'. Third, talk about controls: credit limits, approval limits on adjustments and write-offs, and the AR-to-GL reconciliation. And be ready for two classic scenarios: an AutoInvoice error you fixed, and how you'd design cash application for a high-volume customer.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep two numbers ready before every interview. They do more than any list of modules.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep two numbers ready before every interview. They do more than any list of modules.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What number would you lead with in an AR interview?</p><p>Something like auto-application rate or DSO change, for example lifting lockbox auto-application from 60% to 90%, because it shows real business impact.</p></div></div>
 </details>
 <details class="q" data-topic="Revenue" data-level="D">
   <summary><span class="qn">16</span><span class="qt">How would you architect revenue recognition for a company with products, services and subscriptions?</span><span class="meta"><span class="tag">Revenue</span><span class="tag lvl">In-depth</span></span></summary>
@@ -235,7 +242,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Billing:</strong> AR, separate from revenue timing.</li>
 <li><strong>Reporting:</strong> deferred revenue roll-forward, RPO disclosure.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Say &quot;billing and revenue are separate&quot; early. It's the key design idea.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;billing and revenue are separate&quot; early. It's the key design idea.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why one revenue engine?</p><p>So allocation and recognition are consistent across products, services and subscriptions.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="B">
   <summary><span class="qn">17</span><span class="qt">Explain the Order-to-Cash flow and where AR fits in.</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">Basic</span></span></summary>
@@ -247,14 +254,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Invoice: Dr Receivable, Cr Revenue, Cr Tax.</li>
 <li>Receipt: Dr Cash, Cr Receivable.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Give the two journal entries at the end. It shows you think like an accountant, not only a system user.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the two journal entries at the end. It shows you think like an accountant, not only a system user.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What links a shipped order to an AR invoice?</p><p>The fulfillment line's billing data goes to the AutoInvoice interface; AutoInvoice creates the invoice using the transaction source and type.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="B">
   <summary><span class="qn">18</span><span class="qt">What is AutoInvoice?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AutoInvoice is the main way invoices get into AR. Every AR interview touches it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AutoInvoice is the program that imports billing lines from other systems and turns them into invoices, credit memos and debit memos. In Fusion the lines come from Order Management, Projects, or a file through FBDI; in EBS they go into RA_INTERFACE_LINES_ALL. The transaction source controls validation and defaults. Grouping rules decide which lines become one invoice, and line ordering rules sort them. AutoAccounting, together with SLA in Fusion, derives the revenue and receivable accounts. Lines that fail stay in the interface with an error, and you fix them and resubmit. On a busy project it's normal to process tens of thousands of lines a night, so the error handling is as important as the setup.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Cover source, grouping, accounting and errors. Those are the four follow-up questions they'll ask.</p></div>
+<p class="tip"><strong>Tip:</strong> Cover source, grouping, accounting and errors. Those are the four follow-up questions they'll ask.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common AutoInvoice failure?</p><p>Invalid or inactive customer sites or accounts, followed by missing accounting setup or invalid items.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="B">
   <summary><span class="qn">19</span><span class="qt">What is the customer structure in Oracle (party, account, site)?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">Basic</span></span></summary>
@@ -267,7 +274,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Site and site use:</strong> the address and what it's for.</li>
 <li><strong>Profile:</strong> credit, collector, dunning.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Give the one-party-two-accounts example. It shows you've designed customer data, not just entered it.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the one-party-two-accounts example. It shows you've designed customer data, not just entered it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why can one party have multiple customer accounts?</p><p>Different business relationships, like a parent buying from two divisions with different terms or currencies.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="B">
   <summary><span class="qn">20</span><span class="qt">How do you apply a receipt, and what happens with unapplied or on-account cash?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">Basic</span></span></summary>
@@ -279,105 +286,105 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>On-account:</strong> parked on purpose.</li>
 <li><strong>Unidentified:</strong> customer unknown.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Explaining the three states cleanly is the whole answer. Add that you'd watch the unapplied balance every week.</p></div>
+<p class="tip"><strong>Tip:</strong> Explaining the three states cleanly is the whole answer. Add that you'd watch the unapplied balance every week.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between unapplied and on-account cash?</p><p>Unapplied is cash not yet matched to anything; on-account is deliberately applied to the customer as a credit to use later.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="B">
   <summary><span class="qn">21</span><span class="qt">What is the difference between an adjustment and a credit memo?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> people often mix these up. The right choice affects revenue, tax and what the customer sees.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A credit memo corrects the billing. It's a transaction document, usually sent to the customer, and it reverses revenue and tax, for example for a return or a pricing error. An adjustment changes the invoice balance without saying the billing was wrong, for small write-offs, bad debt or rounding. It uses a receivables activity for the GL account and is limited by the user's approval limit. So if we billed $1,000 but should have billed $900, that's a credit memo. If we billed correctly but the customer paid $998 and we won't chase $2, that's an adjustment.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The rule of thumb: billing was wrong → credit memo; the money won't be collected → adjustment. Say it in one line.</p></div>
+<p class="tip"><strong>Tip:</strong> The rule of thumb: billing was wrong → credit memo; the money won't be collected → adjustment. Say it in one line.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why not use adjustments to fix pricing errors?</p><p>Adjustments don't reverse revenue and tax properly or produce a customer document, so pricing errors should be credit memos.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">22</span><span class="qt">What is the purpose of receivables activities and transaction types?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> these two setups drive most AR accounting. They want to see you know which does what.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Transaction types classify the documents: invoice, credit memo, debit memo, chargeback, deposit. They control whether a transaction posts to GL, whether it shows in open receivables, the default receivable and revenue accounts, and which credit memo type is used when you credit it. Receivables activities are for postings that aren't invoices: adjustments, write-offs, finance charges, miscellaneous receipts, bank charges and refunds. Each one points to its own GL account. For example, a 'Small Balance Write-off' activity posts to a bad-debt expense account, and the user's approval limit controls how much they can write off.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one example of an activity and its account. It turns a definition into experience.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one example of an activity and its account. It turns a definition into experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does a receivables activity control?</p><p>The GL account for adjustments, write-offs, finance charges and similar activities.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">23</span><span class="qt">How do collections and dunning work in Oracle?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they want to see you understand the collector's day, not just the setup screens.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In Fusion, Advanced Collections assigns each customer to a collector from the customer profile. The collector works a prioritized list in the Collections work area: they see aging, record promises to pay, log disputes and send correspondence. Scoring ranks customers by risk, and strategies decide the tasks, like a call at 10 days late for high-risk customers. Dunning sends reminder letters automatically based on aging and the dunning plan, getting firmer as the invoice gets older. Disputes create credit memo requests that route for approval. The KPIs I'd report are DSO, percent current, and collector effectiveness.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the KPIs. Hiring managers measure collections by numbers.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the KPIs. Hiring managers measure collections by numbers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep dunning from annoying good customers?</p><p>Use strategies by risk, so low-risk customers get gentle reminders and high-risk ones get faster escalation.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="B">
   <summary><span class="qn">24</span><span class="qt">What is a customer statement vs a dunning letter?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic AR question, often for junior roles.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A statement is a summary of everything open on a customer's account, plus recent payments, sent on a regular cycle, like monthly. It's informational. A dunning letter is a reminder about overdue items only, and it usually gets firmer the later the payment is, for example a friendly reminder at 15 days, a firmer letter at 45 days, and a final notice at 90. In Fusion, statements come from Receivables and dunning comes from Collections, and both can be printed or emailed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the escalation example. It shows you understand why dunning exists.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the escalation example. It shows you understand why dunning exists.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which one should go to a customer 60 days late?</p><p>A dunning letter, because it asks for payment of overdue items specifically.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">25</span><span class="qt">How do you design the cash application process to reduce unapplied cash?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a design question with a clear business outcome. They want a method and a result.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The biggest lever is remittance data, so I start there: lockbox files from the bank, bank statements in BAI2 or CAMT.053, and remittance emails, which can be captured with Intelligent Document Recognition. Then I set up AutoMatch and lockbox matching to look for invoice number, PO number, amount and customer reference, with tolerances for small differences. Application exception rules decide what happens to under- and over-payments within tolerance, like write off below $10 or put on account. Anything left goes to a work queue with a named owner and an ageing target. Where the business agrees, AutoCash rules apply receipts with no remittance to the oldest invoice first. I measure auto-application rate, unapplied and on-account balances, and days to apply. On one rollout we moved auto-applied receipts from about 45% to 80% by adding customer-reference matching and cleaning customer data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Close with the bank reconciliation in Cash Management. It shows the process ends with the cash proven, not just applied.</p></div>
+<p class="tip"><strong>Tip:</strong> Close with the bank reconciliation in Cash Management. It shows the process ends with the cash proven, not just applied.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a realistic auto-application target?</p><p>Often 80 to 90% for customers who send remittance; the rest needs better remittance data or AI matching.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">26</span><span class="qt">How would you design billing for a subscription or services business in Oracle?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they want to see you pick the right tool for the billing model, not force everything into AR.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd choose by how complex the billing is. For recurring billing with renewals, upgrades and usage charges, Subscription Management is the right tool. For services billed against projects, time and materials or milestones, Project Billing. If an outside billing system already does the rating, AR with AutoInvoice is enough. Whatever bills, Revenue Management handles ASC 606 allocation and over-time recognition. The design points I'd settle early are invoice frequency, proration for mid-cycle changes, upgrades and downgrades, and usage rating. On top sit collections and credit management, and an integration with CRM or CPQ so contracts flow in cleanly.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;I'd choose based on the billing model&quot; up front. It answers the real question.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;I'd choose based on the billing model&quot; up front. It answers the real question.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What decides between Subscription Management and AR?</p><p>The complexity of renewals, upgrades and usage billing; simple fixed recurring invoices can stay in AR.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">27</span><span class="qt">What are the common causes of AR-to-GL reconciliation differences and how do you prevent them?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reconciliation is a control. They want causes and prevention, not just &quot;I run a report&quot;.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The common causes are: transactions not yet accounted or not transferred and posted; manual journals posted straight to the receivable account in GL; transactions accounted in a different period than the aging date; misunderstanding the unapplied and on-account cash accounts; and revaluation entries that the aging doesn't show. To prevent them, I set the receivable accounts as third-party control accounts so nobody can post a manual journal to them, schedule Create Accounting daily, and make the Receivables to Ledger Reconciliation report a sign-off step on the close checklist. With those three in place, differences become rare and easy to explain.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The control-account setting is the key prevention step. Name it.</p></div>
+<p class="tip"><strong>Tip:</strong> The control-account setting is the key prevention step. Name it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prevent manual journals to the receivable account?</p><p>Make it a third-party control account so only subledger entries can post to it.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">28</span><span class="qt">How would you reduce DSO using Oracle?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a business-outcome question. They want levers, not features.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd look at the whole cycle, because DSO starts before collections. First, invoice fast and correctly: fix AutoInvoice errors and missing PO numbers that delay invoices. Second, deliver faster with e-invoicing or a customer portal. Third, collect smarter: strategies with prioritized worklists, automatic dunning and promise-to-pay tracking. Fourth, stop risky orders with credit management. Fifth, apply cash fast with AutoMatch and lockbox, because an unapplied payment still shows as overdue. Sixth, manage disputes with reason codes so we fix root causes. And I'd put DSO, aging buckets and collector productivity on a dashboard reviewed every week.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;DSO starts at invoicing&quot;. Most candidates jump straight to collections.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;DSO starts at invoicing&quot;. Most candidates jump straight to collections.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which DSO lever gives the quickest result?</p><p>Invoicing correctly and on time, since errors delay payment.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">29</span><span class="qt">How would you handle unapplied cash that keeps growing?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a real problem many AR teams have. They want an investigation, then a fix.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd first analyze the balance by customer and by age to find the pattern. Usually a few causes explain most of it: missing remittance details, short payments, deductions nobody is working, or receipts posted to the wrong customer. Then I fix each cause. For missing remittance, improve capture with lockbox or email remittance processing. For matching, tune AutoMatch and the application exception rules. For deductions, set up a dispute process with sales so they get resolved. Finally I'd run a weekly review with the collectors, with a target for unapplied cash, so it doesn't creep back.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;analyze first&quot;. It shows you solve the cause, not the symptom.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;analyze first&quot;. It shows you solve the cause, not the symptom.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common cause of growing unapplied cash?</p><p>Missing or poor remittance information from customers.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">30</span><span class="qt">How do you set up Lockbox processing?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> lockbox is the main high-volume cash channel in the US. They want the steps.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define the lockbox with the bank's transmission format, usually BAI2 or a custom format the bank provides, and map the file fields to Oracle fields. Then I set the matching rules: match on transaction number, PO number, sales order or consolidated bill number. AutoCash rules handle receipts where nothing matches. The process runs import, validate, then post QuickCash and apply. In Fusion that's one program, Process Receipts Through Lockbox. The KPI I'd track is the percentage of lockbox receipts applied automatically. Getting that from 60% to 85% usually takes better customer references, not more setup.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the format and the KPI. It shows you've worked with a bank file, not just the setup screen.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the format and the KPI. It shows you've worked with a bank file, not just the setup screen.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you check when lockbox receipts don't apply?</p><p>Matching rules and the references in the file, like invoice numbers or customer numbers, and the AutoMatch thresholds.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">31</span><span class="qt">How does Fusion Revenue Management support ASC 606 / IFRS 15?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> revenue is a high-risk area. They want to know you understand the accounting as well as the module.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Revenue Management follows the five steps of ASC 606. Source documents, like sales orders, contracts and AR invoices, come in and are grouped into customer contracts, which is step one. The lines become performance obligations, step two. The transaction price, step three, is allocated across the obligations by relative standalone selling price, which finance sets by item or item class, step four. Revenue is then recognized when each obligation is satisfied, step five, either at a point in time, like shipment or acceptance, or over time, like ratably over a support period. The accounting gives contract assets, contract liabilities for deferred revenue, and revenue. It also handles contract changes and discounts.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Walk through the five steps and say which part of the module does each. That's the best answer they'll hear.</p></div>
+<p class="tip"><strong>Tip:</strong> Walk through the five steps and say which part of the module does each. That's the best answer they'll hear.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What is the hardest part of Revenue Management setup?</p><p>Standalone selling prices and identifying performance obligations correctly, since allocation depends on them.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">32</span><span class="qt">How does credit management work in Fusion?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> credit links AR to sales. They want the flow from limit to hold release.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Customers get credit profiles with a limit and a review cycle. When an order is booked in Order Management, a credit check compares exposure, which is open receivables plus uninvoiced orders, to the limit. If it's over, the order goes on credit hold. Analysts then work a credit review in a case folder, which pulls in aging, payment history and external scores like D&amp;B. They recommend releasing the hold or changing the limit, and the change routes for approval. Once approved, the hold is released and the order moves on.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Describe the path order → check → hold → review → release. It's what they're listening for.</p></div>
+<p class="tip"><strong>Tip:</strong> Describe the path order → check → hold → review → release. It's what they're listening for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes up credit exposure?</p><p>Open receivables plus uninvoiced orders, sometimes including orders on hold, compared to the limit.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">33</span><span class="qt">How do you set up AutoMatch for receipts?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AutoMatch is how Fusion automates cash application. They want to see you can tune it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create AutoMatch rule sets that tell Fusion how to match receipt remittance references to open transactions. The key settings are the thresholds: the customer recommendation threshold, the combined weighted threshold, and how many days of closed invoices to consider. Fusion scores each possible match using exact and partial string matching and weights them. Then application exception rules decide what to do with small differences, like writing off under $5 or putting overpayments on account. After go-live I watch the results for a few weeks and adjust the thresholds. Too strict and nothing applies; too loose and receipts go to the wrong invoices.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the trade-off of strict vs loose thresholds. It shows you've tuned it, not only set it up.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the trade-off of strict vs loose thresholds. It shows you've tuned it, not only set it up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the risk of setting AutoMatch thresholds too low?</p><p>Receipts apply to the wrong invoices, creating cleanup work.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="B">
   <summary><span class="qn">34</span><span class="qt">How does an on-account credit memo differ from a regular credit memo?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic question to check you know where credits sit.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A regular credit memo is applied to a specific invoice and reduces that invoice's balance, for example crediting one damaged line. An on-account credit memo isn't tied to any invoice. It sits on the customer's account as a credit, like a goodwill credit or a rebate, and can be applied later to any invoice or refunded. Both reduce the customer's balance and create accounting through SLA. The thing to watch is that on-account credits don't sit for months; I'd include them in the weekly unapplied review.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Add the point about reviewing old on-account credits. It shows control thinking.</p></div>
+<p class="tip"><strong>Tip:</strong> Add the point about reviewing old on-account credits. It shows control thinking.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use an on-account credit memo?</p><p>When the customer is due a credit not tied to one invoice, like a rebate.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -395,6 +402,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 8 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 8 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

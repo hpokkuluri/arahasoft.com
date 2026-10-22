@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,68 +97,69 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>50</b> questions</span>
     <span class="stat"><b>22</b> basic</span>
     <span class="stat"><b>28</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Opening" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">How do I start the promotion conversation?</span><span class="meta"><span class="tag">Opening</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Opening" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">How do I start the promotion conversation?</span><span class="meta"><span class="tag">Opening</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) the opening sets the tone.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'd like to talk about my growth to the next level. Over the past year I've taken on the supplier onboarding upgrade and the month-end close automation project on top of the finance applications and the integrations that feed them, and delivered cutting invoice processing time by about 30% and closing the last two quarters on schedule. I'd like to understand what you see as the gap to promotion and agree a plan and timeline.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Ask for a dedicated meeting. Lead with evidence and ask for criteria.</p></div>
+<p class="tip"><strong>Tip:</strong> Ask for a dedicated meeting. Lead with evidence and ask for criteria.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should I raise it in a regular 1:1 or a separate meeting?</p><p>Ask for a dedicated conversation so it gets proper time and attention.</p></div></div>
 </details>
-<details class="q" data-topic="Case" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">Why do you think you're ready for promotion?</span><span class="meta"><span class="tag">Case</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Case" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">Why do you think you're ready for promotion?</span><span class="meta"><span class="tag">Case</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they need evidence they can defend in calibration.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Three reasons. First, I'm already operating at the next level: leading the supplier onboarding upgrade and the month-end close automation project across teams. Second, results: cutting invoice processing time by about 30% and closing the last two quarters on schedule. Third, leadership: I've developed team members and represent our area with senior stakeholders. These match the criteria for the role.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Map your evidence to the written criteria for the next level.</p></div>
+<p class="tip"><strong>Tip:</strong> Map your evidence to the written criteria for the next level.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What evidence is most persuasive?</p><p>Examples where you're already working at the next level, with measurable results.</p></div></div>
 </details>
-<details class="q" data-topic="Case" data-level="D">
-  <summary><span class="qn">3</span><span class="qt">What's the business case for promoting you?</span><span class="meta"><span class="tag">Case</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Case" data-level="D" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">What's the business case for promoting you?</span><span class="meta"><span class="tag">Case</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> promotions cost money; leaders need justification.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;The role I'm doing has grown to include the finance applications and the integrations that feed them and the supplier onboarding upgrade and the month-end close automation project. Promoting me recognizes scope I already carry, retains critical knowledge, and lets me take on a reliable close, fewer manual steps and faster delivery for finance with the authority it needs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Frame it as value to the business, not reward for tenure.</p></div>
+<p class="tip"><strong>Tip:</strong> Frame it as value to the business, not reward for tenure.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I make it about the business?</p><p>Show the value you add at the next level and the risk of losing it.</p></div></div>
 </details>
-<details class="q" data-topic="Criteria" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">What does the next level require?</span><span class="meta"><span class="tag">Criteria</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Criteria" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">What does the next level require?</span><span class="meta"><span class="tag">Criteria</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to check you understand the bar.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;From the career framework, the next level means broader scope, leading through others, influencing senior stakeholders and owning outcomes across teams. Here's where I'm demonstrating each, and where I'd like more opportunity.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Know the framework. Show strengths and gaps honestly.</p></div>
+<p class="tip"><strong>Tip:</strong> Know the framework. Show strengths and gaps honestly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if I don't know the criteria?</p><p>Ask for them in writing and map your evidence to each one.</p></div></div>
 </details>
-<details class="q" data-topic="Not Yet" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">You're not ready yet. How do you respond?</span><span class="meta"><span class="tag">Not Yet</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Not Yet" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">You're not ready yet. How do you respond?</span><span class="meta"><span class="tag">Not Yet</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> your reaction shows maturity — and how you take it affects the next decision.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Thank you for being direct. Could you share the specific gaps? I'd like a written plan with two or three concrete goals and a target review date, say six months. If I meet them, can we revisit then?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stay calm, get specifics, agree measurable goals and a date.</p></div>
+<p class="tip"><strong>Tip:</strong> Stay calm, get specifics, agree measurable goals and a date.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I ask next?</p><p>What specifically is missing, and agree a plan and timeline.</p></div></div>
 </details>
-<details class="q" data-topic="Not Yet" data-level="D">
-  <summary><span class="qn">6</span><span class="qt">There's no budget for promotions this year. What do I say?</span><span class="meta"><span class="tag">Not Yet</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Not Yet" data-level="D" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">There's no budget for promotions this year. What do I say?</span><span class="meta"><span class="tag">Not Yet</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) budget is a common blocker.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I understand budgets are tight. Could we agree that I'm ready on merit, document it, and commit to the next cycle? In the meantime, is there flexibility on title, scope recognition, a one-time bonus or development investment?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate readiness from budget and secure a commitment.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate readiness from budget and secure a commitment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What can I ask for instead?</p><p>A written plan for next cycle, more scope now, or other benefits.</p></div></div>
 </details>
-<details class="q" data-topic="Raise" data-level="B">
-  <summary><span class="qn">7</span><span class="qt">How do I ask for a raise?</span><span class="meta"><span class="tag">Raise</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Raise" data-level="B" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">How do I ask for a raise?</span><span class="meta"><span class="tag">Raise</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) preparation is everything.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'd like to discuss my compensation. My scope has grown to include the finance applications and the integrations that feed them, and I've delivered cutting invoice processing time by about 30% and closing the last two quarters on schedule. Market data for similar roles suggests a range above my current pay. I'd like to discuss an adjustment to bring me in line.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use scope, results and market data. Avoid personal financial reasons.</p></div>
+<p class="tip"><strong>Tip:</strong> Use scope, results and market data. Avoid personal financial reasons.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I justify the number?</p><p>Market data plus your contributions.</p></div></div>
 </details>
-<details class="q" data-topic="Raise" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">What number are you asking for?</span><span class="meta"><span class="tag">Raise</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Raise" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">What number are you asking for?</span><span class="meta"><span class="tag">Raise</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a vague ask gets a vague answer.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Based on market data for this role in our area, the midpoint is around 12% above my current salary. I'm asking for an adjustment to that level, effective this cycle.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Bring a specific number grounded in data.</p></div>
+<p class="tip"><strong>Tip:</strong> Bring a specific number grounded in data.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should I give a range or a number?</p><p>A specific number backed by research, slightly above your target.</p></div></div>
 </details>
-<details class="q" data-topic="Market Data" data-level="B">
-  <summary><span class="qn">9</span><span class="qt">How do I research market pay?</span><span class="meta"><span class="tag">Market Data</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Market Data" data-level="B" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">How do I research market pay?</span><span class="meta"><span class="tag">Market Data</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) data strengthens your case.</p>
 <p><strong>Sample answer (sources):</strong></p>
 <ul>
@@ -161,24 +168,24 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Recruiter conversations.</li>
 <li>Professional associations.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Compare scope, not just title.</p></div>
+<p class="tip"><strong>Tip:</strong> Compare scope, not just title.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do I find reliable pay data?</p><p>Salary surveys, recruiters, job postings with pay ranges and peers.</p></div></div>
 </details>
 <details class="q" data-topic="Counteroffer" data-level="D">
   <summary><span class="qn">10</span><span class="qt">Should I use an outside offer to get promoted?</span><span class="meta"><span class="tag">Counteroffer</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) it can work but carries risk.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Only if you're truly willing to leave. Present it respectfully: &quot;I've received an offer that recognizes a larger scope. I'd prefer to stay — is there a path to align my role and pay here?&quot; Be prepared for either answer.</p>
-<p class="tip"><strong>Tip:</strong> Never bluff.</p></div>
+<p class="tip"><strong>Tip:</strong> Never bluff.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the risk of using an outside offer?</p><p>It can damage trust; only use it if you'd actually leave.</p></div></div>
 </details>
 <details class="q" data-topic="Timing" data-level="B">
   <summary><span class="qn">11</span><span class="qt">When is the best time to ask?</span><span class="meta"><span class="tag">Timing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) timing affects success.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Before budget and promotion cycles (often 2–3 months before reviews), right after a big win, or when your scope has clearly expanded. Avoid moments of crisis or bad company news.</p>
-<p class="tip"><strong>Tip:</strong> Plant the seed early in the cycle.</p></div>
+<p class="tip"><strong>Tip:</strong> Plant the seed early in the cycle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is the worst time to ask?</p><p>Right after a mistake or during a crisis.</p></div></div>
 </details>
-<details class="q" data-topic="Evidence" data-level="B">
-  <summary><span class="qn">12</span><span class="qt">How do I build my promotion packet?</span><span class="meta"><span class="tag">Evidence</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Evidence" data-level="B" data-top="1">
+  <summary><span class="qn">12</span><span class="qt">How do I build my promotion packet?</span><span class="meta"><span class="tag">Evidence</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) managers need ammunition.</p>
 <p><strong>Sample answer (contents):</strong></p>
 <ul>
@@ -188,161 +195,161 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Stakeholder feedback quotes.</li>
 <li>Development shown.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Make it easy for your manager to advocate.</p></div>
+<p class="tip"><strong>Tip:</strong> Make it easy for your manager to advocate.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What goes in a promotion packet?</p><p>Results, scope, feedback and examples at the next level.</p></div></div>
 </details>
 <details class="q" data-topic="Advocacy" data-level="B">
   <summary><span class="qn">13</span><span class="qt">How can I help my manager advocate for me?</span><span class="meta"><span class="tag">Advocacy</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) managers defend cases in calibration.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I've put together a one-page summary of my scope, results and examples mapped to the criteria. Is there anything else you'd find useful for the calibration discussion?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give them a ready-to-use summary.</p></div>
+<p class="tip"><strong>Tip:</strong> Give them a ready-to-use summary.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What helps my manager most?</p><p>A short, clear summary they can use with the committee.</p></div></div>
 </details>
 <details class="q" data-topic="Skip-level" data-level="D">
   <summary><span class="qn">14</span><span class="qt">Should I discuss promotion with my skip-level?</span><span class="meta"><span class="tag">Skip-level</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) this can backfire.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Talk to your manager first. With a skip-level, focus on your goals and impact: &quot;I'm working toward leading a larger team within the next year; what would you want to see from someone at the next level?&quot; Don't imply your manager is blocking you.</p>
-<p class="tip"><strong>Tip:</strong> Never go around your manager.</p></div>
+<p class="tip"><strong>Tip:</strong> Never go around your manager.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is it appropriate to involve a skip-level?</p><p>With your manager's knowledge, to understand expectations.</p></div></div>
 </details>
 <details class="q" data-topic="Objections" data-level="D">
   <summary><span class="qn">15</span><span class="qt">Your manager says you need more leadership experience. What do you say?</span><span class="meta"><span class="tag">Objections</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common objection.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;That makes sense. Could you help me get that experience? For example, leading the next phase of the supplier onboarding upgrade and the month-end close automation project, or mentoring two team members formally. I'd like to demonstrate it over the next six months.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Turn objections into specific opportunities.</p></div>
+<p class="tip"><strong>Tip:</strong> Turn objections into specific opportunities.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I get leadership experience?</p><p>Ask to lead a project or mentor others.</p></div></div>
 </details>
 <details class="q" data-topic="Objections" data-level="D">
   <summary><span class="qn">16</span><span class="qt">They say you're too valuable in your current role. What now?</span><span class="meta"><span class="tag">Objections</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common trap.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I appreciate that. I'd like to build a succession plan so the team can cover my current work — I've already started cross-training. That way the business keeps the knowledge and I can grow.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Remove the dependency by developing a successor.</p></div>
+<p class="tip"><strong>Tip:</strong> Remove the dependency by developing a successor.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I respond to being too valuable?</p><p>Offer a succession plan to train my replacement.</p></div></div>
 </details>
 <details class="q" data-topic="Objections" data-level="D">
   <summary><span class="qn">17</span><span class="qt">They say promotions are based on tenure. How do you respond?</span><span class="meta"><span class="tag">Objections</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> challenging tenure-based thinking respectfully.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I understand tenure is part of the picture. I'd like to focus on the role requirements — I'm already delivering at that level with cutting invoice processing time by about 30% and closing the last two quarters on schedule and the supplier onboarding upgrade and the month-end close automation project. Can we review against the criteria?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Redirect to impact and criteria.</p></div>
+<p class="tip"><strong>Tip:</strong> Redirect to impact and criteria.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I counter tenure-based arguments?</p><p>Show impact and readiness for the next level.</p></div></div>
 </details>
 <details class="q" data-topic="Title vs Pay" data-level="D">
   <summary><span class="qn">18</span><span class="qt">Should I prioritize title or pay?</span><span class="meta"><span class="tag">Title vs Pay</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) trade-offs.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Title matters for career trajectory and external moves; pay matters for financial value. If you must choose, consider your next career step. Ideally get both, or the title now with a pay commitment.</p>
-<p class="tip"><strong>Tip:</strong> Know your priority before negotiating.</p></div>
+<p class="tip"><strong>Tip:</strong> Know your priority before negotiating.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What matters more long term?</p><p>Title often brings future pay; weigh both.</p></div></div>
 </details>
-<details class="q" data-topic="Plan" data-level="B">
-  <summary><span class="qn">19</span><span class="qt">Can we agree a promotion plan?</span><span class="meta"><span class="tag">Plan</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Plan" data-level="B" data-top="1">
+  <summary><span class="qn">19</span><span class="qt">Can we agree a promotion plan?</span><span class="meta"><span class="tag">Plan</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a written plan creates accountability.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Can we write down three goals with measures — for example, deliver the supplier onboarding upgrade and the month-end close automation project, lead a cross-team initiative, and develop a successor — and review progress monthly, with a decision by the next cycle?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Get it in writing with a decision date.</p></div>
+<p class="tip"><strong>Tip:</strong> Get it in writing with a decision date.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should the plan include?</p><p>Specific goals, evidence needed and a review date.</p></div></div>
 </details>
 <details class="q" data-topic="Follow-up" data-level="B">
   <summary><span class="qn">20</span><span class="qt">How do I follow up after the conversation?</span><span class="meta"><span class="tag">Follow-up</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) to keep momentum.</p>
 <p><strong>Sample answer (what to send):</strong></p>
 <p>&quot;Thanks for discussing my path to the next level. As agreed: goals are X, Y, Z; we'll review monthly; and we'll revisit the decision in March.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Send within 24 hours.</p></div>
+<p class="tip"><strong>Tip:</strong> Send within 24 hours.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How soon should I follow up?</p><p>A short written summary within a day.</p></div></div>
 </details>
-<details class="q" data-topic="Rejection" data-level="D">
-  <summary><span class="qn">21</span><span class="qt">I was passed over for a promotion. What should I do?</span><span class="meta"><span class="tag">Rejection</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Rejection" data-level="D" data-top="1">
+  <summary><span class="qn">21</span><span class="qt">I was passed over for a promotion. What should I do?</span><span class="meta"><span class="tag">Rejection</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) handling disappointment professionally.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'm disappointed, and I want to understand the decision. What did the selected candidate demonstrate that I didn't? What would make me the clear choice next time?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stay professional, get specifics, decide whether the path here is real.</p></div>
+<p class="tip"><strong>Tip:</strong> Stay professional, get specifics, decide whether the path here is real.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I learn from being passed over?</p><p>Ask for specific feedback and a plan.</p></div></div>
 </details>
 <details class="q" data-topic="Rejection" data-level="B">
   <summary><span class="qn">22</span><span class="qt">How do I stay motivated after a 'no'?</span><span class="meta"><span class="tag">Rejection</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) resilience.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Agree a clear plan, track progress visibly, seek mentors, build skills, and set a personal deadline to evaluate whether this company offers the growth you want.</p>
-<p class="tip"><strong>Tip:</strong> A personal deadline keeps you in control.</p></div>
+<p class="tip"><strong>Tip:</strong> A personal deadline keeps you in control.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I keep going?</p><p>Focus on progress against the plan.</p></div></div>
 </details>
 <details class="q" data-topic="Retention Bonus" data-level="D">
   <summary><span class="qn">23</span><span class="qt">What if they offer a retention bonus instead of a promotion?</span><span class="meta"><span class="tag">Retention Bonus</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) retention bonuses are common alternatives.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Understand the terms (amount, payment timing, clawback if you leave, tax withholding — often around 22% federal supplemental plus FICA and state). Thank them, and ask whether it's paired with a path to promotion.</p>
-<p class="tip"><strong>Tip:</strong> Get the terms in writing.</p></div>
+<p class="tip"><strong>Tip:</strong> Get the terms in writing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should I accept a retention bonus?</p><p>Understand conditions and whether a path to promotion remains.</p></div></div>
 </details>
 <details class="q" data-topic="Scope" data-level="D">
   <summary><span class="qn">24</span><span class="qt">Should I ask for a bigger role or a title for my current role?</span><span class="meta"><span class="tag">Scope</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) two different asks.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>If you're already doing next-level work, ask for re-leveling: &quot;My role has grown — the title should reflect the scope.&quot; If not, ask for a new opportunity with bigger scope.</p>
-<p class="tip"><strong>Tip:</strong> Re-leveling uses evidence of current scope.</p></div>
+<p class="tip"><strong>Tip:</strong> Re-leveling uses evidence of current scope.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which is easier to get?</p><p>Often a title for the role you already do.</p></div></div>
 </details>
 <details class="q" data-topic="Peers" data-level="D">
   <summary><span class="qn">25</span><span class="qt">A peer was promoted ahead of me. How do I handle it?</span><span class="meta"><span class="tag">Peers</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) professionalism under disappointment.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Congratulate them sincerely, support their success, and have a private conversation with your manager about your own path and gaps.</p>
-<p class="tip"><strong>Tip:</strong> Never undermine the promoted peer.</p></div>
+<p class="tip"><strong>Tip:</strong> Never undermine the promoted peer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I react professionally?</p><p>Congratulate them and ask my manager what I need to do.</p></div></div>
 </details>
-<details class="q" data-topic="Negotiation" data-level="D">
-  <summary><span class="qn">26</span><span class="qt">They offer a smaller raise than asked. What do I say?</span><span class="meta"><span class="tag">Negotiation</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Negotiation" data-level="D" data-top="1">
+  <summary><span class="qn">26</span><span class="qt">They offer a smaller raise than asked. What do I say?</span><span class="meta"><span class="tag">Negotiation</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> negotiation skill.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Thank you. That's below the market level we discussed. Is there flexibility to close the gap — perhaps part now and the rest at mid-year, or a one-time bonus?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explore creative options, stay positive.</p></div>
+<p class="tip"><strong>Tip:</strong> Explore creative options, stay positive.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I respond to a smaller raise?</p><p>Thank them, share my reasoning and ask about a review date.</p></div></div>
 </details>
 <details class="q" data-topic="Documentation" data-level="B">
   <summary><span class="qn">27</span><span class="qt">What should I track all year to support a promotion?</span><span class="meta"><span class="tag">Documentation</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) evidence builds over time.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Track wins with metrics, scope additions, leadership examples, stakeholder praise, and feedback received in a running document.</p>
-<p class="tip"><strong>Tip:</strong> Update it every Friday.</p></div>
+<p class="tip"><strong>Tip:</strong> Update it every Friday.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I track?</p><p>Results, feedback and scope changes.</p></div></div>
 </details>
 <details class="q" data-topic="Sponsorship" data-level="D">
   <summary><span class="qn">28</span><span class="qt">What's the difference between a mentor and a sponsor?</span><span class="meta"><span class="tag">Sponsorship</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) sponsors influence promotions.</p>
 <p><strong>Sample answer (explanation):</strong></p>
 <p>A mentor gives advice; a sponsor uses their influence to advocate for you in rooms you're not in. Earn sponsors by delivering results visibly for senior leaders.</p>
-<p class="tip"><strong>Tip:</strong> Seek sponsors, not just mentors.</p></div>
+<p class="tip"><strong>Tip:</strong> Seek sponsors, not just mentors.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why do I need a sponsor?</p><p>Sponsors advocate for you in decisions.</p></div></div>
 </details>
 <details class="q" data-topic="Visibility" data-level="B">
   <summary><span class="qn">29</span><span class="qt">How do I raise my visibility before promotion season?</span><span class="meta"><span class="tag">Visibility</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) decision-makers need to know your work.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Present results at leadership meetings, lead cross-team initiatives, share short outcome updates, and help senior leaders solve their problems.</p>
-<p class="tip"><strong>Tip:</strong> Solve problems senior leaders care about.</p></div>
+<p class="tip"><strong>Tip:</strong> Solve problems senior leaders care about.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I raise visibility?</p><p>Share results and present work to leaders.</p></div></div>
 </details>
 <details class="q" data-topic="Manager Blocking" data-level="D">
   <summary><span class="qn">30</span><span class="qt">What if I think my manager is blocking me?</span><span class="meta"><span class="tag">Manager Blocking</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) delicate situation.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>First, ask your manager directly for criteria and a plan. If there's no progress after a reasonable time, seek advice from HR or a mentor, or look for internal transfers — without making accusations.</p>
-<p class="tip"><strong>Tip:</strong> Stay factual and professional.</p></div>
+<p class="tip"><strong>Tip:</strong> Stay factual and professional.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if I think my manager is blocking me?</p><p>Ask directly what's needed, then talk to HR or skip-level if needed.</p></div></div>
 </details>
 <details class="q" data-topic="Manager Ambition" data-level="D">
   <summary><span class="qn">31</span><span class="qt">My manager also wants a promotion. Does that affect me?</span><span class="meta"><span class="tag">Manager Ambition</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) shared ambitions can align.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Often it helps: if your manager moves up, you may be their successor. Support their success, become their natural replacement, and discuss succession openly.</p>
-<p class="tip"><strong>Tip:</strong> Position yourself as successor.</p></div>
+<p class="tip"><strong>Tip:</strong> Position yourself as successor.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Does my manager's promotion affect mine?</p><p>It can help if their role opens up; ask openly.</p></div></div>
 </details>
 <details class="q" data-topic="Internal Move" data-level="B">
   <summary><span class="qn">32</span><span class="qt">Should I apply for an internal role to get promoted?</span><span class="meta"><span class="tag">Internal Move</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) an alternative path.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Yes, if it fits your goals. Tell your manager before applying, prepare as for an external interview, and emphasize transferable results like cutting invoice processing time by about 30% and closing the last two quarters on schedule.</p>
-<p class="tip"><strong>Tip:</strong> Inform your manager first.</p></div>
+<p class="tip"><strong>Tip:</strong> Inform your manager first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is an internal move better?</p><p>When the current team has no growth path.</p></div></div>
 </details>
 <details class="q" data-topic="Leaving" data-level="D">
   <summary><span class="qn">33</span><span class="qt">When should I consider leaving for a promotion?</span><span class="meta"><span class="tag">Leaving</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) sometimes growth requires a move.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>If you've met agreed goals and still face repeated delays, if the company lacks growth paths, or if the market offers significantly more — after an honest conversation with your manager.</p>
-<p class="tip"><strong>Tip:</strong> Give the internal path a fair chance first.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the internal path a fair chance first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When should I consider leaving?</p><p>When there's no realistic path after real effort.</p></div></div>
 </details>
 <details class="q" data-topic="Equity" data-level="D">
   <summary><span class="qn">34</span><span class="qt">What if I believe I'm paid less than peers doing the same work?</span><span class="meta"><span class="tag">Equity</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) pay equity.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'd like to make sure my pay reflects my role fairly. Based on scope and market data, I believe I'm below the range. Could we review my pay against the range and peers in similar roles?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Focus on ranges and fairness; involve HR if needed.</p></div>
+<p class="tip"><strong>Tip:</strong> Focus on ranges and fairness; involve HR if needed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I raise pay equity?</p><p>Bring data calmly and ask for a review.</p></div></div>
 </details>
 <details class="q" data-topic="Manager Prep" data-level="B">
   <summary><span class="qn">35</span><span class="qt">How should I prepare for the meeting?</span><span class="meta"><span class="tag">Manager Prep</span><span class="tag lvl">Basic</span></span></summary>
@@ -355,112 +362,112 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Your specific ask and fallback options.</li>
 <li>Questions about process and timeline.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Rehearse your opening.</p></div>
+<p class="tip"><strong>Tip:</strong> Rehearse your opening.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How should I prepare?</p><p>Evidence, a specific ask and answers to objections.</p></div></div>
 </details>
 <details class="q" data-topic="Confidence" data-level="B">
   <summary><span class="qn">36</span><span class="qt">How do I avoid sounding entitled?</span><span class="meta"><span class="tag">Confidence</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) tone matters.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Use evidence and curiosity: &quot;Here's what I've delivered; how do you see it?&quot; rather than &quot;I deserve this.&quot; Show commitment to the company's success.</p>
-<p class="tip"><strong>Tip:</strong> Evidence plus curiosity.</p></div>
+<p class="tip"><strong>Tip:</strong> Evidence plus curiosity.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I avoid entitlement?</p><p>Focus on value delivered, not tenure or needs.</p></div></div>
 </details>
 <details class="q" data-topic="Senior Manager" data-level="D">
   <summary><span class="qn">37</span><span class="qt">How do I make the case for a senior manager promotion?</span><span class="meta"><span class="tag">Senior Manager</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common next step from staff or manager level.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I'm leading multiple workstreams — the finance applications and the integrations that feed them plus the supplier onboarding upgrade and the month-end close automation project — and managing relationships with senior business leaders. A senior manager title would reflect that scope, give me authority with stakeholders, and recognize the leadership I already provide.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show breadth, leadership through others, and business influence.</p></div>
+<p class="tip"><strong>Tip:</strong> Show breadth, leadership through others, and business influence.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's different at senior manager?</p><p>Leading leaders and owning broader outcomes.</p></div></div>
 </details>
 <details class="q" data-topic="Expectations" data-level="B">
   <summary><span class="qn">38</span><span class="qt">What happens after I'm promoted?</span><span class="meta"><span class="tag">Expectations</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) planning the transition.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Clarify new expectations and goals in the first month, transition old responsibilities, build relationships with new peers, and deliver an early win.</p>
-<p class="tip"><strong>Tip:</strong> First 90 days plan.</p></div>
+<p class="tip"><strong>Tip:</strong> First 90 days plan.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I do after promotion?</p><p>Set new goals and clarify expectations.</p></div></div>
 </details>
-<details class="q" data-topic="Delayed" data-level="D">
-  <summary><span class="qn">39</span><span class="qt">My manager promised a promotion months ago, but nothing happened. What now?</span><span class="meta"><span class="tag">Delayed</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Delayed" data-level="D" data-top="1">
+  <summary><span class="qn">39</span><span class="qt">My manager promised a promotion months ago, but nothing happened. What now?</span><span class="meta"><span class="tag">Delayed</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) following up on commitments.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;In March we agreed I'd be considered this cycle if I met the goals. I've delivered them — here's the summary. Can you share where the decision stands and the timeline?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Refer to the written agreement.</p></div>
+<p class="tip"><strong>Tip:</strong> Refer to the written agreement.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if a promise wasn't kept?</p><p>Ask for a specific date and what's blocking it.</p></div></div>
 </details>
 <details class="q" data-topic="Benefits" data-level="B">
   <summary><span class="qn">40</span><span class="qt">What else besides salary can I negotiate?</span><span class="meta"><span class="tag">Benefits</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) total rewards.</p>
 <p><strong>Sample answer (options):</strong></p>
 <p>Bonus target, equity, title, flexible work, training budget, extra PTO, certification sponsorship, and conference attendance.</p>
-<p class="tip"><strong>Tip:</strong> Have a list ready if salary is fixed.</p></div>
+<p class="tip"><strong>Tip:</strong> Have a list ready if salary is fixed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What else can I negotiate?</p><p>Title, scope, training, flexibility and review dates.</p></div></div>
 </details>
 <details class="q" data-topic="Team Impact" data-level="D">
   <summary><span class="qn">41</span><span class="qt">How do I show leadership without direct reports?</span><span class="meta"><span class="tag">Team Impact</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common gap for individual contributors.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I lead through influence: I set direction for the supplier onboarding upgrade and the month-end close automation project across teams, mentor two colleagues, and drive decisions with senior stakeholders. Those are leadership behaviors at the next level.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Leadership isn't only managing people.</p></div>
+<p class="tip"><strong>Tip:</strong> Leadership isn't only managing people.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I show leadership without reports?</p><p>Lead projects and influence across teams.</p></div></div>
 </details>
 <details class="q" data-topic="Calibration" data-level="D">
   <summary><span class="qn">42</span><span class="qt">How do promotion committees decide?</span><span class="meta"><span class="tag">Calibration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) understanding the process.</p>
 <p><strong>Sample answer (explanation):</strong></p>
 <p>Committees compare candidates against criteria and each other, relying on managers' evidence, scope, impact and feedback from senior stakeholders. Strong, quantified examples matter most.</p>
-<p class="tip"><strong>Tip:</strong> Quantify impact.</p></div>
+<p class="tip"><strong>Tip:</strong> Quantify impact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do committees look for?</p><p>Evidence of impact at the next level.</p></div></div>
 </details>
 <details class="q" data-topic="Recognition" data-level="D">
   <summary><span class="qn">43</span><span class="qt">What if the title change isn't possible but scope is bigger?</span><span class="meta"><span class="tag">Recognition</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) alternatives.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;If the title isn't possible now, could we formally document the expanded scope, adjust pay to reflect it, and set a date for the title change?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Document scope formally.</p></div>
+<p class="tip"><strong>Tip:</strong> Document scope formally.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should I accept bigger scope without a title?</p><p>Only with a written plan and date for the title.</p></div></div>
 </details>
 <details class="q" data-topic="Closing" data-level="B">
   <summary><span class="qn">44</span><span class="qt">How do I close the promotion conversation?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) end with clarity.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;To confirm: you'll take my case to the next calibration, I'll send the summary by Friday, and we'll meet again in two weeks for an update. Thank you for your support.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Clear owners and dates.</p></div>
+<p class="tip"><strong>Tip:</strong> Clear owners and dates.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I end the conversation?</p><p>Summarize next steps and agree a follow-up date.</p></div></div>
 </details>
 <details class="q" data-topic="Mindset" data-level="B">
   <summary><span class="qn">45</span><span class="qt">How do I avoid becoming bitter if promotion takes time?</span><span class="meta"><span class="tag">Mindset</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) long-term career health.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Focus on skills and impact you control, celebrate progress, keep options open, and remember careers are long.</p>
-<p class="tip"><strong>Tip:</strong> Control what you can.</p></div>
+<p class="tip"><strong>Tip:</strong> Control what you can.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I avoid bitterness?</p><p>Keep focus on growth and keep options open.</p></div></div>
 </details>
-<details class="q" data-topic="Ask" data-level="B">
-  <summary><span class="qn">46</span><span class="qt">What exact words should I use to ask?</span><span class="meta"><span class="tag">Ask</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Ask" data-level="B" data-top="1">
+  <summary><span class="qn">46</span><span class="qt">What exact words should I use to ask?</span><span class="meta"><span class="tag">Ask</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) clarity beats hints.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'd like to be considered for promotion to senior manager in this cycle. What do you need from me to support that?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Be direct.</p></div>
+<p class="tip"><strong>Tip:</strong> Be direct.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a good opening line?</p><p>&quot;I'd like to talk about my path to the next level and what it would take.&quot;</p></div></div>
 </details>
 <details class="q" data-topic="Evidence" data-level="B">
   <summary><span class="qn">47</span><span class="qt">How do I quantify impact if my work is operational?</span><span class="meta"><span class="tag">Evidence</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) operational roles can show numbers too.</p>
 <p><strong>Sample answer (examples):</strong></p>
 <p>Incidents reduced, resolution time improved, hours saved through automation, audit findings avoided, uptime percentage, and business processes delivered on time.</p>
-<p class="tip"><strong>Tip:</strong> Before-and-after numbers.</p></div>
+<p class="tip"><strong>Tip:</strong> Before-and-after numbers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I quantify operational work?</p><p>Volumes, error rates, cycle times and cost.</p></div></div>
 </details>
 <details class="q" data-topic="Future" data-level="D">
   <summary><span class="qn">48</span><span class="qt">What would you do in your first 90 days at the next level?</span><span class="meta"><span class="tag">Future</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> shows readiness and vision.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Clarify priorities with leadership, strengthen team structure and delegation, deliver the next milestone of the supplier onboarding upgrade and the month-end close automation project, and set a roadmap aligned to a reliable close, fewer manual steps and faster delivery for finance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Concrete plan.</p></div>
+<p class="tip"><strong>Tip:</strong> Concrete plan.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would I do first at the next level?</p><p>Clarify expectations and set goals with my manager.</p></div></div>
 </details>
 <details class="q" data-topic="Silence" data-level="B">
   <summary><span class="qn">49</span><span class="qt">I asked about promotion and got no answer. What now?</span><span class="meta"><span class="tag">Silence</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) follow-up without nagging.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;Following up on our conversation about my path to the next level. Could we set 20 minutes to agree the criteria and timeline? I've drafted a one-page summary to make it easier.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Make the next step easy and specific.</p></div>
+<p class="tip"><strong>Tip:</strong> Make the next step easy and specific.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if I get no answer?</p><p>Follow up politely with a specific date.</p></div></div>
 </details>
 <details class="q" data-topic="Recognition" data-level="D">
   <summary><span class="qn">50</span><span class="qt">What if they offer a bonus instead of a promotion?</span><span class="meta"><span class="tag">Recognition</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) alternatives to promotion.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;Thank you — I appreciate it. I'd still like to understand the path to the title, because the scope I'm carrying (the finance applications and the integrations that feed them) is already at that level. Can we set a date to revisit?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Accept graciously; keep the promotion path on the table.</p></div>
+<p class="tip"><strong>Tip:</strong> Accept graciously; keep the promotion path on the table.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should I accept a bonus instead?</p><p>Consider it if there's still a path to promotion.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -478,6 +485,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

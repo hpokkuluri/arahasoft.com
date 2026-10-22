@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,401 +97,402 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>56</b> questions</span>
     <span class="stat"><b>20</b> basic</span>
     <span class="stat"><b>36</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Core HR" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">Explain the HCM enterprise structure: enterprise, legal employer, legislative data group, business unit, department.</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Core HR" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">Explain the HCM enterprise structure: enterprise, legal employer, legislative data group, business unit, department.</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> the HCM foundation question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The enterprise is the top level, usually one per Fusion instance. A legal entity that employs people is a legal employer; for payroll it also has a payroll statutory unit and tax reporting units. A legislative data group partitions payroll and related data by country, typically one per country and currency. A business unit sets reference data like jobs, positions and grades, and is used by some functions. A department is the organization workers are assigned to, and often owns the cost center. Around them sit the workforce structures: locations, jobs, positions and grades.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that the department often carries the cost center. It's how HR links to finance.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that the department often carries the cost center. It's how HR links to finance.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does the legislative data group control?</p><p>Payroll-related setup for a country, like elements, formulas and balances, shared by legal employers in that country.</p></div></div>
 </details>
-<details class="q" data-topic="Core HR" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">What is the difference between jobs, positions and grades?</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Core HR" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">What is the difference between jobs, positions and grades?</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a key design decision in every HCM project.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A job is a generic role, like Accountant, with a job family, level and FLSA status. A position is a specific instance of a job in a department with headcount or FTE, like 'Senior Accountant, Finance New York, 2 FTE', used in position management for budget control. A grade is a pay level with salary ranges through grade rates, and valid grades can be assigned to jobs or positions. The early decision is position-based, for headcount control in places like public sector or pharma, or job-based, which is simpler.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Raise the position vs job decision. It shapes the whole design.</p></div>
+<p class="tip"><strong>Tip:</strong> Raise the position vs job decision. It shapes the whole design.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you not use positions?</p><p>When headcount isn't tightly budgeted and organizations change often; jobs alone are simpler.</p></div></div>
 </details>
-<details class="q" data-topic="Core HR" data-level="B">
-  <summary><span class="qn">3</span><span class="qt">What is effective dating and why does it matter in HCM?</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Core HR" data-level="B" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">What is effective dating and why does it matter in HCM?</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> effective dating errors break payroll.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;HCM objects like assignments, salaries, jobs and departments keep date-effective history, so each change creates a new row with start and end dates. There's an important difference between a correction, which fixes a mistake, and an update, which records a real change on a date. Changes can be future-dated, like a promotion next month, or retroactive, like a backdated raise that triggers retro pay. It affects payroll, as-of-date reporting, integrations, and HDL loads, which must load history in date order. The classic mistake is correcting history when an update was needed, which breaks payroll.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain correction vs update clearly. It's the point of the question.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain correction vs update clearly. It's the point of the question.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if you correct instead of update a record?</p><p>Correction overwrites history for that date range, while update creates a new dated row, so pick carefully.</p></div></div>
 </details>
 <details class="q" data-topic="Core HR" data-level="B">
   <summary><span class="qn">4</span><span class="qt">What are the main person and employment records in Fusion HCM?</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic data model question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The person record holds personal information: name, national ID, addresses and contacts. The work relationship links the person to a legal employer, as an employee, contingent worker, nonworker or pending worker, with hire and termination dates. Employment terms are optional and hold contract-level terms. The assignment holds the job, position, department, location, manager, grade and working hours. One person can have several work relationships with different legal employers, and several assignments.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention multiple work relationships. It's how global moves and dual roles work.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention multiple work relationships. It's how global moves and dual roles work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between a work relationship and an assignment?</p><p>The work relationship is with a legal employer; assignments are the jobs within it, and there can be more than one.</p></div></div>
 </details>
-<details class="q" data-topic="Data Loads" data-level="B">
-  <summary><span class="qn">5</span><span class="qt">What is HCM Data Loader (HDL) and how do you use it?</span><span class="meta"><span class="tag">Data Loads</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Data Loads" data-level="B" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">What is HCM Data Loader (HDL) and how do you use it?</span><span class="meta"><span class="tag">Data Loads</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HDL is the main HCM load tool.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;HDL loads HCM data using .dat files structured by business object, for example Worker.dat with Worker, PersonName, WorkRelationship and Assignment components. It supports create, update and delete, and date-effective history. Records are identified by source keys, SourceSystemOwner and SourceSystemId, or by GUIDs. Zip files are uploaded to UCM and imported and loaded, with errors reviewed in Data Exchange. HSDL, the spreadsheet loader, gives business users templates. And order matters: departments, jobs, locations and grades before workers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recommend source keys. They make later updates far easier.</p></div>
+<p class="tip"><strong>Tip:</strong> Recommend source keys. They make later updates far easier.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you troubleshoot an HDL load error?</p><p>Read the error per object in the import results, usually a missing parent record, invalid lookup or date issue.</p></div></div>
 </details>
-<details class="q" data-topic="Data Loads" data-level="D">
-  <summary><span class="qn">6</span><span class="qt">How do you convert worker history into Fusion HCM?</span><span class="meta"><span class="tag">Data Loads</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Data Loads" data-level="D" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">How do you convert worker history into Fusion HCM?</span><span class="meta"><span class="tag">Data Loads</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> history conversion is a big HCM risk.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First decide history depth: current record only, or two to three years of assignment and salary changes. Load foundation data first: organizations, jobs, positions, grades and locations. Then workers, with each date-effective change in order: hire, then changes, then current. Then salary history, element entries, payroll year-to-date balances for a mid-year go-live, and absence accrual balances. Reconcile headcount by organization, salary totals and balances. Run multiple mocks, and HR signs off.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention payroll YTD balances for mid-year go-lives. Missing them breaks tax limits.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention payroll YTD balances for mid-year go-lives. Missing them breaks tax limits.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How much history would you load?</p><p>Usually current data plus two to three years of key changes; older history stays in an archive.</p></div></div>
 </details>
-<details class="q" data-topic="Payroll" data-level="D">
-  <summary><span class="qn">7</span><span class="qt">Explain elements, element eligibility and balances in Fusion Payroll.</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Payroll" data-level="D" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">Explain elements, element eligibility and balances in Fusion Payroll.</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> core payroll concepts.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Elements are earnings, deductions or information items, like Regular Salary, 401(k) or Bonus, defined by a primary classification such as Standard Earnings or Pretax Deductions. Element eligibility says which workers can get the element, by legal employer, department, job or payroll. Element entries hold the values for a worker. Balances accumulate run results, like Gross Earnings or Federal Income Tax Withheld, with dimensions such as run, period-to-date and year-to-date. Fast formulas calculate the complex values.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give an example of a balance with a dimension. It shows you've read a payroll register.</p></div>
+<p class="tip"><strong>Tip:</strong> Give an example of a balance with a dimension. It shows you've read a payroll register.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a balance used for?</p><p>Accumulating element results, like year-to-date gross or tax, for payslips, tax reports and later calculations.</p></div></div>
 </details>
-<details class="q" data-topic="Payroll" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">Walk me through a payroll cycle in Fusion.</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Payroll" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">Walk me through a payroll cycle in Fusion.</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> the core payroll process.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Before payroll, changes are entered: new hires, terminations, element entries, time and absences, and retro notifications. Then calculate payroll to create run results. Verify with the payroll register, reconciliations and exception reports. Correct with rollback or retry for individual workers. Then calculate prepayments by payment method and archive periodic payroll results. Make payments by direct deposit, NACHA in the US, and checks. Generate payslips. Calculate costing and transfer to GL. And run statutory reports for tax filings. Payroll flows automate the sequence with a checklist.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention payroll flows. It shows you run payroll with controls, not by hand.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention payroll flows. It shows you run payroll with controls, not by hand.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you verify before releasing payments?</p><p>Payroll register totals, exceptions, large changes from last period and zero-pay employees.</p></div></div>
 </details>
-<details class="q" data-topic="Payroll" data-level="D">
-  <summary><span class="qn">9</span><span class="qt">How does payroll costing work and integrate with the General Ledger?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Payroll" data-level="D" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">How does payroll costing work and integrate with the General Ledger?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> finance depends on payroll costing.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Costing is set up at several levels: payroll, element eligibility, department, job or position, assignment and element entry, with priority rules deciding which level fills each COA segment. After payroll, Calculate Costing runs and the results are reviewed. Transfer to Subledger Accounting creates GL journals, often summarized. Partial period accruals handle month-end. And the payroll register is reconciled to GL by account and cost center.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the priority rules per segment. It's the part people misunderstand.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the priority rules per segment. It's the part people misunderstand.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does costing come from if several levels have values?</p><p>The lowest level with a value overrides higher ones, like assignment over department.</p></div></div>
 </details>
-<details class="q" data-topic="Payroll" data-level="D">
-  <summary><span class="qn">10</span><span class="qt">What is retroactive pay and how does Fusion handle it?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Payroll" data-level="D" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">What is retroactive pay and how does Fusion handle it?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> retro pay is a common source of payroll errors.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;When a change is backdated, for example a raise effective two months ago, payroll has to recalculate past periods. Event rules create retro notifications when retro-relevant data changes. The Recalculate Payroll for Retroactive Changes process works out the differences and creates retro element entries paid in the current period. Only elements flagged as retro-relevant are recalculated. And I review the retro results before the regular payroll run.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you review retro results first. Surprises at payroll time are expensive.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you review retro results first. Surprises at payroll time are expensive.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What triggers retro pay?</p><p>A backdated change, like a raise effective earlier, flags the affected periods for recalculation in the next run.</p></div></div>
 </details>
-<details class="q" data-topic="Payroll" data-level="D">
-  <summary><span class="qn">11</span><span class="qt">What is a Fast Formula and when would you write one?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Payroll" data-level="D" data-top="1">
+  <summary><span class="qn">11</span><span class="qt">What is a Fast Formula and when would you write one?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> fast formulas are a key HCM skill.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fast Formulas are Oracle's rules language, used in Payroll, Absences, Benefits, Time, Compensation and more. They use database items and input values and return results to the calling process. Examples are a custom overtime calculation, absence accrual rules, eligibility rules, or validating entries. I write one only when seeded options can't meet the rule, and I keep it simple, documented and tested with edge cases.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;only when seeded can't meet the rule&quot;. It shows restraint.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;only when seeded can't meet the rule&quot;. It shows restraint.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you avoid writing a Fast Formula?</p><p>When seeded functionality or configuration can meet the need, because formulas need maintenance.</p></div></div>
 </details>
-<details class="q" data-topic="Payroll" data-level="D">
-  <summary><span class="qn">12</span><span class="qt">How do you test a payroll implementation?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Payroll" data-level="D" data-top="1">
+  <summary><span class="qn">12</span><span class="qt">How do you test a payroll implementation?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> payroll must be right on day one.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Unit tests for elements and formulas. Then parallel payroll runs: Fusion and legacy for the same two or three periods with the same inputs, comparing gross, taxes, deductions and net by employee. Every difference over a tolerance, say a dollar, is explained. Special scenarios: new hires, terminations, retro, bonuses, garnishments and multi-state taxes. Payment testing with the bank, and GL costing reconciliation. And year-end scenarios like W-2s if relevant.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with parallel runs. They're the gold standard for payroll testing.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with parallel runs. They're the gold standard for payroll testing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How many parallel runs would you do?</p><p>At least two or three cycles, until differences are explained to the cent.</p></div></div>
 </details>
 <details class="q" data-topic="Absence" data-level="D">
   <summary><span class="qn">13</span><span class="qt">How do you set up absence plans and accruals?</span><span class="meta"><span class="tag">Absence</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> absence setup is detailed and policy-heavy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Absence types, like vacation, sick and FMLA, link to absence plans. Accrual plans define rates by service or grade, the frequency, per payroll, monthly or annual, ceilings, carryover limits, vesting or waiting periods, and proration on hire and termination. Eligibility profiles control who gets each plan. Qualification plans handle paid leave bands, like sick pay or maternity. Payroll integration covers paid absences and the liability. And opening balances are converted.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention proration on hire and termination. It's where accrual bugs hide.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention proration on hire and termination. It's where accrual bugs hide.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's an accrual ceiling?</p><p>A maximum balance an employee can accrue, after which accruals stop until time is used.</p></div></div>
 </details>
 <details class="q" data-topic="Time and Labor" data-level="D">
   <summary><span class="qn">14</span><span class="qt">What does Fusion Time and Labor do and how does it connect to payroll and projects?</span><span class="meta"><span class="tag">Time and Labor</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> time feeds both payroll and projects.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It handles time entry by web, mobile or time clocks, with layouts and time entry rules for validation. Time calculation rules handle overtime and shift premiums using time categories. Time goes through approval workflow. Approved time transfers to Payroll as elements and to Project Costing for project time. It also manages schedules and work patterns. Time clocks integrate through APIs or HDL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention both destinations, payroll and projects. It shows end-to-end thinking.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention both destinations, payroll and projects. It shows end-to-end thinking.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How does time flow to payroll?</p><p>Approved time cards are transferred as element entries for the payroll period.</p></div></div>
 </details>
 <details class="q" data-topic="Benefits" data-level="D">
   <summary><span class="qn">15</span><span class="qt">How are benefits structured in Fusion HCM?</span><span class="meta"><span class="tag">Benefits</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> benefits has its own structure.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Benefits go program, plan type, plan, option, for example Medical, then PPO, then Employee plus Family. Eligibility profiles decide who qualifies. Life events, like new hire, marriage or birth, open enrollment windows. Rates and coverages are calculated, including flex credits. Open enrollment runs as a process. Carrier integrations send 834 files through benefits extracts. And employee contributions become payroll deductions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention 834 files. It shows you've integrated with carriers.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention 834 files. It shows you've integrated with carriers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a life event?</p><p>An event like marriage or a new child that lets an employee change benefit elections outside open enrollment.</p></div></div>
 </details>
 <details class="q" data-topic="Talent" data-level="B">
   <summary><span class="qn">16</span><span class="qt">What is in Oracle Talent Management?</span><span class="meta"><span class="tag">Talent</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a breadth question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Goals and performance documents, with templates, review periods, ratings and calibration. Career development and talent profiles with skills and competencies. Talent review and succession planning with the 9-box. Learning for courses, assignments and compliance training. Recruiting for requisitions, candidates, offers and onboarding. And compensation for workforce compensation cycles and individual compensation.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say which ones you've implemented. Breadth is good, depth wins.</p></div>
+<p class="tip"><strong>Tip:</strong> Say which ones you've implemented. Breadth is good, depth wins.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's calibration for?</p><p>Managers align ratings across teams so they're consistent and fair.</p></div></div>
 </details>
 <details class="q" data-topic="Compensation" data-level="D">
   <summary><span class="qn">17</span><span class="qt">How do you configure an annual compensation cycle (merit and bonus)?</span><span class="meta"><span class="tag">Compensation</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> compensation cycles are high-visibility.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I set up a workforce compensation plan with components like merit, lump sum, bonus and stock. Eligibility and budgets, pooled by manager, and guidelines, like a merit matrix by performance rating and compa-ratio. The manager worksheet is configured, with an approval hierarchy. Performance ratings feed in. Results transfer to HR as salary changes and to Payroll as bonus element entries with the right effective dates. And employees get compensation statements.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the merit matrix. It's the heart of most cycles.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the merit matrix. It's the heart of most cycles.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do managers see their budget?</p><p>In the compensation worksheet, which shows budget used and remaining as they allocate.</p></div></div>
 </details>
 <details class="q" data-topic="Recruiting" data-level="D">
   <summary><span class="qn">18</span><span class="qt">Describe the Oracle Recruiting Cloud flow.</span><span class="meta"><span class="tag">Recruiting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a process walkthrough.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A job requisition is created from a position or job and approved. It's posted to career sites and job boards. Candidates apply and answer screening questions, and move through the candidate selection process phases and states. Interviews are scheduled and feedback captured. An offer is created, approved and e-signed. Pre-employment checks run through background check integrations. Then the hire creates a pending worker, and onboarding journeys start.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with pending worker and journeys. It shows the hand-off to HR.</p></div>
+<p class="tip"><strong>Tip:</strong> End with pending worker and journeys. It shows the hand-off to HR.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens when a candidate accepts an offer?</p><p>They move to hire, often through onboarding journeys, and become a worker in Core HR.</p></div></div>
 </details>
 <details class="q" data-topic="Journeys" data-level="B">
   <summary><span class="qn">19</span><span class="qt">What are HCM Journeys and how have you used them?</span><span class="meta"><span class="tag">Journeys</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> journeys are a modern HCM feature.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Journeys guide workers through the tasks for an event, like onboarding, offboarding, relocation or a leave of absence. Templates include tasks like documents, e-signatures, videos, I-9, IT provisioning and surveys. They're assigned automatically by events or manually. Task owners can be the worker, manager, HR or IT, and integration tasks can call outside systems. The benefit is a consistent experience and compliance. For example, an onboarding journey can start when the offer is accepted: the new hire signs policies and completes the I-9 before day one, IT gets a task to set up the laptop, and the manager gets a checklist for the first week. Day-one paperwork drops sharply, and HR can see who is behind.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Describe one journey end to end. It shows you've built one, not just read about it.</p></div>
+<p class="tip"><strong>Tip:</strong> Describe one journey end to end. It shows you've built one, not just read about it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes a good onboarding journey?</p><p>Tasks for the new hire, manager and IT, with due dates and automatic triggers.</p></div></div>
 </details>
-<details class="q" data-topic="Security" data-level="D">
-  <summary><span class="qn">20</span><span class="qt">How is data security configured in Fusion HCM?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Security" data-level="D" data-top="1">
+  <summary><span class="qn">20</span><span class="qt">How is data security configured in Fusion HCM?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM data is the most sensitive in the company.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Job roles, like HR Specialist or Line Manager, give function privileges. Data roles and security profiles control data: person security profiles for who they can see, plus organization, position, legislative data group and payroll profiles. Areas of responsibility assign HR reps to populations dynamically. Line managers see their people through manager hierarchy security. Sensitive data like SSN, salary and health is restricted further. And provisioning rules map roles from assignment attributes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention areas of responsibility. They scale HR security without manual upkeep.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention areas of responsibility. They scale HR security without manual upkeep.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's an area of responsibility?</p><p>It assigns an HR specialist to a population, like a department or location, so security and routing follow it.</p></div></div>
 </details>
-<details class="q" data-topic="Approvals" data-level="D">
-  <summary><span class="qn">21</span><span class="qt">How do HCM approvals work and how do you troubleshoot routing issues?</span><span class="meta"><span class="tag">Approvals</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Approvals" data-level="D" data-top="1">
+  <summary><span class="qn">21</span><span class="qt">How do HCM approvals work and how do you troubleshoot routing issues?</span><span class="meta"><span class="tag">Approvals</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> approval issues are common HCM tickets.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Each transaction, like hire, promotion, salary change or termination, has approval rules, managed in the Transaction Console and approval rules. Routing can use the supervisor hierarchy, position hierarchy, approval groups, the HR rep through areas of responsibility, or a specific user. To troubleshoot, I check manager assignments for vacant or terminated managers, rule conditions, and delegations, and I use the Transaction Console to view and recover stuck transactions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention vacant or terminated managers. It's the most common cause.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention vacant or terminated managers. It's the most common cause.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common routing problem?</p><p>Missing or wrong manager on the assignment.</p></div></div>
 </details>
-<details class="q" data-topic="Integration" data-level="D">
-  <summary><span class="qn">22</span><span class="qt">How would you integrate Fusion HCM with a third-party payroll provider like ADP?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Integration" data-level="D" data-top="1">
+  <summary><span class="qn">22</span><span class="qt">How would you integrate Fusion HCM with a third-party payroll provider like ADP?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> many companies outsource payroll.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Outbound, HCM Extracts send worker data, assignments, compensation and deductions in the provider's format, as changes-only deltas each pay period. Inbound, payroll results and costing come back for GL and reporting, through HDL or GL journals. Extract timing is aligned with the payroll calendar cutoffs. Reconciliation reports cover headcount and pay changes. Files go over encrypted SFTP with error handling. The alternative is Fusion's Global Payroll Interface.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention cutoff alignment. Changes after cutoff are the usual source of errors.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention cutoff alignment. Changes after cutoff are the usual source of errors.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest integration risk with ADP?</p><p>Timing of changes near payroll cutoff, so the extract schedule must align.</p></div></div>
 </details>
 <details class="q" data-topic="Integration" data-level="D">
   <summary><span class="qn">23</span><span class="qt">What are HCM Extracts?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> extracts drive most HCM outbound integrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;HCM Extracts is the tool for extracting HCM data for interfaces and reports. You define blocks, records and data elements from database items or user entities, plus criteria and delivery options, with BIP templates for formatting and delivery to SFTP or UCM. It supports changes-only extracts against a baseline, and runs as scheduled flows. It's used for benefits carriers, payroll vendors, identity management and other downstream systems.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention changes-only extracts. Full files every time overload partners.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention changes-only extracts. Full files every time overload partners.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a changes-only extract?</p><p>An extract that sends only records changed since the last run, which reduces volume.</p></div></div>
 </details>
 <details class="q" data-topic="Integration" data-level="B">
   <summary><span class="qn">24</span><span class="qt">How does HCM feed identity management and other Fusion modules?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM data drives the rest of the ERP.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Workers are the source for user accounts through auto-provisioning, and for role provisioning rules. SSO and IAM tools like Okta or Entra sync with HCM for joiners, movers and leavers. Managers and hierarchies drive approvals in Financials and Procurement. And employee data is used by Expenses, for cost center and bank accounts, and by Procurement for requesters. So HCM accuracy directly affects ERP approvals.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the approvals point. Finance teams feel bad HCM data first.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the approvals point. Finance teams feel bad HCM data first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens when a worker is terminated?</p><p>Their user account can be suspended automatically and roles removed.</p></div></div>
 </details>
 <details class="q" data-topic="Reporting" data-level="B">
   <summary><span class="qn">25</span><span class="qt">What reporting options exist in Fusion HCM?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reporting tool choice.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;OTBI HCM subject areas, like Workforce Management, Payroll, Absence and Talent, for ad-hoc analysis that respects security. BI Publisher for formatted reports and complex queries. HCM Extracts for data feeds. Fusion Data Intelligence HCM analytics for workforce analytics with history. And infolets and dashboards.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that OTBI respects HCM security automatically. It matters for sensitive data.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that OTBI respects HCM security automatically. It matters for sensitive data.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which tool would you use for payslips?</p><p>BI Publisher, for formatted documents.</p></div></div>
 </details>
 <details class="q" data-topic="Core HR" data-level="B">
   <summary><span class="qn">26</span><span class="qt">What are the main worker lifecycle actions in HCM?</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic HCM process question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Hire, for employees and contingent workers, and rehire. Promotion, transfer, change assignment, change manager, and change location or working hours. Salary change and other compensation changes. Leave of absence and return. Global transfer or temporary assignment between legal employers. And termination, voluntary or involuntary, with reasons. Each action and reason drives approvals, payroll, benefits life events and reporting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that action reasons drive downstream processes. It's why they must be set correctly.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that action reasons drive downstream processes. It's why they must be set correctly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between transfer and global transfer?</p><p>A transfer stays within the same legal employer; global transfer moves to another one.</p></div></div>
 </details>
 <details class="q" data-topic="Core HR" data-level="D">
   <summary><span class="qn">27</span><span class="qt">How do you handle global mobility (a worker moving to another country) in Fusion?</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> global moves are complex.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A global transfer is a permanent move: it ends the work relationship with the source legal employer and creates one with the destination. A global temporary assignment keeps the home relationship and adds a host assignment for a period. I consider payroll in both countries, including shadow payroll, tax equalization, benefits, documents like visas, and cost allocation. And the new country's legislative data group rules apply.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate permanent and temporary moves clearly. It's the first decision.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate permanent and temporary moves clearly. It's the first decision.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use a global temporary assignment?</p><p>For a short assignment abroad where the worker keeps their home employment.</p></div></div>
 </details>
 <details class="q" data-topic="Core HR" data-level="B">
   <summary><span class="qn">28</span><span class="qt">What are flexfields in HCM and when do you use them?</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> flexfields are how HCM is extended.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Descriptive flexfields add extra attributes to objects like assignment or person, with contexts. Extensible flexfields hold multiple rows or structured extra information, like licenses on a person or legislative information. Key flexfields are structured codes for job, grade and position names, people groups and costing. I use them for client-specific data, deploy them after changes, and think about OTBI exposure and HDL loading up front.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention planning for reporting and loading. Flexfields nobody can report on are wasted.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention planning for reporting and loading. Flexfields nobody can report on are wasted.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you add a flexfield?</p><p>When the business needs an attribute Oracle doesn't provide, like a badge number.</p></div></div>
 </details>
 <details class="q" data-topic="Payroll" data-level="D">
   <summary><span class="qn">29</span><span class="qt">How do you set up a new deduction, for example a garnishment or a voluntary deduction?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on payroll question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For a voluntary deduction, I create an element with the element template in the right classification, like pretax or voluntary deductions, then set eligibility, costing and balances, and test in payroll. For an involuntary deduction like a garnishment, I use the seeded involuntary deduction elements for child support, tax levy or creditor debt, with calculation cards per worker capturing the order details, limits and payee; payroll handles priority rules and exemptions. Third-party payees and payment methods handle remittance. And I test edge cases like insufficient net pay.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention insufficient net pay. It's the edge case that matters for garnishments.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention insufficient net pay. It's the edge case that matters for garnishments.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's special about garnishments?</p><p>They follow legal rules for limits and priority, so use seeded involuntary deduction setup.</p></div></div>
 </details>
 <details class="q" data-topic="Payroll" data-level="D">
   <summary><span class="qn">30</span><span class="qt">What are payroll flows and checklists?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> payroll control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Payroll flows sequence the tasks, calculate payroll, verify, prepayments, archive, payments, costing and reports, with dependencies. Flow patterns can be copied and customized, for example to add custom reports or extracts. The payroll checklist shows each task's status, owner and due date. Flows can be scheduled and send notifications, which improves control and auditability.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention auditability. Payroll is a SOX area in many companies.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention auditability. Payroll is a SOX area in many companies.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use payroll flows?</p><p>They sequence tasks and show status, reducing missed steps.</p></div></div>
 </details>
 <details class="q" data-topic="Payroll" data-level="D">
   <summary><span class="qn">31</span><span class="qt">How do you handle a mid-year payroll go-live in the US?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> mid-year go-lives are risky.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I load year-to-date balances for each employee, gross, taxes by jurisdiction and deductions, so Fusion produces correct W-2s and respects limits like the 401(k) annual limit and the Social Security wage base. Balances are initialized through HDL with Initialize Balances. Loaded balances are reconciled to the legacy payroll register and quarterly filings. Responsibilities for quarterly tax filings in the split year are agreed. And I'd suggest a quarter-start go-live to simplify.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recommend a quarter start. It cuts the tax filing complexity.</p></div>
+<p class="tip"><strong>Tip:</strong> Recommend a quarter start. It cuts the tax filing complexity.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What must be loaded for a mid-year go-live?</p><p>Year-to-date balances by employee and jurisdiction.</p></div></div>
 </details>
 <details class="q" data-topic="Payroll" data-level="B">
   <summary><span class="qn">32</span><span class="qt">What are the common causes of payroll errors and how do you prevent them?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> prevention matters more than fixing.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Late or wrong HR data, like retro changes or terminations after cutoff. Element entry errors, like duplicate bonuses. Tax setup problems with work or resident location. Time and absence not approved in time. To prevent them: cutoff calendars, pre-payroll validation reports, exception reports like net pay variance over a percentage, dual review, automated reconciliations and good change control on payroll setup.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the net pay variance report. It catches most errors before payment.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the net pay variance report. It catches most errors before payment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the best prevention?</p><p>A firm cutoff and pre-payroll validation reports.</p></div></div>
 </details>
 <details class="q" data-topic="Absence" data-level="D">
   <summary><span class="qn">33</span><span class="qt">How do you handle FMLA or statutory leave tracking in Fusion?</span><span class="meta"><span class="tag">Absence</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a compliance question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use the seeded US FMLA plans and rules where available, or configure absence types with eligibility, 12 months and 1,250 hours, and entitlement tracking, 12 weeks in a rolling period. The leave of absence assignment status links to benefits continuation and to payroll for unpaid or partial pay. Documentation runs through journeys. And reports support compliance and case management.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the eligibility numbers. They show you know the rule.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the eligibility numbers. They show you know the rule.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you track intermittent FMLA?</p><p>Absence records linked to the FMLA plan with hours used.</p></div></div>
 </details>
 <details class="q" data-topic="Benefits" data-level="D">
   <summary><span class="qn">34</span><span class="qt">How do you design benefits eligibility and life events?</span><span class="meta"><span class="tag">Benefits</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> eligibility drives benefits accuracy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Eligibility profiles use worker attributes like employment category, location, hours and service. Life events are temporal, like new hire or age changes, or explicit, like marriage or birth, each with enrollment windows and default enrollments. Collapsing and processing rules handle multiple events at once. Waiting periods set coverage start dates. And I test end to end, including carrier files and payroll deductions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention collapsing rules. Multiple events at once is where benefits break.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention collapsing rules. Multiple events at once is where benefits break.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's tested in benefits?</p><p>Eligibility results for sample employees and life event triggers.</p></div></div>
 </details>
 <details class="q" data-topic="Talent" data-level="D">
   <summary><span class="qn">35</span><span class="qt">How would you configure a performance management process?</span><span class="meta"><span class="tag">Talent</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a talent configuration question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I set up performance templates with sections, goals, competencies and overall rating, and process flows: self-evaluation, manager evaluation, calibration, review meeting and acknowledgment. Review periods and eligibility. Rating models, with calibration in talent review. Feedback, continuous and requested, and check-ins. Integration with compensation so ratings drive merit. And communication and training for managers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention training managers. The process fails if managers don't use it well.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention training managers. The process fails if managers don't use it well.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest part of performance setup?</p><p>Process flows and roles for each step.</p></div></div>
 </details>
 <details class="q" data-topic="Learning" data-level="D">
   <summary><span class="qn">36</span><span class="qt">How does Oracle Learning support compliance training?</span><span class="meta"><span class="tag">Learning</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> compliance training is required in regulated industries.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Courses and offerings can be online, instructor-led or blended, grouped in specializations. Required learning assignments are created by rules, by job, location or new hire, with due dates and renewals. Notifications and manager dashboards flag overdue learning. Completion records support audits, for example GxP training in pharma. And it integrates with content providers like LinkedIn Learning.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention renewals. Compliance training expires.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention renewals. Compliance training expires.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you track compliance training?</p><p>Required learning assignments with due dates and reports.</p></div></div>
 </details>
 <details class="q" data-topic="Recruiting" data-level="D">
   <summary><span class="qn">37</span><span class="qt">How do you integrate background checks and onboarding into recruiting?</span><span class="meta"><span class="tag">Recruiting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hand-off process question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Background check partners integrate through the recruiting partner framework, with screening packages triggered at a candidate phase. Results come back to the candidate record, and the selection process moves on when they're complete. Offer acceptance creates a pending worker, and an onboarding journey is assigned with documents, I-9 and equipment. The pending worker converts to an employee on the start date.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the pending worker. It's how onboarding starts before day one.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the pending worker. It's how onboarding starts before day one.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who sees background check results?</p><p>Only authorized recruiting and HR roles.</p></div></div>
 </details>
-<details class="q" data-topic="Implementation" data-level="B">
-  <summary><span class="qn">38</span><span class="qt">How do you plan an HCM Cloud implementation and what goes first?</span><span class="meta"><span class="tag">Implementation</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Implementation" data-level="B" data-top="1">
+  <summary><span class="qn">38</span><span class="qt">How do you plan an HCM Cloud implementation and what goes first?</span><span class="meta"><span class="tag">Implementation</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> sequencing matters in HCM.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Core HR goes first, because everything depends on it: structures, workers, security and approvals. Then payroll, absence and time, or a payroll interface, then benefits, talent and compensation, recruiting and learning, often in phases. Data conversion and integrations, to the payroll vendor, benefits carriers, IAM and ERP, are planned early. Payroll needs parallel testing. And change management is heavy, because managers and employees use self-service.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;Core HR first&quot;. It's the foundation everything else needs.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;Core HR first&quot;. It's the foundation everything else needs.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why Core HR first?</p><p>Everything else depends on structures, workers and security.</p></div></div>
 </details>
 <details class="q" data-topic="Implementation" data-level="D">
   <summary><span class="qn">39</span><span class="qt">How do you design HCM for multiple countries?</span><span class="meta"><span class="tag">Implementation</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> global HCM design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A global design for core HR, with localizations per country: legislative data groups, address formats, national identifiers and statutory information. Country payroll uses Fusion Global Payroll where it's available, or payroll interfaces to local providers. Data privacy covers GDPR, works council consultation in Europe, and data residency. Languages and translations. And rollout by region with a global template.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention works councils. In Europe they can decide your timeline.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention works councils. In Europe they can decide your timeline.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What varies by country?</p><p>Payroll, statutory data and address formats.</p></div></div>
 </details>
 <details class="q" data-topic="Security" data-level="D">
   <summary><span class="qn">40</span><span class="qt">How do you protect sensitive HCM data like SSN, salary and health information?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> data protection is critical in HCM.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Role-based access, so only specific roles see national identifiers, salary and medical information. National IDs are masked in the UI and sensitive OTBI subject areas are restricted. Changes and access are audited where available. Non-production is masked after every refresh. And GDPR principles: purpose limitation, retention policies and handling data subject requests.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention masking after refreshes. Test environments are a common leak.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention masking after refreshes. Test environments are a common leak.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you protect data in test environments?</p><p>Mask sensitive data after copies.</p></div></div>
 </details>
 <details class="q" data-topic="Quarterly Updates" data-level="B">
   <summary><span class="qn">41</span><span class="qt">How do you manage HCM quarterly updates, especially payroll?</span><span class="meta"><span class="tag">Quarterly Updates</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> payroll mistakes are very visible.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I review What's New for HCM and the payroll legislative updates for tax changes. Regression covers core HR transactions, approvals, security, and payroll runs compared to prior results with automated payroll comparison. Statutory patches, like year-end, are planned and tested. Extracts and integrations are retested. And HR users get a short summary of what changed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention parallel payroll comparison. It's the test that catches real errors.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention parallel payroll comparison. It's the test that catches real errors.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's most important for payroll updates?</p><p>Testing legislative changes before they apply.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">42</span><span class="qt">Tell me about a difficult payroll issue you solved under time pressure.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> pressure handling in a critical process.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;Two hours before payroll payments were due to transmit, net pay variances appeared for 300 employees. As HCM lead, I had to decide whether to proceed. I traced it to a retroactive change in a benefit rate loaded that afternoon. I rolled back the affected workers, corrected the rate's effective date, reran payroll for them and reconciled. Payroll paid on time, and afterwards we added a pre-payroll variance check and a freeze window for benefit changes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the prevention. That's what makes it a lead-level story.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the prevention. That's what makes it a lead-level story.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What did you change afterwards?</p><p>Added the cause to pre-payroll checks.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">43</span><span class="qt">How do you work with HR business partners who aren't technical?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM success depends on HR partners.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use their language: employee experience, compliance and cost. I show processes with their scenarios, like a promotion or a leave. I explain how data changes affect payroll and approvals. I give them self-service tools, OTBI and HSDL, with training. And I keep regular check-ins with quick feedback.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show processes with their scenarios. It makes the system real to them.</p></div>
+<p class="tip"><strong>Tip:</strong> Show processes with their scenarios. It makes the system real to them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep HRBPs engaged?</p><p>Show their scenarios, not configuration.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">44</span><span class="qt">Why do you want to lead HCM implementations?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> motivation.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;HCM touches every employee, so it has real impact on experience and trust, especially paying people correctly. I enjoy combining compliance, process design and people change. On my last rollout, manager self-service adoption reached about 90% in three months, and payroll accuracy stayed above 99.9% through three parallel runs and go-live. I want to own the full HCM design and grow a team that can do that repeatedly.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Bring one adoption number and one accuracy number. They're what HR leaders care about.</p></div>
+<p class="tip"><strong>Tip:</strong> Bring one adoption number and one accuracy number. They're what HR leaders care about.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the impact you want?</p><p>Better employee experience and accurate pay.</p></div></div>
 </details>
 <details class="q" data-topic="Core HR" data-level="D">
   <summary><span class="qn">45</span><span class="qt">What is position management and when should a company use it?</span><span class="meta"><span class="tag">Core HR</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a key design decision.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Position management controls headcount through positions: hires fill approved positions, and FTE and headcount budgets are enforced. The position hierarchy can drive approvals and reporting. Assignment attributes like job, department and location sync from the position. Companies should use it when they need budgeted headcount control, like the public sector, regulated industries and large enterprises. The trade-off is more administration, because every org change needs position updates.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the trade-off. It shows balanced advice.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the trade-off. It shows balanced advice.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the cost of position management?</p><p>More maintenance for HR.</p></div></div>
 </details>
 <details class="q" data-topic="Payroll" data-level="D">
   <summary><span class="qn">46</span><span class="qt">How do you reconcile payroll to the general ledger and bank?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> payroll reconciliation is a finance control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I compare the payroll register totals to the costing results to the GL journals by account and cost center. Net pay against the bank payment file totals and the bank statement. Tax liabilities against tax payments and filings. Third-party deductions against remittances. Payroll and accounting sign off monthly, and suspense costing is investigated.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention suspense costing. It's where missing cost centers hide.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention suspense costing. It's where missing cost centers hide.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common reconciliation difference?</p><p>Costing errors or unmapped accounts.</p></div></div>
 </details>
 <details class="q" data-topic="Integration" data-level="D">
   <summary><span class="qn">47</span><span class="qt">How do you handle employee data for Fusion Expenses and Procurement approvals?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM data quality affects finance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Expenses needs the assignment cost center for the default expense account, the manager, and a bank account for reimbursement, or payroll. Requisitions need the requester's BU and default charge account, and approvals use the supervisor hierarchy. So I make sure the default expense account on assignments is populated, through HDL or rules. And terminated managers or missing supervisors break approvals, so I monitor them with reports.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention monitoring missing supervisors. It prevents stuck approvals.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention monitoring missing supervisors. It prevents stuck approvals.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What breaks if cost center is missing?</p><p>Expenses can't default the account.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">48</span><span class="qt">How is AI being used in Oracle HCM?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM is an active area for AI.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Generative AI writes job descriptions, summarizes performance reviews, suggests goals and drafts candidate outreach. AI agents answer HR help desk questions about policies and benefits and help with onboarding. Recommendations suggest jobs and learning based on skills, and the best candidates. The guardrails are bias checks, privacy, and human review for decisions like hiring and ratings.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stress human review for hiring and ratings. It's the ethical and legal line.</p></div>
+<p class="tip"><strong>Tip:</strong> Stress human review for hiring and ratings. It's the ethical and legal line.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which HCM AI feature would you start with?</p><p>Job description generation.</p></div></div>
 </details>
 <details class="q" data-topic="Implementation" data-level="B">
   <summary><span class="qn">49</span><span class="qt">What are key risks in HCM implementations?</span><span class="meta"><span class="tag">Implementation</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> risk awareness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Payroll accuracy, mitigated with multiple parallel runs. Data quality in history, managers and cost centers. Security misconfiguration exposing sensitive data. Change management, especially manager self-service adoption. Integrations with benefits carriers, payroll vendors and IAM. And works council or legal approvals in some countries.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Pair each risk with a mitigation if asked. It shows you've managed them.</p></div>
+<p class="tip"><strong>Tip:</strong> Pair each risk with a mitigation if asked. It shows you've managed them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which risk is biggest?</p><p>Payroll accuracy.</p></div></div>
 </details>
 <details class="q" data-topic="Talent" data-level="D">
   <summary><span class="qn">50</span><span class="qt">How do you set up succession planning?</span><span class="meta"><span class="tag">Talent</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a talent configuration question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I identify critical positions or roles. Talent reviews assess performance and potential on the 9-box, plus risk of loss and impact of loss. Succession plans list candidates with readiness levels. Successors get development plans with learning and assignments. Only HR and leadership see succession data. And reports show bench strength.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention securing succession data. It's highly sensitive.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention securing succession data. It's highly sensitive.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the 9-box?</p><p>A grid of performance against potential.</p></div></div>
 </details>
 <details class="q" data-topic="Payroll" data-level="B">
   <summary><span class="qn">51</span><span class="qt">What is the difference between Fusion Global Payroll and a payroll interface approach?</span><span class="meta"><span class="tag">Payroll</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a key payroll strategy decision.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;With Global Payroll, Fusion calculates pay for supported countries, like the US, UK, Canada and India, and Oracle updates the statutory rules. With a payroll interface, Fusion is the HR source and a third party, like ADP or a local bureau, calculates pay; Fusion sends changes through extracts and may receive results back. I decide by country support, complexity, cost and the in-house payroll expertise.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention in-house expertise. Running payroll in-house needs skilled people.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention in-house expertise. Running payroll in-house needs skilled people.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use an interface?</p><p>For countries Global Payroll doesn't support.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">52</span><span class="qt">What changes for HCM users and admins with Redwood?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM moved to Redwood early.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;HCM was one of the first areas in Redwood: person, employment, journeys, goals, performance, learning and recruiting pages. Transactions are designed with Transaction Design Studio and Visual Builder Studio, controlling fields, sections and rules by action and role; classic Page Composer personalizations don't carry over. Approvals and security stay the same. Managers and HR need training because self-service screens look different.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention Transaction Design Studio. It's the HCM-specific tool.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention Transaction Design Studio. It's the HCM-specific tool.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest admin change?</p><p>Using Transaction Design Studio and VBS for rules.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">53</span><span class="qt">How would you hide or require a field on a Redwood HCM action like Promote?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on HCM configuration question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use Transaction Design Studio, or VBS for Redwood pages, to create a rule for the Promote action, optionally by legal employer or role. I set the field to required, hidden or read-only, and add any defaults. Then I test with different users and countries, publish, and document the rule for support.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention testing across countries. Rules by legal employer often surprise people.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention testing across countries. Rules by legal employer often surprise people.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you test the rule?</p><p>Run the Promote action as different roles.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">54</span><span class="qt">Give examples of AI agents useful in HCM.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a use case question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A policy and benefits Q&amp;A agent, grounded on HR documents. An employee self-service agent: 'update my address' or 'how many vacation days do I have?', using HCM business objects with the employee's own access. A manager assistant that summarizes team absences and upcoming reviews and drafts feedback. A recruiting assistant that drafts job descriptions and summarizes candidates. Humans stay responsible for hiring, pay and performance decisions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with who stays responsible. It shows judgment.</p></div>
+<p class="tip"><strong>Tip:</strong> End with who stays responsible. It shows judgment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the safest first agent?</p><p>A policy Q&amp;A agent.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">55</span><span class="qt">What extra care do HCM agents need?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM data is the most sensitive in the ERP.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Sensitive data, like salary, health and national IDs, needs strict role-based access, which agents inherit from HCM security. Recruiting and performance uses need bias and fairness testing, with humans making the decisions. Privacy rules like GDPR, and works council requirements in some countries, apply. And employees should be told clearly when they're using an AI assistant.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention works councils. It shows global HCM experience.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention works councils. It shows global HCM experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential for HCM agents?</p><p>Strict role-based access to sensitive data.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Platform" data-level="B">
   <summary><span class="qn">56</span><span class="qt">How do you keep HCM extracts and integrations safe during Redwood changes?</span><span class="meta"><span class="tag">Fusion Platform</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> UI changes can still affect integrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;HCM Extracts, HDL and APIs aren't affected by UI changes. But new fields added through Redwood or VBS flexfields need to be added to the extracts. I retest approval notifications and deep links. And payroll-related transactions get a regression test after every quarterly update.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention new flexfields missing from extracts. It's the real risk.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention new flexfields missing from extracts. It's the real risk.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you check after UI changes?</p><p>That new fields are in extracts.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -503,6 +510,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,429 +97,430 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>60</b> questions</span>
     <span class="stat"><b>22</b> basic</span>
     <span class="stat"><b>38</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Role" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">How is a Staff Oracle Applications engineer different from a Solution Architect?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Role" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">How is a Staff Oracle Applications engineer different from a Solution Architect?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you understand the staff-level scope.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An architect owns a program; a staff engineer owns the platform across programs and years. I influence without authority, setting standards many teams follow and resolving cross-team technical disputes. I take the hardest problems: performance, data integrity, complex accounting, failed integrations and audit findings. I set technical strategy: the platform roadmap, retiring legacy, and adopting new capabilities like AI, Redwood and Fusion Data Intelligence. I grow architects and leads and build the center of excellence. And I advise executives on finance technology risk and investment. I'm still hands-on: I can read a BIP query, an SLA rule, an OIC flow and an FBDI log.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with staying hands-on. Staff roles expect technical depth, not just strategy.</p></div>
+<p class="tip"><strong>Tip:</strong> End with staying hands-on. Staff roles expect technical depth, not just strategy.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you measure your impact without owning a program?</p><p>By platform outcomes over time: fewer incidents, faster close, lower support cost, and decisions other teams adopt.</p></div></div>
 </details>
-<details class="q" data-topic="Strategy" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">What would your first 90 days look like as Staff, Oracle Applications (Finance)?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Strategy" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">What would your first 90 days look like as Staff, Oracle Applications (Finance)?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a plan shows you'll make an impact without breaking things.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Days 1 to 30, I listen and learn: meet finance leaders, IT leaders, support teams and auditors; review the landscape, modules, extensions, integrations, incidents, audit findings, roadmap and spend; and shadow a month-end close. Days 31 to 60, I diagnose: the top five risks and opportunities with evidence, like close delays from accounting errors, fragile integrations or SoD gaps, plus quick wins. Days 61 to 90, I act: deliver two or three quick wins, propose standards like a design authority and an extension policy, present a 12-to-18-month technical roadmap, and agree success metrics with leadership.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention shadowing a close. It's the fastest way to learn a finance platform.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention shadowing a close. It's the fastest way to learn a finance platform.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would you deliver by day 90?</p><p>A platform assessment with a prioritized roadmap and one or two quick wins already delivered.</p></div></div>
 </details>
-<details class="q" data-topic="Strategy" data-level="D">
-  <summary><span class="qn">3</span><span class="qt">How do you define a multi-year finance platform strategy?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Strategy" data-level="D" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">How do you define a multi-year finance platform strategy?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> staff roles set direction.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start from business drivers: growth, M&amp;A, shared services, close speed, controls and cost. The target state is Fusion ERP at the core, with EPM, Fusion Data Intelligence analytics, automation with AI agents, and one integration platform, with minimal custom code. Principles guide decisions: standard first, event-driven integration, one source of truth per data domain, and security by design. The roadmap runs in waves by value and dependency. It has a funding model and capacity split between run and change. I measure close days, automation rates, incidents and technical debt. And I review it yearly against Oracle's roadmap.&quot;</p>
-<p class="tip"><strong>Tip:</strong> State your principles. They show how you'll make future decisions.</p></div>
+<p class="tip"><strong>Tip:</strong> State your principles. They show how you'll make future decisions.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep a multi-year strategy relevant?</p><p>Review it every quarter against business changes and Oracle's roadmap, and adjust priorities.</p></div></div>
 </details>
-<details class="q" data-topic="Problem Solving" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">Month-end: GL and subledger balances don't reconcile for AP in one ledger, and no one knows why. Walk me through it.</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Problem Solving" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">Month-end: GL and subledger balances don't reconcile for AP in one ledger, and no one knows why. Walk me through it.</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hard, realistic problem.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I scope the difference by period, BU, account and currency, and find when it started. The Payables to Ledger Reconciliation report sorts it into unaccounted, not transferred, not posted, manual journals, and accounted in a different period. Then SLA: journals with errors, entries posted to non-control accounts, and accounting rule changes mid-period. Then data: transactions with accounting dates in closed periods, sweeps, and invoices canceled after partial accounting. Then recent changes: configuration packages, the quarterly update or a new integration. I fix the root cause, book corrections with an audit trail, and add controls like third-party control accounts and a daily reconciliation report. If I suspect a product bug, I raise an SR with evidence.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;when did it start?&quot;. It points straight to what changed.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;when did it start?&quot;. It points straight to what changed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most likely cause after unaccounted transactions?</p><p>A manual GL journal to the AP liability account, or accounting transferred but not posted.</p></div></div>
 </details>
-<details class="q" data-topic="Problem Solving" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">An integration created 5,000 duplicate AP invoices overnight. What do you do?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Problem Solving" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">An integration created 5,000 duplicate AP invoices overnight. What do you do?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> incident handling under pressure.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Contain first: stop the integration and stop or exclude these invoices from the next payment run by placing them on hold, and tell AP, treasury and leadership. Then assess: identify the duplicates by batch IDs, timestamps and source keys, and confirm none were paid. Then remediate: cancel the duplicates in bulk through REST or mass cancel, keeping the audit trail, reverse accounting if it was created, and reconcile to the source. Then root cause and prevention: usually it's a retry after a timeout that wasn't idempotent, so I add idempotency keys that check the source invoice ID before creating, enable duplicate invoice validation, and alert on unusual volumes. And a post-incident review with actions and owners.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;stop the payment run&quot; first. Paying duplicates is the real damage.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;stop the payment run&quot; first. Paying duplicates is the real damage.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you stop it happening again?</p><p>Idempotency keys on the integration, so a rerun can't create the same invoice twice, plus duplicate checks.</p></div></div>
 </details>
 <details class="q" data-topic="Problem Solving" data-level="D">
   <summary><span class="qn">6</span><span class="qt">Performance of OTBI and BIP reports is degrading across the finance user base. How do you approach it?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> platform health at scale.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I measure which reports, when, how long and how many users, with Oracle's diagnostics. The usual patterns are OTBI analyses with no date prompts, queries across many subject areas, BIP data models on base tables without the right views, and reports scheduled at peak times. Fixes are required prompts, governed shared analyses, rewriting heavy BIP SQL against proper views, moving analytics to Fusion Data Intelligence or BICC, and scheduling bursts off-peak. Governance adds a report certification process and removes unused reports. And if it's platform-side, I engage Oracle.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention moving analytics off production. It's the lasting fix.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention moving analytics off production. It's the lasting fix.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common report performance problem?</p><p>Reports pulling too much data without filters, or complex BIP queries on large tables.</p></div></div>
 </details>
 <details class="q" data-topic="Accounting" data-level="D">
   <summary><span class="qn">7</span><span class="qt">Explain how you would design accounting for a complex revenue arrangement with variable consideration.</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> variable consideration is one of the hardest revenue topics.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Under ASC 606 and IFRS 15, variable consideration, like rebates, usage fees or penalties, is estimated using expected value or most likely amount, and constrained so a large reversal isn't likely later. In Oracle, Revenue Management handles allocation and recognition, and variable consideration goes in as estimates that adjust the transaction price, with true-ups as actuals come in. Rebates and chargebacks are handled through channel revenue management or accruals via SLA or GL. The accounting covers contract assets and liabilities, revenue and accrued rebates. Estimates are reviewed every quarter with a documented method, and disclosures cover remaining performance obligations and disaggregation.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the constraint. It's the part of 606 interviewers test.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the constraint. It's the part of 606 interviewers test.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How is a constraint on variable consideration applied?</p><p>Revenue is recognized only to the extent a significant reversal is not probable, so estimates may be constrained.</p></div></div>
 </details>
 <details class="q" data-topic="Accounting" data-level="D">
   <summary><span class="qn">8</span><span class="qt">How do you handle Pillar Two / global minimum tax data requirements in the ERP landscape?</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> Pillar Two is a current topic, and tax depends on ERP data.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Pillar Two, the 15% global minimum tax, needs data by jurisdiction: GloBE income, covered taxes and deferred taxes for each constituent entity. The ERP's job is a clean legal entity structure, entity-level trial balances, account mapping to the GloBE adjustments, and intercompany detail. The calculation usually happens in Tax Reporting in EPM or a specialist tax tool fed from GL and FCCS. I'd design data lineage and controls, because tax data is audited too, and work with the tax team early, since changes to the chart or entity mapping may be needed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;work with tax early&quot;. Late changes to entity mapping are expensive.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;work with tax early&quot;. Late changes to entity mapping are expensive.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does Pillar Two data usually come from?</p><p>GL by jurisdiction plus tax data, often assembled in a tax reporting tool.</p></div></div>
 </details>
-<details class="q" data-topic="Governance" data-level="D">
-  <summary><span class="qn">9</span><span class="qt">How do you set up a Center of Excellence (CoE) for Oracle Finance?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Governance" data-level="D" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">How do you set up a Center of Excellence (CoE) for Oracle Finance?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> CoEs are how platforms are run after go-live.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The mission is to get the most value from the platform while keeping it stable, secure and current. Roles include a platform owner, solution architects, functional leads by process, integration and reporting engineers, a release manager and a data steward. Services include the design authority, quarterly release management, demand intake and prioritization, standards and templates, training and a knowledge base, and vendor management with Oracle. Metrics are incidents, enhancement cycle time, adoption of new features and user satisfaction. And the operating model pairs the CoE with business process owners, using partners for extra capacity.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention business process owners. A CoE without them becomes an IT island.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention business process owners. A CoE without them becomes an IT island.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first CoE deliverable?</p><p>Governance for changes and releases, so the platform stays stable.</p></div></div>
 </details>
-<details class="q" data-topic="Governance" data-level="D">
-  <summary><span class="qn">10</span><span class="qt">What standards would you set for extensions, integrations and reports?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Governance" data-level="D" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">What standards would you set for extensions, integrations and reports?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> standards are how staff engineers scale their impact.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For extensions: standard first, a justification and design review for any extension, supported APIs only, code in source control and automated tests. For integrations: one platform, naming standards, common error handling and monitoring, idempotency, and OAuth with least privilege. For reports: OTBI before BIP, certified versus personal reports, performance guidelines, and an owner and review date for each. Design documents and runbooks are mandatory. And a yearly review retires unused objects.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the yearly review. Standards without clean-up still accumulate debt.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the yearly review. Standards without clean-up still accumulate debt.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you enforce standards?</p><p>Design reviews and a simple checklist before any build is approved.</p></div></div>
 </details>
 <details class="q" data-topic="Data Integrity" data-level="D">
   <summary><span class="qn">11</span><span class="qt">How do you ensure data integrity across Fusion, EPM and downstream systems?</span><span class="meta"><span class="tag">Data Integrity</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> data integrity failures become audit findings.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;One source of truth per data domain, with documented lineage. Automated reconciliations: GL to FCCS, GL to Fusion Data Intelligence, subledgers to GL, and every integration's source to target. Controls in the pipelines: control totals, schema validation and idempotency. Changes to the chart of accounts and hierarchies are pushed to EPM with checks. And monitoring and alerts, each with an owner.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention automated reconciliations. Manual ones get skipped under pressure.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention automated reconciliations. Manual ones get skipped under pressure.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What reconciliation catches most issues?</p><p>GL to FCCS and subledger to GL, run automatically every period.</p></div></div>
 </details>
 <details class="q" data-topic="Oracle Relationship" data-level="B">
   <summary><span class="qn">12</span><span class="qt">How do you work with Oracle (support, product management) to resolve platform issues?</span><span class="meta"><span class="tag">Oracle Relationship</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> vendor management is part of the job.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I file quality SRs: a clear problem statement, steps, logs, business impact and environment, with severity matched to impact. When impact is high, I escalate through the account team and support escalation process. I use Customer Connect ideas and customer advisory boards to influence the roadmap, and early adopter programs for features we need. And I track SRs and patches and keep workarounds documented.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention matching severity to impact. Over-escalating loses credibility.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention matching severity to impact. Over-escalating loses credibility.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you get an SR escalated?</p><p>Show business impact clearly and use the escalation process with your account team.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="B">
   <summary><span class="qn">13</span><span class="qt">How do you decide whether to adopt a new Oracle feature (e.g. an AI agent) in production?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> judgment on new capabilities.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Value: what problem it solves and the measurable benefit. Readiness: how mature it is, known issues and its roadmap. Impact on processes, controls, security, training and data. Then a pilot with a defined scope and success metrics, compared to a baseline. Anything touching financial postings needs sign-off from audit and risk. Then a rollout plan with change management, and measurement afterwards.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the controls sign-off for financial features. It's the gate that matters.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the controls sign-off for financial features. It's the gate that matters.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would make you delay adopting a feature?</p><p>Immature functionality or unclear controls.</p></div></div>
 </details>
-<details class="q" data-topic="M&amp;A" data-level="D">
-  <summary><span class="qn">14</span><span class="qt">Design an M&amp;A integration playbook for the finance platform.</span><span class="meta"><span class="tag">M&amp;A</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="M&amp;A" data-level="D" data-top="1">
+  <summary><span class="qn">14</span><span class="qt">Design an M&amp;A integration playbook for the finance platform.</span><span class="meta"><span class="tag">M&amp;A</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> repeatable M&amp;A integration is valuable.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Before close: due diligence on systems, data and controls, and day-one requirements for reporting, cash and payroll. Day one: map their trial balance into FCCS, set up bank access, and change as little as possible. Days 1 to 100: decide the target state, migrate to Fusion or keep a TSA, align controls and set SOX scope. Migration uses template-based onboarding for entities, ledgers, BUs and security, plus a data migration kit and an integrations kit. Then hypercare, close integration and synergy tracking. And everything becomes reusable assets: checklists, scripts, data templates and training.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention reusable assets. The second acquisition should be faster than the first.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention reusable assets. The second acquisition should be faster than the first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What must work on day one after an acquisition?</p><p>Cash, payroll, payments and basic consolidated reporting.</p></div></div>
 </details>
-<details class="q" data-topic="Controls" data-level="D">
-  <summary><span class="qn">15</span><span class="qt">An audit finding says SoD conflicts exist for 40 users in Payables. How do you remediate?</span><span class="meta"><span class="tag">Controls</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Controls" data-level="D" data-top="1">
+  <summary><span class="qn">15</span><span class="qt">An audit finding says SoD conflicts exist for 40 users in Payables. How do you remediate?</span><span class="meta"><span class="tag">Controls</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> audit remediation is a common staff-level task.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I validate with an SoD analysis in Advanced Access Controls or the GRC tool and confirm the conflicts, like supplier maintenance plus invoice entry plus payment. Immediately, I remove roles that aren't needed, and for necessary exceptions add mitigating controls, like a review report of supplier changes paid in the same week. Then the root cause: usually overloaded custom roles and provisioning without preventive checks. I redesign the roles to separate duties and add preventive SoD checks at provisioning. And I give the auditors evidence and set up quarterly access reviews.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention mitigating controls for real exceptions. Auditors accept them when documented.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention mitigating controls for real exceptions. Auditors accept them when documented.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prevent SoD conflicts from coming back?</p><p>Preventive SoD checks in provisioning, so conflicting roles can't be assigned.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="D">
   <summary><span class="qn">16</span><span class="qt">How do you approach a request to run Fusion and a second ERP (e.g. for a large acquisition) long-term?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a strategic architecture trade-off.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I understand why: migration cost, a unique business model, or divestiture plans. If we run two ERPs, the architecture needs consolidation and reporting through FCCS and Fusion Data Intelligence, aligned master data for customers, suppliers and items, intercompany integration, and one controls framework. The costs are integration, duplicate skills, licenses and audit complexity. I'd define exit criteria and revisit them every year, and make the case with five-year total cost of ownership.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention exit criteria. &quot;Temporary&quot; two-ERP setups often become permanent without them.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention exit criteria. &quot;Temporary&quot; two-ERP setups often become permanent without them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's needed if two ERPs run long-term?</p><p>Consolidation, master data alignment and integration between them.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="B">
   <summary><span class="qn">17</span><span class="qt">How do you influence decisions when you don't own the budget or the team?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> staff roles lead through influence.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Credibility first, from solving real problems and being right with data. Relationships with business owners and delivery leaders. Clear written proposals, one-pagers or decision records, with options and impact. Allies who share the goal, like audit, security or finance leaders. A pilot to prove value before asking for full commitment. And when a decision goes the other way, I accept it gracefully and keep a record of the risks.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention accepting decisions gracefully. Influence depends on being a good partner.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention accepting decisions gracefully. Influence depends on being a good partner.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you earn credibility quickly?</p><p>Solve a visible problem fast and share the credit.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="B">
   <summary><span class="qn">18</span><span class="qt">How do you develop architects and leads in your organization?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> staff engineers multiply others.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use design reviews as coaching sessions. I give stretch assignments with support. I run communities of practice with monthly sessions. I help define career paths with clear expectations at each level. I push for certifications and learning budgets. And I give feedback often, specifically and with examples. I measure it by promotions, retention and the quality of designs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention how you measure it. It shows you treat development as real work.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention how you measure it. It shows you treat development as real work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you know development is working?</p><p>When architects make good decisions without needing your review.</p></div></div>
 </details>
-<details class="q" data-topic="Problem Solving" data-level="D">
-  <summary><span class="qn">19</span><span class="qt">A quarterly update broke a critical payment integration in production. Walk me through your response.</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Problem Solving" data-level="D" data-top="1">
+  <summary><span class="qn">19</span><span class="qt">A quarterly update broke a critical payment integration in production. Walk me through your response.</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> incident response on a critical process.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Contain: switch to the fallback, a manual file upload or the previous format, so today's payments go out. Diagnose: compare payloads and formats before and after, and check the release notes for API or format changes. Fix the integration or template, test it, and deploy. Raise an SR if it's an Oracle regression. Then prevent: add this integration to automated regression with production-like data, subscribe to API change notices, and test earlier in the update window. And hold a post-incident review.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;today's payments go out&quot; first. Business continuity before diagnosis.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;today's payments go out&quot; first. Business continuity before diagnosis.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would you change after the incident?</p><p>Add that integration to automated regression for every quarterly update.</p></div></div>
 </details>
 <details class="q" data-topic="Accounting" data-level="D">
   <summary><span class="qn">20</span><span class="qt">How would you design accounting for intercompany loans and interest across entities?</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a treasury and accounting design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Treasury owns the loan agreements, in a treasury system or in Fusion with a defined process. Interest is accrued monthly by agreement, using the rate and day-count, with journals in both entities, interest income for the lender and expense for the borrower, using the intercompany segment. Foreign-currency loans are revalued, and some may qualify as a net investment. Cross-border interest may need withholding tax. Settlement is by netting or cash. Reconciliation and elimination happen in FCCS. And transfer pricing documentation supports the arm's-length rates.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention withholding tax and transfer pricing. They're where cross-border loans get complicated.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention withholding tax and transfer pricing. They're where cross-border loans get complicated.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle interest in different currencies?</p><p>Each entity records in its functional currency, with FX differences recognized.</p></div></div>
 </details>
 <details class="q" data-topic="Controls" data-level="D">
   <summary><span class="qn">21</span><span class="qt">How do you design journal entry controls for a large organization?</span><span class="meta"><span class="tag">Controls</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> journal controls are a top audit focus.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Approval rules by amount, source, category and ledger, with self-approval prevented. Restricted accounts, like cash, intercompany and control accounts, need extra approval or are blocked for manual entry. Supporting documents are attached. Top-side and late journals get a post-close review. Analytics flag unusual journals, like weekend postings, round amounts, rare users or keywords, with AI anomaly detection. And evidence is kept for audit.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention journal analytics. It's how modern controls catch what rules miss.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention journal analytics. It's how modern controls catch what rules miss.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most important journal control?</p><p>Preventing self-approval of journals.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="D">
   <summary><span class="qn">22</span><span class="qt">How would you evaluate Fusion Data Intelligence vs building your own finance data warehouse?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a build-vs-buy analytics decision.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion Data Intelligence gives prebuilt pipelines, models and KPIs for Fusion that Oracle maintains with each release, so time to value is short, and it can be extended with ADW and custom data. The trade-offs are licensing cost and some modeling limits. Building our own gives full flexibility and joins with all enterprise data on an existing platform like Snowflake or Databricks, but we build and maintain BICC extracts and models, carry upgrade risk, and take longer. Often the answer is hybrid: FDI for Fusion-centered analytics, and the enterprise lake for cross-domain analytics fed from FDI or BICC.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recommend the hybrid. It's usually the honest answer.</p></div>
+<p class="tip"><strong>Tip:</strong> Recommend the hybrid. It's usually the honest answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you build your own warehouse?</p><p>When data from many non-Oracle systems is central and FDI can't model it.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">23</span><span class="qt">Tell me about the hardest technical problem you solved in Oracle Finance.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">23</span><span class="qt">Tell me about the hardest technical problem you solved in Oracle Finance.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> staff roles need real technical depth.</p>
 <p><strong>Answer (structure, use your own story):</strong></p>
 <p>&quot;Describe the problem, specific and high-stakes, like close blocked, auditors waiting, or millions misposted. Explain why it was hard: several systems, intermittent, or a product bug. Walk through your approach: the hypotheses, the data you gathered, and the tools you used, like SLA diagnostics, SQL and logs. Give the resolution and the controls you added. Quantify the impact. And say what it taught you and how you shared it, like a runbook or training.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Include technical specifics. At this level, they expect depth, not a summary.</p></div>
+<p class="tip"><strong>Tip:</strong> Include technical specifics. At this level, they expect depth, not a summary.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes this story strong?</p><p>A clear root cause, the fix and a measurable result.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">24</span><span class="qt">Describe a time you changed the direction of a large program.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">24</span><span class="qt">Describe a time you changed the direction of a large program.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> staff engineers influence big decisions.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;A program planned a big-bang Fusion rollout to 30 countries in 12 months. As principal architect, I believed data readiness and localizations made it high-risk. I built a risk model with data quality metrics and localization gaps, proposed a pilot plus three waves, and presented it to the steering committee with costs and the risk reduction. The program re-planned. The pilot surfaced issues that would have hit every country, and the final go-lives were stable with no close delays.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show you used data, not opinion, to change the plan.</p></div>
+<p class="tip"><strong>Tip:</strong> Show you used data, not opinion, to change the plan.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How did you persuade them?</p><p>With data on risk and a phased plan that still met the business goal.</p></div></div>
 </details>
-<details class="q" data-topic="Problem Solving" data-level="D">
-  <summary><span class="qn">25</span><span class="qt">Create Accounting is producing entries to the wrong cost center for a subset of invoices. How do you find the cause?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Problem Solving" data-level="D" data-top="1">
+  <summary><span class="qn">25</span><span class="qt">Create Accounting is producing entries to the wrong cost center for a subset of invoices. How do you find the cause?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on SLA debugging question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I take sample transactions and compare expected and actual accounts. Then View Accounting with the account derivation trace shows which rule fired and which source values it used. I check the rule priority and conditions, because a broader rule earlier may be catching these. I check the source values: defaults on invoice distributions from the PO, supplier or project, and DFF values set by integrations. I check mapping sets for missing or wrong entries, and recent rule changes. Then I fix the rule or mapping, re-account drafts or book corrections for final entries, and regression test.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention rule priority. &quot;First match wins&quot; causes many of these issues.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention rule priority. &quot;First match wins&quot; causes many of these issues.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What usually causes wrong cost centers?</p><p>An account derivation rule condition or mapping set that doesn't cover a case.</p></div></div>
 </details>
 <details class="q" data-topic="Problem Solving" data-level="D">
   <summary><span class="qn">26</span><span class="qt">How do you diagnose intermittent failures in an FBDI-based integration?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> intermittent problems test method.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I collect evidence: job IDs, ESS logs, import reports, timestamps and file sizes. Then I look for patterns: failures at peak times from contention, with large files, with certain data like special characters or encoding, or after refreshes that change credentials or UCM accounts. I check callback handling and timeouts in OIC. I check for template column changes after quarterly updates. Then I add chunking, retries with backoff, better logging and alerting. If it's platform-side, I raise an SR with the logs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;look for patterns&quot;. Intermittent issues are never truly random.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;look for patterns&quot;. Intermittent issues are never truly random.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common intermittent FBDI failure?</p><p>Overlapping loads or timeouts on large files.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="B">
   <summary><span class="qn">27</span><span class="qt">What is your view on customizations vs extensions in SaaS, and where do you draw the line?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a philosophy question for platform leaders.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;There are no customizations of the SaaS core, and that's not possible anyway; only extensions through supported APIs and tools. An extension is justified when it creates business value that standard features can't, and its total cost, build, quarterly testing and support, is acceptable. I prefer configuration, then low-code like Visual Builder, OIC and AI Agent Studio, then pro-code on OCI. Every extension needs an owner, documentation, automated tests, and a retirement review when Oracle ships an equivalent feature.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention retirement reviews. Extensions should die when standard catches up.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention retirement reviews. Extensions should die when standard catches up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do you draw the line?</p><p>Only supported extension points; never undocumented internals.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="D">
   <summary><span class="qn">28</span><span class="qt">How would you approach rationalizing 400 custom reports in Oracle Finance?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical clean-up question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build an inventory with usage data: last run, users and frequency. Then classify: unused reports are retired, duplicates consolidated, ones replaceable by standard reports or Fusion Data Intelligence migrated, and critical ones kept and certified. I confirm the business need with owners and set sunset dates. Then governance: a request process for new reports, certification, ownership and a review cycle. A realistic target is cutting the number in half within six months, which frees support capacity.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with usage data. It ends most debates quickly.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with usage data. It ends most debates quickly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What share of reports can usually be retired?</p><p>Often a large share, frequently a third or more, once usage is checked.</p></div></div>
 </details>
 <details class="q" data-topic="Controls" data-level="D">
   <summary><span class="qn">29</span><span class="qt">How do you make the finance platform audit-ready all year round?</span><span class="meta"><span class="tag">Controls</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> continuous audit readiness saves stress and cost.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A control matrix mapped to configurations, reports and owners. Evidence is automated: scheduled reports on configuration changes, user access, SoD and journal approvals, stored centrally. Every configuration change has a ticket, approval and test evidence. Key report validation is documented. Quarterly self-assessments track remediation. And I walk auditors through the controls before fieldwork.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention walkthroughs before fieldwork. It shortens the audit.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention walkthroughs before fieldwork. It shortens the audit.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the key to year-round audit readiness?</p><p>Automated evidence collection.</p></div></div>
 </details>
 <details class="q" data-topic="Accounting" data-level="D">
   <summary><span class="qn">30</span><span class="qt">How would you support IFRS 17 or similar complex accounting standards with Oracle?</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a specialist question that shows whether you can design for complex standards.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For IFRS 17, the calculations, like the contractual service margin, risk adjustment and cohorts, usually run in actuarial or specialist engines. Fusion Accounting Hub then turns the calculation outputs into accounting under IFRS 17 and local GAAP, with multiple methods and ledgers. I'd design data lineage and reconciliation from policy systems to the engine to Accounting Hub to GL. Detailed dimensions, like portfolio and cohort, go in supporting references rather than COA segments. Disclosures come from a data warehouse. The same pattern works for any complex standard: a specialist calculation, then Accounting Hub, then GL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the general pattern. It shows you can apply it beyond insurance.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the general pattern. It shows you can apply it beyond insurance.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do IFRS 17 calculations run?</p><p>In an actuarial or specialist engine, with results posted to GL.</p></div></div>
 </details>
 <details class="q" data-topic="Accounting" data-level="D">
   <summary><span class="qn">31</span><span class="qt">What is your approach to multi-ledger, multi-currency design for treasury-heavy companies?</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior design question for global companies.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First, the functional currency per entity, decided with accounting under ASC 830 or IAS 21. Reporting currencies where the group needs daily balances in its currency. Revaluation rules by account range, monetary items only, with gain and loss accounts by entity. Hedge accounting runs in the treasury system, with journals to GL, including cash flow hedge reserves in OCI. Translation happens in FCCS with CTA. Daily rates come from a market data provider, with controls on the rates.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;functional currency first, decided with accounting&quot;. The design depends on it.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;functional currency first, decided with accounting&quot;. The design depends on it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest part?</p><p>Getting functional currency decisions right.</p></div></div>
 </details>
 <details class="q" data-topic="Risk" data-level="B">
   <summary><span class="qn">32</span><span class="qt">What are the biggest risks in a mature Oracle Finance platform and how do you manage them?</span><span class="meta"><span class="tag">Risk</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> risk awareness for a platform owner.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Quarterly change risk, managed with automated regression and release management. Integration fragility, with monitoring, idempotency and modernization. Key-person dependency, with documentation and cross-training. Security drift, role creep and SoD, with access reviews and preventive controls. Data quality decay in suppliers and customers, with governance. Technical debt, with a yearly rationalization. And vendor roadmap risk from deprecations, with roadmap tracking.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention key-person risk. It's real and often ignored.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention key-person risk. It's real and often ignored.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which risk worries you most?</p><p>Integration fragility during quarterly updates.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="B">
   <summary><span class="qn">33</span><span class="qt">How do you handle disagreement with a VP who wants a quick fix you believe is risky?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> integrity with senior leaders.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I first understand the business pressure behind the request. Then I explain the risk in business terms, like an audit failure or payment errors, with evidence. I offer a safer alternative that still meets the timeline, like a temporary manual control or a phased fix. If they still choose the risky path, I document the risk, get it accepted by the right owner, and put monitoring in place. And I stay professional and support the decision.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;get the risk accepted by the right owner&quot;. It's how you stay professional and protected.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;get the risk accepted by the right owner&quot;. It's how you stay professional and protected.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle it if the VP insists?</p><p>Document the risk and the decision, and add controls to reduce it.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="B">
   <summary><span class="qn">34</span><span class="qt">How do you build trust with the CFO organization as a technical leader?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> finance trust is earned, not given.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I speak finance language: close, controls, cash and margins. I deliver reliably, keeping small promises. I'm transparent about incidents and risks. I spend time in their processes, like the close war room and the AP floor. I bring ideas that improve their KPIs, not just technology. And I celebrate their wins.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention spending time in the close war room. Presence builds trust fast.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention spending time in the close war room. Presence builds trust fast.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What builds trust fastest?</p><p>Delivering small promises reliably.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="B">
   <summary><span class="qn">35</span><span class="qt">How do you measure the value of the finance platform?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> platforms need to prove value.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Efficiency: cost per invoice, journal or transaction, and capacity freed. Speed: days to close and cycle times. Quality: errors, adjustments and audit findings. Cash: DSO, DPO and discounts captured. Platform health: incidents, availability and technical debt. Adoption: self-service reporting and automation rates. And I report it quarterly to finance and IT leadership.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention cash metrics. CFOs care about working capital.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention cash metrics. CFOs care about working capital.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which metric resonates with CFOs?</p><p>Days to close and cost per transaction.</p></div></div>
 </details>
 <details class="q" data-topic="Data Migration" data-level="D">
   <summary><span class="qn">36</span><span class="qt">How would you design a reusable data migration factory for multiple rollouts?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> repeatable rollouts depend on it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Standard templates and mapping workbooks for each object. A staging database with versioned transformation and validation scripts. Automated loads through FBDI or REST, and automated reconciliation reports. Data quality dashboards for business owners. Runbooks and timing data from previous rollouts. A team with clear roles for extract, transform, load and reconcile. And continuous improvement after each rollout.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention timing data from past rollouts. It makes cutover plans accurate.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention timing data from past rollouts. It makes cutover plans accurate.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the benefit of a migration factory?</p><p>Each rollout reuses tested templates, cutting time and errors.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="D">
   <summary><span class="qn">37</span><span class="qt">How would you design disaster recovery and business continuity for a SaaS finance platform?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> SaaS doesn't remove continuity planning.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle's SaaS disaster recovery covers the application. We own continuity for integrations, extensions, banks and processes. The integration platform needs high availability and DR across OCI regions. Payments need manual procedures with the banks if Fusion is unavailable on a payment day. Close needs offline procedures and priorities. Extensions and configuration are backed up through configuration packages and source code. And the BCP playbooks are tested with finance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Make the point that SaaS DR isn't your whole DR. It shows clear thinking.</p></div>
+<p class="tip"><strong>Tip:</strong> Make the point that SaaS DR isn't your whole DR. It shows clear thinking.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you own in SaaS DR?</p><p>Integrations, extensions and bank connectivity.</p></div></div>
 </details>
 <details class="q" data-topic="Controls" data-level="D">
   <summary><span class="qn">38</span><span class="qt">How would you use continuous controls monitoring in Oracle?</span><span class="meta"><span class="tag">Controls</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> CCM reduces audit effort and catches problems early.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use Advanced Controls or a GRC tool to monitor SoD conflicts, sensitive access, configuration changes and transaction anomalies, like duplicate suppliers, payments to new bank accounts and round-dollar journals. Incidents go to control owners with response targets. Dashboards show compliance status. It reduces reliance on sample testing and catches issues much earlier.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one anomaly example. Payments to new bank accounts is a strong one.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one anomaly example. Payments to new bank accounts is a strong one.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the benefit of continuous monitoring?</p><p>Issues are found as they happen, not at audit time.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="D">
   <summary><span class="qn">39</span><span class="qt">How do you approach Oracle licensing and cost optimization?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> platform owners manage cost.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I review usage: active users against licensed counts, module usage and environments. I right-size at renewal, removing unused modules or environments. I negotiate with our roadmap needs, like FDI or EPM, bundled in. I avoid shelfware with adoption plans for anything purchased. I monitor extension and integration costs, like OIC message packs and OCI consumption. And I coordinate with procurement and finance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention shelfware. Unused modules are common and wasteful.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention shelfware. Unused modules are common and wasteful.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the easiest saving?</p><p>Removing inactive users and unused environments.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">40</span><span class="qt">How do you balance hands-on work with strategic responsibilities?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> staff roles need both.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I stay hands-on for the hardest, highest-leverage problems, not routine work. I roughly time-box: 40% strategy and governance, 40% deep problem solving and design reviews, and 20% mentoring. I delegate with coaching. I keep a small sandbox habit to stay current. And I measure impact, not activity.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the percentages. It shows you've thought about it deliberately.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the percentages. It shows you've thought about it deliberately.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you stay hands-on for?</p><p>The hardest, highest-leverage problems.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">41</span><span class="qt">What would your peers say is your biggest strength and your biggest development area?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> self-awareness.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;They'd say my strength is untangling complex accounting and integration problems under pressure. For example, when a quarter-end close was blocked because Create Accounting failed for several thousand invoices, I traced it to a disabled account combination in a mapping set, fixed it with the GL team, and the close finished on time. My development area is that I can go too deep into a problem myself. Now I pair with a lead on those problems, so they learn and I can step back sooner.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Make the weakness real but not disqualifying, and show what you're doing about it.</p></div>
+<p class="tip"><strong>Tip:</strong> Make the weakness real but not disqualifying, and show what you're doing about it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How are you working on the development area?</p><p>With specific practice and feedback from a mentor.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">42</span><span class="qt">Why a Staff IC role instead of a management path?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> motivation for the individual contributor track.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create the most value by solving the hardest problems and setting technical direction. I enjoy multiplying others through standards, reviews and mentoring, without managing performance reviews and budgets. I still lead, through influence. And I can point to impact at the organization level, like standards adopted, incidents eliminated, and programs turned around.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Back it with one org-level impact example.</p></div>
+<p class="tip"><strong>Tip:</strong> Back it with one org-level impact example.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Would you ever move into management?</p><p>Possibly, but today I add most value as a technical leader.</p></div></div>
 </details>
 <details class="q" data-topic="Accounting" data-level="D">
   <summary><span class="qn">43</span><span class="qt">How do you approach a request to restate prior-period accounting in Oracle?</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> restatements are sensitive. They want a careful process.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I confirm the accounting decision with finance and audit, and which periods are affected. The usual option is adjusting entries in the current period; reopening prior periods is possible only if allowed and they haven't been reported. For subledger errors, I correct the source and re-account where possible; otherwise manual journals with clear references. Then I rerun revaluation, translation and consolidation for the affected periods. Everything is documented for audit, and I add a control so it doesn't happen again.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;confirm the accounting decision first&quot;. The system work follows the decision.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;confirm the accounting decision first&quot;. The system work follows the decision.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the usual restatement approach?</p><p>Correcting entries in the current period with disclosure, as finance and audit decide.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="B">
   <summary><span class="qn">44</span><span class="qt">How do you decide what belongs in GL vs in subledgers vs in analytics?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a fundamental design principle.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;GL holds summarized, auditable financial balances needed for statutory and management reporting. Subledgers and Accounting Hub hold transaction detail with accounting, drill-down and third-party balances. Analytics or the data warehouse handles high-cardinality analysis, like customer, product, SKU and channel profitability, non-financial data, and history. I don't push operational dimensions into the chart of accounts; I use supporting references and analytics instead.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;don't push operational dimensions into the COA&quot;. It's the key principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;don't push operational dimensions into the COA&quot;. It's the key principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What goes in analytics?</p><p>Detailed, cross-system data for analysis.</p></div></div>
 </details>
 <details class="q" data-topic="Problem Solving" data-level="D">
   <summary><span class="qn">45</span><span class="qt">Users report that approvals randomly route to the wrong approver. How do you investigate?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common, confusing support problem.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I collect examples: the transaction, expected and actual approver, and the time. Then I check the BPM rules, priority and conditions, the approval groups, and HR hierarchy data, like manager changes, inactive managers or position hierarchy. I check delegations and vacation rules. I look at the attributes on the transaction at submission, like cost center and amount. Recent HCM data loads are often the cause. Then I fix the data or rules and add monitoring for routing failures.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention recent HCM loads. &quot;Random&quot; routing usually traces to HR data changes.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention recent HCM loads. &quot;Random&quot; routing usually traces to HR data changes.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common cause?</p><p>Out-of-date HCM supervisor data.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="D">
   <summary><span class="qn">46</span><span class="qt">How would you plan the adoption of Redwood UX across Finance?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a platform planning question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I track Oracle's Redwood page roadmap and classic deprecations. I pilot with a user group and gather feedback. Classic extensions and personalizations are rebuilt in Visual Builder Studio. Training materials and quick reference guides are updated. Regression tests are updated for the new UI. And I phase it by module, communicating dates early.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention a pilot group. It surfaces issues before everyone sees them.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention a pilot group. It surfaces issues before everyone sees them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you decide the order of Redwood pages?</p><p>By Oracle's retirement dates and user readiness.</p></div></div>
 </details>
 <details class="q" data-topic="Governance" data-level="B">
   <summary><span class="qn">47</span><span class="qt">How do you prioritize a backlog of finance system enhancement requests?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> demand always exceeds capacity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Every request comes with a business case: value in time, cost or risk, users affected, and any regulatory need. A scoring model covers value, effort, risk and strategic fit. A governance board with finance process owners decides quarterly. Capacity is split between run, change and debt. And decisions and timelines are communicated openly.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the run, change and debt split. It protects platform health.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the run, change and debt split. It protects platform health.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What gets priority?</p><p>Regulatory needs, then highest value.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="B">
   <summary><span class="qn">48</span><span class="qt">How do you lead a post-incident review without blame?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> blameless culture improves reliability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I focus on what happened and why, not who. I build a factual timeline of events. I look at contributing factors: process, tooling, monitoring and communication. Actions get owners and dates, and I track them to completion. Learnings are shared widely. And I make it safe for people to report mistakes early.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;safe to report mistakes early&quot;. It's the reason blameless reviews matter.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;safe to report mistakes early&quot;. It's the reason blameless reviews matter.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the output of a post-incident review?</p><p>Actions to prevent recurrence, with owners.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">49</span><span class="qt">Where do you see enterprise finance systems in five years, and how are you preparing?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> vision.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I see autonomous finance: AI agents handling routine processing like invoices, reconciliations and collections, with people managing exceptions and judgment. Continuous close and real-time reporting. Unified data platforms combining ERP, EPM and operational data. And more regulatory digitization, like e-invoicing and real-time tax reporting. I'm preparing by building data foundations, setting up AI governance, upskilling teams and piloting agents now.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tie the vision to concrete preparation. Vision without action sounds hollow.</p></div>
+<p class="tip"><strong>Tip:</strong> Tie the vision to concrete preparation. Vision without action sounds hollow.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What skill matters most for that future?</p><p>Designing and governing AI agents.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="D">
   <summary><span class="qn">50</span><span class="qt">How would you design the finance platform to support a shift to a global business services (GBS) model?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> GBS is a common operating model change.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Service-provider BUs for transaction processing, AP, AR and GL, serving all client BUs. Role design for GBS staff with cross-BU access and SoD. Work queues and SLAs for approvals, holds and collections, with dashboards. Standard global processes with minimal local exceptions. Analytics for productivity and quality, like cost per transaction and touchless rate. Automation and AI agents for high-volume work. And coverage for languages and time zones, with knowledge management.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention service-provider BUs. It's the Fusion feature that enables GBS.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention service-provider BUs. It's the Fusion feature that enables GBS.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What changes most for GBS?</p><p>Service-provider BUs and role design.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">51</span><span class="qt">How would you set up an enterprise operating model for AI agents on Oracle Fusion?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">51</span><span class="qt">How would you set up an enterprise operating model for AI agents on Oracle Fusion?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior governance design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Intake and prioritization of agent use cases with business owners, scored on value, risk and feasibility. Risk tiers: informational agents are low risk, drafting and assisting are medium, and agents that change records are high, with human approval mandatory. Standards for instructions, tool use, naming, evaluation sets and monitoring thresholds. A life cycle: build, evaluate, pilot, publish, monitor, and re-evaluate on model or release changes. Each agent has a business owner and a technical owner. And for audit: control documentation, retained traces and periodic review.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the three risk tiers. It's the most useful part of the model.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the three risk tiers. It's the most useful part of the model.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who owns each agent?</p><p>A business owner accountable for its results.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">52</span><span class="qt">How do you evaluate and monitor agent quality over time?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> agents drift as models and data change.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Each agent has an evaluation set covering correctness, safety with must-refuse cases, tone and correct tool use. It runs before each publish and after Oracle updates or LLM changes. The monitoring dashboard tracks sessions, latency, errors and token use, with alerts on drift. Tracing helps debug wrong answers by showing which tool returned what. User feedback flows back in. And owners review each agent quarterly and retire ones that don't deliver value.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention re-running evaluations after model changes. It's when quality usually slips.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention re-running evaluations after model changes. It's when quality usually slips.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How often do you re-evaluate?</p><p>After every release and model change.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">53</span><span class="qt">An agent gave a supplier the wrong payment date. How do you investigate?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> an incident response question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I pull the trace for that session: the question, the tools called, the data returned and the model's output. Then I decide where it went wrong: the data, for example the payment schedule changed afterwards; the tool, for example it filtered on the wrong field; or the model misread the data. I fix the right thing: the tool definition, the instructions, like 'only quote dates from the scheduled payment record', or add a deep link and a caveat. I add the case to the evaluation set and rerun it. And I let the supplier and AP know.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate data, tool and model causes. It's the structured approach they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate data, tool and model causes. It's the structured approach they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the usual cause?</p><p>A tool returning the wrong data or the agent misreading it.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">54</span><span class="qt">What is your view on letting agents post journals or release payments?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">54</span><span class="qt">What is your view on letting agents post journals or release payments?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a judgment question on autonomy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Not autonomously in most organizations today. Agents can prepare, for example draft journals with support or recommend payment holds and releases, but posting and releasing payments stay with authorized people through approval nodes. I'd revisit it for low-risk, high-volume cases once accuracy is proven, controls are designed and audit agrees, for example auto-clearing small reconciliation differences within policy. And the decision is documented in the control framework.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a clear position and the conditions for changing it. That's leadership judgment.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a clear position and the conditions for changing it. That's leadership judgment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What can agents do safely now?</p><p>Prepare drafts and recommendations for human approval.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">55</span><span class="qt">How would you lead an enterprise-wide Redwood adoption program?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a program leadership question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A roadmap aligned with Oracle's classic retirement schedule, in module waves. Rationalize extensions: retire most personalizations and rebuild the essentials in VBS with standards. Update regression automation for Redwood. Change management at scale with role-based learning and super users. Measure adoption, ticket volumes and task times. And engage Oracle early on gaps and bugs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention engaging Oracle early. Gaps found late delay waves.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention engaging Oracle early. Gaps found late delay waves.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest program risk?</p><p>Missing Oracle's retirement dates.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Platform" data-level="B">
   <summary><span class="qn">56</span><span class="qt">How do you keep a Fusion Finance platform current with quarterly releases, Redwood and AI features?</span><span class="meta"><span class="tag">Fusion Platform</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> platform ownership question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Release governance that assesses every quarter: mandatory changes, Redwood pages and new AI features. Opt-in decisions made with business owners, feeding an adoption roadmap. Automated regression for both UI and APIs. A sandbox for trying new features and agents. Communication to users every release. And tracking the value of the features we adopt.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention tracking value of adopted features. It justifies the effort.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention tracking value of adopted features. It justifies the effort.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the core practice?</p><p>Release governance every quarter.</p></div></div>
 </details>
 <details class="q" data-topic="Accounting" data-level="D">
   <summary><span class="qn">57</span><span class="qt">How would you design accounting controls around AI-assisted close tasks?</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AI is entering the close, and auditors will ask how it's controlled.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AI can prepare accrual proposals, reconciliation match suggestions and variance explanations. People still review and approve, and anything posted goes through normal journal approval. The AI's outputs and traces are attached to the close task as evidence. Review levels are set by materiality thresholds. And internal audit tests the AI-assisted controls like any other control. The principle is that AI prepares and people decide.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Close with &quot;AI prepares, people decide&quot;. It's the line controllers want to hear.</p></div>
+<p class="tip"><strong>Tip:</strong> Close with &quot;AI prepares, people decide&quot;. It's the line controllers want to hear.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What must people still do?</p><p>Review and approve AI-prepared entries.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="D">
   <summary><span class="qn">58</span><span class="qt">How do you build the business case for AI agents in Finance?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AI needs funding justification.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I baseline volumes and effort for invoice exceptions, inquiries, reconciliations and collections emails. I estimate impact from pilots: time per item, automation rate and error reduction. Costs include build and maintenance, premium LLM tokens and change management, plus the cost of risk and controls. Then a phased value plan, with actuals measured against the case.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you base estimates on pilots. Assumptions without pilots don't survive finance review.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you base estimates on pilots. Assumptions without pilots don't survive finance review.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you avoid overstating benefits?</p><p>Baseline and measure actual results.</p></div></div>
 </details>
 <details class="q" data-topic="Problem Solving" data-level="D">
   <summary><span class="qn">59</span><span class="qt">After a quarterly update, a Redwood page extension breaks month-end journal entry. What do you do?</span><span class="meta"><span class="tag">Problem Solving</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a realistic Redwood incident.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First a workaround: users enter journals through the ADFdi spreadsheet, or the classic page if it's still available. Then diagnose in test: VBS extension errors, or components and events that changed in the release. Fix the extension, test, and publish, and raise an SR if it's an Oracle regression. Then prevent it: add this flow to automated regression in the two-week test window, and keep extensions on supported events and tokens.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with the spreadsheet workaround. It keeps the close moving.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with the spreadsheet workaround. It keeps the close moving.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you fix long-term?</p><p>Add the extension to regression tests.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="B">
   <summary><span class="qn">60</span><span class="qt">How do you build AI and Redwood skills across a Finance applications organization?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> capability building at scale.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A skills matrix and learning paths for AI Agent Studio, Visual Builder Studio, OIC, and prompt and evaluation design. Guilds and internal demos. Hands-on pilots on real business problems. Career paths that reward these skills. And external certifications and Oracle events.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention career paths. Skills stick when they're rewarded.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention career paths. Skills stick when they're rewarded.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you measure skill growth?</p><p>Each person builds and demos working solutions.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -531,6 +538,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

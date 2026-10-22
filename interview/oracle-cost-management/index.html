@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,6 +97,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>28</b> questions</span>
     <span class="stat"><b>6</b> basic</span>
     <span class="stat"><b>22</b> in-depth</span>
+    <span class="stat"><b>7</b> top questions</span>
   </div>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button>
@@ -106,203 +113,203 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <button data-f="Interview">Interview</button>
     <button data-f="Costing">Costing</button>
   </div>
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 7 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Setup" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">What are the key Cost Management setups in Fusion?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Setup" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">What are the key Cost Management setups in Fusion?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> costing setup is where finance and supply chain meet. They want to know you can build it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start with cost organizations and their relationships to inventory orgs. Then cost books, primary and any secondary, assigned to the cost orgs. Then valuation structures and valuation units, which decide the level costs are kept at. Then cost profiles: item cost profiles that set the cost method, valuation structure and cost determination, plus default cost profiles so new items get one automatically. Then cost elements and cost element groups for material, overhead and resources. Then cost component mappings and expense pools. And last, the SLA rules for cost accounting and receipt accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention default cost profiles. Missing profiles are why new items show up uncosted.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention default cost profiles. Missing profiles are why new items show up uncosted.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why might one inventory org need more than one cost book?</p><p>For different reporting needs, like a primary book for US GAAP and a secondary book for IFRS or management costing with a different cost method.</p></div></div>
 </details>
 <details class="q" data-topic="Setup" data-level="D">
   <summary><span class="qn">2</span><span class="qt">What are cost elements and analysis groups?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cost elements decide how detailed margin analysis can be.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Cost elements are the buckets that make up an item's cost, like material, freight, duty, overhead, labor and machine. Cost element groups organize them for reporting. Analysis groups give other groupings, for example by cost type for margin analysis. Landed cost charges and overheads map to specific elements, so finance can see how much of an item's cost is freight versus the purchase price.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the freight example. It shows why the split matters to the business.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the freight example. It shows why the split matters to the business.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you report freight separately from material in item cost?</p><p>Set up a freight cost element and assign landed cost charges to it, so valuation and margin reports show freight separately.</p></div></div>
 </details>
-<details class="q" data-topic="Processes" data-level="D">
-  <summary><span class="qn">3</span><span class="qt">What is the sequence of cost processing in Fusion?</span><span class="meta"><span class="tag">Processes</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Processes" data-level="D" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">What is the sequence of cost processing in Fusion?</span><span class="meta"><span class="tag">Processes</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> when something isn't costed, you need to know where it stopped.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Transactions first move from Inventory and Receiving to Costing with the transfer process. Then the cost processor values them using the cost method. Then Create Cost Accounting Distributions and Create Receipt Accounting Distributions build the accounting lines. Then Create Accounting in SLA sends them to GL. I schedule these to run hourly or daily, so valuation stays current and errors show up the same day.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Present it as a chain. When a transaction is stuck, you check each link in order.</p></div>
+<p class="tip"><strong>Tip:</strong> Present it as a chain. When a transaction is stuck, you check each link in order.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first thing you check when transactions aren't costed?</p><p>Whether the transfer to costing and the cost processor ran without errors, then the error list for missing costs, like no standard cost published for the item.</p></div></div>
 </details>
-<details class="q" data-topic="Standard Cost" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">How do you create and publish standard costs?</span><span class="meta"><span class="tag">Standard Cost</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Standard Cost" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">How do you create and publish standard costs?</span><span class="meta"><span class="tag">Standard Cost</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> the standard cost cycle is a yearly finance event.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In cost planning I create a cost scenario and enter or import the standard costs, material and overhead, plus resource rates. For manufactured items I roll up costs through the structures and work definitions. Finance reviews it, with simulations and the variance against current costs. Then I publish the scenario with an effective date. On publish, on-hand inventory is revalued and the revaluation is posted.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the finance review before publishing. Revaluation surprises are what finance fears most.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the finance review before publishing. Revaluation surprises are what finance fears most.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to on-hand inventory when you publish a new standard?</p><p>Fusion revalues on-hand quantity to the new standard and creates a revaluation adjustment to inventory and the offset account in the period of publication.</p></div></div>
 </details>
-<details class="q" data-topic="Average Cost" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">How does perpetual average cost handle receipts and returns?</span><span class="meta"><span class="tag">Average Cost</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Average Cost" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">How does perpetual average cost handle receipts and returns?</span><span class="meta"><span class="tag">Average Cost</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> average cost behaves differently from standard, and returns are the tricky part.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Each receipt recalculates the average: on-hand value plus receipt value, divided by on-hand quantity plus receipt quantity. For example, 100 units at $10 on hand, receive 100 at $12, the new average is $11. Issues and shipments use the current average. Returns to supplier go out at the receipt cost or the current average, depending on settings, and that can create variances. And if on-hand goes negative, cost adjustments happen later when receipts arrive.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Do the average calculation with numbers. It's the clearest proof you understand it.</p></div>
+<p class="tip"><strong>Tip:</strong> Do the average calculation with numbers. It's the clearest proof you understand it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if a return comes back at a different cost?</p><p>Under perpetual average, returns are usually at the current average cost, so the average doesn't jump. If receipt cost is used, it can shift the average.</p></div></div>
 </details>
 <details class="q" data-topic="Variances" data-level="B">
   <summary><span class="qn">6</span><span class="qt">Name the main variances in Fusion Cost Management.</span><span class="meta"><span class="tag">Variances</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> variances are how finance reads cost performance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Purchase price variance under standard costing. Invoice price variance between PO and invoice. Work order variances: material usage, resource efficiency and rate, overhead and scrap. Cycle count and physical inventory adjustments. And cost revaluation when standard costs are updated.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one cause for each if asked. PPV usually means price changes or off-contract buying.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one cause for each if asked. PPV usually means price changes or off-contract buying.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which variance tells you the buyer negotiated well?</p><p>Purchase price variance under standard costing: favorable PPV means the PO price was below standard.</p></div></div>
 </details>
 <details class="q" data-topic="Landed Cost" data-level="D">
   <summary><span class="qn">7</span><span class="qt">How are landed costs allocated?</span><span class="meta"><span class="tag">Landed Cost</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> landed cost affects margin accuracy for imported goods.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Each charge, like freight, duty or insurance, has a charge reference and an allocation basis: quantity, weight, volume or amount. Estimated charges come from landed cost charge templates on POs or trade operations, and actual charges come from AP invoices. Charges are allocated to receipt lines, increasing the item cost. When actuals differ from estimates, the difference is adjusted. For example, $1,000 of freight on a shipment allocated by weight puts more on the heavy items.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain why the allocation basis matters. Freight by value would overcharge small, expensive items.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain why the allocation basis matters. Freight by value would overcharge small, expensive items.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if the actual freight bill differs from the estimate?</p><p>The actual landed cost replaces the estimate, and the difference is adjusted into inventory value or COGS if the items were already consumed.</p></div></div>
 </details>
-<details class="q" data-topic="Accounting" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">What accounting does Cost Management create for a PO receipt into inventory under standard cost?</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Accounting" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">What accounting does Cost Management create for a PO receipt into inventory under standard cost?</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a core accounting question for cost consultants.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;With standard routing, the receipt books Dr Receiving Inspection, Cr Accrual, at the PO price. Delivery to inventory books Dr Inventory at standard, PPV for the difference, and Cr Receiving Inspection. The AP invoice books Dr Accrual, Cr Liability, with IPV for any difference from the PO price. When the item ships, Dr COGS, or Deferred COGS, Cr Inventory at standard.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Walk through all four steps. It shows you can follow the cost through the whole flow.</p></div>
+<p class="tip"><strong>Tip:</strong> Walk through all four steps. It shows you can follow the cost through the whole flow.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does the difference between PO price and invoice price go?</p><p>Invoice price variance, posted when the AP invoice is accounted, if the invoice price differs from the PO price within tolerance.</p></div></div>
 </details>
 <details class="q" data-topic="Accounting" data-level="D">
   <summary><span class="qn">9</span><span class="qt">What is deferred COGS and when is it used?</span><span class="meta"><span class="tag">Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> COGS must match revenue timing.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;When revenue is deferred, for example waiting for customer acceptance, the cost of the shipped goods is held in Deferred COGS instead of COGS. The COGS recognition process uses revenue recognition events from AR or Revenue Management to release COGS in the same proportion as revenue. That keeps margin correct under the matching principle.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use the acceptance example. It's the most common reason.</p></div>
+<p class="tip"><strong>Tip:</strong> Use the acceptance example. It's the most common reason.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How does Fusion know when to move cost from deferred to COGS?</p><p>It matches the revenue recognition percentage from AR or Revenue Management, so if 40% of revenue is recognized, 40% of the cost moves to COGS.</p></div></div>
 </details>
-<details class="q" data-topic="Period Close" data-level="B">
-  <summary><span class="qn">10</span><span class="qt">What is the cost period close checklist?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Period Close" data-level="B" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">What is the cost period close checklist?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical close question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;All inventory and receiving transactions are transferred and costed, with no errors. Landed cost and accrual adjustments are processed. Work orders are closed and variances calculated. Create Cost Accounting and Create Receipt Accounting have run and transferred to GL. Inventory valuation is reconciled to GL. Then I close the cost period and open the next.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Put reconciliation before closing. It's the step people skip under pressure.</p></div>
+<p class="tip"><strong>Tip:</strong> Put reconciliation before closing. It's the step people skip under pressure.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What blocks a cost period from closing?</p><p>Uncosted transactions, pending transfers or open errors. I clear the error queue before close rather than forcing the period shut.</p></div></div>
 </details>
 <details class="q" data-topic="Reporting" data-level="B">
   <summary><span class="qn">11</span><span class="qt">Which Cost Management reports do you use?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you know where to look.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The perpetual inventory valuation report by cost org, valuation unit and item. Item cost and cost history reports. Margin analysis by item and customer. Receipt accounting and accrual reconciliation reports. And cost accounting distributions and work order variance reports.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say which one you'd run first at month-end: inventory valuation, to tie to GL.</p></div>
+<p class="tip"><strong>Tip:</strong> Say which one you'd run first at month-end: inventory valuation, to tie to GL.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which report do auditors usually ask for?</p><p>Perpetual inventory valuation at period end, reconciled to the GL inventory balance.</p></div></div>
 </details>
-<details class="q" data-topic="Interview" data-level="D">
-  <summary><span class="qn">12</span><span class="qt">Tell me how you would troubleshoot inventory valuation that doesn't match GL.</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Interview" data-level="D" data-top="1">
+  <summary><span class="qn">12</span><span class="qt">Tell me how you would troubleshoot inventory valuation that doesn't match GL.</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a classic month-end problem.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First timing: is the valuation as of the same period end, and is GL closed? Then uncosted or unaccounted transactions, or transfer processes that didn't run. Then manual journals in GL to inventory accounts. Then account mapping differences, like expense subinventories or in-transit. Then revaluations posted in a different period. I fix the causes and document a monthly reconciliation so it doesn't come back.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with timing. It explains more differences than people expect.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with timing. It explains more differences than people expect.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What manual GL entries most often cause this mismatch?</p><p>Reclass journals or accruals posted straight to inventory accounts in GL, which never appear in cost valuation. I restrict manual journals to inventory accounts for that reason.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">13</span><span class="qt">How would you design the costing architecture for a multi-entity manufacturer?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Cost orgs per plant, using standard cost with roll-ups for resources and overhead. A primary cost book for GAAP and a secondary book for management, IFRS, or a group view with intercompany markup removed. Valuation units at cost org level, or by lot for high-value items. Transfer pricing through supply chain financial orchestration for intercompany moves. Landed costs for imports. Variance reporting. And an annual standard cost cycle with simulation, approvals and revaluation.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the group view without intercompany markup. It's what group finance needs.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the group view without intercompany markup. It's what group finance needs.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why might you need a secondary cost book?</p><p>For management costing or a different GAAP valuation.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How would you support a company switching from average to standard cost?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a big change that affects finance reporting.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First a business case and finance approval, because standard cost brings variances and different reporting. Then set standard costs for every item, starting from recent average or actual costs, with roll-ups for manufactured items. Switch at a period or year start, revaluing on-hand at the switch. Change the cost profiles and add the new variance accounts. Test receipts, work orders and shipments. And train finance on reading variances, because that's the new skill they'll need.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with training on variances. The system change is easier than the people change.</p></div>
+<p class="tip"><strong>Tip:</strong> End with training on variances. The system change is easier than the people change.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest switch risk?</p><p>Revaluation impact on inventory and P&amp;L.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="B">
   <summary><span class="qn">15</span><span class="qt">What costing methods does Oracle support?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic costing question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion supports standard cost, a fixed cost per item with differences going to variances like PPV; perpetual average cost, which updates with each receipt; and actual cost, FIFO or LIFO, where cost layers are consumed in order. EBS has standard, average, FIFO, LIFO, plus periodic average and incremental LIFO. In Fusion the method is set by cost organization and cost book through cost profiles; in EBS it's by inventory org.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention where the method is set in each. It shows you know both products.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention where the method is set in each. It shows you know both products.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which method would a manufacturer with stable costs choose?</p><p>Standard costing, because it gives consistent product costs and highlights variances.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">16</span><span class="qt">What is the difference between Receipt Accounting and Cost Accounting in Fusion?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> these two are often confused.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Receipt Accounting creates the accounting for receipts, deliveries and returns, and manages accruals, both receipt accruals and period-end accruals for expense items, including clearing and write-offs. Cost Accounting costs inventory transactions, like issues, transfers, shipments and production, using the cost method, with entries like Dr COGS, Cr Inventory. Each runs its own Create Accounting process and transfers to GL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you schedule both regularly. It shows you've run them in production.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you schedule both regularly. It shows you've run them in production.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where would you look for expense accruals at period end?</p><p>Receipt Accounting's period-end accrual process for uninvoiced receipts of expense items.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="B">
   <summary><span class="qn">17</span><span class="qt">What is purchase price variance (PPV)?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> PPV is the most watched cost variance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Under standard costing, inventory is valued at standard. When we buy at a different price, the difference is PPV: PO price minus standard, times quantity received. For example, standard $10, PO price $11, 100 units gives $100 unfavorable PPV. At delivery the entry is Dr Inventory $1,000, Dr PPV $100, Cr Accrual $1,100. Invoice price variance then captures any difference between the invoice and the PO. Procurement and finance watch PPV to measure buying performance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the journal entry. It shows you know where PPV lands.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the journal entry. It shows you know where PPV lands.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">If standard is $10 and you buy 1,000 at $10.50, what is PPV?</p><p>$500 unfavorable, recorded at receipt into inventory.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">18</span><span class="qt">How does a standard cost update work?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a yearly event with P&amp;L impact.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a new cost scenario with the new standards, usually yearly or quarterly. I roll up costs for manufactured items: material, resources and overhead. Finance reviews it, then I publish. On publish, Oracle revalues on-hand inventory at the new cost and posts the difference to the revaluation account. Before publishing, I run a what-if report so finance sees the revaluation impact in advance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the what-if report. Finance hates surprises in revaluation.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the what-if report. Finance hates surprises in revaluation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When does the revaluation of on-hand happen?</p><p>When the new standard costs are published, Fusion revalues on-hand inventory to the new standard.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">19</span><span class="qt">Why might an item's cost show as zero in Fusion and what do you check?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common support ticket.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Under standard costing, no standard cost has been defined; under average costing, there haven't been any receipts yet. Or the item cost profile is missing or wrong. Or the cost processor hasn't run, or the transactions are uncosted because of errors. Or the wrong cost org, book or valuation unit is being looked at. I fix the setup, run the cost processor, and check the item's cost history.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the missing cost profile. It's the most common cause for new items.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the missing cost profile. It's the most common cause for new items.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the fix for zero cost under standard costing?</p><p>Define and publish the standard cost, then revalue or adjust transactions that used zero.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">20</span><span class="qt">How do you reconcile inventory valuation to the General Ledger?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a key month-end control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I run the perpetual inventory valuation report as of period end by cost org and valuation unit, and compare it to the GL inventory account balances, by org through the cost center or org segment. Differences usually come from uncosted transactions, cost accounting not created or transferred, manual GL journals to inventory accounts, or wrong account mapping in cost accounting rules. I block manual journals to inventory accounts, and I only close the cost period after reconciling.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you block manual journals to inventory accounts. It's the prevention step.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you block manual journals to inventory accounts. It's the prevention step.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common cause of valuation differences?</p><p>Manual GL journals to inventory accounts.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">21</span><span class="qt">What are the steps of the cost period close in Fusion Cost Management?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical close sequence question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I make sure inventory, receiving and WIP transactions are complete and transferred to costing. I run the cost processor and fix errors. I run Create Receipt Accounting and Create Cost Accounting and transfer to GL. I process landed cost adjustments and any standard cost updates. I close work orders and calculate variances. I review unprocessed transactions and reconcile valuation to GL. Then I close the cost period for the cost org and book, and open the next.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep the order clear. Each step depends on the one before.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep the order clear. Each step depends on the one before.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What blocks the cost period close?</p><p>Uncosted transactions or cost processor errors.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">22</span><span class="qt">How do you handle intercompany profit in inventory with SFO?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a group finance question with real audit impact.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;When one entity sells to another at a transfer price above cost, the buying entity's inventory includes intercompany profit. SFO with transfer pricing creates the intercompany sale and purchase and the costs in each entity. At group level, that unrealized profit must be eliminated in consolidation until the goods are sold outside the group. Fusion can track profit in inventory, for example with cost books or elemental costs for the markup, to support the elimination. I'd agree the approach with group finance early.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain why it has to be eliminated. It shows you understand consolidation.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain why it has to be eliminated. It shows you understand consolidation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How is intercompany profit eliminated?</p><p>Through consolidation, removing profit on stock still held by the buying entity.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">23</span><span class="qt">How do you explain a large purchase price variance to the business?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cost consultants have to explain numbers, not just produce them.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I break PPV down by item, supplier, category and period. Then I look at causes: price increases, off-contract spot buys, outdated standards, currency movements, or freight included in the price. Then actions: update standards, negotiate agreements, enforce catalog buying. I present it with trend charts and the top ten drivers, because usually a few items explain most of it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;a few items explain most of it&quot;. Leaders want the short list.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;a few items explain most of it&quot;. Leaders want the short list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you present PPV to the business?</p><p>By supplier and cause, with actions.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">24</span><span class="qt">What are cost organizations, cost books and valuation units in Fusion Cost Management?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> the core costing structure in Fusion.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A cost organization is a group of inventory orgs that share costing, like a plant and its nearby warehouses. A cost book is a set of costing policies; the primary book is for financial reporting, and others can be added for management or local GAAP. The valuation structure and valuation unit set the level costs are kept at, for example by cost org, by cost org and subinventory, or by lot. Cost profiles assign the cost method to items through item cost profiles and defaults. Together they replace EBS's per-org cost method.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give an example of a cost org grouping. It makes it concrete.</p></div>
+<p class="tip"><strong>Tip:</strong> Give an example of a cost org grouping. It makes it concrete.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why might you have more than one cost book?</p><p>To value inventory under different methods for different reporting needs.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">25</span><span class="qt">How do you troubleshoot an inventory transaction that hasn't been costed?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a daily support issue.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I check that Transfer Transactions from Inventory to Costing ran and succeeded. Then Review Cost Accounting Processes for cost processor errors: missing cost, missing item cost profile, missing valuation unit, or a closed cost period. Then the cost accounting distributions for SLA account errors in Create Cost Accounting. I fix the cause, like defining the missing standard cost, and rerun the cost processor, with the cost period open.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Follow the chain in order. That's the method they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Follow the chain in order. That's the method they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common costing error you see?</p><p>Missing standard cost for an item, so the cost processor can't value its transactions.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">26</span><span class="qt">How do landed costs work in Fusion?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> landed cost improves margin accuracy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Landed Cost Management adds freight, duties, insurance and other charges to item cost. I define charge references and allocation bases, quantity, weight, value or volume. Charges are estimated on the PO through landed cost charge templates, and actuals come from trade operations and AP invoices. They're allocated to receipt lines and included in inventory value and COGS when sold. Differences between estimate and actual are adjusted.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say why it matters: true margin on imported goods.</p></div>
+<p class="tip"><strong>Tip:</strong> Say why it matters: true margin on imported goods.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if actual freight costs come after the goods are sold?</p><p>The difference goes to COGS for consumed units rather than inventory.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">27</span><span class="qt">How do you reconcile receipt accruals at month end?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> stale accruals are a common audit point.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;After Create Receipt Accounting and transfers have run, I review open accruals in the accrual reconciliation. I investigate old ones: missing invoices, wrong POs, quantity differences. POs that are complete get closed. Where justified, accruals are written off with approval.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;close completed POs&quot;. It stops accruals from piling up.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;close completed POs&quot;. It stops accruals from piling up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What causes accruals to linger?</p><p>Invoices matched to the wrong PO or never received.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">28</span><span class="qt">How would you design costing for a vertically integrated pharma company (API, formulation, packaging, distribution)?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a specialist design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Process manufacturing for API and formulation, with recipes, yields and by-products; discrete or process for packaging. Cost orgs per plant, standard cost with a yearly cycle and roll-ups across all levels. Lot-level valuation where costs vary by lot, if needed. Intercompany through SFO between manufacturing and distribution entities, with transfer pricing. Variance analysis for yield, usage and PPV, and inventory reserves for expiry and quarantine. Landed costs for imported materials. And GxP and finance controls on any cost change.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention yield variances. They're the variance pharma finance watches most.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention yield variances. They're the variance pharma finance watches most.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's unique about pharma costing?</p><p>Yields, by-products and batch-based costs in process manufacturing.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -320,6 +327,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 7 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 7 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

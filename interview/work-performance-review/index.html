@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,19 +97,20 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>50</b> questions</span>
     <span class="stat"><b>35</b> basic</span>
     <span class="stat"><b>15</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Self-assessment" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">How would you summarize your year?</span><span class="meta"><span class="tag">Self-assessment</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Self-assessment" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">How would you summarize your year?</span><span class="meta"><span class="tag">Self-assessment</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> your opening frames the whole review.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;It was a strong year. As Senior ERP Analyst, I delivered cutting invoice processing time by about 30% and closing the last two quarters on schedule, kept operations stable while we worked on the supplier onboarding upgrade and the month-end close automation project, and grew in leading a larger team within the next year. The biggest challenge was a tight go-live date and one open role on the team, and I handled it through phased planning and close work with the business.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Three outcomes, one challenge handled, in under a minute.</p></div>
+<p class="tip"><strong>Tip:</strong> Three outcomes, one challenge handled, in under a minute.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How long should that summary be?</p><p>Three or four sentences: the two or three results that mattered most, with numbers.</p></div></div>
 </details>
-<details class="q" data-topic="Self-assessment" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">How do I write a strong self-assessment?</span><span class="meta"><span class="tag">Self-assessment</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Self-assessment" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">How do I write a strong self-assessment?</span><span class="meta"><span class="tag">Self-assessment</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) many managers copy from it.</p>
 <p><strong>Sample answer (structure):</strong></p>
 <ul>
@@ -113,157 +120,157 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Growth: what you learned and areas you're developing.</li>
 <li>Next-year goals.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Use specific examples and numbers. Keep a running wins document all year.</p></div>
+<p class="tip"><strong>Tip:</strong> Use specific examples and numbers. Keep a running wins document all year.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common self-assessment mistake?</p><p>Listing tasks instead of outcomes and their business impact.</p></div></div>
 </details>
-<details class="q" data-topic="Results" data-level="B">
-  <summary><span class="qn">3</span><span class="qt">Which goals did you meet, and which did you miss?</span><span class="meta"><span class="tag">Results</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Results" data-level="B" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">Which goals did you meet, and which did you miss?</span><span class="meta"><span class="tag">Results</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> honesty and ownership.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I met three of four goals: cutting invoice processing time by about 30% and closing the last two quarters on schedule, stable operations, and the milestone on the supplier onboarding upgrade and the month-end close automation project. I missed the automation goal by a quarter because we prioritized the urgent business request. It's now on track for next quarter.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Own misses with reasons and a recovery plan — no excuses.</p></div>
+<p class="tip"><strong>Tip:</strong> Own misses with reasons and a recovery plan — no excuses.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I talk about a missed goal?</p><p>Own it, explain what changed, what you learned and the plan.</p></div></div>
 </details>
-<details class="q" data-topic="Impact" data-level="B">
-  <summary><span class="qn">4</span><span class="qt">What's your biggest accomplishment this year?</span><span class="meta"><span class="tag">Impact</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Impact" data-level="B" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">What's your biggest accomplishment this year?</span><span class="meta"><span class="tag">Impact</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to understand your impact in business terms.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;cutting invoice processing time by about 30% and closing the last two quarters on schedule. The business impact was fewer escalations and faster processing for the teams we support. My role was leading the plan, aligning stakeholders and making sure we tested thoroughly.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Situation, your actions, measurable outcome.</p></div>
+<p class="tip"><strong>Tip:</strong> Situation, your actions, measurable outcome.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if my biggest win was a team effort?</p><p>Say so, then describe your specific part in it.</p></div></div>
 </details>
 <details class="q" data-topic="Impact" data-level="D">
   <summary><span class="qn">5</span><span class="qt">How did you contribute beyond your job description?</span><span class="meta"><span class="tag">Impact</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see readiness for bigger roles.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I mentored two team members, led a cross-team improvement on request intake, and represented our area in leadership reviews. These go beyond the finance applications and the integrations that feed them and show the scope I'm ready for.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show leadership behaviors at the next level.</p></div>
+<p class="tip"><strong>Tip:</strong> Show leadership behaviors at the next level.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I show work beyond my role without sounding like I'm complaining?</p><p>Frame it as contribution and growth, with the result.</p></div></div>
 </details>
-<details class="q" data-topic="Development" data-level="B">
-  <summary><span class="qn">6</span><span class="qt">What are your development areas?</span><span class="meta"><span class="tag">Development</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Development" data-level="B" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">What are your development areas?</span><span class="meta"><span class="tag">Development</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> self-awareness.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Two areas. First, delegating more so I can focus on strategy — I've started by handing off daily triage. Second, executive communication — I'm practicing shorter, outcome-first updates. I'd value your feedback on both.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Real areas, with actions already in progress.</p></div>
+<p class="tip"><strong>Tip:</strong> Real areas, with actions already in progress.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How many development areas should I name?</p><p>One or two real ones, each with a plan.</p></div></div>
 </details>
-<details class="q" data-topic="Feedback" data-level="D">
-  <summary><span class="qn">7</span><span class="qt">Here's feedback you might not agree with. How do you respond?</span><span class="meta"><span class="tag">Feedback</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Feedback" data-level="D" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">Here's feedback you might not agree with. How do you respond?</span><span class="meta"><span class="tag">Feedback</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> maturity in hard conversations.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Thank you. Can you help me understand specific examples? … I see your point on the first one. On the second, I'd like to share some context. Either way, I'll take the feedback seriously and we can review progress next quarter.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Listen, seek examples, add context calmly, commit to action.</p></div>
+<p class="tip"><strong>Tip:</strong> Listen, seek examples, add context calmly, commit to action.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if I still disagree after listening?</p><p>Ask for examples, share my view calmly and agree what would show improvement.</p></div></div>
 </details>
-<details class="q" data-topic="Rating" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">What rating do you think you deserve?</span><span class="meta"><span class="tag">Rating</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Rating" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">What rating do you think you deserve?</span><span class="meta"><span class="tag">Rating</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to calibrate expectations.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Based on delivering cutting invoice processing time by about 30% and closing the last two quarters on schedule, meeting most goals, and taking on extra leadership, I believe I've exceeded expectations. I'd like to understand how you see it and what would distinguish the top rating.&quot;</p>
-<p class="tip"><strong>Tip:</strong> State your view with evidence, then listen.</p></div>
+<p class="tip"><strong>Tip:</strong> State your view with evidence, then listen.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if my view is higher than my manager's?</p><p>Ask what evidence would justify the higher rating next time.</p></div></div>
 </details>
-<details class="q" data-topic="Rating" data-level="D">
-  <summary><span class="qn">9</span><span class="qt">I received a lower rating than I expected. What do I say?</span><span class="meta"><span class="tag">Rating</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Rating" data-level="D" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">I received a lower rating than I expected. What do I say?</span><span class="meta"><span class="tag">Rating</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) reacting well matters.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I was hoping for a higher rating, so I'd like to understand the gap. Which outcomes or behaviors would have earned it? Could we agree specific goals so I'm clearly on track next year?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stay calm, ask for specifics, and turn it into a plan. Escalate only through proper channels if facts are wrong.</p></div>
+<p class="tip"><strong>Tip:</strong> Stay calm, ask for specifics, and turn it into a plan. Escalate only through proper channels if facts are wrong.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I say in the moment?</p><p>Thank them, ask for specifics and take time before reacting.</p></div></div>
 </details>
 <details class="q" data-topic="Rating" data-level="D">
   <summary><span class="qn">10</span><span class="qt">How do I challenge a rating that's factually wrong?</span><span class="meta"><span class="tag">Rating</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) disagreement must be evidence-based.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'd like to revisit one point. The review says the project missed its date, but we delivered on the revised date agreed in March. Here's the email confirming that. Could we update the record?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use facts and documentation, not emotion.</p></div>
+<p class="tip"><strong>Tip:</strong> Use facts and documentation, not emotion.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When should I involve HR?</p><p>If facts are wrong and the manager won't review them.</p></div></div>
 </details>
-<details class="q" data-topic="Goals" data-level="B">
-  <summary><span class="qn">11</span><span class="qt">What are your goals for next year?</span><span class="meta"><span class="tag">Goals</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Goals" data-level="B" data-top="1">
+  <summary><span class="qn">11</span><span class="qt">What are your goals for next year?</span><span class="meta"><span class="tag">Goals</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> alignment and ambition.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Three goals: complete the supplier onboarding upgrade and the month-end close automation project with measurable business benefits, reduce recurring issues by 25%, and develop toward leading a larger team within the next year by leading a cross-team initiative. Each supports a reliable close, fewer manual steps and faster delivery for finance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Measurable, business-aligned, with one growth goal.</p></div>
+<p class="tip"><strong>Tip:</strong> Measurable, business-aligned, with one growth goal.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I make goals measurable?</p><p>Define the outcome, a number and a date.</p></div></div>
 </details>
 <details class="q" data-topic="Values" data-level="B">
   <summary><span class="qn">12</span><span class="qt">How did you demonstrate our company values?</span><span class="meta"><span class="tag">Values</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> many reviews score behaviors as well as results.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Customer focus: I worked directly with the business to solve their top pain point. Collaboration: I partnered across teams on the supplier onboarding upgrade and the month-end close automation project. Integrity: I raised a risk early even though it meant delaying a date.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Map one example to each value.</p></div>
+<p class="tip"><strong>Tip:</strong> Map one example to each value.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I avoid generic values answers?</p><p>Give one concrete example per value.</p></div></div>
 </details>
 <details class="q" data-topic="Collaboration" data-level="B">
   <summary><span class="qn">13</span><span class="qt">How did you work with other teams?</span><span class="meta"><span class="tag">Collaboration</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cross-functional effectiveness.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;On the supplier onboarding upgrade and the month-end close automation project I set up regular reviews with business and technical teams, agreed clear owners for each decision, and resolved conflicts quickly. Stakeholders gave positive feedback in the mid-year survey.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show structure and outcomes.</p></div>
+<p class="tip"><strong>Tip:</strong> Show structure and outcomes.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What evidence shows good collaboration?</p><p>Feedback from other teams and joint results.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How have you developed others?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leaders are measured on the team they build.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I mentored two junior team members — one now leads incident triage independently. I created knowledge-sharing sessions that reduced single points of failure.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name outcomes for people you developed.</p></div>
+<p class="tip"><strong>Tip:</strong> Name outcomes for people you developed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if I have no direct reports?</p><p>Mentoring, onboarding and knowledge sharing count.</p></div></div>
 </details>
-<details class="q" data-topic="Challenges" data-level="B">
-  <summary><span class="qn">15</span><span class="qt">What was your biggest challenge and how did you handle it?</span><span class="meta"><span class="tag">Challenges</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Challenges" data-level="B" data-top="1">
+  <summary><span class="qn">15</span><span class="qt">What was your biggest challenge and how did you handle it?</span><span class="meta"><span class="tag">Challenges</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> resilience and problem-solving.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;a tight go-live date and one open role on the team. I broke the work into phases, negotiated priorities with the business, and added weekly risk reviews. We delivered the critical parts on time and moved the rest to the next phase.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Challenge, actions, result, lesson.</p></div>
+<p class="tip"><strong>Tip:</strong> Challenge, actions, result, lesson.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the best structure?</p><p>Situation, what you did and the result.</p></div></div>
 </details>
-<details class="q" data-topic="Mistakes" data-level="B">
-  <summary><span class="qn">16</span><span class="qt">Tell me about a mistake this year.</span><span class="meta"><span class="tag">Mistakes</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Mistakes" data-level="B" data-top="1">
+  <summary><span class="qn">16</span><span class="qt">Tell me about a mistake this year.</span><span class="meta"><span class="tag">Mistakes</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> ownership and learning.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I underestimated the testing time for one change, which caused a short issue after release. I owned it, fixed it the same day, and introduced a testing checklist that has prevented repeats.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Choose a real but contained example, with prevention.</p></div>
+<p class="tip"><strong>Tip:</strong> Choose a real but contained example, with prevention.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I end that answer well?</p><p>With what you changed so it won't happen again.</p></div></div>
 </details>
 <details class="q" data-topic="Career" data-level="B">
   <summary><span class="qn">17</span><span class="qt">Where do you want your career to go?</span><span class="meta"><span class="tag">Career</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> development planning and retention.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I'm working toward leading a larger team within the next year. Next year I'd like experiences that build toward that — broader scope and more exposure to senior stakeholders. Can we include that in my development plan?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tie aspirations to concrete development actions.</p></div>
+<p class="tip"><strong>Tip:</strong> Tie aspirations to concrete development actions.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How specific should I be?</p><p>Clear direction, flexible on exact role.</p></div></div>
 </details>
-<details class="q" data-topic="Promotion" data-level="D">
-  <summary><span class="qn">18</span><span class="qt">How do I connect my review to promotion?</span><span class="meta"><span class="tag">Promotion</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Promotion" data-level="D" data-top="1">
+  <summary><span class="qn">18</span><span class="qt">How do I connect my review to promotion?</span><span class="meta"><span class="tag">Promotion</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) reviews are evidence for promotion cases.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'd like this review to reflect progress toward the next level. Which of my accomplishments demonstrate next-level performance, and what gaps remain? Can we agree a timeline?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Ask for criteria, evidence and a timeline.</p></div>
+<p class="tip"><strong>Tip:</strong> Ask for criteria, evidence and a timeline.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I make the link explicit?</p><p>Ask which results would show next-level readiness.</p></div></div>
 </details>
-<details class="q" data-topic="Compensation" data-level="D">
-  <summary><span class="qn">19</span><span class="qt">How do I discuss pay during a review?</span><span class="meta"><span class="tag">Compensation</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Compensation" data-level="D" data-top="1">
+  <summary><span class="qn">19</span><span class="qt">How do I discuss pay during a review?</span><span class="meta"><span class="tag">Compensation</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) reviews often link to pay.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;Given the results this year — cutting invoice processing time by about 30% and closing the last two quarters on schedule and expanded scope in the finance applications and the integrations that feed them — I'd like to understand how my pay compares to the market and the range for my role. What can we do in this cycle?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Base the case on scope, results and market data.</p></div>
+<p class="tip"><strong>Tip:</strong> Base the case on scope, results and market data.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should pay come up in the review?</p><p>Yes, briefly and prepared with market data.</p></div></div>
 </details>
 <details class="q" data-topic="Peer Feedback" data-level="D">
   <summary><span class="qn">20</span><span class="qt">Your peers said you can be too direct. How do you respond?</span><span class="meta"><span class="tag">Peer Feedback</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> self-awareness and growth.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;That's useful feedback. I value directness for speed, but I can adjust how I deliver it. I'll ask more questions first and acknowledge others' views before giving my position, and I'll check in with peers in a few months.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Acknowledge, adjust behavior, follow up.</p></div>
+<p class="tip"><strong>Tip:</strong> Acknowledge, adjust behavior, follow up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I respond to &quot;too direct&quot;?</p><p>Acknowledge it, ask for an example and share how you'll adjust.</p></div></div>
 </details>
 <details class="q" data-topic="Strengths" data-level="B">
   <summary><span class="qn">21</span><span class="qt">What are your key strengths?</span><span class="meta"><span class="tag">Strengths</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to confirm what to leverage.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Ownership — I see things through, like cutting invoice processing time by about 30% and closing the last two quarters on schedule. Problem-solving under pressure. And building trust with business stakeholders. I'd like to use these more in leading cross-team work.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Three strengths with evidence.</p></div>
+<p class="tip"><strong>Tip:</strong> Three strengths with evidence.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I back up strengths?</p><p>One example per strength.</p></div></div>
 </details>
 <details class="q" data-topic="Support" data-level="B">
   <summary><span class="qn">22</span><span class="qt">What support do you need next year?</span><span class="meta"><span class="tag">Support</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> managers want to enable success.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Clear priorities from leadership, backup coverage to free time for the supplier onboarding upgrade and the month-end close automation project, and a stretch assignment toward leading a larger team within the next year. A training budget for one targeted course would also help.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Specific, reasonable asks.</p></div>
+<p class="tip"><strong>Tip:</strong> Specific, reasonable asks.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What support is reasonable to ask for?</p><p>Training, clearer priorities or a stretch project.</p></div></div>
 </details>
 <details class="q" data-topic="Manager Feedback" data-level="B">
   <summary><span class="qn">23</span><span class="qt">Do you have feedback for me as your manager?</span><span class="meta"><span class="tag">Manager Feedback</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a two-way relationship.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Your support during escalations made a real difference. One request: more context on leadership priorities earlier, so I can plan the team's work ahead of changes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Appreciation plus one constructive request.</p></div>
+<p class="tip"><strong>Tip:</strong> Appreciation plus one constructive request.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I give upward feedback safely?</p><p>Specific, kind and about what helps me work better.</p></div></div>
 </details>
-<details class="q" data-topic="Preparation" data-level="B">
-  <summary><span class="qn">24</span><span class="qt">How should I prepare for my review meeting?</span><span class="meta"><span class="tag">Preparation</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Preparation" data-level="B" data-top="1">
+  <summary><span class="qn">24</span><span class="qt">How should I prepare for my review meeting?</span><span class="meta"><span class="tag">Preparation</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) preparation drives better outcomes.</p>
 <p><strong>Sample answer (checklist):</strong></p>
 <ul>
@@ -273,189 +280,189 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Decide your ask (rating, development, pay, promotion path).</li>
 <li>Prepare questions about next year.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Walk in knowing the one outcome you want.</p></div>
+<p class="tip"><strong>Tip:</strong> Walk in knowing the one outcome you want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I bring?</p><p>My wins list, goals and questions.</p></div></div>
 </details>
 <details class="q" data-topic="Mid-year" data-level="B">
   <summary><span class="qn">25</span><span class="qt">How do I use a mid-year review well?</span><span class="meta"><span class="tag">Mid-year</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) mid-year is the time to correct course.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;Here's progress on each goal. Two are on track, one is at risk because priorities shifted toward a reliable close, fewer manual steps and faster delivery for finance. Should we adjust that goal? What would make my year-end review outstanding?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Adjust goals and ask what 'outstanding' looks like.</p></div>
+<p class="tip"><strong>Tip:</strong> Adjust goals and ask what 'outstanding' looks like.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I use mid-year well?</p><p>Check progress and reset goals if needed.</p></div></div>
 </details>
 <details class="q" data-topic="Metrics" data-level="B">
   <summary><span class="qn">26</span><span class="qt">How do you measure your own performance?</span><span class="meta"><span class="tag">Metrics</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> results orientation.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Business-facing metrics — stability, delivery against plan, stakeholder satisfaction — plus project milestones for the supplier onboarding upgrade and the month-end close automation project and my team's growth.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Metrics that leadership cares about.</p></div>
+<p class="tip"><strong>Tip:</strong> Metrics that leadership cares about.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What metrics should I use?</p><p>Outcomes tied to my goals.</p></div></div>
 </details>
 <details class="q" data-topic="Recognition" data-level="B">
   <summary><span class="qn">27</span><span class="qt">Who helped you succeed this year?</span><span class="meta"><span class="tag">Recognition</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> humility and collaboration.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Our business partners were critical on the supplier onboarding upgrade and the month-end close automation project, and two team members carried a lot of the delivery. I'd like them recognized in this cycle as well.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Credit others generously.</p></div>
+<p class="tip"><strong>Tip:</strong> Credit others generously.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why mention who helped?</p><p>It shows teamwork and gratitude.</p></div></div>
 </details>
 <details class="q" data-topic="Improvement" data-level="B">
   <summary><span class="qn">28</span><span class="qt">What would you do differently this year?</span><span class="meta"><span class="tag">Improvement</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reflection.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I'd involve stakeholders earlier on scope decisions, and delegate more operational work sooner. Both would have reduced pressure during a tight go-live date and one open role on the team.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Specific, actionable reflections.</p></div>
+<p class="tip"><strong>Tip:</strong> Specific, actionable reflections.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a good answer?</p><p>One honest improvement and how you'll apply it.</p></div></div>
 </details>
 <details class="q" data-topic="Calibration" data-level="D">
   <summary><span class="qn">29</span><span class="qt">How do calibration meetings affect my rating?</span><span class="meta"><span class="tag">Calibration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) understanding the process.</p>
 <p><strong>Sample answer (explanation):</strong></p>
 <p>Managers compare ratings across teams to make them consistent. Your manager advocates for you with evidence. Give them clear, quantified wins and examples of impact beyond your team to strengthen your case.</p>
-<p class="tip"><strong>Tip:</strong> Equip your manager with evidence before calibration.</p></div>
+<p class="tip"><strong>Tip:</strong> Equip your manager with evidence before calibration.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I influence calibration?</p><p>Make sure my manager has clear evidence.</p></div></div>
 </details>
 <details class="q" data-topic="Visibility" data-level="D">
   <summary><span class="qn">30</span><span class="qt">Leadership doesn't know my work. How do I fix that before reviews?</span><span class="meta"><span class="tag">Visibility</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) visibility affects ratings.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Send monthly outcome summaries to your manager, present at a leadership meeting, ask stakeholders to share feedback with your manager, and credit your team publicly.</p>
-<p class="tip"><strong>Tip:</strong> Visibility is part of the job.</p></div>
+<p class="tip"><strong>Tip:</strong> Visibility is part of the job.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I raise visibility?</p><p>Share results with leaders through my manager.</p></div></div>
 </details>
 <details class="q" data-topic="Underperformance" data-level="D">
   <summary><span class="qn">31</span><span class="qt">My manager says I'm not meeting expectations. What do I do?</span><span class="meta"><span class="tag">Underperformance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) a critical moment.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I want to fix this. Which specific expectations am I missing, and what does success look like? Can we agree a 60-day plan with check-ins every two weeks?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Get specifics, agree a plan in writing, and over-deliver on it.</p></div>
+<p class="tip"><strong>Tip:</strong> Get specifics, agree a plan in writing, and over-deliver on it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I ask for?</p><p>Specific expectations and a plan with check-ins.</p></div></div>
 </details>
 <details class="q" data-topic="Ambiguity" data-level="B">
   <summary><span class="qn">32</span><span class="qt">How did you handle unclear priorities this year?</span><span class="meta"><span class="tag">Ambiguity</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> judgment.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;When priorities were unclear, I proposed an order based on business impact, confirmed it with you, and shared it with stakeholders. That kept the supplier onboarding upgrade and the month-end close automation project moving.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show initiative plus alignment.</p></div>
+<p class="tip"><strong>Tip:</strong> Show initiative plus alignment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I show good judgment?</p><p>Explain how I clarified priorities.</p></div></div>
 </details>
 <details class="q" data-topic="Innovation" data-level="B">
   <summary><span class="qn">33</span><span class="qt">What improvements did you introduce?</span><span class="meta"><span class="tag">Innovation</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> initiative.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I introduced a recurring issue review and automated two manual reports, saving about six hours a week and reducing repeat incidents.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Quantify the benefit.</p></div>
+<p class="tip"><strong>Tip:</strong> Quantify the benefit.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I quantify improvements?</p><p>Before and after numbers.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholder Feedback" data-level="B">
   <summary><span class="qn">34</span><span class="qt">What would your stakeholders say about you?</span><span class="meta"><span class="tag">Stakeholder Feedback</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> external perspective.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;That I'm responsive, I understand their business, and I deliver what I commit to. They'd also say I push back when something is too risky — which I see as part of the job.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Back it with a quote or survey result if you have one.</p></div>
+<p class="tip"><strong>Tip:</strong> Back it with a quote or survey result if you have one.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I know what stakeholders think?</p><p>Ask them for feedback before the review.</p></div></div>
 </details>
 <details class="q" data-topic="Work-life" data-level="B">
   <summary><span class="qn">35</span><span class="qt">How do you manage the demands of your role?</span><span class="meta"><span class="tag">Work-life</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> sustainability.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Clear priorities, protected focus time, delegation and planning around peak periods like the supplier onboarding upgrade and the month-end close automation project. I raise workload concerns early rather than letting them build up.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show sustainable habits.</p></div>
+<p class="tip"><strong>Tip:</strong> Show sustainable habits.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I show I'm managing demands?</p><p>Explain how I prioritize.</p></div></div>
 </details>
 <details class="q" data-topic="Future Role" data-level="D">
   <summary><span class="qn">36</span><span class="qt">What would you need to succeed in a bigger role?</span><span class="meta"><span class="tag">Future Role</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> readiness.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Experience leading larger cross-functional initiatives, deeper financial acumen, and more exposure to executive decision-making. I'd like a development plan that builds those.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name gaps honestly with a plan.</p></div>
+<p class="tip"><strong>Tip:</strong> Name gaps honestly with a plan.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I ask for?</p><p>Scope and development needed for the next role.</p></div></div>
 </details>
 <details class="q" data-topic="Follow-up" data-level="B">
   <summary><span class="qn">37</span><span class="qt">What should I do after my review?</span><span class="meta"><span class="tag">Follow-up</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) turning the review into action.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Send a short summary of agreed goals, development actions and timelines. Schedule quarterly check-ins and keep updating your wins document.</p>
-<p class="tip"><strong>Tip:</strong> Written follow-up creates accountability.</p></div>
+<p class="tip"><strong>Tip:</strong> Written follow-up creates accountability.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I do after?</p><p>Send a summary of goals and agreed actions.</p></div></div>
 </details>
 <details class="q" data-topic="Training" data-level="B">
   <summary><span class="qn">38</span><span class="qt">What training would help you most?</span><span class="meta"><span class="tag">Training</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> development planning.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Leadership and executive communication training, plus a certification related to a reliable close, fewer manual steps and faster delivery for finance. Both directly support my goals and our roadmap.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tie training to business needs.</p></div>
+<p class="tip"><strong>Tip:</strong> Tie training to business needs.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I pick training?</p><p>Tie it to goals.</p></div></div>
 </details>
 <details class="q" data-topic="Teamwork" data-level="B">
   <summary><span class="qn">39</span><span class="qt">How did you handle a disagreement with a colleague?</span><span class="meta"><span class="tag">Teamwork</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> collaboration under tension.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We disagreed on timing for a release. I set up a short meeting to compare risks, we agreed a phased approach, and we delivered without issues. Our working relationship is stronger now.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Focus on resolution and outcome.</p></div>
+<p class="tip"><strong>Tip:</strong> Focus on resolution and outcome.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What outcome should I share?</p><p>How we resolved it and the relationship now.</p></div></div>
 </details>
 <details class="q" data-topic="Self-promotion" data-level="B">
   <summary><span class="qn">40</span><span class="qt">How do I talk about my achievements without bragging?</span><span class="meta"><span class="tag">Self-promotion</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) many people undersell themselves.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Focus on facts and outcomes: &quot;I led X, which resulted in Y.&quot; Credit the team where appropriate, but be clear about your role.</p>
-<p class="tip"><strong>Tip:</strong> Facts aren't bragging.</p></div>
+<p class="tip"><strong>Tip:</strong> Facts aren't bragging.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I avoid bragging?</p><p>Focus on impact and credit others.</p></div></div>
 </details>
 <details class="q" data-topic="Remote" data-level="B">
   <summary><span class="qn">41</span><span class="qt">How did you stay effective working remotely?</span><span class="meta"><span class="tag">Remote</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> remote accountability.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Weekly written updates, clear deliverables, proactive communication with stakeholders, and keeping response times fast.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Visibility in writing.</p></div>
+<p class="tip"><strong>Tip:</strong> Visibility in writing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What remote habits help?</p><p>Clear updates and regular check-ins.</p></div></div>
 </details>
 <details class="q" data-topic="Long-term" data-level="B">
   <summary><span class="qn">42</span><span class="qt">What do you want to be known for?</span><span class="meta"><span class="tag">Long-term</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> your professional brand.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Reliability and impact — someone who delivers business results, develops people and makes hard problems simpler.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Short and memorable.</p></div>
+<p class="tip"><strong>Tip:</strong> Short and memorable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why does this question matter?</p><p>It shows self-awareness and direction.</p></div></div>
 </details>
 <details class="q" data-topic="Closing" data-level="B">
   <summary><span class="qn">43</span><span class="qt">Anything else you'd like to discuss?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> final chance.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Just to confirm: next year's goals, the development plan toward leading a larger team within the next year, and a check-in on my promotion path at mid-year. Thanks for the feedback.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recap agreements.</p></div>
+<p class="tip"><strong>Tip:</strong> Recap agreements.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's worth raising here?</p><p>Career, workload or pay topics not yet covered.</p></div></div>
 </details>
 <details class="q" data-topic="Low Points" data-level="D">
   <summary><span class="qn">44</span><span class="qt">What was the lowest point of your year?</span><span class="meta"><span class="tag">Low Points</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> resilience.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Mid-year, when a tight go-live date and one open role on the team peaked. I reset the plan with stakeholders, asked for support, and we recovered. I learned to escalate earlier.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show recovery and learning.</p></div>
+<p class="tip"><strong>Tip:</strong> Show recovery and learning.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How honest should I be?</p><p>Honest, with what you learned.</p></div></div>
 </details>
 <details class="q" data-topic="Scope" data-level="D">
   <summary><span class="qn">45</span><span class="qt">Has your role grown this year?</span><span class="meta"><span class="tag">Scope</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> evidence for level and pay.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Yes. In addition to the finance applications and the integrations that feed them, I took on the supplier onboarding upgrade and the month-end close automation project and more stakeholder management. My scope today is significantly broader than when the goals were set.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Document scope growth explicitly.</p></div>
+<p class="tip"><strong>Tip:</strong> Document scope growth explicitly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I show growth?</p><p>Compare scope now to the start of the year.</p></div></div>
 </details>
 <details class="q" data-topic="Documentation" data-level="B">
   <summary><span class="qn">46</span><span class="qt">Why keep a wins document?</span><span class="meta"><span class="tag">Documentation</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) memory fades by review time.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Every week or two, add wins, metrics, feedback received and challenges handled. It makes self-assessments and promotion cases easy.</p>
-<p class="tip"><strong>Tip:</strong> Five minutes every Friday.</p></div>
+<p class="tip"><strong>Tip:</strong> Five minutes every Friday.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What goes in a wins document?</p><p>Results, feedback and numbers, updated monthly.</p></div></div>
 </details>
 <details class="q" data-topic="Recognition" data-level="B">
   <summary><span class="qn">47</span><span class="qt">How do I ask for recognition for my team in reviews?</span><span class="meta"><span class="tag">Recognition</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) good leaders advocate.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;Two team members drove much of the success on the supplier onboarding upgrade and the month-end close automation project. I'd like that reflected in their reviews, and I've written examples for each.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Provide specific examples.</p></div>
+<p class="tip"><strong>Tip:</strong> Provide specific examples.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I get my team recognized?</p><p>Name individuals and their impact.</p></div></div>
 </details>
 <details class="q" data-topic="Next Year" data-level="B">
   <summary><span class="qn">48</span><span class="qt">What will be different next year?</span><span class="meta"><span class="tag">Next Year</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> forward thinking.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;More focus on strategic work as I delegate operations, completing the supplier onboarding upgrade and the month-end close automation project with clear benefits, and stepping up in leadership toward leading a larger team within the next year.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Clear forward plan.</p></div>
+<p class="tip"><strong>Tip:</strong> Clear forward plan.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should change?</p><p>One or two concrete improvements.</p></div></div>
 </details>
 <details class="q" data-topic="Evidence" data-level="B">
   <summary><span class="qn">49</span><span class="qt">Can you give me an example of that?</span><span class="meta"><span class="tag">Evidence</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reviewers want proof behind claims.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Sure. On the supplier onboarding upgrade and the month-end close automation project, I noticed testing was falling behind. I reorganized the plan, brought in business testers earlier, and we hit the milestone. That's the kind of ownership I mean.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Have two or three detailed stories ready.</p></div>
+<p class="tip"><strong>Tip:</strong> Have two or three detailed stories ready.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if I don't have an example ready?</p><p>Ask for a moment and pick the most relevant one.</p></div></div>
 </details>
-<details class="q" data-topic="Next Level" data-level="B">
-  <summary><span class="qn">50</span><span class="qt">What would it take to get the highest rating next year?</span><span class="meta"><span class="tag">Next Level</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Next Level" data-level="B" data-top="1">
+  <summary><span class="qn">50</span><span class="qt">What would it take to get the highest rating next year?</span><span class="meta"><span class="tag">Next Level</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question, worth asking) clarity on the bar.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;What would distinguish an outstanding year for my role? I'd like to set goals that clearly reach that level, and check progress at mid-year.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Turn the answer into written goals.</p></div>
+<p class="tip"><strong>Tip:</strong> Turn the answer into written goals.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the best way to ask?</p><p>Ask what the top rating looks like in my role and agree evidence.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -473,6 +480,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

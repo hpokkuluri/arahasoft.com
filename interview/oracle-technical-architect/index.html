@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,358 +97,359 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>50</b> questions</span>
     <span class="stat"><b>10</b> basic</span>
     <span class="stat"><b>40</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Role" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">What does an Oracle technical architect do?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Role" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">What does an Oracle technical architect do?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> distinguishes architecture from lead development.</p>
 <p><strong>Answer:</strong> Defines the target technical architecture around Oracle applications: integration architecture, extension strategy (SaaS + PaaS), data and analytics architecture, security and identity, environments and DevOps, non-functional requirements (performance, availability, resilience), and governance. Makes and documents key decisions, guides technical leads, and aligns with enterprise architecture.</p>
-<p class="tip"><strong>Tip:</strong> Mention architecture decision records (ADRs).</p></div>
+<p class="tip"><strong>Tip:</strong> Mention architecture decision records (ADRs).</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How is a technical architect different from a technical lead?</p><p>The architect sets the target architecture and standards across programs; the lead delivers within them.</p></div></div>
 </details>
-<details class="q" data-topic="Integration" data-level="D">
-  <summary><span class="qn">2</span><span class="qt">How do you define an integration architecture for Oracle Fusion?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Integration" data-level="D" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">How do you define an integration architecture for Oracle Fusion?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> the core architect question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start by inventorying the systems and data flows. Then I define a small set of patterns: API-led REST, event-driven through business events, bulk through the ERP Integration Service and FBDI, analytics through BICC or Fusion Data Intelligence, and file transfer over SFTP. I choose the platform, usually OIC, with API Gateway and Streaming where needed. I standardize canonical models, error handling, security and monitoring. And I govern it through an integration catalog and a design authority.&quot;</p>
-<p class="tip"><strong>Tip:</strong> If they allow it, draw a high-level diagram. It shows clarity of thought.</p></div>
+<p class="tip"><strong>Tip:</strong> If they allow it, draw a high-level diagram. It shows clarity of thought.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first artifact you produce?</p><p>A context diagram of systems and data flows.</p></div></div>
 </details>
 <details class="q" data-topic="Integration" data-level="D">
   <summary><span class="qn">3</span><span class="qt">What is API-led connectivity?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common architecture concept.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It layers APIs into three tiers. System APIs give access to systems of record. Process APIs hold business logic and orchestration. Experience APIs are tailored to consumers like portals or mobile apps. It increases reuse and shields consumers from back-end changes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it's useful framing even when the platform is OIC.</p></div>
+<p class="tip"><strong>Tip:</strong> Say it's useful framing even when the platform is OIC.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why layer APIs?</p><p>Changes in one system don't ripple through every consumer.</p></div></div>
 </details>
-<details class="q" data-topic="Integration" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">When would you use events vs APIs vs batch?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Integration" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">When would you use events vs APIs vs batch?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> pattern selection.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Events are for real-time notifications and decoupling, for example order approved, notify the warehouse. APIs are for request-response needs and lookups. Batch is for high volumes where some delay is acceptable, like daily journals or bulk loads. I choose by volume, latency, consistency and coupling.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show the trade-off thinking. It's what architects are paid for.</p></div>
+<p class="tip"><strong>Tip:</strong> Show the trade-off thinking. It's what architects are paid for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is batch still right?</p><p>For high volume without real-time need.</p></div></div>
 </details>
-<details class="q" data-topic="Extensions" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">What is your extension strategy for Oracle SaaS?</span><span class="meta"><span class="tag">Extensions</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Extensions" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">What is your extension strategy for Oracle SaaS?</span><span class="meta"><span class="tag">Extensions</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> protecting upgradeability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Configure first. Then in-app extensions: flexfields, Application Composer, VB Studio Redwood extensions and AI Agent Studio. Then side-by-side extensions on OCI, like Visual Builder apps, Autonomous Database and Functions, connected through APIs and events. I never modify the SaaS core, and every extension has to be upgrade-safe.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Call it Oracle's version of a &quot;clean core&quot;. Interviewers recognize the idea.</p></div>
+<p class="tip"><strong>Tip:</strong> Call it Oracle's version of a &quot;clean core&quot;. Interviewers recognize the idea.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the last resort?</p><p>PaaS extensions outside Fusion.</p></div></div>
 </details>
-<details class="q" data-topic="Data" data-level="D">
-  <summary><span class="qn">6</span><span class="qt">How do you design data and analytics architecture around Fusion?</span><span class="meta"><span class="tag">Data</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Data" data-level="D" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">How do you design data and analytics architecture around Fusion?</span><span class="meta"><span class="tag">Data</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> analytics architecture.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion Data Intelligence or BICC feeds Autonomous Data Warehouse, and Oracle Analytics Cloud or another analytics platform sits on top. Pipelines are incremental, with master data governance, semantic models, and security aligned with Fusion roles. OTBI and BIP stay for operational reporting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate operational and analytical reporting. It's the key principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate operational and analytical reporting. It's the key principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you add OAC?</p><p>For analytics across many sources.</p></div></div>
 </details>
-<details class="q" data-topic="Master Data" data-level="D">
-  <summary><span class="qn">7</span><span class="qt">How do you approach master data management?</span><span class="meta"><span class="tag">Master Data</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Master Data" data-level="D" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">How do you approach master data management?</span><span class="meta"><span class="tag">Master Data</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> MDM is foundational.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define the system of record for each domain: customers, suppliers, items, employees and the chart of accounts. Then governance processes and data owners, quality rules, synchronization patterns, and the tools, like Fusion Product Hub, Customer Data Management, or an MDM platform.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;ownership before tools&quot;. It's where MDM succeeds or fails.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;ownership before tools&quot;. It's where MDM succeeds or fails.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest MDM risk?</p><p>No clear system of record.</p></div></div>
 </details>
-<details class="q" data-topic="Security" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">How do you design identity and access for Oracle Cloud?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Security" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">How do you design identity and access for Oracle Cloud?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> identity architecture.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;SSO with the corporate identity provider, like Microsoft Entra ID or Okta, through SAML or OIDC, with OCI IAM identity domains. Automated provisioning through SCIM or driven from HCM. Least-privilege role design and SoD controls. Integration users authenticate with OAuth. And audit logging.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention SoD tooling like Advanced Access Controls.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention SoD tooling like Advanced Access Controls.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential for identity?</p><p>SSO with the corporate identity provider.</p></div></div>
 </details>
 <details class="q" data-topic="Security" data-level="D">
   <summary><span class="qn">9</span><span class="qt">How do you protect sensitive data across integrations?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> data protection.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Encryption in transit with TLS and at rest. Field-level masking. Tokenization for card data. Least-privilege integration roles. Data classification. Secure key and credential management in OCI Vault. And masking in non-production.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;data classification first&quot;. You protect what you've classified.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;data classification first&quot;. You protect what you've classified.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you protect data in logs?</p><p>Mask sensitive fields.</p></div></div>
 </details>
 <details class="q" data-topic="NFRs" data-level="D">
   <summary><span class="qn">10</span><span class="qt">Which non-functional requirements do you define?</span><span class="meta"><span class="tag">NFRs</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> NFRs are an architect's responsibility.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Performance, like response times and batch windows. Scalability for volumes and growth. Availability and resilience. Security. Recoverability, with RPO and RTO for PaaS components. Maintainability. Monitoring. And compliance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you quantify each one. Vague NFRs can't be tested.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you quantify each one. Vague NFRs can't be tested.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which NFR is most often missed?</p><p>Performance at peak volumes.</p></div></div>
 </details>
-<details class="q" data-topic="Resilience" data-level="D">
-  <summary><span class="qn">11</span><span class="qt">How do you design resilient integrations?</span><span class="meta"><span class="tag">Resilience</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Resilience" data-level="D" data-top="1">
+  <summary><span class="qn">11</span><span class="qt">How do you design resilient integrations?</span><span class="meta"><span class="tag">Resilience</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> integrations fail; design for it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Retries with backoff for transient failures, idempotent processing, dead-letter handling, circuit breakers for failing targets, asynchronous decoupling with queues or streaming, monitoring and alerting, and the ability to replay.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;assume failures will happen&quot;. It's the architect's mindset.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;assume failures will happen&quot;. It's the architect's mindset.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes retries safe?</p><p>Idempotent processing.</p></div></div>
 </details>
 <details class="q" data-topic="OCI" data-level="D">
   <summary><span class="qn">12</span><span class="qt">Which OCI services complement Oracle Fusion?</span><span class="meta"><span class="tag">OCI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> platform breadth.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;OIC for integration, Visual Builder for apps, Autonomous Database and ADW for data, Object Storage for files, Functions for serverless logic, API Gateway, Streaming for events, Vault for secrets, Logging and Monitoring, and OCI Generative AI and AI services.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Describe one solution that combines several. It shows design, not a list.</p></div>
+<p class="tip"><strong>Tip:</strong> Describe one solution that combines several. It shows design, not a list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use OCI Functions?</p><p>For custom processing.</p></div></div>
 </details>
-<details class="q" data-topic="AI" data-level="D">
-  <summary><span class="qn">13</span><span class="qt">How do you architect AI solutions with Oracle applications?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI" data-level="D" data-top="1">
+  <summary><span class="qn">13</span><span class="qt">How do you architect AI solutions with Oracle applications?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> current architecture skills.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For in-app agents, I use Fusion's embedded AI and AI Agent Studio, which inherit Fusion security. For custom AI, I use OCI Generative AI or other LLMs with retrieval over approved data, tools exposed through secure APIs, guardrails, evaluation and monitoring, and human review for sensitive decisions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with governance and security. That's what clients worry about.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with governance and security. That's what clients worry about.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use a non-Oracle AI platform?</p><p>For cross-system AI use cases.</p></div></div>
 </details>
 <details class="q" data-topic="DevOps" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How do you design CI/CD for Oracle extensions and integrations?</span><span class="meta"><span class="tag">DevOps</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> delivery maturity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Git repositories, VB Studio pipelines for extensions and apps, automated OIC project export and import through its REST APIs, automated tests, environment configuration management, approvals and release notes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;automate repeatable deployments&quot;. Manual moves cause errors.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;automate repeatable deployments&quot;. Manual moves cause errors.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What gets automated in CI/CD?</p><p>Builds and deployments of extensions.</p></div></div>
 </details>
 <details class="q" data-topic="Environments" data-level="D">
   <summary><span class="qn">15</span><span class="qt">How do you plan Fusion environments?</span><span class="meta"><span class="tag">Environments</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> environment strategy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Production and test pods, plus more non-production environments as needed for development, training or UAT. A refresh calendar, production-to-test and test-to-test, aligned with project phases. The quarterly update cadence. And matching PaaS environments.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;refresh planning affects testing&quot;. Stale test data hides problems.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;refresh planning affects testing&quot;. Stale test data hides problems.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How many test pods?</p><p>Enough for dev, test and UAT without conflict.</p></div></div>
 </details>
-<details class="q" data-topic="Migration" data-level="D">
-  <summary><span class="qn">16</span><span class="qt">How do you architect an EBS-to-Fusion migration?</span><span class="meta"><span class="tag">Migration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Migration" data-level="D" data-top="1">
+  <summary><span class="qn">16</span><span class="qt">How do you architect an EBS-to-Fusion migration?</span><span class="meta"><span class="tag">Migration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common architecture engagement.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I assess the EBS footprint and customizations, define the target architecture and phasing, big bang or phased by module or region, and design coexistence integrations. The data migration architecture is extract, transform and load with reconciliation. Customizations are retired where possible, extensions planned, and EBS is decommissioned with its data archived.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the archive strategy. Historical data needs a home.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the archive strategy. Historical data needs a home.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main migration decision?</p><p>Big-bang or phased.</p></div></div>
 </details>
 <details class="q" data-topic="Migration" data-level="D">
   <summary><span class="qn">17</span><span class="qt">How do you handle historical data in a migration?</span><span class="meta"><span class="tag">Migration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a cost and compliance decision.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I migrate only open transactions and balances, plus limited history if the business needs it. The rest goes into a read-only archive or reporting warehouse, kept for legal retention.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;avoid migrating everything&quot;. It's expensive and rarely needed.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;avoid migrating everything&quot;. It's expensive and rarely needed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does history go?</p><p>An archive or data warehouse.</p></div></div>
 </details>
-<details class="q" data-topic="Coexistence" data-level="D">
-  <summary><span class="qn">18</span><span class="qt">How do you design coexistence between EBS and Fusion?</span><span class="meta"><span class="tag">Coexistence</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Coexistence" data-level="D" data-top="1">
+  <summary><span class="qn">18</span><span class="qt">How do you design coexistence between EBS and Fusion?</span><span class="meta"><span class="tag">Coexistence</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> phased migration design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define the system of record for each process. Master data and transactions integrate through OIC, using the EBS adapter with the connectivity agent and the ERP Cloud adapter. Charts of accounts and calendars are aligned. And I plan reconciliation and the eventual cutover.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;minimize coexistence duration&quot;. It's costly to run.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;minimize coexistence duration&quot;. It's costly to run.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What must be clear in coexistence?</p><p>System of record per process.</p></div></div>
 </details>
 <details class="q" data-topic="Multi-pillar" data-level="D">
   <summary><span class="qn">19</span><span class="qt">How do you integrate Fusion ERP, HCM and SCM with other platforms?</span><span class="meta"><span class="tag">Multi-pillar</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> enterprise integration design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The Fusion pillars share a common platform, so external integrations follow standard patterns. For example, HCM feeds identity provisioning, ERP connects to banks, SCM connects to WMS, TMS and 3PLs, and ERP connects to CRM like Salesforce, with OIC as the hub.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Contrast hub-and-spoke with point-to-point. Hub-and-spoke scales.</p></div>
+<p class="tip"><strong>Tip:</strong> Contrast hub-and-spoke with point-to-point. Hub-and-spoke scales.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the benefit of the shared platform?</p><p>Fewer internal integrations.</p></div></div>
 </details>
-<details class="q" data-topic="Governance" data-level="D">
-  <summary><span class="qn">20</span><span class="qt">How do you run a design authority?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Governance" data-level="D" data-top="1">
+  <summary><span class="qn">20</span><span class="qt">How do you run a design authority?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> governance practice.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Regular reviews of designs against principles and standards, decision records, a process for exceptions, reuse checks, and alignment with enterprise architecture.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;lightweight but consistent&quot;. Heavy governance gets bypassed.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;lightweight but consistent&quot;. Heavy governance gets bypassed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does the design authority decide?</p><p>Designs against principles.</p></div></div>
 </details>
-<details class="q" data-topic="Principles" data-level="D">
-  <summary><span class="qn">21</span><span class="qt">What architecture principles do you set for Oracle programs?</span><span class="meta"><span class="tag">Principles</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Principles" data-level="D" data-top="1">
+  <summary><span class="qn">21</span><span class="qt">What architecture principles do you set for Oracle programs?</span><span class="meta"><span class="tag">Principles</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> principles guide every decision.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Adopt standard functionality first. Extend, don't customize. API-first and event-driven where appropriate. One source of truth for master data. Security by design. Automated deployments. And design for supportability and quarterly updates.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;principles guide decisions&quot;. It's why you set them early.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;principles guide decisions&quot;. It's why you set them early.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which principle matters most?</p><p>Standard functionality first.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D">
   <summary><span class="qn">22</span><span class="qt">How do you approach performance architecture?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> performance by design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Volume modeling, bulk patterns for high volumes, asynchronous processing, caching reference data, scheduling heavy jobs off-peak, and performance testing in SIT.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;model volumes early&quot;. It decides the patterns.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;model volumes early&quot;. It decides the patterns.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's key for high volume?</p><p>Bulk patterns.</p></div></div>
 </details>
 <details class="q" data-topic="Monitoring" data-level="D">
   <summary><span class="qn">23</span><span class="qt">How do you design observability for the Oracle landscape?</span><span class="meta"><span class="tag">Monitoring</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> operations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Centralized logging and monitoring with OIC monitoring, OCI Logging and Monitoring, and APM. Business transaction tracking. Dashboards for integration health and SLAs. Alerts into support tools like ServiceNow. And reconciliation reports.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;business-level observability&quot;. Technical green doesn't mean business green.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;business-level observability&quot;. Technical green doesn't mean business green.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's observability for?</p><p>Seeing problems before users report them.</p></div></div>
 </details>
 <details class="q" data-topic="Cost" data-level="D">
   <summary><span class="qn">24</span><span class="qt">How do you manage costs in Oracle cloud architecture?</span><span class="meta"><span class="tag">Cost</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> FinOps awareness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I right-size OIC message packs and PaaS services, schedule non-production environments to shut down when idle, monitor usage, avoid unnecessary data extracts, and review subscriptions regularly.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention FinOps. It's a growing expectation of architects.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention FinOps. It's a growing expectation of architects.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where's the biggest saving?</p><p>Right-sizing PaaS services.</p></div></div>
 </details>
 <details class="q" data-topic="Vendors" data-level="D">
   <summary><span class="qn">25</span><span class="qt">How do you evaluate third-party tools around Oracle?</span><span class="meta"><span class="tag">Vendors</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> tool selection judgment.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fit to requirements and the architecture, integration capability, security and compliance, total cost, vendor viability and support, and references.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;avoid tool sprawl&quot;. Every tool adds integration and skills cost.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;avoid tool sprawl&quot;. Every tool adds integration and skills cost.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential in evaluation?</p><p>Fit with the architecture.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="B">
   <summary><span class="qn">26</span><span class="qt">How do you communicate architecture to executives?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> executive communication.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I talk about business outcomes, the risks and costs of each option, with simple diagrams and a clear recommendation, and avoid technical detail unless they ask.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;business language&quot;. It's the skill.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;business language&quot;. It's the skill.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do executives want?</p><p>Outcomes, risks and costs.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="D">
   <summary><span class="qn">27</span><span class="qt">How do you handle disagreement with enterprise architecture?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> working within an organization.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I make sure I understand their standards and reasoning, present the trade-offs with data, propose options, and if needed, take it to the design authority for a decision.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;constructive negotiation&quot;. It shows maturity.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;constructive negotiation&quot;. It shows maturity.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you resolve disagreements?</p><p>Present trade-offs and agree.</p></div></div>
 </details>
 <details class="q" data-topic="Scenario" data-level="D">
   <summary><span class="qn">28</span><span class="qt">The business wants a custom feature Oracle doesn't support. What do you do?</span><span class="meta"><span class="tag">Scenario</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> protecting the platform while serving the business.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I challenge the requirement and its value, check Oracle's roadmap and standard alternatives, and consider a process change. If it's still needed, I design a side-by-side extension that won't break on upgrades.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Balance value with upgrade safety. That's the answer.</p></div>
+<p class="tip"><strong>Tip:</strong> Balance value with upgrade safety. That's the answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first response?</p><p>Challenge the requirement's value.</p></div></div>
 </details>
 <details class="q" data-topic="Scenario" data-level="D">
   <summary><span class="qn">29</span><span class="qt">Integration failures are causing month-end delays. How do you fix it?</span><span class="meta"><span class="tag">Scenario</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> systemic problem solving.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I analyze the failure patterns and root causes. Then I redesign the fragile integrations with idempotency, retries and validation upstream. I add monitoring and reconciliation. And I schedule critical integrations with buffer time before close.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;systemic fix&quot;. Patching each failure won't solve it.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;systemic fix&quot;. Patching each failure won't solve it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the usual fix?</p><p>Redesign error handling.</p></div></div>
 </details>
 <details class="q" data-topic="Scenario" data-level="D">
   <summary><span class="qn">30</span><span class="qt">An acquisition needs to be onboarded to your Oracle instance in 90 days. What's your approach?</span><span class="meta"><span class="tag">Scenario</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> M&amp;A architecture.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I assess the acquired company's processes and data, decide the enterprise structure changes, new legal entities, ledgers and BUs, and configure from our template. I prioritize the integrations that matter on day one, like banks and payroll. I migrate open items and balances, set up security roles, and go live in phases.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;a template approach accelerates onboarding&quot;. It's the key.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;a template approach accelerates onboarding&quot;. It's the key.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's decided first?</p><p>Enterprise structure placement.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">31</span><span class="qt">Tell me about an architecture you designed.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">31</span><span class="qt">Tell me about an architecture you designed.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> proof of architecture experience.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;I designed the integration architecture for a global Fusion rollout: an OIC hub with 60 integrations, event-driven order flows to the WMS, BICC to ADW for analytics, SSO with Entra ID and automated provisioning from HCM. It supported four regional go-lives using the same patterns, with low support effort.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give scope and the principles behind it.</p></div>
+<p class="tip"><strong>Tip:</strong> Give scope and the principles behind it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's in a strong answer?</p><p>Context, decisions and outcome.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">32</span><span class="qt">Tell me about a decision you made that didn't work out.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> honesty and learning.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;We used point-to-point REST calls for a high-volume item sync, and it hit API limits. We moved to batch FBDI loads with deltas. Now I model volumes before choosing a pattern.&quot;</p>
-<p class="tip"><strong>Tip:</strong> State the lesson clearly. It's what they're listening for.</p></div>
+<p class="tip"><strong>Tip:</strong> State the lesson clearly. It's what they're listening for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What did you learn?</p><p>Use supported patterns.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">33</span><span class="qt">How do you keep technical leads aligned with architecture?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> influence across teams.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Clear principles and reference designs, design reviews, regular architecture forums, and being easy to reach for guidance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;enable, don't police&quot;. It keeps leads on your side.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;enable, don't police&quot;. It keeps leads on your side.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep leads aligned?</p><p>Principles and reviews.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="D">
   <summary><span class="qn">34</span><span class="qt">How do you build an Oracle technology roadmap?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> strategy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I align to business strategy, assess the current state, and identify gaps, like Redwood adoption, AI agents, analytics and integration modernization. Then I prioritize initiatives by value and dependency and plan them in quarterly increments.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tie it to quarterly update features. It keeps the roadmap realistic.</p></div>
+<p class="tip"><strong>Tip:</strong> Tie it to quarterly update features. It keeps the roadmap realistic.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What drives the roadmap?</p><p>Business strategy.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">35</span><span class="qt">What is the architectural impact of Redwood?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> current architecture changes.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;UI extensions move to VB Studio, there's a new personalization model, test automation and training need to change, and there's an opportunity for a consistent UX across custom Visual Builder apps using Redwood components.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;plan the extension migration&quot;. It's real work.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;plan the extension migration&quot;. It's real work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the Redwood impact?</p><p>UI extensions move to VB Studio.</p></div></div>
 </details>
 <details class="q" data-topic="Compliance" data-level="D">
   <summary><span class="qn">36</span><span class="qt">How do you design for SOX and audit requirements?</span><span class="meta"><span class="tag">Compliance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> compliance by design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Controls in system configuration, like approvals and SoD. Change management for extensions and integrations. Audit trails. IPE validation of reports used in controls. And access reviews.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;built-in compliance&quot;. It's cheaper than bolting it on.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;built-in compliance&quot;. It's cheaper than bolting it on.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's key for SOX?</p><p>Change management.</p></div></div>
 </details>
 <details class="q" data-topic="Disaster Recovery" data-level="D">
   <summary><span class="qn">37</span><span class="qt">How do you approach DR for an Oracle SaaS landscape?</span><span class="meta"><span class="tag">Disaster Recovery</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> resilience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle manages SaaS disaster recovery under its service descriptions. Architects plan DR for the PaaS components, OIC, databases and Visual Builder apps, with defined RPO and RTO, backups, cross-region options and runbooks, plus business continuity procedures for integration outages.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the shared responsibility model. It frames the answer.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the shared responsibility model. It frames the answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who manages SaaS DR?</p><p>Oracle, while you own integrations.</p></div></div>
 </details>
 <details class="q" data-topic="Testing" data-level="D">
   <summary><span class="qn">38</span><span class="qt">How do you ensure testability in architecture?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> quality by design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Modular integrations, endpoints that can be mocked, a test data strategy, automated regression for quarterly updates, and environment parity.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;design for testing&quot;. It saves months later.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;design for testing&quot;. It saves months later.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes integrations testable?</p><p>Mockable endpoints.</p></div></div>
 </details>
 <details class="q" data-topic="Interview" data-level="B">
   <summary><span class="qn">39</span><span class="qt">What questions would you ask in an architect interview?</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> shows how you diagnose.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd ask: What's the current integration landscape and its pain points? How many customizations exist? What's the governance model? And what are the strategic priorities, AI, analytics or M&amp;A?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Ask diagnostic questions. They show how you think.</p></div>
+<p class="tip"><strong>Tip:</strong> Ask diagnostic questions. They show how you think.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would you ask?</p><p>Current pain points.</p></div></div>
 </details>
 <details class="q" data-topic="Career" data-level="B">
   <summary><span class="qn">40</span><span class="qt">Why are you ready for an architect role?</span><span class="meta"><span class="tag">Career</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> readiness.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;I've designed and governed integration and extension architectures for multi-country Fusion programs, led technical teams, and worked closely with business leaders and enterprise architecture.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Back it with proof. Readiness claims need evidence.</p></div>
+<p class="tip"><strong>Tip:</strong> Back it with proof. Readiness claims need evidence.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your proof?</p><p>Designs delivered and governed.</p></div></div>
 </details>
-<details class="q" data-topic="Closing" data-level="B">
-  <summary><span class="qn">41</span><span class="qt">Why should we hire you as Oracle technical architect?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Closing" data-level="B" data-top="1">
+  <summary><span class="qn">41</span><span class="qt">Why should we hire you as Oracle technical architect?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a closing question.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;I bring deep Oracle SaaS and PaaS expertise, proven integration and extension architectures, strong security and governance practices, and a business-first mindset that keeps solutions upgrade-safe.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with business-first. It separates architects from engineers.</p></div>
+<p class="tip"><strong>Tip:</strong> End with business-first. It separates architects from engineers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your strongest point?</p><p>End-to-end architecture experience.</p></div></div>
 </details>
 <details class="q" data-topic="Patterns" data-level="D">
   <summary><span class="qn">42</span><span class="qt">What is the strangler pattern and when is it useful?</span><span class="meta"><span class="tag">Patterns</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> migration strategy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The strangler pattern gradually replaces parts of a legacy system by routing functions to new services, until the old system can be retired. It's useful for phased EBS or legacy decommissioning.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tie it to EBS migration. It's the practical use.</p></div>
+<p class="tip"><strong>Tip:</strong> Tie it to EBS migration. It's the practical use.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is strangler useful?</p><p>For gradual legacy replacement.</p></div></div>
 </details>
 <details class="q" data-topic="Patterns" data-level="D">
   <summary><span class="qn">43</span><span class="qt">What is a canonical data model?</span><span class="meta"><span class="tag">Patterns</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> integration design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A canonical data model is a common, system-independent representation of business entities, like customer or order. Each system maps to the canonical model instead of to every other system, which cuts mapping complexity.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the math: N systems, N mappings instead of N squared.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the math: N systems, N mappings instead of N squared.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why canonical models?</p><p>They reduce mapping work.</p></div></div>
 </details>
 <details class="q" data-topic="Documentation" data-level="B">
   <summary><span class="qn">44</span><span class="qt">What architecture artifacts do you produce?</span><span class="meta"><span class="tag">Documentation</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> documentation practice.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Context and integration diagrams, solution architecture documents, decision records, the integration catalog, security architecture, NFR specifications, and environment and deployment diagrams.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;keep them current&quot;. Outdated diagrams mislead.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;keep them current&quot;. Outdated diagrams mislead.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the key artifact?</p><p>Solution architecture document.</p></div></div>
 </details>
 <details class="q" data-topic="Analytics" data-level="D">
   <summary><span class="qn">45</span><span class="qt">OTBI, BIP, FDI or OAC — how do you choose?</span><span class="meta"><span class="tag">Analytics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> analytics tool selection.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;OTBI for real-time operational self-service. BIP for formatted documents and extracts. FDI for prebuilt cross-pillar analytics and KPIs with history. OAC for broader enterprise analytics and visualization across many sources.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;use-case driven&quot;. The tool follows the need.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;use-case driven&quot;. The tool follows the need.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When FDI?</p><p>Prebuilt Fusion analytics.</p></div></div>
 </details>
 <details class="q" data-topic="Identity" data-level="D">
   <summary><span class="qn">46</span><span class="qt">How do you automate user provisioning in Fusion?</span><span class="meta"><span class="tag">Identity</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> identity lifecycle.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Provisioning is driven from HCM, a new hire creates a user account and role mapping rules assign roles, or from the corporate identity provider through SCIM. Deprovisioning is automated on termination. And there's periodic access certification.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Call it the joiner-mover-leaver process. It's the standard term.</p></div>
+<p class="tip"><strong>Tip:</strong> Call it the joiner-mover-leaver process. It's the standard term.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What drives provisioning?</p><p>HCM events.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="B">
   <summary><span class="qn">47</span><span class="qt">How do you mentor future architects?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> building capability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I involve them in design decisions, explain the trade-offs, review their designs, and give them ownership of architecture domains.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention ownership of a domain. It's how architects grow.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention ownership of a domain. It's how architects grow.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you mentor?</p><p>Involve them in decisions.</p></div></div>
 </details>
 <details class="q" data-topic="Integration" data-level="D">
   <summary><span class="qn">48</span><span class="qt">How do you choose between OIC and other iPaaS tools?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> platform selection.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I consider existing enterprise standards, prebuilt adapters for Oracle and other apps, licensing and cost, team skills, monitoring and governance capabilities, and non-Oracle integration needs. OIC fits Oracle-heavy landscapes; MuleSoft, Boomi or Azure Integration Services may already be the enterprise standard.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;align with enterprise standards&quot;. Fighting them rarely pays.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;align with enterprise standards&quot;. Fighting them rarely pays.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What decides iPaaS?</p><p>Enterprise standards and adapters.</p></div></div>
 </details>
 <details class="q" data-topic="Events" data-level="D">
   <summary><span class="qn">49</span><span class="qt">How would you use OCI Streaming in an Oracle architecture?</span><span class="meta"><span class="tag">Events</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> event architecture.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;As a Kafka-compatible event backbone for high-volume, real-time data. For example, publishing order and inventory events from Fusion through OIC to several consumers, like analytics, the WMS and e-commerce, so producers and consumers are decoupled.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention fan-out to many consumers. It's the main reason to use it.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention fan-out to many consumers. It's the main reason to use it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's Streaming for?</p><p>High-volume real-time events.</p></div></div>
 </details>
 <details class="q" data-topic="Governance" data-level="D">
   <summary><span class="qn">50</span><span class="qt">How do you prevent integration sprawl?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> governance at scale.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An integration catalog with owners, reusable services, design authority approval for new integrations, retiring unused ones, and monitoring usage.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;catalog and ownership&quot;. They're the foundation.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;catalog and ownership&quot;. They're the foundation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What prevents sprawl?</p><p>An integration catalog.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -460,6 +467,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,89 +97,90 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>62</b> questions</span>
     <span class="stat"><b>21</b> basic</span>
     <span class="stat"><b>41</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Implementation" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">Walk me through the phases of an Oracle Cloud implementation and your role in each.</span><span class="meta"><span class="tag">Implementation</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Implementation" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">Walk me through the phases of an Oracle Cloud implementation and your role in each.</span><span class="meta"><span class="tag">Implementation</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> senior consultants need to know the life cycle and their part in it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Most projects follow Oracle Unified Method or a client's agile hybrid. Discovery and planning gathers requirements, current processes and scope. Design, or CRP1, configures a baseline, demos it to the business and runs fit-gap. Build, or CRP2, finishes configuration and builds extensions, reports, integrations and conversions. Testing covers SIT, UAT and parallel runs or reconciliations. Deploy covers mock conversions, cutover, go-live and hypercare. As a senior consultant I own the module design, for example AP and Payments: I write the functional design, configure, write test scripts, lead the CRP demos, train key users, and support cutover and hypercare.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name what you own in each phase. That's the real question.</p></div>
+<p class="tip"><strong>Tip:</strong> Name what you own in each phase. That's the real question.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which phase do projects most often underinvest in?</p><p>Testing, especially end-to-end and data validation. Projects that rush testing find their issues at the first month-end close.</p></div></div>
 </details>
 <details class="q" data-topic="Implementation" data-level="B">
   <summary><span class="qn">2</span><span class="qt">What is a Conference Room Pilot (CRP) and how do you run a good one?</span><span class="meta"><span class="tag">Implementation</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> CRPs are where design is won or lost.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A CRP is a scripted demo of the configured system using the client's own data and processes, so the business can validate the design. I agree scenarios in advance, like 'PO-matched invoice with a price variance'. I use realistic data: their suppliers, accounts and amounts. I walk end to end, including accounting and reports, not just screens. I capture gaps and decisions live in a log with owners. And I follow up with updated designs and a sign-off. CRP1 validates the baseline; CRP2 validates the near-final solution with integrations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention using the client's real data. It's what makes the business engage.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention using the client's real data. It's what makes the business engage.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do if users reject the design in a CRP?</p><p>Capture the objection, find out whether it's a real requirement or habit, and agree a decision with the process owner within days so the build isn't delayed.</p></div></div>
 </details>
-<details class="q" data-topic="Implementation" data-level="B">
-  <summary><span class="qn">3</span><span class="qt">How do you handle a requirement that Oracle cannot meet out of the box?</span><span class="meta"><span class="tag">Implementation</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Implementation" data-level="B" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">How do you handle a requirement that Oracle cannot meet out of the box?</span><span class="meta"><span class="tag">Implementation</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> customization decisions affect cost and upgrades for years.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I challenge the requirement: is it a real business need or a legacy habit? Could a process change solve it? Then I look for configuration: descriptive flexfields, SLA rules, approval rules, BIP reports or OTBI. If that's not enough, I look for a light extension: a Visual Builder page, an OIC integration, a BIP report, or a REST-based process. I record it in the RICEW inventory with its cost and support impact. And the business signs off on the trade-off.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give an example where you avoided an extension by changing the process. Interviewers love that.</p></div>
+<p class="tip"><strong>Tip:</strong> Give an example where you avoided an extension by changing the process. Interviewers love that.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you accept a custom extension?</p><p>When the requirement is legal or business-critical, configuration can't meet it, and the client accepts the maintenance cost through quarterly updates.</p></div></div>
 </details>
-<details class="q" data-topic="Subledger Accounting" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">How would you change the liability account on AP invoices based on supplier type using SLA?</span><span class="meta"><span class="tag">Subledger Accounting</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Subledger Accounting" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">How would you change the liability account on AP invoices based on supplier type using SLA?</span><span class="meta"><span class="tag">Subledger Accounting</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on SLA question. They want the exact steps.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In Manage Accounting Methods I copy the seeded Standard Accrual method; I never edit seeded. I create a mapping set with supplier type as input and natural account value as output. Then I create an account derivation rule for the liability that starts from the default account and overrides the natural account segment with the mapping set result. I copy the seeded journal entry rule set for the Invoices event class and attach the new rule to the Liability journal line. I activate the rule set and assign the new method to the ledger. Then I test invoice, payment, cancellation and prepayment application.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep the steps in order. It's a test of whether you've actually clicked through it.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep the steps in order. It's a test of whether you've actually clicked through it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you test that rule change?</p><p>Run draft Create Accounting for invoices from each supplier type and confirm the liability account, before moving the method to production.</p></div></div>
 </details>
-<details class="q" data-topic="Subledger Accounting" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">What are mapping sets, sources and supporting references in SLA?</span><span class="meta"><span class="tag">Subledger Accounting</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Subledger Accounting" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">What are mapping sets, sources and supporting references in SLA?</span><span class="meta"><span class="tag">Subledger Accounting</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> these three are the building blocks of SLA rules.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Sources are the transaction data SLA can use in rules, like supplier type, item category or project; custom sources can be built from attributes and descriptive flexfields. Mapping sets are lookup tables that turn an input value into a segment value or a full account, for example item category to natural account. Supporting references are extra attributes stored on journal lines, like supplier or invoice number, so you can report balances by them and reconcile. I find supporting references most useful for intercompany and tax account reconciliations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one use for each. It keeps the answer practical.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one use for each. It keeps the answer practical.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Give an example where supporting references solved a reporting problem.</p><p>Tracking AP liability balances by supplier on a shared account, so the team could reconcile by supplier without separate accounts.</p></div></div>
 </details>
 <details class="q" data-topic="General Ledger" data-level="D">
   <summary><span class="qn">6</span><span class="qt">How do you configure journal approval in Fusion GL?</span><span class="meta"><span class="tag">General Ledger</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> journal approval is a key financial control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I enable journal approval on the ledger and on the journal sources that need it, like Manual and Spreadsheet. The rules are set in BPM through Manage Journal Approval Rules: by journal amount, for example over $50,000 goes to the controller; by ledger or category; and by supervisor hierarchy or approval groups. I test the edge cases: amounts exactly at the threshold, journals across ledgers, and self-approval prevention. Subledger journals usually don't need approval, because they're controlled upstream.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention testing at the threshold amount. It's the case that usually breaks.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention testing at the threshold amount. It's the case that usually breaks.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you route journals over $250,000 to the CFO?</p><p>A BPM rule on journal amount routing to an approval group containing the CFO, after the controller approves.</p></div></div>
 </details>
 <details class="q" data-topic="General Ledger" data-level="D">
   <summary><span class="qn">7</span><span class="qt">What is AutoPost and when would you use it?</span><span class="meta"><span class="tag">General Ledger</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AutoPost keeps GL current without manual effort.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AutoPost automatically posts journals that match criteria sets, by ledger, source, category, period and priority. I use it for subledger journals from Payables, Receivables and Assets, and for trusted integrations, so finance doesn't post them by hand. It runs on a schedule. I leave out sources that need review, like manual journals. Combined with Create Accounting's transfer and post options, GL stays current every day.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say which sources you'd exclude. That's the control part of the answer.</p></div>
+<p class="tip"><strong>Tip:</strong> Say which sources you'd exclude. That's the control part of the answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why not AutoPost manual journals?</p><p>They should go through review and approval; AutoPost suits trusted system sources like subledgers.</p></div></div>
 </details>
 <details class="q" data-topic="General Ledger" data-level="D">
   <summary><span class="qn">8</span><span class="qt">How do segment value security rules work?</span><span class="meta"><span class="tag">General Ledger</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> security design affects users and performance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Segment value security limits which values of a segment a user can see or use, for example a regional accountant can only use cost centers in their region. I enable security on the value set, create data security policies with the value conditions, and grant them through roles in the Security Console. It applies to entry, inquiry and reporting, and works alongside data access sets, which control ledger and balancing segment access. I'm careful with it, because too many rules slow things down and confuse users.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the performance cost. It shows you've seen it go wrong.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the performance cost. It shows you've seen it go wrong.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if you enable segment value security without granting any values?</p><p>Users can't see or use any value of that segment, which effectively blocks them. Grants must be in place before enabling.</p></div></div>
 </details>
 <details class="q" data-topic="General Ledger" data-level="B">
   <summary><span class="qn">9</span><span class="qt">What is a data access set?</span><span class="meta"><span class="tag">General Ledger</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic GL security question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A data access set controls which ledgers or ledger sets, and which primary balancing segment values, a user can access in GL, and whether it's read-only or read and write. It can give full ledger access or only specific values, like companies 101 to 110. It's assigned to users with their GL roles through Manage Data Access for Users. With a ledger set, one data access set can cover many ledgers that share a chart and calendar.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the example of a company range. It makes the answer concrete.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the example of a company range. It makes the answer concrete.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How is a data access set different from a role?</p><p>The role says what you can do; the data access set says which ledgers and balancing values you can do it in.</p></div></div>
 </details>
-<details class="q" data-topic="Intercompany" data-level="D">
-  <summary><span class="qn">10</span><span class="qt">How does Fusion Intercompany work?</span><span class="meta"><span class="tag">Intercompany</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Intercompany" data-level="D" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">How does Fusion Intercompany work?</span><span class="meta"><span class="tag">Intercompany</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> intercompany is complex, and Fusion has two parts that people confuse.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;There are two parts. Intercompany balancing is automatic: when a journal crosses balancing values, GL or SLA creates due-to and due-from lines based on the intercompany balancing rules. Intercompany transactions use the Intercompany module: one entity creates a transaction, like a management fee, the partner approves it, and it creates journals in both ledgers and, if needed, AR and AP invoices to settle it. The setup includes intercompany organizations, transaction types, receivables and payables assignments, and the intercompany reconciliation report.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate the two parts clearly. It's what the question is testing.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate the two parts clearly. It's what the question is testing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use intercompany transactions instead of balancing?</p><p>When entities charge each other with formal invoices, needing both sides approved and possibly AR and AP documents.</p></div></div>
 </details>
-<details class="q" data-topic="Intercompany" data-level="D">
-  <summary><span class="qn">11</span><span class="qt">How do you reconcile intercompany balances at month end?</span><span class="meta"><span class="tag">Intercompany</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Intercompany" data-level="D" data-top="1">
+  <summary><span class="qn">11</span><span class="qt">How do you reconcile intercompany balances at month end?</span><span class="meta"><span class="tag">Intercompany</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> intercompany differences delay consolidation.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I run the Intercompany Reconciliation report, which compares due-to and due-from between each pair of entities. Then I investigate the differences: timing, where one side booked in the next period; FX rate differences; missing transactions; and manual journals with the wrong intercompany segment. Having an intercompany segment in the chart makes it possible to report balances by trading partner. I agree a cut-off date and a settlement process, usually netting. Eliminations happen in consolidation, in FCCS or with GL elimination rules.&quot;</p>
-<p class="tip"><strong>Tip:</strong> List the causes in order of how often you see them. Timing is usually first.</p></div>
+<p class="tip"><strong>Tip:</strong> List the causes in order of how often you see them. Timing is usually first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common source of intercompany differences?</p><p>Timing, where one side records in this period and the other next period, and FX rate differences.</p></div></div>
 </details>
-<details class="q" data-topic="Accounts Payable" data-level="D">
-  <summary><span class="qn">12</span><span class="qt">How do you configure invoice approval workflow in Fusion Payables?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Accounts Payable" data-level="D" data-top="1">
+  <summary><span class="qn">12</span><span class="qt">How do you configure invoice approval workflow in Fusion Payables?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on configuration question for senior functional consultants.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I turn on invoice approval in Manage Invoice Options for the business unit, then build the rules in BPM through Manage Invoice Approval Rules. A typical set: PO-matched invoices within tolerance need no approval, non-PO invoices go to the cost center manager by amount, and anything over $100,000 adds the controller. I use approval groups or the supervisor hierarchy, with a fallback for missing approvers. I decide whether approval happens before or after validation, and whether payment requires approval. Then I test the real-life paths: reassign, delegate, request information and reject.&quot;</p>
@@ -184,17 +191,17 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Set approval order and payment requirement.</li>
 <li>Test reassign, delegate, request info, reject.</li>
 </ol>
-<p class="tip"><strong>Tip:</strong> Mentioning the test scenarios shows you've been through UAT, not just setup.</p></div>
+<p class="tip"><strong>Tip:</strong> Mentioning the test scenarios shows you've been through UAT, not just setup.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle approvals when a cost center manager leaves?</p><p>Route by position or approval group rather than named person, and keep HCM data current.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">13</span><span class="qt">What is Intelligent Document Recognition (IDR) / invoice imaging?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> most companies want to stop keying invoices. They want to know you can set up Oracle's capture.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;IDR is Oracle's AI-based invoice capture. Suppliers email PDF or image invoices to a dedicated address. IDR reads the invoice and creates an incomplete invoice with the header and lines filled in, matched to the PO where it can find one. AP reviews and completes the exceptions in the Invoices work area. It gets more accurate as it learns supplier layouts. On a rollout I watch three things: supplier communication about where to send invoices, duplicate detection for invoices that arrive by email and by mail, and the touchless rate and processing time.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Bring up duplicates. Invoices arriving by two routes is the most common IDR problem after go-live.</p></div>
+<p class="tip"><strong>Tip:</strong> Bring up duplicates. Invoices arriving by two routes is the most common IDR problem after go-live.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What touchless rate can IDR reach?</p><p>It varies by supplier and invoice quality; well-formatted PO invoices from regular suppliers often go through with little correction after training.</p></div></div>
 </details>
-<details class="q" data-topic="Payments" data-level="D">
-  <summary><span class="qn">14</span><span class="qt">How do you set up a new payment format, for example a bank's ACH file?</span><span class="meta"><span class="tag">Payments</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Payments" data-level="D" data-top="1">
+  <summary><span class="qn">14</span><span class="qt">How do you set up a new payment format, for example a bank's ACH file?</span><span class="meta"><span class="tag">Payments</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> bank integration is where projects often slip. They want to know you can handle it end to end.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I get the bank's file specification and their test process. Then I take a seeded BI Publisher template, like NACHA or ISO 20022 pain.001, copy it and adjust it to the bank's requirements. I create the payment format pointing to that template, and a payment process profile that links the format, the payment method, the transmission over SFTP or web service, and the grouping rules. The profile is assigned to the disbursement bank account and payment methods. Then testing with the bank: prenotes, a few small live payments, and making sure we receive and process the acknowledgment files.&quot;</p>
@@ -206,14 +213,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Assign to bank account and methods.</li>
 <li>Test: prenotes, small live payments, acknowledgments.</li>
 </ol>
-<p class="tip"><strong>Tip:</strong> Mention acknowledgment files. Teams forget them, then can't tell whether the bank accepted the payments.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention acknowledgment files. Teams forget them, then can't tell whether the bank accepted the payments.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your test process with the bank?</p><p>Send test files in the bank's test environment, fix rejections, then do a small live penny test before full rollout.</p></div></div>
 </details>
 <details class="q" data-topic="Payments" data-level="B">
   <summary><span class="qn">15</span><span class="qt">What is positive pay?</span><span class="meta"><span class="tag">Payments</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common treasury control, and they want to know you've set it up, not just heard of it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Positive pay is a fraud control for checks. After each check run, we send the bank a file of the checks we issued: number, amount and payee. The bank only pays checks that match, and anything that doesn't match becomes an exception for treasury to approve or reject. In Fusion, I run the Positive Pay File process with a BI Publisher template in the bank's format, include voided checks so they can't be cashed, and transmit it automatically over SFTP after each payment run.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention voided checks in the file. It shows you understand why the control exists.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention voided checks in the file. It shows you understand why the control exists.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does positive pay not protect against?</p><p>Electronic payment fraud like ACH changes; it only covers checks, so bank account change controls matter too.</p></div></div>
 </details>
 <details class="q" data-topic="Payments" data-level="D">
   <summary><span class="qn">16</span><span class="qt">How do you void a payment and what happens to the invoices and accounting?</span><span class="meta"><span class="tag">Payments</span><span class="tag lvl">In-depth</span></span></summary>
@@ -225,119 +232,119 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Entry: Dr Cash Clearing 3,000 / Cr AP Liability 3,000</li>
 <li>The invoice is unpaid again and picked up by the next payment run.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Covering the 1099 and positive pay impact is what lifts this answer above average.</p></div>
+<p class="tip"><strong>Tip:</strong> Covering the 1099 and positive pay impact is what lifts this answer above average.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to the accounting when a payment is voided?</p><p>The cash or clearing entry and liability relief are reversed in the void date's period.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">17</span><span class="qt">How do you set up Lockbox processing?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> lockbox is the main high-volume cash channel in the US. They want the steps.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define the lockbox with the bank's transmission format, usually BAI2 or a custom format the bank provides, and map the file fields to Oracle fields. Then I set the matching rules: match on transaction number, PO number, sales order or consolidated bill number. AutoCash rules handle receipts where nothing matches. The process runs import, validate, then post QuickCash and apply. In Fusion that's one program, Process Receipts Through Lockbox. The KPI I'd track is the percentage of lockbox receipts applied automatically. Getting that from 60% to 85% usually takes better customer references, not more setup.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the format and the KPI. It shows you've worked with a bank file, not just the setup screen.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the format and the KPI. It shows you've worked with a bank file, not just the setup screen.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you check when lockbox receipts don't apply?</p><p>Matching rules and the references in the file, like invoice numbers or customer numbers, and the AutoMatch thresholds.</p></div></div>
 </details>
-<details class="q" data-topic="Accounts Receivable" data-level="D">
-  <summary><span class="qn">18</span><span class="qt">How does Fusion Revenue Management support ASC 606 / IFRS 15?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Accounts Receivable" data-level="D" data-top="1">
+  <summary><span class="qn">18</span><span class="qt">How does Fusion Revenue Management support ASC 606 / IFRS 15?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> revenue is a high-risk area. They want to know you understand the accounting as well as the module.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Revenue Management follows the five steps of ASC 606. Source documents, like sales orders, contracts and AR invoices, come in and are grouped into customer contracts, which is step one. The lines become performance obligations, step two. The transaction price, step three, is allocated across the obligations by relative standalone selling price, which finance sets by item or item class, step four. Revenue is then recognized when each obligation is satisfied, step five, either at a point in time, like shipment or acceptance, or over time, like ratably over a support period. The accounting gives contract assets, contract liabilities for deferred revenue, and revenue. It also handles contract changes and discounts.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Walk through the five steps and say which part of the module does each. That's the best answer they'll hear.</p></div>
+<p class="tip"><strong>Tip:</strong> Walk through the five steps and say which part of the module does each. That's the best answer they'll hear.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What is the hardest part of Revenue Management setup?</p><p>Standalone selling prices and identifying performance obligations correctly, since allocation depends on them.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">19</span><span class="qt">How does credit management work in Fusion?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> credit links AR to sales. They want the flow from limit to hold release.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Customers get credit profiles with a limit and a review cycle. When an order is booked in Order Management, a credit check compares exposure, which is open receivables plus uninvoiced orders, to the limit. If it's over, the order goes on credit hold. Analysts then work a credit review in a case folder, which pulls in aging, payment history and external scores like D&amp;B. They recommend releasing the hold or changing the limit, and the change routes for approval. Once approved, the hold is released and the order moves on.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Describe the path order → check → hold → review → release. It's what they're listening for.</p></div>
+<p class="tip"><strong>Tip:</strong> Describe the path order → check → hold → review → release. It's what they're listening for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes up credit exposure?</p><p>Open receivables plus uninvoiced orders, sometimes including orders on hold, compared to the limit.</p></div></div>
 </details>
-<details class="q" data-topic="Fixed Assets" data-level="D">
-  <summary><span class="qn">20</span><span class="qt">How do you handle construction-in-progress (CIP) assets?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Fixed Assets" data-level="D" data-top="1">
+  <summary><span class="qn">20</span><span class="qt">How do you handle construction-in-progress (CIP) assets?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> CIP sits on the balance sheet and is easy to forget.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Costs are collected as CIP assets, either from AP mass additions or from Projects. CIP doesn't depreciate. When construction is finished, I capitalize the CIP asset: it gets a date placed in service and starts depreciating. With Fusion Projects, capital projects build the assets, generate asset lines and interface them to Assets. The control I always set up is a CIP aging review every month, so a building that's been in use for six months doesn't sit in CIP with no depreciation.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The CIP aging review is the key control. Say it.</p></div>
+<p class="tip"><strong>Tip:</strong> The CIP aging review is the key control. Say it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if CIP isn't capitalized when the asset is in use?</p><p>Depreciation starts late, understating expense, and auditors will flag it.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="B">
   <summary><span class="qn">21</span><span class="qt">How do you merge or split mass additions?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical Assets task that shows you've done the work.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Merge combines several invoice lines into one asset, for example adding the freight and installation lines to the main equipment line. Split turns one line into many assets, like a line for 10 laptops becoming 10 separate assets. Add to Asset puts the cost onto an asset that's already in service. I do all of this in the Mass Additions work area before posting. Merged lines take the parent line's category and details, so I make sure the parent is set up correctly first.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the laptop and freight examples. They cover both actions.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the laptop and freight examples. They cover both actions.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you split a mass addition?</p><p>When one invoice line covers several assets, like 10 laptops, that need separate tracking.</p></div></div>
 </details>
-<details class="q" data-topic="Cash Management" data-level="D">
-  <summary><span class="qn">22</span><span class="qt">How do you design reconciliation rule sets for high auto-match rates?</span><span class="meta"><span class="tag">Cash Management</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Cash Management" data-level="D" data-top="1">
+  <summary><span class="qn">22</span><span class="qt">How do you design reconciliation rule sets for high auto-match rates?</span><span class="meta"><span class="tag">Cash Management</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on design question with a measurable result.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start by reading real bank statements to see which references each bank actually returns: check number, payment reference, invoice number. Then I build rules from strict to loose: exact reference and amount first, then amount with a date tolerance, then one-to-many and many-to-one for batches. I add tolerance rules for small differences like fees, and transaction creation rules for recurring charges. Then I make sure our outgoing payment files carry a reference the bank sends back, like the ISO 20022 end-to-end ID. After go-live I measure the auto-match rate monthly and adjust. Going from 70% to above 90% is normal with that approach.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;I read the statements first&quot;. It shows you design from data.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;I read the statements first&quot;. It shows you design from data.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What auto-match rate do you aim for?</p><p>Over 90%, then I review unmatched patterns monthly to add rules.</p></div></div>
 </details>
 <details class="q" data-topic="Tax" data-level="D">
   <summary><span class="qn">23</span><span class="qt">How would you set up a new tax rate, for example a VAT rate change in a country?</span><span class="meta"><span class="tag">Tax</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> rate changes happen every year somewhere, and mistakes mean wrong tax on invoices.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In Manage Tax Rates I end-date the current rate and create the new one from the effective date, or add a new rate period under the same rate code. I check whether tax rules need changing, and check the recovery rates and accounts. Then I test AP, AR and PO transactions dated before and after the change. I tell the AP and AR teams what's changing, and check the reports and the tax filing for the switch-over period. The tricky cases are transactions that span the date, like an invoice dated before the change but credited after it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention transactions that span the date. It's the case that catches people out.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention transactions that span the date. It's the case that catches people out.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you test after a rate change?</p><p>Transactions dated before and after the effective date to confirm each picks the right rate.</p></div></div>
 </details>
 <details class="q" data-topic="Budgetary Control" data-level="D">
   <summary><span class="qn">24</span><span class="qt">What is budgetary control and encumbrance accounting?</span><span class="meta"><span class="tag">Budgetary Control</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> important in public sector, higher education and some corporates.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Budgetary control checks spending against budgets in real time. Requisitions, POs and invoices are stopped if they go over the available funds with absolute control, or just warned with advisory control. Encumbrance reserves the funds as spending moves along: a requisition encumbrance, then a PO encumbrance, then the actual on the invoice, with each step relieving the one before. Setup includes control budgets, budgetary control rules, control levels by segment, and loading the budgets. A funds check only validates; a funds reserve actually uses up the funds.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain funds check vs funds reserve. It's the detail that proves hands-on work.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain funds check vs funds reserve. It's the detail that proves hands-on work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between absolute and advisory control?</p><p>Absolute blocks transactions over budget; advisory warns but allows.</p></div></div>
 </details>
 <details class="q" data-topic="Reporting" data-level="D">
   <summary><span class="qn">25</span><span class="qt">How would you build a financial statement in Fusion?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> financial statements are the end product of GL.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build the account hierarchies first, for natural account and cost center, because the report depends on them. Then I use Financial Reporting Studio, or Smart View or Narrative Reporting, against the GL balances cube. Rows are hierarchy nodes like Revenue, COGS and Opex; columns are periods and scenarios like Actual, Budget and Prior Year; and the point of view is ledger, company and currency. I add formulas for variances and percentages, formatting, and drill-down to journals. Then I publish to the Financial Reporting Center and schedule batches if needed. Before release, I reconcile it to the trial balance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with reconciling to the trial balance. It's the step that builds trust.</p></div>
+<p class="tip"><strong>Tip:</strong> End with reconciling to the trial balance. It's the step that builds trust.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first thing you'd validate in a new financial statement?</p><p>That totals tie to the trial balance for the same period and ledger.</p></div></div>
 </details>
 <details class="q" data-topic="Reporting" data-level="B">
   <summary><span class="qn">26</span><span class="qt">When would you choose OTBI vs BI Publisher?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> picking the wrong tool wastes time.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;OTBI is self-service, drag and drop on subject areas, real-time, and it applies user security automatically. It's best for ad-hoc analysis, dashboards and simple lists, but it can't join everything and formatting is basic. BI Publisher uses SQL data models with RTF, Excel or eText templates for pixel-perfect output. It's best for documents like checks, invoices and statements, bank files, complex joins and extracts, and bursting. It needs more technical skill, and you have to handle data security in the SQL yourself. So I start with OTBI and move to BIP when formatting or data complexity requires it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that BIP doesn't apply data security on its own. It's a senior-level point.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that BIP doesn't apply data security on its own. It's a senior-level point.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which would you use for an AP check template?</p><p>BI Publisher, because checks need pixel-perfect layouts.</p></div></div>
 </details>
 <details class="q" data-topic="Reporting" data-level="D">
   <summary><span class="qn">27</span><span class="qt">What is a BIP data model and how do you secure a BIP report?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> BIP security is often done wrong.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A data model defines the data: SQL queries, parameters, lists of values, links between data sets, and event triggers. The report applies a layout template, RTF, Excel or eText, to that data. To secure it, I put the report in a catalog folder with permissions for specific roles. And in the SQL, I filter the data by the user's access, for example by joining to the business unit security views, because BIP doesn't apply data security automatically.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The SQL security point is what separates senior from junior. Make sure you say it.</p></div>
+<p class="tip"><strong>Tip:</strong> The SQL security point is what separates senior from junior. Make sure you say it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you secure a BIP report by business unit?</p><p>Use data security in the data model, joining to the user's granted BUs, or role-based access to the catalog folder.</p></div></div>
 </details>
 <details class="q" data-topic="Period Close" data-level="D">
   <summary><span class="qn">28</span><span class="qt">How do you use the Close Monitor and close tasks in Fusion?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> close visibility is what controllers want.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The Close Monitor shows period status across subledgers and ledgers in one view, so you can see which are open, closed or pending, and drill into each. Many companies use the task manager in EPM Financial Consolidation and Close, or a tool like BlackLine, for the close checklist, with owners, dependencies and due dates. I set the checklist up to follow the real close sequence, with evidence attached for audit.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention attaching evidence. Auditors ask for it every quarter.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention attaching evidence. Auditors ask for it every quarter.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How does the Close Monitor help the controller?</p><p>It shows which subledgers and ledgers are still open, so the controller sees close blockers quickly.</p></div></div>
 </details>
-<details class="q" data-topic="Period Close" data-level="D">
-  <summary><span class="qn">29</span><span class="qt">How do you handle period-end accruals for received but not invoiced (RNI) goods?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Period Close" data-level="D" data-top="1">
+  <summary><span class="qn">29</span><span class="qt">How do you handle period-end accruals for received but not invoiced (RNI) goods?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> RNI accruals are a common audit area.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;There are two methods. Accrue at receipt, common for inventory and many expense items, books the accrual when goods are received and clears it when the invoice is matched. Period-end accrual, used for some expense items, runs the accrual process at period end, and the entry reverses next period. Either way, I review the accrual reconciliation report for old or wrong accruals and write them off with approval. Finance decides which method applies by item and destination type.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention reviewing old accruals. Stale RNI balances are a classic audit finding.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention reviewing old accruals. Stale RNI balances are a classic audit finding.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which method would you use for services?</p><p>Period-end accrual is common for expense items without receipts, but if services are received in the system, accrue at receipt gives better accuracy.</p></div></div>
 </details>
 <details class="q" data-topic="Multi-currency" data-level="B">
   <summary><span class="qn">30</span><span class="qt">How are exchange rates managed and used in Oracle?</span><span class="meta"><span class="tag">Multi-currency</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> missing rates block accounting.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;There are rate types, like Corporate, Spot and User. Daily rates are loaded by hand, by spreadsheet, or through an integration from a provider like Reuters, Bloomberg or a bank. Transactions use the rate for their date and rate type, and User rate types let someone type a rate. Revaluation uses period-end rates, and translation uses period-end, average and historical rates. The key operational point is that rates must be loaded before processing, because a missing rate stops accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the missing-rate point. It's the problem everyone has hit once.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the missing-rate point. It's the problem everyone has hit once.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if a daily rate is missing?</p><p>Transactions using that rate type and date can't convert, and accounting fails until the rate is loaded.</p></div></div>
 </details>
 <details class="q" data-topic="Multi-currency" data-level="B">
   <summary><span class="qn">31</span><span class="qt">How do realized gains and losses arise in AP and AR?</span><span class="meta"><span class="tag">Multi-currency</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic multi-currency accounting question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A realized gain or loss happens when a foreign-currency invoice is paid or receipted at a different rate than the invoice rate. For example, a EUR 1,000 supplier invoice booked at 1.10 is $1,100. If we pay it when the rate is 1.12, it costs $1,120, so that's a $20 realized loss. SLA books it to the realized gain or loss account at payment or receipt. Unrealized gains and losses are different: they come from revaluing open balances at period end.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Work the example out loud. It makes the answer stick.</p></div>
+<p class="tip"><strong>Tip:</strong> Work the example out loud. It makes the answer stick.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between realized and unrealized gains?</p><p>Realized happens at settlement; unrealized is from revaluation of open balances at period end.</p></div></div>
 </details>
 <details class="q" data-topic="Lease Accounting" data-level="D">
   <summary><span class="qn">32</span><span class="qt">What do you know about Oracle Fusion Lease Accounting?</span><span class="meta"><span class="tag">Lease Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a broad opening question about the lease module.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It supports ASC 842 and IFRS 16 for lessees. You set up lease contracts with payments, terms and options. It calculates the right-of-use asset and the lease liability as the present value of the payments at the discount rate. Under ASC 842 it classifies each lease as finance or operating. It generates the amortization schedules, the journals, and the AP invoices for payments, and it links to Assets for ROU assets. It also handles modifications, impairments and terminations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> If you've done a lease project, add one number, like how many leases you onboarded.</p></div>
+<p class="tip"><strong>Tip:</strong> If you've done a lease project, add one number, like how many leases you onboarded.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference in expense pattern between ASC 842 operating and finance leases?</p><p>Operating leases have straight-line expense; finance leases have front-loaded expense from interest and amortization.</p></div></div>
 </details>
 <details class="q" data-topic="Expenses" data-level="D">
   <summary><span class="qn">33</span><span class="qt">How do you configure expense policies and corporate cards?</span><span class="meta"><span class="tag">Expenses</span><span class="tag lvl">In-depth</span></span></summary>
@@ -351,91 +358,91 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Corporate cards:</strong> program, issuer file, employee matching, company or individual pay.</li>
 <li><strong>Audit rules</strong> and receipt management.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Mention warning versus error and why you chose each. That's the design judgment they're looking for.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention warning versus error and why you chose each. That's the design judgment they're looking for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you stop duplicate card transactions on reports?</p><p>Card transactions import once and are matched to the report; policies flag duplicates.</p></div></div>
 </details>
-<details class="q" data-topic="Security" data-level="D">
-  <summary><span class="qn">34</span><span class="qt">How do you design custom roles for a finance implementation?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Security" data-level="D" data-top="1">
+  <summary><span class="qn">34</span><span class="qt">How do you design custom roles for a finance implementation?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> role design affects audit and SoD.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start from the seeded job roles and map them to the client's real jobs: AP clerk, AP supervisor, GL accountant, controller. I copy the seeded roles and remove privileges that aren't needed, rather than building from scratch. I check segregation of duties conflicts, like supplier maintenance plus payments. I assign data access per BU or ledger. I document the design and get sign-off from the controller and audit. And I test each role with real scenarios, including negative tests to prove what a user can't do.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention negative tests. Proving what users can't do is half of security testing.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention negative tests. Proving what users can't do is half of security testing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you check segregation of duties in custom roles?</p><p>Run an SoD analysis, like Risk Management or a role matrix, checking conflicts like supplier creation plus payment.</p></div></div>
 </details>
-<details class="q" data-topic="Data Migration" data-level="D">
-  <summary><span class="qn">35</span><span class="qt">How do you convert open AP invoices and validate the conversion?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Data Migration" data-level="D" data-top="1">
+  <summary><span class="qn">35</span><span class="qt">How do you convert open AP invoices and validate the conversion?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> conversion errors show up as wrong payments.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I extract open invoices as of cutover and usually load only the remaining unpaid amount. They load through FBDI, Payables Standard Invoice Import, with supplier, site, terms, due dates and the original invoice number. I validate and account them, and the offset goes to a conversion clearing account that's cleared by the GL balance conversion. Then I reconcile count and amount by supplier against the legacy aging, and finance signs off. I do this in at least two mock conversions before production.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention keeping original invoice numbers and due dates. Payment timing depends on them.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention keeping original invoice numbers and due dates. Payment timing depends on them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prove the conversion is right?</p><p>Reconcile counts and totals by supplier and aging bucket to legacy, and to the GL liability at cutover.</p></div></div>
 </details>
 <details class="q" data-topic="EBS" data-level="D">
   <summary><span class="qn">36</span><span class="qt">What is MOAC in EBS R12?</span><span class="meta"><span class="tag">EBS</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> EBS knowledge still matters for migrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Multi-Org Access Control lets a user work with several operating units from one responsibility. It's controlled by a security profile, set in the MO: Security Profile option, listing the operating units, and MO: Default Operating Unit sets the default. Before R12, users needed a separate responsibility for each operating unit. In Fusion, the equivalent is data access by business unit through data roles.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Link it to Fusion. It shows you can help EBS clients move.</p></div>
+<p class="tip"><strong>Tip:</strong> Link it to Fusion. It shows you can help EBS clients move.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the Fusion equivalent of MOAC?</p><p>Data access by business unit assigned to roles in Manage Data Access for Users.</p></div></div>
 </details>
 <details class="q" data-topic="EBS" data-level="B">
   <summary><span class="qn">37</span><span class="qt">What are the key differences between EBS and Fusion for Financials consultants?</span><span class="meta"><span class="tag">EBS</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> many clients are moving from EBS to Fusion.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Operating units become business units. Responsibilities become job roles plus data access. Concurrent programs become scheduled processes. Forms and Discoverer give way to OTBI, BIP and Smart View. Custom code and CEMLIs give way to extensions only: Visual Builder, OIC and BIP. Patching by the customer becomes quarterly updates by Oracle. And there are new capabilities: AI agents, Smart View on live balances, embedded analytics, and Intelligent Document Recognition.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show you can explain these to an EBS client. That's often the job.</p></div>
+<p class="tip"><strong>Tip:</strong> Show you can explain these to an EBS client. That's often the job.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest habit for EBS users moving to Fusion?</p><p>Losing direct database access and custom code; they need to rely on configuration, extensions and reports.</p></div></div>
 </details>
 <details class="q" data-topic="Quarterly Updates" data-level="B">
   <summary><span class="qn">38</span><span class="qt">How do you manage Oracle's quarterly updates?</span><span class="meta"><span class="tag">Quarterly Updates</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> every Fusion customer lives with quarterly updates.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I read the release readiness and What's New documents for our modules, and identify opt-in features worth enabling and mandatory changes. Updates reach test two weeks before production, so I run the regression pack, ideally automated, for key flows: P2P, O2C, close, payments, integrations and reports. Issues are logged and service requests raised early. And users get release notes and training.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the two-week window. It shows you know the real timeline.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the two-week window. It shows you know the real timeline.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you regression test quarterly updates efficiently?</p><p>Keep a core set of test scripts for critical flows and run them each update, automated where possible.</p></div></div>
 </details>
 <details class="q" data-topic="Testing" data-level="B">
   <summary><span class="qn">39</span><span class="qt">How do you write a good functional test script?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> good test scripts make UAT and regression work.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It has a clear purpose, which requirement or scenario it tests. It lists preconditions and data: supplier, item and user role. The steps are written so a business user can follow them. Each step has an expected result, including accounting entries and reports. It includes negative cases, what should fail. It traces back to requirements, and evidence like screenshots is captured. And I reuse the scripts as the regression pack for quarterly updates.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention reuse for regression. It doubles the value of the work.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention reuse for regression. It doubles the value of the work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why include negative tests?</p><p>To prove controls work, like a user who shouldn't approve being blocked.</p></div></div>
 </details>
 <details class="q" data-topic="Design" data-level="B">
   <summary><span class="qn">40</span><span class="qt">What goes into a functional design document?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> design documents are a consultant's main deliverable.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The business requirement and scope. Current and future process flows. Configuration decisions with the values and the reasons. Gaps and how they're solved, with extensions, reports or workarounds. Integration and data touchpoints. Security and controls. Assumptions, dependencies and open items. And sign-off. A good design document lets someone else configure the module without asking me.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with &quot;someone else can configure from it&quot;. That's the quality bar.</p></div>
+<p class="tip"><strong>Tip:</strong> End with &quot;someone else can configure from it&quot;. That's the quality bar.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes a design document useful after go-live?</p><p>It records decisions and reasons, so support teams understand why things are set up that way.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">41</span><span class="qt">Tell me about a time you disagreed with your lead or the client on a design decision.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">41</span><span class="qt">Tell me about a time you disagreed with your lead or the client on a design decision.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they want to see you push back respectfully, with facts.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;My lead wanted one ledger for the US and Canada, with a CAD reporting currency. I owned the GL design and saw a problem: the Canadian entity needed a different fiscal calendar for statutory reporting. I prepared a short comparison of one ledger, separate ledgers, and a secondary ledger, showed that the calendar difference made a shared ledger impossible, and recommended a separate Canadian primary ledger. My lead agreed after the walkthrough, and we avoided rework later.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show facts, respect and a recommendation, and say you'd accept the final decision either way.</p></div>
+<p class="tip"><strong>Tip:</strong> Show facts, respect and a recommendation, and say you'd accept the final decision either way.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What did you learn from that disagreement?</p><p>Bring facts and options, not opinions; showing the reporting and audit impact usually settles design debates.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">42</span><span class="qt">How do you mentor junior consultants?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> senior roles include developing others.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I pair them on real tasks: they configure, I review. I explain why, not just which screen, including the accounting behind each setup. I give them ownership of a small area, like payment terms or tax setup, with check-ins. I share checklists, sample test scripts, and how to search My Oracle Support. And I give feedback early and specifically.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention one person you helped and where they are now. It makes it real.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention one person you helped and where they are now. It makes it real.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you know a junior consultant is ready for more?</p><p>When they can explain the accounting impact of a setup and handle a client question without me.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">43</span><span class="qt">How do you handle scope creep from finance users during a project?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> scope creep sinks go-live dates.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I log every new request in the requirements or change log. I assess the impact on effort, timeline and risk. I separate what's needed for go-live from what can go to phase 2. I take it to the project manager and business owner for a decision, rather than silently absorbing it. And I tell the requester what was decided.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show you protected the go-live date without dismissing the business.</p></div>
+<p class="tip"><strong>Tip:</strong> Show you protected the go-live date without dismissing the business.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you say no to a user without damaging the relationship?</p><p>Explain the impact, offer a timeline for later phases, and log it so they know it isn't forgotten.</p></div></div>
 </details>
 <details class="q" data-topic="General Ledger" data-level="D">
   <summary><span class="qn">44</span><span class="qt">How do you design account hierarchies for reporting?</span><span class="meta"><span class="tag">General Ledger</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> hierarchies drive every GL report.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build trees for the natural account, assets, liabilities, equity, revenue and expense with sub-levels, and for cost centers, department to division to company. They follow the financial statement lines and management reporting. Tree versions are date-effective; I audit and flatten them, then publish to the Essbase cube. The same hierarchies are used in allocations, Financial Reporting and Smart View. And changes are governed: someone owns the tree, and changes go through change control.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention publishing to the cube. Forgetting it is why reports don't roll up.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention publishing to the cube. Forgetting it is why reports don't roll up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why build hierarchies before reports?</p><p>Reports roll up through hierarchies, so bad hierarchies mean every report is wrong.</p></div></div>
 </details>
 <details class="q" data-topic="General Ledger" data-level="B">
   <summary><span class="qn">45</span><span class="qt">What is a ledger set and why use one?</span><span class="meta"><span class="tag">General Ledger</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic question about managing many ledgers.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A ledger set groups ledgers that share the same chart of accounts and calendar. With it I can open and close periods for many ledgers at once, run revaluation, translation, allocations and reports across them, and give access with one data access set. The ledgers can have different currencies. It's very useful for companies with many country ledgers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a scale example, like closing 20 European ledgers in one step.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a scale example, like closing 20 European ledgers in one step.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Can a ledger set include different currencies?</p><p>Yes, as long as the chart of accounts and calendar are the same.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">46</span><span class="qt">How do you prevent supplier bank account fraud in Oracle?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
@@ -449,91 +456,91 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Bank change report</strong> before each payment run.</li>
 <li><strong>Hold first payment</strong> to a new account.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Mention a real control and the segregation-of-duties conflicts you checked. Concrete detail makes this answer believable.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention a real control and the segregation-of-duties conflicts you checked. Concrete detail makes this answer believable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the single most effective control?</p><p>Independent verification of bank changes by phone using a known contact, not details in the change request.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">47</span><span class="qt">What are the key Payables options and invoice options you configure?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> these settings drive behavior across the whole business unit, and getting them wrong is costly.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Invoice options are where most of the decisions are: invoice approval, whether paid invoices can be adjusted, duplicate invoice checking, invoice currency, receipt acceptance days, the terms date basis and whether validation comes before approval. Matching options cover tolerances, whether distributions can be overridden and recalculation on match. Payment options cover things like allowing a payment date before the system date, who bears bank charges and payment document settings. The accounting options set accrual or cash basis, automatic offsets and the prepayment account. All of these are set per business unit, so I agree them with each BU's controller.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with &quot;set per business unit, agreed with each controller.&quot; It shows you manage the decision, not just the screen.</p></div>
+<p class="tip"><strong>Tip:</strong> End with &quot;set per business unit, agreed with each controller.&quot; It shows you manage the decision, not just the screen.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which option prevents duplicate payments?</p><p>Duplicate invoice checking by supplier, invoice number and amount, plus training users not to vary invoice numbers.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">48</span><span class="qt">How do you set up AutoMatch for receipts?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AutoMatch is how Fusion automates cash application. They want to see you can tune it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create AutoMatch rule sets that tell Fusion how to match receipt remittance references to open transactions. The key settings are the thresholds: the customer recommendation threshold, the combined weighted threshold, and how many days of closed invoices to consider. Fusion scores each possible match using exact and partial string matching and weights them. Then application exception rules decide what to do with small differences, like writing off under $5 or putting overpayments on account. After go-live I watch the results for a few weeks and adjust the thresholds. Too strict and nothing applies; too loose and receipts go to the wrong invoices.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the trade-off of strict vs loose thresholds. It shows you've tuned it, not only set it up.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the trade-off of strict vs loose thresholds. It shows you've tuned it, not only set it up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the risk of setting AutoMatch thresholds too low?</p><p>Receipts apply to the wrong invoices, creating cleanup work.</p></div></div>
 </details>
 <details class="q" data-topic="Cash Management" data-level="D">
   <summary><span class="qn">49</span><span class="qt">What is cash positioning and forecasting in Fusion?</span><span class="meta"><span class="tag">Cash Management</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you can talk to treasury.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Cash positioning shows today's position by bank account and currency: the opening balance from the bank statement, plus expected inflows like AR receipts, minus outflows like AP payments and payroll. Cash forecasting projects that into future periods, using AP, AR, purchase orders, sales orders, payroll and outside sources. Treasury uses both to decide funding, investments and intercompany transfers. Many large companies also run a dedicated treasury system like Kyriba, with Fusion feeding it the data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say what treasury decides with it. That's what makes the answer useful.</p></div>
+<p class="tip"><strong>Tip:</strong> Say what treasury decides with it. That's what makes the answer useful.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does forecast data come from?</p><p>AP scheduled payments, AR expected receipts, payroll and manual entries.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">50</span><span class="qt">Describe a complex production issue you resolved during month-end.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> month-end issues test calm problem solving.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;On day two of close, Create Accounting for Payables failed for 800 invoices. I was the AP lead. The error showed an invalid account combination, and I traced it to a cost center the GL team had end-dated the day before. I enabled the old cost center temporarily, reran accounting, then worked with GL to reclass the balances and add a check to the cost center change process. Close finished on time, and we added a pre-close report that flags disabled accounts.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Root cause plus a process fix is what makes it a senior answer.</p></div>
+<p class="tip"><strong>Tip:</strong> Root cause plus a process fix is what makes it a senior answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How did you find the root cause?</p><p>The error report showed an inactive account segment; fixing the value and rerunning Create Accounting cleared it.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">51</span><span class="qt">How do you plan the move from classic to Redwood pages for a Finance module?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on planning question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I list the pages users rely on, like AP invoices, journals, expenses and receipts, and which are Redwood in the current release. I find classic Page Composer personalizations, since they don't migrate, and decide which to rebuild in Visual Builder Studio. I enable Redwood in a test environment through profile options or opt-ins and run test scripts end to end, including reports and deep links in emails. Then short role-based training and job aids, and the switch module by module outside month-end while watching tickets. Classic pages are being retired, so it's better to plan than wait.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention testing deep links in approval emails. They often break.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention testing deep links in approval emails. They often break.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest risk in the Redwood move?</p><p>Lost personalizations and user confusion, which is why I test and train first.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">52</span><span class="qt">How would you add a required field and a validation to a Redwood Payables page?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on VBS question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;If it's new data, I create a descriptive flexfield segment and deploy it. In Visual Builder Studio I open the Payables page extension in a workspace, add the field to the layout, make it required, and add a rule, for example required only when the invoice type is Standard and the amount is over $10,000. I preview, test in the test environment, then publish. And I update integrations and reports to include the new field.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention updating integrations. A new required field breaks FBDI loads otherwise.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention updating integrations. A new required field breaks FBDI loads otherwise.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you deploy that change?</p><p>Publish the Visual Builder extension from test to production after validation, following change control.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">53</span><span class="qt">What happens to OTBI reports, BIP reports and integrations when pages move to Redwood?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> clients worry about breaking reports and integrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;REST and SOAP APIs, FBDI and the data model don't change, so integrations generally keep working. OTBI and BIP reports keep working too, though analytics embedded on pages may look or behave differently, so I test them. Deep links in approval emails or reports can change format, so I test notification links. And personalizations have to be rebuilt in Visual Builder Studio.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with the reassurance: APIs and data don't change.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with the reassurance: APIs and data don't change.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What might break with Redwood?</p><p>Page Composer customizations and embedded analytics on classic pages.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">54</span><span class="qt">Walk me through creating an AI agent in AI Agent Studio.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on question for anyone claiming agent experience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start from a delivered template, or the agent builder assistant where I describe what I want in plain words, or from scratch. I write clear instructions: role, goal, boundaries and tone. I add topics to scope what it handles. Then tools: for example a Business Object tool to read invoices and holds, a Document tool for policies, an Email tool, and a Deep Link tool to open the record in Fusion. I choose the LLM. I test in the studio with sample questions and review the trace of tool calls. Then I publish it and make it available to the right roles and pages.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention reviewing traces. It's how you know the agent used the right data.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention reviewing traces. It's how you know the agent used the right data.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you write good agent instructions?</p><p>Clear role, what it can and can't do, which tools to use, and how to answer.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">55</span><span class="qt">What tool types can an agent use in AI Agent Studio?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a technical knowledge question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Business Object tools read or act on Fusion objects through APIs, like invoices, suppliers, POs and journals. Document tools answer from uploaded documents using retrieval. External REST and connector tools call outside systems. MCP tools connect to tools exposed through the Model Context Protocol. Email tools send emails. Deep Link tools give the user a link straight to the Fusion page. User session tools use context about the signed-in user. I give each agent only the tools it needs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with &quot;only the tools it needs&quot;. It's the security principle.</p></div>
+<p class="tip"><strong>Tip:</strong> End with &quot;only the tools it needs&quot;. It's the security principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which tool type would you use for policy questions?</p><p>Document tools, using the uploaded policy documents.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">56</span><span class="qt">How would you test an agent before giving it to AP users?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> testing is what separates a demo from production.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build an evaluation set of 20 to 50 realistic questions with expected answers: holds, payment dates, policy questions, edge cases, and things it must refuse. I run it in the studio and review traces to see which tools were called and what came back. I check security by testing with users from different BUs. I check tone and accuracy and tighten the instructions. Then a pilot with a few users, watching the dashboard for sessions, errors, latency and token use.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention &quot;must refuse&quot; cases. They test the boundaries, not just the happy path.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention &quot;must refuse&quot; cases. They test the boundaries, not just the happy path.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What pass rate would you accept before rollout?</p><p>High accuracy on the evaluation set, and zero failures on things it must refuse.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">57</span><span class="qt">Which Finance processes are good candidates for AI agents, and which are not?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a judgment question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Good candidates are high-volume questions and lookups, like invoice and payment status, policy questions and expense help; exception triage, like explaining holds, suggesting fixes and drafting supplier or customer emails; document intake for invoices, remittances and receipts; and reconciliation help, suggesting matches with explanations. Poor candidates without strong controls are approving payments, posting journals and changing bank details, which keep human approval, and judgment-heavy accounting decisions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name bank detail changes as off-limits. It shows fraud awareness.</p></div>
+<p class="tip"><strong>Tip:</strong> Name bank detail changes as off-limits. It shows fraud awareness.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which processes shouldn't use agents?</p><p>Ones needing judgment and accountability, like approving large payments or posting journals without review.</p></div></div>
 </details>
 <details class="q" data-topic="General Ledger" data-level="B">
   <summary><span class="qn">58</span><span class="qt">How do you handle a journal posted to the wrong period?</span><span class="meta"><span class="tag">General Ledger</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common real-world mistake.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;If the wrong period is still open, I reverse the journal in that same period and re-enter it in the right one. If the wrong period is closed, I reverse it in the current open period, or reopen if policy allows, and post it correctly, with documentation for audit. Then I check whether allocations, revaluation or reports already used the wrong balance. And I fix the cause, often the default period on a spreadsheet upload, or a training gap.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention checking downstream effects like allocations. It shows thoroughness.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention checking downstream effects like allocations. It shows thoroughness.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if the wrong period is closed?</p><p>Reverse in the current open period and re-enter correctly, and document why.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">59</span><span class="qt">How do you set up and use payment terms with installments?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
@@ -545,28 +552,28 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Installment 1: $100,000 due July 1.</li>
 <li>Installment 2: $100,000 due July 31.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> A quick numeric example makes a dry setup question easy to follow.</p></div>
+<p class="tip"><strong>Tip:</strong> A quick numeric example makes a dry setup question easy to follow.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How does AP show installments?</p><p>As separate payment schedules on the invoice, each with its own due date.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="B">
   <summary><span class="qn">60</span><span class="qt">How does an on-account credit memo differ from a regular credit memo?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic question to check you know where credits sit.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A regular credit memo is applied to a specific invoice and reduces that invoice's balance, for example crediting one damaged line. An on-account credit memo isn't tied to any invoice. It sits on the customer's account as a credit, like a goodwill credit or a rebate, and can be applied later to any invoice or refunded. Both reduce the customer's balance and create accounting through SLA. The thing to watch is that on-account credits don't sit for months; I'd include them in the weekly unapplied review.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Add the point about reviewing old on-account credits. It shows control thinking.</p></div>
+<p class="tip"><strong>Tip:</strong> Add the point about reviewing old on-account credits. It shows control thinking.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use an on-account credit memo?</p><p>When the customer is due a credit not tied to one invoice, like a rebate.</p></div></div>
 </details>
 <details class="q" data-topic="Cash Management" data-level="D">
   <summary><span class="qn">61</span><span class="qt">How do you handle bank charges and interest in reconciliation?</span><span class="meta"><span class="tag">Cash Management</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical question about removing manual work.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use transaction creation rules. When a statement line matches a pattern, like the bank's fee code or 'INTEREST' in the description, Fusion creates an external cash transaction with the correct expense or income account, and autoreconciliation then clears it. Before close, someone reviews what was created, because a bank can change a code and a rule can start catching the wrong lines.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Add the review step. It shows you think about controls even on automation.</p></div>
+<p class="tip"><strong>Tip:</strong> Add the review step. It shows you think about controls even on automation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What accounting does a transaction creation rule create?</p><p>An external cash transaction, for example debit bank charges and credit cash.</p></div></div>
 </details>
 <details class="q" data-topic="Expenses" data-level="B">
   <summary><span class="qn">62</span><span class="qt">How do you handle an employee who submitted an expense report with a policy violation?</span><span class="meta"><span class="tag">Expenses</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical question that shows how you'd balance policy and employee experience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The system flags it first: policy rules mark the line as a warning or an error. A warning lets the employee submit with a justification. An error blocks submission until it's fixed. The manager sees any violations during approval, and auditors can reject or adjust lines. If it's a pattern, I don't just keep rejecting reports. I report violations by department, and either the policy gets clearer, the employee gets training, or the rule gets tighter.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Talk about patterns, not just the one report. Interviewers want to hear you'd fix the root cause.</p></div>
+<p class="tip"><strong>Tip:</strong> Talk about patterns, not just the one report. Interviewers want to hear you'd fix the root cause.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do if the same employee keeps violating policy?</p><p>Report patterns to their manager and HR, and tighten approval for that employee if needed.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -584,6 +591,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

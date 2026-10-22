@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,40 +97,41 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>61</b> questions</span>
     <span class="stat"><b>15</b> basic</span>
     <span class="stat"><b>46</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Enterprise Structures" data-level="D">
-  <summary><span class="qn">1</span><span class="qt">Walk me through how you would design the enterprise structure for a multi-country Fusion Financials implementation.</span><span class="meta"><span class="tag">Enterprise Structures</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Enterprise Structures" data-level="D" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">Walk me through how you would design the enterprise structure for a multi-country Fusion Financials implementation.</span><span class="meta"><span class="tag">Enterprise Structures</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior design question. They want a method and building blocks.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start from how the business is organized legally, managerially and for tax, not from the org chart. The building blocks are legal entities, one per registered company; primary ledgers, one per unique combination of the four Cs, where countries that share all four can share a ledger with a balancing value per entity; business units where transactions happen, with service-provider relationships if a shared services center processes for many BUs; reference data sets to share setups like payment terms across BUs; and secondary or reporting currency ledgers for other GAAPs or group currency. My approach is workshops with finance, tax and legal to confirm entities, currencies and statutory needs by country, then design the chart for group consolidation first, with local needs handled by secondary ledgers or mapping. And I prototype in a sandbox with real transactions and a close before locking it in, because this is the hardest thing to change later.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Add a real example: how many ledgers, and why you chose secondary ledgers or reporting currencies.</p></div>
+<p class="tip"><strong>Tip:</strong> Add a real example: how many ledgers, and why you chose secondary ledgers or reporting currencies.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most expensive enterprise structure mistake to fix later?</p><p>Too few balancing segment values or ledgers mapped wrongly to legal entities, because changing them after go-live means re-implementing ledgers.</p></div></div>
 </details>
-<details class="q" data-topic="Chart of Accounts" data-level="D">
-  <summary><span class="qn">2</span><span class="qt">How do you design a chart of accounts for a global company, and what mistakes have you seen?</span><span class="meta"><span class="tag">Chart of Accounts</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Chart of Accounts" data-level="D" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">How do you design a chart of accounts for a global company, and what mistakes have you seen?</span><span class="meta"><span class="tag">Chart of Accounts</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> COA design shapes reporting for years.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A good chart answers reporting questions with segments, not with thousands of natural accounts. Typical segments are company for balancing, cost center, natural account, intercompany, product or line of business, and a future segment, each with a clear owner. Segments should be independent, one meaning each, with no codes that pack two things together. I leave room in number ranges, use hierarchies for roll-ups instead of summary values, and set up cross-validation rules early. The mistakes I see are copying the legacy chart one-for-one with all its workarounds, using cost centers to track projects or customers, having too many segments, and leaving out the intercompany segment, which makes eliminations painful.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a before-and-after, like cutting 4,000 natural accounts to 900 by moving detail into segments and hierarchies.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a before-and-after, like cutting 4,000 natural accounts to 900 by moving detail into segments and hierarchies.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How many segments would you recommend?</p><p>Usually six to eight: company, cost center, account, sub-account or product, intercompany and a couple of future segments, depending on reporting needs.</p></div></div>
 </details>
-<details class="q" data-topic="Subledger Accounting" data-level="D">
-  <summary><span class="qn">3</span><span class="qt">Explain Subledger Accounting (SLA) and give an example of a rule you customized.</span><span class="meta"><span class="tag">Subledger Accounting</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Subledger Accounting" data-level="D" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">Explain Subledger Accounting (SLA) and give an example of a rule you customized.</span><span class="meta"><span class="tag">Subledger Accounting</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> SLA is a favorite senior question, and the example proves you've done it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;SLA turns subledger events, like an AP invoice being validated or a receipt being applied, into accounting entries before they go to GL. It separates what happened from how we account for it, so rules can change without touching transactions. The pieces are event classes and types, journal line rules, account derivation rules, description rules and supporting references, all grouped in an accounting method assigned to the ledger. My example: the business wanted AP liability on a different natural account for intercompany suppliers. I copied the standard method, built a mapping set from supplier type to natural account, created an ADR that overrides only the natural account segment, attached it to the liability line, activated it, and tested invoice, payment and cancellation.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Always say you copied the seeded method and tested the full life cycle: create, adjust, cancel, pay.</p></div>
+<p class="tip"><strong>Tip:</strong> Always say you copied the seeded method and tested the full life cycle: create, adjust, cancel, pay.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you make sure SLA changes are safe?</p><p>Copy the seeded method, change only what's needed, test with draft accounting across transaction types, and migrate through change control.</p></div></div>
 </details>
-<details class="q" data-topic="Period Close" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">How do you run and improve the month-end close in Oracle Financials?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Period Close" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">How do you run and improve the month-end close in Oracle Financials?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> every finance leader wants a faster, cleaner close.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I run the close as a sequenced checklist with owners, cut-off times and reconciliations. Procurement and AP first: receipts, accruals, invoices accounted, AP closed. Then AR, then Assets with depreciation, then Cash Management reconciliations. GL last: post journals, revalue and translate, intercompany and allocations, reconcile subledgers to GL, close and consolidate. To improve it, I make status visible with the Close Monitor and task lists, move work earlier with daily accounting and continuous reconciliation, and automate accruals. On one program we went from 8 working days to 5 by automating accruals and bank reconciliation and moving intercompany settlement to weekly.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with the number, days to close before and after, then explain what you changed.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with the number, days to close before and after, then explain what you changed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the single biggest lever to speed up the close?</p><p>Removing manual reconciliations by automating subledger to GL ties and bank reconciliation.</p></div></div>
 </details>
-<details class="q" data-topic="Accounts Payable" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">A supplier is paid twice. How would you investigate and prevent it from happening again?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Accounts Payable" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">A supplier is paid twice. How would you investigate and prevent it from happening again?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> duplicate payments are a classic control failure. They want root cause and prevention, not just recovery.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd start by finding both invoices and comparing them: invoice number, amount, date and supplier site. Duplicates usually differ by one character, a leading zero or a different site. Then I check how each one came in, because the most common pattern is one entered by hand and one from imaging or an integration. I'd also check whether duplicate checking was bypassed. To recover, I contact the supplier for a refund or a credit memo and net it on the next payment, making sure the 1099 amounts stay right. To prevent it, I tighten duplicate checks across supplier, number, amount and date, normalize invoice numbers on import, restrict who can override, and run a duplicate-payment report before each payment run.&quot;</p>
@@ -133,211 +140,211 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Recover:</strong> refund or credit memo, fix 1099.</li>
 <li><strong>Prevent:</strong> stronger duplicate checks, normalized numbers, override control, pre-run report.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Interviewers listen for root cause and the control you'd add, not just &quot;we got the money back.&quot;</p></div>
+<p class="tip"><strong>Tip:</strong> Interviewers listen for root cause and the control you'd add, not just &quot;we got the money back.&quot;</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What control would you add first?</p><p>Tighter duplicate invoice checking and a pre-payment duplicate report reviewed before each payment run.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">6</span><span class="qt">How do you design the cash application process to reduce unapplied cash?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a design question with a clear business outcome. They want a method and a result.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The biggest lever is remittance data, so I start there: lockbox files from the bank, bank statements in BAI2 or CAMT.053, and remittance emails, which can be captured with Intelligent Document Recognition. Then I set up AutoMatch and lockbox matching to look for invoice number, PO number, amount and customer reference, with tolerances for small differences. Application exception rules decide what happens to under- and over-payments within tolerance, like write off below $10 or put on account. Anything left goes to a work queue with a named owner and an ageing target. Where the business agrees, AutoCash rules apply receipts with no remittance to the oldest invoice first. I measure auto-application rate, unapplied and on-account balances, and days to apply. On one rollout we moved auto-applied receipts from about 45% to 80% by adding customer-reference matching and cleaning customer data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Close with the bank reconciliation in Cash Management. It shows the process ends with the cash proven, not just applied.</p></div>
+<p class="tip"><strong>Tip:</strong> Close with the bank reconciliation in Cash Management. It shows the process ends with the cash proven, not just applied.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a realistic auto-application target?</p><p>Often 80 to 90% for customers who send remittance; the rest needs better remittance data or AI matching.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="D">
   <summary><span class="qn">7</span><span class="qt">Explain how asset books, categories and depreciation work in Oracle Assets, including tax books.</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a broad question to see how you explain the whole module.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The corporate book is the main book, linked to a ledger, and holds depreciation for financial reporting. Tax books hold copies of the same assets with different methods and lives, like MACRS in the US, kept in step with Mass Copy each period. Categories default the accounts, method, life and prorate convention for each book. Depreciation runs per book per period, and Create Accounting sends it to GL through SLA. Assets come in by manual entry, from AP through Mass Additions, or from Projects as CIP that's later capitalized. The things I watch are category design that works for both books and tax, mass additions reviewed weekly, and retirements, transfers and impairments flowing correctly to GL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> If you've done IFRS and local GAAP, mention a second corporate book on a secondary ledger. It sets you apart.</p></div>
+<p class="tip"><strong>Tip:</strong> If you've done IFRS and local GAAP, mention a second corporate book on a secondary ledger. It sets you apart.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why keep tax books separate?</p><p>Tax depreciation rules, like MACRS or bonus, differ from book depreciation, so the tax team needs its own calculations.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="D">
   <summary><span class="qn">8</span><span class="qt">Tell me about a time you had to push back on a business request during an implementation.</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leads must protect the outcome, not just say yes.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;During design, the controller wanted the legacy 200-line approval matrix rebuilt exactly in Fusion. I owned the AP and approvals design and the go-live date. I analyzed a year of invoices and showed that 92% were approved by the same three rules. I proposed a simpler rule set with exception routing, demoed it with real data, and agreed a 30-day review after go-live. Configuration took days instead of weeks, approval cycle time dropped, and the review found only two rules needed adding.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show data, respect for the controller's concern, and a way to revisit. You didn't just win the argument.</p></div>
+<p class="tip"><strong>Tip:</strong> Show data, respect for the controller's concern, and a way to revisit. You didn't just win the argument.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How did the controller react?</p><p>Once I showed the reporting impact and maintenance cost, we agreed a phased approach, and the controller became a supporter.</p></div></div>
 </details>
-<details class="q" data-topic="SOX &amp; Controls" data-level="D">
-  <summary><span class="qn">9</span><span class="qt">What SOX controls do you build into an Oracle Financials implementation?</span><span class="meta"><span class="tag">SOX &amp; Controls</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="SOX &amp; Controls" data-level="D" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">What SOX controls do you build into an Oracle Financials implementation?</span><span class="meta"><span class="tag">SOX &amp; Controls</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> public companies need controls designed in, not added later.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I think in four groups. Access controls: role design with segregation of duties, so nobody can create a supplier and pay it, checked with Advanced Access Controls or a third-party tool, plus quarterly access reviews and logged, time-limited support access. Configuration controls: change control for setups with approval and test evidence, migration with configuration packages, and audit trail on key setups like suppliers, bank accounts and payment terms. Process controls: invoice approvals and holds, three-way match, payment approvals, journal approval rules, reconciliations with sign-off, and supplier bank change verification. And evidence: reports the auditors can rely on, validated for completeness and accuracy.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you involve internal audit early in design. Controls bolted on before go-live always cause delays.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you involve internal audit early in design. Controls bolted on before go-live always cause delays.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you test SoD in custom roles?</p><p>Run Advanced Access Controls or a role conflict matrix before go-live and after every role change.</p></div></div>
 </details>
-<details class="q" data-topic="Integrations &amp; Data" data-level="D">
-  <summary><span class="qn">10</span><span class="qt">How do you approach data conversion for a Financials go-live?</span><span class="meta"><span class="tag">Integrations &amp; Data</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Integrations &amp; Data" data-level="D" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">How do you approach data conversion for a Financials go-live?</span><span class="meta"><span class="tag">Integrations &amp; Data</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> conversion is one of the biggest go-live risks.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First scope: open AP invoices, open AR transactions, assets and GL balances, and how much history, usually summary balances for one or two years. Master data goes first: suppliers, customers and banks, then transactions. I use FBDI through UCM and the import processes, or REST for small sets, with a COA mapping table owned by the business. Quality comes from at least three mock conversions, each reconciled with record counts, control totals and sample checks, and signed off by finance. Data is cleansed in the source before extraction. And there's a cutover plan with timing, owners and a fallback.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say finance signs off the reconciliations. Auditors expect finance to own the numbers.</p></div>
+<p class="tip"><strong>Tip:</strong> Say finance signs off the reconciliations. Auditors expect finance to own the numbers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How much history would you convert?</p><p>Usually open items plus summary balances for one or two years; detailed history stays in an archive for audits.</p></div></div>
 </details>
 <details class="q" data-topic="Workstream Leadership" data-level="B">
   <summary><span class="qn">11</span><span class="qt">How do you lead a Finance workstream on an Oracle Cloud implementation?</span><span class="meta"><span class="tag">Workstream Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they want to see how you run the work and the people.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I own the scope and plan for GL, AP, AR, Assets, Cash, Tax and Expenses, with milestones aligned to the program. I'm the design authority for finance: a decisions log, consistency across modules, and sign-offs. I assign modules to consultants, review their configuration and designs, and unblock them. I meet the controller and process owners weekly and raise risks early. I own quality: test coverage, conversion reconciliations and finance cutover readiness. The rhythm is a weekly status with RAG, risks and decisions needed, a daily team stand-up, design reviews before configuration, and a clear RACI with the client's finance leads.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention your team size and one decision you drove.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention your team size and one decision you drove.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your role in design disputes between modules?</p><p>I'm the design authority for finance, so I bring the options and impacts and get a decision from the business owner.</p></div></div>
 </details>
 <details class="q" data-topic="Workstream Leadership" data-level="D">
   <summary><span class="qn">12</span><span class="qt">How do you estimate effort for a Finance implementation?</span><span class="meta"><span class="tag">Workstream Leadership</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leads are often asked to size work.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I break the scope into modules times legal entities or BUs times countries, plus RICEW items, reports, interfaces, conversions, extensions and workflows, each rated simple, medium or complex. I use reference effort from past projects for each item type. I add effort for CRPs, test cycles, mock conversions, training, cutover and hypercare. I add 10% to 20% contingency depending on unknowns like data quality and client availability. Then I validate with the team and document the assumptions, like 'client provides test data' or 'maximum two mocks'.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you estimate bottom-up and sanity-check top-down against similar projects.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you estimate bottom-up and sanity-check top-down against similar projects.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you account for unknowns in your estimate?</p><p>Add contingency based on risk, typically 15 to 20%, and revisit after design.</p></div></div>
 </details>
 <details class="q" data-topic="Workstream Leadership" data-level="B">
   <summary><span class="qn">13</span><span class="qt">How do you run fit-gap sessions effectively?</span><span class="meta"><span class="tag">Workstream Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> fit-gap decides how much custom work a project takes on.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I prepare process scenarios per module, like 'pay a foreign supplier by wire', and demo the standard Oracle flow first. For each step we agree whether it's a fit, a fit with configuration, or a gap. Gaps are classified as process change, report, extension or integration, with the business value of closing them. I push back on gaps that are only legacy habits. Decisions are captured with owners and dates, and big gaps go to the steering committee. The outcome is a prioritized gap list with solutions and estimates, signed off before build.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you demo standard first. It anchors the conversation on Oracle's process.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you demo standard first. It anchors the conversation on Oracle's process.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you avoid fit-gap sessions turning into wish lists?</p><p>Demo standard first, ask what business problem a request solves, and log gaps with priority.</p></div></div>
 </details>
 <details class="q" data-topic="Design" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How would you design a shared services model for AP across 20 business units?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> shared services is a common Fusion design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd set up one or a few shared-service BUs as service providers for Payables invoicing and payments, serving the 20 client BUs. Reference data sets share payment terms and suppliers, and supplier sites are assigned to the client BUs. A central invoice inbox with document recognition routes invoices by BU. Approval rules route to approvers in the client BU, like cost center managers. A payment hub uses central payment process profiles and disbursement accounts per legal entity. Shared-services staff get access to all the BUs they serve. And the KPIs are cost per invoice, touchless rate and on-time payment.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the service provider relationship. It's the Fusion feature that makes this work.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the service provider relationship. It's the Fusion feature that makes this work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the risk in a shared services AP model?</p><p>Approvals and coding knowledge sit in the business, so routing and reference data need to be right for every client BU.</p></div></div>
 </details>
 <details class="q" data-topic="Design" data-level="D">
   <summary><span class="qn">15</span><span class="qt">How do you design the payment process for a global company with many banks?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> global payments are complex and high-risk.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For connectivity, host-to-host SFTP, or a bank hub or SWIFT, using ISO 20022 pain.001 wherever banks support it, to cut custom formats. Payment methods by country: ACH, wire, SEPA, check and local clearing. Payment process profiles per bank and format, and disbursement accounts per legal entity and currency. Payment approval for large amounts and positive pay for checks. Acknowledgment files, pain.002, update payment status. And bank statements, CAMT.053, feed reconciliation. I also agree treasury controls on who can release payments, and test with each bank.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention testing with each bank. Every bank has its own surprises.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention testing with each bank. Every bank has its own surprises.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why standardize on ISO 20022?</p><p>One format for many banks reduces custom templates and testing, and supports richer remittance data.</p></div></div>
 </details>
-<details class="q" data-topic="Design" data-level="D">
-  <summary><span class="qn">16</span><span class="qt">How would you design consolidation for a multi-entity group: GL vs FCCS?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Design" data-level="D" data-top="1">
+  <summary><span class="qn">16</span><span class="qt">How would you design consolidation for a multi-entity group: GL vs FCCS?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> choosing the right consolidation tool matters.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion GL can handle simple consolidation with translation, ledger sets, elimination rules and reporting currencies, which works for a few entities with simple ownership. FCCS is for complex groups: partial ownership, minority interest, multi-GAAP, intercompany matching, consolidation journals, statutory reporting and close task management. GL balances are loaded to FCCS each close through Data Integration, and mapping the GL chart to the FCCS account structure is key. The decision depends on ownership complexity, number of entities, reporting needs and the close timeline.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the decision drivers. It shows you'd choose, not just list.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the decision drivers. It shows you'd choose, not just list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">At what point does FCCS make sense?</p><p>With many entities, partial ownership, multiple currencies and a need for consolidated cash flow.</p></div></div>
 </details>
-<details class="q" data-topic="Design" data-level="D">
-  <summary><span class="qn">17</span><span class="qt">How do you handle multi-GAAP requirements, for example US GAAP and local statutory?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Design" data-level="D" data-top="1">
+  <summary><span class="qn">17</span><span class="qt">How do you handle multi-GAAP requirements, for example US GAAP and local statutory?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> multi-GAAP is common in global companies.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;There are a few options. A subledger-level secondary ledger with a different accounting method, where SLA creates two sets of entries from the same transaction. An adjustment-only secondary ledger, holding only manual GAAP adjustments, with reports combining primary plus adjustments. Separate corporate and tax books in Assets for depreciation differences. And a different chart of accounts in a secondary ledger with a COA mapping. I choose by how many transactions differ: few differences, adjustment-only; systematic differences, like revenue or leases, a full subledger-level secondary ledger.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The &quot;how many transactions differ&quot; rule is the answer. Lead with it if pressed.</p></div>
+<p class="tip"><strong>Tip:</strong> The &quot;how many transactions differ&quot; rule is the answer. Lead with it if pressed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which option is lightest?</p><p>An adjustment-only secondary ledger or reporting adjustments, if differences are few.</p></div></div>
 </details>
-<details class="q" data-topic="Design" data-level="D">
-  <summary><span class="qn">18</span><span class="qt">How would you approach an EBS R12 to Fusion Financials migration?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Design" data-level="D" data-top="1">
+  <summary><span class="qn">18</span><span class="qt">How would you approach an EBS R12 to Fusion Financials migration?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> many clients are making this move.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd reimplement, not lift and shift: rethink enterprise structures, the chart of accounts and processes, and drop EBS customizations. Map EBS objects to Fusion: operating units to BUs, responsibilities to roles, customizations to extensions or standard features. For data, open transactions plus summary balances, with a decision on where history lives. Integrations are rebuilt on OIC and REST, and database-level ones retired. Decide on coexistence, for example Fusion Financials with EBS SCM integrated for a period. Manage the change: new roles and UI, and reporting moving to OTBI, BIP and Smart View. And use Oracle's EBS-to-Cloud tools where they fit.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;reimplement, not lift and shift&quot; first. It sets the right expectations.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;reimplement, not lift and shift&quot; first. It sets the right expectations.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest mistake in EBS to Fusion projects?</p><p>Copying EBS customizations and structures instead of redesigning for Fusion standard processes.</p></div></div>
 </details>
 <details class="q" data-topic="Tax" data-level="D">
   <summary><span class="qn">19</span><span class="qt">How do you integrate a third-party tax engine like Vertex or Avalara?</span><span class="meta"><span class="tag">Tax</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> most US Fusion customers use a partner engine.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion Tax has a tax partner integration. I set up the tax regime for partner services, the provider configuration, and tax partner subscriptions for the business units or legal entities. Item tax codes and ship-from and ship-to locations must be accurate, because the partner uses geocodes to find jurisdictions. AR invoices, AP invoices and POs then call the partner to calculate tax, and the results are stored on the tax lines. Filing happens in the partner tool, and we reconcile tax accounts in GL. In testing I focus on exempt customers with certificates, use tax on AP, and jurisdiction edge cases like addresses near city limits.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention address quality and geocodes. They cause most partner tax errors.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention address quality and geocodes. They cause most partner tax errors.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you test in a Vertex integration?</p><p>Tax calculation for each nexus, exemptions and the tax returned on invoices and credit memos.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">20</span><span class="qt">How would you design billing for a subscription or services business in Oracle?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they want to see you pick the right tool for the billing model, not force everything into AR.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd choose by how complex the billing is. For recurring billing with renewals, upgrades and usage charges, Subscription Management is the right tool. For services billed against projects, time and materials or milestones, Project Billing. If an outside billing system already does the rating, AR with AutoInvoice is enough. Whatever bills, Revenue Management handles ASC 606 allocation and over-time recognition. The design points I'd settle early are invoice frequency, proration for mid-cycle changes, upgrades and downgrades, and usage rating. On top sit collections and credit management, and an integration with CRM or CPQ so contracts flow in cleanly.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;I'd choose based on the billing model&quot; up front. It answers the real question.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;I'd choose based on the billing model&quot; up front. It answers the real question.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What decides between Subscription Management and AR?</p><p>The complexity of renewals, upgrades and usage billing; simple fixed recurring invoices can stay in AR.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">21</span><span class="qt">What are the common causes of AR-to-GL reconciliation differences and how do you prevent them?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reconciliation is a control. They want causes and prevention, not just &quot;I run a report&quot;.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The common causes are: transactions not yet accounted or not transferred and posted; manual journals posted straight to the receivable account in GL; transactions accounted in a different period than the aging date; misunderstanding the unapplied and on-account cash accounts; and revaluation entries that the aging doesn't show. To prevent them, I set the receivable accounts as third-party control accounts so nobody can post a manual journal to them, schedule Create Accounting daily, and make the Receivables to Ledger Reconciliation report a sign-off step on the close checklist. With those three in place, differences become rare and easy to explain.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The control-account setting is the key prevention step. Name it.</p></div>
+<p class="tip"><strong>Tip:</strong> The control-account setting is the key prevention step. Name it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prevent manual journals to the receivable account?</p><p>Make it a third-party control account so only subledger entries can post to it.</p></div></div>
 </details>
-<details class="q" data-topic="Period Close" data-level="D">
-  <summary><span class="qn">22</span><span class="qt">A CFO wants to shorten the close from 10 days to 5. What would you do?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Period Close" data-level="D" data-top="1">
+  <summary><span class="qn">22</span><span class="qt">A CFO wants to shorten the close from 10 days to 5. What would you do?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a business-outcome question. They want a diagnosis first, then levers.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd start by mapping the current close: every task, owner, dependency and duration, to find the critical path. Then I'd pull the levers that shorten that path: continuous accounting with daily Create Accounting, daily bank reconciliation and weekly intercompany settlement; automated accruals, recurring journals and allocations; earlier AP and AR cut-offs with estimates for the last days; automatic reconciliation of balance sheet accounts; a standard close checklist in a task tool so everyone sees status; and fixing data problems upstream so close days aren't spent on corrections. Then I'd measure days to close and post-close adjustments every month and keep improving.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;find the critical path first&quot;. Cutting tasks that aren't on it won't shorten the close.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;find the critical path first&quot;. Cutting tasks that aren't on it won't shorten the close.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a realistic first-year improvement?</p><p>Often two to three days from automation and parallel tasks, then more with continuous improvement.</p></div></div>
 </details>
 <details class="q" data-topic="Period Close" data-level="D">
   <summary><span class="qn">23</span><span class="qt">What is a third-party control account in SLA?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a key control that keeps subledger and GL in sync.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It's a natural account flagged so that only subledger transactions with a supplier or customer can post to it, like the AP liability or AR receivable account. That stops manual GL journals hitting those accounts, makes third-party balance reports available from SLA, and keeps the subledger-to-GL reconciliation clean. It's set on the natural account value, with Third Party Control Account set to Supplier or Customer.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tie it to reconciliation. That's why controllers want it.</p></div>
+<p class="tip"><strong>Tip:</strong> Tie it to reconciliation. That's why controllers want it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What error do users see if they try to post manually?</p><p>GL rejects the journal because the account requires a third party from a subledger.</p></div></div>
 </details>
 <details class="q" data-topic="Testing" data-level="D">
   <summary><span class="qn">24</span><span class="qt">How do you design a finance test strategy for a large implementation?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> testing strategy is a lead responsibility.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Unit and configuration testing by consultants. SIT with end-to-end flows across modules and integrations: P2P, O2C, record-to-report and acquire-to-retire. Data validation of conversions with counts, values and samples. UAT by business users with real scenarios and day-in-the-life tests. A parallel run or reconciliation for high-risk areas, like closing one month in both systems. Performance testing for high volumes, like AutoInvoice and payment runs. Regression automation for quarterly updates. And entry and exit criteria, a defect triage rhythm, and sign-off by the controller.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention a parallel close. It's the strongest proof for a controller.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention a parallel close. It's the strongest proof for a controller.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What test phase do projects most often rush?</p><p>Parallel runs or month-end close simulations, which catch the real issues.</p></div></div>
 </details>
-<details class="q" data-topic="Cutover" data-level="D">
-  <summary><span class="qn">25</span><span class="qt">How do you plan a Finance cutover?</span><span class="meta"><span class="tag">Cutover</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Cutover" data-level="D" data-top="1">
+  <summary><span class="qn">25</span><span class="qt">How do you plan a Finance cutover?</span><span class="meta"><span class="tag">Cutover</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cutover is where months of work succeed or fail.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build a minute-by-minute cutover plan for the go-live weekend, with owner, start time, duration, dependencies and a verification step for each task. Legacy is frozen: last invoice entry, last payment run, last receipts. Conversion runs master data, then open AP and AR, then assets, then GL balances, reconciled and signed off at each step. Then periods are opened, integrations switched on, and security checked. A go/no-go meeting uses agreed criteria. There's a fallback plan if a critical step fails. And hypercare covers the first payment run and the first close. I rehearse it in at least two timed mock cutovers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention timed rehearsals. Without them, the weekend runs long.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention timed rehearsals. Without them, the weekend runs long.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your go/no-go criteria?</p><p>Data reconciled, key tests passed, cutover steps verified and business sign-off.</p></div></div>
 </details>
 <details class="q" data-topic="Cutover" data-level="B">
   <summary><span class="qn">26</span><span class="qt">What do you focus on during hypercare after a Finance go-live?</span><span class="meta"><span class="tag">Cutover</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> hypercare protects the business after go-live.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The first payment run and first bank file, because they're the highest risk. The first month-end close: subledger accounting errors and reconciliations. Integrations, with failures monitored daily. User support with floor walkers, a triage war room and a daily issue review. KPIs like open tickets, invoices on hold, unapplied cash and accounting errors. And a clean handover to the support team with knowledge transfer and runbooks.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with the first payment run. Paying suppliers wrong is the most visible failure.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with the first payment run. Paying suppliers wrong is the most visible failure.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How long does hypercare usually last?</p><p>Through at least the first month-end close, often two or three closes.</p></div></div>
 </details>
 <details class="q" data-topic="Team Leadership" data-level="B">
   <summary><span class="qn">27</span><span class="qt">How do you manage an offshore team on an Oracle project?</span><span class="meta"><span class="tag">Team Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> most projects have distributed teams.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I give clear work packages with specs, acceptance criteria and due dates. We use overlap hours for daily stand-ups and written handoffs at the end of each day. Shared standards for naming, configuration workbooks and test evidence. I review their output, configurations and BIP reports, before it goes to the client. I build their business understanding by inviting them to key design sessions or sharing recordings. And I recognize good work publicly and give them real ownership.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention a time follow-the-sun testing saved schedule. It shows you used the model well.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention a time follow-the-sun testing saved schedule. It shows you used the model well.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep quality high with offshore teams?</p><p>Clear specs, peer reviews and test evidence before work is accepted.</p></div></div>
 </details>
 <details class="q" data-topic="Team Leadership" data-level="B">
   <summary><span class="qn">28</span><span class="qt">A consultant on your team is underperforming. What do you do?</span><span class="meta"><span class="tag">Team Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> people leadership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I talk to them early and privately, with specific examples and the impact on the project. I try to understand the cause: a skill gap, unclear expectations, personal issues or workload. We agree a plan: training, pairing, smaller tasks with frequent reviews and clear deadlines. I check in weekly and document progress. If it doesn't improve, I involve their manager or resource manager and adjust staffing to protect the project. I try to be fair to the person and honest with the client about delivery risk.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;early and privately&quot;. Waiting makes it harder for everyone.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;early and privately&quot;. Waiting makes it harder for everyone.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if things don't improve?</p><p>Escalate to the PM and agree on a change, like reassigning work or replacing the consultant.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="B">
   <summary><span class="qn">29</span><span class="qt">How do you handle a controller who resists the new Oracle process?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> stakeholder management is a core lead skill.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I listen first to find the real concern: control, workload or reporting. Then I show the new process with their data in a CRP and quantify the benefits, like time saved and better controls. I offer adjustments within the standard, like an extra approval step or a report they rely on. I involve them in decisions so they co-own the design. I'd only escalate to the steering committee if it threatened the design or timeline. For example, one controller wanted manual review of all subledger entries; we gave them a daily OTBI exception report instead.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the exception report example. It shows a creative compromise.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the exception report example. It shows a creative compromise.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you know resistance has turned around?</p><p>When the controller starts proposing improvements instead of objections.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="B">
   <summary><span class="qn">30</span><span class="qt">How do you communicate project status to executives?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> executive communication is a lead skill.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;One page: RAG status, milestones against plan, the top three risks or issues with mitigation, decisions needed, and budget or time impact. In business language, not system terms. Bad news early, always with a plan. The same format every week so trends are visible. Executives care most about the go-live date, business readiness and risk to operations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;bad news early, with a plan&quot;. It's what builds trust.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;bad news early, with a plan&quot;. It's what builds trust.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do executives most want from status reports?</p><p>Decisions they need to make and risks to the go-live date.</p></div></div>
 </details>
 <details class="q" data-topic="Controls" data-level="D">
   <summary><span class="qn">31</span><span class="qt">How do you work with internal and external auditors during an implementation?</span><span class="meta"><span class="tag">Controls</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> audit surprises delay go-lives.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I engage them early, in design, and share the control design, the SoD matrix and key reports. I document key automated and manual controls and map them to SOX control IDs. I provide evidence: configuration screenshots, test results, conversion reconciliations and user access reviews. I make sure reports used in controls are validated for completeness and accuracy. And I get their sign-off on conversion and controls before go-live. It avoids late surprises and rework.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention key report validation. It's a common audit finding.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention key report validation. It's a common audit finding.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do auditors usually want before go-live?</p><p>SoD analysis, key control documentation and conversion reconciliation evidence.</p></div></div>
 </details>
 <details class="q" data-topic="Reporting" data-level="D">
   <summary><span class="qn">32</span><span class="qt">How would you design a reporting strategy for a Finance Cloud implementation?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reporting is often underestimated.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I inventory current reports and rationalize, because many can be retired or replaced by standard ones. Each remaining report is mapped to the right tool: OTBI for operational and ad-hoc, BIP for formatted documents and extracts, Financial Reporting, Smart View or Narrative Reporting for statements, EPM for planning and consolidation, and Fusion Data Intelligence for cross-module analytics and history. I define ownership, business or IT, plus security and naming standards. I train power users to build their own OTBI. And I build the critical reports early so they're tested in SIT and UAT.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention rationalizing first. Most legacy report lists shrink by half.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention rationalizing first. Most legacy report lists shrink by half.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you reduce the number of reports?</p><p>Ask who uses each report and what decision it drives; retire those with no clear use.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">33</span><span class="qt">How are AI and agents being used in Oracle Fusion Financials?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a current knowledge question for finance consultants.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Intelligent Document Recognition reads invoices. AI agents in AI Agent Studio cover things like payables agents that process invoices, ledger agents for close insights, and collections agents that draft customer communications. Generative AI writes narratives like variance explanations, supplier communications and help. Predictive features include payment time predictions, anomaly detection in journals and expense auditing. All of it is configured with guardrails and human approval. In my view, AI helps most in high-volume, rules-based work, and controls still need people.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give your view on where it helps. Judgment matters more than a feature list.</p></div>
+<p class="tip"><strong>Tip:</strong> Give your view on where it helps. Judgment matters more than a feature list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which AI use case would you start with?</p><p>Invoice capture and hold resolution, because they have clear volume and measurable value.</p></div></div>
 </details>
-<details class="q" data-topic="Accounts Payable" data-level="D">
-  <summary><span class="qn">34</span><span class="qt">How would you increase touchless invoice processing?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Accounts Payable" data-level="D" data-top="1">
+  <summary><span class="qn">34</span><span class="qt">How would you increase touchless invoice processing?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> touchless rate is the main AP efficiency measure. They want concrete levers.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I'd look at the holds by type and supplier, because that shows where the touches come from. Then I'd pull the levers in order of effort. Get suppliers invoicing against accurate POs, using catalogs and agreements. Tune tolerances and fix master data like supplier sites, bank details and units of measure. Auto-approve PO-matched invoices within tolerance. Then move capture away from manual keying: IDR for PDFs, and the supplier portal or e-invoicing for the biggest suppliers. And I review holds monthly and fix root causes, so the gains stick.&quot;</p>
 <p><strong>Example:</strong> if 30% of invoices hit price holds from one supplier group, fixing their PO prices does more than any new tool.</p>
-<p class="tip"><strong>Tip:</strong> Lead with the data. Starting from &quot;where do the touches come from&quot; shows you'd fix the problem, not just buy software.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with the data. Starting from &quot;where do the touches come from&quot; shows you'd fix the problem, not just buy software.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a realistic touchless target?</p><p>Over 70% for PO invoices with good data and tolerances, sometimes higher.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">35</span><span class="qt">How do you handle invoice matching for services or blanket POs where receipts are messy?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
@@ -345,63 +352,63 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <p><strong>Answer:</strong></p>
 <p>&quot;For services, I'd use amount-based lines and often 2-way match, because receiving a quantity of hours or milestones rarely reflects reality. For blanket POs with many partial receipts, I'd consider changing the invoice match option from Receipt to Purchase Order. It's still a 3-way match, Oracle still checks received quantity, but in total for the schedule, so AP doesn't have to pick individual receipts. For high-volume suppliers, receipt acceptance or pay-on-receipt can remove the invoice step entirely. And requesters need to receive promptly, otherwise any design fails.&quot;</p>
 <p><strong>Trade-off:</strong> matching at PO level loses receipt-level traceability for price differences, so I'd agree the change with internal audit first.</p>
-<p class="tip"><strong>Tip:</strong> Mentioning the audit trade-off is what makes this answer credible.</p></div>
+<p class="tip"><strong>Tip:</strong> Mentioning the audit trade-off is what makes this answer credible.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle blanket PO invoices?</p><p>Match to the PO line by amount and track consumption against the agreement value.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="D">
   <summary><span class="qn">36</span><span class="qt">How would you design Oracle Assets for a company with IFRS and US GAAP plus tax books?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> multi-GAAP is a senior design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The corporate book links to the primary ledger, say US GAAP. Federal and state tax books follow it through mass copy with MACRS methods. For IFRS, the choice depends on how different it is. If there are real differences, like component depreciation, revaluation or different lives, I'd use a second corporate book linked to a secondary ledger. If the differences are few, an adjustment-only approach is simpler. Categories have to work for both bases. I'd set up impairment and revaluation processes for the IFRS book, and reconcile each book to its own ledger every period.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the choice between a second book and adjustments. Showing the trade-off is what makes it a senior answer.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the choice between a second book and adjustments. Showing the trade-off is what makes it a senior answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep IFRS and US GAAP asset books aligned?</p><p>Mass copy from the corporate book with IFRS-specific adjustments, and reconcile each period.</p></div></div>
 </details>
 <details class="q" data-topic="Projects" data-level="D">
   <summary><span class="qn">37</span><span class="qt">How does Fusion Project Financials interact with core Financials?</span><span class="meta"><span class="tag">Projects</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> projects touch most of finance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Project costing collects costs from AP invoices, expenses, time, inventory and POs against projects and tasks. Capital projects generate CIP assets and send them to Assets. Project billing and contracts create invoices through AR, and revenue is recognized with project revenue methods. Burdening adds overheads, and cross-charging moves costs between organizations. Accounting goes through SLA for costing and billing. A common design point is keeping projects out of the chart of accounts and tracking them as a subledger attribute instead.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Make the &quot;don't put projects in the COA&quot; point. It's a classic design mistake.</p></div>
+<p class="tip"><strong>Tip:</strong> Make the &quot;don't put projects in the COA&quot; point. It's a classic design mistake.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do capital project costs end up?</p><p>In CIP assets, then capitalized to fixed assets when the project is placed in service.</p></div></div>
 </details>
 <details class="q" data-topic="Change Management" data-level="B">
   <summary><span class="qn">38</span><span class="qt">How do you ensure finance users are ready for go-live?</span><span class="meta"><span class="tag">Change Management</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> readiness decides whether go-live sticks.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start with a change impact assessment by role: what's different for AP clerks, accountants and approvers. Super users are trained early and help train others. Training is role-based, with job aids, short videos and a practice environment. Readiness checks cover training completion, UAT participation and access provisioning. Leadership sends the communications. And there's a post-go-live support model with FAQs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention checking access is provisioned. Users locked out on day one is a common failure.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention checking access is provisioned. Users locked out on day one is a common failure.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest readiness gap you've seen?</p><p>Approvers who haven't been trained, causing approval backlogs in week one.</p></div></div>
 </details>
 <details class="q" data-topic="Quarterly Updates" data-level="B">
   <summary><span class="qn">39</span><span class="qt">How do you set up governance for continuous Oracle Cloud releases?</span><span class="meta"><span class="tag">Quarterly Updates</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> quarterly updates need a routine.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A release management process: review the readiness documents each quarter, assess impact and decide on opt-ins. Regression automation for core flows, with Oracle's testing tools or third-party ones like Opkey or Worksoft. A change advisory board to approve configuration changes and new features. A roadmap of features to adopt, tied to business priorities. And short release notes for users.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention automated regression. Manual regression doesn't scale every quarter.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention automated regression. Manual regression doesn't scale every quarter.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who should own release governance?</p><p>A small team with business and IT representation, meeting each quarter.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">40</span><span class="qt">Tell me about the most complex Finance implementation you led.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">40</span><span class="qt">Tell me about the most complex Finance implementation you led.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they want scale, decisions and results.</p>
 <p><strong>Answer (structure, fill in your own):</strong></p>
 <p>&quot;Start with context: industry, size in entities, countries and users, modules, timeline and team size. Then the complexity, for example 12 ledgers, multi-GAAP, shared services, 40 integrations and an aggressive timeline. Then your role and key decisions, like redesigning the COA, choosing secondary ledgers or introducing a payment hub. Then the challenges, like data quality, resistance or scope changes, and what you did. Then results: on-time go-live, faster close, KPIs. And what you'd do differently.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Practice a three-minute version and a 30-second version.</p></div>
+<p class="tip"><strong>Tip:</strong> Practice a three-minute version and a 30-second version.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes that story convincing?</p><p>Specific numbers: entities, countries, users and a measurable outcome like days to close.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">41</span><span class="qt">What would you do if you discovered late in the project that a key design decision was wrong?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> integrity and judgment under pressure.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd assess the impact fast: what breaks, the cost and time to fix, and workarounds. I'd tell the PM and business owner straight away, with options and a recommendation. The business chooses between fixing it now with a delay, or a workaround with a fix in phase 2. Then I document the decision and the lessons. For example, we found late that one legal entity needed its own ledger because of a different fiscal year. We created it before SIT with two weeks' extra effort, rather than going live with a workaround.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;tell them immediately&quot;. Hiding it is the real failure.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;tell them immediately&quot;. Hiding it is the real failure.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep trust after admitting a mistake?</p><p>Come with a plan and options, not just the problem, and deliver the fix fast.</p></div></div>
 </details>
 <details class="q" data-topic="General Ledger" data-level="D">
   <summary><span class="qn">42</span><span class="qt">How do you handle suspense accounts and journal imports from external systems?</span><span class="meta"><span class="tag">General Ledger</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> integrations are a big source of GL errors.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Journals from external systems come in through FBDI with the journal import template, GL REST, or OIC. Each system gets its own journal source for traceability, approval and reporting. Suspense posting can be turned on to accept unbalanced journals, but I'd keep it off and fix imbalances at the source. I validate account combinations before sending, and use dynamic combination creation carefully. Then I monitor import errors every day and reconcile each source system to GL by source.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recommend keeping suspense off. It shows a control mindset.</p></div>
+<p class="tip"><strong>Tip:</strong> Recommend keeping suspense off. It shows a control mindset.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you make journal imports robust?</p><p>Unique batch IDs, control totals and validation before import.</p></div></div>
 </details>
 <details class="q" data-topic="General Ledger" data-level="D">
   <summary><span class="qn">43</span><span class="qt">What is average daily balancing and when is it used?</span><span class="meta"><span class="tag">General Ledger</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a specialist question, mostly for banking clients.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Average balance processing keeps daily balances and calculates averages: period to date, quarter to date and year to date. Banks and other financial institutions need it for regulatory reporting and interest calculations. It's enabled on the ledger, and journals then carry effective dates. Fusion supports average daily balances in GL with its own reporting. I'd mention it only if the client is in financial services.&quot;</p>
-<p class="tip"><strong>Tip:</strong> If you've worked with a bank or insurer, say so here. It's a good place to show breadth.</p></div>
+<p class="tip"><strong>Tip:</strong> If you've worked with a bank or insurer, say so here. It's a good place to show breadth.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who uses average balancing?</p><p>Banks and financial institutions that report average balances for regulatory or interest calculations.</p></div></div>
 </details>
 <details class="q" data-topic="Expenses" data-level="D">
   <summary><span class="qn">44</span><span class="qt">How would you roll out Oracle Expenses to 5,000 employees?</span><span class="meta"><span class="tag">Expenses</span><span class="tag lvl">In-depth</span></span></summary>
@@ -417,126 +424,126 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Training and help desk.</li>
 <li>Risk-based audit.</li>
 </ol>
-<p class="tip"><strong>Tip:</strong> Mention the HR data dependency. Bad manager hierarchy is the top reason expense rollouts stall.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the HR data dependency. Bad manager hierarchy is the top reason expense rollouts stall.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you handle employees who resist mobile receipts?</p><p>Simple training, clear benefits like faster reimbursement, and making it the default path.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">45</span><span class="qt">How would you reduce DSO using Oracle?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a business-outcome question. They want levers, not features.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd look at the whole cycle, because DSO starts before collections. First, invoice fast and correctly: fix AutoInvoice errors and missing PO numbers that delay invoices. Second, deliver faster with e-invoicing or a customer portal. Third, collect smarter: strategies with prioritized worklists, automatic dunning and promise-to-pay tracking. Fourth, stop risky orders with credit management. Fifth, apply cash fast with AutoMatch and lockbox, because an unapplied payment still shows as overdue. Sixth, manage disputes with reason codes so we fix root causes. And I'd put DSO, aging buckets and collector productivity on a dashboard reviewed every week.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;DSO starts at invoicing&quot;. Most candidates jump straight to collections.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;DSO starts at invoicing&quot;. Most candidates jump straight to collections.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which DSO lever gives the quickest result?</p><p>Invoicing correctly and on time, since errors delay payment.</p></div></div>
 </details>
 <details class="q" data-topic="Workstream Leadership" data-level="B">
   <summary><span class="qn">46</span><span class="qt">How do you decide what to configure vs build vs change in the process?</span><span class="meta"><span class="tag">Workstream Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> this decision drives cost and upgrade risk.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I go in order. Adopt the standard process if it meets the need, because it's cheapest to support and upgrades are smooth. Configure next: setups, rules, flexfields and approvals. Then a light report or extension, BIP, OTBI, Visual Builder or OIC, when the value is clear. Custom builds only for competitive differentiators or regulatory needs. I score gaps on business value, effort, support cost and upgrade risk, and the business owner decides.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Present the order clearly. It's the decision framework they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Present the order clearly. It's the decision framework they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do when a business owner insists on a custom build?</p><p>Show the support cost and upgrade risk, and offer configuration or process alternatives.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">47</span><span class="qt">Why should we hire you as a Lead Finance consultant?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">47</span><span class="qt">Why should we hire you as a Lead Finance consultant?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a closing question to see if you can sell your fit.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd tie my strengths to their needs: depth across the finance modules, naming them, and end-to-end process knowledge across P2P, O2C and record-to-report. The number and scale of implementations I've done and the roles I held. Leadership: the teams I've led and how I develop people. Business partnership: speaking the controller's language and delivering outcomes like a faster close. And calm under pressure through go-lives and close crises. Then I'd close with: 'I can own the finance workstream from design to hypercare and make your team successful.'&quot;</p>
-<p class="tip"><strong>Tip:</strong> Match each strength to something in their job description.</p></div>
+<p class="tip"><strong>Tip:</strong> Match each strength to something in their job description.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What proof would you give?</p><p>A specific implementation with numbers, like close reduced from eight days to five.</p></div></div>
 </details>
 <details class="q" data-topic="Cash Management" data-level="D">
   <summary><span class="qn">48</span><span class="qt">How would you design bank statement processing for 200 bank accounts across 15 banks?</span><span class="meta"><span class="tag">Cash Management</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a scale question. They want standards and automation.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;At that scale I'd standardize first: CAMT.053 or BAI2 from every bank, and no custom parsers unless there's no choice. Statements are retrieved automatically over SFTP or a connectivity hub, and Load and Import Bank Statement runs on a schedule every morning. I'd create rule sets by account type, disbursement, collection, payroll and zero balance, rather than 200 individual ones. Transaction creation rules handle fees and interest. An exception dashboard shows unreconciled items by age and account. Prior-day statements drive reconciliation and intraday ones feed cash positioning. And I'd agree ownership: shared services works exceptions, treasury owns the setup.&quot;</p>
-<p class="tip"><strong>Tip:</strong> &quot;Rule sets by account type, not by account&quot; is the key scaling idea. Say it.</p></div>
+<p class="tip"><strong>Tip:</strong> &quot;Rule sets by account type, not by account&quot; is the key scaling idea. Say it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest risk at that scale?</p><p>One bank changing format and breaking imports, so monitoring and alerts matter.</p></div></div>
 </details>
 <details class="q" data-topic="Design" data-level="D">
   <summary><span class="qn">49</span><span class="qt">How do you design the chart of accounts mapping between legacy and Fusion for conversion and reporting?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> COA mapping errors affect every converted balance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build a mapping table owned by finance: legacy account string to new segment values, with rules for cost centers and intercompany. It's used for balance conversion, open transaction conversion and historical comparatives. I validate that every legacy account with a balance maps, and that no new combination breaks cross-validation rules. The mapping is frozen before the last mock, and changes go through change control. If legacy systems will still send legacy accounts, I can load it into Fusion as a chart of accounts mapping for those interfaces.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say finance owns it. It's their numbers.</p></div>
+<p class="tip"><strong>Tip:</strong> Say finance owns it. It's their numbers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who owns the mapping after go-live?</p><p>Finance, with a controlled process for changes.</p></div></div>
 </details>
 <details class="q" data-topic="Workstream Leadership" data-level="B">
   <summary><span class="qn">50</span><span class="qt">What KPIs would you track to show the Finance implementation succeeded?</span><span class="meta"><span class="tag">Workstream Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> success needs measuring.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Close: days to close and post-close adjustments. AP: cost per invoice, touchless rate, on-time payments and early-pay discounts captured. AR: DSO, auto cash application rate and unapplied cash. Controls: audit findings, SoD violations and manual journal volume. Adoption: tickets per user, training completion and self-service reporting use. Stability: integration failures and Create Accounting errors. And I baseline them before go-live so the improvement can be proven.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;baseline before go-live&quot;. Without it, success is just an opinion.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;baseline before go-live&quot;. Without it, success is just an opinion.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which KPI matters most to the CFO?</p><p>Days to close and accuracy of reporting.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">51</span><span class="qt">You lead the Finance workstream and Oracle is retiring the classic pages you use. How do you plan it?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a leadership planning question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I track Oracle's schedule in the quarterly readiness material to see which finance pages move and when classic retires. I assess impact by role: AP clerks, accountants, approvers and expense users. I inventory personalizations and plan rebuilds in Visual Builder Studio, keeping only what matters. I update the regression test pack for Redwood flows. Change management uses super users, short videos and 'what moved where' guides. I sequence by module, outside close, and measure tickets and cycle times after each switch.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention measuring tickets after each switch. It proves the change landed.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention measuring tickets after each switch. It proves the change landed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest risk in that plan?</p><p>Missing the retirement date for a page users rely on, so I track Oracle's timeline closely.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">52</span><span class="qt">What governance would you put around Visual Builder Studio changes?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> VBS changes affect controlled pages.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I treat VBS changes like code: workspaces in a Git repository, peer review, testing in a test environment, and publishing only by authorized admins. Naming standards and documentation for each extension. SOX change management evidence, approvals and testing, for controlled pages. Regression on every quarterly update. And very few people with the Visual Builder administrator role.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention SOX evidence. Finance auditors will ask for it.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention SOX evidence. Finance auditors will ask for it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who approves VBS changes?</p><p>The business owner and a technical reviewer before publishing to production.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">53</span><span class="qt">How would you design an AI agent for AP hold resolution?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a concrete agent design question in finance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The goal is to cut the time invoices sit on hold. The workflow triggers on new holds. Business Object tools read the invoice, PO, receipts and tolerances. An agent node explains the cause and recommends an action, like 'receive the remaining 20 units' or 'price is 4% above the agreement'. Then it routes the case to the right person, buyer or requester, using the Email tool with a deep link to the record. People still release holds or change POs. I'd measure days on hold, holds per invoice and AP touches, pilot with the top suppliers, check accuracy, then scale.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the example explanations. They show what &quot;useful&quot; looks like to AP.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the example explanations. They show what &quot;useful&quot; looks like to AP.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you measure success?</p><p>Average days invoices sit on hold, before and after.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">54</span><span class="qt">How do you decide whether to use a delivered Oracle agent, a partner agent or build your own?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> build vs buy, applied to agents.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Delivered agents and templates come first, because Oracle supports them and updates them with each release. A partner agent from the marketplace makes sense when a validated one fits a specific need. I build my own when the process is specific to the company or combines our data and policies. The criteria are fit, maintenance effort, security, cost including premium LLM tokens, and how each option affects controls.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention maintenance. Custom agents need care every release.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention maintenance. Custom agents need care every release.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you build your own agent?</p><p>When no delivered or partner agent covers a valuable use case unique to the business.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">55</span><span class="qt">How do you keep finance controls intact when introducing AI agents?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> controls are the first thing finance leaders worry about.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Agents inherit Fusion roles and data access, and I never give a service account more access than it needs. No autonomous postings or payments: anything financial passes a human approval node. Traces and logs are kept, and agent actions are identifiable. For segregation of duties, actions count under the user who invoked the agent. Accuracy is checked with evaluations and periodic reviews. And internal audit is involved early, with the control design documented.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;involve internal audit early&quot;. It avoids a late surprise that stops the project.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;involve internal audit early&quot;. It avoids a late surprise that stops the project.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's one control that must never be bypassed?</p><p>Human approval before payments or postings.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">56</span><span class="qt">How would you measure the value of AI agents in Finance?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AI projects need to prove value.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I take a baseline before go-live: cycle times for invoice processing, hold resolution and close tasks; touches per transaction; questions handled; and errors. After go-live I track usage and adoption from the monitoring dashboard, quality through evaluation sets and user feedback, and cost, meaning token spend on premium models, against the time saved. I report monthly to the controller.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;baseline before go-live&quot;. Without it, value can't be proven.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;baseline before go-live&quot;. Without it, value can't be proven.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you avoid inflated claims of AI value?</p><p>Compare with a baseline and measure actual time saved, not estimates.</p></div></div>
 </details>
 <details class="q" data-topic="Period Close" data-level="D">
   <summary><span class="qn">57</span><span class="qt">How would you use Fusion features to automate intercompany and close tasks?</span><span class="meta"><span class="tag">Period Close</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you use what's in the product before building custom tools.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For intercompany: automatic balancing rules, intercompany transactions with automatic invoicing, and the reconciliation reports. For close: allocations and recurring journals in Calculation Manager on a schedule, automatic reversal of accruals, AutoPost criteria, and scheduled revaluation and translation. The Close Monitor gives status, and where available, AI agents give close insights. Together these take a lot of manual steps out of the close.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name what you'd schedule. Scheduling is where most of the time savings come from.</p></div>
+<p class="tip"><strong>Tip:</strong> Name what you'd schedule. Scheduling is where most of the time savings come from.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What close task is easiest to automate?</p><p>Recurring journals and allocations through scheduled processes.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">58</span><span class="qt">How would you design approvals for non-PO invoices across 15 business units?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a design question that tests whether you can keep it simple at scale.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd base routing on one rule set using the cost center manager hierarchy from HCM, with amount tiers, for example up to $5,000 to the cost center manager, up to $50,000 to the director, and above that the controller. Business-unit-specific approval groups only where a BU really needs something different. Small invoices from trusted suppliers can be auto-approved with an after-the-fact review. There must be a fallback approver for when the hierarchy has gaps. Then I'd watch approval cycle time and rejection rates, and fix HR data issues quickly when they show up.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;one rule set, exceptions only where needed.&quot; Fifteen separate rule sets is the design they're hoping you won't propose.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;one rule set, exceptions only where needed.&quot; Fifteen separate rule sets is the design they're hoping you won't propose.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the risk of one rule set across 15 BUs?</p><p>Local exceptions get forced into it, so I allow a few BU-specific rules where needed.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Receivable" data-level="D">
   <summary><span class="qn">59</span><span class="qt">How would you handle unapplied cash that keeps growing?</span><span class="meta"><span class="tag">Accounts Receivable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a real problem many AR teams have. They want an investigation, then a fix.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd first analyze the balance by customer and by age to find the pattern. Usually a few causes explain most of it: missing remittance details, short payments, deductions nobody is working, or receipts posted to the wrong customer. Then I fix each cause. For missing remittance, improve capture with lockbox or email remittance processing. For matching, tune AutoMatch and the application exception rules. For deductions, set up a dispute process with sales so they get resolved. Finally I'd run a weekly review with the collectors, with a target for unapplied cash, so it doesn't creep back.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;analyze first&quot;. It shows you solve the cause, not the symptom.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;analyze first&quot;. It shows you solve the cause, not the symptom.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common cause of growing unapplied cash?</p><p>Missing or poor remittance information from customers.</p></div></div>
 </details>
 <details class="q" data-topic="Tax" data-level="D">
   <summary><span class="qn">60</span><span class="qt">How would you manage US sales tax exemptions in Fusion?</span><span class="meta"><span class="tag">Tax</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> exemptions are an audit risk if certificates aren't managed.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I capture exemption certificates per customer and jurisdiction, either in Fusion Tax or in the partner engine like Vertex or Avalara, and link them to the customer's tax profile with effective dates. Then I set up a process to track expiring certificates and remind customers before they expire, because an expired certificate means we should have charged tax. In testing I include invoices with both exempt and taxable lines for the same customer.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Focus on expiring certificates. That's where audit findings come from.</p></div>
+<p class="tip"><strong>Tip:</strong> Focus on expiring certificates. That's where audit findings come from.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if a certificate expires?</p><p>Tax is charged again, so tracking expiry dates and renewals is important.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership" data-level="B">
   <summary><span class="qn">61</span><span class="qt">How do you upskill your team on Redwood and AI Agent Studio?</span><span class="meta"><span class="tag">Leadership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leads need to keep their team current.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use Oracle's learning paths and certifications for AI Agent Studio and Visual Builder Studio. Each consultant builds one agent and one VBS extension in a sandbox. We hold weekly show-and-tell sessions. Functional consultants pair with a technical lead on VBS and integration topics. And these skills go into everyone's development plan.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The &quot;one agent, one extension each&quot; goal makes it concrete.</p></div>
+<p class="tip"><strong>Tip:</strong> The &quot;one agent, one extension each&quot; goal makes it concrete.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you know the team is ready?</p><p>Each consultant has built and demoed a working agent and VBS change.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -554,6 +561,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,394 +97,395 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>55</b> questions</span>
     <span class="stat"><b>33</b> basic</span>
     <span class="stat"><b>22</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Role" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">What are the key responsibilities of a Director of Oracle ERP?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Role" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">What are the key responsibilities of a Director of Oracle ERP?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to check your view of the role's scope.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I own the ERP platform, both delivery and run: Financials, SCM, and often the HCM and EPM interfaces. I own the roadmap and portfolio, prioritized with business leaders. I lead the organization: managers and associate directors, analysts, architects and partners. I own the budget for run and change, and the vendor contracts. I run governance: change control, release management, SOX ITGCs and security. I partner with the CFO organization and supply chain and procurement leaders. And I'm accountable for service: SLAs, stability and user satisfaction.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention both delivery and run. Directors own the whole life cycle.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention both delivery and run. Directors own the whole life cycle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you delegate and what do you keep?</p><p>I delegate delivery and run to managers, and keep the roadmap, budget, governance and executive relationships.</p></div></div>
 </details>
-<details class="q" data-topic="Strategy" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">How would you build a 2-year ERP roadmap?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Strategy" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">How would you build a 2-year ERP roadmap?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> strategic planning.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Inputs are the business strategy, pain points, support data, Oracle's roadmap, technical debt and audit findings. I'd organize it in themes: stabilize, automate AP, close and procurement, analytics with Fusion Data Intelligence, AI agents, new capabilities like revenue or planning, and M&amp;A readiness. I prioritize by value, risk and dependencies, with quick wins in the first six months. There's a capacity and budget plan. Business leaders review it quarterly. And each initiative has metrics.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention quick wins in six months. They earn trust for the rest of the plan.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention quick wins in six months. They earn trust for the rest of the plan.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep the roadmap from becoming a wish list?</p><p>Every item needs a business owner, a measurable benefit and a place in capacity.</p></div></div>
 </details>
-<details class="q" data-topic="Strategy" data-level="B">
-  <summary><span class="qn">3</span><span class="qt">What would you do in your first 100 days as Director of ERP?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Strategy" data-level="B" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">What would you do in your first 100 days as Director of ERP?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a plan shows leadership maturity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I listen: business leaders, the team, partners and audit, and I sit in on close and key operations. Then I assess stability, the backlog, the roadmap, team capabilities, vendor contracts, budget and risks. I deliver quick wins on the pain points the business sees most. I clarify roles, governance and intake. And I agree 12-month priorities and KPIs with the CIO and CFO.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention sitting in on close. It shows you'll learn the business, not just IT.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention sitting in on close. It shows you'll learn the business, not just IT.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would you deliver by day 100?</p><p>A current-state assessment, a draft roadmap, and visible quick wins on the top pain points.</p></div></div>
 </details>
-<details class="q" data-topic="Organization" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">How would you structure an ERP team of 25 people?</span><span class="meta"><span class="tag">Organization</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Organization" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">How would you structure an ERP team of 25 people?</span><span class="meta"><span class="tag">Organization</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> organization design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd align teams to processes: Record-to-Report, Procure-to-Pay, Order-to-Cash, Supply Chain, and HCM if in scope. A platform team covers shared services: integrations on OIC, reporting and analytics, security and release management. An architecture role spans the teams. Partners provide surge or specialist skills, and AMS covers L2 where it's economical. Each team has a manager or lead with clear ownership and career paths.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain process alignment. It matches how the business thinks.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain process alignment. It matches how the business thinks.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why align teams to processes instead of modules?</p><p>Processes cross modules, so process teams own outcomes end to end and reduce handoffs.</p></div></div>
 </details>
-<details class="q" data-topic="Organization" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">Insource vs outsource: how do you decide the right mix for ERP support?</span><span class="meta"><span class="tag">Organization</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Organization" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">Insource vs outsource: how do you decide the right mix for ERP support?</span><span class="meta"><span class="tag">Organization</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a sourcing strategy question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I keep core knowledge in-house: architecture, business process ownership, critical modules and vendor management. I outsource routine L1 and L2 support, surge capacity, specialist skills like payroll legislation, and 24-by-7 coverage. I weigh cost, quality, knowledge risk, speed and compliance. Contracts include SLAs, knowledge transfer and exit clauses. And I review the mix every year.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention exit clauses. They keep vendors honest.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention exit clauses. They keep vendors honest.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should never be outsourced?</p><p>Architecture, process ownership and knowledge of critical customizations.</p></div></div>
 </details>
 <details class="q" data-topic="Business Partnership" data-level="B">
   <summary><span class="qn">6</span><span class="qt">How do you partner with the CFO organization?</span><span class="meta"><span class="tag">Business Partnership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> CFO partnership is central to the role.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Regular forums: monthly with the controller or VP Finance, quarterly roadmap reviews with the CFO. I understand finance goals: close speed, controls, cost and forecast accuracy. We share KPIs and track value together. Ownership is clear: process owners sit in finance, IT owns the platform. I bring proactive ideas, automation, analytics and AI. And I'm visible during close and audit.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention joint ownership. It prevents the &quot;IT's system&quot; problem.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention joint ownership. It prevents the &quot;IT's system&quot; problem.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you know the CFO relationship is healthy?</p><p>When finance brings problems to you early instead of working around IT.</p></div></div>
 </details>
 <details class="q" data-topic="Business Partnership" data-level="B">
   <summary><span class="qn">7</span><span class="qt">How do you say no to a senior business leader?</span><span class="meta"><span class="tag">Business Partnership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> directors must protect priorities.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start by understanding the underlying need. I explain the constraints and trade-offs: cost, risk and other priorities. I offer alternatives, like a phased approach, a standard feature or a workaround. I use governance for prioritization, so it's not a personal rejection. And I follow up to keep the relationship strong.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;use governance, not personal rejection&quot;. It protects relationships.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;use governance, not personal rejection&quot;. It protects relationships.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep the relationship after saying no?</p><p>Offer an alternative or a timeline, so it's not a flat refusal.</p></div></div>
 </details>
-<details class="q" data-topic="Governance" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">How do you set up ERP governance?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Governance" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">How do you set up ERP governance?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> governance structure.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A steering committee of business and IT executives for the roadmap and budget. A design authority for solution decisions. A change advisory board for production changes. An intake and prioritization process with business process owners. Release management for quarterly updates and enhancements. Data governance for master data. And security and compliance reviews.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep each forum's purpose distinct. Overlapping forums slow decisions.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep each forum's purpose distinct. Overlapping forums slow decisions.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which governance body matters most?</p><p>The design authority, because it protects the platform from uncontrolled customization.</p></div></div>
 </details>
-<details class="q" data-topic="Governance" data-level="D">
-  <summary><span class="qn">9</span><span class="qt">How do you manage SOX compliance for the ERP environment?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Governance" data-level="D" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">How do you manage SOX compliance for the ERP environment?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> compliance accountability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;IT general controls: access management with provisioning, reviews and privileged access; change management with approval, testing, segregation and an emergency process; and operations with job and interface monitoring. Application controls in configuration, documented and tested. SoD monitoring and remediation. An evidence repository and an audit calendar. And a good relationship with internal and external audit, with findings remediated quickly.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the audit calendar. It turns compliance into routine.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the audit calendar. It turns compliance into routine.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common ERP SOX finding?</p><p>Access issues, like terminated users still active or SoD conflicts.</p></div></div>
 </details>
 <details class="q" data-topic="Budget" data-level="B">
   <summary><span class="qn">10</span><span class="qt">How do you build and manage the ERP budget?</span><span class="meta"><span class="tag">Budget</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> financial ownership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Run costs: Oracle subscriptions, OIC and OCI, staff, AMS vendors and tools. Change costs: projects and enhancements, each with a business case. I forecast monthly and manage variances. I optimize through license rationalization, vendor rates and automation that cuts support costs. And I communicate the value delivered against spend.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention showing value against spend. Budgets are easier to defend that way.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention showing value against spend. Budgets are easier to defend that way.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you defend the budget?</p><p>By linking spend to business outcomes and risk reduction.</p></div></div>
 </details>
 <details class="q" data-topic="Vendors" data-level="D">
   <summary><span class="qn">11</span><span class="qt">How do you select and manage a systems integrator for an Oracle program?</span><span class="meta"><span class="tag">Vendors</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> SI selection is high-stakes.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An RFP with clear scope, requirements and evaluation criteria: industry and module experience, team quality, methodology, price and references. Orals with the proposed team members, using scenario-based questions. A contract choice between fixed price and time and materials, with milestones tied to deliverables, key personnel commitments, quality gates and warranty. Governance through a joint PMO with weekly and monthly reviews and KPIs. And knowledge transfer and transition to support.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention meeting the proposed team. Proposals are sold by A-teams and staffed by others.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention meeting the proposed team. Proposals are sold by A-teams and staffed by others.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most important SI selection criterion?</p><p>The actual team they'll staff, not the sales team.</p></div></div>
 </details>
 <details class="q" data-topic="Vendors" data-level="B">
   <summary><span class="qn">12</span><span class="qt">How do you manage the relationship with Oracle?</span><span class="meta"><span class="tag">Vendors</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> vendor relationship at the executive level.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I keep a relationship with the account team, with quarterly business reviews. I use the support escalation process when needed. I influence the roadmap through Customer Connect and advisory boards. On the commercial side, renewals, license usage and new products, I negotiate with clear needs. And I hold Oracle accountable for SaaS service levels.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention negotiating with clear needs. It avoids buying shelfware.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention negotiating with clear needs. It avoids buying shelfware.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you get value from Oracle?</p><p>Customer Success services, product feedback forums and early access programs.</p></div></div>
 </details>
-<details class="q" data-topic="Delivery" data-level="B">
-  <summary><span class="qn">13</span><span class="qt">How do you ensure large ERP projects deliver value, not just go-live?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Delivery" data-level="B" data-top="1">
+  <summary><span class="qn">13</span><span class="qt">How do you ensure large ERP projects deliver value, not just go-live?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> value delivery.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A business case with measurable benefits and named owners. Benefit tracking after go-live, like close days and touchless rate. A focus on adoption: training, process changes and KPIs. A post-implementation review at three to six months. And a continuous improvement backlog.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention named benefit owners in the business. IT can't own business benefits alone.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention named benefit owners in the business. IT can't own business benefits alone.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who owns the benefits?</p><p>Named business owners, tracked after go-live.</p></div></div>
 </details>
-<details class="q" data-topic="Delivery" data-level="D">
-  <summary><span class="qn">14</span><span class="qt">A major ERP project is red: over budget and behind schedule. What do you do?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Delivery" data-level="D" data-top="1">
+  <summary><span class="qn">14</span><span class="qt">A major ERP project is red: over budget and behind schedule. What do you do?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> program recovery.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start with an independent health check of scope, plan, quality, team and vendor performance. I find the root causes: unclear requirements, poor estimates, data issues or resourcing. Then options: de-scope, phase, re-baseline, add or replace resources, or change the vendor's approach. The decision is made with the steering committee and sponsor. We re-plan with tighter governance and leading indicators. And I communicate transparently.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention an independent health check. Teams in trouble rarely see the whole picture.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention an independent health check. Teams in trouble rarely see the whole picture.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest decision on a red project?</p><p>Whether to reset scope, change the vendor team, or move the date.</p></div></div>
 </details>
 <details class="q" data-topic="Operations" data-level="B">
   <summary><span class="qn">15</span><span class="qt">How do you measure ERP service performance?</span><span class="meta"><span class="tag">Operations</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> service accountability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Stability: incidents by priority, mean time to restore and integration failures. SLA attainment and backlog. Change success rate. User satisfaction surveys. And the business KPIs we support, like close days, PO cycle time and order cycle time. I report monthly to business and IT leadership.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Include change success rate. It shows release quality.</p></div>
+<p class="tip"><strong>Tip:</strong> Include change success rate. It shows release quality.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which metric matters most?</p><p>Mean time to restore critical processes.</p></div></div>
 </details>
 <details class="q" data-topic="Operations" data-level="B">
   <summary><span class="qn">16</span><span class="qt">How do you prepare for and run quarterly Oracle updates across ERP?</span><span class="meta"><span class="tag">Operations</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> release management at scale.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A release calendar agreed with the business, avoiding close conflicts. Impact analysis by each process team, with feature adoption decisions. Automated regression for core flows and integrations. A go/no-go before the production update, with any issues raised to Oracle. Communication and training. And hypercare and a review after the update.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the go/no-go. It's how you stop a bad update reaching production.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the go/no-go. It's how you stop a bad update reaching production.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you protect during update weekends?</p><p>Month-end close and payroll dates.</p></div></div>
 </details>
 <details class="q" data-topic="Security" data-level="D">
   <summary><span class="qn">17</span><span class="qt">How do you approach ERP security and access management?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> security accountability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Role design with least privilege and SoD. Automated provisioning from HCM and IAM with approvals. Quarterly access reviews by managers and owners. Privileged access controls. Protection of sensitive data like bank details and personal data. Monitoring and periodic audits. And coordination with the CISO's organization.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention working with the CISO. Security isn't the ERP team's alone.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention working with the CISO. Security isn't the ERP team's alone.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest access risk?</p><p>Privileged accounts without monitoring.</p></div></div>
 </details>
 <details class="q" data-topic="Data" data-level="D">
   <summary><span class="qn">18</span><span class="qt">How do you build a data and analytics capability around ERP?</span><span class="meta"><span class="tag">Data</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> analytics is a common gap.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Operational reporting with OTBI and BIP, self-service with governance. An analytics platform, Fusion Data Intelligence or an enterprise data platform fed by BICC. KPIs defined with business owners. Data governance: owners, quality and definitions. And skills: BI developers, data engineers and business analysts.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention KPIs defined with business owners. It prevents dueling numbers.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention KPIs defined with business owners. It prevents dueling numbers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first analytics win?</p><p>Trusted finance KPIs with consistent definitions.</p></div></div>
 </details>
-<details class="q" data-topic="AI" data-level="D">
-  <summary><span class="qn">19</span><span class="qt">What is your AI strategy for the ERP platform?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI" data-level="D" data-top="1">
+  <summary><span class="qn">19</span><span class="qt">What is your AI strategy for the ERP platform?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a leadership vision question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Use Oracle's embedded AI first, agents, document recognition and predictions, because it's lower cost and risk. Prioritize use cases with measurable value: AP processing, collections, close insights and procurement assistance. Govern it with risk assessments, human-in-the-loop for financial actions, auditability and security. Run pilots with metrics and scale the ones that work. Upskill the team on AI Agent Studio and prompt design. And manage the change for users.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;embedded first&quot;. It shows cost and risk awareness.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;embedded first&quot;. It shows cost and risk awareness.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where would you start with AI?</p><p>Embedded Oracle AI on high-volume processes like AP.</p></div></div>
 </details>
 <details class="q" data-topic="M&amp;A" data-level="D">
   <summary><span class="qn">20</span><span class="qt">How would you integrate an acquired company's ERP?</span><span class="meta"><span class="tag">M&amp;A</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> M&amp;A is common.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Day one is reporting through a consolidation mapping, with no system changes. Then I assess systems, processes, data, contracts and people. The decision is to migrate to the Oracle template, use a TSA, or rarely keep their system. The plan is a template-based migration covering data, integrations, security and controls. The timeline follows synergy targets and the close calendar. And I retain key people with knowledge from the acquired company.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention retaining their key people. Knowledge walks out the door otherwise.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention retaining their key people. Knowledge walks out the door otherwise.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the day-one priority?</p><p>Consolidated reporting through mapping, not migration.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">21</span><span class="qt">How do you build a culture of accountability and continuous improvement?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> culture shaping.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Clear ownership for processes, systems and outcomes. Metrics shared openly with the team. Blameless post-mortems focused on learning. Recognition for improvements and initiative. And leaders, including me, modeling the behavior.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention leaders modeling it. Culture follows what leaders do.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention leaders modeling it. Culture follows what leaders do.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you show accountability yourself?</p><p>Own mistakes publicly and fix them.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">22</span><span class="qt">How do you retain top ERP talent?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> retention in a tight market.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Interesting work, like new capabilities, AI and architecture. Growth through technical and management career paths, certifications and mentoring. Recognition and fair pay benchmarked to the market. Flexibility and work-life balance. And stay interviews to spot risks early.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention stay interviews. They catch problems before resignations.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention stay interviews. They catch problems before resignations.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What retains people most?</p><p>Interesting work and growth paths.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">23</span><span class="qt">Tell me about the biggest ERP transformation you led.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">23</span><span class="qt">Tell me about the biggest ERP transformation you led.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> proof of scale.</p>
 <p><strong>Answer (structure, use your own facts):</strong></p>
 <p>&quot;Start with the scope: modules, entities, countries, users, budget, timeline, team size and partners. Then your role: what you were accountable for and the key decisions. Then challenges, like data, resistance or vendor issues, and how you handled them. Then outcomes: business KPIs and stability. And what you learned.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with scope numbers. They frame everything else.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with scope numbers. They frame everything else.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What numbers should you include?</p><p>Entities, users, budget and measurable outcomes.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">24</span><span class="qt">Describe a failure and what you learned.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> honesty and growth.</p>
 <p><strong>Answer (example, use your own):</strong></p>
 <p>&quot;I'd pick something real and significant, for example a go-live with poor data quality that delayed the first close. I'd own my part, explain what I did to recover, and what I changed permanently: data readiness gates, more mock conversions and formal business sign-off.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Make sure the permanent change is clear. It's the point of the story.</p></div>
+<p class="tip"><strong>Tip:</strong> Make sure the permanent change is clear. It's the point of the story.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes a failure answer strong?</p><p>Clear ownership and a specific change you made.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">25</span><span class="qt">How do you make decisions under pressure with conflicting stakeholder views?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> decision-making.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I gather the facts quickly and separate urgent from important. I identify who owns the decision and the criteria: risk, business impact and compliance. I consult key stakeholders briefly. Then I decide and explain the reasoning. And I review the decision afterwards.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention reviewing afterwards. It shows you learn from decisions.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention reviewing afterwards. It shows you learn from decisions.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you avoid paralysis?</p><p>Identify the decision owner and set a decision date.</p></div></div>
 </details>
-<details class="q" data-topic="Strategy" data-level="D">
-  <summary><span class="qn">26</span><span class="qt">How do you decide between EBS upgrade/extension and moving to Oracle Fusion Cloud?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Strategy" data-level="D" data-top="1">
+  <summary><span class="qn">26</span><span class="qt">How do you decide between EBS upgrade/extension and moving to Oracle Fusion Cloud?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a major strategic decision.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I look at business drivers: the pace of innovation, AI, user experience, the cost of running EBS and talent availability. EBS support timelines and infrastructure costs. The level of customization in EBS, which raises migration effort but also run cost. Total cost of ownership over five to seven years for both paths. And the organization's risk appetite and capacity for change. A hybrid is an option, for example Fusion Financials first and EBS SCM later. Then I present a recommendation with a phased plan.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Present it as a recommendation with phases. Executives want a path, not a debate.</p></div>
+<p class="tip"><strong>Tip:</strong> Present it as a recommendation with phases. Executives want a path, not a debate.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the strongest reason to move to Fusion?</p><p>Access to continuous innovation and embedded AI.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="D">
   <summary><span class="qn">27</span><span class="qt">How do you build the business case for an ERP investment?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> investment justification.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A problem statement and strategic alignment. Benefits: efficiency through freed capacity, working capital through DSO and inventory, cost avoidance from retiring legacy, risk reduction through controls, and revenue enablement. Costs: subscriptions, implementation, the internal team, change management and run costs. NPV, ROI and payback, with sensitivity analysis. Non-financial benefits. And named benefit owners in the business.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention sensitivity analysis. CFOs test the assumptions.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention sensitivity analysis. CFOs test the assumptions.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What benefit is most credible?</p><p>Freed capacity measured against a baseline.</p></div></div>
 </details>
 <details class="q" data-topic="Delivery" data-level="D">
   <summary><span class="qn">28</span><span class="qt">How do you structure a large ERP program?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> program design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An executive sponsor, usually the CFO or COO, and a steering committee. A program director with a PMO. Workstreams for Finance, SCM, HCM, Integrations, Data, Testing, Change and Training, and Technical. A design authority. Business process owners with decision rights. Phases and gates. Risk and issue management. And benefits management.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention business process owners with decision rights. Programs stall without them.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention business process owners with decision rights. Programs stall without them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who should sponsor an ERP program?</p><p>A business executive, usually the CFO or COO.</p></div></div>
 </details>
-<details class="q" data-topic="Delivery" data-level="D">
-  <summary><span class="qn">29</span><span class="qt">What are your go/no-go criteria for an ERP go-live?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Delivery" data-level="D" data-top="1">
+  <summary><span class="qn">29</span><span class="qt">What are your go/no-go criteria for an ERP go-live?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> go-live discipline.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Testing: SIT and UAT completed, no open critical or high defects, and workarounds documented for mediums. Data: final mock reconciled with business sign-off. Cutover rehearsal within the planned time. Integrations tested with partners. Security: roles provisioned and tested, and SoD reviewed. Training completed and super users ready. A support model ready with hypercare and a war room. Business readiness confirmed by process owners. And a rollback plan.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention business readiness confirmed by process owners. IT readiness alone isn't enough.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention business readiness confirmed by process owners. IT readiness alone isn't enough.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which criterion is non-negotiable?</p><p>Successful payment and payroll tests.</p></div></div>
 </details>
 <details class="q" data-topic="Operations" data-level="B">
   <summary><span class="qn">30</span><span class="qt">How do you run hypercare after a major go-live?</span><span class="meta"><span class="tag">Operations</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> stabilization leadership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A war room with business and IT and daily stand-ups. Triage by business impact with fast decisions. Monitoring of critical processes: payments, shipping and close. A KPI dashboard of tickets, backlog and critical process status. Communication to users and leadership. And exit criteria for moving to steady-state support.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention exit criteria. Hypercare without an end becomes permanent.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention exit criteria. Hypercare without an end becomes permanent.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When does hypercare end?</p><p>After stable closes and incident volumes back to normal.</p></div></div>
 </details>
 <details class="q" data-topic="Governance" data-level="B">
   <summary><span class="qn">31</span><span class="qt">How do you balance standardization with business units wanting local differences?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> template governance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Leadership agrees global template principles. A variation process requires business or regulatory justification and approval by the design authority. Configurable variations by BU are preferred over extensions. The cost of each variation is made visible. And there's a periodic review to remove variations nobody needs anymore.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention showing the cost of variations. It discourages unnecessary ones.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention showing the cost of variations. It discourages unnecessary ones.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you approve a local variation?</p><p>Only with a legal or strong business case.</p></div></div>
 </details>
 <details class="q" data-topic="Governance" data-level="B">
   <summary><span class="qn">32</span><span class="qt">How do you handle audit findings related to ERP?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> remediation leadership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I understand the finding and its root cause. I set a remediation plan with owners and dates, and interim mitigating controls. I provide evidence of remediation and testing. I prevent recurrence with process or automation changes. And I report progress to the audit committee through the CIO or CFO when needed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention interim mitigating controls. They reduce risk while the fix is built.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention interim mitigating controls. They reduce risk while the fix is built.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prevent repeat findings?</p><p>Fix the root cause, not just the symptom.</p></div></div>
 </details>
 <details class="q" data-topic="Vendors" data-level="B">
   <summary><span class="qn">33</span><span class="qt">How do you evaluate an AMS (application managed services) provider's performance?</span><span class="meta"><span class="tag">Vendors</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> vendor accountability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;SLA metrics: response and resolution times and backlog. Quality: reopened tickets, repeat incidents and failed changes. Proactivity: improvement ideas and automation delivered. Knowledge: documentation quality and staff continuity. Business satisfaction. And commercials: value for money, possibly moving to outcome-based pricing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention proactivity. Good AMS vendors reduce tickets, not just close them.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention proactivity. Good AMS vendors reduce tickets, not just close them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a red flag in AMS performance?</p><p>High reopened tickets and repeat incidents.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">34</span><span class="qt">How do you lead managers, not just individual contributors?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leading leaders.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I set direction and outcomes and let managers decide how. I coach them on people leadership and stakeholder management. I keep practices consistent across teams, like performance and hiring. I run a weekly leadership team forum. And I develop them for future roles.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;outcomes, not how&quot;. It's the shift from managing work to leading leaders.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;outcomes, not how&quot;. It's the shift from managing work to leading leaders.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you develop managers?</p><p>Coaching on people leadership and delegation.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">35</span><span class="qt">How do you reskill an ERP team for cloud and AI?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> capability transformation.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I assess current skills against future needs: Fusion, OIC, Visual Builder, data and AI agents. I set learning paths and certifications, and allocate time for learning. I run hands-on pilots and hackathons. I hire for key gaps. And I recognize new skills in career progression.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention allocating time for learning. Without it, reskilling doesn't happen.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention allocating time for learning. Without it, reskilling doesn't happen.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest skill shift?</p><p>From configuration to designing agents and extensions.</p></div></div>
 </details>
 <details class="q" data-topic="Business Partnership" data-level="B">
   <summary><span class="qn">36</span><span class="qt">How do you show the value of the ERP organization to executives?</span><span class="meta"><span class="tag">Business Partnership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> demonstrating value.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Business outcomes tied to ERP initiatives: close days, cost per invoice, DSO and inventory. Stability and service metrics. Cost transparency and the savings achieved. Roadmap progress. And a quarterly value review with the CFO and CIO.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with business outcomes. Executives care less about ticket counts.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with business outcomes. Executives care less about ticket counts.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do executives care about?</p><p>Business outcomes like close days and DSO.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="D">
   <summary><span class="qn">37</span><span class="qt">How would you approach rationalizing multiple ERPs after acquisitions?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a strategic consolidation question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I inventory the ERPs: costs, users, processes and contracts. The typical target is one global Oracle Fusion platform. I prioritize migrations by cost savings, risk, synergy targets and complexity. The roadmap uses a template for each migration. In the meantime, reporting is consolidated. And there's a business case with executive sponsorship.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention interim consolidated reporting. Leadership needs visibility before migrations finish.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention interim consolidated reporting. Leadership needs visibility before migrations finish.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the usual target?</p><p>One global ERP with a standard template.</p></div></div>
 </details>
 <details class="q" data-topic="Operations" data-level="B">
   <summary><span class="qn">38</span><span class="qt">How do you approach continuous improvement after ERP stabilization?</span><span class="meta"><span class="tag">Operations</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> post-stabilization value.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I analyze process data: holds, exceptions, cycle times and manual work. I prioritize improvements by value. I adopt new Oracle features each quarter. I automate with AI agents, auto-approvals and auto-reconciliation. And I measure and share the results.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention using process data. It finds the real improvement opportunities.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention using process data. It finds the real improvement opportunities.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do improvements come from?</p><p>Process data like holds and exceptions.</p></div></div>
 </details>
 <details class="q" data-topic="Data" data-level="D">
   <summary><span class="qn">39</span><span class="qt">How do you approach master data governance at the enterprise level?</span><span class="meta"><span class="tag">Data</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> enterprise data governance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Data owners by domain: procurement for suppliers, finance or sales for customers, supply chain for items. A governance council with standards and KPIs. Tools: Oracle workflows like supplier registration and NIRs, plus data quality monitoring. Stewards with time allocated to the work. And a clear link to business outcomes, like fewer payment errors and more accurate planning.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention stewards with time allocated. Governance fails when it's nobody's real job.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention stewards with time allocated. Governance fails when it's nobody's real job.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who owns supplier data?</p><p>Procurement.</p></div></div>
 </details>
 <details class="q" data-topic="Risk" data-level="B">
   <summary><span class="qn">40</span><span class="qt">What are the top ERP risks you monitor as Director?</span><span class="meta"><span class="tag">Risk</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> risk awareness at the top.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Operational: outages of critical processes like payments, payroll and shipping. Security: access abuse and data leaks. Compliance: SOX, tax and privacy. Change: quarterly updates and big projects. People: key-person dependency. Vendor: partner performance and Oracle roadmap changes. Financial: budget overruns. I keep a risk register reviewed monthly with mitigation owners.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the monthly risk register. It shows you manage risk actively.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the monthly risk register. It shows you manage risk actively.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which risk keeps you up at night?</p><p>A payment or payroll outage.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">41</span><span class="qt">How do you handle a situation where your CIO and CFO have different priorities for ERP?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> navigating executive tension.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I understand both priorities and what drives them: the CIO often cares about platform cost, security and standardization; the CFO about speed, controls and insight. I look for common ground and trade-offs. I present options with their impact to both of them together. I use the steering committee for the decision. Then I execute and communicate consistently.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;present to both together&quot;. Separate conversations create mixed messages.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;present to both together&quot;. Separate conversations create mixed messages.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you reconcile CIO and CFO priorities?</p><p>Find options that serve both and escalate trade-offs transparently.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">42</span><span class="qt">Tell me about a time you built a team from scratch.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> organization building.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;After go-live, a partner had run support, and the company wanted an internal ERP center of excellence. I defined the roles, hired a mix of experienced people and growth hires, built onboarding, transitioned knowledge from the partner, and set up support, release and governance processes. In nine months we had insourced L2 support, cut vendor costs by 35%, and improved satisfaction.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the outcome numbers. They show the team delivered.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the outcome numbers. They show the team delivered.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What was the outcome?</p><p>A stable in-house team with lower support costs.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">43</span><span class="qt">How do you keep your team motivated during long, difficult programs?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> sustaining morale.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I connect the work to its purpose and business impact. I celebrate milestones. I protect the team from unnecessary chaos with clear priorities. I listen and act on concerns. And I keep a sustainable pace and recognize effort.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention acting on concerns. Listening without action hurts morale.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention acting on concerns. Listening without action hurts morale.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What keeps teams going?</p><p>Connecting work to impact and celebrating milestones.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">44</span><span class="qt">What would your business partners say about you?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reputation and self-awareness.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;I'd hope they'd say I'm reliable, transparent, understand their business, bring ideas and deliver. For example, after we cut the month-end close from eight days to five, our controller told her CFO that she no longer worried about the ERP side of close. I'd also mention one area I've worked on: I used to share too much detail in steering meetings, so I moved to a one-page format with the decisions needed at the top, and the feedback has been much better.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use a real quote or outcome. It's more convincing than adjectives.</p></div>
+<p class="tip"><strong>Tip:</strong> Use a real quote or outcome. It's more convincing than adjectives.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would you want them to say?</p><p>Reliable, honest and focused on their outcomes.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="B">
   <summary><span class="qn">45</span><span class="qt">How do you decide what to build on Oracle vs buy a best-of-breed SaaS tool?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> platform strategy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I look at fit with Oracle's capabilities today and on the roadmap. Whether the capability is a differentiator for the business. Integration cost and data consistency. Total cost of ownership and the vendor's viability. User experience. And our platform strategy, fewer vendors versus best tools. I decide with architecture and the business owners.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention differentiation. Buy best-of-breed only where it gives an edge.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention differentiation. Buy best-of-breed only where it gives an edge.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you buy best-of-breed?</p><p>When Oracle can't meet a critical need.</p></div></div>
 </details>
-<details class="q" data-topic="Operations" data-level="D">
-  <summary><span class="qn">46</span><span class="qt">How would you reduce ERP support costs by 20% without hurting service?</span><span class="meta"><span class="tag">Operations</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Operations" data-level="D" data-top="1">
+  <summary><span class="qn">46</span><span class="qt">How would you reduce ERP support costs by 20% without hurting service?</span><span class="meta"><span class="tag">Operations</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cost optimization.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I analyze ticket data: top categories, repeat incidents and how-to questions. I eliminate root causes, and build a self-service knowledge base and training. I automate with monitoring, auto-remediation and chatbots or AI agents for user questions. I optimize vendors through rates and outcome-based contracts. I retire unused customizations and reports. And I track SLAs and satisfaction throughout.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention how-to questions. They're often a big share of tickets and easy to cut.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention how-to questions. They're often a big share of tickets and easy to cut.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where's the biggest saving?</p><p>Eliminating repeat incidents and how-to tickets.</p></div></div>
 </details>
 <details class="q" data-topic="Delivery" data-level="B">
   <summary><span class="qn">47</span><span class="qt">How do you manage dependencies between ERP and other enterprise programs (CRM, data platform)?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cross-program coordination.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An integrated roadmap across the programs. Architecture alignment on integration standards and master data ownership. Joint planning for shared milestones. Dependency tracking in the PMO with escalation paths. And regular syncs between program leaders.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention master data ownership. It's the most common cross-program conflict.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention master data ownership. It's the most common cross-program conflict.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's key to managing dependencies?</p><p>An integrated roadmap.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">48</span><span class="qt">How would you govern AI agents acting in Oracle ERP?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> governance is what makes AI acceptable to audit.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Every agent use case goes through approval by the business owner, security and compliance. Agents get least-privilege roles and their actions are logged. Financial commitments need a human in the loop. I monitor accuracy, exceptions and drift. There's an incident process for wrong actions. And the policy follows the corporate AI governance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention an incident process. It shows you've planned for things going wrong.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention an incident process. It shows you've planned for things going wrong.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who approves agent use cases?</p><p>Business owner, security and compliance.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">49</span><span class="qt">Why are you the right Director for our ERP organization?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">49</span><span class="qt">Why are you the right Director for our ERP organization?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a closing question.</p>
 <p><strong>Answer (tailor it):</strong></p>
 <p>&quot;I've worked with platforms, programs and teams like yours. I've delivered measurable business outcomes and service improvements. I've built teams and developed people. Finance and supply chain leaders trust me. And I'm focused on what's next: cloud, automation and AI. Then I'd tie it to their situation, whether it's a transformation, stabilization or growth.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tailor the last part to what they told you in the interview.</p></div>
+<p class="tip"><strong>Tip:</strong> Tailor the last part to what they told you in the interview.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you tailor this answer?</p><p>Match your experience to their specific challenges.</p></div></div>
 </details>
 <details class="q" data-topic="Governance" data-level="B">
   <summary><span class="qn">50</span><span class="qt">How do you manage technical debt in the ERP landscape?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> platform health.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I inventory customizations, extensions, legacy integrations and unused reports. I assess their risk and cost. I allocate roadmap capacity, around 15% to 20%. I retire or replace items with standard features. And I prevent new debt through the design authority.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention preventing new debt. Paying it down is pointless if it keeps growing.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention preventing new debt. Paying it down is pointless if it keeps growing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you fund debt reduction?</p><p>A fixed share of capacity every quarter.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">51</span><span class="qt">What is your strategy for AI agents on the Oracle ERP platform?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a strategy question for senior roles.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Start with Oracle-delivered agents and AI Agent Studio, for native security and lower risk. Build a portfolio of use cases across AP, close, procurement, order management and HR, scored by value and risk. Govern with risk tiers, human approval for financial and commitment actions, evaluations, monitoring and audit involvement. Build a small agent team inside the ERP center of excellence. And measure value, like cycle times and productivity, against cost, including premium LLM tokens.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention scoring by value and risk. It's how you pick what to build first.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention scoring by value and risk. It's how you pick what to build first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why start with delivered agents?</p><p>Native security and lower risk.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">52</span><span class="qt">How do you decide between Oracle AI Agent Studio and a general enterprise AI platform?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> many companies have both, and overlap is a risk.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For processes centered on Fusion data, I use AI Agent Studio: it inherits Fusion security, uses business objects, has delivered templates, and Oracle supports it. For cross-system assistants and non-ERP use cases, the enterprise AI platform. I connect them with A2A, MCP and APIs instead of duplicating. I decide per use case, and I wouldn't build an ERP agent outside Fusion without a clear reason.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;connect, don't duplicate&quot;. It's the architecture principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;connect, don't duplicate&quot;. It's the architecture principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use an enterprise AI platform?</p><p>For processes spanning many non-Oracle systems.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">53</span><span class="qt">How do you fund and govern the Redwood transition?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> Redwood work needs money and a plan.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd treat it as a program with a budget for VBS rebuilds, testing and training. I'd use it to simplify, retiring personalizations nobody needs. The timeline follows Oracle's classic retirement dates. Governance means change control for VBS extensions and automated regression testing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Present it as a chance to simplify. It makes the budget easier to approve.</p></div>
+<p class="tip"><strong>Tip:</strong> Present it as a chance to simplify. It makes the budget easier to approve.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you fund Redwood?</p><p>As a program with its own budget.</p></div></div>
 </details>
 <details class="q" data-topic="Risk" data-level="D">
   <summary><span class="qn">54</span><span class="qt">What new risks do AI agents add to ERP, and how do you manage them?</span><span class="meta"><span class="tag">Risk</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AI governance at director level.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Wrong actions or answers, managed with workflows, approvals and evaluations. Data exposure, managed with least privilege, inherited security and a credential store for external access. Audit and compliance, managed with traces and control documentation. Cost overruns, managed with token monitoring. And dependency on vendors and models, managed with periodic re-evaluation.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Pair each risk with a control. It's the structure leaders expect.</p></div>
+<p class="tip"><strong>Tip:</strong> Pair each risk with a control. It's the structure leaders expect.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main new risk?</p><p>Wrong actions taken by agents.</p></div></div>
 </details>
 <details class="q" data-topic="Business Partnership" data-level="B">
   <summary><span class="qn">55</span><span class="qt">How would you present AI agent results to the CFO after a pilot?</span><span class="meta"><span class="tag">Business Partnership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> executive communication on AI.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd start with the problem and the baseline. Then the results: time saved, cycle time, accuracy and user feedback. Then costs, risks and the control design. And a recommendation: scale, adjust or stop, plus the next use cases.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Be willing to recommend stopping. It makes your scale recommendations credible.</p></div>
+<p class="tip"><strong>Tip:</strong> Be willing to recommend stopping. It makes your scale recommendations credible.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does the CFO want to see?</p><p>Measured results against a baseline.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -496,6 +503,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

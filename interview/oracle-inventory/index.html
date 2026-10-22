@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,6 +97,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>57</b> questions</span>
     <span class="stat"><b>26</b> basic</span>
     <span class="stat"><b>31</b> in-depth</span>
+    <span class="stat"><b>5</b> top questions</span>
   </div>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button>
@@ -105,406 +112,406 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <button data-f="Returns">Returns</button>
     <button data-f="SCM Basics">SCM Basics</button>
   </div>
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 5 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Setup" data-level="D">
-  <summary><span class="qn">1</span><span class="qt">What is the difference between locator control options?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Setup" data-level="D" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">What is the difference between locator control options?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> locator control decides how disciplined the warehouse can be.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;There are four options. No locator control means stock is tracked only to the subinventory. Prespecified means locators must exist before they can be used. Dynamic entry means users can create a locator on the fly while transacting. Item level means it follows the item's own setting. It can be set at the organization, subinventory or item level. For a controlled warehouse I use prespecified, because dynamic entry quickly fills the system with typos like A-01-1 and A-1-01 that are the same bin.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the typo example. It explains why prespecified is the safe choice.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the typo example. It explains why prespecified is the safe choice.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which locator control would you choose for a busy warehouse?</p><p>Prespecified, so stock only goes to valid, defined locations. Dynamic entry is fast but tends to create messy, misspelled locators.</p></div></div>
 </details>
-<details class="q" data-topic="Transactions" data-level="D">
-  <summary><span class="qn">2</span><span class="qt">What is a move order and when is it used?</span><span class="meta"><span class="tag">Transactions</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Transactions" data-level="D" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">What is a move order and when is it used?</span><span class="meta"><span class="tag">Transactions</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> move orders sit behind picking and replenishment.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A move order is a request to move material within an organization. It's used for replenishment, for example topping up a forward pick area; for material issue requests to a department; for pick waves when picking sales orders; and for picking components for work orders. It can need approval, then it's allocated to source locators, and the transaction happens when the move is confirmed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that pick release creates move orders. It links the concept to shipping.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that pick release creates move orders. It links the concept to shipping.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if a replenishment move order isn't allocated?</p><p>There may not be enough stock in the source, or picking rules exclude it. I check on-hand and picking rules before releasing again.</p></div></div>
 </details>
 <details class="q" data-topic="Transactions" data-level="B">
   <summary><span class="qn">3</span><span class="qt">What are transaction reasons and why use them?</span><span class="meta"><span class="tag">Transactions</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reasons turn adjustments into data you can act on.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Transaction reasons are codes that explain why a transaction happened, like damage, count correction, sample or scrap. They're used for reporting, for approvals, and for root-cause analysis. For example, if most write-offs at one warehouse are 'damaged in handling', the fix is in the warehouse, not the system.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give an example of a reason code leading to a fix. That's the value.</p></div>
+<p class="tip"><strong>Tip:</strong> Give an example of a reason code leading to a fix. That's the value.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do reasons help with shrinkage?</p><p>Adjustments coded as damage, theft or count error show which causes drive losses, so the warehouse can fix the right problem.</p></div></div>
 </details>
-<details class="q" data-topic="Counts" data-level="B">
-  <summary><span class="qn">4</span><span class="qt">What is a physical inventory and its key steps in Fusion?</span><span class="meta"><span class="tag">Counts</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Counts" data-level="B" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">What is a physical inventory and its key steps in Fusion?</span><span class="meta"><span class="tag">Counts</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a year-end task with audit visibility.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define the physical inventory with the subinventories in scope and whether transactions are frozen. Then I take a snapshot of on-hand. Then generate tags, count, and enter the tag counts. Adjustments are reviewed and approved, with tolerances deciding what needs approval. Then I post the adjustments and reconcile the value change with finance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the finance reconciliation. Auditors focus on the value change.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the finance reconciliation. Auditors focus on the value change.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why freeze transactions during a physical count?</p><p>So movement during counting doesn't distort the comparison between snapshot and count. If you can't freeze, you need careful cutoff handling.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">5</span><span class="qt">What is the Receiving inbound flow with ASNs and inspection?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> inbound flow affects speed and quality.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The supplier sends an ASN, so we know what's coming and receipts are created against its lines. If the item needs inspection, it goes to inspection and is accepted or rejected, often with Quality integration. Accepted goods are put away or delivered to a subinventory and locator. Exceptions include over- or under-receipts within tolerances, and returning damaged goods to the supplier.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say receiving against an ASN is faster and more accurate. That's why it's worth pushing suppliers to send them.</p></div>
+<p class="tip"><strong>Tip:</strong> Say receiving against an ASN is faster and more accurate. That's why it's worth pushing suppliers to send them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to rejected items after inspection?</p><p>They're returned to the supplier or moved to a quarantine subinventory, and the supplier is charged back through a debit memo or credit.</p></div></div>
 </details>
-<details class="q" data-topic="Shipping" data-level="D">
-  <summary><span class="qn">6</span><span class="qt">What happens at ship confirm?</span><span class="meta"><span class="tag">Shipping</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Shipping" data-level="D" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">What happens at ship confirm?</span><span class="meta"><span class="tag">Shipping</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> ship confirm triggers inventory, costing and billing.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;At ship confirm, the delivery is confirmed as shipped, with quantities, lots or serials, carrier and tracking number. Inventory is issued, which drives cost accounting for COGS or deferred COGS. The order lines are updated to shipped, which triggers billing through orchestration. Documents are produced, like the bill of lading, packing slip and an ASN to the customer. Any short shipment creates a backorder.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it triggers billing. It shows you see the link to finance.</p></div>
+<p class="tip"><strong>Tip:</strong> Say it triggers billing. It shows you see the link to finance.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if ship confirm fails for a delivery?</p><p>Usually a reservation or on-hand issue, like lots not available, or a missing ship method. I check the exception message and on-hand before retrying.</p></div></div>
 </details>
-<details class="q" data-topic="Logistics" data-level="D">
-  <summary><span class="qn">7</span><span class="qt">How do you handle in-transit inventory between orgs?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Logistics" data-level="D" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">How do you handle in-transit inventory between orgs?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> in-transit stock is easy to lose track of.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;With an in-transit shipping network, a shipment from the source org puts the stock in transit, owned by the sender or receiver depending on the FOB or ownership setting. Receipt at the destination completes the transfer. Accounting goes through in-transit accounts, and if the orgs belong to different legal entities, intercompany entries too. I monitor in-transit aging, because a shipment that sits in transit for 60 days usually means a missed receipt.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention aging. It's how you catch missed receipts.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention aging. It's how you catch missed receipts.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who owns stock in transit under FOB shipping point?</p><p>The receiving org, from the moment it ships, so it's valued in their in-transit inventory.</p></div></div>
 </details>
 <details class="q" data-topic="Interview" data-level="B">
   <summary><span class="qn">8</span><span class="qt">What should an inventory contractor be ready to discuss?</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a preparation question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd be ready to talk about org, subinventory and locator design, and lot and serial control decisions; cycle counting and accuracy programs; receiving, shipping and transfer flows with their accounting; converting on-hand with lots and serials; and one real troubleshooting story, like negative on-hand, uncosted transactions, or stuck move orders, with how I fixed it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Prepare the troubleshooting story in STAR form. It's often asked directly.</p></div>
+<p class="tip"><strong>Tip:</strong> Prepare the troubleshooting story in STAR form. It's often asked directly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a good inventory accuracy metric to quote?</p><p>Cycle count accuracy, for example raising it from 92% to 98% by count tolerance tuning and root-cause analysis.</p></div></div>
 </details>
 <details class="q" data-topic="Logistics" data-level="D">
   <summary><span class="qn">9</span><span class="qt">How would you architect transportation and global trade with Oracle?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior logistics design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;OTM handles transportation planning, tendering, carrier rates and freight settlement. GTM handles trade compliance: restricted party screening, classification like HTS and ECCN, licenses, customs filings and duty management. Fusion Order Management and Shipping integrate natively with both. Carriers connect by EDI or APIs, and customs brokers too. Landed cost management feeds the duties and freight into costing. And shipment tracking feeds visibility to customers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate OTM and GTM clearly. They're often confused.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate OTM and GTM clearly. They're often confused.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When do you need GTM?</p><p>When export screening, licenses and customs documentation are significant.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">10</span><span class="qt">How would you design inventory visibility across Oracle and non-Oracle locations?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> most companies have stock outside their ERP, at 3PLs or stores.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion holds on-hand for the orgs it manages. External locations, like 3PLs, consignment sites and stores, send snapshots or transactions into Fusion as external orgs, or into a visibility layer. Global Order Promising collects supply from all sources so promises are realistic. Control tower dashboards show availability and aging. And I'd agree the latency, like hourly or daily, plus a reconciliation process with each external location.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention agreeing latency. Everyone assumes real time until it isn't.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention agreeing latency. Everyone assumes real time until it isn't.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How fresh does external on-hand need to be?</p><p>As fresh as the promising use case needs, often hourly.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">11</span><span class="qt">How would you design an inventory optimization approach?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> inventory optimization frees cash.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd segment items by value and variability, ABC and XYZ, and set service level targets by segment. Safety stock is calculated statistically from demand and lead-time variability. Order quantities balance holding cost against ordering cost. For a network of DCs, I'd think multi-echelon, deciding where buffers should sit. I'd monitor excess and obsolete stock with disposition rules. The tools can be Fusion Replenishment Planning or a specialist optimization tool.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with segmentation. One safety stock rule for every item is the usual mistake.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with segmentation. One safety stock rule for every item is the usual mistake.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's XYZ classification?</p><p>Grouping items by demand variability.</p></div></div>
 </details>
 <details class="q" data-topic="Returns" data-level="D">
   <summary><span class="qn">12</span><span class="qt">How would you architect reverse logistics at scale?</span><span class="meta"><span class="tag">Returns</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> returns are costly, especially in e-commerce.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd set return authorization policies by product and customer, with an online return portal. Returns are routed to the right place: a DC, repair center or back to the supplier. Inspection and disposition rules decide whether to restock, refurbish, recycle, scrap or return to vendor. Credit timing rules say whether credit is given at authorization, receipt or inspection. Refurbishment runs through work orders with serial tracking. And analytics on return reasons and cost drive fixes upstream.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention credit timing. It's a business decision with real cash impact.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention credit timing. It's a business decision with real cash impact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the value of disposition rules?</p><p>Fast routing to restock, refurbish or scrap.</p></div></div>
 </details>
 <details class="q" data-topic="Logistics" data-level="D">
   <summary><span class="qn">13</span><span class="qt">What is cross-docking and how would you support it?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cross-docking needs tight data and timing.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Cross-docking moves goods from inbound receiving straight to outbound shipping with little or no storage. It needs visibility of incoming supply through ASNs and of outgoing demand. Planned cross-dock is known at receipt; opportunistic cross-dock is decided by the warehouse system. It's supported in Fusion Warehouse Management or a specialist WMS. The benefits are faster flow and lower storage cost, but it only works with accurate ASNs and tight timing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it depends on ASN accuracy. That's the honest constraint.</p></div>
+<p class="tip"><strong>Tip:</strong> Say it depends on ASN accuracy. That's the honest constraint.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes cross-docking work?</p><p>Accurate ASNs and fast receiving.</p></div></div>
 </details>
 <details class="q" data-topic="SCM Basics" data-level="B">
   <summary><span class="qn">14</span><span class="qt">What modules make up Oracle Fusion SCM?</span><span class="meta"><span class="tag">SCM Basics</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a warm-up question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Product Hub for items and structures. Procurement: purchasing, self-service procurement, sourcing, supplier portal and qualification. Inventory Management for orgs, transactions and counts. Order Management with Global Order Promising. Logistics: shipping, receiving and transportation. Cost Management for item cost, receipt accounting and cost accounting. Manufacturing for work definitions and work orders. And Supply Chain Planning for demand, supply and replenishment.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Then say which ones you've worked on and how deeply. That's what they really want to know.</p></div>
+<p class="tip"><strong>Tip:</strong> Then say which ones you've worked on and how deeply. That's what they really want to know.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which SCM module do most projects implement first?</p><p>Procurement and Inventory, usually with Product Hub for items, because purchasing and stock are needed before planning or manufacturing make sense.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">15</span><span class="qt">What is the difference between an inventory organization, a subinventory and a locator?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic structure question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An inventory organization is a plant, warehouse or DC that holds items and inventory, with its own item attributes, costing and calendar. A subinventory is an area inside it, physical or logical, like Stores, Finished Goods, Staging or MRB, and it can be quantity-tracked or expense. A locator is a specific bin or shelf inside a subinventory, like Row 3, Rack 2, Bin 5. So the hierarchy is organization, then subinventory, then locator.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a locator example. It makes the hierarchy easy to see.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a locator example. It makes the hierarchy easy to see.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you add locator control to a subinventory?</p><p>When the warehouse needs to know the exact bin, like high-volume picking areas. Small stockrooms may not need it.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">16</span><span class="qt">What is an item master organization and why do items exist in it?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> item master design avoids duplicate items.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Items are created once in the item master organization, which in Fusion is the master org in Product Hub, and then assigned to the inventory orgs that use them. Master-level attributes, like description and primary UOM, must be the same everywhere. Org-level attributes, like planner, min-max levels and lead times, can differ by org. That avoids duplicate items and keeps definitions consistent. Item classes and templates default attributes when items are created.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one master and one org-level attribute. It shows you know the split.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one master and one org-level attribute. It shows you know the split.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if you assign an item to an org without setting org-level attributes?</p><p>It inherits defaults from the master or template, which might be wrong for that site, like planning method or lead times. I review org-controlled attributes on assignment.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">17</span><span class="qt">What are the main inventory transaction types?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic inventory question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Receipts from purchase orders or transfers. Issues to work orders, accounts or sales orders. Subinventory transfers within an org. Interorganization transfers between orgs, direct or in-transit. Miscellaneous receipts and issues, adjusting against an account. And cycle count and physical inventory adjustments. Each has a transaction type, source type and action, and each creates cost accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that each creates accounting. It shows you see the finance side.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that each creates accounting. It shows you see the finance side.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which transaction would you use to scrap damaged stock?</p><p>A miscellaneous issue with a scrap reason code to a scrap expense account, so it's tracked and costed correctly.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">18</span><span class="qt">What is lot and serial control?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> traceability is critical in regulated industries.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Lot control tracks a batch of items with the same properties, like made together or with the same expiry date. It's standard in pharma and food, and lots can carry expiry dates, grades and status. Serial control tracks each unit with its own number, like equipment. Serial numbers can be assigned at receipt, predefined, or at sales order issue. Both give full traceability, called genealogy: where a lot or serial came from and where it went. Control is set on the item and is hard to change once transactions exist, so it has to be decided before go-live.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stress deciding before go-live. Changing it later is very painful.</p></div>
+<p class="tip"><strong>Tip:</strong> Stress deciding before go-live. Changing it later is very painful.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Can you add lot control to an item after it has stock?</p><p>Generally not while it has on-hand or open transactions. You'd need to clear stock, change the attribute, then receive it back with lots, so decide early.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">19</span><span class="qt">What is the difference between cycle counting and physical inventory?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic accuracy question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Cycle counting counts a small set of items regularly, often by ABC class, with A items counted most often. It keeps records accurate without stopping operations. A physical inventory counts everything at once, often at year end, usually freezing transactions. The cycle count process is: define the count with classes and frequency, generate schedules and count sequences, enter counts, recount anything out of tolerance, and approve adjustments, which post to inventory and accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say cycle counting avoids shutting down. That's why companies prefer it.</p></div>
+<p class="tip"><strong>Tip:</strong> Say cycle counting avoids shutting down. That's why companies prefer it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How often would you count A items?</p><p>Often monthly or more, B quarterly and C once or twice a year, adjusted for the warehouse's accuracy goals.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">20</span><span class="qt">How does min-max planning work?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a simple, common replenishment method.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I set a minimum and maximum for an item in an org or subinventory. The min-max process checks on-hand plus on-order, and if it's below the minimum, it suggests or creates a replenishment order to bring it up to the maximum. Replenishment can be a purchase requisition, a transfer from another org, or a work order. Fixed lot multiples and minimum order quantities adjust the quantity. For example, min 50, max 200, on-hand plus on-order of 40, so it orders 160. It works well for stable-demand items like spare parts and consumables.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Do the calculation out loud. It proves you understand it.</p></div>
+<p class="tip"><strong>Tip:</strong> Do the calculation out loud. It proves you understand it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main risk of min-max for seasonal items?</p><p>Fixed levels don't anticipate demand spikes, so you stock out in peak season or overstock after. Seasonal items need forecast-based planning.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">21</span><span class="qt">What is a reservation?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reservations explain &quot;why can't I ship this, it's on-hand?&quot;</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A reservation holds on-hand quantity for a specific demand, like a sales order or work order, so nothing else can use it. It can be at org, subinventory, lot, locator or serial level. It reduces available to reserve and available to transact. Reservations are created manually or automatically, for example during scheduling. The key difference: on-hand is what's physically there; available is on-hand minus reservations and other holds.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with on-hand vs available. It's the confusion users bring to support.</p></div>
+<p class="tip"><strong>Tip:</strong> End with on-hand vs available. It's the confusion users bring to support.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to a reservation if the order is cancelled?</p><p>The reservation is released, so the stock becomes available to other demand.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">22</span><span class="qt">What are the receipt routings?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> routing affects when stock is available and when accruals happen.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Direct delivery receives and delivers in one step to the final destination. Standard receipt receives first to a receiving location, then delivers in a separate step. Inspection required receives, inspects to accept or reject, then delivers. The routing defaults from the PO schedule, item, supplier or receiving options. The choice affects when inventory becomes available and, with accrue at receipt, when the accrual is booked.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the accrual timing. It shows you see the accounting impact.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the accrual timing. It shows you see the accounting impact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which routing would you use for medical devices that need QA checks?</p><p>Inspection required, so goods are inspected and accepted before delivery to stock.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">23</span><span class="qt">How do you return goods to a supplier?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> returns touch receiving, inventory and AP.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a return to supplier transaction against the original receipt. Inventory goes down and receipt accounting reverses the accrual. If the invoice was already received, AP needs a debit memo, which can be created automatically if RTS debit memos are enabled on the supplier site. I record the supplier's RMA number and track the return shipment. A correction is different: it fixes a data entry mistake on a receipt, without sending goods back.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate returns from corrections. It's a common mix-up.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate returns from corrections. It's a common mix-up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if the supplier invoice already went through before the return?</p><p>AP enters a debit memo or receives a credit memo from the supplier against the original invoice.</p></div></div>
 </details>
 <details class="q" data-topic="Shipping" data-level="B">
   <summary><span class="qn">24</span><span class="qt">What is pick release and what happens during it?</span><span class="meta"><span class="tag">Shipping</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> pick release is the start of outbound fulfillment.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Pick release selects order lines ready to ship and creates pick tasks or move orders. Release rules choose which lines by order, customer, ship date, warehouse or priority. Picking rules decide where to pick from, like FIFO or FEFO by lot expiry. It can allocate and pick confirm automatically. After picking, items go to staging, then they're packed and ship confirmed, which issues inventory.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention FEFO picking rules. It's the practical example for regulated goods.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention FEFO picking rules. It's the practical example for regulated goods.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if pick release can't allocate stock?</p><p>The line is backordered and stays waiting until stock is available, then released again.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">25</span><span class="qt">What is an interorganization transfer and how is it set up?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> transfers between orgs need setup and accounting.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It moves inventory between two inventory orgs. A shipping network defines the from and to orgs, the transfer type, direct or in-transit, the in-transit accounts and whether a receipt is required. Direct moves instantly. In-transit ships, sits in transit, and is received at the destination. In Fusion, transfer orders give a full ship and receive flow with transfer pricing. If the orgs are in different legal entities, transfer price and freight create intercompany accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention transfer orders as the Fusion way. It shows current knowledge.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention transfer orders as the Fusion way. It shows current knowledge.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between direct and in-transit transfers?</p><p>Direct moves stock instantly; in-transit shows the stock moving with a separate receipt at the destination.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">26</span><span class="qt">How do you investigate an on-hand quantity that doesn't match the physical count?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a daily warehouse problem.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I check for pending or unprocessed transactions: interface errors, pending receipts or shipments. Then I review transaction history for the item, subinventory and locator, looking for wrong subinventory, UOM mistakes, or lot and serial errors. Then reservations and staged quantities, picked but not shipped. Then I recount to confirm. Finally I fix it with an approved adjustment and find the root cause, like training, process or scanning.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with pending transactions. They explain most differences.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with pending transactions. They explain most differences.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do once you find the cause?</p><p>Correct the transactions with an adjustment or correction and document it, then fix the process causing it.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">27</span><span class="qt">What is the difference between receipt tolerance and invoice tolerance?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they work together to prevent overpaying.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Receipt tolerances, on quantity and dates, control how much over or under, or how early or late, you can receive against a PO, with actions like warning or reject. Invoice tolerances in AP, on price, quantity and amount, control how far an invoice can differ from the PO and receipt before a matching hold is placed. Tight receipt tolerance stops over-receiving; invoice tolerance stops overpaying.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain how they work together. That's the insight they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain how they work together. That's the insight they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if a receipt exceeds tolerance?</p><p>It's rejected or warned, depending on the setup, so over-receipts don't become over-payments.</p></div></div>
 </details>
 <details class="q" data-topic="Shipping" data-level="B">
   <summary><span class="qn">28</span><span class="qt">What documents are produced during shipping?</span><span class="meta"><span class="tag">Shipping</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic shipping question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The pick slip, saying what to pick and where. The packing slip, listing what's in the shipment for the customer. The bill of lading, the contract with the carrier. The commercial invoice for international shipments and customs. Shipping and carton labels. And the ASN, the electronic notice to the customer. They're produced through document sets at pick release or ship confirm.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention document sets. It's how they're configured.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention document sets. It's how they're configured.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which document matters most for international shipments?</p><p>The commercial invoice, used by customs to assess duties.</p></div></div>
 </details>
 <details class="q" data-topic="SCM Basics" data-level="D">
   <summary><span class="qn">29</span><span class="qt">What is the difference between an inventory organization and a business unit in Fusion SCM?</span><span class="meta"><span class="tag">SCM Basics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> enterprise structure design depends on it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A business unit performs business functions like procurement, requisitioning, order fulfillment and billing, with its own setups and data security. An inventory organization is a physical location that holds and transacts inventory. Each inventory org is tied to a profit center BU and a legal entity for accounting. A procurement BU can serve many requisitioning BUs and inventory orgs. Getting these relationships right is central to the structure design.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say the BU is about functions, the org is about place. It's a clean way to remember it.</p></div>
+<p class="tip"><strong>Tip:</strong> Say the BU is about functions, the org is about place. It's a clean way to remember it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Can one BU have many inventory orgs?</p><p>Yes, a BU can serve several warehouses, while each inventory org is tied to a legal entity.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">30</span><span class="qt">What is ABC classification and how is it used?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> ABC drives counting and planning priorities.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;ABC ranks items by value, usually annual usage value, quantity times cost. A items are roughly 10–20% of items but 70–80% of value; they're counted most often and controlled most tightly. B items are in the middle. C items are many items with little value, counted least. In Oracle I compile an ABC analysis for the org, assign classes, and use them in cycle count frequency and planning policies.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the percentages. They show you know the principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the percentages. They show you know the principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you use ABC in cycle counting?</p><p>A items get counted most often, so accuracy focuses on the highest value.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">31</span><span class="qt">What is the difference between a subinventory transfer and an interorganization transfer?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic transaction question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A subinventory transfer moves stock within the same org, like Stores to Staging. There's no change of owner or cost org, and usually no accounting unless the subinventories are valued differently. An interorganization transfer moves stock between orgs, like plant to DC. It needs a shipping network, can be direct or in-transit, and creates accounting, possibly intercompany.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the accounting difference. It's the key point.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the accounting difference. It's the key point.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which one creates accounting?</p><p>Interorganization transfers, since they move value between cost orgs; subinventory transfers usually don't.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">32</span><span class="qt">What is a miscellaneous transaction and when is it used?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> misc transactions change inventory value directly, so they need control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A miscellaneous receipt or issue adjusts on-hand against an account instead of a document like a PO or sales order. It's used for initial stock loads, write-offs, samples, corrections and scrap. Because it changes inventory value directly, it's usually limited by role and sometimes needs approval.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the control. That's why interviewers ask.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the control. That's why interviewers ask.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why control miscellaneous transactions tightly?</p><p>They bypass documents, so they're a common route for errors or fraud.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">33</span><span class="qt">How do you correct a receipt entered with the wrong quantity?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common receiving mistake.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use a receipt correction, not a return, to increase or decrease the quantity received or delivered. If the goods were already delivered to inventory, I correct the delivery too. If it's been invoiced, I check the AP impact, like a quantity hold or a debit memo. Returns are only for goods that physically go back to the supplier.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate corrections from returns clearly.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate corrections from returns clearly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use a return instead of a correction?</p><p>When goods physically go back to the supplier; corrections fix data entry errors.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">34</span><span class="qt">How would you run an inventory accuracy improvement program?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> accuracy affects planning, customer service and audit.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I measure record accuracy by count and value variance by location. I set up ABC cycle counting with tolerances and root-cause codes. I fix process causes: receiving delays, unrecorded issues, wrong locators and UOM mistakes. I move to scanning and mobile transactions instead of paper. I use locator control and material status to stop misplacement. And I review adjustments weekly with warehouse leads. A typical target is 98% or better for A items.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the target. It shows you've run one.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the target. It shows you've run one.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What accuracy target do you aim for?</p><p>Typically 95 to 98% record accuracy, depending on the industry.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">35</span><span class="qt">How would you design lot and serial control for a pharmaceutical company?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> pharma has strict traceability and regulatory requirements.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Lot control on all APIs, raw materials and finished goods. Serial control at saleable units where DSCSA or EU FMD serialization applies, often in a dedicated serialization system integrated with Oracle. Lot attributes include expiry, retest date, manufacturer lot, grade and origin. Material status moves from quarantine to approved or released to rejected, and QA release controls availability. Picking is FEFO. Genealogy supports recalls from raw material lot to customer shipment. And GxP: a validated system, audit trails, and electronic signatures under 21 CFR Part 11 for key transactions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention material status and QA release. It's the core of pharma inventory control.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention material status and QA release. It's the core of pharma inventory control.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's DSCSA?</p><p>The US Drug Supply Chain Security Act, which requires serialized traceability for prescription drugs.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">36</span><span class="qt">How do you plan the inventory cutover for a warehouse go-live?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a bad cutover means a warehouse that can't ship.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I freeze legacy transactions, stopping receiving and shipping or logging them by hand. Then a physical count or a validated cycle-count snapshot by item, lot, serial and locator. On-hand is loaded with costs from finance and reconciled for quantity and value to legacy and GL. Open POs, sales orders and transfers are converted after on-hand. Manual transactions from the freeze are caught up after go-live. And shipping and receiving restart with support on the floor. I plan it around low-volume days and tell customers and suppliers in advance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention telling customers and suppliers. Cutover affects them too.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention telling customers and suppliers. Cutover affects them too.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle transactions during the freeze?</p><p>Log them manually and enter them in Fusion right after go-live, in order.</p></div></div>
 </details>
 <details class="q" data-topic="Returns" data-level="D">
   <summary><span class="qn">37</span><span class="qt">How would you design a returns (RMA) process with inspection and refurbishment?</span><span class="meta"><span class="tag">Returns</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> returns design touches OM, inventory, manufacturing and AR.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Return orders reference the original order, and return reasons drive the flow. Returns are received into a returns subinventory with inspection routing. Disposition is restock if good, refurbish through a repair work order, scrap, or return to vendor. Credit is created in AR once received and inspected, or immediately for trusted customers. Returned items are valued at original cost or a refurbishment cost. And analytics on return reasons help fix root causes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention credit timing for trusted customers. It shows business awareness.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention credit timing for trusted customers. It shows business awareness.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you value refurbished items?</p><p>At refurbish cost or a separate item with its own cost.</p></div></div>
 </details>
 <details class="q" data-topic="Logistics" data-level="D">
   <summary><span class="qn">38</span><span class="qt">When would you recommend a WMS over standard Fusion Inventory?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a judgment question about tools.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;When a DC has high volume, many lines a day, and complex picking like waves, zones and cartonization. When operations are LPN-based, with cross-docking and directed putaway. When they need labor management and automation like conveyors or robots. And when mobile RF is used everywhere. Fusion Warehouse Management now covers many of these natively, and for very large or automated DCs, a specialist WMS like Manhattan or Blue Yonder. The decision comes down to volume, complexity, automation and integration cost.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the decision criteria. It shows judgment rather than preference.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the decision criteria. It shows judgment rather than preference.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the cost of WMS?</p><p>More setup and training, so only worth it at high volume and complexity.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">39</span><span class="qt">How do you set up material status control for quarantine and QA release?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a regulated-industry control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define statuses like Quarantine, Approved, Rejected and Hold, each with allowed transactions. For example, Quarantine blocks shipping and issue to production but allows transfer to the QA lab. Default statuses are set at subinventory, locator, lot or serial level. QA changes the status after inspection, with an electronic signature in regulated environments. Picking and ATP respect the status. And I report on quarantined material with aging.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the allowed transactions for Quarantine. It makes the setup concrete.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the allowed transactions for Quarantine. It makes the setup concrete.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How is a lot released from quarantine?</p><p>QA changes its status to Approved after inspection.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">40</span><span class="qt">How would you speed up receiving at a busy distribution center?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical operations question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd require ASNs from the top suppliers so receipts are pre-filled. Barcode and mobile receiving, scanning LPNs or lots. Direct delivery routing for low-risk items, with inspection only where needed. Receiving tolerances that accept small differences automatically. Dock scheduling to level the workload. And measure dock-to-stock time and receipt backlog every day.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention dock-to-stock time. It's the KPI receiving managers use.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention dock-to-stock time. It's the KPI receiving managers use.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the fastest win for receiving?</p><p>ASNs from top suppliers.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">41</span><span class="qt">How would you reduce cycle count adjustments at a DC?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> adjustments signal process problems.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I analyze adjustments by item, locator, user and reason. Then fix root causes: receiving delays, picking errors, UOM confusion, unrecorded scrap. I add scanning and locator control. I tighten tolerances for A items and require a recount before approval. And I review adjustments weekly with warehouse leads.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;analyze by user&quot;. It often shows a training issue quickly.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;analyze by user&quot;. It often shows a training issue quickly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common root cause?</p><p>Picking errors.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">42</span><span class="qt">What is an ASN and how is it used in receiving?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic inbound question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An Advance Shipment Notice tells us what a supplier has shipped, items, quantities, lots or serials, and expected date, before it arrives. The supplier creates it in the portal or sends it by B2B, as EDI 856. Receivers receive against the ASN, which is faster and more accurate. An ASBN, advance shipment and billing notice, can also create the invoice. And the PO can require an ASN reference, forcing suppliers to send them.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention requiring ASNs on the PO. It's how you get suppliers to comply.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention requiring ASNs on the PO. It's how you get suppliers to comply.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the benefit of ASN-based receiving?</p><p>Receivers confirm against the ASN instead of keying lines, which is faster and more accurate.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="D">
   <summary><span class="qn">43</span><span class="qt">How does receipt accounting create accruals and how do you clear old accruals?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> stale accruals are a common audit finding.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;With accrue at receipt, delivery to inventory or expense books Dr Inventory or Expense, Cr Receipt Accrual. When AP matches the invoice, AP books Dr Accrual, Cr Liability, and differences go to variance accounts. To find problems, I use Accrual Reconciliation in Receipt Accounting and the accrual balances report, which show accruals with no invoice or mismatches. After investigation, I write them off with approval or clear them, often because the PO should have been closed. And I close POs regularly so accruals don't build up.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;close POs regularly&quot;. It's the prevention step.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;close POs regularly&quot;. It's the prevention step.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you decide an old accrual should be written off?</p><p>When it's confirmed no invoice will come, like the supplier confirms it's fully billed, with approval and documentation.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">44</span><span class="qt">What is consigned inventory and how is it handled in Fusion?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> consignment changes ownership and accounting.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;With supplier consignment, the supplier owns stock sitting in our warehouse until we use it. There's a consignment agreement, a blanket agreement with consignment terms. Receipts go into inventory as consigned, so there's no liability. When we consume it, by issue, transfer or after an aging period, ownership transfers: a consumption advice is created and the supplier is paid through AP or pay-on-use. On-hand shows both owned and consigned quantities. Customer consignment is the reverse: our stock at a customer's site.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain when ownership transfers. It's the heart of consignment.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain when ownership transfers. It's the heart of consignment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When does ownership of consigned stock transfer?</p><p>When we consume it, triggering a consumption advice and the supplier's invoice.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">45</span><span class="qt">How do you set up and use transfer orders in Fusion?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> transfer orders are the Fusion way to move stock between orgs.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Transfer orders move inventory between orgs with a full flow: request, approve, ship, receive. They're created from transfer requests, planning, min-max or the internal material transfer page. Sourcing rules pick the source, and the shipping network and transfer pricing, at cost or a price list, are defined. If the orgs are in different legal entities, supply chain financial orchestration creates intercompany accounting. I track status in the Transfer Orders work area.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention financial orchestration for cross-entity transfers.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention financial orchestration for cross-entity transfers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use transfer orders instead of direct interorg transfers?</p><p>They give approval, visibility and a full ship and receive flow, which suits distant sites.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">46</span><span class="qt">How do you configure cycle counting with approvals and tolerances?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on setup question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create the cycle count for an org with subinventories, ABC classes and frequency. I set count tolerances, a quantity percentage and value thresholds. Counts within tolerance post automatically; outside, they need a recount or approval. Approval can be always, never, or only out of tolerance. Count sequences are generated by schedule, and counters enter counts on mobile or web. Adjustments post to a cycle count adjustment account and create cost accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give example tolerances, like 2% for A items and 5% for C.</p></div>
+<p class="tip"><strong>Tip:</strong> Give example tolerances, like 2% for A items and 5% for C.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should happen to counts outside tolerance?</p><p>They go for recount or approval, so large adjustments are checked before posting.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">47</span><span class="qt">What is the difference between available to transact, available to reserve and on-hand?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a classic support question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;On-hand is the total physical quantity. Available to reserve is on-hand minus existing reservations and some statuses. Available to transact is what you can actually move or issue right now, excluding reserved quantities, stock in non-transactable subinventories, and stock with a restrictive material status, like a lot on hold. Material status, at subinventory, locator, lot or serial, decides which transactions are allowed, so a quarantine status blocks shipping.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use a quarantined lot as the example. It explains why on-hand isn't always usable.</p></div>
+<p class="tip"><strong>Tip:</strong> Use a quarantined lot as the example. It explains why on-hand isn't always usable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why might available to transact be less than available to reserve?</p><p>Material statuses or holds can block transactions even if the stock isn't reserved.</p></div></div>
 </details>
 <details class="q" data-topic="Shipping" data-level="D">
   <summary><span class="qn">48</span><span class="qt">How do you configure shipping for a new warehouse?</span><span class="meta"><span class="tag">Shipping</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a setup checklist question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I set shipping parameters for the org: pick release defaults, staging subinventory, auto-pack and ship confirm rules. Picking rules, like FIFO or FEFO and locator order. Release rules and release sequence rules. Document sets, pick slips, packing slips and BOL, with printers. Carriers and ship methods, freight terms and costs. Shipping exceptions and their actions. Then I test the full flow: pick, pack, ship confirm, and invoicing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with testing through to invoicing. It shows you check the whole chain.</p></div>
+<p class="tip"><strong>Tip:</strong> End with testing through to invoicing. It shows you check the whole chain.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What picking rule would you use for food?</p><p>FEFO, first expired first out, so stock with the nearest expiry ships first.</p></div></div>
 </details>
 <details class="q" data-topic="Shipping" data-level="B">
   <summary><span class="qn">49</span><span class="qt">What are shipping exceptions?</span><span class="meta"><span class="tag">Shipping</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic shipping question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Shipping exceptions flag problems during shipping, like a short pick, damaged goods or missing documents. Each has a severity, error, warning or information, and a handling rule. They're logged manually or automatically. Errors block ship confirm until resolved. Reports show recurring warehouse problems.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that errors block ship confirm. That's the control.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that errors block ship confirm. That's the control.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to a delivery with an error-level exception?</p><p>It can't be ship confirmed until the exception is resolved.</p></div></div>
 </details>
 <details class="q" data-topic="Logistics" data-level="D">
   <summary><span class="qn">50</span><span class="qt">What does Oracle Transportation Management (OTM) add to Fusion SCM?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> OTM is common in high-volume shippers.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;OTM handles transportation planning and execution: load building and route optimization, carrier selection and rate management, tendering to carriers and tracking, and freight payment and audit. It integrates with Fusion Shipping: shipments go to OTM, and planned shipments come back. For high-volume shippers, the main value is lower freight cost.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with freight cost reduction. That's the business case.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with freight cost reduction. That's the business case.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When does a company need OTM?</p><p>When freight spend is large, with many carriers and modes, and route optimization saves real money.</p></div></div>
 </details>
 <details class="q" data-topic="Logistics" data-level="D">
   <summary><span class="qn">51</span><span class="qt">What is Warehouse Management (WMS) and how is it different from standard Inventory?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you know when inventory isn't enough.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Standard Inventory tracks quantities by org, subinventory and locator. WMS adds task-based warehouse operations: directed putaway, wave picking, LPNs, cartonization, cross-docking, labor management and mobile RF. Fusion now has Warehouse Management built on Inventory, and many companies use specialist WMS like Manhattan or Blue Yonder integrated by APIs. An LPN is a container ID, like a pallet or case, that you transact as one unit.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain LPN in one line. It's often a follow-up question.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain LPN in one line. It's often a follow-up question.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is standard Inventory enough?</p><p>For simple warehouses without wave picking, LPNs or task management.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">52</span><span class="qt">How do you handle lot expiry and FEFO in Oracle?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> expiry control is essential in pharma and food.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I enable lot control with shelf life days on the item, so each lot gets an expiry date at receipt. Picking rules with FEFO, first expired first out, allocate the nearest-expiring lots first. Material status can block expired lots from shipping. Reports or alerts flag lots near expiry, and pharma also uses lot grade and retest dates. Expired lots move to a quarantine subinventory or are scrapped with approval.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention alerts before expiry. Selling or using stock before it expires is the real goal.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention alerts before expiry. Selling or using stock before it expires is the real goal.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do with expired lots?</p><p>Set a material status that blocks transactions, then scrap or return them.</p></div></div>
 </details>
 <details class="q" data-topic="SCM Basics" data-level="B">
   <summary><span class="qn">53</span><span class="qt">What setups must exist before you can create an inventory organization in Fusion?</span><span class="meta"><span class="tag">SCM Basics</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a dependency question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I need the location address, the legal entity and the profit center business unit, the item master organization, a workday calendar for scheduling, the cost organization relationship, and the ledger, through the legal entity and BU. Then I set the inventory org parameters, subinventories, locators, shipping and receiving parameters, and cost setups.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Present it as prerequisites, then org setup. It shows you understand dependencies.</p></div>
+<p class="tip"><strong>Tip:</strong> Present it as prerequisites, then org setup. It shows you understand dependencies.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common missing setup?</p><p>The workday calendar or costing setup, which blocks transactions later.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">54</span><span class="qt">What are the key inventory organization parameters you set?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> these parameters shape how the org behaves.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The item master org and calendar, and default locator control. Lot and serial number generation and uniqueness. Whether negative balances are allowed. Picking and putaway defaults. ATP and reservation settings. Shipping, receiving and interorg transfer defaults. And costing: the linked cost org and default accounts. Decisions like negative balances need business agreement, because they affect controls and costing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Highlight the negative balances decision. It's the one that causes later problems.</p></div>
+<p class="tip"><strong>Tip:</strong> Highlight the negative balances decision. It's the one that causes later problems.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should negative balances be allowed?</p><p>Usually not, except where timing issues are expected and well controlled, like backflushing.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">55</span><span class="qt">How do you handle negative on-hand in an org that allows negative balances?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> negative on-hand causes costing problems.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Negative on-hand usually means issues were recorded before receipts, a timing problem, or a receipt was missed. I find the items and locations that are negative, check for pending receipts and transfers, and process them. In costing, negative quantities can cause cost adjustments later, so I monitor them. Once processes are stable, I'd recommend turning off negative balances.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recommend turning it off once stable. It shows control thinking.</p></div>
+<p class="tip"><strong>Tip:</strong> Recommend turning it off once stable. It shows control thinking.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why fix negatives quickly?</p><p>They distort costing and valuation.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">56</span><span class="qt">How would you reduce excess and obsolete inventory using the platform?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> E&amp;O ties up cash and causes write-offs.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First visibility: aging, days of supply and slow movers by item and location. Then root causes: forecast bias, minimum order quantities and lot sizes, and life-cycle changes nobody communicated. Then planning policies: adjust safety stock and order modifiers, and plan phase-outs for end-of-life items. Then disposition workflows: rebalance across DCs, sell, return to vendor or scrap. A reserve policy agreed with finance. And KPIs with a monthly review.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention forecast bias. It's the most common cause.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention forecast bias. It's the most common cause.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common root cause of E&amp;O?</p><p>Over-forecasting and long minimum order quantities.</p></div></div>
 </details>
 <details class="q" data-topic="Logistics" data-level="D">
   <summary><span class="qn">57</span><span class="qt">How do you approach freight cost reduction through systems?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> freight is a big, visible cost.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First visibility of freight cost by lane, carrier, mode and customer. Then TMS optimization: load consolidation, mode selection and routing. Carrier procurement using rate analytics. Freight audit and pay to catch billing errors, which often recovers a few percent alone. Order policies, like minimum order quantities and set delivery days. And network design studies for the bigger structural savings.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention freight audit. It's the quickest win.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention freight audit. It's the quickest win.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest freight saving?</p><p>Load consolidation and mode optimization.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -522,6 +529,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 5 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 5 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

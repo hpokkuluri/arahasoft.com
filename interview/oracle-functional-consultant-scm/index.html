@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,68 +97,69 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>62</b> questions</span>
     <span class="stat"><b>44</b> basic</span>
     <span class="stat"><b>18</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
 <details class="q" data-topic="SCM Basics" data-level="B">
   <summary><span class="qn">1</span><span class="qt">What modules make up Oracle Fusion SCM?</span><span class="meta"><span class="tag">SCM Basics</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a warm-up question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Product Hub for items and structures. Procurement: purchasing, self-service procurement, sourcing, supplier portal and qualification. Inventory Management for orgs, transactions and counts. Order Management with Global Order Promising. Logistics: shipping, receiving and transportation. Cost Management for item cost, receipt accounting and cost accounting. Manufacturing for work definitions and work orders. And Supply Chain Planning for demand, supply and replenishment.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Then say which ones you've worked on and how deeply. That's what they really want to know.</p></div>
+<p class="tip"><strong>Tip:</strong> Then say which ones you've worked on and how deeply. That's what they really want to know.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which SCM module do most projects implement first?</p><p>Procurement and Inventory, usually with Product Hub for items, because purchasing and stock are needed before planning or manufacturing make sense.</p></div></div>
 </details>
-<details class="q" data-topic="Inventory" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">What is the difference between an inventory organization, a subinventory and a locator?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Inventory" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">What is the difference between an inventory organization, a subinventory and a locator?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic structure question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An inventory organization is a plant, warehouse or DC that holds items and inventory, with its own item attributes, costing and calendar. A subinventory is an area inside it, physical or logical, like Stores, Finished Goods, Staging or MRB, and it can be quantity-tracked or expense. A locator is a specific bin or shelf inside a subinventory, like Row 3, Rack 2, Bin 5. So the hierarchy is organization, then subinventory, then locator.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a locator example. It makes the hierarchy easy to see.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a locator example. It makes the hierarchy easy to see.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you add locator control to a subinventory?</p><p>When the warehouse needs to know the exact bin, like high-volume picking areas. Small stockrooms may not need it.</p></div></div>
 </details>
-<details class="q" data-topic="Inventory" data-level="B">
-  <summary><span class="qn">3</span><span class="qt">What is an item master organization and why do items exist in it?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Inventory" data-level="B" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">What is an item master organization and why do items exist in it?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> item master design avoids duplicate items.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Items are created once in the item master organization, which in Fusion is the master org in Product Hub, and then assigned to the inventory orgs that use them. Master-level attributes, like description and primary UOM, must be the same everywhere. Org-level attributes, like planner, min-max levels and lead times, can differ by org. That avoids duplicate items and keeps definitions consistent. Item classes and templates default attributes when items are created.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one master and one org-level attribute. It shows you know the split.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one master and one org-level attribute. It shows you know the split.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if you assign an item to an org without setting org-level attributes?</p><p>It inherits defaults from the master or template, which might be wrong for that site, like planning method or lead times. I review org-controlled attributes on assignment.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">4</span><span class="qt">What are the main inventory transaction types?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic inventory question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Receipts from purchase orders or transfers. Issues to work orders, accounts or sales orders. Subinventory transfers within an org. Interorganization transfers between orgs, direct or in-transit. Miscellaneous receipts and issues, adjusting against an account. And cycle count and physical inventory adjustments. Each has a transaction type, source type and action, and each creates cost accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that each creates accounting. It shows you see the finance side.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that each creates accounting. It shows you see the finance side.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which transaction would you use to scrap damaged stock?</p><p>A miscellaneous issue with a scrap reason code to a scrap expense account, so it's tracked and costed correctly.</p></div></div>
 </details>
-<details class="q" data-topic="Inventory" data-level="B">
-  <summary><span class="qn">5</span><span class="qt">What is lot and serial control?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Inventory" data-level="B" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">What is lot and serial control?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> traceability is critical in regulated industries.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Lot control tracks a batch of items with the same properties, like made together or with the same expiry date. It's standard in pharma and food, and lots can carry expiry dates, grades and status. Serial control tracks each unit with its own number, like equipment. Serial numbers can be assigned at receipt, predefined, or at sales order issue. Both give full traceability, called genealogy: where a lot or serial came from and where it went. Control is set on the item and is hard to change once transactions exist, so it has to be decided before go-live.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stress deciding before go-live. Changing it later is very painful.</p></div>
+<p class="tip"><strong>Tip:</strong> Stress deciding before go-live. Changing it later is very painful.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Can you add lot control to an item after it has stock?</p><p>Generally not while it has on-hand or open transactions. You'd need to clear stock, change the attribute, then receive it back with lots, so decide early.</p></div></div>
 </details>
-<details class="q" data-topic="Inventory" data-level="B">
-  <summary><span class="qn">6</span><span class="qt">What is the difference between cycle counting and physical inventory?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Inventory" data-level="B" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">What is the difference between cycle counting and physical inventory?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic accuracy question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Cycle counting counts a small set of items regularly, often by ABC class, with A items counted most often. It keeps records accurate without stopping operations. A physical inventory counts everything at once, often at year end, usually freezing transactions. The cycle count process is: define the count with classes and frequency, generate schedules and count sequences, enter counts, recount anything out of tolerance, and approve adjustments, which post to inventory and accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say cycle counting avoids shutting down. That's why companies prefer it.</p></div>
+<p class="tip"><strong>Tip:</strong> Say cycle counting avoids shutting down. That's why companies prefer it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How often would you count A items?</p><p>Often monthly or more, B quarterly and C once or twice a year, adjusted for the warehouse's accuracy goals.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">7</span><span class="qt">How does min-max planning work?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a simple, common replenishment method.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I set a minimum and maximum for an item in an org or subinventory. The min-max process checks on-hand plus on-order, and if it's below the minimum, it suggests or creates a replenishment order to bring it up to the maximum. Replenishment can be a purchase requisition, a transfer from another org, or a work order. Fixed lot multiples and minimum order quantities adjust the quantity. For example, min 50, max 200, on-hand plus on-order of 40, so it orders 160. It works well for stable-demand items like spare parts and consumables.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Do the calculation out loud. It proves you understand it.</p></div>
+<p class="tip"><strong>Tip:</strong> Do the calculation out loud. It proves you understand it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main risk of min-max for seasonal items?</p><p>Fixed levels don't anticipate demand spikes, so you stock out in peak season or overstock after. Seasonal items need forecast-based planning.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">8</span><span class="qt">What is a reservation?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reservations explain &quot;why can't I ship this, it's on-hand?&quot;</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A reservation holds on-hand quantity for a specific demand, like a sales order or work order, so nothing else can use it. It can be at org, subinventory, lot, locator or serial level. It reduces available to reserve and available to transact. Reservations are created manually or automatically, for example during scheduling. The key difference: on-hand is what's physically there; available is on-hand minus reservations and other holds.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with on-hand vs available. It's the confusion users bring to support.</p></div>
+<p class="tip"><strong>Tip:</strong> End with on-hand vs available. It's the confusion users bring to support.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to a reservation if the order is cancelled?</p><p>The reservation is released, so the stock becomes available to other demand.</p></div></div>
 </details>
-<details class="q" data-topic="Procurement" data-level="B">
-  <summary><span class="qn">9</span><span class="qt">Explain the Procure-to-Pay flow and the main documents.</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Procurement" data-level="B" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">Explain the Procure-to-Pay flow and the main documents.</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a warm-up question for every procurement or AP role.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An employee raises a requisition in Self Service Procurement and it's approved. A purchase order is created from it, manually or automatically, approved and sent to the supplier. When the goods or services arrive, they're received, optionally inspected, and delivered to inventory or expense. The supplier's invoice is matched in AP to the PO and receipt. Then AP pays it in a payment run.&quot;</p>
@@ -162,378 +169,378 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Invoice: Dr Accrual, Cr AP Liability.</li>
 <li>Payment: Dr Liability, Cr Cash.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Give the three journal entries. It shows you understand procurement from finance's side.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the three journal entries. It shows you understand procurement from finance's side.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does the receipt accrual get cleared?</p><p>When the AP invoice is matched and accounted, the accrual is debited and the supplier liability credited.</p></div></div>
 </details>
-<details class="q" data-topic="Procurement" data-level="B">
-  <summary><span class="qn">10</span><span class="qt">What types of purchase orders are there?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Procurement" data-level="B" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">What types of purchase orders are there?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic procurement question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A standard PO is a one-time purchase with specific items, quantities, prices and dates. A blanket purchase agreement sets prices for items over a period, without fixed quantities, and orders are released against it. A contract purchase agreement sets terms with a supplier but no items, and standard POs reference it. EBS also has a planned PO, with committed quantities and tentative dates, released on a schedule. In Fusion, the three types are standard PO, blanket agreement and contract agreement.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Note the EBS vs Fusion difference. It shows you know both.</p></div>
+<p class="tip"><strong>Tip:</strong> Note the EBS vs Fusion difference. It shows you know both.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use a contract agreement rather than a blanket?</p><p>When you've agreed terms with a supplier but items or prices vary, like a services contract. Standard POs reference the contract.</p></div></div>
 </details>
-<details class="q" data-topic="Procurement" data-level="B">
-  <summary><span class="qn">11</span><span class="qt">How does a requisition get converted into a purchase order automatically?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Procurement" data-level="B" data-top="1">
+  <summary><span class="qn">11</span><span class="qt">How does a requisition get converted into a purchase order automatically?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> touchless POs are a key procurement goal.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The requisition line has to reference a blanket agreement or catalog item with an agreed price and supplier. Once the requisition is approved, automated buyer processing creates the PO, as long as the line has a valid source agreement, the supplier site is active, and the agreement allows automatic ordering. The PO is then approved, or auto-approved within limits, and sent to the supplier. Lines without a source go to the buyer's Process Requisitions work area to be converted by hand.&quot;</p>
-<p class="tip"><strong>Tip:</strong> List the three conditions. They're also the three reasons auto-creation fails.</p></div>
+<p class="tip"><strong>Tip:</strong> List the three conditions. They're also the three reasons auto-creation fails.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why might automated PO creation fail even with an agreement?</p><p>The agreement could be expired, not enabled for automatic sourcing, or not assigned to the requisitioning BU.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="B">
   <summary><span class="qn">12</span><span class="qt">How are purchasing approvals configured in Fusion?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> approvals are the most common source of procurement complaints.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Approvals are BPM rules, set in Manage Requisition Approvals and Manage Purchasing Document Approvals. Rules can use amount, category, cost center, project, the supervisor hierarchy, position or job level, or approval groups. For example: requisitions under $5,000 go to the supervisor; over $5,000 to the supervisor and then the department head; IT categories also go to an IT approver. I test the rules with different amounts and categories, and I always check there's a fallback so no document hits 'no approver found'.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a sample rule set with amounts. It makes the answer concrete.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a sample rule set with amounts. It makes the answer concrete.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common approval routing problem?</p><p>Missing or inactive supervisors in HCM, so the approval chain breaks.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="D">
   <summary><span class="qn">13</span><span class="qt">What is a procurement catalog?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> catalogs drive compliance and automation.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Catalogs let employees shop like an online store in Self Service Procurement. A local catalog has items and prices loaded into Fusion, from agreements or uploads. A punchout catalog takes the user to the supplier's website to pick items and bring back a cart. An informational catalog gives instructions or links, like how to order business cards. Content zones control which users see which catalogs. And smart forms handle non-catalog requests with guided fields.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain content zones. They're how you show the right catalog to the right people.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain content zones. They're how you show the right catalog to the right people.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a punchout catalog?</p><p>A link to the supplier's own website where users shop and the cart comes back into Fusion as a requisition.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="B">
   <summary><span class="qn">14</span><span class="qt">How do you onboard a new supplier in Oracle Fusion?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> supplier onboarding is both a process and a control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The supplier registers through the supplier portal, or procurement enters them. The registration goes for approval. Then the supplier record is created: tax ID, addresses, sites per procurement BU, site assignments to the business units that will use them, bank account with verification, contacts, payment terms and method. If needed, qualification questionnaires cover things like diversity or compliance. And I restrict who can change bank details, because that's a common fraud risk.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention site assignments. Missing ones are the top reason new suppliers can't be used.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention site assignments. Missing ones are the top reason new suppliers can't be used.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What controls do you put on supplier bank details?</p><p>Approval of bank changes, verification by callback, and segregation so the person entering them can't approve them.</p></div></div>
 </details>
-<details class="q" data-topic="Receiving" data-level="B">
-  <summary><span class="qn">15</span><span class="qt">What are the receipt routings?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Receiving" data-level="B" data-top="1">
+  <summary><span class="qn">15</span><span class="qt">What are the receipt routings?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> routing affects when stock is available and when accruals happen.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Direct delivery receives and delivers in one step to the final destination. Standard receipt receives first to a receiving location, then delivers in a separate step. Inspection required receives, inspects to accept or reject, then delivers. The routing defaults from the PO schedule, item, supplier or receiving options. The choice affects when inventory becomes available and, with accrue at receipt, when the accrual is booked.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the accrual timing. It shows you see the accounting impact.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the accrual timing. It shows you see the accounting impact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which routing would you use for medical devices that need QA checks?</p><p>Inspection required, so goods are inspected and accepted before delivery to stock.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">16</span><span class="qt">How do you return goods to a supplier?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> returns touch receiving, inventory and AP.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a return to supplier transaction against the original receipt. Inventory goes down and receipt accounting reverses the accrual. If the invoice was already received, AP needs a debit memo, which can be created automatically if RTS debit memos are enabled on the supplier site. I record the supplier's RMA number and track the return shipment. A correction is different: it fixes a data entry mistake on a receipt, without sending goods back.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate returns from corrections. It's a common mix-up.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate returns from corrections. It's a common mix-up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if the supplier invoice already went through before the return?</p><p>AP enters a debit memo or receives a credit memo from the supplier against the original invoice.</p></div></div>
 </details>
-<details class="q" data-topic="Order Management" data-level="B">
-  <summary><span class="qn">17</span><span class="qt">Explain the Order-to-Cash flow from the SCM side.</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Order Management" data-level="B" data-top="1">
+  <summary><span class="qn">17</span><span class="qt">Explain the Order-to-Cash flow from the SCM side.</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a warm-up question for SCM roles.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A sales order is created manually, by import, or from CPQ or CRM. Orchestration starts: the order is validated, priced and scheduled, with Global Order Promising checking availability. Inventory is reserved, and pick release creates pick tasks. Items are picked and packed. Ship confirm issues inventory and fulfills the line. Billing sends the lines to Receivables through AutoInvoice. Revenue and COGS are recognized, and receipts are applied in AR.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the hand-off to AR. It shows you see the full chain.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the hand-off to AR. It shows you see the full chain.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What triggers the AR invoice in this flow?</p><p>The shipment confirmation, which sends billing lines through the fulfillment process to AutoInvoice.</p></div></div>
 </details>
-<details class="q" data-topic="Order Management" data-level="D">
-  <summary><span class="qn">18</span><span class="qt">What is order orchestration in Fusion Order Management?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Order Management" data-level="D" data-top="1">
+  <summary><span class="qn">18</span><span class="qt">What is order orchestration in Fusion Order Management?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> orchestration is the core of Fusion OM.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Orchestration is the process engine that drives each order line through fulfillment. Orchestration processes define the steps, like schedule, reserve, ship and invoice, and their order. Fulfillment lines are assigned to a process by process assignment rules, for example by order type or item. Steps call fulfillment systems, like Shipping, Receiving, Manufacturing or a 3PL, through connectors. It also handles jeopardy, change management when an order changes mid-process, and holds. In EBS, the equivalent is Order Management workflows.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention change management. It's what makes orchestration powerful.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention change management. It's what makes orchestration powerful.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you see where an order line is stuck?</p><p>Look at the orchestration plan for the line in Order Management, which shows each step and any errors.</p></div></div>
 </details>
 <details class="q" data-topic="Order Management" data-level="B">
   <summary><span class="qn">19</span><span class="qt">What are holds in Order Management and how are they applied?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> holds are a key control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Holds stop an order or line from moving forward. Credit check holds come from Credit Management when a customer is over their limit. Manual holds cover things like pricing review or export compliance. Each hold definition says where it stops the process, for example before shipping or before invoicing. Holds are applied by hand or by rules, and released by authorized users with a reason. I always check who can release which holds, because that's the control point.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention who can release holds. Auditors look at it.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention who can release holds. Auditors look at it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who releases a credit hold?</p><p>The credit team, after reviewing the customer's exposure, payments or approved limit increase.</p></div></div>
 </details>
 <details class="q" data-topic="Order Management" data-level="D">
   <summary><span class="qn">20</span><span class="qt">How does pricing work for sales orders in Fusion?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> pricing is complex and different from EBS.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion uses Pricing Administration. Price lists hold the base price by item and UOM. Discount lists hold percentage or amount discounts. Pricing strategies combine price lists and discounts, and are assigned to customers or segments through pricing segments and strategy assignment rules. Pricing algorithms calculate the final price, and charges like freight can be added. Cost-plus pricing is possible too. EBS uses Advanced Pricing modifiers and qualifiers instead.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Contrast with EBS. Many clients are migrating and want to know the difference.</p></div>
+<p class="tip"><strong>Tip:</strong> Contrast with EBS. Many clients are migrating and want to know the difference.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you troubleshoot a wrong price on an order?</p><p>Check the price breakdown on the line to see which price list, strategy and discount applied.</p></div></div>
 </details>
 <details class="q" data-topic="Shipping" data-level="B">
   <summary><span class="qn">21</span><span class="qt">What is pick release and what happens during it?</span><span class="meta"><span class="tag">Shipping</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> pick release is the start of outbound fulfillment.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Pick release selects order lines ready to ship and creates pick tasks or move orders. Release rules choose which lines by order, customer, ship date, warehouse or priority. Picking rules decide where to pick from, like FIFO or FEFO by lot expiry. It can allocate and pick confirm automatically. After picking, items go to staging, then they're packed and ship confirmed, which issues inventory.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention FEFO picking rules. It's the practical example for regulated goods.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention FEFO picking rules. It's the practical example for regulated goods.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if pick release can't allocate stock?</p><p>The line is backordered and stays waiting until stock is available, then released again.</p></div></div>
 </details>
-<details class="q" data-topic="Costing" data-level="B">
-  <summary><span class="qn">22</span><span class="qt">What costing methods does Oracle support?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Costing" data-level="B" data-top="1">
+  <summary><span class="qn">22</span><span class="qt">What costing methods does Oracle support?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic costing question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion supports standard cost, a fixed cost per item with differences going to variances like PPV; perpetual average cost, which updates with each receipt; and actual cost, FIFO or LIFO, where cost layers are consumed in order. EBS has standard, average, FIFO, LIFO, plus periodic average and incremental LIFO. In Fusion the method is set by cost organization and cost book through cost profiles; in EBS it's by inventory org.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention where the method is set in each. It shows you know both products.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention where the method is set in each. It shows you know both products.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which method would a manufacturer with stable costs choose?</p><p>Standard costing, because it gives consistent product costs and highlights variances.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">23</span><span class="qt">What is the difference between Receipt Accounting and Cost Accounting in Fusion?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> these two are often confused.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Receipt Accounting creates the accounting for receipts, deliveries and returns, and manages accruals, both receipt accruals and period-end accruals for expense items, including clearing and write-offs. Cost Accounting costs inventory transactions, like issues, transfers, shipments and production, using the cost method, with entries like Dr COGS, Cr Inventory. Each runs its own Create Accounting process and transfers to GL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you schedule both regularly. It shows you've run them in production.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you schedule both regularly. It shows you've run them in production.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where would you look for expense accruals at period end?</p><p>Receipt Accounting's period-end accrual process for uninvoiced receipts of expense items.</p></div></div>
 </details>
-<details class="q" data-topic="Costing" data-level="B">
-  <summary><span class="qn">24</span><span class="qt">What is purchase price variance (PPV)?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Costing" data-level="B" data-top="1">
+  <summary><span class="qn">24</span><span class="qt">What is purchase price variance (PPV)?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> PPV is the most watched cost variance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Under standard costing, inventory is valued at standard. When we buy at a different price, the difference is PPV: PO price minus standard, times quantity received. For example, standard $10, PO price $11, 100 units gives $100 unfavorable PPV. At delivery the entry is Dr Inventory $1,000, Dr PPV $100, Cr Accrual $1,100. Invoice price variance then captures any difference between the invoice and the PO. Procurement and finance watch PPV to measure buying performance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the journal entry. It shows you know where PPV lands.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the journal entry. It shows you know where PPV lands.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">If standard is $10 and you buy 1,000 at $10.50, what is PPV?</p><p>$500 unfavorable, recorded at receipt into inventory.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">25</span><span class="qt">How does a standard cost update work?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a yearly event with P&amp;L impact.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a new cost scenario with the new standards, usually yearly or quarterly. I roll up costs for manufactured items: material, resources and overhead. Finance reviews it, then I publish. On publish, Oracle revalues on-hand inventory at the new cost and posts the difference to the revaluation account. Before publishing, I run a what-if report so finance sees the revaluation impact in advance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the what-if report. Finance hates surprises in revaluation.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the what-if report. Finance hates surprises in revaluation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When does the revaluation of on-hand happen?</p><p>When the new standard costs are published, Fusion revalues on-hand inventory to the new standard.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="B">
   <summary><span class="qn">26</span><span class="qt">What are item classes and item templates?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic Product Hub question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An item class is a hierarchy that groups items, like Raw Materials, then Chemicals. Classes define numbering, attribute groups, templates, NIR rules and data security, and child classes inherit from parents. An item template is a set of default attribute values, like 'Purchased Item' with purchasable, stockable, transactable and costing enabled, applied when items are created so attributes are consistent. EBS uses templates and categories; Fusion adds item classes on top.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Contrast with EBS. It helps clients moving from EBS understand the change.</p></div>
+<p class="tip"><strong>Tip:</strong> Contrast with EBS. It helps clients moving from EBS understand the change.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use templates?</p><p>So new items get consistent default attributes for their type, instead of people setting each one.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="B">
   <summary><span class="qn">27</span><span class="qt">What is an item category and how is it used?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> categories drive many other setups.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Categories group items for a business purpose, and each catalog serves one function. The purchasing catalog drives buyer assignment, approvals and spend reporting. The inventory catalog is for reporting and planning. The costing or GL catalog drives accounts through SLA rules. An item can be in several catalogs, usually one category per catalog. Because so many setups depend on them, I design the catalogs early in the project.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;design catalogs early&quot;. Changing them later breaks approvals and accounting.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;design catalogs early&quot;. Changing them later breaks approvals and accounting.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why separate catalogs by function?</p><p>Purchasing, inventory and planning need different groupings, and one catalog can't serve all well.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">28</span><span class="qt">What are item status codes and lifecycle phases?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> status controls what can be done with an item.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Item status, like Active, Inactive, Prototype or Obsolete, controls key attributes: whether the item can be purchased, stocked, transacted, ordered or used in BOMs. Life-cycle phases, like Design, Prototype, Production and Obsolete, track where the item is in its life, and changing phase can change status. Changing the status is how you stop an item from being ordered without deleting it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Make the point about not deleting items. History needs them.</p></div>
+<p class="tip"><strong>Tip:</strong> Make the point about not deleting items. History needs them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which status would you use for an item being phased out?</p><p>A status that stops purchasing but allows selling existing stock, like a phase-out or end-of-life status.</p></div></div>
 </details>
 <details class="q" data-topic="Manufacturing" data-level="B">
   <summary><span class="qn">29</span><span class="qt">What is a bill of materials (BOM) and a routing / work definition?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic manufacturing question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A BOM, or item structure, is the list of components and quantities needed to make an item. A routing in EBS, or a work definition in Fusion, is the sequence of operations and resources, machines and labor, with components assigned to the operations where they're used. Together they drive work orders, cost roll-ups and planning. In Fusion, item structures live in Product Hub and work definitions in Manufacturing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention where each lives in Fusion. It's a common follow-up.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention where each lives in Fusion. It's a common follow-up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between a BOM and a work definition?</p><p>The BOM says what goes into the item; the work definition says how it's made, the operations and resources.</p></div></div>
 </details>
-<details class="q" data-topic="Manufacturing" data-level="D">
-  <summary><span class="qn">30</span><span class="qt">Describe the work order lifecycle in Fusion Manufacturing.</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Manufacturing" data-level="D" data-top="1">
+  <summary><span class="qn">30</span><span class="qt">Describe the work order lifecycle in Fusion Manufacturing.</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a core manufacturing process question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A work order is created manually, from planning, or for a sales order. It's released, so components can be picked. Components are issued manually or backflushed. Operations and resources are reported as work is done. The assembly is completed into inventory, with any scrap reported. Then the work order is closed, and Cost Management calculates variances. The statuses go Unreleased, Released, Completed, Closed, and it can also be On Hold or Canceled.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stress closing work orders on time. Late closes delay variances and month-end.</p></div>
+<p class="tip"><strong>Tip:</strong> Stress closing work orders on time. Late closes delay variances and month-end.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What closes a work order?</p><p>Completing it, resolving variances and closing it, after which costs are final.</p></div></div>
 </details>
-<details class="q" data-topic="Planning" data-level="D">
-  <summary><span class="qn">31</span><span class="qt">What is the difference between MRP and min-max planning?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Planning" data-level="D" data-top="1">
+  <summary><span class="qn">31</span><span class="qt">What is the difference between MRP and min-max planning?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you can pick the right method.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Min-max looks only at on-hand and on-order against fixed minimum and maximum levels. No forecasts, no BOM explosion. MRP, in Fusion Supply Planning, uses demand from forecasts and sales orders, supply from on-hand, POs and work orders, plus BOMs and lead times, to calculate what to make or buy and when, exploding demand down to components. I use min-max for simple, stable items like spares, and MRP for manufactured items and variable demand.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say when you'd use each. That's the real question.</p></div>
+<p class="tip"><strong>Tip:</strong> Say when you'd use each. That's the real question.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What data quality matters most for MRP?</p><p>Lead times, BOMs and on-hand accuracy; bad data creates wrong plans.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">32</span><span class="qt">What is an interorganization transfer and how is it set up?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> transfers between orgs need setup and accounting.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It moves inventory between two inventory orgs. A shipping network defines the from and to orgs, the transfer type, direct or in-transit, the in-transit accounts and whether a receipt is required. Direct moves instantly. In-transit ships, sits in transit, and is received at the destination. In Fusion, transfer orders give a full ship and receive flow with transfer pricing. If the orgs are in different legal entities, transfer price and freight create intercompany accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention transfer orders as the Fusion way. It shows current knowledge.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention transfer orders as the Fusion way. It shows current knowledge.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between direct and in-transit transfers?</p><p>Direct moves stock instantly; in-transit shows the stock moving with a separate receipt at the destination.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">33</span><span class="qt">How do you investigate an on-hand quantity that doesn't match the physical count?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a daily warehouse problem.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I check for pending or unprocessed transactions: interface errors, pending receipts or shipments. Then I review transaction history for the item, subinventory and locator, looking for wrong subinventory, UOM mistakes, or lot and serial errors. Then reservations and staged quantities, picked but not shipped. Then I recount to confirm. Finally I fix it with an approved adjustment and find the root cause, like training, process or scanning.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with pending transactions. They explain most differences.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with pending transactions. They explain most differences.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do once you find the cause?</p><p>Correct the transactions with an adjustment or correction and document it, then fix the process causing it.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="B">
   <summary><span class="qn">34</span><span class="qt">What is sourcing (RFQ/auction) in Oracle Procurement?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic sourcing question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle Sourcing creates negotiations to get competitive bids. An RFI asks for information, an RFQ asks for quotes, and an auction lets suppliers see where they rank and bid again. The steps are: create the negotiation with lines, requirements and terms; invite suppliers; collect responses; score and analyze; award; and create a PO or agreement from the award. It gets better prices and gives an audit trail for why a supplier was chosen.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the audit trail. It's often as important as the savings.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the audit trail. It's often as important as the savings.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use an auction instead of an RFQ?</p><p>For commodities with many suppliers, where live competition on price adds value.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="B">
   <summary><span class="qn">35</span><span class="qt">What happens when you need to change an approved purchase order?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> PO changes are frequent and have rules.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In Fusion I create a change order, which opens a new revision of the PO. Changes to price, quantity or dates may need approval again, depending on the rules. The revised PO is sent to the supplier. Some changes are blocked after receipt or invoicing, for example I can't reduce quantity below what's been received. When the PO isn't needed anymore, I cancel it or close it: closed for receiving, closed for invoicing, or finally closed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention what's blocked after receipt. It shows real experience.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention what's blocked after receipt. It shows real experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Does every change need re-approval?</p><p>No, it depends on the rules, often price or amount increases above a threshold.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="D">
   <summary><span class="qn">36</span><span class="qt">What are the PO close statuses?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> close statuses affect matching and accruals.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Open is normal. Closed for receiving means no more receipts but it can still be invoiced. Closed for invoicing means no more invoices but it can still be received. Closed means both are done, and it can be reopened. Finally closed is permanent, releases any encumbrance, and can't be reopened. Canceled means nothing more can happen. Receipt and invoice close tolerances close POs automatically, for example when 95% has been received.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Warn that finally closed can't be undone. It's the status people regret using.</p></div>
+<p class="tip"><strong>Tip:</strong> Warn that finally closed can't be undone. It's the status people regret using.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why does finally closed matter?</p><p>It can't be reopened, so I only use it when the PO is truly done.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">37</span><span class="qt">What is the difference between receipt tolerance and invoice tolerance?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they work together to prevent overpaying.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Receipt tolerances, on quantity and dates, control how much over or under, or how early or late, you can receive against a PO, with actions like warning or reject. Invoice tolerances in AP, on price, quantity and amount, control how far an invoice can differ from the PO and receipt before a matching hold is placed. Tight receipt tolerance stops over-receiving; invoice tolerance stops overpaying.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain how they work together. That's the insight they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain how they work together. That's the insight they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if a receipt exceeds tolerance?</p><p>It's rejected or warned, depending on the setup, so over-receipts don't become over-payments.</p></div></div>
 </details>
 <details class="q" data-topic="Shipping" data-level="B">
   <summary><span class="qn">38</span><span class="qt">What documents are produced during shipping?</span><span class="meta"><span class="tag">Shipping</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic shipping question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The pick slip, saying what to pick and where. The packing slip, listing what's in the shipment for the customer. The bill of lading, the contract with the carrier. The commercial invoice for international shipments and customs. Shipping and carton labels. And the ASN, the electronic notice to the customer. They're produced through document sets at pick release or ship confirm.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention document sets. It's how they're configured.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention document sets. It's how they're configured.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which document matters most for international shipments?</p><p>The commercial invoice, used by customs to assess duties.</p></div></div>
 </details>
 <details class="q" data-topic="Order Management" data-level="D">
   <summary><span class="qn">39</span><span class="qt">What is drop shipment?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common fulfillment type.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In a drop shipment, the supplier ships straight to our customer, and the goods never enter our warehouse. A sales order line with a drop ship source creates a requisition and PO to the supplier. When the supplier confirms shipment, we record a logical receipt and shipment. AP pays the supplier and AR invoices the customer. Inventory isn't physically touched, but accounting still flows through receipt and cost.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the logical receipt. It's how the accounting still happens.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the logical receipt. It's how the accounting still happens.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who pays the supplier in a drop ship?</p><p>We do, through a normal PO and AP invoice, while we invoice the customer.</p></div></div>
 </details>
 <details class="q" data-topic="Order Management" data-level="D">
   <summary><span class="qn">40</span><span class="qt">What is back-to-back ordering?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> often confused with drop ship.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A sales order line triggers a dedicated purchase or work order for that customer, and the supply is reserved to the order when it arrives. Unlike drop ship, the goods come into our warehouse first, then ship to the customer. It's used for items we don't stock but want to inspect or control. The reservation makes sure the incoming supply isn't used for another order.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Contrast it with drop ship in one line. That's what the interviewer wants.</p></div>
+<p class="tip"><strong>Tip:</strong> Contrast it with drop ship in one line. That's what the interviewer wants.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is back-to-back better than drop ship?</p><p>When we need to inspect, configure or bundle the goods before shipping.</p></div></div>
 </details>
 <details class="q" data-topic="Order Management" data-level="B">
   <summary><span class="qn">41</span><span class="qt">How do returns (RMA) work in Order Management?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic returns question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a return order referencing the original sales order where possible, which keeps the price and lot or serial information. The customer ships it back, and it's received, with inspection if needed. Inventory goes up, or goes to a reject or MRB subinventory. A credit memo is created in AR when the return line is invoiced. Return reasons are tracked for analysis.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention return reason analysis. It's what turns returns into improvements.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention return reason analysis. It's what turns returns into improvements.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How is the customer credited for a return?</p><p>A credit memo is created in AR once the return is received and accepted.</p></div></div>
 </details>
-<details class="q" data-topic="Integration" data-level="B">
-  <summary><span class="qn">42</span><span class="qt">How does SCM integrate with Financials?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Integration" data-level="B" data-top="1">
+  <summary><span class="qn">42</span><span class="qt">How does SCM integrate with Financials?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> good SCM consultants understand the accounting impact.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Procurement feeds AP, because POs and receipts are matched to invoices. Receiving feeds GL through receipt accrual accounting. Inventory and costing feed GL with inventory valuation, COGS and variances. Order Management feeds AR, because shipped lines are invoiced through AutoInvoice. Capital POs can create asset additions from AP. And project-related POs and costs go to Projects. A good SCM consultant knows the accounting each step creates.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with that last sentence. It's what finance-minded interviewers want.</p></div>
+<p class="tip"><strong>Tip:</strong> End with that last sentence. It's what finance-minded interviewers want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common SCM-Finance reconciliation issue?</p><p>Receipt accrual balances that don't clear because invoices are matched incorrectly or not received.</p></div></div>
 </details>
 <details class="q" data-topic="Data Loads" data-level="B">
   <summary><span class="qn">43</span><span class="qt">How would you load items or on-hand balances into Fusion?</span><span class="meta"><span class="tag">Data Loads</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> data loads are part of every SCM go-live.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Items go in through FBDI with the item import template, or Product Hub spreadsheets and import maps, including attributes, categories and org assignments. On-hand balances go in with Inventory Transaction Import as miscellaneous receipts, with lots, serials and locators, at cost. Open POs go through Purchase Order Import. The order matters: items, then org assignments, then costs, then on-hand. And I reconcile quantities and values with the legacy system after each load.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stress the load order. Loading on-hand before costs gives zero-cost inventory.</p></div>
+<p class="tip"><strong>Tip:</strong> Stress the load order. Loading on-hand before costs gives zero-cost inventory.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's important when loading on-hand?</p><p>Lots, serials and locators must exist, and costs must be correct so valuation is right.</p></div></div>
 </details>
 <details class="q" data-topic="Testing" data-level="B">
   <summary><span class="qn">44</span><span class="qt">How would you test a full P2P cycle after a configuration change?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> testing the whole chain catches what unit tests miss.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a requisition with the affected item or category and check approval routing. I convert it to a PO and check the defaults: supplier site, terms and accounts. I receive it with the right routing and tolerances. I match the invoice in AP and check holds. I run Create Accounting for receiving and AP and check the GL entries. And I test negative cases, like over-receipt and wrong price, plus a return.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention checking the accounting. Interviewers like that you go past the screens.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention checking the accounting. Interviewers like that you go past the screens.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What accounting do you check in a P2P test?</p><p>Receipt accrual at receiving, then AP clearing of the accrual at invoice.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">45</span><span class="qt">Tell me about a time you supported users during a go-live.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> go-live support shows how you work under pressure.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;In the first week after a Fusion SCM go-live, warehouse users struggled with pick release and shipping. I was the on-site support for Inventory and Shipping. I sat with users on the floor, logged every issue, fixed the quick ones like a printer setup and a wrong picking rule, made two one-page job aids, and ran a 15-minute daily huddle. Tickets dropped from about 40 a day to under 10 by the end of week two, and shipments met the daily target.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Numbers and job aids make it concrete.</p></div>
+<p class="tip"><strong>Tip:</strong> Numbers and job aids make it concrete.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What did you do to help users?</p><p>I set up quick reference guides and stood on the warehouse floor during shift changes to answer questions in real time.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">46</span><span class="qt">How do you prioritize when several users need help at once?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> support work means juggling.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Business impact first: anything stopping shipping, receiving or payments comes first. Then how many users are affected, then deadlines like month-end. I acknowledge everyone quickly so they know they're in the queue. If two critical issues collide, I escalate to my lead. And I track everything in the ticket tool so nothing gets lost.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention acknowledging everyone. It keeps users calm while they wait.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention acknowledging everyone. It keeps users calm while they wait.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you tell users when they'll get help?</p><p>I acknowledge every request with an expected time, so no one feels ignored.</p></div></div>
 </details>
 <details class="q" data-topic="SCM Basics" data-level="D">
   <summary><span class="qn">47</span><span class="qt">What is the difference between an inventory organization and a business unit in Fusion SCM?</span><span class="meta"><span class="tag">SCM Basics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> enterprise structure design depends on it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A business unit performs business functions like procurement, requisitioning, order fulfillment and billing, with its own setups and data security. An inventory organization is a physical location that holds and transacts inventory. Each inventory org is tied to a profit center BU and a legal entity for accounting. A procurement BU can serve many requisitioning BUs and inventory orgs. Getting these relationships right is central to the structure design.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say the BU is about functions, the org is about place. It's a clean way to remember it.</p></div>
+<p class="tip"><strong>Tip:</strong> Say the BU is about functions, the org is about place. It's a clean way to remember it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Can one BU have many inventory orgs?</p><p>Yes, a BU can serve several warehouses, while each inventory org is tied to a legal entity.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="D">
   <summary><span class="qn">48</span><span class="qt">What is a Procurement agent and why does it matter?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a classic support question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A procurement agent is a buyer set up with access to specific procurement BUs and actions, like managing requisitions, POs, agreements, suppliers and sourcing. It's set in Manage Procurement Agents and controls which documents a buyer can see and act on, their own or everyone's in the BU. The common support ticket is a user with the buyer role who still can't create POs, and the answer is almost always that they aren't set up as a procurement agent.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tell the support ticket story. It's exactly why they ask.</p></div>
+<p class="tip"><strong>Tip:</strong> Tell the support ticket story. It's exactly why they ask.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if a buyer isn't set up as an agent?</p><p>They can't manage POs or requisitions for that procurement BU.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">49</span><span class="qt">What is ABC classification and how is it used?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> ABC drives counting and planning priorities.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;ABC ranks items by value, usually annual usage value, quantity times cost. A items are roughly 10–20% of items but 70–80% of value; they're counted most often and controlled most tightly. B items are in the middle. C items are many items with little value, counted least. In Oracle I compile an ABC analysis for the org, assign classes, and use them in cycle count frequency and planning policies.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the percentages. They show you know the principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the percentages. They show you know the principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you use ABC in cycle counting?</p><p>A items get counted most often, so accuracy focuses on the highest value.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="D">
   <summary><span class="qn">50</span><span class="qt">What is the difference between a requisitioning BU, procurement BU and sold-to legal entity?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> this model is how Fusion supports central procurement.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The requisitioning BU is where the requester works; it owns the requisition and the charge accounts. The procurement BU is the purchasing team that creates and manages the PO and the supplier relationship, and it can serve many requisitioning BUs. The sold-to legal entity is the one financially liable for the purchase, and it appears on the PO. The bill-to BU is where AP processes the invoice. So a central procurement team in one BU can buy for ten operating BUs, with each one still paying its own bills.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the central procurement example. It shows why the model exists.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the central procurement example. It shows why the model exists.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why does this split matter?</p><p>It allows shared services procurement buying on behalf of many BUs while costs stay in the requester's BU.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">51</span><span class="qt">What is Oracle Redwood and what changes for SCM users?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> SCM users feel Redwood changes on the floor.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Redwood replaces the older ADF classic pages module by module. For SCM there are Redwood pages for requisitions, purchase orders, receipts, inventory transactions and Product Management items. They're cleaner and guided, with better search, mobile use and AI help like summaries and suggestions. Classic personalizations don't carry over, so Redwood pages are extended with Visual Builder Studio. Users need short training because screens and navigation change.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name a Redwood SCM page you've used.</p></div>
+<p class="tip"><strong>Tip:</strong> Name a Redwood SCM page you've used.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should SCM users expect first in Redwood?</p><p>Cleaner requisition and PO pages with better search and guided steps.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">52</span><span class="qt">How would you prepare warehouse users for a switch to Redwood receiving or inventory pages?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> warehouse change management is practical and time-sensitive.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd enable the Redwood page in test first and run receiving and transfer scenarios. I'd note the differences: field locations, the scanning flow and defaults. Rebuild needed personalizations in Visual Builder Studio. Create a one-page job aid with screenshots and train super users first. Then switch production at a quiet time, not month-end or a peak shipping day, with support on the floor.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention support on the floor. Warehouse users won't read emails mid-shift.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention support on the floor. Warehouse users won't read emails mid-shift.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you train warehouse users?</p><p>Hands-on practice in a test environment with real scenarios, plus quick guides.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">53</span><span class="qt">What is Visual Builder Studio used for in Redwood?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> VBS is the new extension tool.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Visual Builder Studio is how you extend and adjust Redwood pages. You can show, hide or reorder fields, make them required or read-only, set defaults, and add rules, like showing a field only for a certain item type. You can add custom fields through flexfields. Changes are made in a workspace, previewed, then published, usually by an admin or technical consultant. Page Composer is only for classic pages.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one rule example. It shows you know what's possible.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one rule example. It shows you know what's possible.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Give an example of a Visual Builder rule.</p><p>Make the supplier contract number required on POs above $100,000.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="B">
   <summary><span class="qn">54</span><span class="qt">What is Oracle AI Agent Studio?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic AI question for any Fusion consultant.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AI Agent Studio is the tool inside Fusion for creating, configuring, testing and managing AI agents. Oracle delivers ready-made agents and templates, for example for payables, procurement and HR questions, that you can use or adjust. You can build your own with instructions, topics and tools that let the agent read or act on Fusion data, documents, email and outside systems. Agents follow Fusion security, acting with the user's roles and data access. And you can choose the LLM and monitor usage and quality.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one use case in your own area. Nobody expects a junior consultant to be an expert.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one use case in your own area. Nobody expects a junior consultant to be an expert.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What agent would you build first for SCM?</p><p>An order status agent that answers where's my order questions from sales teams.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="B">
   <summary><span class="qn">55</span><span class="qt">Give an SCM example where an AI agent helps users.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical use case question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A requisition assistant: an employee says 'I need 5 laptops for new hires', and the agent finds the catalog item, fills the requisition and submits it for approval. An order status agent: customer service asks 'Where is order 5521?', and the agent checks the order, shipment and tracking. A supplier quote agent reads an emailed quote and drafts requisition or PO lines for a buyer to review. People still approve purchases and commitments; the agent removes lookups and typing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep the human approval in every example.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep the human approval in every example.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes an SCM agent safe to use?</p><p>It follows user security, asks before creating or changing data, and logs its actions.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">56</span><span class="qt">What does &quot;the agent follows Fusion security&quot; mean in practice?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> security is the first question any auditor asks about agents.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The agent runs with the identity and roles of the person using it, or a defined service role. If a buyer can only see POs for their BU, the agent only sees those too. Actions like creating a requisition go through the same approvals as when a person does it. So data access and controls like SOX and segregation of duties stay intact.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use the buyer example. It makes the concept concrete.</p></div>
+<p class="tip"><strong>Tip:</strong> Use the buyer example. It makes the concept concrete.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if the agent tries to approve a PO the user can't approve?</p><p>It's blocked, because it only has the user's privileges.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">57</span><span class="qt">What is the difference between a subinventory transfer and an interorganization transfer?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic transaction question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A subinventory transfer moves stock within the same org, like Stores to Staging. There's no change of owner or cost org, and usually no accounting unless the subinventories are valued differently. An interorganization transfer moves stock between orgs, like plant to DC. It needs a shipping network, can be direct or in-transit, and creates accounting, possibly intercompany.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the accounting difference. It's the key point.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the accounting difference. It's the key point.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which one creates accounting?</p><p>Interorganization transfers, since they move value between cost orgs; subinventory transfers usually don't.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="B">
   <summary><span class="qn">58</span><span class="qt">What is a miscellaneous transaction and when is it used?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> misc transactions change inventory value directly, so they need control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A miscellaneous receipt or issue adjusts on-hand against an account instead of a document like a PO or sales order. It's used for initial stock loads, write-offs, samples, corrections and scrap. Because it changes inventory value directly, it's usually limited by role and sometimes needs approval.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the control. That's why interviewers ask.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the control. That's why interviewers ask.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why control miscellaneous transactions tightly?</p><p>They bypass documents, so they're a common route for errors or fraud.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="B">
   <summary><span class="qn">59</span><span class="qt">What is the difference between a requisition, a purchase order and an agreement?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic procurement question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A requisition is an internal request to buy something, and it needs approval. A purchase order is the legal order to the supplier, with quantities, prices and dates. An agreement, blanket or contract, sets negotiated terms or prices for a period, and POs are created against it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep it short. Basic questions get the best impression from clear, quick answers.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep it short. Basic questions get the best impression from clear, quick answers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which one creates a legal commitment?</p><p>The purchase order, once approved and sent to the supplier.</p></div></div>
 </details>
 <details class="q" data-topic="Order Management" data-level="B">
   <summary><span class="qn">60</span><span class="qt">What are the main sales order statuses you see in Fusion?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic support question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An order starts as Draft, then Processing once submitted and orchestration is running. At line level you see Awaiting Shipping and Awaiting Billing, then Shipped, Billed and Closed. Lines can also be On Hold, Backordered or Canceled. The fulfillment line status tells you exactly which step a line is at.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Point to the fulfillment line status for detail. That's where support looks.</p></div>
+<p class="tip"><strong>Tip:</strong> Point to the fulfillment line status for detail. That's where support looks.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What status shows an order stuck in fulfillment?</p><p>Lines with errors or jeopardy in Processing, visible in the order's fulfillment view.</p></div></div>
 </details>
 <details class="q" data-topic="Receiving" data-level="B">
   <summary><span class="qn">61</span><span class="qt">How do you correct a receipt entered with the wrong quantity?</span><span class="meta"><span class="tag">Receiving</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common receiving mistake.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use a receipt correction, not a return, to increase or decrease the quantity received or delivered. If the goods were already delivered to inventory, I correct the delivery too. If it's been invoiced, I check the AP impact, like a quantity hold or a debit memo. Returns are only for goods that physically go back to the supplier.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate corrections from returns clearly.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate corrections from returns clearly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use a return instead of a correction?</p><p>When goods physically go back to the supplier; corrections fix data entry errors.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">62</span><span class="qt">Why might an item's cost show as zero in Fusion and what do you check?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common support ticket.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Under standard costing, no standard cost has been defined; under average costing, there haven't been any receipts yet. Or the item cost profile is missing or wrong. Or the cost processor hasn't run, or the transactions are uncosted because of errors. Or the wrong cost org, book or valuation unit is being looked at. I fix the setup, run the cost processor, and check the item's cost history.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the missing cost profile. It's the most common cause for new items.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the missing cost profile. It's the most common cause for new items.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the fix for zero cost under standard costing?</p><p>Define and publish the standard cost, then revalue or adjust transactions that used zero.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -551,6 +558,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

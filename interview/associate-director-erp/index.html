@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,6 +97,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>55</b> questions</span>
     <span class="stat"><b>43</b> basic</span>
     <span class="stat"><b>12</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button>
@@ -109,392 +116,392 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <button data-f="Redwood">Redwood</button>
     <button data-f="AI Agent Studio">AI Agent Studio</button>
   </div>
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Role" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">How do you see the Associate Director role in an ERP organization?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Role" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">How do you see the Associate Director role in an ERP organization?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to check you understand the role is both hands-on and leadership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I see it as the bridge between hands-on delivery and leadership. I'd own a functional area, like Finance and SCM applications, or a set of workstreams. I lead a team of 5 to 15 consultants and analysts: hiring, coaching and performance. I make sure projects, enhancements and support for my area meet scope, quality and time. I'm a trusted partner for the finance and supply chain directors. I keep enough technical depth to review designs and solve escalated problems. And I contribute to the roadmap, budget and resourcing for my area.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stress &quot;bridge&quot;. It shows you'll stay credible with the team and the business.</p></div>
+<p class="tip"><strong>Tip:</strong> Stress &quot;bridge&quot;. It shows you'll stay credible with the team and the business.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest part of moving from lead to Associate Director?</p><p>Letting go of doing the work myself and getting results through the team instead.</p></div></div>
 </details>
-<details class="q" data-topic="Role" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">What would you focus on in your first 90 days as Associate Director?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Role" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">What would you focus on in your first 90 days as Associate Director?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a plan shows maturity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In the first 30 days, I'd meet each team member one-on-one and the key business stakeholders, and review open projects, incidents, the backlog and SLAs to understand the pain points. By 60 days, I'd identify the top issues, like a support backlog, failed quarterly updates or unclear priorities, deliver some quick wins, and clarify roles and ways of working. By 90 days, I'd present a plan, priorities, team development, process improvements and KPIs, agreed with my director and business partners.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention one-on-ones with every team member. It shows people come first.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention one-on-ones with every team member. It shows people come first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would you avoid doing in your first 30 days?</p><p>Changing processes before I understand why they exist and who depends on them.</p></div></div>
 </details>
-<details class="q" data-topic="People" data-level="B">
-  <summary><span class="qn">3</span><span class="qt">How do you build and develop a high-performing ERP team?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="People" data-level="B" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">How do you build and develop a high-performing ERP team?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> people leadership is the core of the role.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I set clear expectations: roles, ownership by module or process, and quality standards. I invest in growth with individual development plans, certifications, stretch assignments and rotation across modules. I coach through regular one-on-ones and use design reviews as teaching moments. I recognize good work and create safety for people to raise problems. I hire for gaps in both skills and attitude. And I measure delivery quality, engagement and retention.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention psychological safety. Teams that hide problems fail at go-live.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention psychological safety. Teams that hide problems fail at go-live.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you spot a skill gap early?</p><p>Through design reviews and the quality of deliverables, not just missed deadlines.</p></div></div>
 </details>
-<details class="q" data-topic="People" data-level="B">
-  <summary><span class="qn">4</span><span class="qt">How do you handle a strong technical performer who is difficult to work with?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="People" data-level="B" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">How do you handle a strong technical performer who is difficult to work with?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common, tricky people situation.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I give specific feedback on the behavior and its impact on the team or stakeholders, with examples. I try to understand the cause: frustration, workload or feeling unrecognized. We agree expectations and support, like pairing or communication coaching. I recognize improvement when I see it. If the behavior continues, I move to formal performance management. Technical value doesn't excuse behavior that damages the team.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say that last line clearly. It shows you protect the team.</p></div>
+<p class="tip"><strong>Tip:</strong> Say that last line clearly. It shows you protect the team.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if the behavior doesn't change?</p><p>Make it part of their performance goals, and escalate to formal steps if needed, because team health matters more than one person's output.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">5</span><span class="qt">How do you run performance reviews for your team?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> fairness and development.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I give continuous feedback during the year, so the review has no surprises. I base it on evidence: goals, outcomes delivered, stakeholder feedback and behaviors. I calibrate with peers for fairness. The conversation is balanced: strengths, growth areas and career goals. We agree a development plan for next year. And it links to compensation through the company process.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;no surprises&quot;. It's the mark of a good manager.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;no surprises&quot;. It's the mark of a good manager.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle a disagreement with a review rating?</p><p>Walk through the evidence, listen to their view, and adjust only if they show something I missed.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">6</span><span class="qt">How do you hire for an Oracle functional role?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> hiring quality shapes the team.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define the need: module depth, level and soft skills. I use structured interviews with technical scenarios, like 'walk me through P2P accounting', plus problem solving, communication and culture fit. I add a practical exercise, like designing a setup or troubleshooting a case. A diverse panel scores consistently. I sell the role too: growth and interesting work. And the onboarding plan is ready before day one.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the practical exercise. It reveals real skill fast.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the practical exercise. It reveals real skill fast.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the best interview question for functional roles?</p><p>A scenario, like a hold that won't release, where they walk through how they'd troubleshoot.</p></div></div>
 </details>
-<details class="q" data-topic="Delivery" data-level="B">
-  <summary><span class="qn">7</span><span class="qt">How do you manage multiple projects and support work with one team?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Delivery" data-level="B" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">How do you manage multiple projects and support work with one team?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> capacity management is daily work.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;One backlog, with priorities agreed with the business owners. Capacity allocation, for example 60% projects, 30% support and 10% improvement, adjusted monthly. A clear owner for each item, with limits on work in progress. A weekly review of status, risks and capacity. Support SLAs for critical processes, close, payments and shipping, are protected. And I escalate conflicts early to my director or the business.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the capacity split. It shows you plan deliberately.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the capacity split. It shows you plan deliberately.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do when an urgent project collides with support?</p><p>Protect support SLAs, then agree with business owners what moves on the project.</p></div></div>
 </details>
 <details class="q" data-topic="Delivery" data-level="B">
   <summary><span class="qn">8</span><span class="qt">How do you estimate and plan an enhancement request?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> estimation drives trust with the business.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I clarify the requirements and acceptance criteria with the requester. I lay out solution options, configuration, report or extension, with effort ranges. I analyze the impact on other modules, integrations, security and controls. Then I plan design, build, testing including regression, deployment and communication. It goes through change governance for approval. And I track estimates against actuals to get better.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention tracking estimate accuracy. It improves credibility over time.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention tracking estimate accuracy. It improves credibility over time.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you avoid underestimating enhancements?</p><p>Include testing, documentation and deployment effort, and compare with similar past work.</p></div></div>
 </details>
-<details class="q" data-topic="Support" data-level="D">
-  <summary><span class="qn">9</span><span class="qt">How do you set up an effective ERP support model?</span><span class="meta"><span class="tag">Support</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Support" data-level="D" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">How do you set up an effective ERP support model?</span><span class="meta"><span class="tag">Support</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> support is a big part of the job.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Tiered support: L1 service desk, L2 functional analysts by module, L3 specialists, partners or Oracle. SLAs by priority with clear business-impact definitions. A knowledge base, runbooks and self-service guides. Problem management with root-cause analysis on recurring incidents. Monitoring of integrations and jobs. Awareness of the business calendar: close, payroll and peak shipping. And KPIs: SLA attainment, backlog, repeat incidents and satisfaction.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the business calendar. Support priorities change at month-end.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the business calendar. Support priorities change at month-end.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a good L2 SLA for a P2 issue?</p><p>Response within hours and resolution within a business day or two, depending on the business.</p></div></div>
 </details>
-<details class="q" data-topic="Support" data-level="D">
-  <summary><span class="qn">10</span><span class="qt">A P1 incident: payments did not go to the bank on payroll/supplier payment day. How do you lead the response?</span><span class="meta"><span class="tag">Support</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Support" data-level="D" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">A P1 incident: payments did not go to the bank on payroll/supplier payment day. How do you lead the response?</span><span class="meta"><span class="tag">Support</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> crisis leadership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I set up an incident bridge with AP or payroll, treasury, the integration team and the bank contact, with one incident lead. Business continuity first: a manual file upload or the bank portal for critical payments, in priority order. Then diagnose: payment file generation, transmission logs, bank acknowledgments, and certificates or keys. I send regular updates to stakeholders. We fix it and confirm with the bank. And afterwards, a post-incident review on root cause and prevention, like monitoring, alerts and tracking certificate expiry.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention certificate expiry. It's a surprisingly common cause.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention certificate expiry. It's a surprisingly common cause.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do after the incident is closed?</p><p>A blameless post-incident review with root cause and preventive actions.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="B">
   <summary><span class="qn">11</span><span class="qt">How do you build a strong relationship with the Controller or VP Supply Chain?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> business partnership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I learn their priorities and KPIs: close timeline, audit, cost and service. I hold a regular monthly review with transparent status and risks. I deliver quick wins that matter to them. I bring ideas, like automation and analytics, not just tickets. I'm present at critical moments like close and go-lives. And when I have to say no, I bring alternatives.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention being present at close. Presence builds trust quickly.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention being present at close. Presence builds trust quickly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep the relationship strong when you have bad news?</p><p>Tell them early, with options and a recovery plan.</p></div></div>
 </details>
-<details class="q" data-topic="Stakeholders" data-level="B">
-  <summary><span class="qn">12</span><span class="qt">Two business leaders want conflicting changes. How do you handle it?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Stakeholders" data-level="B" data-top="1">
+  <summary><span class="qn">12</span><span class="qt">Two business leaders want conflicting changes. How do you handle it?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> conflict management.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I clarify each need and the business outcome behind it. I analyze how each option affects both. I look for a solution that meets both, for example configuration by business unit. If that's not possible, I bring them together with data, and escalate to a common sponsor or governance board for a decision. Then I document and communicate it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Look for configuration by BU first. It often removes the conflict entirely.</p></div>
+<p class="tip"><strong>Tip:</strong> Look for configuration by BU first. It often removes the conflict entirely.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if both leaders refuse to compromise?</p><p>Escalate to their common leader with a clear analysis of each option's impact.</p></div></div>
 </details>
 <details class="q" data-topic="Governance" data-level="B">
   <summary><span class="qn">13</span><span class="qt">How do you manage quarterly Oracle updates for your area?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a routine but critical process.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I plan the update calendar and assign owners per module. We assess the release notes and decide on opt-ins. Regression testing runs in the test environment during the two-week window, automated where possible. Defects are triaged and SRs raised. Users get communication and training. And after the production update, we validate.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention post-update validation in production. It catches what test missed.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention post-update validation in production. It catches what test missed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you decide which opt-in features to enable?</p><p>Value to the business, effort and risk, reviewed with business owners.</p></div></div>
 </details>
-<details class="q" data-topic="Governance" data-level="D">
-  <summary><span class="qn">14</span><span class="qt">How do you ensure SOX IT general controls are met for ERP changes?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Governance" data-level="D" data-top="1">
+  <summary><span class="qn">14</span><span class="qt">How do you ensure SOX IT general controls are met for ERP changes?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> compliance is part of the role.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Change management: tickets, approvals, test evidence, separation between the person who builds and the person who migrates, and an emergency change process. Access management: provisioning approvals, quarterly access reviews and logged privileged access. Operations: job monitoring, interface controls, and the vendor's SOC reports for backup and restore. Evidence is stored and ready for auditors. And I train the team and spot-check compliance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention spot-checks. Controls slip without them.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention spot-checks. Controls slip without them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What evidence do auditors want for ERP changes?</p><p>Approved tickets, test evidence and proof that builders didn't migrate their own changes.</p></div></div>
 </details>
 <details class="q" data-topic="Technical" data-level="B">
   <summary><span class="qn">15</span><span class="qt">As Associate Director, how hands-on should you be?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> balance between doing and leading.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Hands-on enough to stay credible: I can review designs, understand root causes and challenge estimates. I get involved in critical incidents and key design decisions. But I avoid becoming a bottleneck, so I delegate execution and coach the team. And I keep up with Oracle releases and new capabilities.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;not a bottleneck&quot;. It's the risk in this role.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;not a bottleneck&quot;. It's the risk in this role.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you stop doing yourself?</p><p>Routine configuration and tickets, so I can focus on design review and stakeholders.</p></div></div>
 </details>
 <details class="q" data-topic="Technical" data-level="D">
   <summary><span class="qn">16</span><span class="qt">How would you approach a request to automate month-end accruals in Oracle?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical automation question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I'd sort the accruals by type. PO-based accruals come from Receipt Accounting, accrue at receipt or at period end. Recurring ones, like rent and utilities, become recurring journals or GL allocations. Estimates, like bonuses or services, come in through an ADFdi spreadsheet with approval, and possibly AI-assisted estimates later. All of them reverse automatically next period. And controls include approval and a review report.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Sorting by type is the key. Each type has a different best tool.</p></div>
+<p class="tip"><strong>Tip:</strong> Sorting by type is the key. Each type has a different best tool.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which accruals can be fully automated?</p><p>PO-based accruals through Receipt Accounting; others need recurring journals or schedules.</p></div></div>
 </details>
-<details class="q" data-topic="Technical" data-level="D">
-  <summary><span class="qn">17</span><span class="qt">How would you reduce invoice holds that delay supplier payments?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Technical" data-level="D" data-top="1">
+  <summary><span class="qn">17</span><span class="qt">How would you reduce invoice holds that delay supplier payments?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a business-impact question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I analyze three months of holds by type, supplier, BU and buyer. Then fix the top causes: price differences by updating agreements, quantity holds from receiving delays, invalid accounts through better defaults, and tax issues. I adjust tolerances where appropriate, with controls. For blanket agreements with many receipts, I consider PO-level matching. I set up a hold resolution workflow that routes holds to the right owners. And I track holds as a percentage and average days on hold.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with analysis. A few causes usually explain most holds.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with analysis. A few causes usually explain most holds.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's usually the top hold cause?</p><p>Price differences between PO and invoice, so buyer PO accuracy matters most.</p></div></div>
 </details>
 <details class="q" data-topic="Budget" data-level="B">
   <summary><span class="qn">18</span><span class="qt">How do you manage a budget for your ERP area?</span><span class="meta"><span class="tag">Budget</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> financial responsibility.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I understand the cost categories: staff, contractors and partners, licenses, cloud services and training. I forecast monthly and track against plan. I prioritize spend on business value. I control vendor costs with SOWs that have clear deliverables. And I raise variances early with explanations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;raise variances early&quot;. Finance leaders hate late surprises.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;raise variances early&quot;. Finance leaders hate late surprises.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do ERP budgets usually overrun?</p><p>Contractors and partner costs, when scope grows.</p></div></div>
 </details>
 <details class="q" data-topic="Vendors" data-level="B">
   <summary><span class="qn">19</span><span class="qt">How do you manage an implementation partner or AMS vendor?</span><span class="meta"><span class="tag">Vendors</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> vendor management is part of the job.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A clear SOW with scope, deliverables, SLAs and acceptance criteria. Weekly operational reviews and monthly performance reviews with KPIs. Quality checks on their work, like design reviews and test evidence. Knowledge transfer to internal staff. An escalation path and remedies for poor performance. And a partnership mindset, with accountability.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention knowledge transfer. It protects you from vendor dependency.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention knowledge transfer. It protects you from vendor dependency.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you hold an AMS vendor accountable?</p><p>SLA metrics reviewed monthly, with service credits for misses.</p></div></div>
 </details>
 <details class="q" data-topic="Communication" data-level="B">
   <summary><span class="qn">20</span><span class="qt">How do you report status to your Director and business leadership?</span><span class="meta"><span class="tag">Communication</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> communication upward.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Concise: RAG, accomplishments, next steps, risks and issues, and decisions needed. Metrics like SLAs, backlog and project milestones. Business language. Early warnings with mitigation options. And the same format every week or month so trends are visible.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention &quot;decisions needed&quot;. It turns a report into action.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention &quot;decisions needed&quot;. It turns a report into action.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What metric would you show leadership first?</p><p>SLA attainment and backlog trend.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">21</span><span class="qt">Tell me about a time you turned around an underperforming team or project.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">21</span><span class="qt">Tell me about a time you turned around an underperforming team or project.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> proof of leadership impact.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;We had a support backlog of 300 tickets, missed SLAs and a frustrated business. I had a quarter to restore service. I triaged the backlog and closed duplicates and obsolete tickets, set priorities with the business, created module ownership, added daily stand-ups, fixed the top five recurring issues at the root, and built a knowledge base. The backlog was under 60 in ten weeks, SLA attainment went from 62% to 94%, and satisfaction scores rose.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give before-and-after numbers. They prove the turnaround.</p></div>
+<p class="tip"><strong>Tip:</strong> Give before-and-after numbers. They prove the turnaround.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How did you sustain the turnaround?</p><p>Problem management to stop repeat incidents and clear ownership by module.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">22</span><span class="qt">Tell me about a time you had to deliver bad news to a business leader.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">22</span><span class="qt">Tell me about a time you had to deliver bad news to a business leader.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> honesty and stakeholder trust.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;A go-live for a new AP automation feature had to slip four weeks because of supplier data issues. I told the controller as soon as the risk was confirmed, explained the cause, and gave options: go live with 60% of suppliers or delay, with my recommendation of a phased approach. They chose the phased go-live, and trust stayed intact because there were no surprises.&quot;</p>
-<p class="tip"><strong>Tip:</strong> State the principle: early, honest, with options.</p></div>
+<p class="tip"><strong>Tip:</strong> State the principle: early, honest, with options.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What made the conversation go well?</p><p>Telling them early with a new date and the reason, plus what we'd do to protect it.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">23</span><span class="qt">Describe a conflict within your team and how you resolved it.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> team leadership.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;Two leads disagreed on who owned certain integrations, and it was causing delays. I met each of them separately to understand their views, then together. We clarified decision rights with a RACI and documented ownership for each integration. The delays stopped, and the RACI became a team standard.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the lasting change. It shows you fix the system, not just the moment.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the lasting change. It shows you fix the system, not just the moment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How did you prevent it recurring?</p><p>A clear RACI for ownership of those items.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="B">
   <summary><span class="qn">24</span><span class="qt">What improvements would you prioritize for an ERP area in its first year after go-live?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> post-go-live priorities.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Stabilize first: resolve recurring incidents, tune processes and finish deferred items. Then adoption: close training gaps and grow self-service reporting. Then automation quick wins, like auto-approvals, AP automation and reconciliation. Data quality programs. Regression automation for quarterly updates. And a roadmap for phase 2.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;stabilize first&quot;. Improvements on an unstable system don't land.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;stabilize first&quot;. Improvements on an unstable system don't land.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What comes after stabilization?</p><p>Adoption and automation improvements with measurable value.</p></div></div>
 </details>
 <details class="q" data-topic="Delivery" data-level="B">
   <summary><span class="qn">25</span><span class="qt">How do you ensure quality in your team's deliverables?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> quality standards.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Standards: design templates, configuration workbooks and test evidence requirements. Peer and design reviews before build. A definition of done: tested including regression, documented, trained and approved. Defects tracked, with root-cause analysis for those that reach production. And automated tests where possible.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention a definition of done. It removes ambiguity.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention a definition of done. It removes ambiguity.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your quality gate?</p><p>Peer review and test evidence before any change goes to production.</p></div></div>
 </details>
-<details class="q" data-topic="Delivery" data-level="B">
-  <summary><span class="qn">26</span><span class="qt">How do you handle a project that is slipping?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Delivery" data-level="B" data-top="1">
+  <summary><span class="qn">26</span><span class="qt">How do you handle a project that is slipping?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> delivery recovery.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I diagnose first: scope growth, estimates, dependencies, resources or quality issues. Then options: reduce scope to an MVP, add resources carefully, extend dates, or change the approach. I re-plan with the team and take a recommendation to stakeholders. And I track leading indicators from then on.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention leading indicators. They show slippage before the date is missed.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention leading indicators. They show slippage before the date is missed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first option you consider?</p><p>Reducing scope to protect the date if the business agrees.</p></div></div>
 </details>
 <details class="q" data-topic="Delivery" data-level="B">
   <summary><span class="qn">27</span><span class="qt">What delivery methodology do you prefer for ERP enhancements?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> delivery approach.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For enhancements and continuous improvement, agile and iterative: a backlog, sprints and demos to the business. For larger programs, a hybrid, with phase gates like design sign-off and UAT exit, and iterative build inside. ERP adds specifics: quarterly update cycles, month-end freeze periods and SOX change control. I pick what fits, and focus on business engagement and quality.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention month-end freezes. It shows ERP-specific awareness.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention month-end freezes. It shows ERP-specific awareness.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why agile for enhancements?</p><p>Small, frequent releases get feedback faster.</p></div></div>
 </details>
 <details class="q" data-topic="Technical" data-level="D">
   <summary><span class="qn">28</span><span class="qt">How would you approach consolidating multiple approval workflows into a simpler design?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> simplification is a common goal.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I inventory the current rules by transaction type and BU. I analyze actual approval data: who really approves and how often each rule fires. Design principles: fewer rules, hierarchy-based with amount thresholds, and exceptions by category. I prototype and test with the business, and document. I communicate and train approvers. And I measure approval cycle time before and after.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention analyzing real approval data. It shows which rules actually matter.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention analyzing real approval data. It shows which rules actually matter.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does approval data usually show?</p><p>Many approval levels that rarely reject anything.</p></div></div>
 </details>
 <details class="q" data-topic="Technical" data-level="B">
   <summary><span class="qn">29</span><span class="qt">How would you handle a request for a new report that finance needs urgently for an audit?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> urgent requests with control implications.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I clarify the exact requirement and deadline, and check whether a standard report or OTBI already covers it. If not, I build it quickly in OTBI, or BIP if formatting matters, and validate completeness and accuracy with finance, because if it's audit evidence, it needs key report validation. I document the parameters and logic. Then deliver it, and plan a proper version later if needed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention key report validation. Audit evidence needs it.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention key report validation. Audit evidence needs it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if no standard report exists?</p><p>Build a quick OTBI analysis first, then a proper report later.</p></div></div>
 </details>
 <details class="q" data-topic="Technical" data-level="B">
   <summary><span class="qn">30</span><span class="qt">What is your approach to data quality in ERP master data (suppliers, customers, items)?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> data quality affects everything.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Ownership by business data owners and stewards. Controls at entry: required fields, validations and approval workflows like supplier registration and NIRs. Monitoring with duplicate reports and completeness dashboards. Cleanup campaigns with targets. And training and feedback for the people requesting new records.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;controls at entry&quot;. It's cheaper than cleaning up later.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;controls at entry&quot;. It's cheaper than cleaning up later.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who should fix bad master data?</p><p>The business data owner, with IT supporting.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">31</span><span class="qt">How do you manage a mixed team of employees, contractors and offshore partners?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> most ERP teams are mixed.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;One team culture: shared goals, shared stand-ups and recognition for everyone. Clear roles for design, build, test and support. Critical knowledge stays with employees and is documented. Overlap hours and handoffs across time zones. And fair treatment and inclusion in decisions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention keeping critical knowledge with employees. It reduces risk.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention keeping critical knowledge with employees. It reduces risk.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you avoid an us-versus-them culture?</p><p>Shared goals, stand-ups and recognition for everyone.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">32</span><span class="qt">How do you prevent burnout during go-lives and month-end crunches?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> sustainable leadership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I plan coverage and rotations so nobody is a single point of failure. I keep schedules realistic and defer non-critical work. I recognize extra effort and give time off afterwards. I watch for signs and talk to people. And I fix the recurring causes of crunches through automation and better processes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention fixing recurring crunch causes. It's the long-term answer.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention fixing recurring crunch causes. It's the long-term answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you spot burnout?</p><p>Long hours, quality slipping and withdrawal; I check in early.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">33</span><span class="qt">How do you develop a future leader on your team?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> succession and growth.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I look for potential: ownership, influence and judgment. I delegate leadership opportunities, like leading a workstream, running a CRP or mentoring juniors. I coach them on stakeholder management and decisions. I give them exposure to senior meetings. And I hold career conversations and sponsor them for promotion.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention sponsorship. Coaching helps; sponsorship gets people promoted.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention sponsorship. Coaching helps; sponsorship gets people promoted.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you test leadership readiness?</p><p>Give them a real leadership opportunity with support.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="B">
   <summary><span class="qn">34</span><span class="qt">How do you manage expectations when the business wants everything now?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> demand management.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I make the backlog and capacity transparent. I prioritize with business owners by value. I share a roadmap with phased delivery. I find quick wins where possible. And I explain trade-offs openly and involve leaders in the decisions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Involve leaders in trade-offs. It shares ownership of the choices.</p></div>
+<p class="tip"><strong>Tip:</strong> Involve leaders in trade-offs. It shares ownership of the choices.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the key to managing expectations?</p><p>Transparency about capacity and priorities.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="B">
   <summary><span class="qn">35</span><span class="qt">How do you handle an executive escalation about a system issue?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> composure under senior pressure.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I acknowledge quickly and understand the impact. I assign an owner and get the facts. I communicate the plan and timeline, with regular updates. Once it's fixed, I confirm with the executive. Then follow-up: root cause and prevention, and I make sure the team learns from it rather than panics.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention protecting the team from panic. Good leaders absorb pressure.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention protecting the team from panic. Good leaders absorb pressure.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first thing you do?</p><p>Acknowledge quickly and understand the impact.</p></div></div>
 </details>
 <details class="q" data-topic="Governance" data-level="B">
   <summary><span class="qn">36</span><span class="qt">How do you prioritize the backlog between business requests, technical debt and compliance?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> prioritization logic.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Compliance, regulatory and security items come first, because their dates aren't negotiable. Business requests are scored by value. Technical debt gets a fixed share of capacity, like 15%. And decisions are made transparently through a governance board.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention fixed capacity for debt. Without it, debt always loses.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention fixed capacity for debt. Without it, debt always loses.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you make room for technical debt?</p><p>Reserve a fixed share of capacity.</p></div></div>
 </details>
 <details class="q" data-topic="Governance" data-level="D">
   <summary><span class="qn">37</span><span class="qt">How do you manage configuration changes safely in production?</span><span class="meta"><span class="tag">Governance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> change control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Every change has a request with business approval. It's tested in non-production with evidence and regression for impacted areas. Migration uses configuration packages or documented steps, with segregation of duties. Changes go in a window outside close and payroll. After deployment, we validate, and there's a rollback plan.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention avoiding close and payroll windows. It shows business awareness.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention avoiding close and payroll windows. It shows business awareness.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential for safe changes?</p><p>Testing with evidence and approval before migration.</p></div></div>
 </details>
 <details class="q" data-topic="Technical" data-level="D">
   <summary><span class="qn">38</span><span class="qt">A key integration from a third-party system fails silently for three days. What do you change?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> monitoring design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Monitoring with alerts not only on failures but on the absence of expected data, heartbeat checks. Dashboards that business owners can see. Error handling with notifications and retries. Daily reconciliation reports comparing source and Oracle counts. And a runbook with clear owners.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention alerting on missing data. Silent failures send nothing to alert on.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention alerting on missing data. Silent failures send nothing to alert on.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What monitoring catches silent failures?</p><p>Alerts on missing expected data, not just errors.</p></div></div>
 </details>
-<details class="q" data-topic="Technical" data-level="D">
-  <summary><span class="qn">39</span><span class="qt">How would you approach a business request for AI automation in AP or procurement?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Technical" data-level="D" data-top="1">
+  <summary><span class="qn">39</span><span class="qt">How would you approach a business request for AI automation in AP or procurement?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a current, practical question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I clarify the problem and the metric, like invoice processing time. I check Oracle-native capabilities first, Intelligent Document Recognition and AI agents. I run a pilot with a defined scope, human review and measured outcomes. Controls include approvals, audit trail and security roles. And I scale after it succeeds.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;Oracle-native first&quot;. It's lower cost and risk.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;Oracle-native first&quot;. It's lower cost and risk.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you check first?</p><p>Oracle-native capabilities before third-party tools.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="B">
   <summary><span class="qn">40</span><span class="qt">How do you contribute to the ERP roadmap as Associate Director?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> strategic contribution.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I bring business needs from my area and pain points from support data. I evaluate new Oracle features relevant to my area. I propose initiatives with value and effort estimates. And I align with my director's priorities and the enterprise strategy.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention support data. It turns opinions into evidence.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention support data. It turns opinions into evidence.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you bring to the roadmap?</p><p>Pain points from support data.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">41</span><span class="qt">Tell me about a decision you made with incomplete information.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> judgment under uncertainty.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;I had to decide whether to proceed with a quarterly update while one regression test was still unresolved. I assessed the risk: which area it affected and whether a workaround existed. I consulted the business owner and we agreed to proceed with a monitored workaround and an Oracle SR. There was no business impact, and Oracle's patch came two weeks later. My lesson: frame the risk clearly and agree it with the business owner.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show how you framed the risk. That's the skill they're testing.</p></div>
+<p class="tip"><strong>Tip:</strong> Show how you framed the risk. That's the skill they're testing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How did it turn out?</p><p>It worked, and I documented the assumptions I made.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">42</span><span class="qt">What is your leadership style?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> fit with the team and culture.</p>
 <p><strong>Answer (sample, swap in your own example):</strong></p>
 <p>&quot;I'd describe it as coaching and empowering. I set clear goals and trust the team to own the solutions, and I step in during crises. I hold high standards with support. I communicate transparently. And I adapt: more direction for new team members, more autonomy for experienced ones. For example, when a new analyst joined my AP team, I paired her with a senior consultant and reviewed her first three configurations with her. Within two months she owned payment terms and tax setup on her own, and I moved to a weekly check-in.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Back the style with one real example. Styles are easy to claim and hard to prove.</p></div>
+<p class="tip"><strong>Tip:</strong> Back the style with one real example. Styles are easy to claim and hard to prove.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would your team describe you?</p><p>Clear, supportive and holding a high bar.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">43</span><span class="qt">Why do you want to move into an Associate Director role?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">43</span><span class="qt">Why do you want to move into an Associate Director role?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> motivation.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;I've been leading informally, running workstreams and mentoring, and I want broader impact through a team. I enjoy business partnership and developing people. I still bring technical depth to keep delivery strong. And I've already achieved results through others. For example, on my last program I led a team of four consultants on the Procure-to-Pay workstream. We cut invoice holds by about 40% in two quarters, and two of those consultants were promoted. That's the kind of impact I want to have at a larger scale.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use a result you achieved through other people, not by yourself.</p></div>
+<p class="tip"><strong>Tip:</strong> Use a result you achieved through other people, not by yourself.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your evidence you're ready?</p><p>Leading workstreams and people informally with results.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">44</span><span class="qt">How do you handle a situation where your manager's direction conflicts with what the business wants?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> navigating competing directions.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I understand both perspectives and the reasoning. I bring data on the impacts. I discuss it openly with my manager first and propose a path. If needed, I set up a conversation between my manager and the business. And once a decision is made, I commit and execute.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;discuss with my manager first&quot;. Going around them breaks trust.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;discuss with my manager first&quot;. Going around them breaks trust.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if you still disagree after discussion?</p><p>Commit to the decision and document the risks.</p></div></div>
 </details>
 <details class="q" data-topic="Delivery" data-level="B">
   <summary><span class="qn">45</span><span class="qt">How do you measure the success of your ERP team?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> results orientation.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Service: SLA attainment and incident trends. Delivery: projects on time and scope, and enhancement throughput. Quality: defects and failed changes. Business outcomes, like close days and touchless rates. Team: engagement, retention and skills growth. And stakeholder satisfaction.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Include business outcomes. It shows you think beyond IT metrics.</p></div>
+<p class="tip"><strong>Tip:</strong> Include business outcomes. It shows you think beyond IT metrics.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which metric best shows team success?</p><p>SLA attainment with low repeat incidents.</p></div></div>
 </details>
 <details class="q" data-topic="Technical" data-level="D">
   <summary><span class="qn">46</span><span class="qt">How would you approach a request to add a new business unit to Oracle?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical setup question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I gather requirements: legal entity, ledger, currency, tax, banking and processes. Then setup: the BU, its functions, reference data, approvals, security, sequences and payment profiles. Integrations and reports are updated. Data: supplier and customer site assignments and opening balances. Then end-to-end testing, training and a go-live plan. And I use a checklist template so onboarding is repeatable.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the reusable checklist. It makes the next BU faster.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the reusable checklist. It makes the next BU faster.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's often forgotten when adding a BU?</p><p>Security, approvals and reporting updates.</p></div></div>
 </details>
 <details class="q" data-topic="Support" data-level="B">
   <summary><span class="qn">47</span><span class="qt">How do you reduce repeat incidents?</span><span class="meta"><span class="tag">Support</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> support maturity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Problem management that tracks recurring incidents with root-cause analysis. Permanent fixes through configuration, data, training or automation. Knowledge articles and user self-service. Monitoring for early detection. And a monthly review of the top incident categories.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the monthly review. It keeps problem management active.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the monthly review. It keeps problem management active.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the key to reducing repeats?</p><p>Root-cause analysis and permanent fixes.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">48</span><span class="qt">Describe a time you influenced a decision without formal authority.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> influence skills.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;Procurement wanted to keep manual PO approvals for every amount. I analyzed 12 months of POs and showed that 85% were under $2,000 with no rejections. I proposed auto-approval under that threshold with a monthly review. It was approved, and PO cycle time dropped from three days to same-day for most POs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Data plus a safety net, the monthly review, is what convinced them.</p></div>
+<p class="tip"><strong>Tip:</strong> Data plus a safety net, the monthly review, is what convinced them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What persuaded them?</p><p>Data on approval delays and rejections.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="B">
   <summary><span class="qn">49</span><span class="qt">What trends in ERP will matter most for your team in the next two years?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> forward thinking.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AI agents in Fusion for AP, procurement, collections and close. Redwood adoption and extensions with Visual Builder Studio. Continuous close and automation. Data and analytics with Fusion Data Intelligence. Regulatory digitization like e-invoicing. And a skills shift from configuration toward automation and data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the skills shift. It shows you're preparing your team.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the skills shift. It shows you're preparing your team.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which trend matters most?</p><p>AI agents in Fusion.</p></div></div>
 </details>
 <details class="q" data-topic="Delivery" data-level="B">
   <summary><span class="qn">50</span><span class="qt">How do you run a successful UAT with business users?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> UAT quality decides go-live readiness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I plan scenarios with business owners and use realistic data. I train the testers and give them clear scripts and support. Defects are triaged daily with transparent status. Exit criteria are agreed up front. And sign-off is formal.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention exit criteria agreed up front. It prevents arguments at the end.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention exit criteria agreed up front. It prevents arguments at the end.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes UAT successful?</p><p>Realistic scenarios and trained testers.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">51</span><span class="qt">How would you plan your team's work for Oracle's move from classic to Redwood pages?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a planning and leadership question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd inventory the affected pages and personalizations by module and estimate the VBS rebuild effort. Then plan waves by module, aligned to Oracle's retirement dates and avoiding close periods. Assign owners and build VBS skills in the team. Each wave gets regression testing and user training. And I'd report progress and risks to the director and business owners.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention avoiding close periods. Finance users will thank you.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention avoiding close periods. Finance users will thank you.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest effort?</p><p>Rebuilding personalizations in Visual Builder Studio.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">52</span><span class="qt">Your CFO asks: &quot;What should we do with Oracle AI Agent Studio?&quot; How do you respond?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a leadership communication question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd explain it in one line: it's Oracle's tool for using delivered agents and building our own inside Fusion, with our existing security. Then propose two or three pilots with clear value, like AP inquiries and holds, expense policy help, and collections emails. I'd be clear on controls: human approval for financial actions and audit involved from the start. And I'd commit to measuring and reporting results in 90 days.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep it short and end with a 90-day commitment. CFOs want a plan, not a lecture on AI.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep it short and end with a 90-day commitment. CFOs want a plan, not a lecture on AI.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would you recommend first?</p><p>A small pilot with delivered agents on a clear use case.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="B">
   <summary><span class="qn">53</span><span class="qt">How would you staff and run an AI agent pilot?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical delivery question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A small team: a functional lead, a technical consultant for tools and APIs, a business owner, and a tester. One process in scope, with success metrics agreed up front. Build it, evaluate with real scenarios, then pilot with 5 to 10 users. Review weekly, and at the end decide to scale or stop.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you'd decide to scale or stop. Pilots without an end decision drift.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you'd decide to scale or stop. Pilots without an end decision drift.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How long should a pilot run?</p><p>Six to eight weeks with clear metrics.</p></div></div>
 </details>
 <details class="q" data-topic="Delivery" data-level="B">
   <summary><span class="qn">54</span><span class="qt">How do you keep quarterly updates under control now that Redwood and AI features change every release?</span><span class="meta"><span class="tag">Delivery</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> release management is getting harder.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Each release gets an assessment per module, including Redwood pages and AI features. Core flows have automated regression. Opt-in decisions are made with business owners. And users hear about changes early.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention opt-in decisions with the business. It keeps them in control.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention opt-in decisions with the business. It keeps them in control.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What keeps updates under control?</p><p>A per-module assessment every release.</p></div></div>
 </details>
 <details class="q" data-topic="People" data-level="B">
   <summary><span class="qn">55</span><span class="qt">How do you develop your consultants for the Redwood/AI era?</span><span class="meta"><span class="tag">People</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> capability building.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Learning paths for AI Agent Studio and Visual Builder Studio, with certification goals. Hands-on sandbox projects. Rotating people into pilots. And recognizing new skills in reviews.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention rotating people into pilots. Real work builds skills fastest.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention rotating people into pilots. Real work builds skills fastest.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you measure readiness?</p><p>Each consultant builds a working agent and extension.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -512,6 +519,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

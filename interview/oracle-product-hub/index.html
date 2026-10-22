@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,6 +97,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>25</b> questions</span>
     <span class="stat"><b>5</b> basic</span>
     <span class="stat"><b>20</b> in-depth</span>
+    <span class="stat"><b>6</b> top questions</span>
   </div>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button>
@@ -107,182 +114,182 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <button data-f="Product Hub">Product Hub</button>
     <button data-f="Master Data">Master Data</button>
   </div>
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 6 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Setup" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">What are the main Product Hub setups?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Setup" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">What are the main Product Hub setups?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> item master setup decides data quality for the whole supply chain.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start with the item master organization and the item organizations. Then item classes, the hierarchy that holds numbering, descriptions, templates, attribute groups, life-cycle phases and data security. Then item templates for default operational attributes, and item statuses with life-cycle phases. Then catalogs and categories, the functional catalogs for purchasing, inventory and costing. Then NIR and change order types with their workflows. And item relationships: cross-references, related items, supplier and customer items, and GTINs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say item classes are the backbone. Most of Product Hub hangs off them.</p></div>
+<p class="tip"><strong>Tip:</strong> Say item classes are the backbone. Most of Product Hub hangs off them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why set most attributes at the master org?</p><p>So they're consistent everywhere; only attributes that truly differ by site, like planning, are controlled at the item org.</p></div></div>
 </details>
-<details class="q" data-topic="Items" data-level="D">
-  <summary><span class="qn">2</span><span class="qt">What are operational attributes vs extensible attributes?</span><span class="meta"><span class="tag">Items</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Items" data-level="D" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">What are operational attributes vs extensible attributes?</span><span class="meta"><span class="tag">Items</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a core Product Hub concept.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Operational attributes are the seeded ones that drive how the item behaves across SCM: purchasable, stockable, transactable, lot and serial control, UOM, planning method, costing enabled, shippable and invoiceable. Extensible flexfield attributes are custom ones, organized in attribute groups, single-row or multi-row, by item class. Examples are dimensions, regulatory data or marketing descriptions. EFFs inherit down the class hierarchy, so a group defined on 'Raw Materials' appears on every child class.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one example of each. It makes the split obvious.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one example of each. It makes the split obvious.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you add an extensible attribute instead of using a descriptive flexfield?</p><p>When it's product data the business manages and searches by, like voltage or color, with grouping and security by item class.</p></div></div>
 </details>
 <details class="q" data-topic="Items" data-level="D">
   <summary><span class="qn">3</span><span class="qt">How do item numbering and descriptions work by item class?</span><span class="meta"><span class="tag">Items</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> consistent numbering and descriptions prevent duplicates.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Numbering can be manual, a sequence with a prefix, or rule-based, built from attribute values. Descriptions can be generated from attributes by rules, for example 'Bolt M8 x 40 Zinc' built from type, size, length and finish. Both are defined at the item class and inherited by child classes, so every bolt gets a description in the same format.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the bolt example. Generated descriptions are the best defense against duplicates.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the bolt example. Generated descriptions are the best defense against duplicates.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the risk of manual item numbering?</p><p>Inconsistent formats and duplicates. Sequences or rules give predictable numbers and reduce errors.</p></div></div>
 </details>
-<details class="q" data-topic="NIR" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">What are the stages of a New Item Request workflow?</span><span class="meta"><span class="tag">NIR</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="NIR" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">What are the stages of a New Item Request workflow?</span><span class="meta"><span class="tag">NIR</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> NIRs are how governed item creation works in Fusion.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It starts Open, where the requester drafts and submits. Then definition steps, where each team fills in its own attributes, in parallel or in sequence, with assignees by role or group. Then approval steps. Then it moves to Scheduled or Completed, and the item is created and released. One NIR can include several items and their structures.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that definition steps can run in parallel. It's how you keep cycle time down.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that definition steps can run in parallel. It's how you keep cycle time down.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you stop NIRs from stalling at definition?</p><p>Assign by role or group rather than named people, and set due dates with reminders so overdue steps get escalated.</p></div></div>
 </details>
-<details class="q" data-topic="Change Orders" data-level="B">
-  <summary><span class="qn">5</span><span class="qt">How do change orders differ from NIRs?</span><span class="meta"><span class="tag">Change Orders</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Change Orders" data-level="B" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">How do change orders differ from NIRs?</span><span class="meta"><span class="tag">Change Orders</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you know which governance tool fits which change.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An NIR creates new items. A change order changes existing ones: attributes, structures, revisions or the approved manufacturer list, with effectivity dates and approvals. Change orders give an auditable history of who changed what, when and why, which is essential in regulated industries like pharma and medical devices.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the audit trail. It's why regulated companies insist on change orders.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the audit trail. It's why regulated companies insist on change orders.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use a change order instead of editing the item directly?</p><p>When the change needs approval or an audit trail, like a structure change or switching an approved manufacturer.</p></div></div>
 </details>
 <details class="q" data-topic="Structures" data-level="D">
   <summary><span class="qn">6</span><span class="qt">What are item structures and how do they relate to manufacturing?</span><span class="meta"><span class="tag">Structures</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> structures connect product data to manufacturing.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Item structures, or BOMs, define the components and quantities that make up an item. They're managed in Product Hub, as engineering or primary structures. Manufacturing uses the primary structure together with work definitions to build the item. Changes go through change orders with effectivity, so manufacturing knows from which date the new structure applies.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention effectivity dates. That's how engineering and manufacturing stay in step.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention effectivity dates. That's how engineering and manufacturing stay in step.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between engineering and primary structures?</p><p>Engineering structures are for design, before release. The primary structure is what manufacturing uses to build.</p></div></div>
 </details>
-<details class="q" data-topic="Data Quality" data-level="D">
-  <summary><span class="qn">7</span><span class="qt">How do you prevent duplicate items?</span><span class="meta"><span class="tag">Data Quality</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Data Quality" data-level="D" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">How do you prevent duplicate items?</span><span class="meta"><span class="tag">Data Quality</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> duplicates cause inventory, purchasing and planning errors.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use duplicate checks and matching rules during item creation, on description, manufacturer part number and key attributes. Required attributes and rule-based descriptions make items comparable. NIR governance with data stewards means someone checks before release. And periodic duplicate reports, with consolidation through change orders, clean up anything that slips through.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention manufacturer part number matching. It catches more duplicates than description matching.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention manufacturer part number matching. It catches more duplicates than description matching.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if a duplicate gets through anyway?</p><p>Inactivate one item, move on-hand and open documents to the surviving item, and add a cross-reference so old numbers still find it.</p></div></div>
 </details>
 <details class="q" data-topic="Data Quality" data-level="D">
   <summary><span class="qn">8</span><span class="qt">What are item rules and rule sets?</span><span class="meta"><span class="tag">Data Quality</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> rules enforce data quality automatically.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Validation rules enforce data quality, for example 'if the item is lot controlled, shelf life must be set'. Assignment rules derive attribute values automatically, for example setting a default planner from the item class. Rules are grouped in rule sets and attached to item classes, and they run on save or in NIR steps.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the lot and shelf life example. It's a real rule that prevents real problems.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the lot and shelf life example. It's a real rule that prevents real problems.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Give an example of an assignment rule.</p><p>If the item class is Fasteners, set the default planning method to Min-Max, so planners don't have to set it per item.</p></div></div>
 </details>
 <details class="q" data-topic="Integration" data-level="D">
   <summary><span class="qn">9</span><span class="qt">How do you integrate Product Hub with external systems?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> item data has to reach many systems.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Inbound, items come through FBDI, import maps and spreadsheets, REST APIs, or Product Hub source systems that keep cross-references to legacy or supplier numbers. Outbound, business events fire when items are created, updated or released, and REST or extracts send them to WMS, e-commerce, MES and PLM. The spoke system concept supports master data shared across several systems.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recommend business events for outbound. They avoid nightly batch delays.</p></div>
+<p class="tip"><strong>Tip:</strong> Recommend business events for outbound. They avoid nightly batch delays.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do downstream systems learn about new items?</p><p>Business events trigger an OIC flow that sends the item to the WMS or e-commerce site once it reaches an approved status.</p></div></div>
 </details>
 <details class="q" data-topic="Security" data-level="D">
   <summary><span class="qn">10</span><span class="qt">How is item data security managed?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> not everyone should edit every attribute.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Security is based on item classes: which roles or groups can view or edit items in a class, and which attribute groups. Organization access controls operational attributes by org. NIR and change order participants are set by roles or groups. That keeps regulated attributes editable only by the right team, for example only quality can change shelf life.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the quality example. It shows why attribute-level security matters.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the quality example. It shows why attribute-level security matters.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you let engineers edit design attributes but not costing?</p><p>Grant their role edit on the engineering attribute group only, and view access on the rest.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">11</span><span class="qt">What does Redwood bring to Product Management?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> Redwood is Oracle's new UI, and clients want to know what changes.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Redwood brings new pages for item search, item details, NIRs and change orders, with cleaner layouts and collaboration. It adds AI assistance, like generated item descriptions and attribute suggestions. Pages can be extended with Visual Builder Studio. The catch is that classic personalizations don't carry over and need to be rebuilt.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention rebuilding personalizations. It's the real migration effort.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention rebuilding personalizations. It's the real migration effort.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Would you turn on AI-generated descriptions right away?</p><p>I'd pilot it on one item class and review results first, since descriptions drive search and must follow the naming standard.</p></div></div>
 </details>
-<details class="q" data-topic="Interview" data-level="D">
-  <summary><span class="qn">12</span><span class="qt">Describe how you would implement NIR approval workflow for item creation.</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Interview" data-level="D" data-top="1">
+  <summary><span class="qn">12</span><span class="qt">Describe how you would implement NIR approval workflow for item creation.</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on governance design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd start with requirements: which item classes need governance, which teams define which attributes, and how many approval levels. Then configure the item classes with NIR entities, definition steps for engineering, procurement, planning, costing and quality, and an approval step. Participants come from groups or roles, with target times and notifications. Rules make the right attributes required at each step. Then I test end to end and train requesters and data stewards. And I measure NIR cycle time, rework rate and data completeness.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the KPIs. They show the workflow improved something.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the KPIs. They show the workflow improved something.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you measure success after go-live?</p><p>Cycle time from request to active item, number of rejected requests, and duplicate or incomplete items found later.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">13</span><span class="qt">How would you architect product master data across PLM, Product Hub and downstream systems?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior master data architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Engineering items and BOMs are authored in PLM, Oracle's or a third party. On release, they flow to Product Hub, the enterprise master, through change orders. Product Hub enriches commercial, planning and costing attributes through NIR workflows and data stewards. Then it publishes to e-commerce, WMS, MES and CPQ through events or OIC. Global numbering, item classes and data quality rules hold it together, and cross-references link legacy, supplier and customer part numbers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> State who owns what: PLM owns engineering, Product Hub owns the enterprise record.</p></div>
+<p class="tip"><strong>Tip:</strong> State who owns what: PLM owns engineering, Product Hub owns the enterprise record.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who should own BOM changes after release?</p><p>Engineering in PLM, with change orders flowing to Product Hub.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How would you architect item master governance with Redwood Product Management and AI?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a current architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Item classes, templates and rules are the backbone. NIR and change order workflows run in Redwood with team-based steps. AI generates descriptions, enriches attributes from spec sheets and detects duplicates, but everything it proposes is reviewed by a data steward. Released items are published by events to WMS, e-commerce and MES. And data quality KPIs sit on dashboards.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say AI proposes and stewards decide. It's the governance principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Say AI proposes and stewards decide. It's the governance principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's AI's role in item governance?</p><p>Suggesting attributes and descriptions.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="B">
   <summary><span class="qn">15</span><span class="qt">What are item classes and item templates?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic Product Hub question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An item class is a hierarchy that groups items, like Raw Materials, then Chemicals. Classes define numbering, attribute groups, templates, NIR rules and data security, and child classes inherit from parents. An item template is a set of default attribute values, like 'Purchased Item' with purchasable, stockable, transactable and costing enabled, applied when items are created so attributes are consistent. EBS uses templates and categories; Fusion adds item classes on top.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Contrast with EBS. It helps clients moving from EBS understand the change.</p></div>
+<p class="tip"><strong>Tip:</strong> Contrast with EBS. It helps clients moving from EBS understand the change.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use templates?</p><p>So new items get consistent default attributes for their type, instead of people setting each one.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="B">
   <summary><span class="qn">16</span><span class="qt">What is an item category and how is it used?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> categories drive many other setups.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Categories group items for a business purpose, and each catalog serves one function. The purchasing catalog drives buyer assignment, approvals and spend reporting. The inventory catalog is for reporting and planning. The costing or GL catalog drives accounts through SLA rules. An item can be in several catalogs, usually one category per catalog. Because so many setups depend on them, I design the catalogs early in the project.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;design catalogs early&quot;. Changing them later breaks approvals and accounting.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;design catalogs early&quot;. Changing them later breaks approvals and accounting.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why separate catalogs by function?</p><p>Purchasing, inventory and planning need different groupings, and one catalog can't serve all well.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">17</span><span class="qt">What are item status codes and lifecycle phases?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> status controls what can be done with an item.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Item status, like Active, Inactive, Prototype or Obsolete, controls key attributes: whether the item can be purchased, stocked, transacted, ordered or used in BOMs. Life-cycle phases, like Design, Prototype, Production and Obsolete, track where the item is in its life, and changing phase can change status. Changing the status is how you stop an item from being ordered without deleting it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Make the point about not deleting items. History needs them.</p></div>
+<p class="tip"><strong>Tip:</strong> Make the point about not deleting items. History needs them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which status would you use for an item being phased out?</p><p>A status that stops purchasing but allows selling existing stock, like a phase-out or end-of-life status.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">18</span><span class="qt">How do you set up item data governance in Product Hub?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> governance is what keeps the item master clean.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define item classes with required attributes and numbering. New Item Requests have definition steps for each function, engineering, procurement, planning, costing and quality, and an approval step. Validation rules and templates keep things consistent. Change orders handle changes after release. Each class has a data steward, and we track cycle time and data completeness. If there's a PLM system, like Oracle PLM or Agile, it's the source for engineering items. The result is fewer duplicates and complete attributes before anyone transacts.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention data stewards per class. Governance needs named people.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention data stewards per class. Governance needs named people.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most important governance control?</p><p>Required attributes and approvals in NIRs, so items can't go active incomplete.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">19</span><span class="qt">How would you clean and migrate a legacy item master with many duplicates?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common migration challenge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I profile the data: duplicates by description and manufacturer part number, UOM inconsistencies, inactive items. Then agree rules with the business: which items migrate, for example activity in the last 24 months, open transactions or on-hand, and how to pick the golden record. Then standardize descriptions and UOMs and map to the new item classes and categories. Then build a cross-reference from legacy to new items for open orders, BOMs and history. Load through item import in stages, reconcile counts and key attributes, and get business sign-off on each mock.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the 24-month activity rule. It usually cuts the item count a lot.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the 24-month activity rule. It usually cuts the item count a lot.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you decide which duplicate survives?</p><p>The one with the most open transactions or cleanest data, with cross-references for the others.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">20</span><span class="qt">How would you design NIR workflows for a regulated company?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> regulated companies need more control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Item classes for regulated items require attributes like lot control, shelf life, quality and storage conditions. Definition steps go to engineering, quality, procurement, planning and costing. Approval steps use electronic signatures where regulations require them. Every later change goes through a change order with an audit trail. And dashboards track NIR cycle time against targets.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention electronic signatures. It's what validated environments need.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention electronic signatures. It's what validated environments need.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential for regulated items?</p><p>Quality approval steps.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">21</span><span class="qt">What is a New Item Request (NIR) and how is it configured?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a core Product Hub question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A New Item Request is a governed workflow for creating items. Item classes are configured for NIRs: which entities are required, like attributes, structures and the approved manufacturer list, and the workflow steps, definition and approval, with assignees. The requester submits; definition steps route to teams to fill in their attributes, like costing, planning and purchasing; approval steps approve; and then the item is created and released. Validation rules enforce quality and notifications keep everyone informed. The benefit is clean item data and an audit trail instead of anyone creating items freely.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say what it replaces: uncontrolled item creation. That's the business case.</p></div>
+<p class="tip"><strong>Tip:</strong> Say what it replaces: uncontrolled item creation. That's the business case.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep NIRs moving quickly?</p><p>Parallel definition steps, role-based assignment and due dates with reminders.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">22</span><span class="qt">What are change orders in Product Hub?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> change control is essential for regulated companies.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Change orders control changes to existing items or structures: attributes, BOM components and revisions. They list the affected items and proposed changes, and route through review and approval like NIRs. On approval, the changes are implemented, optionally with a new revision and effective date. They keep an audit trail of what changed, who approved and when, which matters a lot in pharma and medical devices.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention revisions and effective dates. They're what manufacturing relies on.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention revisions and effective dates. They're what manufacturing relies on.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does effectivity on a change order do?</p><p>It sets when the change applies, so production switches to the new version on a planned date.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">23</span><span class="qt">How do you troubleshoot an NIR stuck in approval?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a support question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I open the NIR and check the workflow step: who it's assigned to and any errors. Then the participant setup on the item class workflow, looking for inactive users or missing roles. Then whether required attributes weren't completed in a definition step. I reassign or update participants, and if it's a pattern, I fix the item class workflow configuration.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate the one-off fix from the systemic fix. It shows maturity.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate the one-off fix from the systemic fix. It shows maturity.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prevent stuck NIRs?</p><p>Assign by role, with escalation for overdue steps.</p></div></div>
 </details>
 <details class="q" data-topic="Master Data" data-level="D">
   <summary><span class="qn">24</span><span class="qt">How would you lead an enterprise item master transformation?</span><span class="meta"><span class="tag">Master Data</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a leadership question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd set a vision: one item master in Product Hub, with a governed life cycle from PLM to retirement. Then assess the current state: duplicates, attribute completeness and classification gaps. Design the data model: item classes, attribute groups, structures and cross-references. Set the process: NIRs and change orders with data stewards and target times. Migrate: cleanse, consolidate and keep history through cross-references. Drive adoption by connecting every consumer, WMS, MES, e-commerce and CPQ, to Product Hub. And track duplicate rate, creation cycle time and completeness.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention connecting every consumer. A master that systems don't use isn't a master.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention connecting every consumer. A master that systems don't use isn't a master.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first quick win in an item master program?</p><p>Removing duplicates and enforcing required attributes for new items.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">25</span><span class="qt">How would you use AI to clean a large legacy item master before migration?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a current, practical AI question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AI matching finds duplicates using descriptions, manufacturer part numbers and attributes. AI classification sorts items into the new item classes. AI extraction pulls attributes out of descriptions and spec sheets. Data stewards review the proposals, sorted by confidence score, so they spend time on the uncertain ones. Then the clean data loads through import, and I track how accurate the AI proposals were.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention sorting by confidence. It's how you make steward time count.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention sorting by confidence. It's how you make steward time count.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who confirms AI matches?</p><p>Data stewards.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -300,6 +307,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 6 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 6 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

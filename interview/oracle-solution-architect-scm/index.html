@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,436 +97,437 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>61</b> questions</span>
     <span class="stat"><b>16</b> basic</span>
     <span class="stat"><b>45</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Architecture" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">What does an SCM Solution Architect own on an Oracle program?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Architecture" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">What does an SCM Solution Architect own on an Oracle program?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you understand the architect's scope in SCM.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I own the end-to-end supply chain design: plan, source, make, deliver and return, across Fusion modules, planning, logistics systems and partners. The SCM enterprise structure: inventory orgs, cost orgs, BUs and SFO flows, aligned with Finance. The integration architecture with MES, WMS, TMS, PLM, e-commerce, EDI partners, 3PLs and contract manufacturers. The master data architecture for items, BOMs, suppliers, customers and locations. Non-functional requirements like order volumes, pick release windows, planning run times and warehouse availability. Design authority across SCM workstreams and with Finance. And the roadmap: planning maturity, automation, AI and a control tower.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention alignment with Finance. SCM architects are judged on the seams.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention alignment with Finance. SCM architects are judged on the seams.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest part of owning end-to-end SCM design?</p><p>Holding trade-offs between service, cost and cash across plan, source, make and deliver, when each team optimizes its own area.</p></div></div>
 </details>
-<details class="q" data-topic="Enterprise Structures" data-level="D">
-  <summary><span class="qn">2</span><span class="qt">Design the SCM structure for a company with 5 plants, 12 DCs, central procurement and 3 selling entities.</span><span class="meta"><span class="tag">Enterprise Structures</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Enterprise Structures" data-level="D" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">Design the SCM structure for a company with 5 plants, 12 DCs, central procurement and 3 selling entities.</span><span class="meta"><span class="tag">Enterprise Structures</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a cross-functional design question that tests whether you understand SCM structures from finance's side.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd create one inventory org per plant and per DC, plus an item master org. Cost orgs by plant using standard cost, and DCs grouped into cost orgs using average or standard, with cost books for primary and management views. Procurement is one central procurement BU, with requisitioning BUs for each operating entity and rules for the sold-to legal entity. Each selling entity gets an order management BU, and fulfillment can come from any DC through sourcing rules. Supply chain financial orchestration handles the flows: central procurement to plants, and plants to selling entities with transfer pricing. Planning is one global supply plan with demand by selling entity or region. Shipping networks connect the DCs for rebalancing with transfer orders. And I'd validate the legal flows and tax with finance before configuring anything.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with &quot;validate with finance and tax first&quot;. It shows you know where these designs go wrong.</p></div>
+<p class="tip"><strong>Tip:</strong> End with &quot;validate with finance and tax first&quot;. It shows you know where these designs go wrong.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why cost orgs by plant rather than one global cost org?</p><p>Each plant has different resources and overhead, so standard costs and variances are meaningful only per plant.</p></div></div>
 </details>
-<details class="q" data-topic="Integration" data-level="D">
-  <summary><span class="qn">3</span><span class="qt">Design the integration landscape for Fusion SCM with WMS, TMS, MES and e-commerce.</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Integration" data-level="D" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">Design the integration landscape for Fusion SCM with WMS, TMS, MES and e-commerce.</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a core SCM architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;E-commerce or CRM creates and updates orders in OM through REST or OIC events, with idempotency and status callbacks. OM sends fulfillment requests to the WMS through orchestration connectors, and the WMS returns pick, pack and ship confirmations and inventory adjustments. Shipping or WMS sends shipments to the TMS for planning, and carrier, tracking and freight cost come back. Fusion sends work orders and materials to MES, and completions, consumption and scrap come back. Inventory snapshots reconcile WMS and Fusion. It all runs on OIC or an enterprise iPaaS with event-driven patterns, monitoring and error queues. And the system of record for each data element is documented.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with &quot;system of record documented&quot;. It prevents most integration disputes.</p></div>
+<p class="tip"><strong>Tip:</strong> End with &quot;system of record documented&quot;. It prevents most integration disputes.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which integration is most critical to get right?</p><p>Inventory and shipment confirmations with the WMS, because errors hit on-hand, billing and customer service at once.</p></div></div>
 </details>
-<details class="q" data-topic="Integration" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">How do you ensure inventory stays in sync between Fusion and an external WMS?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Integration" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">How do you ensure inventory stays in sync between Fusion and an external WMS?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> WMS drift is a common, costly problem.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First decide who owns what: the WMS owns locator and LPN detail, Fusion owns org and subinventory level. Every receipt, shipment, adjustment and transfer in the WMS posts to Fusion in near real time. Messages have unique IDs so they're idempotent, and they're processed in order per item and lot. A daily reconciliation compares snapshots, and adjustments are only created with approval. Failed messages are visible to operations, not just IT. And counts are aligned at go-live.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;failed messages visible to operations&quot;. They're the ones who can fix them.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;failed messages visible to operations&quot;. They're the ones who can fix them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How often would you reconcile on-hand?</p><p>Daily snapshot comparisons by item and location, with an exception process for differences.</p></div></div>
 </details>
-<details class="q" data-topic="Order Management" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">How would you architect Order Management for very high order volumes (e.g. 200k lines/day)?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Order Management" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">How would you architect Order Management for very high order volumes (e.g. 200k lines/day)?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a performance architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Orders come in through bulk or REST in parallel streams, with throttling and retry. Orchestration processes stay lean, with as few steps and waits as possible. Global Order Promising is tuned, with frequent collections and well-designed ATP rules, and non-urgent lines are scheduled in batches. Pick release runs in waves by warehouse with tested release rules. AutoInvoice is split by batch source and runs often. I'd do performance testing with production-like volumes and engage Oracle on capacity. And monitoring with alerts on backlog.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention performance testing at real volume. It's the step that prevents go-live failures.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention performance testing at real volume. It's the step that prevents go-live failures.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What breaks first at very high order volume?</p><p>Orchestration and scheduling throughput, so I test at peak volume and tune processes before go-live.</p></div></div>
 </details>
-<details class="q" data-topic="Planning" data-level="D">
-  <summary><span class="qn">6</span><span class="qt">How would you architect supply chain planning for a global company?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Planning" data-level="D" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">How would you architect supply chain planning for a global company?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior planning architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Demand Management for statistical and ML forecasts by product, customer and region, with a consensus process. Supply Planning for constrained plans across plants and DCs, with a master production schedule for key plants. Sales and Operations Planning linking demand, supply and finance. Replenishment Planning for DC inventory policies. Data comes from Fusion collections and external systems by file, and planning owns the item planning attributes. The cadence is a weekly plan with daily net change. Scenarios support what-if and risk. And it connects to Global Order Promising for customer promises.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention who owns planning attributes. Data ownership decides whether planning works.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention who owns planning attributes. Data ownership decides whether planning works.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest part of global planning?</p><p>Agreeing one consensus demand plan across regions and keeping master data consistent.</p></div></div>
 </details>
-<details class="q" data-topic="Planning" data-level="B">
-  <summary><span class="qn">7</span><span class="qt">What data foundations must be in place before planning can work?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Planning" data-level="B" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">What data foundations must be in place before planning can work?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> planning fails on data more than on software.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Item attributes: processing and pre- and post-processing lead times, order modifiers, safety stock policy, planning method and make or buy. Accurate BOMs and work definitions. Sourcing rules and assignment sets. Shipping, receiving and manufacturing calendars. Clean demand history, adjusted for returns, promotions and stockouts. Accurate open supply: POs, work orders and transfers. And resource capacities if the plan is constrained. Without these, the plan produces noise and planners won't trust it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with trust. It's the real cost of bad data.</p></div>
+<p class="tip"><strong>Tip:</strong> End with trust. It's the real cost of bad data.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first thing you'd clean?</p><p>Lead times, because they drive every planning recommendation.</p></div></div>
 </details>
-<details class="q" data-topic="Product Hub" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">How would you architect product master data across PLM, Product Hub and downstream systems?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Product Hub" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">How would you architect product master data across PLM, Product Hub and downstream systems?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior master data architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Engineering items and BOMs are authored in PLM, Oracle's or a third party. On release, they flow to Product Hub, the enterprise master, through change orders. Product Hub enriches commercial, planning and costing attributes through NIR workflows and data stewards. Then it publishes to e-commerce, WMS, MES and CPQ through events or OIC. Global numbering, item classes and data quality rules hold it together, and cross-references link legacy, supplier and customer part numbers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> State who owns what: PLM owns engineering, Product Hub owns the enterprise record.</p></div>
+<p class="tip"><strong>Tip:</strong> State who owns what: PLM owns engineering, Product Hub owns the enterprise record.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who should own BOM changes after release?</p><p>Engineering in PLM, with change orders flowing to Product Hub.</p></div></div>
 </details>
 <details class="q" data-topic="Compliance" data-level="D">
   <summary><span class="qn">9</span><span class="qt">How would you architect DSCSA serialization for a pharmaceutical distributor with Oracle?</span><span class="meta"><span class="tag">Compliance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a specialist compliance architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A serialization repository, like TraceLink or rfxcel, holds serial numbers, aggregation and EPCIS events. Fusion tracks lots, and serials where needed, for inventory and orders. Inbound EPCIS events from manufacturers link to receipts and ASNs; outbound EPCIS goes with shipments; and verification requests handle saleable returns. Warehouses scan at receiving, picking and shipping, including aggregation and disaggregation. Mismatches go through an exception process with quarantine. And there's a full audit trail and data retention. The key is aligning Fusion lot, serial and shipment data with the serialization system down to the unit.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention aggregation. It's where serialization projects struggle.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention aggregation. It's where serialization projects struggle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does Fusion hold in a DSCSA design?</p><p>Lot-level inventory and orders, while the serialization system holds serial numbers and events.</p></div></div>
 </details>
 <details class="q" data-topic="Compliance" data-level="D">
   <summary><span class="qn">10</span><span class="qt">How do you design SCM for GxP-regulated environments?</span><span class="meta"><span class="tag">Compliance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> pharma and medical device projects need validation.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Computer system validation, CSV or the newer CSA approach: a validation plan, risk assessment, IQ, OQ and PQ or risk-based testing, and traceability. 21 CFR Part 11: electronic signatures and audit trails on GMP-relevant transactions like QA release and status changes. Quality integration with inspections, deviations and CAPA. Lot genealogy and recall capability. Change control for configuration with impact assessments. And a validation strategy for quarterly updates, using risk-based regression.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the quarterly update strategy. It's the hardest part of validated SaaS.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the quarterly update strategy. It's the hardest part of validated SaaS.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle quarterly updates in a validated environment?</p><p>Risk-based regression testing of validated functions with documented evidence each update.</p></div></div>
 </details>
 <details class="q" data-topic="Outsourced Manufacturing" data-level="D">
   <summary><span class="qn">11</span><span class="qt">How would you model contract manufacturers in Oracle Fusion?</span><span class="meta"><span class="tag">Outsourced Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> outsourcing is common, and modeling it right matters for cost and visibility.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd use Fusion Outsourced Manufacturing, where we own the material and design and the contract manufacturer builds. The CM site is modeled as a contract manufacturing inventory org with work definitions. A purchase order for the CM's service is tied to a work order, and components are shipped to the CM or bought by them on our behalf. The CM reports progress and completions through B2B messages, and we receive the finished goods. Cost is material plus the CM service cost rolled into the assembly. Visibility comes through the supplier portal or B2B.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the PO tied to the work order. It's the key modeling idea.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the PO tied to the work order. It's the key modeling idea.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main benefit of Outsourced Manufacturing?</p><p>Visibility of material and work at the contract manufacturer, with proper costing.</p></div></div>
 </details>
 <details class="q" data-topic="Logistics" data-level="D">
   <summary><span class="qn">12</span><span class="qt">How would you architect transportation and global trade with Oracle?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior logistics design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;OTM handles transportation planning, tendering, carrier rates and freight settlement. GTM handles trade compliance: restricted party screening, classification like HTS and ECCN, licenses, customs filings and duty management. Fusion Order Management and Shipping integrate natively with both. Carriers connect by EDI or APIs, and customs brokers too. Landed cost management feeds the duties and freight into costing. And shipment tracking feeds visibility to customers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate OTM and GTM clearly. They're often confused.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate OTM and GTM clearly. They're often confused.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When do you need GTM?</p><p>When export screening, licenses and customs documentation are significant.</p></div></div>
 </details>
-<details class="q" data-topic="Costing" data-level="D">
-  <summary><span class="qn">13</span><span class="qt">How would you design the costing architecture for a multi-entity manufacturer?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Costing" data-level="D" data-top="1">
+  <summary><span class="qn">13</span><span class="qt">How would you design the costing architecture for a multi-entity manufacturer?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Cost orgs per plant, using standard cost with roll-ups for resources and overhead. A primary cost book for GAAP and a secondary book for management, IFRS, or a group view with intercompany markup removed. Valuation units at cost org level, or by lot for high-value items. Transfer pricing through supply chain financial orchestration for intercompany moves. Landed costs for imports. Variance reporting. And an annual standard cost cycle with simulation, approvals and revaluation.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the group view without intercompany markup. It's what group finance needs.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the group view without intercompany markup. It's what group finance needs.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why might you need a secondary cost book?</p><p>For management costing or a different GAAP valuation.</p></div></div>
 </details>
 <details class="q" data-topic="Data Architecture" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How would you design supply chain analytics on top of Oracle Fusion?</span><span class="meta"><span class="tag">Data Architecture</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> analytics architecture for SCM.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion Data Intelligence SCM analytics gives prebuilt KPIs like OTIF, inventory turns, PO cycle time and supplier performance. BICC extracts go to a data lake for enterprise analytics that join non-Oracle data like WMS, TMS and IoT. A supply chain control tower shows real-time exceptions, like late POs, stockouts and delayed shipments, with alerts and actions. Data definitions, like how OTIF is calculated, are governed. And I avoid heavy BIP extracts on production.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention governing the OTIF definition. Different definitions cause endless arguments.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention governing the OTIF definition. Different definitions cause endless arguments.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first KPI you'd build?</p><p>OTIF, on-time in-full delivery, because it captures customer service.</p></div></div>
 </details>
 <details class="q" data-topic="Resilience" data-level="D">
   <summary><span class="qn">15</span><span class="qt">How would you use Oracle to improve supply chain resilience?</span><span class="meta"><span class="tag">Resilience</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> resilience is a board-level topic since recent disruptions.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Multi-sourcing through sourcing rules and supplier qualification. Supplier risk monitoring, financial, geopolitical and ESG, linked to supplier records. Inventory buffers for critical items using planning safety stock policies. Scenario planning for supplier failure or demand spikes. Control tower alerts with AI-driven exception handling. And visibility into tier-1 suppliers, and tier-2 where possible.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention scenario planning. It turns resilience from a slogan into a practice.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention scenario planning. It turns resilience from a slogan into a practice.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the quickest resilience win?</p><p>Qualifying alternate suppliers for critical items.</p></div></div>
 </details>
-<details class="q" data-topic="AI" data-level="D">
-  <summary><span class="qn">16</span><span class="qt">Where would you apply AI agents in a Fusion SCM landscape?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI" data-level="D" data-top="1">
+  <summary><span class="qn">16</span><span class="qt">Where would you apply AI agents in a Fusion SCM landscape?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you can find practical SCM use cases.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In procurement: a supplier onboarding agent, a requisition assistant, contract risk review, and drafts for PO change negotiations. In order management: triaging exceptions like holds and late lines, and customer communications. In planning: explaining forecast anomalies and helping planners with exceptions. In inventory and quality: spotting unusual adjustments and nonconformances. In product data: enrichment and classification. With guardrails: role-based access, human approval for commitments like POs and prices, and auditing of every agent action.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Pick one and describe it in detail if asked. Depth beats a long list.</p></div>
+<p class="tip"><strong>Tip:</strong> Pick one and describe it in detail if asked. Depth beats a long list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which agent would you build first?</p><p>A supplier delay agent, because delays hit customers directly.</p></div></div>
 </details>
-<details class="q" data-topic="Migration" data-level="D">
-  <summary><span class="qn">17</span><span class="qt">How would you architect migrating SCM from EBS to Fusion with plants going live in waves?</span><span class="meta"><span class="tag">Migration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Migration" data-level="D" data-top="1">
+  <summary><span class="qn">17</span><span class="qt">How would you architect migrating SCM from EBS to Fusion with plants going live in waves?</span><span class="meta"><span class="tag">Migration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> wave migrations need coexistence design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd start with a pilot plant or DC, then regions, often with finance going first as the backbone. During coexistence, EBS sites trade with Fusion sites through integrations for intercompany flows, transfers and planning. Product Hub in Fusion is the global item master, synced to EBS during the transition. Planning either collects from both instances into one plan or runs separate plans for a time. Coexistence is retired quickly, each wave reuses the template, and lessons go into the next wave.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention one plan across both instances. It's the hardest coexistence decision.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention one plan across both instances. It's the hardest coexistence decision.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why go live with finance first?</p><p>It provides the backbone for accounting, so SCM waves post to a stable ledger.</p></div></div>
 </details>
 <details class="q" data-topic="Template" data-level="B">
   <summary><span class="qn">18</span><span class="qt">How do you build a global SCM template for rollouts?</span><span class="meta"><span class="tag">Template</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> templates make rollouts fast and consistent.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Core processes are standardized: P2P, O2C, returns, transfers and inventory control. The configuration baseline is documented and packaged. Rules say what countries or sites may change, like legal documents and tax, and what they may not. A rollout kit includes data templates, test scripts, training and a cutover plan. Template changes go through global governance. And I measure rollout duration and defects to keep improving the kit.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention measuring each rollout. The template should get faster every time.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention measuring each rollout. The template should get faster every time.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should stay local in a template?</p><p>Legal, tax and some warehouse practices.</p></div></div>
 </details>
 <details class="q" data-topic="Non-Functional" data-level="B">
   <summary><span class="qn">19</span><span class="qt">What SCM non-functional requirements do you define early?</span><span class="meta"><span class="tag">Non-Functional</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> NFRs prevent go-live performance problems.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Volumes: orders and lines per day, receipts, shipments, items and BOM sizes. Batch windows: pick release, planning runs, collections and cost processing. Latency: order import to scheduling, and ship confirm to invoice. Warehouse availability: how much outage they can tolerate and offline fallback procedures. Integration throughput and error SLAs. Label and document printing performance. And data retention and archiving.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention printing performance. Slow labels stop a warehouse.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention printing performance. Slow labels stop a warehouse.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which NFR causes the most rework?</p><p>Batch windows for planning and pick release.</p></div></div>
 </details>
-<details class="q" data-topic="Performance" data-level="D">
-  <summary><span class="qn">20</span><span class="qt">Pick release is taking too long in a busy DC. How do you approach it?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Performance" data-level="D" data-top="1">
+  <summary><span class="qn">20</span><span class="qt">Pick release is taking too long in a busy DC. How do you approach it?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a performance troubleshooting question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I measure first: lines per release, the rules used and time per step. Then release rules: smaller waves by priority or carrier cutoff instead of releasing everything at once. Picking rules: simpler allocation logic and no complex sort orders on huge data sets. Reservation and auto pick confirm settings. Document printing moved to asynchronous processes. Competing processes, like planning or costing, rescheduled. And Oracle support with diagnostics if needed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with smaller waves. It's usually the biggest win.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with smaller waves. It's usually the biggest win.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common fix?</p><p>Smaller waves and better release rules.</p></div></div>
 </details>
 <details class="q" data-topic="Security" data-level="D">
   <summary><span class="qn">21</span><span class="qt">How do you design SCM security for a large organization?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> SCM security has many layers.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Roles by job: buyer, category manager, warehouse operator, planner and order administrator. Data access by BU, inventory org and cost org, and procurement agent access by BU. Item data security for who can create and change items by class. SoD: supplier creation vs PO approval vs receiving vs invoicing, and inventory adjustments vs count approval. Partner access through supplier and customer portals with external identities. And provisioning automated from HCM.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one SCM SoD conflict. It shows you think like an auditor.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one SCM SoD conflict. It shows you think like an auditor.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you restrict planners?</p><p>Data access by org or item category.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="B">
   <summary><span class="qn">22</span><span class="qt">How do you align supply chain leaders, finance and IT on a design?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> architects work across groups.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I frame decisions around business outcomes: service level, cost and cash. Cross-functional decisions, like costing, intercompany and inventory policy, get joint workshops with all three. I present options with trade-offs, not only technical arguments. A design authority with business representation makes decisions. And one decisions log keeps everyone aligned.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;service level, cost and cash&quot;. It's the language all three understand.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;service level, cost and cash&quot;. It's the language all three understand.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you resolve disputes quickly?</p><p>Frame by business outcome and get a decision from the process owner.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">23</span><span class="qt">Describe a supply chain architecture you designed and its outcome.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">23</span><span class="qt">Describe a supply chain architecture you designed and its outcome.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> proof of architect experience.</p>
 <p><strong>Answer (structure, use your own facts):</strong></p>
 <p>&quot;Business context: for example, a global medical device maker with 8 plants, 20 DCs and 3 ERPs. Problems: no inventory visibility, slow order promising and manual intercompany. Solution: Fusion SCM with SFO, Product Hub as the item master, OIC to MES, WMS and TMS, Supply Planning, and control tower dashboards. Key decisions: standard cost per plant, global sourcing rules, and keeping a specialist WMS for the largest DCs. Outcomes: OTIF up 6 points, inventory down 12%, intercompany automated. And lessons learned.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep the outcomes numeric. They're what interviewers remember.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep the outcomes numeric. They're what interviewers remember.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should the outcome include?</p><p>Measurable results like inventory turns or OTIF improvement.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">24</span><span class="qt">How do you handle a situation where the business wants to replicate a legacy process exactly?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common push-back scenario.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I ask why the process exists, to find the underlying need. I show the standard Oracle flow with their data and quantify the benefits. I offer configuration that meets the need a different way. If they still insist, I document the cost, risk and upgrade impact and take it to the sponsor for a decision. And I revisit it after go-live with data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention revisiting after go-live. It gives people a way to say yes now.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention revisiting after go-live. It gives people a way to say yes now.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most persuasive tool?</p><p>Showing the standard flow with their own data in a CRP.</p></div></div>
 </details>
 <details class="q" data-topic="Integration" data-level="D">
   <summary><span class="qn">25</span><span class="qt">How do you integrate EDI partners at scale?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> EDI at scale needs a model, not one-off projects.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use a B2B or EDI provider, a VAN or cloud EDI, for partner onboarding and translation between X12 or EDIFACT and a canonical XML or JSON. On the Oracle side, OIC B2B or Fusion Collaboration Messaging. A partner onboarding playbook covers testing, certification and go-live. Monitoring includes functional acknowledgments, 997 or CONTRL, and error alerts. And a standard document set: 850, 855, 856 and 810 for customers and suppliers, 940 and 945 for 3PLs, and 214 for carrier status.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the document numbers. It proves real EDI experience.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the document numbers. It proves real EDI experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main EDI risk?</p><p>Partner onboarding delays, so start early.</p></div></div>
 </details>
 <details class="q" data-topic="Order Management" data-level="D">
   <summary><span class="qn">26</span><span class="qt">How would you design order orchestration to support omnichannel fulfillment (ship from store, BOPIS)?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a retail design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fulfillment nodes, DCs, stores and suppliers for drop ship, are modeled as orgs or external fulfillment systems. Sourcing logic picks the node by distance, inventory, cost and capacity, using GOP rules or an external order-routing engine. There's an orchestration process per fulfillment type: ship from DC, ship from store, buy online pick up in store, and drop ship. Store inventory feeds give visibility across nodes. Changes and cancels are handled across systems. And returns can be made anywhere, routed to the right node.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention store inventory accuracy. Ship-from-store fails when store counts are wrong.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention store inventory accuracy. Ship-from-store fails when store counts are wrong.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's key to ship-from-store?</p><p>Accurate store inventory and sourcing rules by node.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">27</span><span class="qt">How would you design inventory visibility across Oracle and non-Oracle locations?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> most companies have stock outside their ERP, at 3PLs or stores.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion holds on-hand for the orgs it manages. External locations, like 3PLs, consignment sites and stores, send snapshots or transactions into Fusion as external orgs, or into a visibility layer. Global Order Promising collects supply from all sources so promises are realistic. Control tower dashboards show availability and aging. And I'd agree the latency, like hourly or daily, plus a reconciliation process with each external location.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention agreeing latency. Everyone assumes real time until it isn't.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention agreeing latency. Everyone assumes real time until it isn't.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How fresh does external on-hand need to be?</p><p>As fresh as the promising use case needs, often hourly.</p></div></div>
 </details>
-<details class="q" data-topic="Procurement" data-level="D">
-  <summary><span class="qn">28</span><span class="qt">How would you architect source-to-pay for a large enterprise on Fusion?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Procurement" data-level="D" data-top="1">
+  <summary><span class="qn">28</span><span class="qt">How would you architect source-to-pay for a large enterprise on Fusion?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior architecture question across the whole process.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd design it as a chain. Supplier life cycle first: registration, qualification, risk screening and performance. Then sourcing events and contracts with a clause library. Then catalogs and agreements, with guided buying in Self Service Procurement so employees buy on contract. Approvals by budget owner and category. Receiving and acceptance for both goods and services. AP automation with e-invoicing, document recognition and matching. Spend analytics and savings tracking. And integrations to supplier networks, risk providers and e-signature.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Present it as a chain from supplier to payment. It's easy to follow and shows you see the whole thing.</p></div>
+<p class="tip"><strong>Tip:</strong> Present it as a chain from supplier to payment. It's easy to follow and shows you see the whole thing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which link in the chain breaks most?</p><p>Supplier onboarding and master data.</p></div></div>
 </details>
 <details class="q" data-topic="Procurement" data-level="D">
   <summary><span class="qn">29</span><span class="qt">How do you design procurement for services (contractors, SOWs) in Oracle?</span><span class="meta"><span class="tag">Procurement</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> services are harder to buy and receive than goods.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use fixed-price service lines and rate-based lines, and complex work for construction and projects, which supports progress payments and retainage. Receipts for services are by amount or quantity, entered by the requester who confirms the work was done. For contingent workers, many companies use a vendor management system like Fieldglass or Beeline, integrated with Fusion for POs and invoices. Approvals go to the project or cost center owner. Matching can be 2-way, or 3-way with service acceptance as the receipt.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention who confirms the service. Service receipts are where control often breaks down.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention who confirms the service. Service receipts are where control often breaks down.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you control services spend?</p><p>Receipt by amount or milestone, with approval by the requester.</p></div></div>
 </details>
 <details class="q" data-topic="Manufacturing" data-level="D">
   <summary><span class="qn">30</span><span class="qt">How do you architect manufacturing execution between Fusion and MES?</span><span class="meta"><span class="tag">Manufacturing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> most plants run an MES next to the ERP.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion is the system of record for planning, work orders, costing, inventory and quality records. MES handles shop-floor detail: machine data, operator steps, and in pharma, electronic batch records. Work orders and BOMs or recipes go from Fusion to MES. Consumption, completions, labor and machine time, and quality results come back. I send summaries where ERP doesn't need the detail, near real time for inventory-critical transactions, and I build error handling and WIP reconciliation between the two.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;send summaries where detail isn't needed&quot;. Over-integrating is a common mistake.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;send summaries where detail isn't needed&quot;. Over-integrating is a common mistake.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who owns quality records in that split?</p><p>Fusion, with MES feeding results.</p></div></div>
 </details>
 <details class="q" data-topic="Maintenance" data-level="D">
   <summary><span class="qn">31</span><span class="qt">How does Oracle Maintenance fit into the SCM architecture?</span><span class="meta"><span class="tag">Maintenance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> asset-heavy companies need maintenance tied to supply chain.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle Maintenance manages equipment: assets, work orders, preventive maintenance schedules and meters. Spare parts come from inventory, and purchases go through procurement. Costs go to assets or cost centers, with integration to Fixed Assets. IoT data can trigger condition-based maintenance. The benefits are better uptime and optimized spare parts.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention IoT-triggered maintenance. It's where the field is going.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention IoT-triggered maintenance. It's where the field is going.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do spare parts work?</p><p>Stocked in Inventory and issued to maintenance work orders.</p></div></div>
 </details>
 <details class="q" data-topic="Quality" data-level="D">
   <summary><span class="qn">32</span><span class="qt">How would you architect a closed-loop quality process with Oracle?</span><span class="meta"><span class="tag">Quality</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a quality architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Inspection plans run at receiving, production and shipping. Failures create nonconformance records, which lead to investigation and CAPA, corrective and preventive actions. Supplier quality uses supplier corrective action requests and scorecards that feed sourcing decisions. When a design or spec changes, a change order in Product Hub carries it. Customer complaints link to lots through genealogy. And analytics show defect trends. The loop is closed when what we learn changes specs, suppliers or processes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain what &quot;closed loop&quot; means. It's the point of the question.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain what &quot;closed loop&quot; means. It's the point of the question.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What closes the loop?</p><p>Corrective actions verified as effective.</p></div></div>
 </details>
 <details class="q" data-topic="Data Architecture" data-level="B">
   <summary><span class="qn">33</span><span class="qt">How do you govern master data in an SCM landscape?</span><span class="meta"><span class="tag">Data Architecture</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> master data quality decides SCM success.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Each domain has an owner: items, suppliers, customers, locations and BOMs. Stewards run workflows like NIRs, supplier registration and customer onboarding. Quality rules apply at entry, not after. KPIs track completeness, duplicates and time to create. Structural data, like UOMs and item classes, goes through change control. And data quality is reviewed regularly with business leaders.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;quality at entry, not after&quot;. Cleaning later always costs more.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;quality at entry, not after&quot;. Cleaning later always costs more.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the steward's main job?</p><p>Running workflows and data quality checks.</p></div></div>
 </details>
 <details class="q" data-topic="Testing" data-level="B">
   <summary><span class="qn">34</span><span class="qt">How do you test a global SCM template before the first rollout?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a flawed template repeats its flaws in every country.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Process scenarios cover every variant: product types, fulfillment types and entities. Integrations are tested with real partner test environments. Finance verifies the accounting for every flow. Volume and performance tests simulate peak days. Day-in-the-life simulations run in a warehouse and a plant. The cutover is rehearsed. And exit criteria are agreed with business leadership.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention peak-day volume tests. Templates often pass at average volume and fail at peak.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention peak-day volume tests. Templates often pass at average volume and fail at peak.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What variant gets missed?</p><p>Returns and intercompany flows.</p></div></div>
 </details>
 <details class="q" data-topic="Cutover" data-level="D">
   <summary><span class="qn">35</span><span class="qt">How would you plan a wave-based go-live for 12 DCs?</span><span class="meta"><span class="tag">Cutover</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> wave planning is an architect and program skill.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A pilot DC first, representative but lower risk, with four to six weeks of stabilization before wave two. Waves grouped by region or complexity, avoiding peak seasons. A repeatable cutover runbook with timing from the pilot. Inventory counts and on-hand loads for each wave. Communication with carriers, customers and suppliers. Hypercare teams that move with the waves. And lessons learned after each wave.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the stabilization period. Rushing wave two is how problems multiply.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the stabilization period. Rushing wave two is how problems multiply.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you learn from the pilot?</p><p>Training and data gaps to fix before later waves.</p></div></div>
 </details>
 <details class="q" data-topic="Roadmap" data-level="B">
   <summary><span class="qn">36</span><span class="qt">How do you build an SCM digital roadmap?</span><span class="meta"><span class="tag">Roadmap</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> strategic planning for supply chain systems.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I assess maturity in planning, procurement, manufacturing, logistics, data and analytics. I link initiatives to business goals: service level, working capital, cost, resilience and sustainability. I prioritize, for example Product Hub governance, then planning, then a control tower, then AI agents. Sequencing respects data foundations. Each initiative has a business case and KPIs. And supply chain leadership reviews it every quarter.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;sequencing respects data foundations&quot;. It's why item master comes before AI.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;sequencing respects data foundations&quot;. It's why item master comes before AI.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prioritize the roadmap?</p><p>By value to service, cost and cash.</p></div></div>
 </details>
 <details class="q" data-topic="Sustainability" data-level="D">
   <summary><span class="qn">37</span><span class="qt">How can Oracle SCM support sustainability (ESG) goals?</span><span class="meta"><span class="tag">Sustainability</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> ESG reporting is growing fast.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Supplier ESG data comes from qualification questionnaires and third-party ratings. Emissions tracking, like Scope 3 purchased goods, uses spend or activity data with Oracle Fusion Sustainability or partner tools. Transportation optimization in OTM reduces emissions. Product Hub can hold materials and recyclability attributes. And it all feeds ESG disclosures like CSRD.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention Scope 3. It's where most supply chain emissions sit.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention Scope 3. It's where most supply chain emissions sit.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest ESG data to get?</p><p>Supplier emissions data.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="B">
   <summary><span class="qn">38</span><span class="qt">How would you evaluate whether to use Fusion native capability vs a best-of-breed tool (e.g. WMS, planning)?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a classic architecture trade-off.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I look at fit: does Fusion meet the requirements today and on its roadmap? Complexity and scale: is the use case at the edge of what Fusion does well? Integration cost and data latency of a separate tool. Total cost of ownership: licenses, support and skills. User experience and adoption. And strategic direction: consolidating the platform versus differentiating. For close calls, I run a proof of concept with real scenarios.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recommend a proof of concept for close calls. It replaces opinions with evidence.</p></div>
+<p class="tip"><strong>Tip:</strong> Recommend a proof of concept for close calls. It replaces opinions with evidence.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the deciding factor?</p><p>Fit with requirements at scale and total cost.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">39</span><span class="qt">How do you handle disagreements between workstream leads on cross-module design?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> architects resolve cross-team conflicts.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I get both leads to state the business requirement and their constraints. I lay out the options and their impact on each module, including finance. We decide based on the end-to-end outcome, not what's convenient for one module. The decision goes into the design authority log and is communicated. I only escalate to the sponsor if it's a business trade-off that needs an executive.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;end-to-end outcome, not module convenience&quot;. It's the architect's tiebreaker.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;end-to-end outcome, not module convenience&quot;. It's the architect's tiebreaker.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep it from becoming personal?</p><p>Focus on business outcomes and documented options.</p></div></div>
 </details>
 <details class="q" data-topic="Integration" data-level="D">
   <summary><span class="qn">40</span><span class="qt">How would you design integration with a supplier collaboration network?</span><span class="meta"><span class="tag">Integration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> supplier networks are common for large buyers.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The network connects to Fusion through OIC or B2B: POs go out, and acknowledgments, ASNs, invoices and catalogs come back. I decide which suppliers onboard to the network and which, usually smaller ones, stay on the Fusion supplier portal. Network documents are mapped to Fusion objects. I check for duplicates and consistency between the network and portal channels. And there's monitoring and a partner support model.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention channel rules by supplier size. It keeps costs sensible.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention channel rules by supplier size. It keeps costs sensible.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the benefit of a network?</p><p>One connection to many suppliers.</p></div></div>
 </details>
-<details class="q" data-topic="Planning" data-level="D">
-  <summary><span class="qn">41</span><span class="qt">What is S&amp;OP and how would you support it with Oracle?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Planning" data-level="D" data-top="1">
+  <summary><span class="qn">41</span><span class="qt">What is S&amp;OP and how would you support it with Oracle?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> S&amp;OP connects planning to leadership decisions.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Sales and Operations Planning is a monthly process that aligns demand, supply and finance: demand review, supply review, financial reconciliation, then the executive S&amp;OP meeting. Oracle Sales and Operations Planning in Fusion provides the plans, scenarios, financial views and collaboration. It brings together demand plans, supply plans and EPM financial plans. The outcome is one agreed plan that drives both execution and the finance forecast.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the four monthly steps. It shows you know the process, not just the tool.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the four monthly steps. It shows you know the process, not just the tool.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's Oracle's tool for S&amp;OP?</p><p>Sales and Operations Planning in Fusion planning, with demand and supply reviews.</p></div></div>
 </details>
 <details class="q" data-topic="Inventory" data-level="D">
   <summary><span class="qn">42</span><span class="qt">How would you design an inventory optimization approach?</span><span class="meta"><span class="tag">Inventory</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> inventory optimization frees cash.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd segment items by value and variability, ABC and XYZ, and set service level targets by segment. Safety stock is calculated statistically from demand and lead-time variability. Order quantities balance holding cost against ordering cost. For a network of DCs, I'd think multi-echelon, deciding where buffers should sit. I'd monitor excess and obsolete stock with disposition rules. The tools can be Fusion Replenishment Planning or a specialist optimization tool.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with segmentation. One safety stock rule for every item is the usual mistake.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with segmentation. One safety stock rule for every item is the usual mistake.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's XYZ classification?</p><p>Grouping items by demand variability.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="D">
   <summary><span class="qn">43</span><span class="qt">How do you approach a supply chain control tower design?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> control towers are a common modernization goal.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Use cases first: late supplier POs, stockout risk, delayed shipments, quality holds and capacity issues. Then data: near real-time feeds from Fusion events, WMS, TMS, carriers and suppliers. Alerts have thresholds and owners, with recommended actions, using AI where it adds value. A workflow lets people act: expedite, reallocate or notify the customer. Dashboards serve both leadership and operations. And I start small and add use cases each quarter.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;use cases first&quot;. Control towers built data-first become dashboards nobody uses.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;use cases first&quot;. Control towers built data-first become dashboards nobody uses.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes a control tower actionable?</p><p>Alerts tied to owners and actions.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">44</span><span class="qt">How do you keep your SCM architecture skills current?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> SCM moves fast.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I read Oracle's release readiness for SCM, planning and logistics. I follow Customer Connect and SCM user groups. I try new features hands-on in a sandbox, like Redwood pages and AI agents. I keep up with industry learning, like ASCM certifications and supply chain publications. And I learn from post-implementation reviews.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name a recent feature you tried. It makes the answer real.</p></div>
+<p class="tip"><strong>Tip:</strong> Name a recent feature you tried. It makes the answer real.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your main learning source?</p><p>Release readiness and Customer Connect.</p></div></div>
 </details>
 <details class="q" data-topic="Order Management" data-level="D">
   <summary><span class="qn">45</span><span class="qt">How do you integrate CPQ with Oracle Order Management?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> CPQ to OM is a common integration.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;CPQ owns configuration, pricing and quoting. An accepted quote becomes an order in OM through the native integration or OIC and REST, carrying the configuration, prices and discounts. I decide with the business whether OM reprices or freezes the CPQ prices; usually we freeze them. Configured items are created in OM and Configurator for assemble-to-order. Status updates go back to CPQ or CRM. And customer and item masters must match across the systems.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recommend freezing CPQ prices. Repricing what sales already agreed causes disputes.</p></div>
+<p class="tip"><strong>Tip:</strong> Recommend freezing CPQ prices. Repricing what sales already agreed causes disputes.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the key CPQ integration point?</p><p>Accepted quote to sales order.</p></div></div>
 </details>
 <details class="q" data-topic="Costing" data-level="D">
   <summary><span class="qn">46</span><span class="qt">How would you support a company switching from average to standard cost?</span><span class="meta"><span class="tag">Costing</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a big change that affects finance reporting.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First a business case and finance approval, because standard cost brings variances and different reporting. Then set standard costs for every item, starting from recent average or actual costs, with roll-ups for manufactured items. Switch at a period or year start, revaluing on-hand at the switch. Change the cost profiles and add the new variance accounts. Test receipts, work orders and shipments. And train finance on reading variances, because that's the new skill they'll need.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with training on variances. The system change is easier than the people change.</p></div>
+<p class="tip"><strong>Tip:</strong> End with training on variances. The system change is easier than the people change.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest switch risk?</p><p>Revaluation impact on inventory and P&amp;L.</p></div></div>
 </details>
 <details class="q" data-topic="Returns" data-level="D">
   <summary><span class="qn">47</span><span class="qt">How would you architect reverse logistics at scale?</span><span class="meta"><span class="tag">Returns</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> returns are costly, especially in e-commerce.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd set return authorization policies by product and customer, with an online return portal. Returns are routed to the right place: a DC, repair center or back to the supplier. Inspection and disposition rules decide whether to restock, refurbish, recycle, scrap or return to vendor. Credit timing rules say whether credit is given at authorization, receipt or inspection. Refurbishment runs through work orders with serial tracking. And analytics on return reasons and cost drive fixes upstream.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention credit timing. It's a business decision with real cash impact.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention credit timing. It's a business decision with real cash impact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the value of disposition rules?</p><p>Fast routing to restock, refurbish or scrap.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="B">
   <summary><span class="qn">48</span><span class="qt">How do you ensure the SCM design supports M&amp;A growth?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> growth by acquisition is common.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A template-based org setup lets us add a plant or DC quickly. The item master supports cross-references for acquired catalogs. Supplier and customer onboarding processes are ready to absorb new records. SFO flows extend to new entities. Integration patterns are reusable for new 3PLs or MES. And a day-one playbook gives visibility through data integration before full migration.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the day-one playbook. Leadership wants visibility immediately after a deal.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the day-one playbook. Leadership wants visibility immediately after a deal.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What helps most in M&amp;A?</p><p>Template-based org setup.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">49</span><span class="qt">Tell me about a time an SCM design caused an unexpected finance impact.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cross-module awareness.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;A drop-ship design went live, and finance saw COGS posted before revenue for a month. As the architect I owned the cross-module design. I found the logical receipt and shipment timing didn't match the AR invoicing trigger. I changed the orchestration to bill on supplier ship confirmation and enabled COGS deferral to match revenue recognition. Margins lined up the following month, and we added finance sign-off to every orchestration process design. My lesson: every SCM flow needs an accounting walkthrough.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the lesson. It's what they're really asking for.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the lesson. It's what they're really asking for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What did you change?</p><p>Added finance sign-off to fulfillment design.</p></div></div>
 </details>
 <details class="q" data-topic="Logistics" data-level="D">
   <summary><span class="qn">50</span><span class="qt">What is cross-docking and how would you support it?</span><span class="meta"><span class="tag">Logistics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cross-docking needs tight data and timing.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Cross-docking moves goods from inbound receiving straight to outbound shipping with little or no storage. It needs visibility of incoming supply through ASNs and of outgoing demand. Planned cross-dock is known at receipt; opportunistic cross-dock is decided by the warehouse system. It's supported in Fusion Warehouse Management or a specialist WMS. The benefits are faster flow and lower storage cost, but it only works with accurate ASNs and tight timing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it depends on ASN accuracy. That's the honest constraint.</p></div>
+<p class="tip"><strong>Tip:</strong> Say it depends on ASN accuracy. That's the honest constraint.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes cross-docking work?</p><p>Accurate ASNs and fast receiving.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">51</span><span class="qt">Design an agentic architecture for order exception management in Fusion SCM.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on agent design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Exceptions are detected from business events or scheduled checks: order holds, scheduling failures and late shipments. A workflow agent uses Business Object nodes to gather the order, supply from GOP, shipment and customer data, then an agent node classifies the exception and proposes actions: reschedule, split, substitute or expedite. Anything that affects the customer needs human approval, and Email and Deep Link tools notify the owner. External tools bring in carrier tracking through REST or MCP, and WMS status through a connector. I'd monitor exception volumes, resolution time and agent accuracy, with identity propagation and least-privilege tools for security.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show where the human approves. It's the part reviewers check first.</p></div>
+<p class="tip"><strong>Tip:</strong> Show where the human approves. It's the part reviewers check first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the human role?</p><p>Approving the agent's recommended action.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">52</span><span class="qt">How would you use MCP and A2A in a supply chain landscape?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> these protocols are new and interviewers want to see you understand them.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;MCP lets Fusion agents call tools exposed by other systems, like WMS, TMS, supplier portals or planning tools, through a standard protocol. A2A lets a Fusion agent work with agents on other platforms, for example a logistics provider's agent for tracking or rebooking. The architecture work is around trust boundaries, credentials in the credential store, logging, rate limits, and a clear owner for each agent.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the difference in one line each: MCP is tools, A2A is agents.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the difference in one line each: MCP is tools, A2A is agents.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's MCP?</p><p>Model Context Protocol, a standard for agents to call external tools.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">53</span><span class="qt">What makes a supply chain agent safe to deploy at scale?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> pilots are easy; scaling safely is hard.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Deterministic workflows for the core steps, with agents only where judgment is needed. Draft-then-approve for commitments like POs and order changes. Evaluation sets that include edge cases and requests the agent must refuse. Tracing and dashboards, with alerts on error spikes. A gradual rollout by BU or site. And a fallback to the manual process when the agent or the LLM isn't available.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the fallback. Operations can't stop because a model is down.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the fallback. Operations can't stop because a model is down.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential for scale?</p><p>Deterministic workflows with human approval.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">54</span><span class="qt">How do Redwood and Visual Builder Studio change your extension strategy for SCM?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> extension strategy has to change with Redwood.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Classic personalizations retire with classic pages, so I rebuild only what's valuable in Visual Builder Studio. I prefer configuration and rules in VBS over custom pages. For bigger needs, like a dock scheduling screen, I build a Redwood app in Visual Builder on Fusion REST APIs. And VBS assets are treated as code: Git, reviews, a pipeline, and regression every quarter.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;rebuild only what's valuable&quot;. It's a chance to simplify.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;rebuild only what's valuable&quot;. It's a chance to simplify.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to Page Composer changes?</p><p>They retire with classic pages.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">55</span><span class="qt">What should you test when SCM pages switch to Redwood?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical testing question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;End-to-end flows: requisition to PO to receipt to invoice, order to ship to bill, transfers and counts. Mobile and tablet use on the warehouse floor, and barcode scanning. Printing of labels and documents, and notifications and deep links. VBS extensions and rules. Performance for high-volume users. And reports embedded on pages.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention barcode scanning. It's what breaks warehouse operations.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention barcode scanning. It's what breaks warehouse operations.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's often missed in Redwood testing?</p><p>Mobile and scanning flows.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Platform" data-level="D">
   <summary><span class="qn">56</span><span class="qt">How do you design integrations for Fusion SCM using business events?</span><span class="meta"><span class="tag">Fusion Platform</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> event-driven integration is the modern approach.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In OIC I subscribe to events like PO approved, shipment confirmed, receipt created and item released, and push them to downstream systems, like supplier portals, WMS, e-commerce and analytics, in near real time. Events can repeat, so the integration has to be idempotent. Where order matters, I handle sequencing, and I add error queues and replay. Events often carry only keys, so I combine them with REST lookups for the full payload.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention idempotency. It's the issue that causes duplicate records.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention idempotency. It's the issue that causes duplicate records.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the benefit of events?</p><p>Real-time integration without polling.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="D">
   <summary><span class="qn">57</span><span class="qt">How would you architect supplier collaboration combining Fusion, portals and AI?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a current architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The Supplier Portal handles POs, acknowledgments, ASNs and invoices. B2B or EDI serves high-volume suppliers. An AI agent handles supplier emails, like quotes, delays and invoice questions: it reads documents, updates drafts, and answers status questions with deep links. Supplier qualification and risk data are integrated. And there's one supplier master, with clear channel rules for each supplier tier.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention channel rules by tier. It keeps the model manageable.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention channel rules by tier. It keeps the model manageable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does AI help suppliers?</p><p>Answering status questions and drafting responses.</p></div></div>
 </details>
 <details class="q" data-topic="Planning" data-level="D">
   <summary><span class="qn">58</span><span class="qt">Where does AI help most in Fusion planning, and what are the limits?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a balanced question about AI.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AI helps most with machine-learning forecasting and demand sensing, finding anomalies in history, prioritizing and explaining exceptions for planners, and summarizing scenarios for S&amp;OP. The limits are clear: bad master data, like wrong lead times or BOMs, still breaks plans; planners must understand and own the decisions; and explanations matter, because planners won't follow a recommendation they can't understand.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the limits honestly. Interviewers trust balanced answers more.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the limits honestly. Interviewers trust balanced answers more.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the limit of AI in planning?</p><p>It can't fix bad master data.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="B">
   <summary><span class="qn">59</span><span class="qt">How do you prepare an SCM landscape to adopt Oracle's AI features quickly?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AI readiness is a platform quality.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Stay current on releases and Redwood pages. Clean the data: items, suppliers, customers and lead times. Use API-first integrations so agents can reuse them. Review the security model, since agents inherit it. Set up AI governance and an evaluation practice. And keep a pilot backlog prioritized with business owners.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention reusable APIs. Agents depend on the same building blocks.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention reusable APIs. Agents depend on the same building blocks.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first step?</p><p>Stay current on releases.</p></div></div>
 </details>
 <details class="q" data-topic="Product Hub" data-level="D">
   <summary><span class="qn">60</span><span class="qt">How would you architect item master governance with Redwood Product Management and AI?</span><span class="meta"><span class="tag">Product Hub</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a current architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Item classes, templates and rules are the backbone. NIR and change order workflows run in Redwood with team-based steps. AI generates descriptions, enriches attributes from spec sheets and detects duplicates, but everything it proposes is reviewed by a data steward. Released items are published by events to WMS, e-commerce and MES. And data quality KPIs sit on dashboards.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say AI proposes and stewards decide. It's the governance principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Say AI proposes and stewards decide. It's the governance principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's AI's role in item governance?</p><p>Suggesting attributes and descriptions.</p></div></div>
 </details>
 <details class="q" data-topic="Order Management" data-level="D">
   <summary><span class="qn">61</span><span class="qt">How would you design order capture from multiple channels with agent support?</span><span class="meta"><span class="tag">Order Management</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AI-assisted order entry is a current topic.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;E-commerce, CPQ and EDI orders come in through APIs. For emailed and PDF purchase orders, an AI agent extracts the lines, matches customer item numbers to ours, and creates draft orders for review. OM applies its normal validation and pricing. Low-confidence extractions go to a human review queue. And I'd monitor extraction accuracy and order cycle time to prove it's working.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the human review queue. It's what makes AI order entry safe.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the human review queue. It's what makes AI order entry safe.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's AI's role in order capture?</p><p>Extracting data from emailed POs.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -538,6 +545,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

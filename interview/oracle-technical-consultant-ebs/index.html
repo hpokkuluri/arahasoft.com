@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,358 +97,359 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>50</b> questions</span>
     <span class="stat"><b>31</b> basic</span>
     <span class="stat"><b>19</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
 <details class="q" data-topic="Architecture" data-level="B">
   <summary><span class="qn">1</span><span class="qt">Describe Oracle EBS R12 architecture.</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> baseline for EBS technical roles.</p>
 <p><strong>Answer:</strong> Three tiers: <strong>desktop/client</strong> (browser for OAF pages and Forms via Java applet/JNLP), <strong>application tier</strong> (WebLogic for OAF and Forms services in R12.2, concurrent processing, reports), and <strong>database tier</strong> (Oracle Database with APPS and product schemas). R12.2 uses <strong>online patching</strong> with a dual file system (run and patch editions) and edition-based redefinition.</p>
-<p class="tip"><strong>Tip:</strong> Mention R12.2 online patching (adop) — it affects development.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention R12.2 online patching (adop) — it affects development.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do concurrent programs run in that architecture?</p><p>On the application tier, through the concurrent processing server and managers.</p></div></div>
 </details>
-<details class="q" data-topic="Schemas" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">What is the APPS schema?</span><span class="meta"><span class="tag">Schemas</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Schemas" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">What is the APPS schema?</span><span class="meta"><span class="tag">Schemas</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic EBS architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;APPS is the central schema that owns the synonyms, views and packages giving access to all the product schemas, like AP, AR, GL and PO. Custom code usually runs under APPS, while custom objects live in a custom schema, like XXCUST, with synonyms created in APPS. The custom schema should also be registered in the application.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention registering the custom schema. It shows you follow EBS standards.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention registering the custom schema. It shows you follow EBS standards.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why shouldn't custom objects live in APPS?</p><p>Custom tables belong in a custom XX schema, with APPS synonyms, so patches and upgrades don't overwrite them.</p></div></div>
 </details>
-<details class="q" data-topic="Concurrent Programs" data-level="B">
-  <summary><span class="qn">3</span><span class="qt">How do you create and register a concurrent program?</span><span class="meta"><span class="tag">Concurrent Programs</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Concurrent Programs" data-level="B" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">How do you create and register a concurrent program?</span><span class="meta"><span class="tag">Concurrent Programs</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> concurrent programs are core EBS development.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I write the executable: a PL/SQL procedure with errbuf and retcode parameters, a SQL*Plus script, an Oracle Report, a host script or Java. Then I define the executable in System Administrator, Concurrent, Executable. Then I define the program with its parameters, using value sets, plus output type and incompatibilities. Finally I add it to a request group attached to the responsibility, so users can run it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the errbuf and retcode signature. It's the detail they listen for.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the errbuf and retcode signature. It's the detail they listen for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do users get access to a new program?</p><p>Add it to the request group of their responsibility.</p></div></div>
 </details>
 <details class="q" data-topic="Concurrent Programs" data-level="B">
   <summary><span class="qn">4</span><span class="qt">What are errbuf and retcode?</span><span class="meta"><span class="tag">Concurrent Programs</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a precise technical check.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;They're the first two OUT parameters of a PL/SQL concurrent program procedure. errbuf returns an error message. retcode returns the status: 0 for success, 1 for warning and 2 for error. Together they decide how the request completes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep it quick and precise. That's what this question rewards.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep it quick and precise. That's what this question rewards.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does retcode 1 mean?</p><p>Warning; 0 is success and 2 is error.</p></div></div>
 </details>
 <details class="q" data-topic="Concurrent Programs" data-level="B">
   <summary><span class="qn">5</span><span class="qt">How do you write to the log and output files?</span><span class="meta"><span class="tag">Concurrent Programs</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> logging matters for support.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use FND_FILE.PUT_LINE with FND_FILE.LOG for the log file, and FND_FILE.PUT_LINE with FND_FILE.OUTPUT for the output file. I log key steps and counts, so support can see what happened without running a debugger.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention logging counts. It's what support needs first.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention logging counts. It's what support needs first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why separate log and output?</p><p>Log is for debugging; output is what the user needs to see.</p></div></div>
 </details>
-<details class="q" data-topic="Concurrent Programs" data-level="D">
-  <summary><span class="qn">6</span><span class="qt">How do you submit a concurrent request from PL/SQL?</span><span class="meta"><span class="tag">Concurrent Programs</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Concurrent Programs" data-level="D" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">How do you submit a concurrent request from PL/SQL?</span><span class="meta"><span class="tag">Concurrent Programs</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common development task.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I initialize the context with FND_GLOBAL.APPS_INITIALIZE, passing user, responsibility and application IDs. Then I call FND_REQUEST.SUBMIT_REQUEST with the application, program, description, start time, sub-request flag and arguments. Then I COMMIT, because the request isn't picked up until it's committed. If I need to wait for it, I use FND_CONCURRENT.WAIT_FOR_REQUEST.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;commit is required&quot;. It's the classic bug.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;commit is required&quot;. It's the classic bug.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if you don't commit after FND_REQUEST.SUBMIT_REQUEST?</p><p>The request isn't visible to the concurrent manager, so it never runs.</p></div></div>
 </details>
 <details class="q" data-topic="PL/SQL" data-level="B">
   <summary><span class="qn">7</span><span class="qt">What PL/SQL concepts are essential for EBS development?</span><span class="meta"><span class="tag">PL/SQL</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a PL/SQL depth check.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Packages with spec and body, procedures and functions. Cursors: explicit, implicit, cursor FOR loops and REF cursors. Exception handling. Collections with BULK COLLECT and FORALL for performance. Records with %TYPE and %ROWTYPE. Autonomous transactions for logging. And dynamic SQL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Be ready with a BULK COLLECT example. It's the usual follow-up.</p></div>
+<p class="tip"><strong>Tip:</strong> Be ready with a BULK COLLECT example. It's the usual follow-up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which cursor type do you prefer?</p><p>Cursor FOR loops for simple cases, explicit cursors with BULK COLLECT for large volumes.</p></div></div>
 </details>
-<details class="q" data-topic="PL/SQL" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">What is BULK COLLECT and FORALL?</span><span class="meta"><span class="tag">PL/SQL</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="PL/SQL" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">What is BULK COLLECT and FORALL?</span><span class="meta"><span class="tag">PL/SQL</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> performance knowledge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;BULK COLLECT fetches many rows into a collection in one context switch, and FORALL runs DML for all elements in one switch. That's much faster than processing row by row. I use LIMIT with BULK COLLECT to control memory, for example fetching 1,000 rows at a time and inserting them into a staging table with FORALL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention LIMIT. Without it, large loads run out of memory.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention LIMIT. Without it, large loads run out of memory.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's SAVE EXCEPTIONS for?</p><p>It lets FORALL continue after errors and report which rows failed.</p></div></div>
 </details>
-<details class="q" data-topic="PL/SQL" data-level="B">
-  <summary><span class="qn">9</span><span class="qt">How do you handle exceptions properly?</span><span class="meta"><span class="tag">PL/SQL</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="PL/SQL" data-level="B" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">How do you handle exceptions properly?</span><span class="meta"><span class="tag">PL/SQL</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> code quality.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I catch specific exceptions like NO_DATA_FOUND and TOO_MANY_ROWS, log meaningful messages with context, and use RAISE_APPLICATION_ERROR for custom errors. I never write WHEN OTHERS THEN NULL. And in concurrent programs, I set retcode and errbuf so the request shows the right status.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;never swallow errors&quot;. It's a principle interviewers like to hear.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;never swallow errors&quot;. It's a principle interviewers like to hear.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why avoid WHEN OTHERS THEN NULL?</p><p>It hides errors, so failures go unnoticed.</p></div></div>
 </details>
-<details class="q" data-topic="Multi-Org" data-level="D">
-  <summary><span class="qn">10</span><span class="qt">How does multi-org access work in R12?</span><span class="meta"><span class="tag">Multi-Org</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Multi-Org" data-level="D" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">How does multi-org access work in R12?</span><span class="meta"><span class="tag">Multi-Org</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common source of bugs.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;MOAC, multi-org access control, lets a responsibility access several operating units through a security profile. In code, after FND_GLOBAL.APPS_INITIALIZE, I set the context with MO_GLOBAL.SET_POLICY_CONTEXT: 'S' with an org_id for a single org, or 'M' for multiple. Views like AP_INVOICES use VPD policies to filter by org, while the _ALL tables bypass them.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that missing context causes &quot;no data&quot; bugs. It's very common.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that missing context causes &quot;no data&quot; bugs. It's very common.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you set the org context in a custom script?</p><p>Call MO_GLOBAL.SET_POLICY_CONTEXT or init with the right responsibility.</p></div></div>
 </details>
-<details class="q" data-topic="Interfaces" data-level="B">
-  <summary><span class="qn">11</span><span class="qt">Explain the standard interface approach for loading data.</span><span class="meta"><span class="tag">Interfaces</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Interfaces" data-level="B" data-top="1">
+  <summary><span class="qn">11</span><span class="qt">Explain the standard interface approach for loading data.</span><span class="meta"><span class="tag">Interfaces</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> EBS data integrity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I load data into the interface tables, for example AP_INVOICES_INTERFACE and AP_INVOICE_LINES_INTERFACE. Then I run the standard import program, like Payables Open Interface Import, which validates the data and creates records in the base tables. Then I review and fix rejections, for example in AP_INTERFACE_REJECTIONS. I never insert directly into base tables, because the import program applies the validations and keeps the data consistent.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain why you never insert into base tables. That's the point.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain why you never insert into base tables. That's the point.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you see interface errors?</p><p>Query the interface rejection tables, like AP_INTERFACE_REJECTIONS.</p></div></div>
 </details>
-<details class="q" data-topic="Interfaces" data-level="B">
-  <summary><span class="qn">12</span><span class="qt">What is the difference between interfaces, APIs and conversions?</span><span class="meta"><span class="tag">Interfaces</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Interfaces" data-level="B" data-top="1">
+  <summary><span class="qn">12</span><span class="qt">What is the difference between interfaces, APIs and conversions?</span><span class="meta"><span class="tag">Interfaces</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> vocabulary and design clarity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Interfaces are recurring data exchanges with other systems, inbound or outbound. APIs are Oracle-supported PL/SQL packages to create or update records, like HZ_PARTY_V2PUB or the PO APIs. Conversions are one-time migrations of legacy data at go-live, usually using interfaces or APIs to load the data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep the distinctions crisp. That's what they test.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep the distinctions crisp. That's what they test.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use an API instead of an interface?</p><p>For real-time, record-level creates with immediate validation.</p></div></div>
 </details>
 <details class="q" data-topic="APIs" data-level="D">
   <summary><span class="qn">13</span><span class="qt">How do you create a customer using TCA APIs?</span><span class="meta"><span class="tag">APIs</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> TCA is complex and widely used.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use HZ_CUST_ACCOUNT_V2PUB.CREATE_CUST_ACCOUNT, which creates the party and the account. Then HZ_LOCATION_V2PUB.CREATE_LOCATION for the address, HZ_PARTY_SITE_V2PUB.CREATE_PARTY_SITE for the party site, and HZ_CUST_ACCOUNT_SITE_V2PUB for the account site and site uses, like bill-to and ship-to. After each call I check x_return_status, x_msg_count and x_msg_data, and read the messages with FND_MSG_PUB.GET.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Walk the order of calls. It shows you understand the TCA model.</p></div>
+<p class="tip"><strong>Tip:</strong> Walk the order of calls. It shows you understand the TCA model.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you check after an API call?</p><p>x_return_status and the message stack via FND_MSG_PUB.</p></div></div>
 </details>
-<details class="q" data-topic="Reports" data-level="B">
-  <summary><span class="qn">14</span><span class="qt">How do you build an XML Publisher (BI Publisher) report in EBS?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Reports" data-level="B" data-top="1">
+  <summary><span class="qn">14</span><span class="qt">How do you build an XML Publisher (BI Publisher) report in EBS?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a standard EBS reporting task.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a data definition, preferably a data template XML with the SQL queries, or a report or PL/SQL that generates XML. I register it in XML Publisher Administrator. I create an RTF template in Word with the BI Publisher add-in and register it. Then I define a concurrent program with output format XML, linked to the data definition code.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say the data template approach is preferred. It's the modern EBS way.</p></div>
+<p class="tip"><strong>Tip:</strong> Say the data template approach is preferred. It's the modern EBS way.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use a data template instead of an Oracle Report?</p><p>It separates data from layout and is easier to maintain.</p></div></div>
 </details>
 <details class="q" data-topic="Reports" data-level="D">
   <summary><span class="qn">15</span><span class="qt">How do you customize a seeded report output layout?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> upgrade-safe customization.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I copy the seeded RTF template, modify the copy, and register it as a new template under the same data definition. Then I set it as the default on the concurrent program. That way I never change seeded files, and patches won't overwrite my change.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;never change seeded files&quot;. It's the upgrade-safe principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;never change seeded files&quot;. It's the upgrade-safe principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why not edit the seeded template?</p><p>Patches can overwrite it.</p></div></div>
 </details>
 <details class="q" data-topic="Forms" data-level="B">
   <summary><span class="qn">16</span><span class="qt">How do you customize a form without changing seeded code?</span><span class="meta"><span class="tag">Forms</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> EBS customization standards.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For simple changes, like properties, messages, validations or menu actions, I use Forms Personalization from Help, Diagnostics, Custom Code, Personalize. For more complex logic, CUSTOM.pll. I avoid modifying seeded .fmb files, because patches would overwrite them.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say forms personalization covers most needs. It's true and shows restraint.</p></div>
+<p class="tip"><strong>Tip:</strong> Say forms personalization covers most needs. It's true and shows restraint.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the tool for simple form changes?</p><p>Forms Personalization.</p></div></div>
 </details>
-<details class="q" data-topic="OAF" data-level="D">
-  <summary><span class="qn">17</span><span class="qt">What is OAF and how do you extend an OAF page?</span><span class="meta"><span class="tag">OAF</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="OAF" data-level="D" data-top="1">
+  <summary><span class="qn">17</span><span class="qt">What is OAF and how do you extend an OAF page?</span><span class="meta"><span class="tag">OAF</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> OAF is used for EBS self-service pages.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle Application Framework is the Java MVC framework behind EBS self-service pages. For UI changes like fields, labels and regions, I use personalization. For logic, I use extensions: extend a view object or controller in JDeveloper, and substitute it through a jpx import. Extensions go in custom packages.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;personalize first, extend if needed&quot;. It's the right order.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;personalize first, extend if needed&quot;. It's the right order.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you deploy an OAF extension?</p><p>Import the substitution with JPXImporter and bounce the middle tier.</p></div></div>
 </details>
 <details class="q" data-topic="Workflow" data-level="D">
   <summary><span class="qn">18</span><span class="qt">What is Oracle Workflow used for?</span><span class="meta"><span class="tag">Workflow</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> workflow is behind most approvals.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle Workflow automates business processes and approvals: PO and requisition approvals, AP invoice approvals with AME, item creation workflows and notifications. Developers customize processes in Workflow Builder, add PL/SQL functions, and troubleshoot with workflow monitoring.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention debugging stuck workflows. It's a common support task.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention debugging stuck workflows. It's a common support task.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you find a stuck workflow?</p><p>Query WF_ITEM_ACTIVITY_STATUSES or use the Workflow Administrator.</p></div></div>
 </details>
-<details class="q" data-topic="AME" data-level="D">
-  <summary><span class="qn">19</span><span class="qt">What is AME?</span><span class="meta"><span class="tag">AME</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AME" data-level="D" data-top="1">
+  <summary><span class="qn">19</span><span class="qt">What is AME?</span><span class="meta"><span class="tag">AME</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AME drives many approvals.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Approvals Management Engine defines approval rules using attributes, conditions, action types and approver groups. It's used by AP invoices, requisitions, HR transactions and more. The rules are configured, not coded, so the business can change them without development.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention it's configured, not coded. That's its value.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention it's configured, not coded. That's its value.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's an AME attribute?</p><p>A value, like invoice amount, used in conditions to choose approvers.</p></div></div>
 </details>
 <details class="q" data-topic="Value Sets" data-level="B">
   <summary><span class="qn">20</span><span class="qt">What types of value sets exist?</span><span class="meta"><span class="tag">Value Sets</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic EBS question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Independent, dependent, table-validated, special or pair, translatable, and none, which is format only. They're used for program parameters and flexfield segments. Table-validated is the most common for parameters.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention table-validated for parameters. It's the practical one.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention table-validated for parameters. It's the practical one.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use a table-validated value set?</p><p>When valid values come from a table, like suppliers.</p></div></div>
 </details>
 <details class="q" data-topic="Flexfields" data-level="B">
   <summary><span class="qn">21</span><span class="qt">What are DFFs and KFFs in EBS?</span><span class="meta"><span class="tag">Flexfields</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> flexfields are everywhere in EBS.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Descriptive flexfields capture extra attributes on forms, stored in the ATTRIBUTE1 to 15 columns. Key flexfields define structured codes, like the Accounting Flexfield for the chart of accounts, item categories and locations. DFFs can be context-sensitive, showing different segments by context.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention context-sensitive DFFs. It shows depth.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention context-sensitive DFFs. It shows depth.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a KFF example?</p><p>The Accounting Flexfield for the chart of accounts.</p></div></div>
 </details>
 <details class="q" data-topic="Profiles" data-level="B">
   <summary><span class="qn">22</span><span class="qt">What are profile options?</span><span class="meta"><span class="tag">Profiles</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> profiles control behavior.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Profile options are settings that control application behavior at site, application, responsibility or user level, like MO: Operating Unit or GL Ledger Name. The most specific level wins. In code I read them with FND_PROFILE.VALUE.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the level hierarchy. It's the follow-up.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the level hierarchy. It's the follow-up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which level wins?</p><p>User level overrides responsibility, application and site.</p></div></div>
 </details>
 <details class="q" data-topic="Lookups" data-level="B">
   <summary><span class="qn">23</span><span class="qt">How do you use lookups in custom code?</span><span class="meta"><span class="tag">Lookups</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> avoiding hard-coded values.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define lookup types and codes in Application Developer, Lookups, and query FND_LOOKUP_VALUES by LOOKUP_TYPE, LANGUAGE, enabled flag and dates. That keeps configuration editable by functional users without code changes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;avoid hard-coded values&quot;. It's the reason to use lookups.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;avoid hard-coded values&quot;. It's the reason to use lookups.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use lookups instead of hardcoding?</p><p>Business users can change values without code changes.</p></div></div>
 </details>
 <details class="q" data-topic="Alerts" data-level="D">
   <summary><span class="qn">24</span><span class="qt">What are Oracle Alerts?</span><span class="meta"><span class="tag">Alerts</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a simple monitoring tool.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle Alerts are event or periodic alerts that monitor data with SQL and send notifications or run actions. For example, emailing AP when an invoice has been on hold for more than ten days.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the example. It shows a real use.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the example. It shows a real use.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a periodic alert used for?</p><p>Regular checks, like invoices on hold over 30 days.</p></div></div>
 </details>
-<details class="q" data-topic="Performance" data-level="D">
-  <summary><span class="qn">25</span><span class="qt">How do you tune a slow EBS concurrent program?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Performance" data-level="D" data-top="1">
+  <summary><span class="qn">25</span><span class="qt">How do you tune a slow EBS concurrent program?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> performance tuning.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I enable trace at level 12 to capture binds and waits, and analyze it with TKPROF. I check execution plans and indexes. I replace row-by-row processing with bulk operations. I make sure statistics are gathered with FND_STATS. And I remove unnecessary joins and functions on indexed columns.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;trace plus TKPROF&quot;. It's the classic answer.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;trace plus TKPROF&quot;. It's the classic answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does TKPROF show?</p><p>SQL execution times, waits and execution plans.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D">
   <summary><span class="qn">26</span><span class="qt">How do you enable a trace for a concurrent program?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> practical tuning steps.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I check Enable Trace on the concurrent program definition, or set Concurrent: Allow Debugging and use the debug options when submitting. I run the program, find the trace file in the database trace directory, and format it with TKPROF.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep it practical. They want to know you've done it.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep it practical. They want to know you've done it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What trace level captures binds?</p><p>Level 12, binds and waits.</p></div></div>
 </details>
-<details class="q" data-topic="R12.2" data-level="D">
-  <summary><span class="qn">27</span><span class="qt">How does online patching (adop) affect custom development?</span><span class="meta"><span class="tag">R12.2</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="R12.2" data-level="D" data-top="1">
+  <summary><span class="qn">27</span><span class="qt">How does online patching (adop) affect custom development?</span><span class="meta"><span class="tag">R12.2</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> R12.2 changes how code is deployed.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;R12.2 uses edition-based redefinition. Changes are applied to the patch edition during an adop cycle: prepare, apply, finalize, cutover and cleanup. Custom objects must follow EBS standards, like editioning views and registering the custom schema with AD_ZD, and deployments use adop or follow the online patching rules.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the Online Patching Enablement readiness reports. They find non-compliant code.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the Online Patching Enablement readiness reports. They find non-compliant code.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's an edition-based redefinition rule?</p><p>Custom objects must follow online patching standards, like editioned views.</p></div></div>
 </details>
 <details class="q" data-topic="Deployment" data-level="B">
   <summary><span class="qn">28</span><span class="qt">How do you migrate code between EBS instances?</span><span class="meta"><span class="tag">Deployment</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> deployment discipline.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Source code goes in version control. FNDLOAD moves AOL objects like concurrent programs, value sets, menus and lookups. XDOLoader moves BI Publisher templates and data definitions. Scripts handle database objects. And a deployment checklist sets the order and validation steps.&quot;</p>
-<p class="tip"><strong>Tip:</strong> FNDLOAD is a must-know. Name it.</p></div>
+<p class="tip"><strong>Tip:</strong> FNDLOAD is a must-know. Name it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What moves with FNDLOAD?</p><p>AOL objects like programs, value sets and menus.</p></div></div>
 </details>
 <details class="q" data-topic="FNDLOAD" data-level="B">
   <summary><span class="qn">29</span><span class="qt">What is FNDLOAD?</span><span class="meta"><span class="tag">FNDLOAD</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic deployment tool.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;FNDLOAD downloads and uploads AOL objects between instances using .lct configuration files. For example, afcpprog.lct for concurrent programs, afffload.lct for value sets and aflvmlu.lct for lookups.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name a couple of .lct files. It proves hands-on use.</p></div>
+<p class="tip"><strong>Tip:</strong> Name a couple of .lct files. It proves hands-on use.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's an .lct file?</p><p>A configuration file that defines which object FNDLOAD handles.</p></div></div>
 </details>
 <details class="q" data-topic="Security" data-level="B">
   <summary><span class="qn">30</span><span class="qt">How is EBS security structured?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> basic security model.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Users get responsibilities, which give menus of functions and request groups of programs. Data security comes from operating units through security profiles. And Role-Based Access Control, through UMX, adds roles and grants.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;responsibility-based&quot;. It's the core of EBS security.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;responsibility-based&quot;. It's the core of EBS security.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What controls which programs a user can run?</p><p>Request groups on the responsibility.</p></div></div>
 </details>
-<details class="q" data-topic="Conversions" data-level="D">
-  <summary><span class="qn">31</span><span class="qt">Walk me through converting legacy suppliers.</span><span class="meta"><span class="tag">Conversions</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Conversions" data-level="D" data-top="1">
+  <summary><span class="qn">31</span><span class="qt">Walk me through converting legacy suppliers.</span><span class="meta"><span class="tag">Conversions</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common conversion.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I map legacy data to AP_SUPPLIERS_INT, AP_SUPPLIER_SITES_INT and AP_SUP_SITE_CONTACT_INT, or use the supplier APIs. I cleanse and de-duplicate first. Then load the interface tables and run the Supplier Open Interface Import programs, review rejections, and reconcile counts. The order is suppliers, then sites, then contacts, then bank accounts.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the load order. It's what makes conversions work.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the load order. It's what makes conversions work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's validated before import?</p><p>Duplicates, mandatory fields and lookups.</p></div></div>
 </details>
 <details class="q" data-topic="Outbound" data-level="D">
   <summary><span class="qn">32</span><span class="qt">How do you build an outbound interface?</span><span class="meta"><span class="tag">Outbound</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> outbound design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A concurrent program in PL/SQL or BI Publisher extracts the data and formats it as CSV, XML or fixed width. Files are written with UTL_FILE or XML output, and transferred by SFTP through a host script or middleware. I track the last-run timestamp so the extract is incremental. And errors are logged.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention incremental extraction. Full extracts every time don't scale.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention incremental extraction. Full extracts every time don't scale.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you avoid duplicate extracts?</p><p>Track the last run date and extract only new or changed records.</p></div></div>
 </details>
 <details class="q" data-topic="UTL_FILE" data-level="D">
   <summary><span class="qn">33</span><span class="qt">How do you write files from PL/SQL?</span><span class="meta"><span class="tag">UTL_FILE</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical skill.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use UTL_FILE.FOPEN with an Oracle directory object, PUT_LINE to write, and FCLOSE to close. I handle exceptions and close the file in the exception handler too. The directory object must exist and have the right permissions on the database server.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the directory object setup. It's often the blocker.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the directory object setup. It's often the blocker.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's needed for UTL_FILE?</p><p>An Oracle directory object with write access.</p></div></div>
 </details>
 <details class="q" data-topic="Debugging" data-level="B">
   <summary><span class="qn">34</span><span class="qt">How do you debug data issues in EBS?</span><span class="meta"><span class="tag">Debugging</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> support skills.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I query the relevant base tables through APPS and check the MOAC context. I review the concurrent request logs. I use Help, Examine to find which column a field maps to. I enable FND debug logging with FND: Debug Log Enabled. And I compare with records that work.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention Help, Examine. It's a handy trick.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention Help, Examine. It's a handy trick.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first check?</p><p>MOAC context when data seems missing.</p></div></div>
 </details>
 <details class="q" data-topic="Upgrades" data-level="D">
   <summary><span class="qn">35</span><span class="qt">What technical work comes with an EBS upgrade to R12.2?</span><span class="meta"><span class="tag">Upgrades</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> upgrade experience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I analyze customizations for compliance with online patching standards and fix code that breaks, like direct table references instead of editioned objects. I retest reports, interfaces and extensions. I update deployment processes for adop. And I regression-test end-to-end flows.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the Online Patching Readiness reports. They scope the work.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the Online Patching Readiness reports. They scope the work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest R12.2 change?</p><p>Online patching compliance for custom code.</p></div></div>
 </details>
 <details class="q" data-topic="Migration" data-level="B">
   <summary><span class="qn">36</span><span class="qt">How do EBS skills transfer to Oracle Fusion?</span><span class="meta"><span class="tag">Migration</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cloud readiness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;SQL, data model knowledge, business process understanding and reporting skills transfer well. The new skills are FBDI and HDL loads, REST APIs, OIC, BI Publisher in the cloud, OTBI and Visual Builder, plus the mindset of no direct database access.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show you're ready for cloud. It's what most employers want now.</p></div>
+<p class="tip"><strong>Tip:</strong> Show you're ready for cloud. It's what most employers want now.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the hardest adjustment?</p><p>No direct database access in Fusion.</p></div></div>
 </details>
 <details class="q" data-topic="Integrations" data-level="D">
   <summary><span class="qn">37</span><span class="qt">What middleware have you used with EBS?</span><span class="meta"><span class="tag">Integrations</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> integration experience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle SOA Suite, Oracle Integration Cloud with the EBS adapter, Integrated SOA Gateway to expose PL/SQL APIs as REST or SOAP services, and file-based transfers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention Integrated SOA Gateway. It's useful and less known.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention Integrated SOA Gateway. It's useful and less known.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What replaced older EBS integrations?</p><p>OIC with the EBS adapter.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">38</span><span class="qt">Tell me about a complex interface you built.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> proof of experience.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;I built an inbound sales order interface from an e-commerce platform into Order Management using the Order Import interface. I added validation for customers and items, error tables for rejected lines, and a daily email report. It handled about 5,000 orders a day with under 1% needing manual fixes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Include numbers. They make the story credible.</p></div>
+<p class="tip"><strong>Tip:</strong> Include numbers. They make the story credible.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What made it complex?</p><p>Volume, validation and error handling.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">39</span><span class="qt">Tell me about fixing a production issue.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> support and tuning experience.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;A month-end GL interface program was running for six hours. A trace showed a full table scan caused by a function on an indexed date column. I rewrote the predicate and switched to BULK COLLECT, and runtime dropped to 12 minutes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Root cause plus result. Keep it short.</p></div>
+<p class="tip"><strong>Tip:</strong> Root cause plus result. Keep it short.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What was the fix?</p><p>A missing index or SQL rewrite.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">40</span><span class="qt">How do you document your work?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> supportability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A technical design in MD070 style, code comments, migration steps, test results, and support notes for operations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention support notes. Operations teams appreciate them most.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention support notes. Operations teams appreciate them most.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential in documentation?</p><p>Migration steps and test results.</p></div></div>
 </details>
 <details class="q" data-topic="Tables" data-level="B">
   <summary><span class="qn">41</span><span class="qt">Name key tables in AP, PO and GL.</span><span class="meta"><span class="tag">Tables</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a rapid-fire data model check.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For AP: AP_INVOICES_ALL, AP_INVOICE_LINES_ALL, AP_INVOICE_DISTRIBUTIONS_ALL, AP_PAYMENT_SCHEDULES_ALL and AP_CHECKS_ALL. For PO: PO_HEADERS_ALL, PO_LINES_ALL, PO_LINE_LOCATIONS_ALL, PO_DISTRIBUTIONS_ALL and RCV_TRANSACTIONS. For GL: GL_JE_HEADERS, GL_JE_LINES, GL_BALANCES and GL_CODE_COMBINATIONS.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say them fast and confidently. It's a recall test.</p></div>
+<p class="tip"><strong>Tip:</strong> Say them fast and confidently. It's a recall test.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's AP_INVOICE_DISTRIBUTIONS_ALL for?</p><p>Accounting distributions of invoice lines.</p></div></div>
 </details>
-<details class="q" data-topic="Tables" data-level="D">
-  <summary><span class="qn">42</span><span class="qt">How do subledger accounting tables link to GL in R12?</span><span class="meta"><span class="tag">Tables</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Tables" data-level="D" data-top="1">
+  <summary><span class="qn">42</span><span class="qt">How do subledger accounting tables link to GL in R12?</span><span class="meta"><span class="tag">Tables</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> SLA drill-down knowledge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;XLA_EVENTS links to XLA_AE_HEADERS, then XLA_AE_LINES. From there, GL_IMPORT_REFERENCES joins through gl_sl_link_id to GL_JE_LINES. And XLA_TRANSACTION_ENTITIES links back to the source transaction, like the invoice.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Draw the chain if you can. It's valued knowledge.</p></div>
+<p class="tip"><strong>Tip:</strong> Draw the chain if you can. It's valued knowledge.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you drill from GL to subledger?</p><p>Through GL_IMPORT_REFERENCES to XLA lines.</p></div></div>
 </details>
 <details class="q" data-topic="Tables" data-level="B">
   <summary><span class="qn">43</span><span class="qt">What are key Order Management and Inventory tables?</span><span class="meta"><span class="tag">Tables</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a rapid-fire recall check.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For Order Management and shipping: OE_ORDER_HEADERS_ALL, OE_ORDER_LINES_ALL, WSH_DELIVERY_DETAILS and WSH_NEW_DELIVERIES. For Inventory: MTL_SYSTEM_ITEMS_B, MTL_ONHAND_QUANTITIES_DETAIL and MTL_MATERIAL_TRANSACTIONS.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Rapid recall is the point. Practice the list.</p></div>
+<p class="tip"><strong>Tip:</strong> Rapid recall is the point. Practice the list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's WSH_DELIVERY_DETAILS for?</p><p>Shipping lines for order lines.</p></div></div>
 </details>
 <details class="q" data-topic="Career" data-level="B">
   <summary><span class="qn">44</span><span class="qt">Where do you want to grow?</span><span class="meta"><span class="tag">Career</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> career direction.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I want to grow into a senior technical consultant: leading designs, performance tuning and integrations, and building Fusion and OIC skills for cloud migrations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Point toward cloud. It's where the work is going.</p></div>
+<p class="tip"><strong>Tip:</strong> Point toward cloud. It's where the work is going.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What skill would you build next?</p><p>Fusion technical skills.</p></div></div>
 </details>
 <details class="q" data-topic="Closing" data-level="B">
   <summary><span class="qn">45</span><span class="qt">Why should we hire you?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a closing question.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;I deliver reliable reports, data loads and integrations in Fusion, using BIP, OTBI, FBDI, REST and OIC, and I understand the business processes behind them, so what I build works for users the first time.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Combine technical skill with business awareness. That's what they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Combine technical skill with business awareness. That's what they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What proof would you give?</p><p>Reliable interfaces and fixes delivered.</p></div></div>
 </details>
 <details class="q" data-topic="Standards" data-level="B">
   <summary><span class="qn">46</span><span class="qt">What are EBS development best practices?</span><span class="meta"><span class="tag">Standards</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> upgrade-safe development.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Custom objects with an XX prefix in a custom schema. No changes to seeded objects. Use APIs and interfaces instead of direct inserts. Follow R12.2 online patching standards. Version control and code reviews. And deployments through FNDLOAD.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Sum it up as &quot;upgrade-safe development&quot;. It's the goal behind every rule.</p></div>
+<p class="tip"><strong>Tip:</strong> Sum it up as &quot;upgrade-safe development&quot;. It's the goal behind every rule.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the XX prefix for?</p><p>Custom objects, separate from seeded ones.</p></div></div>
 </details>
 <details class="q" data-topic="Who Columns" data-level="B">
   <summary><span class="qn">47</span><span class="qt">What are WHO columns?</span><span class="meta"><span class="tag">Who Columns</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> standards awareness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;They're the standard audit columns on EBS tables: CREATED_BY, CREATION_DATE, LAST_UPDATED_BY, LAST_UPDATE_DATE and LAST_UPDATE_LOGIN. Custom tables should include them, populated from FND_GLOBAL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention populating them from FND_GLOBAL. It shows practice.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention populating them from FND_GLOBAL. It shows practice.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why maintain WHO columns?</p><p>For audit trails.</p></div></div>
 </details>
 <details class="q" data-topic="Reports" data-level="B">
   <summary><span class="qn">48</span><span class="qt">What is the difference between Oracle Reports and BI Publisher in EBS?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reporting tool knowledge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle Reports, the .rdf files, combine data and layout in one tool, Reports Builder, and are legacy. BI Publisher separates the data, from data templates or reports, from the layout, in RTF, Excel or PDF templates. That makes layout changes easier and supports multiple outputs and bursting. New development should use BI Publisher.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;separation of data and layout&quot;. It's the key advantage.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;separation of data and layout&quot;. It's the key advantage.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which is easier to maintain?</p><p>BI Publisher.</p></div></div>
 </details>
 <details class="q" data-topic="Concurrent Programs" data-level="B">
   <summary><span class="qn">49</span><span class="qt">What are request sets?</span><span class="meta"><span class="tag">Concurrent Programs</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> process automation.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Request sets group concurrent programs into stages that run in sequence or in parallel, with stage completion rules. They're used for chained processes, like month-end jobs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention stage functions for conditional flow. It shows depth.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention stage functions for conditional flow. It shows depth.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use a request set?</p><p>To run dependent programs in sequence.</p></div></div>
 </details>
 <details class="q" data-topic="PL/SQL" data-level="D">
   <summary><span class="qn">50</span><span class="qt">What are autonomous transactions and when do you use them?</span><span class="meta"><span class="tag">PL/SQL</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a PL/SQL depth question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;PRAGMA AUTONOMOUS_TRANSACTION lets a procedure commit independently of the calling transaction. The classic use is error logging that must be kept even if the main transaction rolls back. I avoid them for business data changes, because they can break consistency.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give logging as the example. It's the right use.</p></div>
+<p class="tip"><strong>Tip:</strong> Give logging as the example. It's the right use.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the risk of autonomous transactions?</p><p>Data inconsistency if overused; use mainly for logging.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -460,6 +467,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

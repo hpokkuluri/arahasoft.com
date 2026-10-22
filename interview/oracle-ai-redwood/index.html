@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,6 +97,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>96</b> questions</span>
     <span class="stat"><b>23</b> basic</span>
     <span class="stat"><b>73</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button>
@@ -101,679 +108,679 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <button data-f="Fusion Basics">Fusion Basics</button>
     <button data-f="Quarterly Updates">Quarterly Updates</button>
   </div>
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">1</span><span class="qt">How would you architect AI agents in an Oracle Finance landscape responsibly?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> finance leaders want AI, but not at the cost of control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd build agents in Oracle AI Agent Studio, because they run on Fusion data with Fusion security. I'd pick use cases with clear value, like invoice exceptions, collections emails, reconciliation explanations and close insights. Guardrails: the agent acts only within the user's or a defined service role's access, and anything that posts to the ledger or pays money needs human approval. Every prompt, action and decision is logged for audit. No sensitive data goes to an outside model without approval. I'd measure accuracy, time saved and exceptions, and support finance users through the change.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;human approval for postings and payments&quot; early. It's what the controller is listening for.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;human approval for postings and payments&quot; early. It's what the controller is listening for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your rule for agents taking actions?</p><p>Drafts and recommendations by default; actions that change money or records need human approval.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">2</span><span class="qt">Explain the architecture of an AI agent in Oracle AI Agent Studio.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">Explain the architecture of an AI agent in Oracle AI Agent Studio.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a technical architecture question for anyone building agents.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An agent is instructions, topics, tools and an LLM, running natively in Fusion on OCI. Tools connect it to data and actions: Business Object tools for Fusion APIs, Document tools for retrieval over documents including external repositories, External REST and connectors, MCP, Email, Deep Link and User Session. Workflows add deterministic steps through nodes, like business object calls, code, email triggers, vector reads and writes, human approval and agent nodes, and they can be chained. Security uses identity propagation, so the agent acts with the user's Fusion roles, and a credential store holds keys for outside services. There's a monitoring dashboard for sessions, latency, errors and tokens, plus tracing and evaluations. Agents can be called from Fusion pages, Teams or external apps, and A2A and MCP connect them to agents and tools from other vendors.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Organize it as agent, tools, workflows, security, observability. It's easy to follow.</p></div>
+<p class="tip"><strong>Tip:</strong> Organize it as agent, tools, workflows, security, observability. It's easy to follow.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What part of agent design needs most care?</p><p>Tools and their permissions.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">3</span><span class="qt">When would you use a workflow agent instead of a free-form conversational agent?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">When would you use a workflow agent instead of a free-form conversational agent?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> choosing the right agent type is a key design decision.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use a workflow when the steps are known and the result must be consistent and auditable, like routing invoice exceptions, preparing accruals or checking a new supplier. I add agent nodes only where judgment or interpretation is needed. I use a conversational agent for open questions, like policy Q&amp;A or status inquiries. In finance, I lean toward workflows with human approval nodes for anything that changes financial data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;agent nodes only where judgment is needed&quot;. It shows a controlled design mindset.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;agent nodes only where judgment is needed&quot;. It shows a controlled design mindset.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is a free-form agent fine?</p><p>For open questions and lookups without actions.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">How do RAG and document tools work in AI Agent Studio, and what should you watch for?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">How do RAG and document tools work in AI Agent Studio, and what should you watch for?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> grounded answers depend on document quality.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Documents, like policies, contracts and procedures, are split into chunks and embedded. When someone asks a question, the agent retrieves the relevant chunks and uses them to ground its answer. Oracle supports multimodal content and external repositories like SharePoint. What I watch: document quality and versions, because a stale policy gives a confident wrong answer; access control on documents; citing sources with deep links; testing with tricky questions; and refreshing the index when documents change.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead the risks with stale documents. It's the most common real failure.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead the risks with stale documents. It's the most common real failure.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you watch for in RAG?</p><p>Outdated documents and answers without citations.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">5</span><span class="qt">How would you connect a Fusion agent to non-Oracle systems?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> agents rarely live in one system.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For systems with APIs, like bank portals, tax engines or CRM, I use External REST or connector tools. Where the system exposes an MCP server, I use MCP tools. To work with agents on other platforms, A2A. For complex orchestration and transformations, OIC behind the scenes. Secrets go in the credential store, service accounts get least privilege, and failures are monitored.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention least-privilege service accounts. Security reviewers will ask.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention least-privilege service accounts. Security reviewers will ask.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the safest pattern?</p><p>Route through OIC with logging and error handling.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">6</span><span class="qt">How do you choose the LLM for an agent?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> model choice affects quality, speed and cost.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle provides Fusion-optimized models, and premium models from several providers can be selected. I choose by task: reasoning-heavy exceptions need a stronger model; simple lookups don't. Then latency, cost, since premium models are charged by tokens, and any data residency requirements. I evaluate the candidates on the same evaluation set before deciding, and re-evaluate when models change.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you test on the same evaluation set. It shows you decide with evidence.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you test on the same evaluation set. It shows you decide with evidence.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why not always pick the most powerful model?</p><p>Cost and latency; simple tasks don't need it.</p></div></div>
 </details>
-<details class="q" data-topic="Redwood" data-level="D">
-  <summary><span class="qn">7</span><span class="qt">Explain the Redwood extension architecture vs classic Fusion customization.</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Redwood" data-level="D" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">Explain the Redwood extension architecture vs classic Fusion customization.</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> extension skills are changing with Redwood.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Classic pages are ADF, extended with Page Composer and sandboxes, Application Composer in some areas, and Groovy. Redwood pages are built on Oracle JET and Visual Builder, and extended with Visual Builder Studio: page extensions for fields, layouts and rules, stored in Git and deployed through a pipeline. Flexfields are still how we add data. APIs and FBDI don't change, though deep-link formats can. As an architect, I plan for classic personalizations to retire and avoid fragile CSS or DOM tweaks, using Redwood design tokens and supported extension points instead.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention Git and pipelines. Redwood extensions are code, and that changes how teams work.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention Git and pipelines. Redwood extensions are code, and that changes how teams work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to classic customizations?</p><p>They may need to be rebuilt in Visual Builder Studio for Redwood pages.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">8</span><span class="qt">How do you build a custom Redwood-style application for Finance users?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> some gaps need a custom app.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use Visual Builder Studio to build a Redwood app on Fusion REST APIs and Redwood components, so it looks native. It can be hosted as an extension or a standalone Visual Builder app, with SSO through Fusion identity. I'd use it for gaps like a custom reconciliation workbench or a guided intake form. And it goes into the extension inventory, the CI/CD pipeline and regression testing like any other extension.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a concrete gap you'd fill. It shows judgment about when to build.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a concrete gap you'd fill. It shows judgment about when to build.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you build a custom Redwood app?</p><p>When users need a simplified flow across several objects.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Platform" data-level="D">
   <summary><span class="qn">9</span><span class="qt">What changed in Fusion integration and data options recently that an architect should know?</span><span class="meta"><span class="tag">Fusion Platform</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if your integration knowledge is current.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Business events with OIC now support event-driven integration. REST APIs keep expanding across modules, while FBDI stays for bulk loads. BICC handles bulk extracts, and Fusion Data Intelligence is the analytics platform. AI Agent Studio tools reuse the same business objects and APIs. And Redwood page extensions are done in Visual Builder Studio. So I design new integrations around APIs and events, and keep FBDI for volume.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with your design rule. It turns a list into a position.</p></div>
+<p class="tip"><strong>Tip:</strong> End with your design rule. It turns a list into a position.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest recent change?</p><p>Event-driven integration through business events.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">10</span><span class="qt">Where would you apply AI agents in a Fusion SCM landscape?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you can find practical SCM use cases.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In procurement: a supplier onboarding agent, a requisition assistant, contract risk review, and drafts for PO change negotiations. In order management: triaging exceptions like holds and late lines, and customer communications. In planning: explaining forecast anomalies and helping planners with exceptions. In inventory and quality: spotting unusual adjustments and nonconformances. In product data: enrichment and classification. With guardrails: role-based access, human approval for commitments like POs and prices, and auditing of every agent action.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Pick one and describe it in detail if asked. Depth beats a long list.</p></div>
+<p class="tip"><strong>Tip:</strong> Pick one and describe it in detail if asked. Depth beats a long list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which agent would you build first?</p><p>A supplier delay agent, because delays hit customers directly.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">11</span><span class="qt">Design an agentic architecture for order exception management in Fusion SCM.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on agent design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Exceptions are detected from business events or scheduled checks: order holds, scheduling failures and late shipments. A workflow agent uses Business Object nodes to gather the order, supply from GOP, shipment and customer data, then an agent node classifies the exception and proposes actions: reschedule, split, substitute or expedite. Anything that affects the customer needs human approval, and Email and Deep Link tools notify the owner. External tools bring in carrier tracking through REST or MCP, and WMS status through a connector. I'd monitor exception volumes, resolution time and agent accuracy, with identity propagation and least-privilege tools for security.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show where the human approves. It's the part reviewers check first.</p></div>
+<p class="tip"><strong>Tip:</strong> Show where the human approves. It's the part reviewers check first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the human role?</p><p>Approving the agent's recommended action.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">12</span><span class="qt">How would you use MCP and A2A in a supply chain landscape?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> these protocols are new and interviewers want to see you understand them.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;MCP lets Fusion agents call tools exposed by other systems, like WMS, TMS, supplier portals or planning tools, through a standard protocol. A2A lets a Fusion agent work with agents on other platforms, for example a logistics provider's agent for tracking or rebooking. The architecture work is around trust boundaries, credentials in the credential store, logging, rate limits, and a clear owner for each agent.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the difference in one line each: MCP is tools, A2A is agents.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the difference in one line each: MCP is tools, A2A is agents.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's MCP?</p><p>Model Context Protocol, a standard for agents to call external tools.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">13</span><span class="qt">What makes a supply chain agent safe to deploy at scale?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> pilots are easy; scaling safely is hard.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Deterministic workflows for the core steps, with agents only where judgment is needed. Draft-then-approve for commitments like POs and order changes. Evaluation sets that include edge cases and requests the agent must refuse. Tracing and dashboards, with alerts on error spikes. A gradual rollout by BU or site. And a fallback to the manual process when the agent or the LLM isn't available.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the fallback. Operations can't stop because a model is down.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the fallback. Operations can't stop because a model is down.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential for scale?</p><p>Deterministic workflows with human approval.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How do Redwood and Visual Builder Studio change your extension strategy for SCM?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> extension strategy has to change with Redwood.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Classic personalizations retire with classic pages, so I rebuild only what's valuable in Visual Builder Studio. I prefer configuration and rules in VBS over custom pages. For bigger needs, like a dock scheduling screen, I build a Redwood app in Visual Builder on Fusion REST APIs. And VBS assets are treated as code: Git, reviews, a pipeline, and regression every quarter.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;rebuild only what's valuable&quot;. It's a chance to simplify.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;rebuild only what's valuable&quot;. It's a chance to simplify.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens to Page Composer changes?</p><p>They retire with classic pages.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">15</span><span class="qt">What should you test when SCM pages switch to Redwood?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical testing question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;End-to-end flows: requisition to PO to receipt to invoice, order to ship to bill, transfers and counts. Mobile and tablet use on the warehouse floor, and barcode scanning. Printing of labels and documents, and notifications and deep links. VBS extensions and rules. Performance for high-volume users. And reports embedded on pages.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention barcode scanning. It's what breaks warehouse operations.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention barcode scanning. It's what breaks warehouse operations.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's often missed in Redwood testing?</p><p>Mobile and scanning flows.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Platform" data-level="D">
   <summary><span class="qn">16</span><span class="qt">How do you design integrations for Fusion SCM using business events?</span><span class="meta"><span class="tag">Fusion Platform</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> event-driven integration is the modern approach.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In OIC I subscribe to events like PO approved, shipment confirmed, receipt created and item released, and push them to downstream systems, like supplier portals, WMS, e-commerce and analytics, in near real time. Events can repeat, so the integration has to be idempotent. Where order matters, I handle sequencing, and I add error queues and replay. Events often carry only keys, so I combine them with REST lookups for the full payload.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention idempotency. It's the issue that causes duplicate records.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention idempotency. It's the issue that causes duplicate records.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the benefit of events?</p><p>Real-time integration without polling.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">17</span><span class="qt">How would you plan your team's work for Oracle's move from classic to Redwood pages?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a planning and leadership question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd inventory the affected pages and personalizations by module and estimate the VBS rebuild effort. Then plan waves by module, aligned to Oracle's retirement dates and avoiding close periods. Assign owners and build VBS skills in the team. Each wave gets regression testing and user training. And I'd report progress and risks to the director and business owners.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention avoiding close periods. Finance users will thank you.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention avoiding close periods. Finance users will thank you.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest effort?</p><p>Rebuilding personalizations in Visual Builder Studio.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">18</span><span class="qt">Your CFO asks: &quot;What should we do with Oracle AI Agent Studio?&quot; How do you respond?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">18</span><span class="qt">Your CFO asks: &quot;What should we do with Oracle AI Agent Studio?&quot; How do you respond?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a leadership communication question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd explain it in one line: it's Oracle's tool for using delivered agents and building our own inside Fusion, with our existing security. Then propose two or three pilots with clear value, like AP inquiries and holds, expense policy help, and collections emails. I'd be clear on controls: human approval for financial actions and audit involved from the start. And I'd commit to measuring and reporting results in 90 days.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep it short and end with a 90-day commitment. CFOs want a plan, not a lecture on AI.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep it short and end with a 90-day commitment. CFOs want a plan, not a lecture on AI.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would you recommend first?</p><p>A small pilot with delivered agents on a clear use case.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="B">
   <summary><span class="qn">19</span><span class="qt">How would you staff and run an AI agent pilot?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical delivery question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A small team: a functional lead, a technical consultant for tools and APIs, a business owner, and a tester. One process in scope, with success metrics agreed up front. Build it, evaluate with real scenarios, then pilot with 5 to 10 users. Review weekly, and at the end decide to scale or stop.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say you'd decide to scale or stop. Pilots without an end decision drift.</p></div>
+<p class="tip"><strong>Tip:</strong> Say you'd decide to scale or stop. Pilots without an end decision drift.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How long should a pilot run?</p><p>Six to eight weeks with clear metrics.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">20</span><span class="qt">What is your AI strategy for the ERP platform?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a leadership vision question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Use Oracle's embedded AI first, agents, document recognition and predictions, because it's lower cost and risk. Prioritize use cases with measurable value: AP processing, collections, close insights and procurement assistance. Govern it with risk assessments, human-in-the-loop for financial actions, auditability and security. Run pilots with metrics and scale the ones that work. Upskill the team on AI Agent Studio and prompt design. And manage the change for users.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;embedded first&quot;. It shows cost and risk awareness.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;embedded first&quot;. It shows cost and risk awareness.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where would you start with AI?</p><p>Embedded Oracle AI on high-volume processes like AP.</p></div></div>
 </details>
-<details class="q" data-topic="AI" data-level="D">
-  <summary><span class="qn">21</span><span class="qt">How would you govern AI agents acting in Oracle ERP?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI" data-level="D" data-top="1">
+  <summary><span class="qn">21</span><span class="qt">How would you govern AI agents acting in Oracle ERP?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> governance is what makes AI acceptable to audit.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Every agent use case goes through approval by the business owner, security and compliance. Agents get least-privilege roles and their actions are logged. Financial commitments need a human in the loop. I monitor accuracy, exceptions and drift. There's an incident process for wrong actions. And the policy follows the corporate AI governance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention an incident process. It shows you've planned for things going wrong.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention an incident process. It shows you've planned for things going wrong.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who approves agent use cases?</p><p>Business owner, security and compliance.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">22</span><span class="qt">What is your strategy for AI agents on the Oracle ERP platform?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a strategy question for senior roles.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Start with Oracle-delivered agents and AI Agent Studio, for native security and lower risk. Build a portfolio of use cases across AP, close, procurement, order management and HR, scored by value and risk. Govern with risk tiers, human approval for financial and commitment actions, evaluations, monitoring and audit involvement. Build a small agent team inside the ERP center of excellence. And measure value, like cycle times and productivity, against cost, including premium LLM tokens.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention scoring by value and risk. It's how you pick what to build first.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention scoring by value and risk. It's how you pick what to build first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why start with delivered agents?</p><p>Native security and lower risk.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">23</span><span class="qt">How do you decide between Oracle AI Agent Studio and a general enterprise AI platform?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> many companies have both, and overlap is a risk.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For processes centered on Fusion data, I use AI Agent Studio: it inherits Fusion security, uses business objects, has delivered templates, and Oracle supports it. For cross-system assistants and non-ERP use cases, the enterprise AI platform. I connect them with A2A, MCP and APIs instead of duplicating. I decide per use case, and I wouldn't build an ERP agent outside Fusion without a clear reason.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;connect, don't duplicate&quot;. It's the architecture principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;connect, don't duplicate&quot;. It's the architecture principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use an enterprise AI platform?</p><p>For processes spanning many non-Oracle systems.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">24</span><span class="qt">How do you fund and govern the Redwood transition?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> Redwood work needs money and a plan.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd treat it as a program with a budget for VBS rebuilds, testing and training. I'd use it to simplify, retiring personalizations nobody needs. The timeline follows Oracle's classic retirement dates. Governance means change control for VBS extensions and automated regression testing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Present it as a chance to simplify. It makes the budget easier to approve.</p></div>
+<p class="tip"><strong>Tip:</strong> Present it as a chance to simplify. It makes the budget easier to approve.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you fund Redwood?</p><p>As a program with its own budget.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Basics" data-level="B">
   <summary><span class="qn">25</span><span class="qt">What is the difference between Oracle E-Business Suite and Oracle Fusion Cloud ERP?</span><span class="meta"><span class="tag">Fusion Basics</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic question, but it shows whether you understand how the work changes.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;EBS is on-premise or hosted. The customer owns the database, applies patches, and can customize code directly. It has a Forms UI, concurrent programs and responsibilities. Fusion Cloud ERP is SaaS: Oracle hosts it and upgrades it every quarter. There's no direct database access, so we extend through configuration, Visual Builder, OIC, BI Publisher and REST APIs. It has a browser UI, scheduled processes and role-based security. For a consultant, setups are done through Functional Setup Manager tasks, every quarterly update needs regression testing, and reporting uses OTBI, BI Publisher and Financial Reporting or Smart View.&quot;</p>
-<p class="tip"><strong>Tip:</strong> If you've worked on both, give one task you did in each. It proves the experience.</p></div>
+<p class="tip"><strong>Tip:</strong> If you've worked on both, give one task you did in each. It proves the experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does the quarterly update cycle mean for a consultant?</p><p>Every quarter we review release notes, test key flows in a non-production pod and opt in to new features deliberately. Regression testing becomes a routine part of support, not a one-off project.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Basics" data-level="B">
   <summary><span class="qn">26</span><span class="qt">What is Functional Setup Manager and how do you use it?</span><span class="meta"><span class="tag">Fusion Basics</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> FSM is how every Fusion setup is done.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;FSM is the Fusion tool for all application setup. Offerings, like Financials, contain functional areas, like Payables, which contain setup tasks, like Manage Payables Options. You opt in to the offerings and features you need and work through the task list. Implementation projects group tasks so you can assign them and track status. Configuration packages export setups from one environment and import them into another, like test to production. And scope values let you set up a task for a specific BU or ledger.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention configuration packages. It shows you know how setups move between environments.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention configuration packages. It shows you know how setups move between environments.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference between an offering and a functional area?</p><p>An offering is a broad product like Financials; functional areas are parts of it, like Payables or Assets. You opt in to both, and only opted-in areas show their setup tasks.</p></div></div>
 </details>
-<details class="q" data-topic="Redwood" data-level="B">
-  <summary><span class="qn">27</span><span class="qt">What is Oracle Redwood and how is it different from the classic Fusion pages?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Redwood" data-level="B" data-top="1">
+  <summary><span class="qn">27</span><span class="qt">What is Oracle Redwood and how is it different from the classic Fusion pages?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> Redwood is changing how users work.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Redwood is Oracle's new user experience and design system for Fusion. Classic pages are built on older ADF technology, with dense forms and many tabs. Redwood pages are rebuilt with cleaner layouts, guided flows, smart defaults, better search, mobile support and built-in AI help like summaries and suggestions. Oracle is moving modules to Redwood release by release and retiring the classic pages over time, so consultants need to know both for now. Redwood pages are extended with Visual Builder Studio, not Page Composer.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the Redwood pages you've used, like Payables invoices or Manage Journals.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the Redwood pages you've used, like Payables invoices or Manage Journals.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should a company switch every page to Redwood immediately?</p><p>No. I'd enable pages after testing them, train users, and watch for gaps like missing fields or personalizations.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">28</span><span class="qt">How do you turn on a Redwood page in Fusion?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical admin question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Many Redwood pages are enabled with profile options in Manage Administrator Profile Values, usually named after the page and set at site level. Some come as opt-in features in Functional Setup Manager, and newer ones become the default in a later release. I always enable them in a test environment first, run the test scripts, check personalizations and reports, and train users before switching production.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention checking the quarterly What's New documents. That's where you learn what changed.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention checking the quarterly What's New documents. That's where you learn what changed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you test after enabling a Redwood page?</p><p>Key flows, custom fields and personalizations, and that security still restricts the data correctly.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">29</span><span class="qt">A user says a field they always used is missing on the new Redwood page. What do you do?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common support scenario after a Redwood switch.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I check whether the field just moved, because Redwood often groups fields differently or puts them in a drawer or under Show More. Then I check if it was a Page Composer personalization on the classic page, because those don't carry over. If it's needed, an admin adds it back with Visual Builder Studio, showing the field, making it required or setting a default, tested in a test environment first. And I confirm integrations and reports still populate it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;it may have moved&quot;. It solves half these tickets in a minute.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;it may have moved&quot;. It solves half these tickets in a minute.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if the field truly isn't available on Redwood yet?</p><p>Keep the classic page for that flow if possible, log an idea or SR with Oracle, and tell the users the plan.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="B">
-  <summary><span class="qn">30</span><span class="qt">What is Oracle AI Agent Studio?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="B" data-top="1">
+  <summary><span class="qn">30</span><span class="qt">What is Oracle AI Agent Studio?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic AI question for any Fusion consultant.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AI Agent Studio is the tool inside Fusion for creating, configuring, testing and managing AI agents. Oracle delivers ready-made agents and templates, for example for payables, procurement and HR questions, that you can use or adjust. You can build your own with instructions, topics and tools that let the agent read or act on Fusion data, documents, email and outside systems. Agents follow Fusion security, acting with the user's roles and data access. And you can choose the LLM and monitor usage and quality.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one use case in your own area. Nobody expects a junior consultant to be an expert.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one use case in your own area. Nobody expects a junior consultant to be an expert.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would you configure in AI Agent Studio for a finance team?</p><p>Start with a delivered agent, like invoice inquiry, adjust its instructions and tools, test it, then roll it out to a pilot group.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="B">
-  <summary><span class="qn">31</span><span class="qt">What is the difference between an AI agent and a simple chatbot?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="B" data-top="1">
+  <summary><span class="qn">31</span><span class="qt">What is the difference between an AI agent and a simple chatbot?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic concept question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A chatbot answers questions from a script or knowledge base. An AI agent can reason about a goal and take actions with tools: look up an invoice, check a PO, draft an email, create or update a record, within rules about what it may do. In Fusion, agents run inside the application's security and can require human approval before important actions. For example, 'why is this invoice on hold?' — an agent reads the holds, PO and receipts, explains the cause and suggests the next step.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use the invoice hold example. It shows the difference in one scenario.</p></div>
+<p class="tip"><strong>Tip:</strong> Use the invoice hold example. It shows the difference in one scenario.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What guardrails does an AI agent need?</p><p>Limited tools and data, approval before actions that change data, and logs of what it did.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="B">
   <summary><span class="qn">32</span><span class="qt">Give an example of how an AI agent could help an AP team.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical use case question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An invoice question agent: a supplier or internal user asks 'When will invoice 123 be paid?' and the agent reads the status, holds and next payment run and answers. A hold resolution helper explains why an invoice is on hold and who needs to act. An intake agent reads emailed invoices with document recognition and prepares them for review. People still approve payments and changes; the agent saves time on lookups and routine steps.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say people still approve payments. It's the line AP managers need to hear.</p></div>
+<p class="tip"><strong>Tip:</strong> Say people still approve payments. It's the line AP managers need to hear.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you measure the agent's value?</p><p>Fewer supplier status calls to AP and faster hold resolution time.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">33</span><span class="qt">What is Oracle Redwood and what changes for SCM users?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> SCM users feel Redwood changes on the floor.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Redwood replaces the older ADF classic pages module by module. For SCM there are Redwood pages for requisitions, purchase orders, receipts, inventory transactions and Product Management items. They're cleaner and guided, with better search, mobile use and AI help like summaries and suggestions. Classic personalizations don't carry over, so Redwood pages are extended with Visual Builder Studio. Users need short training because screens and navigation change.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name a Redwood SCM page you've used.</p></div>
+<p class="tip"><strong>Tip:</strong> Name a Redwood SCM page you've used.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should SCM users expect first in Redwood?</p><p>Cleaner requisition and PO pages with better search and guided steps.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">34</span><span class="qt">How would you prepare warehouse users for a switch to Redwood receiving or inventory pages?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> warehouse change management is practical and time-sensitive.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd enable the Redwood page in test first and run receiving and transfer scenarios. I'd note the differences: field locations, the scanning flow and defaults. Rebuild needed personalizations in Visual Builder Studio. Create a one-page job aid with screenshots and train super users first. Then switch production at a quiet time, not month-end or a peak shipping day, with support on the floor.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention support on the floor. Warehouse users won't read emails mid-shift.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention support on the floor. Warehouse users won't read emails mid-shift.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you train warehouse users?</p><p>Hands-on practice in a test environment with real scenarios, plus quick guides.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">35</span><span class="qt">What is Visual Builder Studio used for in Redwood?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> VBS is the new extension tool.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Visual Builder Studio is how you extend and adjust Redwood pages. You can show, hide or reorder fields, make them required or read-only, set defaults, and add rules, like showing a field only for a certain item type. You can add custom fields through flexfields. Changes are made in a workspace, previewed, then published, usually by an admin or technical consultant. Page Composer is only for classic pages.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give one rule example. It shows you know what's possible.</p></div>
+<p class="tip"><strong>Tip:</strong> Give one rule example. It shows you know what's possible.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Give an example of a Visual Builder rule.</p><p>Make the supplier contract number required on POs above $100,000.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="B">
   <summary><span class="qn">36</span><span class="qt">Give an SCM example where an AI agent helps users.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical use case question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A requisition assistant: an employee says 'I need 5 laptops for new hires', and the agent finds the catalog item, fills the requisition and submits it for approval. An order status agent: customer service asks 'Where is order 5521?', and the agent checks the order, shipment and tracking. A supplier quote agent reads an emailed quote and drafts requisition or PO lines for a buyer to review. People still approve purchases and commitments; the agent removes lookups and typing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep the human approval in every example.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep the human approval in every example.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes an SCM agent safe to use?</p><p>It follows user security, asks before creating or changing data, and logs its actions.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">37</span><span class="qt">What does &quot;the agent follows Fusion security&quot; mean in practice?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">37</span><span class="qt">What does &quot;the agent follows Fusion security&quot; mean in practice?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> security is the first question any auditor asks about agents.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The agent runs with the identity and roles of the person using it, or a defined service role. If a buyer can only see POs for their BU, the agent only sees those too. Actions like creating a requisition go through the same approvals as when a person does it. So data access and controls like SOX and segregation of duties stay intact.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use the buyer example. It makes the concept concrete.</p></div>
+<p class="tip"><strong>Tip:</strong> Use the buyer example. It makes the concept concrete.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if the agent tries to approve a PO the user can't approve?</p><p>It's blocked, because it only has the user's privileges.</p></div></div>
 </details>
 <details class="q" data-topic="Quarterly Updates" data-level="B">
   <summary><span class="qn">38</span><span class="qt">How do you manage HCM quarterly updates, especially payroll?</span><span class="meta"><span class="tag">Quarterly Updates</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> payroll mistakes are very visible.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I review What's New for HCM and the payroll legislative updates for tax changes. Regression covers core HR transactions, approvals, security, and payroll runs compared to prior results with automated payroll comparison. Statutory patches, like year-end, are planned and tested. Extracts and integrations are retested. And HR users get a short summary of what changed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention parallel payroll comparison. It's the test that catches real errors.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention parallel payroll comparison. It's the test that catches real errors.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's most important for payroll updates?</p><p>Testing legislative changes before they apply.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">39</span><span class="qt">How is AI being used in Oracle HCM?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM is an active area for AI.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Generative AI writes job descriptions, summarizes performance reviews, suggests goals and drafts candidate outreach. AI agents answer HR help desk questions about policies and benefits and help with onboarding. Recommendations suggest jobs and learning based on skills, and the best candidates. The guardrails are bias checks, privacy, and human review for decisions like hiring and ratings.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stress human review for hiring and ratings. It's the ethical and legal line.</p></div>
+<p class="tip"><strong>Tip:</strong> Stress human review for hiring and ratings. It's the ethical and legal line.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which HCM AI feature would you start with?</p><p>Job description generation.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">40</span><span class="qt">What changes for HCM users and admins with Redwood?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM moved to Redwood early.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;HCM was one of the first areas in Redwood: person, employment, journeys, goals, performance, learning and recruiting pages. Transactions are designed with Transaction Design Studio and Visual Builder Studio, controlling fields, sections and rules by action and role; classic Page Composer personalizations don't carry over. Approvals and security stay the same. Managers and HR need training because self-service screens look different.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention Transaction Design Studio. It's the HCM-specific tool.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention Transaction Design Studio. It's the HCM-specific tool.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest admin change?</p><p>Using Transaction Design Studio and VBS for rules.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">41</span><span class="qt">How would you hide or require a field on a Redwood HCM action like Promote?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on HCM configuration question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use Transaction Design Studio, or VBS for Redwood pages, to create a rule for the Promote action, optionally by legal employer or role. I set the field to required, hidden or read-only, and add any defaults. Then I test with different users and countries, publish, and document the rule for support.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention testing across countries. Rules by legal employer often surprise people.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention testing across countries. Rules by legal employer often surprise people.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you test the rule?</p><p>Run the Promote action as different roles.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">42</span><span class="qt">Give examples of AI agents useful in HCM.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a use case question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A policy and benefits Q&amp;A agent, grounded on HR documents. An employee self-service agent: 'update my address' or 'how many vacation days do I have?', using HCM business objects with the employee's own access. A manager assistant that summarizes team absences and upcoming reviews and drafts feedback. A recruiting assistant that drafts job descriptions and summarizes candidates. Humans stay responsible for hiring, pay and performance decisions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with who stays responsible. It shows judgment.</p></div>
+<p class="tip"><strong>Tip:</strong> End with who stays responsible. It shows judgment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the safest first agent?</p><p>A policy Q&amp;A agent.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">43</span><span class="qt">What extra care do HCM agents need?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM data is the most sensitive in the ERP.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Sensitive data, like salary, health and national IDs, needs strict role-based access, which agents inherit from HCM security. Recruiting and performance uses need bias and fairness testing, with humans making the decisions. Privacy rules like GDPR, and works council requirements in some countries, apply. And employees should be told clearly when they're using an AI assistant.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention works councils. It shows global HCM experience.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention works councils. It shows global HCM experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential for HCM agents?</p><p>Strict role-based access to sensitive data.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Platform" data-level="B">
   <summary><span class="qn">44</span><span class="qt">How do you keep HCM extracts and integrations safe during Redwood changes?</span><span class="meta"><span class="tag">Fusion Platform</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> UI changes can still affect integrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;HCM Extracts, HDL and APIs aren't affected by UI changes. But new fields added through Redwood or VBS flexfields need to be added to the extracts. I retest approval notifications and deep links. And payroll-related transactions get a regression test after every quarterly update.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention new flexfields missing from extracts. It's the real risk.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention new flexfields missing from extracts. It's the real risk.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you check after UI changes?</p><p>That new fields are in extracts.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">45</span><span class="qt">How are AI and agents being used in Oracle Fusion Financials?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a current knowledge question for finance consultants.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Intelligent Document Recognition reads invoices. AI agents in AI Agent Studio cover things like payables agents that process invoices, ledger agents for close insights, and collections agents that draft customer communications. Generative AI writes narratives like variance explanations, supplier communications and help. Predictive features include payment time predictions, anomaly detection in journals and expense auditing. All of it is configured with guardrails and human approval. In my view, AI helps most in high-volume, rules-based work, and controls still need people.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give your view on where it helps. Judgment matters more than a feature list.</p></div>
+<p class="tip"><strong>Tip:</strong> Give your view on where it helps. Judgment matters more than a feature list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which AI use case would you start with?</p><p>Invoice capture and hold resolution, because they have clear volume and measurable value.</p></div></div>
 </details>
 <details class="q" data-topic="Quarterly Updates" data-level="B">
   <summary><span class="qn">46</span><span class="qt">How do you set up governance for continuous Oracle Cloud releases?</span><span class="meta"><span class="tag">Quarterly Updates</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> quarterly updates need a routine.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A release management process: review the readiness documents each quarter, assess impact and decide on opt-ins. Regression automation for core flows, with Oracle's testing tools or third-party ones like Opkey or Worksoft. A change advisory board to approve configuration changes and new features. A roadmap of features to adopt, tied to business priorities. And short release notes for users.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention automated regression. Manual regression doesn't scale every quarter.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention automated regression. Manual regression doesn't scale every quarter.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who should own release governance?</p><p>A small team with business and IT representation, meeting each quarter.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">47</span><span class="qt">You lead the Finance workstream and Oracle is retiring the classic pages you use. How do you plan it?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a leadership planning question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I track Oracle's schedule in the quarterly readiness material to see which finance pages move and when classic retires. I assess impact by role: AP clerks, accountants, approvers and expense users. I inventory personalizations and plan rebuilds in Visual Builder Studio, keeping only what matters. I update the regression test pack for Redwood flows. Change management uses super users, short videos and 'what moved where' guides. I sequence by module, outside close, and measure tickets and cycle times after each switch.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention measuring tickets after each switch. It proves the change landed.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention measuring tickets after each switch. It proves the change landed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest risk in that plan?</p><p>Missing the retirement date for a page users rely on, so I track Oracle's timeline closely.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">48</span><span class="qt">What governance would you put around Visual Builder Studio changes?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> VBS changes affect controlled pages.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I treat VBS changes like code: workspaces in a Git repository, peer review, testing in a test environment, and publishing only by authorized admins. Naming standards and documentation for each extension. SOX change management evidence, approvals and testing, for controlled pages. Regression on every quarterly update. And very few people with the Visual Builder administrator role.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention SOX evidence. Finance auditors will ask for it.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention SOX evidence. Finance auditors will ask for it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who approves VBS changes?</p><p>The business owner and a technical reviewer before publishing to production.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">49</span><span class="qt">How would you design an AI agent for AP hold resolution?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a concrete agent design question in finance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The goal is to cut the time invoices sit on hold. The workflow triggers on new holds. Business Object tools read the invoice, PO, receipts and tolerances. An agent node explains the cause and recommends an action, like 'receive the remaining 20 units' or 'price is 4% above the agreement'. Then it routes the case to the right person, buyer or requester, using the Email tool with a deep link to the record. People still release holds or change POs. I'd measure days on hold, holds per invoice and AP touches, pilot with the top suppliers, check accuracy, then scale.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the example explanations. They show what &quot;useful&quot; looks like to AP.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the example explanations. They show what &quot;useful&quot; looks like to AP.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How would you measure success?</p><p>Average days invoices sit on hold, before and after.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">50</span><span class="qt">How do you decide whether to use a delivered Oracle agent, a partner agent or build your own?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> build vs buy, applied to agents.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Delivered agents and templates come first, because Oracle supports them and updates them with each release. A partner agent from the marketplace makes sense when a validated one fits a specific need. I build my own when the process is specific to the company or combines our data and policies. The criteria are fit, maintenance effort, security, cost including premium LLM tokens, and how each option affects controls.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention maintenance. Custom agents need care every release.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention maintenance. Custom agents need care every release.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you build your own agent?</p><p>When no delivered or partner agent covers a valuable use case unique to the business.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">51</span><span class="qt">How do you keep finance controls intact when introducing AI agents?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">51</span><span class="qt">How do you keep finance controls intact when introducing AI agents?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> controls are the first thing finance leaders worry about.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Agents inherit Fusion roles and data access, and I never give a service account more access than it needs. No autonomous postings or payments: anything financial passes a human approval node. Traces and logs are kept, and agent actions are identifiable. For segregation of duties, actions count under the user who invoked the agent. Accuracy is checked with evaluations and periodic reviews. And internal audit is involved early, with the control design documented.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;involve internal audit early&quot;. It avoids a late surprise that stops the project.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;involve internal audit early&quot;. It avoids a late surprise that stops the project.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's one control that must never be bypassed?</p><p>Human approval before payments or postings.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">52</span><span class="qt">How would you measure the value of AI agents in Finance?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AI projects need to prove value.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I take a baseline before go-live: cycle times for invoice processing, hold resolution and close tasks; touches per transaction; questions handled; and errors. After go-live I track usage and adoption from the monitoring dashboard, quality through evaluation sets and user feedback, and cost, meaning token spend on premium models, against the time saved. I report monthly to the controller.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;baseline before go-live&quot;. Without it, value can't be proven.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;baseline before go-live&quot;. Without it, value can't be proven.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you avoid inflated claims of AI value?</p><p>Compare with a baseline and measure actual time saved, not estimates.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">53</span><span class="qt">Where can AI help in Oracle SCM today?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a current knowledge question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In procurement: agents for supplier onboarding, requisition help and contract analysis, plus spend classification. In planning: machine-learning demand forecasting and supply risk alerts. In order management: exception-handling agents and generated customer communications. In inventory: spotting unusual adjustments. In Product Hub: generated item descriptions and attribute enrichment. My approach is to start with high-volume, rules-based tasks, with people reviewing the output.&quot;</p>
-<p class="tip"><strong>Tip:</strong> State your approach at the end. It shows judgment.</p></div>
+<p class="tip"><strong>Tip:</strong> State your approach at the end. It shows judgment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which AI SCM use case would you pilot first?</p><p>Supplier delay alerts or requisition help.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">54</span><span class="qt">How do you lead a Redwood transition across Procurement, Inventory and Order Management?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a leadership and planning question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build a roadmap from Oracle's readiness schedule: which SCM pages move when, and when classic retires. I assess impact by persona: requesters, buyers, receivers, warehouse staff and order administrators. I inventory personalizations and rebuild only valuable ones in Visual Builder Studio. Testing covers end-to-end flows plus mobile and scanning on the floor. Training happens on the floor with super users, away from peak periods. And there's hypercare after each switch.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention testing scanning on the floor. Warehouse issues show up there, not in a test script.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention testing scanning on the floor. Warehouse issues show up there, not in a test script.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you sequence Redwood changes?</p><p>By Oracle's retirement dates and business readiness.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">55</span><span class="qt">What new capabilities in Redwood SCM pages would you highlight to the business?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you can sell the change to users.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Guided buying and smarter search in requisitions. Redwood purchase order and agreement pages with clearer status and actions. Receiving and inventory pages that work better on tablets and phones. Product Management NIRs and change orders with better collaboration. AI help with summaries, suggested values and generated descriptions. And fewer clicks for common tasks.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with what saves users time. That's what gets adoption.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with what saves users time. That's what gets adoption.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would excite buyers most?</p><p>Guided buying and smarter search.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">56</span><span class="qt">Design an AI agent workflow for supplier delivery delays.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical agent design in procurement.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It runs daily, or when a supplier's ASN or acknowledgment changes. Business Object tools find PO schedules at risk, past the promised date with no ASN, and check which sales or work orders depend on them. An agent node assesses the impact and drafts a follow-up email to the supplier and an internal summary. A human approval node lets the buyer review, edit and send it with the Email tool. The buyer records new promise dates, and planners see the impact. I'd measure on-time delivery, expedites and buyer time.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show the buyer reviewing before sending. Suppliers shouldn't get unchecked AI emails.</p></div>
+<p class="tip"><strong>Tip:</strong> Show the buyer reviewing before sending. Suppliers shouldn't get unchecked AI emails.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you avoid alert fatigue?</p><p>Only alert on high-impact delays.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">57</span><span class="qt">How would you use an AI agent with Product Management (item data)?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> item data is a strong AI use case.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An item creation assistant can propose the item class, attributes and description from a request or a supplier spec sheet using the Document tool. A data quality agent can find duplicates or missing attributes and suggest fixes. An NIR helper can summarize pending NIRs and what's blocking them. Approvals stay in the NIR workflow: agents propose, people approve.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with &quot;agents propose, people approve&quot;. It's the governance line.</p></div>
+<p class="tip"><strong>Tip:</strong> End with &quot;agents propose, people approve&quot;. It's the governance line.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who approves AI-drafted items?</p><p>The item steward through the NIR workflow.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">58</span><span class="qt">What risks do AI agents bring to supply chain processes and how do you manage them?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a balanced risk question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Wrong actions, like ordering the wrong item or quantity: I keep agents to drafts with human approval before commitments. Data exposure: Fusion security inheritance and least-privilege tools. Made-up answers to customers: ground answers in business objects, use evaluation sets, and show sources and deep links. Cost: monitor token usage on premium models. And change: train users to review outputs critically.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Pair each risk with its control. That's the structure they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Pair each risk with its control. That's the structure they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main safeguard?</p><p>Human approval before commitments.</p></div></div>
 </details>
 <details class="q" data-topic="Quarterly Updates" data-level="B">
   <summary><span class="qn">59</span><span class="qt">How do you manage Oracle's quarterly updates?</span><span class="meta"><span class="tag">Quarterly Updates</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> every Fusion customer lives with quarterly updates.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I read the release readiness and What's New documents for our modules, and identify opt-in features worth enabling and mandatory changes. Updates reach test two weeks before production, so I run the regression pack, ideally automated, for key flows: P2P, O2C, close, payments, integrations and reports. Issues are logged and service requests raised early. And users get release notes and training.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the two-week window. It shows you know the real timeline.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the two-week window. It shows you know the real timeline.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you regression test quarterly updates efficiently?</p><p>Keep a core set of test scripts for critical flows and run them each update, automated where possible.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">60</span><span class="qt">How do you plan the move from classic to Redwood pages for a Finance module?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on planning question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I list the pages users rely on, like AP invoices, journals, expenses and receipts, and which are Redwood in the current release. I find classic Page Composer personalizations, since they don't migrate, and decide which to rebuild in Visual Builder Studio. I enable Redwood in a test environment through profile options or opt-ins and run test scripts end to end, including reports and deep links in emails. Then short role-based training and job aids, and the switch module by module outside month-end while watching tickets. Classic pages are being retired, so it's better to plan than wait.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention testing deep links in approval emails. They often break.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention testing deep links in approval emails. They often break.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest risk in the Redwood move?</p><p>Lost personalizations and user confusion, which is why I test and train first.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">61</span><span class="qt">How would you add a required field and a validation to a Redwood Payables page?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on VBS question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;If it's new data, I create a descriptive flexfield segment and deploy it. In Visual Builder Studio I open the Payables page extension in a workspace, add the field to the layout, make it required, and add a rule, for example required only when the invoice type is Standard and the amount is over $10,000. I preview, test in the test environment, then publish. And I update integrations and reports to include the new field.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention updating integrations. A new required field breaks FBDI loads otherwise.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention updating integrations. A new required field breaks FBDI loads otherwise.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you deploy that change?</p><p>Publish the Visual Builder extension from test to production after validation, following change control.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">62</span><span class="qt">What happens to OTBI reports, BIP reports and integrations when pages move to Redwood?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> clients worry about breaking reports and integrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;REST and SOAP APIs, FBDI and the data model don't change, so integrations generally keep working. OTBI and BIP reports keep working too, though analytics embedded on pages may look or behave differently, so I test them. Deep links in approval emails or reports can change format, so I test notification links. And personalizations have to be rebuilt in Visual Builder Studio.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with the reassurance: APIs and data don't change.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with the reassurance: APIs and data don't change.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What might break with Redwood?</p><p>Page Composer customizations and embedded analytics on classic pages.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">63</span><span class="qt">Walk me through creating an AI agent in AI Agent Studio.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">63</span><span class="qt">Walk me through creating an AI agent in AI Agent Studio.</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on question for anyone claiming agent experience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start from a delivered template, or the agent builder assistant where I describe what I want in plain words, or from scratch. I write clear instructions: role, goal, boundaries and tone. I add topics to scope what it handles. Then tools: for example a Business Object tool to read invoices and holds, a Document tool for policies, an Email tool, and a Deep Link tool to open the record in Fusion. I choose the LLM. I test in the studio with sample questions and review the trace of tool calls. Then I publish it and make it available to the right roles and pages.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention reviewing traces. It's how you know the agent used the right data.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention reviewing traces. It's how you know the agent used the right data.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you write good agent instructions?</p><p>Clear role, what it can and can't do, which tools to use, and how to answer.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">64</span><span class="qt">What tool types can an agent use in AI Agent Studio?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">64</span><span class="qt">What tool types can an agent use in AI Agent Studio?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a technical knowledge question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Business Object tools read or act on Fusion objects through APIs, like invoices, suppliers, POs and journals. Document tools answer from uploaded documents using retrieval. External REST and connector tools call outside systems. MCP tools connect to tools exposed through the Model Context Protocol. Email tools send emails. Deep Link tools give the user a link straight to the Fusion page. User session tools use context about the signed-in user. I give each agent only the tools it needs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with &quot;only the tools it needs&quot;. It's the security principle.</p></div>
+<p class="tip"><strong>Tip:</strong> End with &quot;only the tools it needs&quot;. It's the security principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which tool type would you use for policy questions?</p><p>Document tools, using the uploaded policy documents.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">65</span><span class="qt">How would you test an agent before giving it to AP users?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">65</span><span class="qt">How would you test an agent before giving it to AP users?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> testing is what separates a demo from production.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build an evaluation set of 20 to 50 realistic questions with expected answers: holds, payment dates, policy questions, edge cases, and things it must refuse. I run it in the studio and review traces to see which tools were called and what came back. I check security by testing with users from different BUs. I check tone and accuracy and tighten the instructions. Then a pilot with a few users, watching the dashboard for sessions, errors, latency and token use.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention &quot;must refuse&quot; cases. They test the boundaries, not just the happy path.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention &quot;must refuse&quot; cases. They test the boundaries, not just the happy path.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What pass rate would you accept before rollout?</p><p>High accuracy on the evaluation set, and zero failures on things it must refuse.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">66</span><span class="qt">Which Finance processes are good candidates for AI agents, and which are not?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a judgment question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Good candidates are high-volume questions and lookups, like invoice and payment status, policy questions and expense help; exception triage, like explaining holds, suggesting fixes and drafting supplier or customer emails; document intake for invoices, remittances and receipts; and reconciliation help, suggesting matches with explanations. Poor candidates without strong controls are approving payments, posting journals and changing bank details, which keep human approval, and judgment-heavy accounting decisions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name bank detail changes as off-limits. It shows fraud awareness.</p></div>
+<p class="tip"><strong>Tip:</strong> Name bank detail changes as off-limits. It shows fraud awareness.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which processes shouldn't use agents?</p><p>Ones needing judgment and accountability, like approving large payments or posting journals without review.</p></div></div>
 </details>
 <details class="q" data-topic="Quarterly Updates" data-level="B">
   <summary><span class="qn">67</span><span class="qt">How do you approach quarterly update testing for SCM?</span><span class="meta"><span class="tag">Quarterly Updates</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical release question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I review What's New for Procurement, Inventory, Order Management, Costing and Product Hub. I run an automated regression pack for P2P, O2C, transfers, cost close and key integrations, including OIC and B2B. I check custom BIP and OTBI reports, Visual Builder extensions and REST API changes. Opt-in features are tested in a sandbox first. And there's a quick smoke test after the production update weekend.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the post-update smoke test. It catches surprises before users do.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the post-update smoke test. It catches surprises before users do.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's in your regression pack?</p><p>P2P, O2C, transfers, cycle counts and costing for key items.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">68</span><span class="qt">How do you roll out Redwood pages for Procurement and Inventory?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical rollout question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I list the classic pages in use and which have Redwood versions, like requisitions, POs, receipts, transfers and item pages. I find personalizations on classic pages and decide which to rebuild in Visual Builder Studio. I enable Redwood in test, run P2P and inventory scenarios, and check reports, notifications and deep links. I train buyers, requesters and warehouse users with short role-based guides. Then I switch by area, away from month-end and peak shipping, and watch tickets closely for two weeks.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;watch tickets for two weeks&quot;. It shows you plan for after the switch.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;watch tickets for two weeks&quot;. It shows you plan for after the switch.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you test before enabling Redwood receiving?</p><p>Scanning flows, required fields and defaults with real warehouse users.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">69</span><span class="qt">How would you add a rule on the Redwood requisition page — for example, require a justification above $5,000?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a hands-on VBS question with a design twist.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In Visual Builder Studio I open the requisition page extension in a workspace. I use the justification field, or add a flexfield. Then a rule: required when the requisition amount is over $5,000, or by category. I preview with test data, test in the test environment, then publish. But I'd also ask whether this belongs in approval rules instead: approval rules decide who approves, page rules decide what must be entered.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The approval rules vs page rules point is what makes this answer senior.</p></div>
+<p class="tip"><strong>Tip:</strong> The approval rules vs page rules point is what makes this answer senior.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you test that rule?</p><p>Create requisitions below and above $5,000 and confirm the field is required only above.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">70</span><span class="qt">What is the Redwood Product Management experience and how does it affect item creation?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> item creation is changing with Redwood.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Redwood has pages for items, item classes, New Item Requests and change orders. Item creation is guided by item class, with templates and required attributes. NIR workflows have definition and approval steps assigned to teams. Search is better and AI helps, for example with generated descriptions. Pages are extended with Visual Builder Studio, and classic personalizations need to be rebuilt.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention guided creation by item class. It's the biggest user-facing change.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention guided creation by item class. It's the biggest user-facing change.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What changes for item requesters?</p><p>Guided creation by item class with required attributes, so fewer incomplete items.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">71</span><span class="qt">How would you build an agent that turns supplier quote emails into requisitions?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a concrete agent build question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An email trigger or inbound mailbox starts an agent workflow. A Document tool extracts the supplier, items, quantities and prices from the PDF. A Business Object tool finds the supplier, catalog items or agreements. Then it creates a draft requisition, not a submitted one. A human approval node lets the buyer review and submit. The Email tool notifies the buyer with a deep link to the draft. I'd test with real quotes and monitor errors and accuracy.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stress &quot;draft, not submit&quot;. It's the control that makes it safe.</p></div>
+<p class="tip"><strong>Tip:</strong> Stress &quot;draft, not submit&quot;. It's the control that makes it safe.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does a human step in?</p><p>A buyer reviews the draft requisition before it's submitted.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">72</span><span class="qt">What is the difference between a workflow agent and a hierarchical (supervisor) agent?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a design concept question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A workflow agent is a defined sequence of nodes: business object, code, email trigger, human approval and agent nodes. It's predictable and auditable, so it's best for business-critical processes. A hierarchical or supervisor agent decides which specialist agents to call, which is more flexible but less predictable. Oracle has been moving toward workflows, with agent nodes inside them for steps that need judgment. I choose workflows when the steps are known and controls matter.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say which you'd choose for finance and why.</p></div>
+<p class="tip"><strong>Tip:</strong> Say which you'd choose for finance and why.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use a hierarchical agent?</p><p>When requests vary and need routing to specialist agents.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">73</span><span class="qt">How do you control what an SCM agent is allowed to do?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> control design for agents.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Security: the agent uses the user's roles and data access through identity propagation, with no extra access. Tools: only the ones needed, read-only where possible. Instructions with clear boundaries, like 'never submit a PO, create drafts only'. Human approval nodes before commitments. Monitoring with traces and dashboards, and review of exceptions. And evaluations that include must-refuse cases.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the &quot;drafts only&quot; instruction example. It's concrete and memorable.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the &quot;drafts only&quot; instruction example. It's concrete and memorable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first control you'd set?</p><p>Read-only tools by default, with approval for any action that creates or changes data.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">74</span><span class="qt">How would you lead an enterprise AI program for back-office processes?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> an executive-level question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd set the vision: augment teams, automate routine work and improve insight. Build a portfolio of use cases across finance, procurement, supply chain and HR, scored by value and risk. Use embedded Oracle AI first, and an enterprise AI platform for cross-system use. Govern with a responsible AI policy, risk tiers, human oversight and audit trails. Fix data foundations. Plan the workforce impact and reskilling. And track value.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention workforce planning. Leaders want to see you've thought about people.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention workforce planning. Leaders want to see you've thought about people.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you pick the first AI use cases?</p><p>High volume, clear metrics and low risk.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">75</span><span class="qt">How do you address workforce concerns about AI replacing jobs in finance and operations?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a people leadership question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd be open about the goal: augment teams and move capacity to higher-value work. I'd involve the teams in designing the use cases, because they know the work best. I'd offer reskilling in analysis, exception handling and supervising AI. I'd measure and share the results honestly. And I'd work with HR on workforce planning.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;involve the teams in design&quot;. It builds trust and better solutions.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;involve the teams in design&quot;. It builds trust and better solutions.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you reassure teams?</p><p>Show reskilling paths and the higher-value work ahead.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">76</span><span class="qt">What risks do you see with AI in enterprise applications and how do you mitigate them?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a balanced risk question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Accuracy and made-up answers: human review, grounding in enterprise data and testing. Security and privacy: data access controls, no leakage of sensitive data, and vendor assessments. Compliance and auditability: logging and explainability. Bias in HR use cases: testing and oversight. Over-reliance: process controls that still check the work. And cost: usage monitoring.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Pair each risk with its mitigation. It shows structured thinking.</p></div>
+<p class="tip"><strong>Tip:</strong> Pair each risk with its mitigation. It shows structured thinking.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the top AI risk?</p><p>Inaccurate answers or actions.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">77</span><span class="qt">How would you scale AI agents across ERP, HCM and SCM portfolios?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a scaling and operating model question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd set up an enterprise agent operating model: intake, risk tiers, standards, evaluation, monitoring and ownership. Platform choices: AI Agent Studio for Fusion-centered agents, an enterprise AI platform for cross-domain ones, connected through A2A and MCP. A value portfolio validated by finance. A workforce plan to reskill teams in finance, procurement and HR operations. And regular reporting to the board and audit on AI risk and value.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention finance validating the value. It keeps the numbers honest.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention finance validating the value. It keeps the numbers honest.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's needed to scale agents?</p><p>An enterprise agent operating model.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">78</span><span class="qt">How do you think about the workforce impact of agents in finance and procurement operations?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leaders need a clear view on people impact.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Agents take over lookups, routine drafting and triage, so people focus on exceptions, judgment, and supplier and customer relationships. I'd plan how freed capacity is redeployed with HR, not just treat it as cuts. Reskilling covers exception handling, data analysis and supervising agents. And open communication keeps trust.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;redeploy, not just cut&quot;. It's the message that keeps teams engaged.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;redeploy, not just cut&quot;. It's the message that keeps teams engaged.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle workforce impact?</p><p>Reskilling and moving people to exceptions and judgment work.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">79</span><span class="qt">Why does Redwood matter strategically, beyond new screens?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if you think strategically about the platform.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Redwood is the foundation for Oracle's AI features, and new capabilities ship on Redwood pages first. Classic pages are being retired, so it's mandatory, and delaying adds risk and cost. It's also a chance to simplify customizations and improve user productivity. So I'd plan it as part of the platform roadmap, not as IT housekeeping.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Lead with &quot;AI ships on Redwood first&quot;. It changes how executives see it.</p></div>
+<p class="tip"><strong>Tip:</strong> Lead with &quot;AI ships on Redwood first&quot;. It changes how executives see it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why does Redwood matter for AI?</p><p>New AI features ship on Redwood.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">80</span><span class="qt">How would you set up an enterprise operating model for AI agents on Oracle Fusion?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a senior governance design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Intake and prioritization of agent use cases with business owners, scored on value, risk and feasibility. Risk tiers: informational agents are low risk, drafting and assisting are medium, and agents that change records are high, with human approval mandatory. Standards for instructions, tool use, naming, evaluation sets and monitoring thresholds. A life cycle: build, evaluate, pilot, publish, monitor, and re-evaluate on model or release changes. Each agent has a business owner and a technical owner. And for audit: control documentation, retained traces and periodic review.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the three risk tiers. It's the most useful part of the model.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the three risk tiers. It's the most useful part of the model.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who owns each agent?</p><p>A business owner accountable for its results.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">81</span><span class="qt">How do you evaluate and monitor agent quality over time?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> agents drift as models and data change.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Each agent has an evaluation set covering correctness, safety with must-refuse cases, tone and correct tool use. It runs before each publish and after Oracle updates or LLM changes. The monitoring dashboard tracks sessions, latency, errors and token use, with alerts on drift. Tracing helps debug wrong answers by showing which tool returned what. User feedback flows back in. And owners review each agent quarterly and retire ones that don't deliver value.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention re-running evaluations after model changes. It's when quality usually slips.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention re-running evaluations after model changes. It's when quality usually slips.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How often do you re-evaluate?</p><p>After every release and model change.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">82</span><span class="qt">An agent gave a supplier the wrong payment date. How do you investigate?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> an incident response question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I pull the trace for that session: the question, the tools called, the data returned and the model's output. Then I decide where it went wrong: the data, for example the payment schedule changed afterwards; the tool, for example it filtered on the wrong field; or the model misread the data. I fix the right thing: the tool definition, the instructions, like 'only quote dates from the scheduled payment record', or add a deep link and a caveat. I add the case to the evaluation set and rerun it. And I let the supplier and AP know.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate data, tool and model causes. It's the structured approach they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate data, tool and model causes. It's the structured approach they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the usual cause?</p><p>A tool returning the wrong data or the agent misreading it.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agent Studio" data-level="D">
-  <summary><span class="qn">83</span><span class="qt">What is your view on letting agents post journals or release payments?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agent Studio" data-level="D" data-top="1">
+  <summary><span class="qn">83</span><span class="qt">What is your view on letting agents post journals or release payments?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a judgment question on autonomy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Not autonomously in most organizations today. Agents can prepare, for example draft journals with support or recommend payment holds and releases, but posting and releasing payments stay with authorized people through approval nodes. I'd revisit it for low-risk, high-volume cases once accuracy is proven, controls are designed and audit agrees, for example auto-clearing small reconciliation differences within policy. And the decision is documented in the control framework.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a clear position and the conditions for changing it. That's leadership judgment.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a clear position and the conditions for changing it. That's leadership judgment.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What can agents do safely now?</p><p>Prepare drafts and recommendations for human approval.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">84</span><span class="qt">How would you lead an enterprise-wide Redwood adoption program?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a program leadership question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A roadmap aligned with Oracle's classic retirement schedule, in module waves. Rationalize extensions: retire most personalizations and rebuild the essentials in VBS with standards. Update regression automation for Redwood. Change management at scale with role-based learning and super users. Measure adoption, ticket volumes and task times. And engage Oracle early on gaps and bugs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention engaging Oracle early. Gaps found late delay waves.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention engaging Oracle early. Gaps found late delay waves.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest program risk?</p><p>Missing Oracle's retirement dates.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Platform" data-level="B">
   <summary><span class="qn">85</span><span class="qt">How do you keep a Fusion Finance platform current with quarterly releases, Redwood and AI features?</span><span class="meta"><span class="tag">Fusion Platform</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> platform ownership question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Release governance that assesses every quarter: mandatory changes, Redwood pages and new AI features. Opt-in decisions made with business owners, feeding an adoption roadmap. Automated regression for both UI and APIs. A sandbox for trying new features and agents. Communication to users every release. And tracking the value of the features we adopt.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention tracking value of adopted features. It justifies the effort.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention tracking value of adopted features. It justifies the effort.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the core practice?</p><p>Release governance every quarter.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">86</span><span class="qt">How would you lead AI adoption in supply chain operations?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a leadership question in SCM.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd build a use-case portfolio by value and feasibility: better forecasts, PO exception handling, supplier communication, order exception triage and quality anomaly detection. Data readiness comes first. Pilots have clear metrics and a human in the loop. Governance covers approvals, auditability and model monitoring. Planners and buyers co-design the solutions. And we scale what works and stop what doesn't.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;planners and buyers co-design&quot;. Adoption depends on it.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;planners and buyers co-design&quot;. Adoption depends on it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you start AI adoption?</p><p>Low-risk assist use cases with clear value.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">87</span><span class="qt">How would you build a roadmap of AI agents for a global supply chain?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a roadmap question that shows maturity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Wave one assists: order and PO status agents, policy and procedure Q&amp;A, and item description generation. Wave two prepares: turning supplier quotes and emails into draft requisitions, order exception triage, and drafts for supplier delay follow-ups. Wave three acts with guardrails: automatic rescheduling within rules and automatic low-value POs under agreements, with monitoring and approval thresholds. Every wave has value cases, evaluation, controls and change management.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The assist, prepare, act structure is easy to remember. Use it.</p></div>
+<p class="tip"><strong>Tip:</strong> The assist, prepare, act structure is easy to remember. Use it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's wave two?</p><p>Agents that draft actions for approval.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">88</span><span class="qt">How do you govern agents across Fusion and other platforms (WMS, TMS, partners)?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cross-platform governance is new territory.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A registry of every agent with its owner, purpose, tools, data and risk tier. Interoperability standards: MCP for tools, A2A for agent-to-agent, and the credential store for secrets. Security with least privilege, identity propagation and logging across platforms. Monitoring in one view where possible, and an incident process for agent errors. And contracts with partners covering how their agents behave and use our data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention partner contracts. It's often forgotten.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention partner contracts. It's often forgotten.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why an agent registry?</p><p>To know every agent's owner, tools and risk.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">89</span><span class="qt">An order exception agent is rescheduling lines incorrectly for one region. How do you approach it?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> an incident handling question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I pause autonomous actions for that region and switch it to draft-and-approve. Then I review traces to see which data and rules led to the decisions, comparing with correct cases from other regions. Typical causes are regional sourcing rules, calendars, time zones, units of measure, or incomplete data in the tools. I fix the tools, instructions or data, add regional cases to the evaluation set, and re-enable gradually.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Start with &quot;pause for that region&quot;. Containment comes before diagnosis.</p></div>
+<p class="tip"><strong>Tip:</strong> Start with &quot;pause for that region&quot;. Containment comes before diagnosis.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first action?</p><p>Pause autonomous actions for that region.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">90</span><span class="qt">How would you manage Redwood adoption across 30 warehouses and plants?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a multi-site rollout question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A pilot site first, testing on the floor with real devices, scanners and printers. Then a wave plan that avoids peaks, with a readiness checklist per site. Standard VBS extensions for every site, with no site-specific variants unless approved. Training kits and a champion at each site. And monitoring task times and errors after each wave.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention no site-specific variants. It keeps 30 sites supportable.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention no site-specific variants. It keeps 30 sites supportable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's tested at the pilot?</p><p>Real devices and scanners.</p></div></div>
 </details>
 <details class="q" data-topic="Fusion Platform" data-level="B">
   <summary><span class="qn">91</span><span class="qt">How do you balance adopting Oracle's new SCM AI features vs third-party tools?</span><span class="meta"><span class="tag">Fusion Platform</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a build-vs-buy question for AI.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Embedded first when it covers the need, because Oracle handles security, data and upgrades. Third-party when there's a clear capability gap, like advanced optimization or specialized warehouse AI. I evaluate both with real data and the same KPIs. And I consider integration cost, data duplication and lock-in.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;same KPIs, real data&quot;. It's how a fair comparison is made.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;same KPIs, real data&quot;. It's how a fair comparison is made.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you pick third-party AI?</p><p>When Oracle doesn't cover a valuable need.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">92</span><span class="qt">How do you build an AI-ready enterprise systems organization?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> an organizational leadership question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Skills: agent design, prompt engineering, data engineering and model governance. Roles: AI product owners, an AI platform team and a responsible AI lead. Processes: use-case intake, risk review, testing and monitoring. Partnerships with vendors like Oracle and the cloud providers, and with universities. And a culture of experimenting with guardrails.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention a responsible AI lead. It shows governance is built in.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention a responsible AI lead. It shows governance is built in.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What new skill matters most?</p><p>Agent design and governance.</p></div></div>
 </details>
 <details class="q" data-topic="AI" data-level="D">
   <summary><span class="qn">93</span><span class="qt">How would you measure the value of AI in back-office operations?</span><span class="meta"><span class="tag">AI</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> value measurement for AI.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Productivity: transactions per person, hours saved and capacity redeployed. Cycle time: invoice processing, close and order exceptions. Quality: error and exception rates. Financial: cost reduction and working capital improvements. Experience: employee, supplier and customer satisfaction. And risk: whether controls are still effective. I take a baseline before deployment and am careful about attributing results.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention careful attribution. Not every improvement is from AI.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention careful attribution. Not every improvement is from AI.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the best AI value metric?</p><p>Capacity redeployed to higher-value work.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">94</span><span class="qt">How would you explain Oracle AI Agent Studio to the board?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> executive communication.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd say: 'Oracle now lets us run AI agents inside our ERP, using our existing security, to handle routine work like invoice questions, exception triage and procurement requests.' The value is faster processes, lower cost per transaction and better service. The controls are that people approve financial actions and everything is logged. And the plan is pilots, then scale, with measured results and risk oversight.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep it to four sentences. Boards want clarity, not detail.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep it to four sentences. Boards want clarity, not detail.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the one-line pitch?</p><p>AI agents inside our ERP using existing security.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agent Studio" data-level="D">
   <summary><span class="qn">95</span><span class="qt">What metrics would you report to the executive team on AI agents?</span><span class="meta"><span class="tag">AI Agent Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> executive reporting.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Adoption: active users and sessions. Productivity: hours saved, cycle times and automation rates. Quality: accuracy, escalations and incidents. Cost: LLM and token spend against savings. And risk: control exceptions and audit findings.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Include cost against savings. Executives always ask about spend.</p></div>
+<p class="tip"><strong>Tip:</strong> Include cost against savings. Executives always ask about spend.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which AI metric matters most?</p><p>Productivity gains.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="B">
   <summary><span class="qn">96</span><span class="qt">How do you position the Redwood transition with executives?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> executive communication on a mandatory change.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It's mandatory, because classic pages are being retired, so it needs a plan and funding. It's an opportunity: better user productivity, the foundation for AI features, and simpler customizations. And delay is a risk: rushed changes and disruption at close or peak times.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Frame it as mandatory, opportunity, risk. Three points executives remember.</p></div>
+<p class="tip"><strong>Tip:</strong> Frame it as mandatory, opportunity, risk. Three points executives remember.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you position Redwood?</p><p>Mandatory, with AI benefits.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -791,6 +798,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

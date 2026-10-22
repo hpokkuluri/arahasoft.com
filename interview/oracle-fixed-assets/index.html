@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,6 +97,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>31</b> questions</span>
     <span class="stat"><b>8</b> basic</span>
     <span class="stat"><b>23</b> in-depth</span>
+    <span class="stat"><b>10</b> top questions</span>
   </div>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button>
@@ -109,10 +116,10 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <button data-f="Interview">Interview</button>
     <button data-f="Fixed Assets">Fixed Assets</button>
   </div>
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 10 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Setup" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">What are the key setups for Oracle Fusion Assets?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Setup" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">What are the key setups for Oracle Fusion Assets?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to check you've built Assets from scratch, not just processed additions.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I start with the three flexfields, because they're hard to change later: the asset key, the category flexfield, and the location flexfield. Then the books: a corporate book linked to the ledger, and tax books if the company needs them, each with book controls for the depreciation calendar, prorate calendar, default accounts and whether revaluation or impairment are allowed. Then depreciation methods, like straight-line, declining balance, units of production and table methods such as MACRS, plus prorate conventions. Then categories, which carry default accounts and depreciation rules per book. Last, system controls, asset numbering and data access by book.&quot;</p>
@@ -123,217 +130,217 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Categories:</strong> accounts and rules per book.</li>
 <li><strong>Controls:</strong> numbering, security by book.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Say why flexfields come first: they can't easily be changed. That shows design experience.</p></div>
+<p class="tip"><strong>Tip:</strong> Say why flexfields come first: they can't easily be changed. That shows design experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why are the flexfields hard to change later?</p><p>Every asset is created with those segment combinations, and reports and accounting depend on them. Changing the category structure after go-live usually means a mass reclassification of every asset, which is painful.</p></div></div>
 </details>
 <details class="q" data-topic="Setup" data-level="D">
   <summary><span class="qn">2</span><span class="qt">What accounts are defined on an asset category?</span><span class="meta"><span class="tag">Setup</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> category accounts drive all asset accounting. A wrong account means a wrong balance sheet.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Per book, the category holds the asset cost account and the asset clearing account, which AP charges before the asset is created. It holds the accumulated depreciation account, and the depreciation expense account, though expense usually takes its cost center from the asset's assignment. For construction categories, it has CIP cost and CIP clearing. If the book uses them, there are revaluation reserve and bonus depreciation accounts. The gain and loss accounts for retirements aren't on the category; they're set at the book level.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that gain and loss live on the book, not the category. It's a detail interviewers use to check depth.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that gain and loss live on the book, not the category. It's a detail interviewers use to check depth.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if the clearing account on the category is wrong?</p><p>AP charges invoices to one clearing account while Assets relieves another, so clearing never zeroes out. I reconcile the clearing account every month to catch it early.</p></div></div>
 </details>
-<details class="q" data-topic="Depreciation" data-level="B">
-  <summary><span class="qn">3</span><span class="qt">How does the depreciation run work and what happens if you need to rerun it?</span><span class="meta"><span class="tag">Depreciation</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Depreciation" data-level="B" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">How does the depreciation run work and what happens if you need to rerun it?</span><span class="meta"><span class="tag">Depreciation</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> depreciation is the core month-end task in Assets. They want to know you can recover from mistakes.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Calculate Depreciation runs per book per period. While the period is open, I can run it as many times as I need; if someone posts a late addition or adjustment, I roll back depreciation for that period and run it again. When everything is final, I run depreciation with the close period option, which closes the period and opens the next one. After that, Create Accounting generates the depreciation journals for GL. So the rule is: run, review, roll back if needed, then close. Once the period is closed, a fix has to go into the next period as an adjustment.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the roll back step clearly. It's the most common real-world scenario.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the roll back step clearly. It's the most common real-world scenario.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When can't you roll back depreciation?</p><p>Once the period is closed. After that, corrections go through adjustments in the current period, either amortized or expensed.</p></div></div>
 </details>
-<details class="q" data-topic="Depreciation" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">Explain the difference between amortized and expensed adjustments.</span><span class="meta"><span class="tag">Depreciation</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Depreciation" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">Explain the difference between amortized and expensed adjustments.</span><span class="meta"><span class="tag">Depreciation</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> this choice changes the P&amp;L in the current month. They want to see you understand the accounting.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Say I find an asset's life should be 8 years, not 5, after 2 years. With an amortized adjustment, Oracle spreads the remaining net book value over the new remaining life, which is 6 years. There's no catch-up; past depreciation stays as it was. With an expensed adjustment, Oracle recalculates depreciation as if the new life had always applied, and books the difference as a catch-up in the current period. Under most accounting policies a change in estimate, like a new useful life, is prospective, so amortized is the usual choice. Expensed is used for corrections of errors, when the original setup was simply wrong.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use a worked example with years. It makes the difference clear in thirty seconds.</p></div>
+<p class="tip"><strong>Tip:</strong> Use a worked example with years. It makes the difference clear in thirty seconds.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which would you choose when correcting a life that was keyed wrong at addition?</p><p>Expensed, because the original life was simply an error, so catch-up depreciation fixes history in the current period. Amortized fits a genuine change in estimate going forward.</p></div></div>
 </details>
 <details class="q" data-topic="Depreciation" data-level="D">
   <summary><span class="qn">5</span><span class="qt">How do units-of-production depreciation and table methods work?</span><span class="meta"><span class="tag">Depreciation</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see you know depreciation beyond straight-line.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Units of production depreciates based on actual use. You set the total expected units, say 200,000 miles for a truck, and each period you enter the units used. If the truck drove 5,000 miles this month, depreciation is 5,000 divided by 200,000 times the cost. It's used for vehicles, mining equipment and machines measured in hours. Table methods use rates from a table by year, and the classic example is US MACRS in tax books, where year one of a 5-year asset might be 20%. Flat-rate methods, like declining balance, apply a fixed rate to cost or net book value each period.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the truck example with numbers. Concrete beats definitions.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the truck example with numbers. Concrete beats definitions.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if actual units exceed the expected total?</p><p>Depreciation stops when net book value reaches salvage value. If usage estimates were wrong, I'd adjust the total units as a change in estimate.</p></div></div>
 </details>
 <details class="q" data-topic="Transactions" data-level="D">
   <summary><span class="qn">6</span><span class="qt">How do you perform a mass transfer or mass reclassification?</span><span class="meta"><span class="tag">Transactions</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reorganizations hit Assets hard. They want to know you can move hundreds of assets safely.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For a reorganization where cost centers change, I use mass transfers to move all assets from the old cost center or location to the new one in one run, or FBDI or ADFdi when the mapping is complex. For mass reclassification, I change the category for a group of assets and decide whether Oracle should redefault the depreciation rules from the new category, which changes depreciation going forward. In both cases I run the preview report first, check a sample with finance, then run it and check the accounting, because a transfer moves accumulated depreciation and expense to the new accounts.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the preview report and the redefault choice. Those are the two places it goes wrong.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the preview report and the redefault choice. Those are the two places it goes wrong.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you check a mass transfer before running it?</p><p>Run the preview report, compare asset counts and cost totals to what's expected, and test with a small group first.</p></div></div>
 </details>
 <details class="q" data-topic="Transactions" data-level="B">
   <summary><span class="qn">7</span><span class="qt">What is the difference between a transfer and a reclassification?</span><span class="meta"><span class="tag">Transactions</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic Assets question, often asked of junior consultants.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A transfer changes where the asset is assigned: the cost center, which drives the expense account, the location, or the employee. Depreciation expense and accumulated depreciation move with it. A reclassification changes the asset category, which can change the cost and reserve accounts and the default depreciation rules. So moving a laptop from the finance team to the sales team is a transfer; finding out it was set up as furniture instead of computer equipment is a reclassification.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The laptop example makes the difference obvious. Use it.</p></div>
+<p class="tip"><strong>Tip:</strong> The laptop example makes the difference obvious. Use it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which one changes the asset cost account?</p><p>Reclassification, because changing the category changes the cost and reserve accounts. A transfer only changes the assignment, like the expense account.</p></div></div>
 </details>
 <details class="q" data-topic="Transactions" data-level="D">
   <summary><span class="qn">8</span><span class="qt">How do you handle partial retirements and retirements with proceeds?</span><span class="meta"><span class="tag">Transactions</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> retirements create gains and losses, and auditors check them.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A partial retirement can be by units or by cost, for example retiring 3 of 10 desks recorded as one asset. When I retire an asset I enter the proceeds of sale and the cost of removal, then run Calculate Gains and Losses. The gain or loss is proceeds minus cost of removal minus the net book value retired. So if I sell a machine with a net book value of $8,000 for $10,000 and pay $500 to remove it, the gain is $1,500. The retirement convention decides whether depreciation is taken in the month of retirement. If someone retires the wrong asset, I can reinstate it in the same period.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Do the gain calculation out loud with numbers. It's the part they're checking.</p></div>
+<p class="tip"><strong>Tip:</strong> Do the gain calculation out loud with numbers. It's the part they're checking.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does the gain or loss go on a retirement?</p><p>To the gain and loss accounts on the book controls, calculated as proceeds minus cost of removal minus net book value.</p></div></div>
 </details>
-<details class="q" data-topic="Mass Additions" data-level="D">
-  <summary><span class="qn">9</span><span class="qt">What controls the flow of AP invoices to Assets?</span><span class="meta"><span class="tag">Mass Additions</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Mass Additions" data-level="D" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">What controls the flow of AP invoices to Assets?</span><span class="meta"><span class="tag">Mass Additions</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> AP to Assets is where most capitalization delays start.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An invoice line becomes a mass addition when it's charged to an asset clearing account, or when the line is flagged Track as Asset, and the invoice is validated and accounted. Then Create Mass Additions sends those lines to the asset book that the clearing account maps to. In Assets, lines land in queues: New, On Hold, Post, Merge, Split, Add to Asset or Delete. Someone reviews each line, assigns category, location and date placed in service, then Post Mass Additions creates the assets for lines in the Post queue. I make this a weekly task, not month-end, because a pile of unreviewed lines on day two of close is how depreciation gets missed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;weekly, not month-end&quot;. It shows you've lived the backlog.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;weekly, not month-end&quot;. It shows you've lived the backlog.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why would an invoice charged to clearing not show up in Assets?</p><p>It hasn't been accounted, Create Mass Additions hasn't run, or the line's account isn't a clearing account on any category. I check those in that order.</p></div></div>
 </details>
 <details class="q" data-topic="Mass Additions" data-level="D">
   <summary><span class="qn">10</span><span class="qt">How do you capitalize freight, installation and tax on an asset?</span><span class="meta"><span class="tag">Mass Additions</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> these costs are often expensed by mistake, which understates assets.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AP charges the freight, installation and non-recoverable tax lines to the asset clearing account, so they come into Assets as mass additions too. Then I merge them into the main equipment line before posting, so the asset is created with the full cost. If the asset already exists, I use Add to Asset, which adds the cost to it. In that case I check the adjustment type, amortized or expensed, because it decides whether the extra depreciation catches up now or spreads over the remaining life.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name merge and Add to Asset, and mention the amortized vs expensed check.</p></div>
+<p class="tip"><strong>Tip:</strong> Name merge and Add to Asset, and mention the amortized vs expensed check.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if freight arrives after the asset is already capitalized?</p><p>I add it as a cost adjustment to the existing asset, through Add to Asset in mass additions, rather than creating a separate small asset.</p></div></div>
 </details>
-<details class="q" data-topic="CIP" data-level="D">
-  <summary><span class="qn">11</span><span class="qt">What is the process for capitalizing CIP from Projects?</span><span class="meta"><span class="tag">CIP</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="CIP" data-level="D" data-top="1">
+  <summary><span class="qn">11</span><span class="qt">What is the process for capitalizing CIP from Projects?</span><span class="meta"><span class="tag">CIP</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> capital projects connect Projects and Assets, and reconciliation between them is often messy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Costs for the capital project are collected on capital tasks in Projects. When it's time, I generate asset lines from the project costs and assign them to project assets, which define the category, location and book. Then I interface the asset lines to Assets: as CIP while construction continues, or as capitalized assets once there's a date placed in service. In Assets, a CIP asset doesn't depreciate; when it's capitalized it gets its in-service date and depreciation starts. Every period I reconcile the project's CIP balance to the CIP balance in Assets, because if they drift apart, finding the difference later is painful.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with the monthly reconciliation. It's what controllers care about.</p></div>
+<p class="tip"><strong>Tip:</strong> End with the monthly reconciliation. It's what controllers care about.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When should a CIP project be capitalized?</p><p>When the asset is ready for its intended use, not when the project closes financially. Waiting too long understates depreciation.</p></div></div>
 </details>
-<details class="q" data-topic="Tax Books" data-level="D">
-  <summary><span class="qn">12</span><span class="qt">How do you keep tax books in sync with the corporate book?</span><span class="meta"><span class="tag">Tax Books</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Tax Books" data-level="D" data-top="1">
+  <summary><span class="qn">12</span><span class="qt">How do you keep tax books in sync with the corporate book?</span><span class="meta"><span class="tag">Tax Books</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> tax books are common in the US, and they want to know you understand mass copy.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;When the tax book is set up I run Initial Mass Copy to bring the corporate assets in. After that, Periodic Mass Copy runs each period and copies additions, adjustments and retirements from the corporate book, according to the tax book's controls. The tax book then runs its own depreciation with tax methods like MACRS and bonus depreciation. I reconcile both books every period, and the differences between book and tax depreciation feed the deferred tax calculation.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention deferred tax. It shows you know why tax books exist, not just how they work.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention deferred tax. It shows you know why tax books exist, not just how they work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What doesn't Periodic Mass Copy bring over?</p><p>Changes the tax book doesn't allow, like certain adjustments, depending on the book's mass copy rules. Tax-specific changes, such as bonus depreciation, are made directly in the tax book.</p></div></div>
 </details>
 <details class="q" data-topic="Impairment" data-level="D">
   <summary><span class="qn">13</span><span class="qt">How do you record an impairment in Oracle Assets?</span><span class="meta"><span class="tag">Impairment</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> impairments are rare but material. They want to know you can handle the IFRS vs US GAAP difference.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion Assets has impairment functionality. I load impairment amounts by asset or by cash-generating unit through the spreadsheet, and Oracle calculates the loss, reduces the net book value and lowers future depreciation. The accounting goes through SLA to impairment expense and accumulated impairment. The policy difference matters: IFRS allows reversing an impairment later, except for goodwill, but US GAAP doesn't allow reversal for assets held and used. So I set that up per book according to the ledger's accounting standard.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the reversal difference between IFRS and US GAAP. It's the follow-up question.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the reversal difference between IFRS and US GAAP. It's the follow-up question.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you decide the impairment amount?</p><p>Finance determines it by comparing carrying amount with recoverable amount under IAS 36, or fair value under US GAAP; Oracle records the result.</p></div></div>
 </details>
 <details class="q" data-topic="Revaluation" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How does asset revaluation work in Oracle?</span><span class="meta"><span class="tag">Revaluation</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> revaluation is IFRS-only in practice, so it tests global experience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I revalue by category or by asset, using a rate or new values, under the IAS 16 revaluation model. The options decide whether accumulated depreciation is revalued too, whether the revaluation reserve is amortized over the asset's life, and whether the reserve is moved out when the asset is retired. An increase goes to the revaluation reserve in equity. A decrease first reduces any reserve for that asset, and only the rest hits the P&amp;L. It's normally enabled only in IFRS or local GAAP books, never in a US GAAP book.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it's only for IFRS books. That one line shows you understand the accounting standard.</p></div>
+<p class="tip"><strong>Tip:</strong> Say it's only for IFRS books. That one line shows you understand the accounting standard.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where does a revaluation increase go?</p><p>To the revaluation reserve in equity, unless it reverses an earlier decrease that went to profit or loss.</p></div></div>
 </details>
 <details class="q" data-topic="Physical Inventory" data-level="B">
   <summary><span class="qn">15</span><span class="qt">How do you run a physical inventory of fixed assets?</span><span class="meta"><span class="tag">Physical Inventory</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> auditors ask for it, and many companies haven't done one in years.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I export the asset register by location and the site teams count, usually by scanning barcode tags. The results are loaded into Physical Inventory in Fusion, or compared in a spreadsheet. Then I reconcile: assets that are missing get retired, assets found but not in the system get added, and assets in the wrong place get transferred. Each change gets an approval and the evidence is kept for audit. On a first count it's normal to find 5% to 10% of small assets missing, so I agree the approval process with the controller before we start.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the agreement on approvals before the count. It prevents arguments afterwards.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the agreement on approvals before the count. It prevents arguments afterwards.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do with assets found but not in the register?</p><p>Investigate whether they were expensed or belong to another location, then add them if they meet capitalization rules, with approval.</p></div></div>
 </details>
-<details class="q" data-topic="Reporting" data-level="D">
-  <summary><span class="qn">16</span><span class="qt">What reports do you use to reconcile Assets to the GL?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Reporting" data-level="D" data-top="1">
+  <summary><span class="qn">16</span><span class="qt">What reports do you use to reconcile Assets to the GL?</span><span class="meta"><span class="tag">Reporting</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> asset reconciliation is a standard close control.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use the asset cost summary and reserve summary reports, which give a roll-forward per account: beginning balance, additions, adjustments, retirements, transfers and ending balance. The detail versions show each asset. For construction I add the CIP summary. Then I compare the ending balances to the GL cost, accumulated depreciation and CIP accounts. In Fusion, the Assets to Ledger reconciliation shows differences directly, and they usually come from transactions not yet accounted or a manual journal posted to an asset account in GL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use the word &quot;roll-forward&quot;. It's what auditors ask for.</p></div>
+<p class="tip"><strong>Tip:</strong> Use the word &quot;roll-forward&quot;. It's what auditors ask for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">The cost summary ties but the reserve doesn't. Where do you look?</p><p>Depreciation journals not transferred or posted in GL, manual GL entries to accumulated depreciation, or a rollback rerun after transfer.</p></div></div>
 </details>
-<details class="q" data-topic="Data Migration" data-level="D">
-  <summary><span class="qn">17</span><span class="qt">How do you convert fixed assets into Fusion?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Data Migration" data-level="D" data-top="1">
+  <summary><span class="qn">17</span><span class="qt">How do you convert fixed assets into Fusion?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> asset conversion carries years of history. Mistakes show up in depreciation for years.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I load through FBDI into Fixed Asset Mass Additions, with cost, accumulated depreciation both life-to-date and year-to-date, date placed in service, remaining life, category, location and assignments. I load the corporate book first, then the tax books with their own reserve values. The load goes into a period that's open but before the first Fusion depreciation run. Then I reconcile counts, cost, reserve and net book value by category and book to legacy and the GL, and finance signs off. The test I always add is running depreciation for one month in the test environment and comparing it to legacy for the same month.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The one-month depreciation comparison is the best proof a conversion worked. Mention it.</p></div>
+<p class="tip"><strong>Tip:</strong> The one-month depreciation comparison is the best proof a conversion worked. Mention it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you validate converted depreciation?</p><p>Run depreciation for the first period in a test environment and compare monthly expense with legacy by category. Large differences point to wrong lives or methods.</p></div></div>
 </details>
-<details class="q" data-topic="Lease Accounting" data-level="D">
-  <summary><span class="qn">18</span><span class="qt">How does Oracle Fusion Lease Accounting work?</span><span class="meta"><span class="tag">Lease Accounting</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Lease Accounting" data-level="D" data-top="1">
+  <summary><span class="qn">18</span><span class="qt">How does Oracle Fusion Lease Accounting work?</span><span class="meta"><span class="tag">Lease Accounting</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> ASC 842 and IFRS 16 put leases on the balance sheet, and many companies moved them into Fusion.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I set up each lease contract with its payment schedule, terms, options for renewal, purchase or termination, the discount rate, usually the incremental borrowing rate, and the leased assets. Lease Accounting calculates the lease liability as the present value of the payments, the right-of-use asset, and the amortization and interest schedules. Under ASC 842 it classifies the lease as finance or operating; IFRS 16 has a single model. It creates the accounting and the AP invoices for the payments, and the ROU assets can go into Assets. It also handles modifications, remeasurements for index changes, impairment and early terminations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that it creates the AP invoices. It shows you know how it fits with the rest of finance.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that it creates the AP invoices. It shows you know how it fits with the rest of finance.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What discount rate do you use if the rate implicit in the lease isn't known?</p><p>The incremental borrowing rate: what the company would pay to borrow over a similar term with similar security.</p></div></div>
 </details>
 <details class="q" data-topic="Lease Accounting" data-level="D">
   <summary><span class="qn">19</span><span class="qt">What happens when a lease is modified?</span><span class="meta"><span class="tag">Lease Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> modifications are where lease accounting gets hard.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For most modifications, the lease liability is remeasured using the revised payments and usually a revised discount rate as of the modification date, and the right-of-use asset is adjusted by the same amount. If the change reduces the scope, like giving back one floor of an office, part of the ROU asset is written down and a gain or loss can be recognized. Some changes, like adding a new floor at market price, are treated as a separate new lease. In Oracle, I record an amendment with an effective date and the system recalculates the schedules from that date.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the office floor example for both cases. It shows you know the three types of modification.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the office floor example for both cases. It shows you know the three types of modification.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a modification that creates a separate lease?</p><p>Adding a right to use another asset, like an extra floor, priced at standalone price. That's accounted as a new lease rather than a remeasurement.</p></div></div>
 </details>
 <details class="q" data-topic="Lease Accounting" data-level="D">
   <summary><span class="qn">20</span><span class="qt">What data do you need to onboard leases?</span><span class="meta"><span class="tag">Lease Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> lease projects fail on data, not on setup.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For each lease I need commencement and end dates; payments with amounts, frequency, escalations and any variable parts; renewal, purchase and termination options and how likely they are; incentives and initial direct costs; the discount rate; currency, legal entity, asset category, location and landlord. For transition I also need the approach the company chose, like modified retrospective, and the opening balances. The biggest effort is collecting it, because leases usually live in PDFs and real estate spreadsheets, not in a system. I'd start the data collection in week one of the project.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;start data collection in week one&quot;. It shows you know where the time goes.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;start data collection in week one&quot;. It shows you know where the time goes.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which data is hardest to collect for lease onboarding?</p><p>Options and how likely they are, because they need judgment from real estate or business owners, not just contract data.</p></div></div>
 </details>
-<details class="q" data-topic="Interview" data-level="B">
-  <summary><span class="qn">21</span><span class="qt">What questions do clients typically ask a Fixed Assets contractor?</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Interview" data-level="B" data-top="1">
+  <summary><span class="qn">21</span><span class="qt">What questions do clients typically ask a Fixed Assets contractor?</span><span class="meta"><span class="tag">Interview</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a recruiter or client wants to see you prepared for their real concerns.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In my experience they ask five things: how I've set up books, categories and depreciation for more than one GAAP and for tax; how I keep mass additions and CIP moving so assets get capitalized on time; how I reconcile Assets to GL at month-end; whether I've done lease accounting under IFRS 16 or ASC 842; and how I've converted asset history. I keep one real example ready for each, with a number, like '4,000 assets converted and tied to the cent'.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Prepare one example with a number for each of the five. That's the whole preparation.</p></div>
+<p class="tip"><strong>Tip:</strong> Prepare one example with a number for each of the five. That's the whole preparation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What story would you tell about keeping CIP moving?</p><p>A monthly CIP review with project managers that cut assets waiting to be placed in service by half, so depreciation started on time.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="D">
   <summary><span class="qn">22</span><span class="qt">How would you architect asset accounting for a capital-intensive company with projects?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> an architect question. They want the pieces and how they connect.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I'd build it in layers. Capital projects run in Fusion Projects, with capitalization rules for how costs are grouped into assets. Assets holds a corporate book and tax books, plus an IFRS book if needed. Physical tracking, like tags and locations, comes from Maintenance or a third-party tool. Leased assets go through Lease Accounting with ROU assets. Impairment and revaluation are defined processes, not one-offs. If the business tracks components, I'd integrate with Maintenance work orders. The close has a set rhythm: depreciation runs, a CIP aging review so finished projects are capitalized, and reconciliation of every book to GL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the CIP aging review. Uncapitalized finished projects are the most common audit finding here.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the CIP aging review. Uncapitalized finished projects are the most common audit finding here.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's critical for capital-intensive companies?</p><p>Timely capitalization from projects and accurate componentization.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="B">
   <summary><span class="qn">23</span><span class="qt">How does an asset get created from an AP invoice?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic question, but it covers the most common path into Assets.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AP charges the invoice line to an asset clearing account, or flags it Track as Asset. After the invoice is validated and accounted, Create Mass Additions sends the line to the Mass Additions queue in Assets. There, someone reviews it: assigns the category, location, cost center and date placed in service, and merges or splits lines if needed. Then Post Mass Additions creates the asset. Depreciation starts based on the date placed in service and the prorate convention.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep it as five clear steps. It's a process question, so answer it as one.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep it as five clear steps. It's a process question, so answer it as one.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common reason an asset never gets created?</p><p>The invoice line was charged to an expense account instead of clearing, so it never becomes a mass addition.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="B">
   <summary><span class="qn">24</span><span class="qt">What are the main asset transactions in Oracle Assets?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a basic question to check you know the asset life cycle.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An addition creates the asset. An adjustment changes its cost, life or method. A transfer moves it to another location, cost center or employee. A reclassification changes its category. A retirement removes it, fully or partly, with proceeds of sale and cost of removal, and Oracle calculates the gain or loss. A reinstatement undoes a retirement in the same period. Where the accounting standard requires it, there's also revaluation and impairment. Every one of these creates accounting through SLA after Create Accounting.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Follow the life of an asset from birth to retirement. It's easier to remember and to listen to.</p></div>
+<p class="tip"><strong>Tip:</strong> Follow the life of an asset from birth to retirement. It's easier to remember and to listen to.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which of those transactions changes depreciation expense account?</p><p>A transfer to a new cost center, because the expense account comes from the asset assignment.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="D">
   <summary><span class="qn">25</span><span class="qt">What is depreciation prorate convention?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> prorate conventions explain why first-month depreciation looks wrong to new users.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The prorate convention decides when depreciation starts, based on the date placed in service. With following month, an asset added on March 10 starts depreciating in April. With mid-month, it gets half a month in March. With actual month, it gets a full month in March. With half-year, common in US tax books, it gets half a year of depreciation in the first year no matter which month it was added. The convention is set on the category for each book and defaults to the asset.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use one date and walk it through each convention. It makes the answer easy to follow.</p></div>
+<p class="tip"><strong>Tip:</strong> Use one date and walk it through each convention. It makes the answer easy to follow.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How does convention affect year-one depreciation?</p><p>It changes how many months are depreciated in the first year, so an asset placed in December might get one month or none depending on the convention.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="D">
   <summary><span class="qn">26</span><span class="qt">What happens when you retire an asset?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> retirements are common and they affect the P&amp;L.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I choose full or partial retirement, the retirement date, proceeds of sale and cost of removal. Oracle calculates the gain or loss as proceeds minus net book value minus removal cost. So for an asset with cost $50,000 and accumulated depreciation $42,000, sold for $10,000 with $500 removal cost, the gain is $10,000 minus $8,000 minus $500, which is $1,500. I run Calculate Gains and Losses, then Create Accounting, which removes the cost and reserve and books the proceeds and the gain or loss. If it was retired by mistake, I can reinstate it in the same period.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show the calculation with real numbers. That's what makes this answer stand out.</p></div>
+<p class="tip"><strong>Tip:</strong> Show the calculation with real numbers. That's what makes this answer stand out.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do you set the gain and loss accounts?</p><p>In the book controls, which hold the accounts for retirement gains, losses and proceeds.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="D">
   <summary><span class="qn">27</span><span class="qt">Explain how asset books, categories and depreciation work in Oracle Assets, including tax books.</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a broad question to see how you explain the whole module.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The corporate book is the main book, linked to a ledger, and holds depreciation for financial reporting. Tax books hold copies of the same assets with different methods and lives, like MACRS in the US, kept in step with Mass Copy each period. Categories default the accounts, method, life and prorate convention for each book. Depreciation runs per book per period, and Create Accounting sends it to GL through SLA. Assets come in by manual entry, from AP through Mass Additions, or from Projects as CIP that's later capitalized. The things I watch are category design that works for both books and tax, mass additions reviewed weekly, and retirements, transfers and impairments flowing correctly to GL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> If you've done IFRS and local GAAP, mention a second corporate book on a secondary ledger. It sets you apart.</p></div>
+<p class="tip"><strong>Tip:</strong> If you've done IFRS and local GAAP, mention a second corporate book on a secondary ledger. It sets you apart.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why keep tax books separate?</p><p>Tax depreciation rules, like MACRS or bonus, differ from book depreciation, so the tax team needs its own calculations.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="D">
   <summary><span class="qn">28</span><span class="qt">How would you design Oracle Assets for a company with IFRS and US GAAP plus tax books?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> multi-GAAP is a senior design question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The corporate book links to the primary ledger, say US GAAP. Federal and state tax books follow it through mass copy with MACRS methods. For IFRS, the choice depends on how different it is. If there are real differences, like component depreciation, revaluation or different lives, I'd use a second corporate book linked to a secondary ledger. If the differences are few, an adjustment-only approach is simpler. Categories have to work for both bases. I'd set up impairment and revaluation processes for the IFRS book, and reconcile each book to its own ledger every period.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the choice between a second book and adjustments. Showing the trade-off is what makes it a senior answer.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the choice between a second book and adjustments. Showing the trade-off is what makes it a senior answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep IFRS and US GAAP asset books aligned?</p><p>Mass copy from the corporate book with IFRS-specific adjustments, and reconcile each period.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="D">
   <summary><span class="qn">29</span><span class="qt">How do you handle construction-in-progress (CIP) assets?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> CIP sits on the balance sheet and is easy to forget.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Costs are collected as CIP assets, either from AP mass additions or from Projects. CIP doesn't depreciate. When construction is finished, I capitalize the CIP asset: it gets a date placed in service and starts depreciating. With Fusion Projects, capital projects build the assets, generate asset lines and interface them to Assets. The control I always set up is a CIP aging review every month, so a building that's been in use for six months doesn't sit in CIP with no depreciation.&quot;</p>
-<p class="tip"><strong>Tip:</strong> The CIP aging review is the key control. Say it.</p></div>
+<p class="tip"><strong>Tip:</strong> The CIP aging review is the key control. Say it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if CIP isn't capitalized when the asset is in use?</p><p>Depreciation starts late, understating expense, and auditors will flag it.</p></div></div>
 </details>
 <details class="q" data-topic="Fixed Assets" data-level="B">
   <summary><span class="qn">30</span><span class="qt">How do you merge or split mass additions?</span><span class="meta"><span class="tag">Fixed Assets</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a practical Assets task that shows you've done the work.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Merge combines several invoice lines into one asset, for example adding the freight and installation lines to the main equipment line. Split turns one line into many assets, like a line for 10 laptops becoming 10 separate assets. Add to Asset puts the cost onto an asset that's already in service. I do all of this in the Mass Additions work area before posting. Merged lines take the parent line's category and details, so I make sure the parent is set up correctly first.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the laptop and freight examples. They cover both actions.</p></div>
+<p class="tip"><strong>Tip:</strong> Give the laptop and freight examples. They cover both actions.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you split a mass addition?</p><p>When one invoice line covers several assets, like 10 laptops, that need separate tracking.</p></div></div>
 </details>
 <details class="q" data-topic="Lease Accounting" data-level="D">
   <summary><span class="qn">31</span><span class="qt">What do you know about Oracle Fusion Lease Accounting?</span><span class="meta"><span class="tag">Lease Accounting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a broad opening question about the lease module.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It supports ASC 842 and IFRS 16 for lessees. You set up lease contracts with payments, terms and options. It calculates the right-of-use asset and the lease liability as the present value of the payments at the discount rate. Under ASC 842 it classifies each lease as finance or operating. It generates the amortization schedules, the journals, and the AP invoices for payments, and it links to Assets for ROU assets. It also handles modifications, impairments and terminations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> If you've done a lease project, add one number, like how many leases you onboarded.</p></div>
+<p class="tip"><strong>Tip:</strong> If you've done a lease project, add one number, like how many leases you onboarded.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the difference in expense pattern between ASC 842 operating and finance leases?</p><p>Operating leases have straight-line expense; finance leases have front-loaded expense from interest and amortization.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -351,6 +358,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 10 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 10 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

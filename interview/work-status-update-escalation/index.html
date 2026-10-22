@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,33 +97,34 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>50</b> questions</span>
     <span class="stat"><b>32</b> basic</span>
     <span class="stat"><b>18</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Status" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">Give me a status update on your project.</span><span class="meta"><span class="tag">Status</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Status" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">Give me a status update on your project.</span><span class="meta"><span class="tag">Status</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leaders need a 30-second picture they can trust and repeat.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;the supplier onboarding upgrade and the month-end close automation project is amber overall. Done this week: design sign-off and test environment ready. Next milestone: system testing complete by the end of the month. Main risk: a tight go-live date and one open role on the team — we've added a second test cycle to mitigate it. Ask: a decision on scope for phase two by Friday.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Status color, done, next, risk, ask — in that order.</p></div>
+<p class="tip"><strong>Tip:</strong> Status color, done, next, risk, ask — in that order.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the ideal update length?</p><p>One status color, one line of progress, the top risk and any decision needed.</p></div></div>
 </details>
-<details class="q" data-topic="Status" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">Why is it amber?</span><span class="meta"><span class="tag">Status</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Status" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">Why is it amber?</span><span class="meta"><span class="tag">Status</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to understand the cause and whether you're in control.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;It's amber because testing found more defects than planned, mainly in one integration. If unresolved, go-live slips two weeks. We've added two developers and daily defect reviews. To get back to green we need the business testers available next week.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Cause, impact if unresolved, actions, what's needed.</p></div>
+<p class="tip"><strong>Tip:</strong> Cause, impact if unresolved, actions, what's needed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What would get it back to green?</p><p>Name the specific action, owner and date.</p></div></div>
 </details>
-<details class="q" data-topic="Status" data-level="D">
-  <summary><span class="qn">3</span><span class="qt">Why is it red?</span><span class="meta"><span class="tag">Status</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Status" data-level="D" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">Why is it red?</span><span class="meta"><span class="tag">Status</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> red means a commitment is at risk; leaders need options.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;It's red: we will miss the committed date unless we change something. The vendor delivery slipped three weeks. Options: A) go live with core scope on time and deliver the rest a month later; B) move the date three weeks. I recommend A because it protects the business deadline for a reliable close, fewer manual steps and faster delivery for finance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Red should always come with options and a recommendation.</p></div>
+<p class="tip"><strong>Tip:</strong> Red should always come with options and a recommendation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the recovery plan?</p><p>Options with impact on date, cost and scope, and my recommendation.</p></div></div>
 </details>
-<details class="q" data-topic="RAG" data-level="B">
-  <summary><span class="qn">4</span><span class="qt">How should I define red, amber and green?</span><span class="meta"><span class="tag">RAG</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="RAG" data-level="B" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">How should I define red, amber and green?</span><span class="meta"><span class="tag">RAG</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) consistent definitions prevent 'watermelon' reporting.</p>
 <p><strong>Sample answer (definitions):</strong></p>
 <ul>
@@ -125,45 +132,45 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Amber:</strong> risk to a commitment, with a credible recovery plan within the team's control.</li>
 <li><strong>Red:</strong> commitment will be missed without leadership decision or help.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Agree definitions with your leader upfront.</p></div>
+<p class="tip"><strong>Tip:</strong> Agree definitions with your leader upfront.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who agrees the definitions?</p><p>The sponsor, so everyone reads colors the same way.</p></div></div>
 </details>
-<details class="q" data-topic="Escalation" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">How do I escalate a risk without looking like I can't handle it?</span><span class="meta"><span class="tag">Escalation</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Escalation" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">How do I escalate a risk without looking like I can't handle it?</span><span class="meta"><span class="tag">Escalation</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) early escalation is good judgment.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'm raising this early so we have options. Risk: a tight go-live date and one open role on the team. Impact: a possible two-week delay to go-live. Options: add temporary resources, or reduce scope for phase one. I recommend reducing scope. I need your decision by Thursday.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Early, with options, recommendation and a decision date.</p></div>
+<p class="tip"><strong>Tip:</strong> Early, with options, recommendation and a decision date.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes escalation look strong?</p><p>Bringing options and a recommendation, not just the problem.</p></div></div>
 </details>
-<details class="q" data-topic="Escalation" data-level="D">
-  <summary><span class="qn">6</span><span class="qt">Why didn't you tell me sooner?</span><span class="meta"><span class="tag">Escalation</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Escalation" data-level="D" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">Why didn't you tell me sooner?</span><span class="meta"><span class="tag">Escalation</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> trust has been dented.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;You're right — I should have flagged it when the vendor first signaled delays. I tried to resolve it first. Going forward, I'll raise anything that could affect a committed date within a day. Here's where we are and the recovery plan.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Own it briefly, commit to a change, move to the plan.</p></div>
+<p class="tip"><strong>Tip:</strong> Own it briefly, commit to a change, move to the plan.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I prevent this next time?</p><p>Agree earlier escalation triggers.</p></div></div>
 </details>
-<details class="q" data-topic="Bad News" data-level="B">
-  <summary><span class="qn">7</span><span class="qt">How do I deliver bad news to a leader?</span><span class="meta"><span class="tag">Bad News</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Bad News" data-level="B" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">How do I deliver bad news to a leader?</span><span class="meta"><span class="tag">Bad News</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) delivery matters as much as content.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I have bad news first: the go-live for the supplier onboarding upgrade and the month-end close automation project will slip by two weeks. The cause is a data conversion issue found in testing. We've already started fixing it, and I'll give you a confirmed date by Wednesday.&quot;</p>
-<p class="tip"><strong>Tip:</strong> First sentence carries the news. No long preamble.</p></div>
+<p class="tip"><strong>Tip:</strong> First sentence carries the news. No long preamble.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What order should I use?</p><p>The news, impact, cause, options and recommendation.</p></div></div>
 </details>
-<details class="q" data-topic="Options" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">What are our options?</span><span class="meta"><span class="tag">Options</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Options" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">What are our options?</span><span class="meta"><span class="tag">Options</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leaders decide between trade-offs.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Three options. A: keep the date, cut two non-critical features. B: keep scope, move the date two weeks. C: keep both and add budget for extra resources ($40K). I recommend A — it protects the business deadline with minimal impact.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Two to three options with cost, risk and recommendation.</p></div>
+<p class="tip"><strong>Tip:</strong> Two to three options with cost, risk and recommendation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How many options?</p><p>Two or three, with trade-offs.</p></div></div>
 </details>
-<details class="q" data-topic="Recommendation" data-level="B">
-  <summary><span class="qn">9</span><span class="qt">What do you recommend?</span><span class="meta"><span class="tag">Recommendation</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Recommendation" data-level="B" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">What do you recommend?</span><span class="meta"><span class="tag">Recommendation</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they want your judgment, not just data.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I recommend going live with core scope on the planned date and delivering the remaining reports two weeks later. It protects a reliable close, fewer manual steps and faster delivery for finance and the risk is low because the reports aren't needed until month-end.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Recommend clearly and explain why.</p></div>
+<p class="tip"><strong>Tip:</strong> Recommend clearly and explain why.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if they choose a different option?</p><p>Commit and update the plan.</p></div></div>
 </details>
-<details class="q" data-topic="Executive Update" data-level="B">
-  <summary><span class="qn">10</span><span class="qt">How do I write a status update for executives?</span><span class="meta"><span class="tag">Executive Update</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Executive Update" data-level="B" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">How do I write a status update for executives?</span><span class="meta"><span class="tag">Executive Update</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) executives skim.</p>
 <p><strong>Sample answer (format):</strong></p>
 <ul>
@@ -173,192 +180,192 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Decisions or help needed.</li>
 <li>Next milestone and date.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Five lines they can read in 30 seconds.</p></div>
+<p class="tip"><strong>Tip:</strong> Five lines they can read in 30 seconds.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do executives read first?</p><p>The headline and decisions needed.</p></div></div>
 </details>
 <details class="q" data-topic="Weekly Report" data-level="B">
   <summary><span class="qn">11</span><span class="qt">What should go into my weekly status report?</span><span class="meta"><span class="tag">Weekly Report</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) consistent reporting builds trust.</p>
 <p><strong>Sample answer (format):</strong></p>
 <p>Accomplishments, next week's plan, risks and issues (with owners), decisions needed, and key metrics. Keep the format the same every week.</p>
-<p class="tip"><strong>Tip:</strong> Consistency makes changes stand out.</p></div>
+<p class="tip"><strong>Tip:</strong> Consistency makes changes stand out.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should a weekly report include?</p><p>Status, progress, risks, decisions and next steps.</p></div></div>
 </details>
 <details class="q" data-topic="Metrics" data-level="B">
   <summary><span class="qn">12</span><span class="qt">How are we tracking against plan?</span><span class="meta"><span class="tag">Metrics</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> facts beat feelings.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We're 80% complete against 85% planned — about a week behind. Budget is on track at 78% spent. Testing: 240 of 300 cases passed, 12 open defects, none critical.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use numbers and compare against plan.</p></div>
+<p class="tip"><strong>Tip:</strong> Use numbers and compare against plan.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I show tracking?</p><p>Milestones against plan with dates.</p></div></div>
 </details>
-<details class="q" data-topic="Issues vs Risks" data-level="B">
-  <summary><span class="qn">13</span><span class="qt">What's the difference between a risk and an issue?</span><span class="meta"><span class="tag">Issues vs Risks</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Issues vs Risks" data-level="B" data-top="1">
+  <summary><span class="qn">13</span><span class="qt">What's the difference between a risk and an issue?</span><span class="meta"><span class="tag">Issues vs Risks</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) precision in reporting.</p>
 <p><strong>Sample answer (explanation):</strong></p>
 <p>A <strong>risk</strong> might happen (vendor could deliver late). An <strong>issue</strong> is happening now (vendor is late). Risks need mitigation plans; issues need resolution actions.</p>
-<p class="tip"><strong>Tip:</strong> Label them correctly.</p></div>
+<p class="tip"><strong>Tip:</strong> Label them correctly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Give an example of each.</p><p>A risk might happen, like vendor delay; an issue already happened, like a failed test.</p></div></div>
 </details>
 <details class="q" data-topic="Ownership" data-level="B">
   <summary><span class="qn">14</span><span class="qt">Who owns fixing this?</span><span class="meta"><span class="tag">Ownership</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> accountability.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I own the overall resolution. The integration team owns the defect fix by Wednesday, and the business owner owns re-testing Thursday. I'll confirm completion Friday.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name owners and dates for every action.</p></div>
+<p class="tip"><strong>Tip:</strong> Name owners and dates for every action.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if no one owns it?</p><p>Propose an owner and escalate.</p></div></div>
 </details>
 <details class="q" data-topic="Surprises" data-level="B">
   <summary><span class="qn">15</span><span class="qt">How do I avoid surprising my leader?</span><span class="meta"><span class="tag">Surprises</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) no-surprises is a core expectation.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Share risks early (even if uncertain), use consistent status definitions, send short updates when things change, and preview bad news before group meetings.</p>
-<p class="tip"><strong>Tip:</strong> Leaders hate hearing bad news first from others.</p></div>
+<p class="tip"><strong>Tip:</strong> Leaders hate hearing bad news first from others.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What prevents surprises?</p><p>Telling them early, even before it's certain.</p></div></div>
 </details>
 <details class="q" data-topic="Pre-wiring" data-level="B">
   <summary><span class="qn">16</span><span class="qt">Should I warn my leader before a status meeting?</span><span class="meta"><span class="tag">Pre-wiring</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) pre-wiring prevents public surprises.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;Quick heads-up before the steering meeting: I'll report the project as amber because of testing delays. Here's the plan — wanted you to hear it from me first.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Always pre-wire bad news.</p></div>
+<p class="tip"><strong>Tip:</strong> Always pre-wire bad news.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why warn before a meeting?</p><p>So they're never surprised in front of others.</p></div></div>
 </details>
 <details class="q" data-topic="Steering Committee" data-level="D">
   <summary><span class="qn">17</span><span class="qt">How do I present at a steering committee?</span><span class="meta"><span class="tag">Steering Committee</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) senior forums need crisp content.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>One slide with status, milestones, risks and decisions needed. Send a pre-read. Spend most time on decisions, not progress details.</p>
-<p class="tip"><strong>Tip:</strong> Decisions, not a recital of activity.</p></div>
+<p class="tip"><strong>Tip:</strong> Decisions, not a recital of activity.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How long should a steering update be?</p><p>Short, with decisions first.</p></div></div>
 </details>
 <details class="q" data-topic="Decision" data-level="B">
   <summary><span class="qn">18</span><span class="qt">What decision do you need from me?</span><span class="meta"><span class="tag">Decision</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leaders want clear asks.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I need approval to move two reports to phase two, so we can protect the go-live date for the supplier onboarding upgrade and the month-end close automation project. If I have your approval today, I'll communicate it to stakeholders tomorrow.&quot;</p>
-<p class="tip"><strong>Tip:</strong> One clear decision, with the deadline and consequences.</p></div>
+<p class="tip"><strong>Tip:</strong> One clear decision, with the deadline and consequences.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I phrase a decision request?</p><p>State options and a deadline.</p></div></div>
 </details>
 <details class="q" data-topic="Help" data-level="B">
   <summary><span class="qn">19</span><span class="qt">What help do you need?</span><span class="meta"><span class="tag">Help</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> escalation should come with specific asks.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Two things: ask the business lead to commit three testers next week, and help unblock the vendor contract change through procurement.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Ask for actions only they can take.</p></div>
+<p class="tip"><strong>Tip:</strong> Ask for actions only they can take.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I ask for help?</p><p>Specific: who, what and by when.</p></div></div>
 </details>
-<details class="q" data-topic="Confidence" data-level="D">
-  <summary><span class="qn">20</span><span class="qt">How confident are you in the new date?</span><span class="meta"><span class="tag">Confidence</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Confidence" data-level="D" data-top="1">
+  <summary><span class="qn">20</span><span class="qt">How confident are you in the new date?</span><span class="meta"><span class="tag">Confidence</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> credibility check after a slip.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;About 85% confident. The remaining risk is data conversion; we'll know after the mock run on Tuesday. I'll confirm or adjust by Wednesday.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a confidence level and when you'll know more.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a confidence level and when you'll know more.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I express confidence honestly?</p><p>Give a percentage and what could change it.</p></div></div>
 </details>
-<details class="q" data-topic="Repeated Slips" data-level="D">
-  <summary><span class="qn">21</span><span class="qt">This is the second delay. Why should I trust the plan?</span><span class="meta"><span class="tag">Repeated Slips</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Repeated Slips" data-level="D" data-top="1">
+  <summary><span class="qn">21</span><span class="qt">This is the second delay. Why should I trust the plan?</span><span class="meta"><span class="tag">Repeated Slips</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> credibility is at stake.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Fair question. The first delay came from vendor dependencies we didn't control. We've since added buffer, daily checkpoints, and an independent review of the plan. I'll report progress against these checkpoints weekly so you can see the trend early.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain what's different this time, then prove it with checkpoints.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain what's different this time, then prove it with checkpoints.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I rebuild trust?</p><p>Explain root cause and add checkpoints.</p></div></div>
 </details>
 <details class="q" data-topic="Budget" data-level="D">
   <summary><span class="qn">22</span><span class="qt">We're over budget. How do I report it?</span><span class="meta"><span class="tag">Budget</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) budget news needs context.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;We're projecting 8% over budget ($60K) due to additional testing and vendor change requests. Options: absorb it from contingency, reduce scope, or request additional funds. I recommend using contingency.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Variance, cause, options, recommendation.</p></div>
+<p class="tip"><strong>Tip:</strong> Variance, cause, options, recommendation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should a budget report include?</p><p>Amount, cause and options.</p></div></div>
 </details>
 <details class="q" data-topic="Scope Creep" data-level="D">
   <summary><span class="qn">23</span><span class="qt">How do I report scope creep?</span><span class="meta"><span class="tag">Scope Creep</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) uncontrolled scope is a common cause of failure.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;Since kickoff, we've received 14 new requests. Accepting all would add six weeks. I propose we prioritize three critical ones and move the rest to phase two. Can we confirm in the steering meeting?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Make the cumulative impact visible.</p></div>
+<p class="tip"><strong>Tip:</strong> Make the cumulative impact visible.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I show scope creep?</p><p>List added scope and its impact.</p></div></div>
 </details>
 <details class="q" data-topic="Dependencies" data-level="D">
   <summary><span class="qn">24</span><span class="qt">How do I report a dependency on another team?</span><span class="meta"><span class="tag">Dependencies</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) cross-team risks need visibility.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;We depend on the integration team delivering the API by the 15th. They've signaled risk. If it slips, our testing slips one-for-one. I've agreed weekly check-ins with their lead and may need your help to prioritize it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the dependency, impact and escalation path.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the dependency, impact and escalation path.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I report dependencies?</p><p>State what's needed, by when and impact.</p></div></div>
 </details>
 <details class="q" data-topic="Production Incident" data-level="B">
   <summary><span class="qn">25</span><span class="qt">How do I update leadership during an outage?</span><span class="meta"><span class="tag">Production Incident</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) crisis communication.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;Update at 10:30: order processing is down since 9:45. Impact: orders are queuing but no data loss. Cause under investigation; likely a failed interface. Next update at 11:00 or sooner if resolved.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Regular cadence, impact, actions, next update time — even with no news.</p></div>
+<p class="tip"><strong>Tip:</strong> Regular cadence, impact, actions, next update time — even with no news.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How often during an outage?</p><p>On a fixed rhythm, like every 30 minutes.</p></div></div>
 </details>
 <details class="q" data-topic="Post-incident" data-level="B">
   <summary><span class="qn">26</span><span class="qt">How do I report after an incident?</span><span class="meta"><span class="tag">Post-incident</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) closure and prevention.</p>
 <p><strong>Sample answer (format):</strong></p>
 <p>Summary, timeline, impact, root cause, what went well, what didn't, and preventive actions with owners and dates.</p>
-<p class="tip"><strong>Tip:</strong> Blameless and action-focused.</p></div>
+<p class="tip"><strong>Tip:</strong> Blameless and action-focused.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What goes in an incident report?</p><p>Timeline, root cause and prevention.</p></div></div>
 </details>
 <details class="q" data-topic="Escalation Path" data-level="D">
   <summary><span class="qn">27</span><span class="qt">When should I escalate above my manager?</span><span class="meta"><span class="tag">Escalation Path</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) respecting hierarchy.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Only through agreed paths (steering committees, incident processes) or with your manager's knowledge, except for urgent safety, legal or ethics issues covered by company policy.</p>
-<p class="tip"><strong>Tip:</strong> Keep your manager informed.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep your manager informed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is it right to escalate above my manager?</p><p>When my manager agrees or can't act on a critical risk.</p></div></div>
 </details>
 <details class="q" data-topic="Tone" data-level="B">
   <summary><span class="qn">28</span><span class="qt">How do I stay calm delivering bad news?</span><span class="meta"><span class="tag">Tone</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) composure builds confidence.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Prepare facts and options in advance, state the news plainly, avoid blame, focus on actions, and keep your tone steady.</p>
-<p class="tip"><strong>Tip:</strong> Preparation creates calm.</p></div>
+<p class="tip"><strong>Tip:</strong> Preparation creates calm.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I stay calm?</p><p>Prepare facts and options.</p></div></div>
 </details>
 <details class="q" data-topic="Blame" data-level="D">
   <summary><span class="qn">29</span><span class="qt">Another team caused the delay. How do I report it without blaming?</span><span class="meta"><span class="tag">Blame</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) diplomacy.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;The delay comes from a dependency on the integration deliverable, which took longer due to complexity we didn't foresee. We're working together on a recovery plan.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Describe facts and focus on the joint plan.</p></div>
+<p class="tip"><strong>Tip:</strong> Describe facts and focus on the joint plan.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I avoid blame?</p><p>Describe the dependency and impact.</p></div></div>
 </details>
 <details class="q" data-topic="Optimism" data-level="B">
   <summary><span class="qn">30</span><span class="qt">How do I avoid being too optimistic in status reports?</span><span class="meta"><span class="tag">Optimism</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) optimism bias hurts credibility.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Report against evidence (test results, completed milestones), use agreed RAG definitions, and flag uncertainty openly.</p>
-<p class="tip"><strong>Tip:</strong> Evidence over hope.</p></div>
+<p class="tip"><strong>Tip:</strong> Evidence over hope.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I stay realistic?</p><p>Use data, not hope.</p></div></div>
 </details>
 <details class="q" data-topic="Good News" data-level="B">
   <summary><span class="qn">31</span><span class="qt">How do I report good news?</span><span class="meta"><span class="tag">Good News</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> wins deserve visibility too.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Good news: the supplier onboarding upgrade and the month-end close automation project reached its milestone a week early. Testing passed with no critical defects. Thanks to the business team for quick sign-off. Next: deployment planning.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Share wins briefly and credit people.</p></div>
+<p class="tip"><strong>Tip:</strong> Share wins briefly and credit people.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I share good news?</p><p>Credit the team and note impact.</p></div></div>
 </details>
 <details class="q" data-topic="Ask for Time" data-level="B">
   <summary><span class="qn">32</span><span class="qt">How do I ask for more time?</span><span class="meta"><span class="tag">Ask for Time</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) timelines often need adjusting.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;To deliver the full scope with quality, we need two more weeks. The alternative is to deliver core scope on time and the rest later. I recommend the phased option. Which would you prefer?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Offer the alternative.</p></div>
+<p class="tip"><strong>Tip:</strong> Offer the alternative.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I justify more time?</p><p>Show why and the new plan.</p></div></div>
 </details>
 <details class="q" data-topic="Resource Request" data-level="D">
   <summary><span class="qn">33</span><span class="qt">How do I ask for more people?</span><span class="meta"><span class="tag">Resource Request</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) resource asks need justification.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;We're at capacity with the supplier onboarding upgrade and the month-end close automation project and daily operations. Adding one contractor for three months ($45K) protects the go-live date and reduces the risk of operational issues. Without it, we'd need to delay phase two.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Cost versus impact of not doing it.</p></div>
+<p class="tip"><strong>Tip:</strong> Cost versus impact of not doing it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I justify more people?</p><p>Show the gap and impact.</p></div></div>
 </details>
 <details class="q" data-topic="Visual" data-level="B">
   <summary><span class="qn">34</span><span class="qt">What visuals help status updates?</span><span class="meta"><span class="tag">Visual</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) visuals speed understanding.</p>
 <p><strong>Sample answer (examples):</strong></p>
 <p>Milestone timeline with status, burn-up chart, defect trend, RAG table by workstream, and a risk heat map.</p>
-<p class="tip"><strong>Tip:</strong> One visual per message.</p></div>
+<p class="tip"><strong>Tip:</strong> One visual per message.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What visual helps most?</p><p>A milestone timeline with status.</p></div></div>
 </details>
 <details class="q" data-topic="Frequency" data-level="B">
   <summary><span class="qn">35</span><span class="qt">How often should I send updates?</span><span class="meta"><span class="tag">Frequency</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) cadence.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Weekly for normal progress, immediately for material changes, and more frequently during critical phases like go-live.</p>
-<p class="tip"><strong>Tip:</strong> Agree the cadence upfront.</p></div>
+<p class="tip"><strong>Tip:</strong> Agree the cadence upfront.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How often?</p><p>Weekly, more often when red.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="B">
   <summary><span class="qn">36</span><span class="qt">How do I tailor updates to different audiences?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) executives and teams need different detail.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Executives: outcomes, risks, decisions. Business users: what changes for them and when. Project team: detailed tasks and dependencies.</p>
-<p class="tip"><strong>Tip:</strong> Same facts, different depth.</p></div>
+<p class="tip"><strong>Tip:</strong> Same facts, different depth.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I tailor updates?</p><p>Executives get headlines; teams get detail.</p></div></div>
 </details>
-<details class="q" data-topic="Escalation Email" data-level="B">
-  <summary><span class="qn">37</span><span class="qt">Write an escalation email.</span><span class="meta"><span class="tag">Escalation Email</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Escalation Email" data-level="B" data-top="1">
+  <summary><span class="qn">37</span><span class="qt">Write an escalation email.</span><span class="meta"><span class="tag">Escalation Email</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) written escalations need structure.</p>
 <p><strong>Sample answer (email):</strong></p>
 <p>&quot;Subject: Decision needed by Thu — the supplier onboarding upgrade and the month-end close automation project go-live risk</p>
@@ -366,98 +373,98 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <p>Impact: two-week slip if unresolved.</p>
 <p>Options: A) phase scope (recommended); B) move date.</p>
 <p>Ask: your decision by Thursday.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Put the ask and deadline in the subject line.</p></div>
+<p class="tip"><strong>Tip:</strong> Put the ask and deadline in the subject line.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the subject line?</p><p>Clear: what's at risk and the ask.</p></div></div>
 </details>
 <details class="q" data-topic="Follow-up" data-level="B">
   <summary><span class="qn">38</span><span class="qt">How do I follow up after escalating?</span><span class="meta"><span class="tag">Follow-up</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) close the loop.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Confirm the decision in writing, communicate it to stakeholders, update the plan, and report progress at the next checkpoint.</p>
-<p class="tip"><strong>Tip:</strong> Written confirmation.</p></div>
+<p class="tip"><strong>Tip:</strong> Written confirmation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How soon to follow up?</p><p>Within a day or two if no response.</p></div></div>
 </details>
-<details class="q" data-topic="Ethics" data-level="D">
-  <summary><span class="qn">39</span><span class="qt">I'm asked to report green when it's really red. What do I do?</span><span class="meta"><span class="tag">Ethics</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Ethics" data-level="D" data-top="1">
+  <summary><span class="qn">39</span><span class="qt">I'm asked to report green when it's really red. What do I do?</span><span class="meta"><span class="tag">Ethics</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) integrity.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'm not comfortable reporting green because we'll miss the date without a decision. I'd rather report it accurately with our recovery plan — it protects everyone.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Accurate reporting protects you and the business.</p></div>
+<p class="tip"><strong>Tip:</strong> Accurate reporting protects you and the business.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do I do?</p><p>Report accurately and explain why.</p></div></div>
 </details>
 <details class="q" data-topic="Late Discovery" data-level="D">
   <summary><span class="qn">40</span><span class="qt">We discovered a major issue the day before go-live. What do I say?</span><span class="meta"><span class="tag">Late Discovery</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> go/no-go judgment.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We found a data issue affecting invoices. I recommend a no-go: going live risks incorrect billing. We can fix and re-test in three days. I'll confirm a new date by tomorrow.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Protect the business over the date.</p></div>
+<p class="tip"><strong>Tip:</strong> Protect the business over the date.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do I say?</p><p>The facts, impact and go or no-go options.</p></div></div>
 </details>
 <details class="q" data-topic="Go/No-go" data-level="D">
   <summary><span class="qn">41</span><span class="qt">How do I run a go/no-go decision?</span><span class="meta"><span class="tag">Go/No-go</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) structured launch decisions.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Pre-agreed criteria (testing complete, no critical defects, data validated, support ready, rollback tested), review each with evidence, and record the decision and owners.</p>
-<p class="tip"><strong>Tip:</strong> Agree criteria in advance.</p></div>
+<p class="tip"><strong>Tip:</strong> Agree criteria in advance.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What decides go or no-go?</p><p>Agreed criteria.</p></div></div>
 </details>
 <details class="q" data-topic="Rollback" data-level="B">
   <summary><span class="qn">42</span><span class="qt">Should I mention the rollback plan in updates?</span><span class="meta"><span class="tag">Rollback</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) confidence in risk management.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;If go-live issues exceed agreed thresholds, we'll roll back within two hours — tested in rehearsal.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Reassures leaders.</p></div>
+<p class="tip"><strong>Tip:</strong> Reassures leaders.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should I mention rollback?</p><p>Yes, it shows planning.</p></div></div>
 </details>
 <details class="q" data-topic="Vendor" data-level="D">
   <summary><span class="qn">43</span><span class="qt">How do I escalate a vendor problem?</span><span class="meta"><span class="tag">Vendor</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) vendor accountability.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Document impacts against contract terms, escalate through the vendor's account manager, request a recovery plan with dates, and involve your leadership and procurement if needed.</p>
-<p class="tip"><strong>Tip:</strong> Use the contract.</p></div>
+<p class="tip"><strong>Tip:</strong> Use the contract.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I escalate a vendor?</p><p>With data through contract channels.</p></div></div>
 </details>
 <details class="q" data-topic="Leadership Questions" data-level="B">
   <summary><span class="qn">44</span><span class="qt">Leadership asks a question I can't answer. What do I say?</span><span class="meta"><span class="tag">Leadership Questions</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> credibility under pressure.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I don't have that number with me — I'll confirm it by end of day.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Never guess. Follow up quickly.</p></div>
+<p class="tip"><strong>Tip:</strong> Never guess. Follow up quickly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do I say?</p><p>I'll confirm and get back to you by a time.</p></div></div>
 </details>
 <details class="q" data-topic="Confidence Building" data-level="B">
   <summary><span class="qn">45</span><span class="qt">How do I build a reputation for reliable updates?</span><span class="meta"><span class="tag">Confidence Building</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) trust compounds.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Consistent format and timing, accurate status, early risks, and following through on commitments.</p>
-<p class="tip"><strong>Tip:</strong> Reliability builds influence.</p></div>
+<p class="tip"><strong>Tip:</strong> Reliability builds influence.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What builds reliability?</p><p>Accurate, consistent updates.</p></div></div>
 </details>
 <details class="q" data-topic="Summary" data-level="B">
   <summary><span class="qn">46</span><span class="qt">Give me the one-line summary.</span><span class="meta"><span class="tag">Summary</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> executives often want only the headline.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;the supplier onboarding upgrade and the month-end close automation project is on track for go-live on the planned date; one risk on testing capacity, with a plan in place.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Practise one-line summaries.</p></div>
+<p class="tip"><strong>Tip:</strong> Practise one-line summaries.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I write one line?</p><p>Status, why and next step.</p></div></div>
 </details>
 <details class="q" data-topic="Closing" data-level="B">
   <summary><span class="qn">47</span><span class="qt">What happens next?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to confirm the plan.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Testing finishes Friday, go/no-go meeting Monday, and I'll send the next update Wednesday.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Next steps with dates.</p></div>
+<p class="tip"><strong>Tip:</strong> Next steps with dates.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I answer?</p><p>Next steps with owners and dates.</p></div></div>
 </details>
 <details class="q" data-topic="Uncertainty" data-level="B">
   <summary><span class="qn">48</span><span class="qt">We don't know yet whether we'll hit the date. What do I report?</span><span class="meta"><span class="tag">Uncertainty</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) uncertainty must be reported honestly.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;Status is amber. We'll know by Wednesday whether the data conversion passes. If it does, we're on track; if not, the date slips about a week. I'll update you Wednesday afternoon either way.&quot;</p>
-<p class="tip"><strong>Tip:</strong> State what you know, what you don't, and when you'll know.</p></div>
+<p class="tip"><strong>Tip:</strong> State what you know, what you don't, and when you'll know.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I report uncertainty?</p><p>State confidence and what decides it.</p></div></div>
 </details>
 <details class="q" data-topic="Recovery" data-level="D">
   <summary><span class="qn">49</span><span class="qt">Show me the recovery plan.</span><span class="meta"><span class="tag">Recovery</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leaders want confidence that red can become green.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Three actions: add two testers this week, run daily defect triage with the vendor, and move two low-priority features to phase two. With these, we expect to be back to green within two weeks; I'll report against each action every Friday.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Specific actions, owners, dates and a target status.</p></div>
+<p class="tip"><strong>Tip:</strong> Specific actions, owners, dates and a target status.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's in a recovery plan?</p><p>Actions, owners and new dates.</p></div></div>
 </details>
 <details class="q" data-topic="Escalation Fatigue" data-level="B">
   <summary><span class="qn">50</span><span class="qt">How do I avoid escalating too often?</span><span class="meta"><span class="tag">Escalation Fatigue</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) escalations lose impact if overused.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Solve what's within your authority, batch minor issues into regular updates, and escalate only when commitments, customers or money are at risk — always with options.</p>
-<p class="tip"><strong>Tip:</strong> Escalate decisions, not noise.</p></div>
+<p class="tip"><strong>Tip:</strong> Escalate decisions, not noise.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I avoid over-escalating?</p><p>Agree thresholds first.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -475,6 +482,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

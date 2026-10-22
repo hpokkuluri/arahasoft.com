@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,358 +97,359 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>50</b> questions</span>
     <span class="stat"><b>13</b> basic</span>
     <span class="stat"><b>37</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Design" data-level="D">
-  <summary><span class="qn">1</span><span class="qt">How do you design an integration between Fusion and an external system?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Design" data-level="D" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">How do you design an integration between Fusion and an external system?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> senior consultants own the technical design end to end.</p>
 <p><strong>Answer:</strong> Clarify business requirements, volumes, frequency, latency and error handling expectations. Choose the pattern — real-time (REST/business events), near-real-time (event-driven OIC), or batch (FBDI/ERP Integration Service, BICC/BIP extracts). Define the canonical data model and mappings, security (integration user, OAuth), idempotency and duplicate handling, error handling and reprocessing, monitoring and alerting, and performance limits. Document in a technical design and review with architects.</p>
-<p class="tip"><strong>Tip:</strong> Mention trade-offs between REST and bulk import.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention trade-offs between REST and bulk import.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first non-functional question you ask?</p><p>Volume and latency, because they decide between REST, bulk import or events.</p></div></div>
 </details>
-<details class="q" data-topic="Design" data-level="D">
-  <summary><span class="qn">2</span><span class="qt">When would you use REST APIs vs FBDI for inbound data?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Design" data-level="D" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">When would you use REST APIs vs FBDI for inbound data?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> choosing the right load method.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;REST is for low-to-moderate volume, real-time, transactional creates and updates that need an immediate response, like creating a supplier from a portal. FBDI is for high-volume batch loads, thousands of invoices, journals or items, because it's more efficient and validates in bulk. Some objects only support one of them, so I check that first.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;volume and latency drive the choice&quot;. It's the rule they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;volume and latency drive the choice&quot;. It's the rule they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if the business wants real-time for 50,000 records a day?</p><p>Use events or near-real-time micro-batches into FBDI, since row-by-row REST at that volume is fragile.</p></div></div>
 </details>
-<details class="q" data-topic="OIC" data-level="D">
-  <summary><span class="qn">3</span><span class="qt">What are integration patterns in OIC?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="OIC" data-level="D" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">What are integration patterns in OIC?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> integration design vocabulary.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;App-driven orchestration, triggered by an event or a REST call. Scheduled orchestration for batch. File transfer. Publish and subscribe with events. And synchronous request-response. I use parent-child integrations for reuse, and lookups for cross-reference values between systems.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention reusable child integrations. It shows mature design.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention reusable child integrations. It shows mature design.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which pattern would you use for a nightly file?</p><p>A scheduled orchestration that reads the file and calls bulk import.</p></div></div>
 </details>
-<details class="q" data-topic="OIC" data-level="D">
-  <summary><span class="qn">4</span><span class="qt">How do you design OIC integrations for large files?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="OIC" data-level="D" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">How do you design OIC integrations for large files?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> large files break naive integrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use stage file actions to read files in segments, chunking, so the full payload never sits in memory. For loads into Fusion, I use the ERP Cloud adapter's bulk import with FBDI. I process in parallel where it's safe, use Object Storage for very large files, and stay within OIC's message size limits.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;chunking&quot;. It's the key word.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;chunking&quot;. It's the key word.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why not load a large file into memory?</p><p>It hits payload limits and slows OIC; stage file reads in segments.</p></div></div>
 </details>
-<details class="q" data-topic="OIC" data-level="D">
-  <summary><span class="qn">5</span><span class="qt">How do you make an integration idempotent?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="OIC" data-level="D" data-top="1">
+  <summary><span class="qn">5</span><span class="qt">How do you make an integration idempotent?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> retries must not create duplicates.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use a unique business key, like the external invoice number. Before creating, I check whether the record already exists, or use an upsert operation. I store processed IDs in a lookup or database table. And I design retries so the same message processed twice doesn't create two records.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain why: retries and resubmissions. That's when duplicates happen.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain why: retries and resubmissions. That's when duplicates happen.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens on retry without idempotency?</p><p>Duplicate records, like duplicate invoices.</p></div></div>
 </details>
 <details class="q" data-topic="OIC" data-level="D">
   <summary><span class="qn">6</span><span class="qt">How do you secure OIC integrations?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> integrations are an attack surface.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Triggers use OAuth 2.0, or basic auth over HTTPS. Integration users in Fusion are dedicated and have least-privilege roles. SFTP and APIs use certificates. Credentials are stored securely in connections. I restrict IP addresses where possible. And sensitive data is masked in logs.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;least privilege&quot;. It's the core principle.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;least privilege&quot;. It's the core principle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main OIC security control?</p><p>OAuth for triggers and least-privilege integration users.</p></div></div>
 </details>
-<details class="q" data-topic="OIC" data-level="D">
-  <summary><span class="qn">7</span><span class="qt">How do you monitor and support integrations in production?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="OIC" data-level="D" data-top="1">
+  <summary><span class="qn">7</span><span class="qt">How do you monitor and support integrations in production?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> operational readiness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use OIC's monitoring dashboards with tracking fields set to business identifiers, so support can search by invoice or order number. Errors notify a support mailbox or create tickets. There are documented resubmission procedures, SLA reporting, and runbooks for common errors.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention runbooks. They make support independent of the developer.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention runbooks. They make support independent of the developer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What tracking fields would you set?</p><p>Business keys like invoice number, so support can search by them.</p></div></div>
 </details>
-<details class="q" data-topic="Events" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">How do you use Fusion business events with OIC?</span><span class="meta"><span class="tag">Events</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Events" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">How do you use Fusion business events with OIC?</span><span class="meta"><span class="tag">Events</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> event-driven integration.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I enable the event in Fusion, through Manage Business Event Configuration where required. Then I create an OIC integration with an ERP Cloud adapter trigger subscribed to the event, like Purchase Order Approved. Events usually carry key data, so I enrich with REST calls and then push to the target systems.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Contrast with polling. Events give real time without constant queries.</p></div>
+<p class="tip"><strong>Tip:</strong> Contrast with polling. Events give real time without constant queries.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if an event fires twice?</p><p>The integration must be idempotent so the second event does no harm.</p></div></div>
 </details>
-<details class="q" data-topic="Callbacks" data-level="D">
-  <summary><span class="qn">9</span><span class="qt">How do you handle ERP import callbacks in OIC?</span><span class="meta"><span class="tag">Callbacks</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Callbacks" data-level="D" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">How do you handle ERP import callbacks in OIC?</span><span class="meta"><span class="tag">Callbacks</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> knowing when bulk imports finish.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;When I use importBulkData with a callback, Fusion sends a callback with the job status when the import finishes. A separate OIC integration subscribed to the callback then processes the results: it downloads the output and log, reports errors and sends notifications.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it's better than polling. It saves resources and time.</p></div>
+<p class="tip"><strong>Tip:</strong> Say it's better than polling. It saves resources and time.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do with the callback?</p><p>Check the import status and report errors back to the source.</p></div></div>
 </details>
-<details class="q" data-topic="BICC" data-level="D">
-  <summary><span class="qn">10</span><span class="qt">How do you design data extracts with BICC?</span><span class="meta"><span class="tag">BICC</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="BICC" data-level="D" data-top="1">
+  <summary><span class="qn">10</span><span class="qt">How do you design data extracts with BICC?</span><span class="meta"><span class="tag">BICC</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> BICC is the bulk extract tool.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I select the offerings and view objects I need, configure incremental extracts based on last-update dates, schedule the jobs, and land the files in Object Storage. ETL then loads them into a data warehouse, like Autonomous Data Warehouse. For deletes, I run primary key extracts and compare, because incremental extracts don't show deleted rows.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention delete handling. It's what most designs miss.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention delete handling. It's what most designs miss.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use incremental extracts?</p><p>To pull only changed data and reduce load.</p></div></div>
 </details>
 <details class="q" data-topic="Analytics" data-level="D">
   <summary><span class="qn">11</span><span class="qt">What is Fusion Data Intelligence (FDI)?</span><span class="meta"><span class="tag">Analytics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> analytics platform knowledge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Fusion Data Intelligence is Oracle's prebuilt analytics platform for Fusion, formerly called Fusion Analytics Warehouse. It runs on Autonomous Data Warehouse and Oracle Analytics Cloud, with prebuilt data pipelines, KPIs and dashboards, and it can be extended with custom data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Know the old name. Many clients still call it FAW.</p></div>
+<p class="tip"><strong>Tip:</strong> Know the old name. Many clients still call it FAW.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is FDI a good fit?</p><p>When you want prebuilt Fusion analytics with less custom warehouse work.</p></div></div>
 </details>
 <details class="q" data-topic="Reports" data-level="D">
   <summary><span class="qn">12</span><span class="qt">How do you design complex BIP reports efficiently?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> performance and maintainability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I push logic into SQL using analytic functions and WITH clauses. I keep data models modular. Parameters limit the data. Data security is applied in the SQL. Large outputs use Excel or CSV. And bursting handles distribution.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Cover both performance and security. Both are judged.</p></div>
+<p class="tip"><strong>Tip:</strong> Cover both performance and security. Both are judged.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a WITH clause good for?</p><p>Breaking complex SQL into readable steps.</p></div></div>
 </details>
 <details class="q" data-topic="Reports" data-level="D">
   <summary><span class="qn">13</span><span class="qt">How do you report across OTBI subject areas?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> OTBI limits.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use cross-subject-area analyses joined on common dimensions. When that's not possible, I use BI Publisher with SQL, or combine the data in Oracle Analytics or Fusion Data Intelligence. OTBI only joins subject areas through common conformed dimensions, so some combinations just aren't possible.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explaining the conformed dimension limit shows real OTBI experience.</p></div>
+<p class="tip"><strong>Tip:</strong> Explaining the conformed dimension limit shows real OTBI experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if cross-subject-area isn't possible?</p><p>Build a BIP report with SQL across the needed views.</p></div></div>
 </details>
 <details class="q" data-topic="Visual Builder" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How do you build a Visual Builder app on top of Fusion?</span><span class="meta"><span class="tag">Visual Builder</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> custom app development.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a Visual Builder app and add Fusion REST APIs as service connections from the catalog. I design pages with Redwood components so it looks native, add action chains for logic, handle authentication with Fusion SSO or OAuth, and deploy through Visual Builder Studio pipelines.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention Redwood components. Users shouldn't feel they left Fusion.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention Redwood components. Users shouldn't feel they left Fusion.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a service connection?</p><p>A link to a REST API that the VB app uses for data.</p></div></div>
 </details>
 <details class="q" data-topic="VB Studio" data-level="D">
   <summary><span class="qn">15</span><span class="qt">What is Visual Builder Studio used for in Fusion?</span><span class="meta"><span class="tag">VB Studio</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> VBS is the modern extension tool.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;It's used to extend Redwood pages, adding fields, rules and layouts, and to build app UI extensions. It manages source in Git and has CI/CD pipelines to deploy extensions across environments.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it's the Redwood extension path. That's its main role.</p></div>
+<p class="tip"><strong>Tip:</strong> Say it's the Redwood extension path. That's its main role.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What can't VB Studio extend?</p><p>Non-extensible pages; check before promising changes.</p></div></div>
 </details>
-<details class="q" data-topic="Redwood" data-level="D">
-  <summary><span class="qn">16</span><span class="qt">How do you approach Redwood page extensions?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Redwood" data-level="D" data-top="1">
+  <summary><span class="qn">16</span><span class="qt">How do you approach Redwood page extensions?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> hands-on Redwood experience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use VB Studio App UI extensions. I check the page is extensible, then add display and validation rules, custom fields through flexfields exposed to Redwood, and fragments. I test in a workspace and deploy through pipelines. Oracle publishes which extension points each page supports, so I check that first.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention Oracle's published extension points. It avoids dead ends.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention Oracle's published extension points. It avoids dead ends.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first check?</p><p>Whether the Redwood page is extensible.</p></div></div>
 </details>
-<details class="q" data-topic="AI Agents" data-level="D">
-  <summary><span class="qn">17</span><span class="qt">What is AI Agent Studio and how would you use it?</span><span class="meta"><span class="tag">AI Agents</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="AI Agents" data-level="D" data-top="1">
+  <summary><span class="qn">17</span><span class="qt">What is AI Agent Studio and how would you use it?</span><span class="meta"><span class="tag">AI Agents</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> current skills.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AI Agent Studio is Oracle's tool in Fusion for creating and customizing AI agents and agent teams, using prebuilt templates, tools like Fusion APIs, documents and deep links, and LLMs, with security inherited from Fusion roles. I'd use it for answering policy questions, drafting supplier communications, or guiding invoice exception handling. I test the prompts, tools and outputs, and monitor usage.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention governance and testing. It shows you'd use it responsibly.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention governance and testing. It shows you'd use it responsibly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the developer's role in AI Agent Studio?</p><p>Building tools, integrations and testing agents.</p></div></div>
 </details>
 <details class="q" data-topic="Security" data-level="D">
   <summary><span class="qn">18</span><span class="qt">How do you design security for custom reports and integrations?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> security by design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Least-privilege custom roles. Data security through data access sets and BU access. Secured catalog folders. Integration users without UI access where possible. Auditing. And SoD checks on the roles.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;security by design&quot;. It's the mindset.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;security by design&quot;. It's the mindset.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why least-privilege integration users?</p><p>To limit damage if credentials are misused.</p></div></div>
 </details>
 <details class="q" data-topic="Security" data-level="B">
   <summary><span class="qn">19</span><span class="qt">How do you troubleshoot a user who can't see data in a report?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common support issue.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I check the user's role assignments and data access for BU, ledger or inventory org. Then whether the report uses secured views. Then catalog permissions. Then whether the role was provisioned recently and needs a security refresh. And I compare with a user who can see the data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Comparing with a working user is the fastest method.</p></div>
+<p class="tip"><strong>Tip:</strong> Comparing with a working user is the fastest method.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's often missing?</p><p>Data access for the BU or ledger.</p></div></div>
 </details>
-<details class="q" data-topic="Performance" data-level="D">
-  <summary><span class="qn">20</span><span class="qt">How do you handle Fusion API rate limits and performance?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Performance" data-level="D" data-top="1">
+  <summary><span class="qn">20</span><span class="qt">How do you handle Fusion API rate limits and performance?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> efficient API design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I batch requests where possible, use the filter and fields parameters to reduce payload, paginate, avoid chatty calls inside loops, cache reference data, and use bulk import for high volumes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention caching reference data. It removes many calls.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention caching reference data. It removes many calls.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you reduce API calls?</p><p>Use filters, fields parameters and batching.</p></div></div>
 </details>
-<details class="q" data-topic="Testing" data-level="D">
-  <summary><span class="qn">21</span><span class="qt">How do you approach regression testing for quarterly updates?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Testing" data-level="D" data-top="1">
+  <summary><span class="qn">21</span><span class="qt">How do you approach regression testing for quarterly updates?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> quarterly updates break custom objects.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I keep an inventory of custom objects: reports, integrations, extensions and ESS jobs. Critical integrations have automated tests. I review release notes for API and table changes. Testing happens in the test environment during the update window, and fixes go in before production gets the update.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;the inventory is key&quot;. You can't test what you haven't listed.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;the inventory is key&quot;. You can't test what you haven't listed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's in the custom object inventory?</p><p>Reports, integrations, extensions and ESS jobs.</p></div></div>
 </details>
 <details class="q" data-topic="Data Migration" data-level="D">
   <summary><span class="qn">22</span><span class="qt">How do you design a large data migration to Fusion?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> migration design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define the scope and objects, the dependency order, and the mapping and transformation rules. I cleanse the data. Loads are automated through OIC or scripts with the ERP Integration Service. Reconciliation reports compare source and target. I run several mock loads, timing each one. And I build the cutover plan from those timings.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;reconciliation is critical&quot;. Migrations are judged on it.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;reconciliation is critical&quot;. Migrations are judged on it.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the dependency order?</p><p>Reference data first, then masters, then transactions.</p></div></div>
 </details>
 <details class="q" data-topic="Data Migration" data-level="D">
   <summary><span class="qn">23</span><span class="qt">How do you reconcile migrated financial data?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> finance trust depends on it.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I compare record counts and totals by key dimensions: supplier open balances, AR open balances, and GL balances by account and period. I check sample records in detail. And the business signs off.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;finance must sign off&quot;. They own the numbers.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;finance must sign off&quot;. They own the numbers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the key reconciliation?</p><p>Totals by supplier, customer and account.</p></div></div>
 </details>
 <details class="q" data-topic="DevOps" data-level="D">
   <summary><span class="qn">24</span><span class="qt">How do you manage version control and deployments?</span><span class="meta"><span class="tag">DevOps</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> DevOps maturity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Git for code: VB Studio extensions, scripts and BIP templates. OIC packages exported to the repository. Naming conventions and release notes. And deployment checklists or automated pipelines moving through dev, test and production. Environment-specific values, like endpoints, stay in configuration, not code.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention environment-specific configuration. It prevents test endpoints in production.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention environment-specific configuration. It prevents test endpoints in production.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What goes in Git?</p><p>VB Studio extensions, scripts and BIP templates.</p></div></div>
 </details>
 <details class="q" data-topic="Mentoring" data-level="B">
   <summary><span class="qn">25</span><span class="qt">How do you mentor junior technical consultants?</span><span class="meta"><span class="tag">Mentoring</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> leadership readiness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I pair with them on designs, review their code and reports, explain the business context, set coding standards, and gradually give them ownership.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention gradual ownership. It's how people grow.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention gradual ownership. It's how people grow.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you know a junior is improving?</p><p>Fewer review comments and better designs.</p></div></div>
 </details>
 <details class="q" data-topic="Requirements" data-level="B">
   <summary><span class="qn">26</span><span class="qt">How do you handle unclear requirements from the business?</span><span class="meta"><span class="tag">Requirements</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> requirements are often vague.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I ask for sample data and expected outputs, build a quick prototype, confirm edge cases and volumes, document my assumptions, and get sign-off.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;prototype early&quot;. It surfaces misunderstandings fast.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;prototype early&quot;. It surfaces misunderstandings fast.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the fastest way to clarify?</p><p>Sample data and a quick prototype.</p></div></div>
 </details>
-<details class="q" data-topic="SaaS Limits" data-level="D">
-  <summary><span class="qn">27</span><span class="qt">What can't you do in Fusion that you could in EBS, and how do you work around it?</span><span class="meta"><span class="tag">SaaS Limits</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="SaaS Limits" data-level="D" data-top="1">
+  <summary><span class="qn">27</span><span class="qt">What can't you do in Fusion that you could in EBS, and how do you work around it?</span><span class="meta"><span class="tag">SaaS Limits</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> SaaS mindset.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In Fusion there are no direct database writes, no custom triggers or PL/SQL in the application schemas, and limited changes to seeded logic. So I write through APIs and FBDI, put custom logic in OIC or PaaS like OCI and Visual Builder, use business events instead of triggers, and extend through VB Studio and Application Composer.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Sum it up as &quot;extend outside the SaaS core&quot;.</p></div>
+<p class="tip"><strong>Tip:</strong> Sum it up as &quot;extend outside the SaaS core&quot;.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main workaround?</p><p>Extensions through OIC, VB Studio and OCI.</p></div></div>
 </details>
 <details class="q" data-topic="PaaS" data-level="D">
   <summary><span class="qn">28</span><span class="qt">When would you use OCI services alongside Fusion?</span><span class="meta"><span class="tag">PaaS</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> side-by-side extension.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;For custom applications with Visual Builder, complex processing with Functions or Autonomous Database, file storage with Object Storage, API management with API Gateway, analytics with ADW and Oracle Analytics Cloud, and AI services.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Call it &quot;side-by-side extensions&quot;. It's Oracle's term.</p></div>
+<p class="tip"><strong>Tip:</strong> Call it &quot;side-by-side extensions&quot;. It's Oracle's term.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use OCI Functions?</p><p>For complex processing outside Fusion.</p></div></div>
 </details>
 <details class="q" data-topic="Integrations" data-level="D">
   <summary><span class="qn">29</span><span class="qt">How do you integrate Fusion with Salesforce?</span><span class="meta"><span class="tag">Integrations</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common integration.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Usually through OIC with the Salesforce and ERP Cloud adapters. For example, customers and orders sync from Salesforce to Fusion Order Management, and invoice and payment status flow back. I decide the system of record for each data element, handle keys, errors and idempotency.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;define the system of record&quot;. It prevents sync wars.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;define the system of record&quot;. It prevents sync wars.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the typical flow?</p><p>Customer data from Salesforce to Fusion through OIC.</p></div></div>
 </details>
 <details class="q" data-topic="Integrations" data-level="D">
   <summary><span class="qn">30</span><span class="qt">How do you integrate banks with Fusion?</span><span class="meta"><span class="tag">Integrations</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> bank integration is common and critical.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Outbound, Fusion Payments generates payment files, like ISO 20022 pain.001 or NACHA, delivered by SFTP or host-to-host. Inbound, bank statements in BAI2, CAMT.053 or MT940 are loaded and reconciled in Cash Management. Acknowledgments and status reports are processed too.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that bank testing takes time. Plan for it early.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention that bank testing takes time. Plan for it early.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What format do banks prefer?</p><p>ISO 20022 pain.001.</p></div></div>
 </details>
 <details class="q" data-topic="Payments" data-level="D">
   <summary><span class="qn">31</span><span class="qt">How do you customize a payment file format in Fusion?</span><span class="meta"><span class="tag">Payments</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common bank-specific requirement.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I copy the seeded BI Publisher payment format template, like the ISO 20022 one, and modify the eText or XML template for the bank's requirements. Then I register it as a new format in Payments setup and link it to the payment process profiles.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;never modify seeded templates directly&quot;. Updates would overwrite them.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;never modify seeded templates directly&quot;. Updates would overwrite them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why copy the seeded template?</p><p>Updates can overwrite seeded templates.</p></div></div>
 </details>
 <details class="q" data-topic="HCM" data-level="D">
   <summary><span class="qn">32</span><span class="qt">How do HCM Extracts work?</span><span class="meta"><span class="tag">HCM</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> HCM outbound knowledge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;HCM Extracts define data groups, records and attributes, with filters and delivery options, to produce outbound files for payroll vendors or benefits providers. They support changes-only extracts and scheduling.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention changes-only extracts. Partners prefer deltas.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention changes-only extracts. Partners prefer deltas.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's changes-only?</p><p>Sending only changed records since the last run.</p></div></div>
 </details>
 <details class="q" data-topic="Troubleshooting" data-level="D">
   <summary><span class="qn">33</span><span class="qt">An integration intermittently fails with timeouts. How do you fix it?</span><span class="meta"><span class="tag">Troubleshooting</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> troubleshooting intermittent problems.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I check payload sizes, API response times, the network and the target system's performance. I add retries with backoff for transient errors, optimize the calls, split large batches, and look for patterns by time of day.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Separate transient from systemic. The fix is different.</p></div>
+<p class="tip"><strong>Tip:</strong> Separate transient from systemic. The fix is different.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common fix?</p><p>Smaller payloads and retry logic.</p></div></div>
 </details>
 <details class="q" data-topic="Troubleshooting" data-level="B">
   <summary><span class="qn">34</span><span class="qt">How do you raise an effective SR with Oracle?</span><span class="meta"><span class="tag">Troubleshooting</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> support efficiency.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;A clear problem statement, steps to reproduce, the environment and version, logs and screenshots, the business impact and severity, and what I've already tried.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Good SRs get faster answers. Say so.</p></div>
+<p class="tip"><strong>Tip:</strong> Good SRs get faster answers. Say so.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What gets an SR resolved faster?</p><p>Clear reproduction steps and logs.</p></div></div>
 </details>
 <details class="q" data-topic="Standards" data-level="B">
   <summary><span class="qn">35</span><span class="qt">What coding and design standards do you follow?</span><span class="meta"><span class="tag">Standards</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> team consistency.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Naming conventions, reusable components, standard error handling patterns, logging, documentation, peer reviews and security standards.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say consistency across the team is the goal.</p></div>
+<p class="tip"><strong>Tip:</strong> Say consistency across the team is the goal.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What standard matters most?</p><p>Consistent error handling.</p></div></div>
 </details>
 <details class="q" data-topic="Estimation" data-level="D">
   <summary><span class="qn">36</span><span class="qt">How do you estimate technical work?</span><span class="meta"><span class="tag">Estimation</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> planning skills.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I break the work into tasks: design, build, unit test, SIT support and deployment. I use complexity tiers, simple, medium and complex, for each RICEW object. I include data and environment dependencies. And I add contingency.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention complexity tiers. They make estimates consistent.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention complexity tiers. They make estimates consistent.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's often underestimated?</p><p>Testing and deployment.</p></div></div>
 </details>
-<details class="q" data-topic="Behavioral" data-level="B">
-  <summary><span class="qn">37</span><span class="qt">Tell me about a complex integration you designed.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Behavioral" data-level="B" data-top="1">
+  <summary><span class="qn">37</span><span class="qt">Tell me about a complex integration you designed.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> design experience.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;I designed an event-driven integration from Fusion PO approval to a supplier portal and a warehouse system. OIC subscribed to the PO approved event, enriched the data with REST calls, and published to both targets with idempotency keys. It replaced nightly batches and cut supplier order lead time by a day.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the design choices and the impact.</p></div>
+<p class="tip"><strong>Tip:</strong> Explain the design choices and the impact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What made it event-driven?</p><p>Business events triggering OIC.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">38</span><span class="qt">Tell me about a time you pushed back on a requirement.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> judgment.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;The business wanted a real-time sync of all GL balances to a reporting tool. I showed the API load it would create and proposed hourly BICC extracts to a data warehouse instead. It met their needs with much less risk.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Push back with a better alternative and the reasoning.</p></div>
+<p class="tip"><strong>Tip:</strong> Push back with a better alternative and the reasoning.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What did you offer instead?</p><p>A near-real-time batch.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">39</span><span class="qt">How do you handle a production outage in an integration?</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> incident handling.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I communicate quickly, triage the error, apply a fix or workaround, reprocess the failed transactions, verify the data, and run a root-cause review afterwards.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stay calm and structured. That's what they're testing.</p></div>
+<p class="tip"><strong>Tip:</strong> Stay calm and structured. That's what they're testing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the last step?</p><p>Reprocess failed records and confirm.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D">
   <summary><span class="qn">40</span><span class="qt">How do you optimize ESS job and import performance?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> batch performance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I split loads into appropriately sized batches, schedule them off-peak, purge interface tables, follow Oracle's recommended batch sizes, and avoid running conflicting jobs at the same time.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention batch sizing. It's the main lever.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention batch sizing. It's the main lever.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest performance win?</p><p>Right-sized batches off-peak.</p></div></div>
 </details>
 <details class="q" data-topic="Approvals" data-level="D">
   <summary><span class="qn">41</span><span class="qt">How do you troubleshoot approval workflows?</span><span class="meta"><span class="tag">Approvals</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common support area.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I check the rule configuration and conditions, the approver hierarchy and positions, the task history in the BPM worklist, and errors in the approval logs. Then I reproduce it with test transactions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention hierarchy issues. They're the most common cause.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention hierarchy issues. They're the most common cause.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most common cause?</p><p>Missing supervisors in HCM.</p></div></div>
 </details>
 <details class="q" data-topic="Audit" data-level="D">
   <summary><span class="qn">42</span><span class="qt">How do you support SOX for custom objects?</span><span class="meta"><span class="tag">Audit</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> compliance awareness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Change management with approvals and testing evidence. Restricted access to deploy. Documentation of custom reports used in controls, with IPE validation for completeness and accuracy. And audit trails.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention IPE validation. Auditors ask for it on reports used in controls.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention IPE validation. Auditors ask for it on reports used in controls.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's key for SOX?</p><p>Change evidence and restricted deployment access.</p></div></div>
 </details>
 <details class="q" data-topic="Career" data-level="B">
   <summary><span class="qn">43</span><span class="qt">Where do you see yourself in three years?</span><span class="meta"><span class="tag">Career</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> career direction.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;As a technical lead or integration architect, owning designs across modules and mentoring a team, with strong OIC, VB Studio, analytics and AI agent skills.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a clear path. It shows ambition with focus.</p></div>
+<p class="tip"><strong>Tip:</strong> Give a clear path. It shows ambition with focus.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What skill gets you there?</p><p>End-to-end integration design.</p></div></div>
 </details>
 <details class="q" data-topic="Closing" data-level="B">
   <summary><span class="qn">44</span><span class="qt">Why should we hire you?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a closing question.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;I deliver reliable reports, data loads and integrations in Fusion, using BIP, OTBI, FBDI, REST and OIC, and I understand the business processes behind them, so what I build works for users the first time.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Combine technical skill with business awareness. That's what they want.</p></div>
+<p class="tip"><strong>Tip:</strong> Combine technical skill with business awareness. That's what they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What proof would you give?</p><p>Integrations delivered reliably.</p></div></div>
 </details>
 <details class="q" data-topic="Groovy" data-level="D">
   <summary><span class="qn">45</span><span class="qt">How do you use Groovy in Application Composer for validations?</span><span class="meta"><span class="tag">Groovy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> extension skills.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I write object-level or field-level validation rules and triggers using Groovy expressions and Oracle's functions. For example, preventing a save when a custom field is empty for certain record types. I test in a sandbox before publishing.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it's only supported in certain modules. It shows accuracy.</p></div>
+<p class="tip"><strong>Tip:</strong> Say it's only supported in certain modules. It shows accuracy.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where is Groovy available?</p><p>In Application Composer objects.</p></div></div>
 </details>
 <details class="q" data-topic="Lookups" data-level="B">
   <summary><span class="qn">46</span><span class="qt">How do you manage cross-reference values in integrations?</span><span class="meta"><span class="tag">Lookups</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> maintainability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use OIC lookups, domain value maps, to map codes between systems, like payment terms or units of measure. Support teams can maintain them without code changes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;without code changes&quot;. That's the value.</p></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;without code changes&quot;. That's the value.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a domain value map?</p><p>A lookup mapping codes between systems.</p></div></div>
 </details>
 <details class="q" data-topic="Testing" data-level="B">
   <summary><span class="qn">47</span><span class="qt">How do you test integrations end to end?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> testing depth.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Unit tests for each integration, SIT with the real connected systems, negative tests with invalid data and outages, volume tests, and business validation of the results in Fusion.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Include failure scenarios. Happy-path testing isn't enough.</p></div>
+<p class="tip"><strong>Tip:</strong> Include failure scenarios. Happy-path testing isn't enough.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's often missed?</p><p>Negative and volume tests.</p></div></div>
 </details>
 <details class="q" data-topic="Documentation" data-level="B">
   <summary><span class="qn">48</span><span class="qt">What makes a good technical design document?</span><span class="meta"><span class="tag">Documentation</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> documentation quality.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Business context and scope, an architecture diagram, data mappings, error handling, security, performance considerations, the test approach and deployment steps.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the diagram. It's what readers look at first.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention the diagram. It's what readers look at first.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's essential?</p><p>Error handling design.</p></div></div>
 </details>
 <details class="q" data-topic="Integrations" data-level="D">
   <summary><span class="qn">49</span><span class="qt">How do you design a supplier master integration with Fusion?</span><span class="meta"><span class="tag">Integrations</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> master data integration design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I decide the system of record first. Real-time creates and updates use the Suppliers REST API, and bulk loads use FBDI Supplier Import. Sites, addresses, contacts and bank accounts load in the right order, with business unit site assignments mapped. Tax IDs are validated, duplicates are handled by an external key, and bank data is handled securely.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention extra controls for bank account changes. It's a fraud risk.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention extra controls for bank account changes. It's a fraud risk.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first decision?</p><p>The system of record.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D">
   <summary><span class="qn">50</span><span class="qt">How do you avoid hitting OIC and Fusion limits in high-volume integrations?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> scale and cost.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I batch records, prefer bulk import over row-by-row REST, use parallel processing carefully within concurrency limits, schedule off-peak, and monitor OIC message consumption against the message pack subscription.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention message packs. They drive OIC cost.</p></div>
+<p class="tip"><strong>Tip:</strong> Mention message packs. They drive OIC cost.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the best way to avoid limits?</p><p>Bulk import instead of row-by-row REST.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -460,6 +467,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {

@@ -48,6 +48,12 @@ summary::-webkit-details-marker { display:none; }
 .meta { grid-column:2; display:flex; gap:0.35rem; flex-wrap:wrap; }
 .tag { font-size:0.7rem; color:var(--gray-600); background:var(--gray-100); border-radius:4px; padding:0.05rem 0.45rem; }
 .tag.lvl { background:var(--blue-light); color:var(--accent); }
+.tag.top { background:#FEF3C7; color:#92400E; font-weight:600; }
+.ans .fu { margin-top:0.85rem; border-left:3px solid #D97706; background:#FFFBEB; border-radius:0 6px 6px 0; padding:0.55rem 0.8rem; }
+.ans .fu-h { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#92400E; font-weight:700; margin:0; }
+.ans .fu-q { font-weight:600; color:var(--navy); }
+.tools { gap:1rem; }
+.tools button.on { font-weight:700; text-decoration:underline; }
 summary::after { content:"Show answer"; grid-column:2; font-size:0.78rem; color:var(--accent); font-weight:500; }
 details[open] summary::after { content:"Hide answer"; }
 .ans { padding:0 1rem 1rem 3.35rem; color:var(--text); }
@@ -91,51 +97,52 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     <span class="stat"><b>50</b> questions</span>
     <span class="stat"><b>33</b> basic</span>
     <span class="stat"><b>17</b> in-depth</span>
+    <span class="stat"><b>15</b> top questions</span>
   </div>
   
-  <div class="tools"><button id="toggleAll">Show all answers</button></div>
+  <div class="tools"><button id="topOnly">Top 15 questions only</button><button id="toggleAll">Show all answers</button></div>
   <div id="list">
-<details class="q" data-topic="Introduction" data-level="B">
-  <summary><span class="qn">1</span><span class="qt">Tell me about yourself and your role.</span><span class="meta"><span class="tag">Introduction</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Introduction" data-level="B" data-top="1">
+  <summary><span class="qn">1</span><span class="qt">Tell me about yourself and your role.</span><span class="meta"><span class="tag">Introduction</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a new leader is building a mental map of the organization. You have about 60 seconds to be memorable.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I'm Senior ERP Analyst on the ERP applications team. I own the finance applications and the integrations that feed them. Right now my main focus is the supplier onboarding upgrade and the month-end close automation project. A recent result I'm proud of is cutting invoice processing time by about 30% and closing the last two quarters on schedule. Outside of the day-to-day, I'm looking to grow toward leading a larger team within the next year.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Role, scope, current focus, one win — then stop and let them ask.</p></div>
+<p class="tip"><strong>Tip:</strong> Role, scope, current focus, one win — then stop and let them ask.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How long should that introduction be?</p><p>About a minute: role, scope, one recent result and what you're focused on next.</p></div></div>
 </details>
-<details class="q" data-topic="Introduction" data-level="B">
-  <summary><span class="qn">2</span><span class="qt">What does your team do, in one sentence?</span><span class="meta"><span class="tag">Introduction</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Introduction" data-level="B" data-top="1">
+  <summary><span class="qn">2</span><span class="qt">What does your team do, in one sentence?</span><span class="meta"><span class="tag">Introduction</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they'll repeat your description to others.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We keep the business systems running and evolving — the finance applications and the integrations that feed them — so operations, finance and customers can work without disruption.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Describe the business value, not the technology.</p></div>
+<p class="tip"><strong>Tip:</strong> Describe the business value, not the technology.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if my team does many things?</p><p>Pick the outcome that matters most to the business and lead with it.</p></div></div>
 </details>
-<details class="q" data-topic="Value" data-level="B">
-  <summary><span class="qn">3</span><span class="qt">What value does your area bring to the business?</span><span class="meta"><span class="tag">Value</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Value" data-level="B" data-top="1">
+  <summary><span class="qn">3</span><span class="qt">What value does your area bring to the business?</span><span class="meta"><span class="tag">Value</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> new leaders decide where to invest and what to cut.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Three things: stability (critical processes run every day), speed (we deliver changes the business needs, like the supplier onboarding upgrade and the month-end close automation project), and risk reduction (audits and controls). A concrete example is cutting invoice processing time by about 30% and closing the last two quarters on schedule.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use business language — money, risk, speed, customers.</p></div>
+<p class="tip"><strong>Tip:</strong> Use business language — money, risk, speed, customers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I make value concrete?</p><p>Use one number, like close days, cost saved or users supported.</p></div></div>
 </details>
-<details class="q" data-topic="Priorities" data-level="B">
-  <summary><span class="qn">4</span><span class="qt">What are your top priorities right now?</span><span class="meta"><span class="tag">Priorities</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Priorities" data-level="B" data-top="1">
+  <summary><span class="qn">4</span><span class="qt">What are your top priorities right now?</span><span class="meta"><span class="tag">Priorities</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to see if your priorities match theirs.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;First, the supplier onboarding upgrade and the month-end close automation project. Second, keeping operations stable during the change. Third, building team depth so we're not dependent on one or two people. I'd like to hear your priorities so we can align.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Share three and invite their view.</p></div>
+<p class="tip"><strong>Tip:</strong> Share three and invite their view.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if my priorities conflict with theirs?</p><p>Ask how they see priorities and agree which should change.</p></div></div>
 </details>
 <details class="q" data-topic="Listening" data-level="D">
   <summary><span class="qn">5</span><span class="qt">What should I know that I might not hear from others?</span><span class="meta"><span class="tag">Listening</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> they want honest insight without politics.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Our team is strong, but we carry a lot of single points of knowledge, which is a risk. Also, the business values responsiveness highly — a tight go-live date and one open role on the team is the area where they feel the most pain right now.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Be candid about systems and risks. Don't criticize individuals.</p></div>
+<p class="tip"><strong>Tip:</strong> Be candid about systems and risks. Don't criticize individuals.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How candid should I be with a new leader?</p><p>Candid about facts and risks, never gossip about people.</p></div></div>
 </details>
-<details class="q" data-topic="Challenges" data-level="B">
-  <summary><span class="qn">6</span><span class="qt">What are the biggest challenges you face?</span><span class="meta"><span class="tag">Challenges</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Challenges" data-level="B" data-top="1">
+  <summary><span class="qn">6</span><span class="qt">What are the biggest challenges you face?</span><span class="meta"><span class="tag">Challenges</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to understand risks and where they can help.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;The main challenge is a tight go-live date and one open role on the team. We're managing it through clear priorities and phased delivery. Where your support would help most is in aligning business stakeholders on what comes first.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name the challenge, your plan, and where they can help.</p></div>
+<p class="tip"><strong>Tip:</strong> Name the challenge, your plan, and where they can help.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should I bring solutions with challenges?</p><p>Yes, at least one option for each challenge you raise.</p></div></div>
 </details>
 <details class="q" data-topic="Their Priorities" data-level="B">
   <summary><span class="qn">7</span><span class="qt">What questions should I ask a new leader?</span><span class="meta"><span class="tag">Their Priorities</span><span class="tag lvl">Basic</span></span></summary>
@@ -147,91 +154,91 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>&quot;How do you like to receive updates and escalations?&quot;</li>
 <li>&quot;What would you like me to keep doing, and what should change?&quot;</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Listen more than you talk in this first meeting.</p></div>
+<p class="tip"><strong>Tip:</strong> Listen more than you talk in this first meeting.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the best question to ask?</p><p>What does success look like for you in the first six months?</p></div></div>
 </details>
-<details class="q" data-topic="Their Priorities" data-level="D">
-  <summary><span class="qn">8</span><span class="qt">What do you think my priorities should be?</span><span class="meta"><span class="tag">Their Priorities</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Their Priorities" data-level="D" data-top="1">
+  <summary><span class="qn">8</span><span class="qt">What do you think my priorities should be?</span><span class="meta"><span class="tag">Their Priorities</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a new leader may test your perspective on the business.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;From where I sit, I'd focus on three things: getting the supplier onboarding upgrade and the month-end close automation project over the line, reducing operational risk, and clarifying how teams prioritize requests. I'm curious how that compares with what you've heard so far.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Offer a view tied to business outcomes, humbly.</p></div>
+<p class="tip"><strong>Tip:</strong> Offer a view tied to business outcomes, humbly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if I don't know what they expect?</p><p>Share your view, then ask what they'd change.</p></div></div>
 </details>
-<details class="q" data-topic="Working Style" data-level="B">
-  <summary><span class="qn">9</span><span class="qt">How do you like to work?</span><span class="meta"><span class="tag">Working Style</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Working Style" data-level="B" data-top="1">
+  <summary><span class="qn">9</span><span class="qt">How do you like to work?</span><span class="meta"><span class="tag">Working Style</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> setting up the relationship.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I like clear priorities and room to execute. I send a short weekly update and raise risks early with options. I value direct feedback. How do you prefer to work and communicate?&quot;</p>
-<p class="tip"><strong>Tip:</strong> Share briefly, then adapt to them.</p></div>
+<p class="tip"><strong>Tip:</strong> Share briefly, then adapt to them.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I learn about their style?</p><p>How they like updates, how fast they decide and when to escalate.</p></div></div>
 </details>
 <details class="q" data-topic="Working Style" data-level="B">
   <summary><span class="qn">10</span><span class="qt">How often should we meet?</span><span class="meta"><span class="tag">Working Style</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to establish cadence.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;A 30-minute 1:1 every two weeks would work well, plus a short written update weekly. If you prefer more frequent check-ins during your first months, I'm happy to do weekly.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Suggest a cadence and stay flexible.</p></div>
+<p class="tip"><strong>Tip:</strong> Suggest a cadence and stay flexible.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What cadence works with a new leader?</p><p>Weekly or every two weeks at first, then adjust.</p></div></div>
 </details>
-<details class="q" data-topic="Team" data-level="D">
-  <summary><span class="qn">11</span><span class="qt">Tell me about your team.</span><span class="meta"><span class="tag">Team</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Team" data-level="D" data-top="1">
+  <summary><span class="qn">11</span><span class="qt">Tell me about your team.</span><span class="meta"><span class="tag">Team</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> talent assessment and where to invest.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We have strong depth in our core areas, and two people who are ready for more responsibility. Our gaps are in newer technologies and backup coverage. Morale is good, especially after cutting invoice processing time by about 30% and closing the last two quarters on schedule.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Highlight strengths and stars; be constructive about gaps.</p></div>
+<p class="tip"><strong>Tip:</strong> Highlight strengths and stars; be constructive about gaps.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I talk about weaker team members?</p><p>Focus on development plans, not labels.</p></div></div>
 </details>
 <details class="q" data-topic="Wins" data-level="B">
   <summary><span class="qn">12</span><span class="qt">What are you most proud of recently?</span><span class="meta"><span class="tag">Wins</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a quick read on your impact.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;cutting invoice processing time by about 30% and closing the last two quarters on schedule. What made it work was early alignment with the business and disciplined testing. It reduced issues and freed the business team to focus on customers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> One win with business impact and what made it work.</p></div>
+<p class="tip"><strong>Tip:</strong> One win with business impact and what made it work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I avoid sounding boastful?</p><p>Credit the team and state the business impact.</p></div></div>
 </details>
-<details class="q" data-topic="Problems" data-level="D">
-  <summary><span class="qn">13</span><span class="qt">What isn't working that I should fix?</span><span class="meta"><span class="tag">Problems</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Problems" data-level="D" data-top="1">
+  <summary><span class="qn">13</span><span class="qt">What isn't working that I should fix?</span><span class="meta"><span class="tag">Problems</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> new leaders want quick wins.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Request intake and prioritization across teams. Today urgent requests interrupt planned work, so delivery feels unpredictable. A single intake with clear priority rules would help everyone.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Suggest systemic fixes, not complaints about people.</p></div>
+<p class="tip"><strong>Tip:</strong> Suggest systemic fixes, not complaints about people.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I raise problems without blaming my predecessor?</p><p>Describe the problem and the fix, not who caused it.</p></div></div>
 </details>
 <details class="q" data-topic="Previous Leader" data-level="D">
   <summary><span class="qn">14</span><span class="qt">How did things work under my predecessor?</span><span class="meta"><span class="tag">Previous Leader</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> context, but it can be a trap.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We had clear quarterly priorities and regular reviews, which worked well. One thing we could improve is faster decisions on cross-team trade-offs. I'm open to whatever approach you prefer.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stay positive and factual. Never criticize the previous leader.</p></div>
+<p class="tip"><strong>Tip:</strong> Stay positive and factual. Never criticize the previous leader.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if things worked badly before?</p><p>Be factual and forward-looking.</p></div></div>
 </details>
 <details class="q" data-topic="Career" data-level="B">
   <summary><span class="qn">15</span><span class="qt">What are your career goals?</span><span class="meta"><span class="tag">Career</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> succession planning and engagement.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I'm aiming for leading a larger team within the next year. I'm excited to learn from your experience, and I'd value your view on what I'd need to demonstrate to get there.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Share goals briefly; don't make the first meeting about promotion.</p></div>
+<p class="tip"><strong>Tip:</strong> Share goals briefly; don't make the first meeting about promotion.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How open should I be about career goals?</p><p>Clear about direction, flexible about timing.</p></div></div>
 </details>
-<details class="q" data-topic="Ideas" data-level="D">
-  <summary><span class="qn">16</span><span class="qt">If you had my job, what would you do first?</span><span class="meta"><span class="tag">Ideas</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Ideas" data-level="D" data-top="1">
+  <summary><span class="qn">16</span><span class="qt">If you had my job, what would you do first?</span><span class="meta"><span class="tag">Ideas</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to hear ideas and assess strategic thinking.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I'd spend the first weeks listening to key stakeholders, then pick two quick wins — probably clearer prioritization and visible progress on the supplier onboarding upgrade and the month-end close automation project — while building a longer-term roadmap tied to a reliable close, fewer manual steps and faster delivery for finance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Balance listening with action-oriented ideas.</p></div>
+<p class="tip"><strong>Tip:</strong> Balance listening with action-oriented ideas.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a good answer?</p><p>Listen first, then focus on the one or two issues with the biggest impact.</p></div></div>
 </details>
 <details class="q" data-topic="Stakeholders" data-level="B">
   <summary><span class="qn">17</span><span class="qt">Who are the key people I should meet?</span><span class="meta"><span class="tag">Stakeholders</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> you can help them navigate.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I'd suggest the heads of the main business teams we support, our key vendor partner, and the people who run critical operations day to day. Happy to set up introductions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Offer introductions — it builds goodwill.</p></div>
+<p class="tip"><strong>Tip:</strong> Offer introductions — it builds goodwill.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I suggest people without overstepping?</p><p>Explain why each person matters to their goals.</p></div></div>
 </details>
-<details class="q" data-topic="Risks" data-level="D">
-  <summary><span class="qn">18</span><span class="qt">What could go wrong in the next six months?</span><span class="meta"><span class="tag">Risks</span><span class="tag lvl">In-depth</span></span></summary>
+<details class="q" data-topic="Risks" data-level="D" data-top="1">
+  <summary><span class="qn">18</span><span class="qt">What could go wrong in the next six months?</span><span class="meta"><span class="tag">Risks</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> risk awareness.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;The biggest risk is a tight go-live date and one open role on the team colliding with year-end activity. Second is losing key knowledge if someone leaves. We're mitigating with a phased plan and cross-training.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name risks with mitigation.</p></div>
+<p class="tip"><strong>Tip:</strong> Name risks with mitigation.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I raise risks without sounding negative?</p><p>Pair each risk with a mitigation.</p></div></div>
 </details>
 <details class="q" data-topic="Follow-up" data-level="B">
   <summary><span class="qn">19</span><span class="qt">How should I follow up after the first meeting?</span><span class="meta"><span class="tag">Follow-up</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) follow-up shows reliability.</p>
 <p><strong>Sample answer (what to send):</strong></p>
 <p>&quot;Thank you for the time today. As discussed: I'll send a one-page overview of our scope and current priorities by Friday, and set up introductions with the business leads. Looking forward to working together.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Send within 24 hours with concrete next steps.</p></div>
+<p class="tip"><strong>Tip:</strong> Send within 24 hours with concrete next steps.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should the follow-up include?</p><p>A thank-you, a short summary and any actions I agreed.</p></div></div>
 </details>
 <details class="q" data-topic="One-pager" data-level="B">
   <summary><span class="qn">20</span><span class="qt">What should my one-page overview for a new leader include?</span><span class="meta"><span class="tag">One-pager</span><span class="tag lvl">Basic</span></span></summary>
@@ -245,45 +252,45 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Top risks and asks: a tight go-live date and one open role on the team.</li>
 <li>Key metrics.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Keep it to one page with facts and numbers.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep it to one page with facts and numbers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How long should the overview be?</p><p>One page: scope, priorities, metrics, risks and team.</p></div></div>
 </details>
 <details class="q" data-topic="Change" data-level="B">
   <summary><span class="qn">21</span><span class="qt">Are you open to changes in how we work?</span><span class="meta"><span class="tag">Change</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> new leaders often bring changes.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Absolutely. I'd appreciate understanding the goals behind any changes so I can help the team adopt them. I'll also share what's worked well so we keep the strengths.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Be open and constructive.</p></div>
+<p class="tip"><strong>Tip:</strong> Be open and constructive.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if I disagree with a change?</p><p>Raise concerns with data, then commit if they decide.</p></div></div>
 </details>
 <details class="q" data-topic="Concerns" data-level="D">
   <summary><span class="qn">22</span><span class="qt">Do you have any concerns about the leadership change?</span><span class="meta"><span class="tag">Concerns</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> to surface worries early.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;My main interest is continuity on the supplier onboarding upgrade and the month-end close automation project and clarity on decision-making during the transition. Beyond that, I'm looking forward to it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Raise practical concerns, not personal anxiety.</p></div>
+<p class="tip"><strong>Tip:</strong> Raise practical concerns, not personal anxiety.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Should I share concerns honestly?</p><p>Yes, constructively, and say how I'll help.</p></div></div>
 </details>
 <details class="q" data-topic="Metrics" data-level="B">
   <summary><span class="qn">23</span><span class="qt">How do you measure success in your area?</span><span class="meta"><span class="tag">Metrics</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> data-driven leaders want metrics.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We track service stability (incidents and resolution times), delivery against plan, stakeholder satisfaction and audit findings. Recent trends are positive — for example cutting invoice processing time by about 30% and closing the last two quarters on schedule.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Bring three or four metrics and trends.</p></div>
+<p class="tip"><strong>Tip:</strong> Bring three or four metrics and trends.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if we don't track metrics?</p><p>Propose a few simple ones and how we'd measure them.</p></div></div>
 </details>
 <details class="q" data-topic="Budget" data-level="D">
   <summary><span class="qn">24</span><span class="qt">What resources does your area have?</span><span class="meta"><span class="tag">Budget</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> understanding costs and constraints.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We have our internal team plus a support partner for routine work. Spending is mostly people and licenses. The constraint is capacity during peaks like the supplier onboarding upgrade and the month-end close automation project.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Be factual and highlight constraints.</p></div>
+<p class="tip"><strong>Tip:</strong> Be factual and highlight constraints.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if resources are tight?</p><p>Show the trade-offs and what more resources would unlock.</p></div></div>
 </details>
 <details class="q" data-topic="Expectations" data-level="B">
   <summary><span class="qn">25</span><span class="qt">What do you need from me?</span><span class="meta"><span class="tag">Expectations</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a partnership mindset.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Clarity on priorities, quick decisions on cross-team trade-offs, and support with stakeholders when we need to say 'not now'. In return, you'll get transparent updates and no surprises.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Ask for a few clear things and offer something in return.</p></div>
+<p class="tip"><strong>Tip:</strong> Ask for a few clear things and offer something in return.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a reasonable ask?</p><p>Clear priorities and quick decisions on blockers.</p></div></div>
 </details>
-<details class="q" data-topic="Tone" data-level="B">
-  <summary><span class="qn">26</span><span class="qt">How do I make a strong first impression?</span><span class="meta"><span class="tag">Tone</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Tone" data-level="B" data-top="1">
+  <summary><span class="qn">26</span><span class="qt">How do I make a strong first impression?</span><span class="meta"><span class="tag">Tone</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) first impressions stick.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <ul>
@@ -293,119 +300,119 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Ask good questions and listen.</li>
 <li>Follow up quickly.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Confidence plus curiosity.</p></div>
+<p class="tip"><strong>Tip:</strong> Confidence plus curiosity.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes the biggest impression?</p><p>Preparation and a clear, concise picture of my area.</p></div></div>
 </details>
 <details class="q" data-topic="Politics" data-level="D">
   <summary><span class="qn">27</span><span class="qt">What if the new leader asks about a difficult colleague?</span><span class="meta"><span class="tag">Politics</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a test of professionalism.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We've had different views on priorities at times, which is natural with competing demands. We've found ways to work through it, and clearer prioritization rules would help both teams.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stay factual and constructive; avoid gossip.</p></div>
+<p class="tip"><strong>Tip:</strong> Stay factual and constructive; avoid gossip.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if I'm asked directly?</p><p>Stay factual and professional, focus on work impact.</p></div></div>
 </details>
 <details class="q" data-topic="Reorganization" data-level="D">
   <summary><span class="qn">28</span><span class="qt">Will my role change under the new leader?</span><span class="meta"><span class="tag">Reorganization</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) uncertainty is common after leadership changes.</p>
 <p><strong>Sample answer (what to say):</strong></p>
 <p>&quot;I'm excited to support your priorities. If you're considering changes to structure or roles, I'd value hearing early, and I'm keen to contribute where I can add the most value — especially around the finance applications and the integrations that feed them.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show flexibility and highlight your value.</p></div>
+<p class="tip"><strong>Tip:</strong> Show flexibility and highlight your value.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I ask without sounding anxious?</p><p>Ask how they see the role evolving and how I can contribute.</p></div></div>
 </details>
-<details class="q" data-topic="Quick Wins" data-level="B">
-  <summary><span class="qn">29</span><span class="qt">What quick wins can you deliver?</span><span class="meta"><span class="tag">Quick Wins</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Quick Wins" data-level="B" data-top="1">
+  <summary><span class="qn">29</span><span class="qt">What quick wins can you deliver?</span><span class="meta"><span class="tag">Quick Wins</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> new leaders want early momentum.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;In the next 30 days: finish the next milestone of the supplier onboarding upgrade and the month-end close automation project, publish a simple dashboard of our key metrics, and clean up the request backlog with business owners.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Offer specific, achievable 30-day wins.</p></div>
+<p class="tip"><strong>Tip:</strong> Offer specific, achievable 30-day wins.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes a good quick win?</p><p>Visible, low-risk and done within weeks.</p></div></div>
 </details>
 <details class="q" data-topic="Long-term" data-level="D">
   <summary><span class="qn">30</span><span class="qt">Where should this area be in two years?</span><span class="meta"><span class="tag">Long-term</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> strategic thinking.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Highly automated operations, a modern platform that supports a reliable close, fewer manual steps and faster delivery for finance, strong business partnership, and a team with depth and growth paths.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Paint a clear, business-aligned picture.</p></div>
+<p class="tip"><strong>Tip:</strong> Paint a clear, business-aligned picture.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I share a long-term view?</p><p>Link it to business goals and outline steps.</p></div></div>
 </details>
 <details class="q" data-topic="Customer" data-level="B">
   <summary><span class="qn">31</span><span class="qt">What do our business customers say about your team?</span><span class="meta"><span class="tag">Customer</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> reputation check.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;They value our responsiveness and expertise, especially after cutting invoice processing time by about 30% and closing the last two quarters on schedule. The main feedback is wanting more visibility on when requests will be done, which we're improving with a shared roadmap.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Share praise and constructive feedback.</p></div>
+<p class="tip"><strong>Tip:</strong> Share praise and constructive feedback.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if feedback is mixed?</p><p>Share it honestly with what we're doing about it.</p></div></div>
 </details>
 <details class="q" data-topic="Personal" data-level="B">
   <summary><span class="qn">32</span><span class="qt">What's something people don't know about you?</span><span class="meta"><span class="tag">Personal</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> building rapport.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Outside work I enjoy cricket and cooking for family gatherings. And professionally, I've worked across both business and technical roles, which helps me bridge the two.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Something light and genuine, plus a professional angle.</p></div>
+<p class="tip"><strong>Tip:</strong> Something light and genuine, plus a professional angle.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why does this question come up?</p><p>They're building a relationship; share something light and genuine.</p></div></div>
 </details>
 <details class="q" data-topic="Escalation" data-level="B">
   <summary><span class="qn">33</span><span class="qt">When should I bring things to you?</span><span class="meta"><span class="tag">Escalation</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> setting decision rights early.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I'll handle day-to-day decisions within my scope. I'll bring you risks to commitments, cross-team conflicts, customer-impacting issues and anything needing budget. Tell me if you want to adjust that.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Propose clear rules.</p></div>
+<p class="tip"><strong>Tip:</strong> Propose clear rules.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I agree escalation rules?</p><p>Ask for thresholds, like risk, cost or customer impact.</p></div></div>
 </details>
 <details class="q" data-topic="Skip-level" data-level="D">
   <summary><span class="qn">34</span><span class="qt">Should I meet my new leader's boss too?</span><span class="meta"><span class="tag">Skip-level</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) navigating levels.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Build the relationship with your direct leader first. If senior leaders invite you, prepare a short summary, stay aligned with your leader's messages, and tell your leader about the conversation.</p>
-<p class="tip"><strong>Tip:</strong> Never go around your new leader.</p></div>
+<p class="tip"><strong>Tip:</strong> Never go around your new leader.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I meet their boss appropriately?</p><p>Only with the new leader's support, never around them.</p></div></div>
 </details>
-<details class="q" data-topic="Trust" data-level="B">
-  <summary><span class="qn">35</span><span class="qt">How do I earn a new leader's trust quickly?</span><span class="meta"><span class="tag">Trust</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Trust" data-level="B" data-top="1">
+  <summary><span class="qn">35</span><span class="qt">How do I earn a new leader's trust quickly?</span><span class="meta"><span class="tag">Trust</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) trust is built through reliability.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Deliver on small commitments quickly, communicate proactively, bring solutions with problems, be honest about risks, and support their priorities publicly.</p>
-<p class="tip"><strong>Tip:</strong> Reliability beats brilliance early on.</p></div>
+<p class="tip"><strong>Tip:</strong> Reliability beats brilliance early on.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What builds trust fastest?</p><p>Delivering on early commitments.</p></div></div>
 </details>
 <details class="q" data-topic="Feedback" data-level="D">
   <summary><span class="qn">36</span><span class="qt">What feedback would you give the organization?</span><span class="meta"><span class="tag">Feedback</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> candid perspective.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;We're strong at solving urgent problems but less consistent at planning ahead. More predictable prioritization and investment in team depth would make a big difference.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Constructive and systemic.</p></div>
+<p class="tip"><strong>Tip:</strong> Constructive and systemic.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I give feedback about the organization?</p><p>Focus on processes and ideas, not people.</p></div></div>
 </details>
 <details class="q" data-topic="Closing" data-level="B">
   <summary><span class="qn">37</span><span class="qt">Anything else you'd like me to know?</span><span class="meta"><span class="tag">Closing</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a final open door.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Just that I'm committed to making your first months smooth. I'll send the overview and introductions this week, and I'm here if you need context on anything.&quot;</p>
-<p class="tip"><strong>Tip:</strong> End with support and next steps.</p></div>
+<p class="tip"><strong>Tip:</strong> End with support and next steps.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a good final message?</p><p>Your commitment to helping them succeed.</p></div></div>
 </details>
 <details class="q" data-topic="Remote" data-level="B">
   <summary><span class="qn">38</span><span class="qt">How do I connect with a new leader I only see on video?</span><span class="meta"><span class="tag">Remote</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) remote relationships need intention.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Camera on, concise written updates, occasional informal check-ins, and meeting in person when possible.</p>
-<p class="tip"><strong>Tip:</strong> Be visible in writing.</p></div>
+<p class="tip"><strong>Tip:</strong> Be visible in writing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I build rapport on video?</p><p>Camera on, brief personal connection and regular check-ins.</p></div></div>
 </details>
 <details class="q" data-topic="Values" data-level="B">
   <summary><span class="qn">39</span><span class="qt">What do you value in a leader?</span><span class="meta"><span class="tag">Values</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> understanding what motivates you.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Clear direction, trust to execute, honest feedback and support when things get tough. I do my best work with a leader who sets priorities and removes obstacles.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Positive and specific.</p></div>
+<p class="tip"><strong>Tip:</strong> Positive and specific.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I answer authentically?</p><p>Name a real quality with an example from a past leader.</p></div></div>
 </details>
 <details class="q" data-topic="Transition" data-level="B">
   <summary><span class="qn">40</span><span class="qt">How can you help me during my transition?</span><span class="meta"><span class="tag">Transition</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> offers of help are noticed.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;I can brief you on systems and history, introduce you to stakeholders, and keep key work stable while you get up to speed. Just tell me where you'd like context first.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Make concrete offers.</p></div>
+<p class="tip"><strong>Tip:</strong> Make concrete offers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What help can I offer?</p><p>Context, introductions and quick answers about the area.</p></div></div>
 </details>
 <details class="q" data-topic="Strategy" data-level="D">
   <summary><span class="qn">41</span><span class="qt">What's our biggest opportunity?</span><span class="meta"><span class="tag">Strategy</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> strategic insight.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Using the platform we're building with the supplier onboarding upgrade and the month-end close automation project to automate manual work and give leaders better data. That directly supports a reliable close, fewer manual steps and faster delivery for finance.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Tie opportunity to business goals.</p></div>
+<p class="tip"><strong>Tip:</strong> Tie opportunity to business goals.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I frame the opportunity?</p><p>With the business value and a first step.</p></div></div>
 </details>
 <details class="q" data-topic="Wrap-up" data-level="B">
   <summary><span class="qn">42</span><span class="qt">What would make this partnership successful?</span><span class="meta"><span class="tag">Wrap-up</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> aligning on expectations.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Regular communication, shared priorities, quick decisions, and mutual honesty — including feedback in both directions.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Simple and sincere.</p></div>
+<p class="tip"><strong>Tip:</strong> Simple and sincere.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What makes partnership work?</p><p>Clear expectations and regular communication.</p></div></div>
 </details>
 <details class="q" data-topic="Avoid" data-level="B">
   <summary><span class="qn">43</span><span class="qt">What should I avoid saying in the first meeting?</span><span class="meta"><span class="tag">Avoid</span><span class="tag lvl">Basic</span></span></summary>
@@ -417,38 +424,38 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Long technical details.</li>
 <li>Overpromising.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Positive, concise and business-focused.</p></div>
+<p class="tip"><strong>Tip:</strong> Positive, concise and business-focused.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What should I avoid?</p><p>Complaints about the predecessor or colleagues.</p></div></div>
 </details>
 <details class="q" data-topic="Learning" data-level="B">
   <summary><span class="qn">44</span><span class="qt">How do I learn what my new leader cares about?</span><span class="meta"><span class="tag">Learning</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) alignment.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Ask directly, read their communications and town hall messages, notice what they ask about in meetings, and confirm in 1:1s.</p>
-<p class="tip"><strong>Tip:</strong> Listen for repeated themes.</p></div>
+<p class="tip"><strong>Tip:</strong> Listen for repeated themes.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I learn their priorities?</p><p>Ask directly and watch what they spend time on.</p></div></div>
 </details>
 <details class="q" data-topic="Visibility" data-level="B">
   <summary><span class="qn">45</span><span class="qt">How do I make my team visible to the new leader?</span><span class="meta"><span class="tag">Visibility</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) recognition and support.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Invite them to a team meeting, share a short wins summary crediting individuals, and offer a demo of key work.</p>
-<p class="tip"><strong>Tip:</strong> Credit the team specifically.</p></div>
+<p class="tip"><strong>Tip:</strong> Credit the team specifically.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I showcase the team?</p><p>Invite team members to present their work.</p></div></div>
 </details>
 <details class="q" data-topic="Context" data-level="D">
   <summary><span class="qn">46</span><span class="qt">What history should I understand about this area?</span><span class="meta"><span class="tag">Context</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> context helps them avoid mistakes.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Key history: the platform has evolved over several years, we've completed major upgrades, and the current focus is the supplier onboarding upgrade and the month-end close automation project. Past lessons — involving the business early and phasing big changes — still apply.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Brief history plus lessons.</p></div>
+<p class="tip"><strong>Tip:</strong> Brief history plus lessons.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What history matters?</p><p>Past decisions that still shape how things work.</p></div></div>
 </details>
 <details class="q" data-topic="Confidence" data-level="B">
   <summary><span class="qn">47</span><span class="qt">How do I stay confident if the new leader is very senior?</span><span class="meta"><span class="tag">Confidence</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) nerves are normal.</p>
 <p><strong>Sample answer (approach):</strong></p>
 <p>Prepare your one-pager, know your numbers, remember you're the expert on your area, and treat it as a conversation.</p>
-<p class="tip"><strong>Tip:</strong> Preparation builds confidence.</p></div>
+<p class="tip"><strong>Tip:</strong> Preparation builds confidence.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I stay confident?</p><p>Prepare well and focus on facts I know best.</p></div></div>
 </details>
-<details class="q" data-topic="Agenda" data-level="B">
-  <summary><span class="qn">48</span><span class="qt">What's a good agenda for the first meeting with a new leader?</span><span class="meta"><span class="tag">Agenda</span><span class="tag lvl">Basic</span></span></summary>
+<details class="q" data-topic="Agenda" data-level="B" data-top="1">
+  <summary><span class="qn">48</span><span class="qt">What's a good agenda for the first meeting with a new leader?</span><span class="meta"><span class="tag">Agenda</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> (your own question) structure keeps it useful.</p>
 <p><strong>Sample answer (agenda):</strong></p>
 <ol>
@@ -458,21 +465,21 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Their priorities and expectations.</li>
 <li>How you'll work together and next steps.</li>
 </ol>
-<p class="tip"><strong>Tip:</strong> Leave at least half the time for their priorities.</p></div>
+<p class="tip"><strong>Tip:</strong> Leave at least half the time for their priorities.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a good agenda?</p><p>Introductions, priorities, how we'll work and next steps.</p></div></div>
 </details>
 <details class="q" data-topic="Expectations" data-level="B">
   <summary><span class="qn">49</span><span class="qt">What will you need from me in the first 90 days?</span><span class="meta"><span class="tag">Expectations</span><span class="tag lvl">Basic</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a new leader wants to know your needs early.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;Early clarity on your top priorities, quick decisions where work is waiting, and your backing with stakeholders on scope for the supplier onboarding upgrade and the month-end close automation project. I'll keep you informed with a weekly summary.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep the asks few and concrete.</p></div>
+<p class="tip"><strong>Tip:</strong> Keep the asks few and concrete.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What will they likely need?</p><p>Clear status, risks and quick wins.</p></div></div>
 </details>
 <details class="q" data-topic="Credibility" data-level="D">
   <summary><span class="qn">50</span><span class="qt">Why should I trust your judgment?</span><span class="meta"><span class="tag">Credibility</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a direct test of credibility.</p>
 <p><strong>Sample answer:</strong></p>
 <p>&quot;My track record: cutting invoice processing time by about 30% and closing the last two quarters on schedule, stable operations through major changes, and honest early warnings when things are at risk. I'd rather show you over the next few weeks than ask you to take my word for it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Evidence, then deliver.</p></div>
+<p class="tip"><strong>Tip:</strong> Evidence, then deliver.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do I show good judgment?</p><p>With examples of past decisions and their results.</p></div></div>
 </details>
   </div>
   <section class="cta">
@@ -490,6 +497,13 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
     this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
     var f = b.getAttribute('data-f');
     qs.forEach(function (q) { q.style.display = (f === 'all' || q.getAttribute('data-topic') === f) ? '' : 'none'; });
+    if (tb && topOn) { topOn = false; tb.classList.remove('on'); tb.textContent = 'Top 15 questions only'; }
+  });
+  var tb = document.getElementById('topOnly'), topOn = false;
+  if (tb) tb.addEventListener('click', function () {
+    topOn = !topOn; tb.classList.toggle('on', topOn); tb.textContent = topOn ? 'Show all questions' : 'Top 15 questions only';
+    if (fl) fl.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-f') === 'all'); });
+    qs.forEach(function (q) { q.style.display = (!topOn || q.getAttribute('data-top')) ? '' : 'none'; });
   });
   var open = false, t = document.getElementById('toggleAll');
   t.addEventListener('click', function () {
