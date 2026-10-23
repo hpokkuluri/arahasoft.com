@@ -113,14 +113,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> a basic EBS architecture question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;APPS is the central schema that owns the synonyms, views and packages giving access to all the product schemas, like AP, AR, GL and PO. Custom code usually runs under APPS, while custom objects live in a custom schema, like XXCUST, with synonyms created in APPS. The custom schema should also be registered in the application.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention registering the custom schema. It shows you follow EBS standards.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why shouldn't custom objects live in APPS?</p><p>Custom tables belong in a custom XX schema, with APPS synonyms, so patches and upgrades don't overwrite them.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention registering the custom schema. It shows you follow EBS standards.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why shouldn't custom objects live in APPS?</p><p>Custom tables belong in a custom XX schema, with synonyms in APPS, so patches and upgrades don't overwrite or drop them and it's clear what's custom. Putting custom objects in APPS makes upgrades risky and auditing customizations much harder.</p></div></div>
 </details>
 <details class="q" data-topic="Concurrent Programs" data-level="B" data-top="1">
   <summary><span class="qn">3</span><span class="qt">How do you create and register a concurrent program?</span><span class="meta"><span class="tag">Concurrent Programs</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> concurrent programs are core EBS development.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I write the executable: a PL/SQL procedure with errbuf and retcode parameters, a SQL*Plus script, an Oracle Report, a host script or Java. Then I define the executable in System Administrator, Concurrent, Executable. Then I define the program with its parameters, using value sets, plus output type and incompatibilities. Finally I add it to a request group attached to the responsibility, so users can run it.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the errbuf and retcode signature. It's the detail they listen for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do users get access to a new program?</p><p>Add it to the request group of their responsibility.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention the errbuf and retcode signature. It's the detail they listen for.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do users get access to a new program?</p><p>Add the program to the request group of their responsibility. If the program isn't in the request group, users won't see it in the list. For sensitive programs, I'd create a dedicated request group rather than adding it to a widely used one.</p></div></div>
 </details>
 <details class="q" data-topic="Concurrent Programs" data-level="B">
   <summary><span class="qn">4</span><span class="qt">What are errbuf and retcode?</span><span class="meta"><span class="tag">Concurrent Programs</span><span class="tag lvl">Basic</span></span></summary>
@@ -141,7 +141,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> a common development task.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I initialize the context with FND_GLOBAL.APPS_INITIALIZE, passing user, responsibility and application IDs. Then I call FND_REQUEST.SUBMIT_REQUEST with the application, program, description, start time, sub-request flag and arguments. Then I COMMIT, because the request isn't picked up until it's committed. If I need to wait for it, I use FND_CONCURRENT.WAIT_FOR_REQUEST.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;commit is required&quot;. It's the classic bug.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if you don't commit after FND_REQUEST.SUBMIT_REQUEST?</p><p>The request isn't visible to the concurrent manager, so it never runs.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;commit is required&quot;. It's the classic bug.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if you don't commit after FND_REQUEST.SUBMIT_REQUEST?</p><p>The request isn't committed to the queue, so the concurrent manager never sees it and it never runs — but the function returned a request ID, so the code looks successful. Always COMMIT after SUBMIT_REQUEST, unless the calling program commits later.</p></div></div>
 </details>
 <details class="q" data-topic="PL/SQL" data-level="B">
   <summary><span class="qn">7</span><span class="qt">What PL/SQL concepts are essential for EBS development?</span><span class="meta"><span class="tag">PL/SQL</span><span class="tag lvl">Basic</span></span></summary>
@@ -155,35 +155,35 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> performance knowledge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;BULK COLLECT fetches many rows into a collection in one context switch, and FORALL runs DML for all elements in one switch. That's much faster than processing row by row. I use LIMIT with BULK COLLECT to control memory, for example fetching 1,000 rows at a time and inserting them into a staging table with FORALL.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention LIMIT. Without it, large loads run out of memory.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's SAVE EXCEPTIONS for?</p><p>It lets FORALL continue after errors and report which rows failed.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention LIMIT. Without it, large loads run out of memory.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's SAVE EXCEPTIONS for?</p><p>It lets FORALL continue after errors instead of stopping at the first bad row, and records the failed rows in SQL%BULK_EXCEPTIONS with the index and error code. So you can load 99,000 good rows and log the 1,000 bad ones, rather than rolling back everything.</p></div></div>
 </details>
 <details class="q" data-topic="PL/SQL" data-level="B" data-top="1">
   <summary><span class="qn">9</span><span class="qt">How do you handle exceptions properly?</span><span class="meta"><span class="tag">PL/SQL</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> code quality.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I catch specific exceptions like NO_DATA_FOUND and TOO_MANY_ROWS, log meaningful messages with context, and use RAISE_APPLICATION_ERROR for custom errors. I never write WHEN OTHERS THEN NULL. And in concurrent programs, I set retcode and errbuf so the request shows the right status.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;never swallow errors&quot;. It's a principle interviewers like to hear.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why avoid WHEN OTHERS THEN NULL?</p><p>It hides errors, so failures go unnoticed.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;never swallow errors&quot;. It's a principle interviewers like to hear.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why avoid WHEN OTHERS THEN NULL?</p><p>It hides errors, so failures go unnoticed — a program shows 'completed normally' while it silently skipped records. Always log the error and either raise it or set the concurrent program status to warning or error so someone sees it.</p></div></div>
 </details>
 <details class="q" data-topic="Multi-Org" data-level="D" data-top="1">
   <summary><span class="qn">10</span><span class="qt">How does multi-org access work in R12?</span><span class="meta"><span class="tag">Multi-Org</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a common source of bugs.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;MOAC, multi-org access control, lets a responsibility access several operating units through a security profile. In code, after FND_GLOBAL.APPS_INITIALIZE, I set the context with MO_GLOBAL.SET_POLICY_CONTEXT: 'S' with an org_id for a single org, or 'M' for multiple. Views like AP_INVOICES use VPD policies to filter by org, while the _ALL tables bypass them.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention that missing context causes &quot;no data&quot; bugs. It's very common.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you set the org context in a custom script?</p><p>Call MO_GLOBAL.SET_POLICY_CONTEXT or init with the right responsibility.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention that missing context causes &quot;no data&quot; bugs. It's very common.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you set the org context in a custom script?</p><p>Call MO_GLOBAL.SET_POLICY_CONTEXT('S', org_id) for a single operating unit, or MO_GLOBAL.INIT with the application after FND_GLOBAL.APPS_INITIALIZE with the right user and responsibility. Without org context, multi-org views return no rows and your script appears to find nothing.</p></div></div>
 </details>
 <details class="q" data-topic="Interfaces" data-level="B" data-top="1">
   <summary><span class="qn">11</span><span class="qt">Explain the standard interface approach for loading data.</span><span class="meta"><span class="tag">Interfaces</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> EBS data integrity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I load data into the interface tables, for example AP_INVOICES_INTERFACE and AP_INVOICE_LINES_INTERFACE. Then I run the standard import program, like Payables Open Interface Import, which validates the data and creates records in the base tables. Then I review and fix rejections, for example in AP_INTERFACE_REJECTIONS. I never insert directly into base tables, because the import program applies the validations and keeps the data consistent.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain why you never insert into base tables. That's the point.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you see interface errors?</p><p>Query the interface rejection tables, like AP_INTERFACE_REJECTIONS.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Explain why you never insert into base tables. That's the point.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you see interface errors?</p><p>Query the interface rejection or error tables — like AP_INTERFACE_REJECTIONS for Payables or GL_INTERFACE status codes — and the import program's output report. I usually build a simple error report so business users can fix their data without asking IT.</p></div></div>
 </details>
 <details class="q" data-topic="Interfaces" data-level="B" data-top="1">
   <summary><span class="qn">12</span><span class="qt">What is the difference between interfaces, APIs and conversions?</span><span class="meta"><span class="tag">Interfaces</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> vocabulary and design clarity.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Interfaces are recurring data exchanges with other systems, inbound or outbound. APIs are Oracle-supported PL/SQL packages to create or update records, like HZ_PARTY_V2PUB or the PO APIs. Conversions are one-time migrations of legacy data at go-live, usually using interfaces or APIs to load the data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Keep the distinctions crisp. That's what they test.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use an API instead of an interface?</p><p>For real-time, record-level creates with immediate validation.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Keep the distinctions crisp. That's what they test.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When would you use an API instead of an interface?</p><p>For real-time, record-level creates where you need immediate validation and an immediate result — like creating a customer from a web portal. Interfaces are better for large batches where you can load, import and review errors in bulk.</p></div></div>
 </details>
 <details class="q" data-topic="APIs" data-level="D">
   <summary><span class="qn">13</span><span class="qt">How do you create a customer using TCA APIs?</span><span class="meta"><span class="tag">APIs</span><span class="tag lvl">In-depth</span></span></summary>
@@ -197,7 +197,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> a standard EBS reporting task.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a data definition, preferably a data template XML with the SQL queries, or a report or PL/SQL that generates XML. I register it in XML Publisher Administrator. I create an RTF template in Word with the BI Publisher add-in and register it. Then I define a concurrent program with output format XML, linked to the data definition code.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say the data template approach is preferred. It's the modern EBS way.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use a data template instead of an Oracle Report?</p><p>It separates data from layout and is easier to maintain.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say the data template approach is preferred. It's the modern EBS way.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use a data template instead of an Oracle Report?</p><p>A data template separates the data from the layout and is easier to maintain — one data definition can feed several RTF or Excel layouts, and business users can change the layout without a developer touching SQL. Oracle Reports is older technology and harder to change.</p></div></div>
 </details>
 <details class="q" data-topic="Reports" data-level="D">
   <summary><span class="qn">15</span><span class="qt">How do you customize a seeded report output layout?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">In-depth</span></span></summary>
@@ -218,7 +218,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> OAF is used for EBS self-service pages.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle Application Framework is the Java MVC framework behind EBS self-service pages. For UI changes like fields, labels and regions, I use personalization. For logic, I use extensions: extend a view object or controller in JDeveloper, and substitute it through a jpx import. Extensions go in custom packages.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;personalize first, extend if needed&quot;. It's the right order.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you deploy an OAF extension?</p><p>Import the substitution with JPXImporter and bounce the middle tier.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;personalize first, extend if needed&quot;. It's the right order.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you deploy an OAF extension?</p><p>Import the substitution into the MDS repository with JPXImporter, deploy the extended controller or VO classes to the custom location on the middle tier, and bounce the middle tier. In R12.2, follow the online patching steps so the extension is in both file systems.</p></div></div>
 </details>
 <details class="q" data-topic="Workflow" data-level="D">
   <summary><span class="qn">18</span><span class="qt">What is Oracle Workflow used for?</span><span class="meta"><span class="tag">Workflow</span><span class="tag lvl">In-depth</span></span></summary>
@@ -232,7 +232,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> AME drives many approvals.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Approvals Management Engine defines approval rules using attributes, conditions, action types and approver groups. It's used by AP invoices, requisitions, HR transactions and more. The rules are configured, not coded, so the business can change them without development.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention it's configured, not coded. That's its value.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's an AME attribute?</p><p>A value, like invoice amount, used in conditions to choose approvers.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention it's configured, not coded. That's its value.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's an AME attribute?</p><p>A value, like invoice amount, supplier type or cost center, that AME uses in conditions to choose approvers. For example: if invoice amount is over $50,000, add the controller. Attributes can be static or SQL-based to read data from the transaction.</p></div></div>
 </details>
 <details class="q" data-topic="Value Sets" data-level="B">
   <summary><span class="qn">20</span><span class="qt">What types of value sets exist?</span><span class="meta"><span class="tag">Value Sets</span><span class="tag lvl">Basic</span></span></summary>
@@ -274,7 +274,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> performance tuning.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I enable trace at level 12 to capture binds and waits, and analyze it with TKPROF. I check execution plans and indexes. I replace row-by-row processing with bulk operations. I make sure statistics are gathered with FND_STATS. And I remove unnecessary joins and functions on indexed columns.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;trace plus TKPROF&quot;. It's the classic answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does TKPROF show?</p><p>SQL execution times, waits and execution plans.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;trace plus TKPROF&quot;. It's the classic answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does TKPROF show?</p><p>SQL execution times, waits, rows processed and execution plans from a trace file, sorted so the most expensive statements appear first. That shows you whether one query takes 90% of the time — usually a full table scan or a missing bind variable.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D">
   <summary><span class="qn">26</span><span class="qt">How do you enable a trace for a concurrent program?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
@@ -288,7 +288,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> R12.2 changes how code is deployed.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;R12.2 uses edition-based redefinition. Changes are applied to the patch edition during an adop cycle: prepare, apply, finalize, cutover and cleanup. Custom objects must follow EBS standards, like editioning views and registering the custom schema with AD_ZD, and deployments use adop or follow the online patching rules.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the Online Patching Enablement readiness reports. They find non-compliant code.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's an edition-based redefinition rule?</p><p>Custom objects must follow online patching standards, like editioned views.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention the Online Patching Enablement readiness reports. They find non-compliant code.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's an edition-based redefinition rule?</p><p>Custom objects must follow online patching standards — editioning views on custom tables, no direct DDL on editioned objects in the run edition, and changes delivered through adop. Code that ignores the rules can break during patching cycles or the cutover phase.</p></div></div>
 </details>
 <details class="q" data-topic="Deployment" data-level="B">
   <summary><span class="qn">28</span><span class="qt">How do you migrate code between EBS instances?</span><span class="meta"><span class="tag">Deployment</span><span class="tag lvl">Basic</span></span></summary>
@@ -316,7 +316,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> a common conversion.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I map legacy data to AP_SUPPLIERS_INT, AP_SUPPLIER_SITES_INT and AP_SUP_SITE_CONTACT_INT, or use the supplier APIs. I cleanse and de-duplicate first. Then load the interface tables and run the Supplier Open Interface Import programs, review rejections, and reconcile counts. The order is suppliers, then sites, then contacts, then bank accounts.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give the load order. It's what makes conversions work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's validated before import?</p><p>Duplicates, mandatory fields and lookups.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Give the load order. It's what makes conversions work.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's validated before import?</p><p>Duplicates — by tax ID, name and address — mandatory fields like supplier type, payment terms and sites, and lookups such as payment method and pay group. I run a validation script against the staging table first and give the business an error list before loading anything.</p></div></div>
 </details>
 <details class="q" data-topic="Outbound" data-level="D">
   <summary><span class="qn">32</span><span class="qt">How do you build an outbound interface?</span><span class="meta"><span class="tag">Outbound</span><span class="tag lvl">In-depth</span></span></summary>
@@ -393,7 +393,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> SLA drill-down knowledge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;XLA_EVENTS links to XLA_AE_HEADERS, then XLA_AE_LINES. From there, GL_IMPORT_REFERENCES joins through gl_sl_link_id to GL_JE_LINES. And XLA_TRANSACTION_ENTITIES links back to the source transaction, like the invoice.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Draw the chain if you can. It's valued knowledge.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you drill from GL to subledger?</p><p>Through GL_IMPORT_REFERENCES to XLA lines.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Draw the chain if you can. It's valued knowledge.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you drill from GL to subledger?</p><p>Through GL_IMPORT_REFERENCES, which links the GL journal lines to XLA_AE_LINES using GL_SL_LINK_ID and GL_SL_LINK_TABLE. From XLA lines you go to XLA_AE_HEADERS and XLA_TRANSACTION_ENTITIES to find the source transaction, like an AP invoice.</p></div></div>
 </details>
 <details class="q" data-topic="Tables" data-level="B">
   <summary><span class="qn">43</span><span class="qt">What are key Order Management and Inventory tables?</span><span class="meta"><span class="tag">Tables</span><span class="tag lvl">Basic</span></span></summary>

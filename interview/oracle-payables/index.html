@@ -178,7 +178,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Disbursement bank accounts</strong> and <strong>payment documents</strong> (check stock).</li>
 <li><strong>Payment process requests</strong> run it.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> If you have set up a bank file, say which bank and format (NACHA or ISO 20022). One real example beats the whole list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do you set which bank account a payment run uses?</p><p>In the payment process profile and the payment process request, where disbursement bank account and profile are chosen, often defaulted by business unit and currency rules.</p></div></div>
+<p class="tip"><strong>Tip:</strong> If you have set up a bank file, say which bank and format (NACHA or ISO 20022). One real example beats the whole list.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Where do you set which bank account a payment run uses?</p><p>In the payment process profile and the payment process request. The PPR selection criteria pick the disbursement bank account and profile, often defaulted by business unit and currency rules — for example USD payments from the US operating account, EUR from the euro account. If the run picks nothing, I check the bank account's business unit access first.</p></div></div>
 </details>
 <details class="q" data-topic="Payments" data-level="D" data-top="1">
   <summary><span class="qn">7</span><span class="qt">How do you set up payment approval for large payment runs?</span><span class="meta"><span class="tag">Payments</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
@@ -226,14 +226,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> contract roles are often brought in to cut AP cost fast. They want a plan, not a wish list.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In the first two weeks I measure the current state: invoice channels, touchless rate, holds by type, cycle time and cost per invoice. That tells me where the work is. Then I go after quick wins that are pure configuration: tuning tolerances, auto-approving invoices that match within tolerance, fixing supplier data, and changing the match option on blanket POs where receipt matching creates manual work. In the medium term, IDR for PDF invoices, the supplier portal or e-invoicing, and AI agents to triage holds and answer supplier questions. I report the numbers to the controller monthly so the gains are visible.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Use a 30-60-90 shape and name one measure you would move, like touchless rate. It shows you'll deliver within a contract's timeline.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What quick win usually gives the biggest touchless improvement?</p><p>Fixing price and quantity tolerances and enforcing receipt entry on time. Most holds in typical AP shops are tolerance or missing receipts, not complex issues.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Use a 30-60-90 shape and name one measure you would move, like touchless rate. It shows you'll deliver within a contract's timeline.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What quick win usually gives the biggest touchless improvement?</p><p>Fixing price and quantity tolerances and enforcing on-time receipt entry. In most AP shops the bulk of holds are small price differences and missing receipts, not complex issues. Setting a sensible price tolerance — say 2% or $50 — and chasing receivers within 48 hours can lift touchless rates by 20 points.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">13</span><span class="qt">How would you architect an AP automation program end to end?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> an architect is expected to see the whole program, from how invoices arrive to how success is measured.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I design it in layers, following the invoice. Inbound: e-invoicing through EDI, PEPPOL or the supplier portal first, IDR for PDFs, and paper scanning only as a last resort. Validation: PO matching, tolerances, duplicate detection and tax validation. Approval: rules-based, with matched invoices auto-approved. Exceptions: AI agents that suggest how to resolve holds and answer supplier status questions. Payments: timing tuned between early-pay discounts and cash position, plus virtual cards where suppliers accept them. Analytics across all of it: touchless rate, cycle time, cost per invoice. And a supplier enablement program, because the technology only works if suppliers use the right channel.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Name supplier enablement as its own workstream. Many automation programs fail because suppliers keep emailing PDFs.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the right order of priorities?</p><p>E-invoicing first, then capture, then matching and holds, then payments.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Name supplier enablement as its own workstream. Many automation programs fail because suppliers keep emailing PDFs.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the right order of priorities?</p><p>E-invoicing first, because structured data removes capture errors at the source; then intelligent capture for the remaining PDFs; then matching rules, tolerances and hold reduction; then payments — early-pay discounts, virtual cards and fraud checks. Each step depends on clean data from the one before.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="B">
   <summary><span class="qn">14</span><span class="qt">Explain the Procure-to-Pay flow and where AP fits in.</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">Basic</span></span></summary>
@@ -247,7 +247,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Payment: Dr AP Liability 1,000 / Cr Cash Clearing 1,000</li>
 <li>Bank reconciliation: Dr Cash Clearing 1,000 / Cr Cash 1,000</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Walking through the four entries without being asked separates a finance consultant from a system user.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens in GL when a PO receipt is entered?</p><p>With receipt accrual, Oracle books Dr Expense or Inventory, Cr Receipt Accrual; the AP invoice later clears the accrual against the liability.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Walking through the four entries without being asked separates a finance consultant from a system user.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens in GL when a PO receipt is entered?</p><p>With receipt accrual on, Oracle books Dr Expense or Inventory, Cr Receipt Accrual when goods are received. When the AP invoice is matched and accounted, it books Dr Receipt Accrual, Cr Supplier Liability. So for a $1,000 receipt, the accrual sits at $1,000 until the invoice clears it to zero.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="B">
   <summary><span class="qn">15</span><span class="qt">What is the difference between 2-way, 3-way and 4-way matching?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">Basic</span></span></summary>
@@ -273,7 +273,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Supplier or site:</strong> payment hold.</li>
 <li><strong>Manual:</strong> placed by users.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Stress that you fix the cause, not just release the hold. Releasing holds without fixing them is an audit finding.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who should release a price hold?</p><p>The buyer, because they own the PO price. AP shouldn't override price holds without the buyer confirming the price is right.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Stress that you fix the cause, not just release the hold. Releasing holds without fixing them is an audit finding.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who should release a price hold?</p><p>The buyer, because they own the PO price. If the invoice says $10.50 and the PO says $10, the buyer either confirms the supplier is right and updates the PO, or tells AP to short-pay or get a credit memo. AP shouldn't force-release price holds on its own.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="B">
   <summary><span class="qn">17</span><span class="qt">What types of invoices can you enter in Payables?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">Basic</span></span></summary>
@@ -315,7 +315,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Create the payment file or print checks.</li>
 <li>Transmit to the bank.</li>
 </ol>
-<p class="tip"><strong>Tip:</strong> Mention scheduled PPR templates. Real companies don't submit PPRs by hand every day.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you review before confirming a PPR?</p><p>The proposed payments: totals, any unusual large payments, suppliers on hold or new bank accounts. Once confirmed and formatted, changes require voids.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention scheduled PPR templates. Real companies don't submit PPRs by hand every day.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you review before confirming a PPR?</p><p>The proposed payments: total amount against cash available, any unusually large payments, new or changed supplier bank accounts, suppliers on hold and duplicate amounts. Once the PPR is confirmed and the file is formatted and sent, a change means voiding payments, so this review is the last cheap control point.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">20</span><span class="qt">How do you handle 1099 reporting in Oracle Payables?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
@@ -397,7 +397,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li><strong>Recover:</strong> refund or credit memo, fix 1099.</li>
 <li><strong>Prevent:</strong> stronger duplicate checks, normalized numbers, override control, pre-run report.</li>
 </ul>
-<p class="tip"><strong>Tip:</strong> Interviewers listen for root cause and the control you'd add, not just &quot;we got the money back.&quot;</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What control would you add first?</p><p>Tighter duplicate invoice checking and a pre-payment duplicate report reviewed before each payment run.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Interviewers listen for root cause and the control you'd add, not just &quot;we got the money back.&quot;</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What control would you add first?</p><p>Tighter duplicate invoice checking — matching on supplier, amount and date, not just invoice number — plus a pre-payment duplicate report reviewed before each payment run. Duplicates usually come from invoice-number variations like INV-1001 and 1001, so the date-and-amount check catches what the number check misses.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">27</span><span class="qt">How would you increase touchless invoice processing?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
@@ -405,7 +405,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <p><strong>Answer:</strong></p>
 <p>&quot;First I'd look at the holds by type and supplier, because that shows where the touches come from. Then I'd pull the levers in order of effort. Get suppliers invoicing against accurate POs, using catalogs and agreements. Tune tolerances and fix master data like supplier sites, bank details and units of measure. Auto-approve PO-matched invoices within tolerance. Then move capture away from manual keying: IDR for PDFs, and the supplier portal or e-invoicing for the biggest suppliers. And I review holds monthly and fix root causes, so the gains stick.&quot;</p>
 <p><strong>Example:</strong> if 30% of invoices hit price holds from one supplier group, fixing their PO prices does more than any new tool.</p>
-<p class="tip"><strong>Tip:</strong> Lead with the data. Starting from &quot;where do the touches come from&quot; shows you'd fix the problem, not just buy software.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a realistic touchless target?</p><p>Over 70% for PO invoices with good data and tolerances, sometimes higher.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Lead with the data. Starting from &quot;where do the touches come from&quot; shows you'd fix the problem, not just buy software.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a realistic touchless target?</p><p>Over 70% touchless for PO-backed invoices when supplier data, tolerances and receiving are good; leading companies get above 85%. Non-PO invoices are harder. I track touchless rate monthly by supplier and fix the top ten suppliers causing exceptions.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">28</span><span class="qt">How do you handle invoice matching for services or blanket POs where receipts are messy?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
@@ -450,7 +450,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Set approval order and payment requirement.</li>
 <li>Test reassign, delegate, request info, reject.</li>
 </ol>
-<p class="tip"><strong>Tip:</strong> Mentioning the test scenarios shows you've been through UAT, not just setup.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle approvals when a cost center manager leaves?</p><p>Route by position or approval group rather than named person, and keep HCM data current.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mentioning the test scenarios shows you've been through UAT, not just setup.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you handle approvals when a cost center manager leaves?</p><p>Route approvals by position, supervisor hierarchy or approval group rather than a named person, so when someone leaves the next person in that position picks it up. Keep HCM assignments current, and set a fallback approver so invoices don't sit in a terminated employee's queue.</p></div></div>
 </details>
 <details class="q" data-topic="Accounts Payable" data-level="D">
   <summary><span class="qn">32</span><span class="qt">What is Intelligent Document Recognition (IDR) / invoice imaging?</span><span class="meta"><span class="tag">Accounts Payable</span><span class="tag lvl">In-depth</span></span></summary>
@@ -472,7 +472,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
 <li>Assign to bank account and methods.</li>
 <li>Test: prenotes, small live payments, acknowledgments.</li>
 </ol>
-<p class="tip"><strong>Tip:</strong> Mention acknowledgment files. Teams forget them, then can't tell whether the bank accepted the payments.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your test process with the bank?</p><p>Send test files in the bank's test environment, fix rejections, then do a small live penny test before full rollout.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention acknowledgment files. Teams forget them, then can't tell whether the bank accepted the payments.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your test process with the bank?</p><p>First send test files to the bank's test environment and fix the rejections — usually format, routing or account details. Then do a small live payment, like a penny test or a low-value payment, and confirm it arrives. Only then roll out to all suppliers, with the first live runs monitored closely.</p></div></div>
 </details>
 <details class="q" data-topic="Payments" data-level="B">
   <summary><span class="qn">34</span><span class="qt">What is positive pay?</span><span class="meta"><span class="tag">Payments</span><span class="tag lvl">Basic</span></span></summary>

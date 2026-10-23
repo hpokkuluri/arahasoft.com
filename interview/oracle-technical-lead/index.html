@@ -106,21 +106,21 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <summary><span class="qn">1</span><span class="qt">What does an Oracle technical lead do?</span><span class="meta"><span class="tag">Role</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> confirms you lead people and designs, not just code.</p>
 <p><strong>Answer:</strong> Owns the technical workstream: integration and extension architecture within the project, technical standards, design reviews, estimates and plans for RICEW objects, team allocation and mentoring, environment and deployment coordination, quality (code reviews, testing), and communication with functional leads, architects and the PMO. Escalates risks early.</p>
-<p class="tip"><strong>Tip:</strong> Mention team size and number of objects you've led.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you stop doing when you become lead?</p><p>Building most objects myself; I review designs, unblock people and own technical risk.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention team size and number of objects you've led.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you stop doing when you become lead?</p><p>Building most objects myself. As lead, I review designs and code, unblock people, manage the RICEW plan and own technical risk. I might still build one critical piece, but if I'm coding all day, nobody is watching quality and timelines across the team.</p></div></div>
 </details>
 <details class="q" data-topic="Planning" data-level="D" data-top="1">
   <summary><span class="qn">2</span><span class="qt">How do you plan the technical workstream on an implementation?</span><span class="meta"><span class="tag">Planning</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> planning is the technical lead's core job.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I build the RICEW inventory from the requirements and classify each object as simple, medium or complex. I estimate with a standard effort per tier, then sequence the work by dependencies and test cycles: CRP, SIT1, SIT2 and UAT. I assign developers by skill, track weekly, and keep a buffer for changes and defects. For example, 80 objects: 40 simple at 3 days, 30 medium at 7 and 10 complex at 15 gives 120 plus 210 plus 150, which is 480 developer-days, before buffer.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show the math. It proves the plan isn't a guess.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you size the RICEW inventory?</p><p>Classify each object by complexity, apply standard effort per class and add testing and contingency.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Show the math. It proves the plan isn't a guess.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you size the RICEW inventory?</p><p>Classify each object by complexity — simple, medium, complex — apply a standard effort per class from past projects, then add unit testing, SIT support, defects and contingency. For example, 120 objects at an average of 6 days is 720 days before testing and contingency.</p></div></div>
 </details>
 <details class="q" data-topic="Standards" data-level="B" data-top="1">
   <summary><span class="qn">3</span><span class="qt">What technical standards do you establish?</span><span class="meta"><span class="tag">Standards</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> standards make teams consistent.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Naming conventions, folder and repository structure, error handling and logging patterns, integration design patterns, security guidelines, documentation templates, a code review checklist, and deployment procedures.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;standards save time later&quot;. It's why they matter.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which standard prevents the most problems?</p><p>A common error handling and logging pattern across integrations.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;standards save time later&quot;. It's why they matter.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which standard prevents the most problems?</p><p>A common error handling and logging pattern across all integrations — the same tracking fields, error messages and notification routing. It prevents the most problems because support can troubleshoot any integration the same way, whoever built it.</p></div></div>
 </details>
 <details class="q" data-topic="Design Review" data-level="B">
   <summary><span class="qn">4</span><span class="qt">How do you run design reviews?</span><span class="meta"><span class="tag">Design Review</span><span class="tag lvl">Basic</span></span></summary>
@@ -134,7 +134,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> consistency across many integrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I classify integrations by volume, latency and direction. Then I standardize a small set of patterns: REST for real-time, event-driven for near real-time, FBDI for batch inbound, BICC for bulk extracts, and SFTP for file exchange. Common components, like logging, error handling and lookups, are reused. And everything is documented in an integration catalog.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the integration catalog. It's how a program stays manageable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How many integration patterns do you standardize on?</p><p>A handful, like event-driven, scheduled bulk and real-time REST, with reference implementations.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention the integration catalog. It's how a program stays manageable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How many integration patterns do you standardize on?</p><p>A handful — usually event-driven, scheduled bulk and real-time REST — each with a reference implementation the team copies. Fewer patterns mean faster builds, easier support and fewer surprises in quarterly updates.</p></div></div>
 </details>
 <details class="q" data-topic="OIC" data-level="D">
   <summary><span class="qn">6</span><span class="qt">How do you structure OIC development for a large team?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span></span></summary>
@@ -148,14 +148,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> deployment errors are common.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;An environment strategy for dev, test, UAT and production, with a refresh calendar. Migration checklists, configuration management, deployment windows and approvals. And automated pipelines wherever possible.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;reduce deployment errors&quot;. It's the goal.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common environment mistake?</p><p>Refreshing a pod in the middle of testing without warning.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;reduce deployment errors&quot;. It's the goal.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common environment mistake?</p><p>Refreshing a pod in the middle of testing without warning, wiping test data and configuration the testers depend on. I keep an environment calendar, announce refreshes two weeks ahead, and agree which environment is used for what.</p></div></div>
 </details>
 <details class="q" data-topic="Quality" data-level="B" data-top="1">
   <summary><span class="qn">8</span><span class="qt">How do you ensure quality of technical deliverables?</span><span class="meta"><span class="tag">Quality</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> quality leadership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Design reviews, code reviews, unit test standards with evidence, peer testing, automated tests for critical integrations, and tracking defect trends by developer and object, so I can coach where needed.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;prevention over correction&quot;. It's the mindset.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your quality gate?</p><p>Peer review and unit test evidence before SIT.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;prevention over correction&quot;. It's the mindset.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your quality gate?</p><p>Peer review and unit test evidence before anything enters SIT. A developer can't move a build to the test environment without a reviewer's sign-off and the test results. It catches most defects at the cheapest point.</p></div></div>
 </details>
 <details class="q" data-topic="Team" data-level="B">
   <summary><span class="qn">9</span><span class="qt">How do you manage a team of onshore and offshore developers?</span><span class="meta"><span class="tag">Team</span><span class="tag lvl">Basic</span></span></summary>
@@ -183,28 +183,28 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> integrity under pressure.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I explain how the estimates were built, then offer options: reduce scope, phase delivery, add resources, or accept more risk. And I document the decision. I don't cut estimates without changing scope, because that just moves the problem to go-live.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;options, not promises&quot;. It's the professional answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What options do you offer?</p><p>Reduce scope, add people or phase delivery.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;options, not promises&quot;. It's the professional answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What options do you offer?</p><p>Reduce scope, add people, or phase the delivery — and show the impact of each. I don't just cut the estimate, because that only moves the problem to SIT. Making the trade-off visible lets the program manager choose with the facts.</p></div></div>
 </details>
 <details class="q" data-topic="Risk" data-level="D" data-top="1">
   <summary><span class="qn">13</span><span class="qt">What are common technical risks on Oracle projects?</span><span class="meta"><span class="tag">Risk</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> risk awareness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Late or changing requirements, data quality for conversions, integration partner readiness, environment availability, performance at volume, security design gaps, quarterly update impacts, and key-person dependencies.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Have a mitigation ready for each. They'll ask.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which risk is most often underestimated?</p><p>Data quality for conversions.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Have a mitigation ready for each. They'll ask.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which risk is most often underestimated?</p><p>Data quality for conversions. Everyone plans the load programs, but few plan for how dirty the legacy data is — duplicate suppliers, missing fields, invalid accounts. I plan at least three mock conversions with business cleanup between them.</p></div></div>
 </details>
 <details class="q" data-topic="Data Migration" data-level="D" data-top="1">
   <summary><span class="qn">14</span><span class="qt">How do you lead a data migration workstream?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> migration leadership.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I define the objects and load sequence, agree mapping ownership with the business, set a cleansing plan, build automated load tools and reconciliation reports, run a mock conversion schedule with timings and sign-offs, and write a detailed cutover runbook.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;reconciliation sign-off by the business&quot;. They own the data.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who owns data mapping?</p><p>Business data owners, with technical support.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;reconciliation sign-off by the business&quot;. They own the data.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Who owns data mapping?</p><p>Business data owners own the mapping and the data quality, because they know what the values mean. The technical team builds the extract, transform and load, runs the validations and reports errors back. If IT owns the mapping, the business doesn't own the result.</p></div></div>
 </details>
 <details class="q" data-topic="Cutover" data-level="D" data-top="1">
   <summary><span class="qn">15</span><span class="qt">What goes into a technical cutover plan?</span><span class="meta"><span class="tag">Cutover</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> cutover planning.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Sequenced tasks with owners and timings: freeze legacy, final extracts, loads, validations, switching integrations over, and enabling scheduled jobs. Go/no-go checkpoints, a rollback plan and a communication plan. And it's rehearsed in mock cutovers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;rehearsal is essential&quot;. Untested cutovers run long.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most critical cutover step?</p><p>Final data reconciliation before go-live.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;rehearsal is essential&quot;. Untested cutovers run long.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most critical cutover step?</p><p>Final data reconciliation before go-live — totals and counts by object between legacy and Fusion, signed off by the business. If AP open balances or GL trial balances don't tie, you don't go live, whatever the schedule says.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D">
   <summary><span class="qn">16</span><span class="qt">How do you plan for performance on an Oracle implementation?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
@@ -225,7 +225,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> quarterly risk management.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I maintain a custom object inventory, review release notes for changes to APIs, tables and pages, run regression tests in the test environment, automated where possible, fix issues, and sign off before production is updated.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention automation. It's what makes it sustainable every quarter.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you test each quarter?</p><p>Key custom objects from the inventory.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention automation. It's what makes it sustainable every quarter.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you test each quarter?</p><p>The key custom objects from the inventory — critical integrations, payment files, reports used in close and important extensions — in the test pod during the two-week window. Automated tests for the most critical ones make this a routine, not a scramble.</p></div></div>
 </details>
 <details class="q" data-topic="Redwood" data-level="D">
   <summary><span class="qn">19</span><span class="qt">How do you plan for Redwood adoption in technical work?</span><span class="meta"><span class="tag">Redwood</span><span class="tag lvl">In-depth</span></span></summary>
@@ -302,14 +302,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> crisis handling.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I mobilize the team, triage quickly and communicate status to leadership. I apply a workaround, a manual process or reprocessing, to protect business operations. Then I fix the root cause, reprocess the transactions, and document the lessons.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;protect the business first&quot;. It's the priority.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do first?</p><p>Mobilize the team and communicate status.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;protect the business first&quot;. It's the priority.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What workaround would you consider while it's being fixed?</p><p>A controlled manual load — for example FBDI for the day's invoices or a manual payment file reviewed by finance — so the business keeps running. It must be documented and reconciled afterwards, so nothing is processed twice when the integration comes back.</p></div></div>
 </details>
 <details class="q" data-topic="Scenario" data-level="D" data-top="1">
   <summary><span class="qn">30</span><span class="qt">SIT is behind schedule with many technical defects. What do you do?</span><span class="meta"><span class="tag">Scenario</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> delivery recovery.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I analyze the defects by object and root cause, add a daily triage, put the best developers on the critical path, reprioritize by business impact, and communicate a realistic recovery plan.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;data-driven recovery&quot;. Guessing makes it worse.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the fastest recovery lever?</p><p>Daily defect triage focused on blockers.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;data-driven recovery&quot;. Guessing makes it worse.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the fastest recovery lever?</p><p>Daily defect triage focused on blockers — the defects that stop test scripts from running — with clear owners and target dates. Fixing the 20 blockers unblocks hundreds of test cases. I'd also move strong developers to the biggest defect areas for a sprint.</p></div></div>
 </details>
 <details class="q" data-topic="Scenario" data-level="D">
   <summary><span class="qn">31</span><span class="qt">The business asks for a major change late in the project. What do you do?</span><span class="meta"><span class="tag">Scenario</span><span class="tag lvl">In-depth</span></span></summary>
@@ -323,7 +323,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> proof of scale.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;I led 12 developers delivering 95 RICEW objects for a Fusion Financials and Procurement implementation: 35 OIC integrations, 40 reports and 20 conversions. We hit every test cycle milestone and went live with no critical integration defects.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give scale and outcome. It's what they remember.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What was the outcome?</p><p>On-time delivery with few defects.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Give scale and outcome. It's what they remember.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What was the outcome?</p><p>On-time delivery with few defects — for example 140 RICEW objects delivered for go-live, under 2% of objects with severity 1 or 2 defects in SIT, and no integration failures in the first month of production. Numbers show it wasn't luck.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">33</span><span class="qt">Tell me about a conflict within your team.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
@@ -400,7 +400,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> a closing question.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;I've led large technical teams to on-time, high-quality delivery, set standards that cut defects, managed complex cutovers, and developed developers into leads.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Combine leadership with delivery. Both are the job.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What proof would you give?</p><p>Large technical deliveries led.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Combine leadership with delivery. Both are the job.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What proof would you give?</p><p>Large technical deliveries you've led, with numbers — team size, object count, outcome — and how you handled one major problem. For example: '12 developers, 150 objects, delivered on time; I rebuilt the integration design midway when volumes tripled.'</p></div></div>
 </details>
 <details class="q" data-topic="Communication" data-level="B">
   <summary><span class="qn">44</span><span class="qt">How do you explain a technical issue to business stakeholders?</span><span class="meta"><span class="tag">Communication</span><span class="tag lvl">Basic</span></span></summary>

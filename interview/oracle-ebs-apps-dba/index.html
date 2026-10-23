@@ -106,7 +106,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <summary><span class="qn">1</span><span class="qt">Explain the Oracle EBS R12.2 architecture.</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> the foundation for every Apps DBA conversation.</p>
 <p><strong>Answer:</strong> <strong>Database tier:</strong> Oracle Database (commonly 19c) with APPS, APPLSYS and product schemas. <strong>Application tier:</strong> Oracle HTTP Server, <strong>WebLogic Server</strong> with managed servers (oacore for OAF, forms, oafm), Forms services, and <strong>concurrent processing</strong> (Internal Concurrent Manager, standard managers, Output Post Processor). <strong>File systems:</strong> dual application file systems (fs1/fs2) plus fs_ne (non-editioned) for <strong>online patching</strong>. <strong>Desktop:</strong> browser (Forms via Java Web Start).</p>
-<p class="tip"><strong>Tip:</strong> Mention which managed servers you tune most (oacore heap).</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why does R12.2 have two application file systems?</p><p>So patches apply to the patch file system while users keep working on the run file system, cutting downtime.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention which managed servers you tune most (oacore heap).</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why does R12.2 have two application file systems?</p><p>So patches are applied to the patch file system while users keep working on the run file system, cutting downtime. At cutover, the two switch roles. That's how R12.2 online patching reduces downtime from many hours to a short cutover window.</p></div></div>
 </details>
 <details class="q" data-topic="Architecture" data-level="B">
   <summary><span class="qn">2</span><span class="qt">What is the APPS schema and why is it special?</span><span class="meta"><span class="tag">Architecture</span><span class="tag lvl">Basic</span></span></summary>
@@ -120,7 +120,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> core R12.2 knowledge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Prepare synchronizes the patch file system with the run file system and creates the patch edition in the database. Apply puts the patches into the patch edition while users keep working. Finalize compiles invalid objects and gets ready for cutover. Cutover is the short downtime: it switches file systems and editions and restarts services. Cleanup removes obsolete editions and objects. There's also fs_clone to resync file systems, and abort to back out before cutover.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;downtime only during cutover&quot;. It's the benefit of adop.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which adop phase causes downtime?</p><p>Cutover, when services restart on the new edition.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;downtime only during cutover&quot;. It's the benefit of adop.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which adop phase causes downtime?</p><p>Cutover, when services stop, the patch edition becomes the run edition and services restart — usually 15 to 60 minutes. Prepare, apply, finalize and cleanup run while users work, so cutover is the only phase that needs a maintenance window.</p></div></div>
 </details>
 <details class="q" data-topic="Patching" data-level="D">
   <summary><span class="qn">4</span><span class="qt">What is a hotpatch or downtime mode patch in R12.2?</span><span class="meta"><span class="tag">Patching</span><span class="tag lvl">In-depth</span></span></summary>
@@ -148,28 +148,28 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> cloning is routine DBA work.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First I run adpreclone.pl on the database and application tiers of the source. I copy the database, with RMAN duplicate or a storage snapshot, and the application run file system. On the target I run adcfgclone.pl dbTier, then adcfgclone.pl appsTier; in R12.2 it clones the run file system and then fs_clone creates the patch file system. Then the post-clone steps: change passwords, update profile options and URLs, disable or redirect the workflow mailer, put scheduled requests on hold, update integration endpoints, and mask sensitive data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Stress the post-clone steps. They stop test from emailing real suppliers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the slowest step in a clone?</p><p>Usually database copy or restore, depending on size.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Stress the post-clone steps. They stop test from emailing real suppliers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the slowest step in a clone?</p><p>Usually the database copy or restore, depending on size — a 3 TB database restore can take hours. Using RMAN duplicate from backup, storage snapshots or a standby can cut it sharply. The application-tier steps like adcfgclone are much quicker.</p></div></div>
 </details>
 <details class="q" data-topic="Cloning" data-level="B" data-top="1">
   <summary><span class="qn">8</span><span class="qt">What post-clone steps are critical?</span><span class="meta"><span class="tag">Cloning</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> clone mistakes cause real incidents.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Change the APPS and SYSADMIN passwords. Update the site name and color profiles so users know it's test. Disable the workflow mailer or set a test address. Hold scheduled concurrent requests. Update printers and file paths. Repoint integrations, like SOA, OIC and banks, to test endpoints. Mask PII and bank data. And verify login.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;checklist discipline&quot;. Every step, every time.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest post-clone risk?</p><p>The workflow mailer emailing real users from test.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;checklist discipline&quot;. Every step, every time.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest post-clone risk?</p><p>The workflow mailer emailing real users from a test environment — approvals, notifications, even supplier emails. Post-clone, I disable or redirect the mailer, change outbound integrations and printers, and scramble sensitive data before anyone logs in.</p></div></div>
 </details>
 <details class="q" data-topic="Concurrent Managers" data-level="B" data-top="1">
   <summary><span class="qn">9</span><span class="qt">How do concurrent managers work?</span><span class="meta"><span class="tag">Concurrent Managers</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> concurrent processing basics.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;The Internal Concurrent Manager starts and monitors the other managers. The Standard Manager and custom managers run requests based on specialization rules and workshifts. The Conflict Resolution Manager enforces incompatibilities. The Output Post Processor handles BI Publisher output. And service managers run other services.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention tuning processes and sleep times. It's the follow-up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does the ICM do if a manager dies?</p><p>It restarts it, based on the manager's settings.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention tuning processes and sleep times. It's the follow-up.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does the ICM do if a manager dies?</p><p>It restarts the manager, based on the manager's settings and the work shifts defined, and logs the failure. If a manager keeps dying, the ICM log and the manager log show why — often a memory issue, a bad program or a database connection problem.</p></div></div>
 </details>
 <details class="q" data-topic="Concurrent Managers" data-level="B" data-top="1">
   <summary><span class="qn">10</span><span class="qt">Requests are stuck in pending. How do you troubleshoot?</span><span class="meta"><span class="tag">Concurrent Managers</span><span class="tag lvl">Basic</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a daily DBA issue.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I check whether the managers are running in Administer Concurrent Managers, and whether requests are Pending Standby or Inactive. Then the Conflict Resolution Manager and incompatibilities, specialization rules, and whether there are enough processes for the workload. I read the ICM log. And I check phase and status codes in FND_CONCURRENT_REQUESTS and look for database locks.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;Pending Standby often means incompatibilities&quot;. It's a quick win.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common cause?</p><p>Managers down or a program assigned to an inactive manager.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;Pending Standby often means incompatibilities&quot;. It's a quick win.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a common cause?</p><p>Managers down, or the program assigned to a manager that's inactive or has no target processes in the current work shift. Also check whether requests are waiting on an incompatible program. Looking at the request's diagnostics usually says which.</p></div></div>
 </details>
 <details class="q" data-topic="Concurrent Managers" data-level="D">
   <summary><span class="qn">11</span><span class="qt">How do you tune concurrent processing?</span><span class="meta"><span class="tag">Concurrent Managers</span><span class="tag lvl">In-depth</span></span></summary>
@@ -183,7 +183,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> configuration management.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AutoConfig maintains EBS configuration files from the context file, an XML file, on both application and database tiers. I change parameters in the context file, through OAM or an editor, and run adautocfg.sh to apply them. I never edit the generated configuration files directly, because AutoConfig would overwrite them.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;the context file is the source of truth&quot;.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if you edit config files manually?</p><p>AutoConfig overwrites them on the next run.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;the context file is the source of truth&quot;.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if you edit config files manually?</p><p>AutoConfig overwrites them on the next run, so the change disappears — often during the next patch or clone, causing a surprise outage. Make changes through the context file variables and run AutoConfig, so they're kept permanently.</p></div></div>
 </details>
 <details class="q" data-topic="WebLogic" data-level="D">
   <summary><span class="qn">13</span><span class="qt">How do you manage WebLogic in R12.2?</span><span class="meta"><span class="tag">WebLogic</span><span class="tag lvl">In-depth</span></span></summary>
@@ -204,7 +204,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> structured troubleshooting.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;First the scope: all users or one module, Forms or OAF, a time of day. Then the layers: server CPU, memory and I/O; the database with AWR and ASH for top waits and SQL; WebLogic oacore heap and threads; concurrent load; network latency; and any recent changes. Once I've narrowed it down, I fix that specific bottleneck.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;scope first, then layers&quot;. It's the method.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your first question?</p><p>Is it all users or one module?</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;scope first, then layers&quot;. It's the method.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's your first question?</p><p>Is it all users or one module, one screen or one report — and since when? 'All users since this morning' points to infrastructure or the database; 'one form since the patch' points to code. The answer decides where to look first.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D">
   <summary><span class="qn">16</span><span class="qt">What is AWR and how do you use it?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span></span></summary>
@@ -218,7 +218,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> SQL tuning depth.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I get the SQL ID and check the execution plan with DBMS_XPLAN.DISPLAY_CURSOR, comparing it with historical plans. I check statistics freshness, indexes and cardinality estimates. To stabilize a good plan, I can use a SQL profile or a SQL plan baseline. For code changes, I work with developers, and I never modify seeded code.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention SQL Plan Management. It's how you keep plans stable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a SQL profile for?</p><p>To guide the optimizer to a better plan.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention SQL Plan Management. It's how you keep plans stable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's a SQL profile for?</p><p>To guide the optimizer to a better execution plan without changing the SQL — useful for seeded Oracle code you can't edit. The SQL Tuning Advisor can recommend one, and you accept it after checking the improvement in a test environment.</p></div></div>
 </details>
 <details class="q" data-topic="Statistics" data-level="B">
   <summary><span class="qn">18</span><span class="qt">How should statistics be gathered for EBS?</span><span class="meta"><span class="tag">Statistics</span><span class="tag lvl">Basic</span></span></summary>
@@ -232,14 +232,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> recoverability.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;RMAN database backups, full and incremental plus archive logs, with tested restores. Application tier file system backups. Backups of the context files and configuration. Defined RPO and RTO. And regular restore tests.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;untested backups don't count&quot;. It's true and memorable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prove backups work?</p><p>Regular restore tests.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;untested backups don't count&quot;. It's true and memorable.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you prove backups work?</p><p>Regular restore tests — at least quarterly — to a separate server, timing how long it takes and checking the application starts. A backup that has never been restored is only a hope. The restore time also tells you if you can meet the business's recovery target.</p></div></div>
 </details>
 <details class="q" data-topic="High Availability" data-level="D" data-top="1">
   <summary><span class="qn">20</span><span class="qt">How do you provide high availability for EBS?</span><span class="meta"><span class="tag">High Availability</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> availability design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Oracle RAC for database availability, Data Guard with a physical standby for disaster recovery, multiple application nodes behind a load balancer, parallel concurrent processing, and documented switchover and failover procedures.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention testing switchover. HA that's never tested is a guess.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does RAC protect against?</p><p>Database node failure.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention testing switchover. HA that's never tested is a guess.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What does RAC protect against?</p><p>Database node failure. If one RAC node fails, sessions move to the surviving nodes and the database keeps running. It doesn't protect against storage failure, site loss or data corruption — that's what Data Guard and backups are for.</p></div></div>
 </details>
 <details class="q" data-topic="Data Guard" data-level="D">
   <summary><span class="qn">21</span><span class="qt">How does Data Guard work with EBS?</span><span class="meta"><span class="tag">Data Guard</span><span class="tag lvl">In-depth</span></span></summary>
@@ -281,7 +281,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> major upgrade experience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Upgrade the database to a certified version and apply prerequisite patches. Run the Online Patching Enablement readiness checks and fix custom code compliance. Install the 12.2 file system with Rapid Install and run the upgrade driver. Apply the latest RUPs and AD and TXK. Enable online patching. And test extensively over several iterations.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say custom code compliance is the big effort. It usually is.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest upgrade task?</p><p>Custom code remediation for online patching.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say custom code compliance is the big effort. It usually is.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the biggest upgrade task?</p><p>Custom code remediation for online patching — making every custom object follow the editioning standards, plus fixing custom code for changed APIs. The technical upgrade itself is well documented; the customizations decide how long the project takes.</p></div></div>
 </details>
 <details class="q" data-topic="Upgrades" data-level="D">
   <summary><span class="qn">27</span><span class="qt">How do you upgrade the database under EBS?</span><span class="meta"><span class="tag">Upgrades</span><span class="tag lvl">In-depth</span></span></summary>
@@ -365,7 +365,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> incident response.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I assess the scope and tell stakeholders. I check database and application tier status and logs. I restore service with the fastest safe action, escalating to Oracle Support as Severity 1 if needed. Then I do root-cause analysis.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;restore first, analyze after&quot;.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do first?</p><p>Assess scope and tell stakeholders.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;restore first, analyze after&quot;.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you keep stakeholders informed during the outage?</p><p>A first message within 15 minutes — what's down, who's affected, that we're working on it and when the next update comes — then updates every 15 to 30 minutes, even if there's no change. After recovery, a short summary of the cause and next steps.</p></div></div>
 </details>
 <details class="q" data-topic="Oracle Support" data-level="B">
   <summary><span class="qn">39</span><span class="qt">How do you work with Oracle Support?</span><span class="meta"><span class="tag">Oracle Support</span><span class="tag lvl">Basic</span></span></summary>
@@ -379,7 +379,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> proof of incident handling.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;At month-end, the concurrent managers stopped and hundreds of requests were pending. The ICM log showed the APPLCSF file system was full. I cleared old logs, restarted the managers, prioritized the close requests, and then set up monitoring and regular purges. Close finished on time.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show root cause and prevention.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What made you successful?</p><p>Fast diagnosis and clear communication.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Show root cause and prevention.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What made you successful?</p><p>Fast diagnosis and clear communication. For example, an outage at month end was caused by a full archive log destination. I found it in ten minutes from the alert log, freed space, restarted services and sent updates every 15 minutes — then added monitoring so it couldn't happen silently again.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">41</span><span class="qt">Tell me about a successful upgrade you led.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
@@ -428,7 +428,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> a closing question.</p>
 <p><strong>Answer (sample):</strong></p>
 <p>&quot;I deliver reliable reports, data loads and integrations in Fusion, using BIP, OTBI, FBDI, REST and OIC, and I understand the business processes behind them, so what I build works for users the first time.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Combine technical skill with business awareness. That's what they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What proof would you give?</p><p>Upgrades and outages handled.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Combine technical skill with business awareness. That's what they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What proof would you give?</p><p>Upgrades and outages handled, with specifics — for example 'upgraded EBS 12.1.3 to 12.2 for 3,000 users with 4 hours of downtime, and cut month-end batch run time by 40%'. Show you've kept a production system reliable, not just built test environments.</p></div></div>
 </details>
 <details class="q" data-topic="Technical" data-level="D">
   <summary><span class="qn">48</span><span class="qt">What is fs_ne in R12.2?</span><span class="meta"><span class="tag">Technical</span><span class="tag lvl">In-depth</span></span></summary>

@@ -106,21 +106,21 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <summary><span class="qn">1</span><span class="qt">How do you design a RICEW object end to end?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> senior consultants own technical design.</p>
 <p><strong>Answer:</strong> Understand the business requirement and process, identify the standard Oracle option first (interface, API, personalization), define data flow and mappings, error handling and logging, security, performance (volumes), restart/recovery, and deployment approach; document in an MD070 technical design; review with functional leads; build with standards; unit test with edge cases; and support SIT/UAT.</p>
-<p class="tip"><strong>Tip:</strong> &quot;Standard first, custom last.&quot;</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first thing you check before building?</p><p>Whether a standard Oracle feature or seeded interface already meets the need.</p></div></div>
+<p class="tip"><strong>Tip:</strong> &quot;Standard first, custom last.&quot;</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first thing you check before building?</p><p>Whether a standard Oracle feature, a seeded interface or an existing API already meets the need. Many RICEW requests are solved with configuration or a seeded report. Building only what's truly needed reduces upgrade and EBS-to-Fusion migration work later.</p></div></div>
 </details>
 <details class="q" data-topic="APIs" data-level="D" data-top="1">
   <summary><span class="qn">2</span><span class="qt">How do you choose between interfaces and APIs?</span><span class="meta"><span class="tag">APIs</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> a design choice in EBS integrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Open interfaces suit batch loads, because they have built-in validation and error reporting. Public APIs suit transactional, real-time processing from custom code or middleware. Either way, I check Oracle's Integration Repository to confirm the interface or API is supported.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;iRep is the source of truth&quot;. Unsupported APIs break on patches.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is an API better than an interface?</p><p>For real-time, record-level creates where you need immediate validation.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;iRep is the source of truth&quot;. Unsupported APIs break on patches.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">When is an API better than an interface?</p><p>For real-time, record-level creates where you need immediate validation — for example creating a customer from a web portal and returning the ID straight away. Interfaces suit large batches where you load, import and review errors in bulk.</p></div></div>
 </details>
 <details class="q" data-topic="APIs" data-level="D" data-top="1">
   <summary><span class="qn">3</span><span class="qt">How do you call Oracle APIs correctly?</span><span class="meta"><span class="tag">APIs</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> API calls fail silently when done wrong.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I initialize the context with FND_GLOBAL.APPS_INITIALIZE and MO_GLOBAL.SET_POLICY_CONTEXT. I populate the record types and call the API with p_init_msg_list set to FND_API.G_TRUE. I check x_return_status: S for success, E for error, U for unexpected. On error I loop through the FND_MSG_PUB messages and log them. And I commit or roll back as appropriate.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show the message handling loop. That's what separates experienced developers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you check after every API call?</p><p>The return status and the message stack, and log errors.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Show the message handling loop. That's what separates experienced developers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you check after every API call?</p><p>The return status — S, E or U — and the message count and message stack using FND_MSG_PUB, and log every error with the record key. Never assume success; an API can return E silently and your program will carry on as if the record exists.</p></div></div>
 </details>
 <details class="q" data-topic="Integration Repository" data-level="D">
   <summary><span class="qn">4</span><span class="qt">What is the Oracle Integration Repository?</span><span class="meta"><span class="tag">Integration Repository</span><span class="tag lvl">In-depth</span></span></summary>
@@ -134,7 +134,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> event-driven EBS integration.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I subscribe to seeded events, like oracle.apps.ar.hz.CustAccount.create, with a PL/SQL rule function or a workflow, or raise custom events with WF_EVENT.RAISE. Subscriptions can run synchronously or be deferred through the Workflow Deferred Agent Listener.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it gives event-driven integration without database triggers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if a subscription errors?</p><p>The event goes to the error queue, so I monitor WF_ERROR.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say it gives event-driven integration without database triggers.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens if a subscription errors?</p><p>The event goes to the error queue — WF_ERROR — and, depending on settings, a notification goes to SYSADMIN. I monitor the error queue regularly and fix the subscription code, then reprocess the event, so the business process isn't left half finished.</p></div></div>
 </details>
 <details class="q" data-topic="Workflow" data-level="D">
   <summary><span class="qn">6</span><span class="qt">How do you customize an Oracle Workflow process?</span><span class="meta"><span class="tag">Workflow</span><span class="tag lvl">In-depth</span></span></summary>
@@ -148,35 +148,35 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> a common support issue.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I check WF_ITEM_ACTIVITY_STATUSES for errored activities. I make sure the workflow background process and agent listeners are running, and the notification mailer is up. I read the error messages. Then I retry or rewind through Status Monitor, after fixing the underlying data.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention background engines. They're often the cause.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you restart a stuck workflow?</p><p>Fix the cause, then retry the errored activity with WF_ENGINE.HANDLEERROR or the admin page.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention background engines. They're often the cause.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you restart a stuck workflow?</p><p>Fix the root cause first — bad data, a missing approver, a code error — then retry the errored activity with WF_ENGINE.HANDLEERROR or from the Workflow administrator pages. Retrying without fixing just sends it back to error.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D" data-top="1">
   <summary><span class="qn">8</span><span class="qt">How do you approach performance tuning in EBS?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> tuning depth.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I identify the slow component: a concurrent program, a form or an OAF page. I trace with binds and waits and analyze with TKPROF and DBMS_XPLAN execution plans. I check statistics, indexes and bind peeking. I rewrite SQL to avoid functions on indexed columns and implicit conversions. I use bulk processing, and parallelize where it makes sense. For example, replacing a row-by-row cursor update with FORALL cut one program from three hours to nine minutes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Give a concrete before-and-after. It's convincing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most useful trace?</p><p>A level 12 trace analyzed with TKPROF.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Give a concrete before-and-after. It's convincing.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the most useful trace?</p><p>A level 12 trace — which includes bind values and waits — analyzed with TKPROF. It shows the exact statements, how long they took and what they waited on, so you tune the real bottleneck instead of guessing.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D" data-top="1">
   <summary><span class="qn">9</span><span class="qt">What is the impact of bind variables?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> database fundamentals.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Bind variables let Oracle reuse parsed SQL, which cuts hard parsing and CPU use, and they protect against SQL injection. The thing to watch is bind peeking with skewed data, where one plan doesn't fit all values. Adaptive cursor sharing in newer versions helps with that.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention bind peeking. It shows depth.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the risk of literals in SQL?</p><p>Hard parsing, shared pool pressure and slow performance.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention bind peeking. It shows depth.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the risk of literals in SQL?</p><p>Hard parsing, shared pool pressure and slow performance. Every literal value creates a new SQL statement to parse, so a program run with 100,000 different literals can slow down the whole database, not just itself. Bind variables let Oracle reuse one parsed statement.</p></div></div>
 </details>
 <details class="q" data-topic="Performance" data-level="D" data-top="1">
   <summary><span class="qn">10</span><span class="qt">How do you parallelize a large data process?</span><span class="meta"><span class="tag">Performance</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> scaling batch processing.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I split the work by ranges or org IDs into multiple child requests, using parent-child concurrent requests with FND_REQUEST sub-requests. Or I use DBMS_PARALLEL_EXECUTE, or parallel DML and queries where appropriate. I balance the load and avoid locking conflicts between the parallel workers.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention DBMS_PARALLEL_EXECUTE. It's a strong answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you combine child results?</p><p>The parent request waits for children and checks their status.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention DBMS_PARALLEL_EXECUTE. It's a strong answer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you combine child results?</p><p>The parent request submits child requests for ranges of data, then waits — using FND_CONCURRENT.WAIT_FOR_REQUEST or the sub-request feature — and checks each child's status. If any child fails, the parent ends in warning or error and reports which range failed.</p></div></div>
 </details>
 <details class="q" data-topic="OAF" data-level="D" data-top="1">
   <summary><span class="qn">11</span><span class="qt">How do you extend an OAF controller safely?</span><span class="meta"><span class="tag">OAF</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> OAF extension standards.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I create a custom controller class that extends the seeded one and override processRequest or processFormRequest, calling super first and then adding my logic. I deploy the class files to JAVA_TOP and attach the custom controller through personalization, using the Controller Class property. And I retest after every patch.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;call super first&quot;. It keeps seeded behavior intact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why not modify the seeded controller?</p><p>Patches overwrite it; extensions survive.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;call super first&quot;. It keeps seeded behavior intact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why not modify the seeded controller?</p><p>Patches overwrite seeded controllers, so a direct change disappears at the next patch and support may refuse help. Extending the controller and registering a substitution survives patches, and you can switch it off to test whether a problem is in your code.</p></div></div>
 </details>
 <details class="q" data-topic="OAF" data-level="D">
   <summary><span class="qn">12</span><span class="qt">How do you substitute a View Object?</span><span class="meta"><span class="tag">OAF</span><span class="tag lvl">In-depth</span></span></summary>
@@ -232,14 +232,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> R12.2 compliance.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I don't reference editioned objects incorrectly. Custom tables get editioning views through AD_ZD_TABLE.UPGRADE. I avoid DDL that breaks online patching. Custom schemas are registered. Deployments go through adop. And I follow Oracle's guide on developing and deploying customizations in R12.2.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention the AD_ZD utilities. It proves R12.2 experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why editioning views on custom tables?</p><p>Online patching requires them for editioned access.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention the AD_ZD utilities. It proves R12.2 experience.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why editioning views on custom tables?</p><p>Online patching uses editioning so patches can be applied while users work. Custom tables need editioning views — and APPS synonyms pointing to them — so code sees the right edition of the data during a patch cycle. Without them, adop cycles can fail or corrupt access.</p></div></div>
 </details>
 <details class="q" data-topic="R12.2" data-level="D" data-top="1">
   <summary><span class="qn">20</span><span class="qt">What happens in an adop cycle?</span><span class="meta"><span class="tag">R12.2</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> R12.2 patching knowledge.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;Prepare creates the patch edition. Apply puts the patches into the patch edition. Finalize gets ready for cutover. Cutover switches editions, with a short downtime. Cleanup removes obsolete objects. Users keep working on the run edition until cutover.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;downtime only at cutover&quot;. It's the benefit.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the cutover phase?</p><p>Switching users to the patch edition.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;downtime only at cutover&quot;. It's the benefit.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the cutover phase?</p><p>Switching users to the patch edition. Services stop, the patch edition becomes the run edition, and services restart. It's the only phase with downtime, usually 15 to 60 minutes, so it's scheduled in a maintenance window.</p></div></div>
 </details>
 <details class="q" data-topic="SLA" data-level="D">
   <summary><span class="qn">21</span><span class="qt">How do you customize accounting with Subledger Accounting?</span><span class="meta"><span class="tag">SLA</span><span class="tag lvl">In-depth</span></span></summary>
@@ -253,7 +253,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> a classic drill-down question.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;From GL_JE_LINES to GL_IMPORT_REFERENCES using gl_sl_link_id and gl_sl_link_table, then to XLA_AE_LINES and XLA_AE_HEADERS, then XLA_EVENTS, then XLA_TRANSACTION_ENTITIES, where source_id_int_1 is the transaction ID, like the invoice ID.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say the chain in order. It's a recall test.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which column links GL to SLA?</p><p>gl_sl_link_id in GL_IMPORT_REFERENCES.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say the chain in order. It's a recall test.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which column links GL to SLA?</p><p>GL_SL_LINK_ID in GL_IMPORT_REFERENCES, together with GL_SL_LINK_TABLE. It matches XLA_AE_LINES, which leads you to XLA headers and the transaction entity, and from there to the source document — like the AP invoice ID.</p></div></div>
 </details>
 <details class="q" data-topic="Reports" data-level="D">
   <summary><span class="qn">23</span><span class="qt">How do you design a high-volume report?</span><span class="meta"><span class="tag">Reports</span><span class="tag lvl">In-depth</span></span></summary>
@@ -281,7 +281,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> migration planning.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I inventory the customizations and classify each one: retire it, replace it with standard Fusion functionality, or rebuild it as an extension, integration or report. Then I estimate the effort and design the target with SaaS principles.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;many customizations can be retired&quot;. It's usually true and saves money.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the usual result?</p><p>Most customizations are retired or replaced by standard.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;many customizations can be retired&quot;. It's usually true and saves money.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the usual result?</p><p>Most customizations are retired or replaced by standard Fusion features — often 60 to 70%. The rest become OIC integrations, VB Studio extensions or reports. I'd score each customization by usage and business value; many haven't been used in years.</p></div></div>
 </details>
 <details class="q" data-topic="Mentoring" data-level="B">
   <summary><span class="qn">27</span><span class="qt">How do you review a junior developer's code?</span><span class="meta"><span class="tag">Mentoring</span><span class="tag lvl">Basic</span></span></summary>
@@ -295,7 +295,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> robust design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I process in committed chunks, track each record's status in a staging table, skip records already processed when the program reruns, and log errors without stopping the whole batch.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Robust batch design saves support nights. Say so.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why chunked commits?</p><p>So a failure doesn't lose all progress.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Robust batch design saves support nights. Say so.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why chunked commits?</p><p>So a failure doesn't lose all progress. If you commit every 10,000 rows and track the last processed key, a restart continues from row 510,000 instead of starting again from zero — and the program doesn't hold huge undo for hours.</p></div></div>
 </details>
 <details class="q" data-topic="Design" data-level="D">
   <summary><span class="qn">29</span><span class="qt">How do you design error handling for interfaces?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span></span></summary>
@@ -344,7 +344,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> proof of tuning skill.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;AutoInvoice was taking five hours for 200,000 lines. I analyzed the trace and found missing indexes on interface columns used in the grouping rules, plus stale statistics. I worked with the DBA to fix both and split the run by batch source. Runtime dropped to 45 minutes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Show root cause and collaboration with the DBA.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What was the fix?</p><p>Indexes and SQL rewrite.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Show root cause and collaboration with the DBA.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What was the fix?</p><p>Indexes and a SQL rewrite. A nightly program took six hours because it did a full scan of the transactions table inside a loop. I replaced the loop with a set-based query using BULK COLLECT, added a composite index, and it ran in 25 minutes.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">36</span><span class="qt">Tell me about leading a technical workstream.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>

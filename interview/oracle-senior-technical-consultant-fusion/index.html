@@ -106,35 +106,35 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <summary><span class="qn">1</span><span class="qt">How do you design an integration between Fusion and an external system?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> senior consultants own the technical design end to end.</p>
 <p><strong>Answer:</strong> Clarify business requirements, volumes, frequency, latency and error handling expectations. Choose the pattern — real-time (REST/business events), near-real-time (event-driven OIC), or batch (FBDI/ERP Integration Service, BICC/BIP extracts). Define the canonical data model and mappings, security (integration user, OAuth), idempotency and duplicate handling, error handling and reprocessing, monitoring and alerting, and performance limits. Document in a technical design and review with architects.</p>
-<p class="tip"><strong>Tip:</strong> Mention trade-offs between REST and bulk import.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first non-functional question you ask?</p><p>Volume and latency, because they decide between REST, bulk import or events.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention trade-offs between REST and bulk import.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first non-functional question you ask?</p><p>Volume and latency — how many records, how often, and how fast they must arrive — because they decide between REST, bulk import or events. 200 orders a day in real time and 200,000 invoices overnight need completely different designs.</p></div></div>
 </details>
 <details class="q" data-topic="Design" data-level="D" data-top="1">
   <summary><span class="qn">2</span><span class="qt">When would you use REST APIs vs FBDI for inbound data?</span><span class="meta"><span class="tag">Design</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> choosing the right load method.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;REST is for low-to-moderate volume, real-time, transactional creates and updates that need an immediate response, like creating a supplier from a portal. FBDI is for high-volume batch loads, thousands of invoices, journals or items, because it's more efficient and validates in bulk. Some objects only support one of them, so I check that first.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;volume and latency drive the choice&quot;. It's the rule they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if the business wants real-time for 50,000 records a day?</p><p>Use events or near-real-time micro-batches into FBDI, since row-by-row REST at that volume is fragile.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;volume and latency drive the choice&quot;. It's the rule they want.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if the business wants real-time for 50,000 records a day?</p><p>Use business events or near-real-time micro-batches — say every 10 or 15 minutes — into FBDI, since row-by-row REST at 50,000 records a day is fragile and hits throttling limits. Most business users who ask for 'real time' actually need 'within 15 minutes'.</p></div></div>
 </details>
 <details class="q" data-topic="OIC" data-level="D" data-top="1">
   <summary><span class="qn">3</span><span class="qt">What are integration patterns in OIC?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> integration design vocabulary.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;App-driven orchestration, triggered by an event or a REST call. Scheduled orchestration for batch. File transfer. Publish and subscribe with events. And synchronous request-response. I use parent-child integrations for reuse, and lookups for cross-reference values between systems.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention reusable child integrations. It shows mature design.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which pattern would you use for a nightly file?</p><p>A scheduled orchestration that reads the file and calls bulk import.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention reusable child integrations. It shows mature design.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Which pattern would you use for a nightly file?</p><p>A scheduled orchestration that reads the file from SFTP, transforms it, zips it into the FBDI format, uploads it with the ERP Cloud adapter's bulk import, and waits for the callback to report results. Add file archiving and an error report back to the source.</p></div></div>
 </details>
 <details class="q" data-topic="OIC" data-level="D" data-top="1">
   <summary><span class="qn">4</span><span class="qt">How do you design OIC integrations for large files?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> large files break naive integrations.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use stage file actions to read files in segments, chunking, so the full payload never sits in memory. For loads into Fusion, I use the ERP Cloud adapter's bulk import with FBDI. I process in parallel where it's safe, use Object Storage for very large files, and stay within OIC's message size limits.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;chunking&quot;. It's the key word.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why not load a large file into memory?</p><p>It hits payload limits and slows OIC; stage file reads in segments.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;chunking&quot;. It's the key word.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why not load a large file into memory?</p><p>Loading a large file into memory hits OIC payload limits, slows the integration and can fail halfway with no clean restart. Read the file in segments or chunks using stage file operations, so each part processes independently and memory stays low.</p></div></div>
 </details>
 <details class="q" data-topic="OIC" data-level="D" data-top="1">
   <summary><span class="qn">5</span><span class="qt">How do you make an integration idempotent?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> retries must not create duplicates.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use a unique business key, like the external invoice number. Before creating, I check whether the record already exists, or use an upsert operation. I store processed IDs in a lookup or database table. And I design retries so the same message processed twice doesn't create two records.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain why: retries and resubmissions. That's when duplicates happen.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens on retry without idempotency?</p><p>Duplicate records, like duplicate invoices.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Explain why: retries and resubmissions. That's when duplicates happen.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What happens on retry without idempotency?</p><p>Duplicate records — duplicate invoices, payments or orders — because the target creates the record again on every retry. Duplicate invoices can mean duplicate payments, so idempotency is a must for anything financial.</p></div></div>
 </details>
 <details class="q" data-topic="OIC" data-level="D">
   <summary><span class="qn">6</span><span class="qt">How do you secure OIC integrations?</span><span class="meta"><span class="tag">OIC</span><span class="tag lvl">In-depth</span></span></summary>
@@ -148,28 +148,28 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> operational readiness.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use OIC's monitoring dashboards with tracking fields set to business identifiers, so support can search by invoice or order number. Errors notify a support mailbox or create tickets. There are documented resubmission procedures, SLA reporting, and runbooks for common errors.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention runbooks. They make support independent of the developer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What tracking fields would you set?</p><p>Business keys like invoice number, so support can search by them.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention runbooks. They make support independent of the developer.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What tracking fields would you set?</p><p>Business keys like invoice number, supplier number or order number as tracking fields, so support can search the OIC monitoring console by the value the user gives them. Without them, support has to open hundreds of instances to find one invoice.</p></div></div>
 </details>
 <details class="q" data-topic="Events" data-level="D" data-top="1">
   <summary><span class="qn">8</span><span class="qt">How do you use Fusion business events with OIC?</span><span class="meta"><span class="tag">Events</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> event-driven integration.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I enable the event in Fusion, through Manage Business Event Configuration where required. Then I create an OIC integration with an ERP Cloud adapter trigger subscribed to the event, like Purchase Order Approved. Events usually carry key data, so I enrich with REST calls and then push to the target systems.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Contrast with polling. Events give real time without constant queries.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if an event fires twice?</p><p>The integration must be idempotent so the second event does no harm.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Contrast with polling. Events give real time without constant queries.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What if an event fires twice?</p><p>The integration must be idempotent — check whether the record was already processed using the event's business key — so the second event does no harm. Event delivery is 'at least once', so duplicates will happen at some point.</p></div></div>
 </details>
 <details class="q" data-topic="Callbacks" data-level="D" data-top="1">
   <summary><span class="qn">9</span><span class="qt">How do you handle ERP import callbacks in OIC?</span><span class="meta"><span class="tag">Callbacks</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> knowing when bulk imports finish.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;When I use importBulkData with a callback, Fusion sends a callback with the job status when the import finishes. A separate OIC integration subscribed to the callback then processes the results: it downloads the output and log, reports errors and sends notifications.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say it's better than polling. It saves resources and time.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do with the callback?</p><p>Check the import status and report errors back to the source.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say it's better than polling. It saves resources and time.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What do you do if the callback never arrives?</p><p>Don't wait forever: set a timeout, then poll the ESS job status through the ERP integration API. If the job is still running, keep polling at intervals; if it failed or the request is missing, alert support with the request ID so they can check the import in Fusion.</p></div></div>
 </details>
 <details class="q" data-topic="BICC" data-level="D" data-top="1">
   <summary><span class="qn">10</span><span class="qt">How do you design data extracts with BICC?</span><span class="meta"><span class="tag">BICC</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> BICC is the bulk extract tool.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I select the offerings and view objects I need, configure incremental extracts based on last-update dates, schedule the jobs, and land the files in Object Storage. ETL then loads them into a data warehouse, like Autonomous Data Warehouse. For deletes, I run primary key extracts and compare, because incremental extracts don't show deleted rows.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention delete handling. It's what most designs miss.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use incremental extracts?</p><p>To pull only changed data and reduce load.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention delete handling. It's what most designs miss.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">Why use incremental extracts?</p><p>To pull only changed data since the last run, using the last-update date, which cuts extract time and load on Fusion. A full extract of every AP invoice every night gets slower every month; incremental extracts stay roughly the same size.</p></div></div>
 </details>
 <details class="q" data-topic="Analytics" data-level="D">
   <summary><span class="qn">11</span><span class="qt">What is Fusion Data Intelligence (FDI)?</span><span class="meta"><span class="tag">Analytics</span><span class="tag lvl">In-depth</span></span></summary>
@@ -211,14 +211,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> hands-on Redwood experience.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I use VB Studio App UI extensions. I check the page is extensible, then add display and validation rules, custom fields through flexfields exposed to Redwood, and fragments. I test in a workspace and deploy through pipelines. Oracle publishes which extension points each page supports, so I check that first.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention Oracle's published extension points. It avoids dead ends.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first check?</p><p>Whether the Redwood page is extensible.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention Oracle's published extension points. It avoids dead ends.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the first check?</p><p>Whether the Redwood page is extensible in Visual Builder Studio and which parts can be changed — fields, rules, layouts. Not every Redwood page supports the same extensions yet, so I check the documentation and the release notes before promising a design.</p></div></div>
 </details>
 <details class="q" data-topic="AI Agents" data-level="D" data-top="1">
   <summary><span class="qn">17</span><span class="qt">What is AI Agent Studio and how would you use it?</span><span class="meta"><span class="tag">AI Agents</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> current skills.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;AI Agent Studio is Oracle's tool in Fusion for creating and customizing AI agents and agent teams, using prebuilt templates, tools like Fusion APIs, documents and deep links, and LLMs, with security inherited from Fusion roles. I'd use it for answering policy questions, drafting supplier communications, or guiding invoice exception handling. I test the prompts, tools and outputs, and monitor usage.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention governance and testing. It shows you'd use it responsibly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the developer's role in AI Agent Studio?</p><p>Building tools, integrations and testing agents.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention governance and testing. It shows you'd use it responsibly.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the developer's role in AI Agent Studio?</p><p>Building the tools agents use — REST calls to Fusion, document lookups, custom business objects — plus integrations, prompts and guardrails, and testing agents with realistic scenarios before release. Functional users design what the agent should do; developers make sure it can do it safely.</p></div></div>
 </details>
 <details class="q" data-topic="Security" data-level="D">
   <summary><span class="qn">18</span><span class="qt">How do you design security for custom reports and integrations?</span><span class="meta"><span class="tag">Security</span><span class="tag lvl">In-depth</span></span></summary>
@@ -239,14 +239,14 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> efficient API design.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I batch requests where possible, use the filter and fields parameters to reduce payload, paginate, avoid chatty calls inside loops, cache reference data, and use bulk import for high volumes.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Mention caching reference data. It removes many calls.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you reduce API calls?</p><p>Use filters, fields parameters and batching.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Mention caching reference data. It removes many calls.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">How do you reduce API calls?</p><p>Use filters and the fields parameter so each call returns only the rows and attributes you need, batch requests where the API supports it, and cache reference data like supplier IDs. Reducing 10,000 calls to 500 often matters more than any server-side tuning.</p></div></div>
 </details>
 <details class="q" data-topic="Testing" data-level="D" data-top="1">
   <summary><span class="qn">21</span><span class="qt">How do you approach regression testing for quarterly updates?</span><span class="meta"><span class="tag">Testing</span><span class="tag lvl">In-depth</span><span class="tag top">Top question</span></span></summary>
   <div class="ans"><p><strong>Why they ask:</strong> quarterly updates break custom objects.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;I keep an inventory of custom objects: reports, integrations, extensions and ESS jobs. Critical integrations have automated tests. I review release notes for API and table changes. Testing happens in the test environment during the update window, and fixes go in before production gets the update.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Say &quot;the inventory is key&quot;. You can't test what you haven't listed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's in the custom object inventory?</p><p>Reports, integrations, extensions and ESS jobs.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Say &quot;the inventory is key&quot;. You can't test what you haven't listed.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's in the custom object inventory?</p><p>Every custom report, integration, extension, ESS job and security role, with the owner, how critical it is and a test script. Each quarterly update, we test the critical ones first in the test pod, and the full list over the two-week window.</p></div></div>
 </details>
 <details class="q" data-topic="Data Migration" data-level="D">
   <summary><span class="qn">22</span><span class="qt">How do you design a large data migration to Fusion?</span><span class="meta"><span class="tag">Data Migration</span><span class="tag lvl">In-depth</span></span></summary>
@@ -288,7 +288,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> SaaS mindset.</p>
 <p><strong>Answer:</strong></p>
 <p>&quot;In Fusion there are no direct database writes, no custom triggers or PL/SQL in the application schemas, and limited changes to seeded logic. So I write through APIs and FBDI, put custom logic in OIC or PaaS like OCI and Visual Builder, use business events instead of triggers, and extend through VB Studio and Application Composer.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Sum it up as &quot;extend outside the SaaS core&quot;.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main workaround?</p><p>Extensions through OIC, VB Studio and OCI.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Sum it up as &quot;extend outside the SaaS core&quot;.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What's the main workaround?</p><p>Extensions through OIC for integration logic, VB Studio for UI and Redwood changes, and OCI services — like functions or a database — for heavy custom processing. The rule is: build around Fusion, not inside it.</p></div></div>
 </details>
 <details class="q" data-topic="PaaS" data-level="D">
   <summary><span class="qn">28</span><span class="qt">When would you use OCI services alongside Fusion?</span><span class="meta"><span class="tag">PaaS</span><span class="tag lvl">In-depth</span></span></summary>
@@ -358,7 +358,7 @@ footer { text-align:center; font-size:0.8rem; color:var(--gray-600); padding:2re
   <div class="ans"><p><strong>Why they ask:</strong> design experience.</p>
 <p><strong>Answer (example):</strong></p>
 <p>&quot;I designed an event-driven integration from Fusion PO approval to a supplier portal and a warehouse system. OIC subscribed to the PO approved event, enriched the data with REST calls, and published to both targets with idempotency keys. It replaced nightly batches and cut supplier order lead time by a day.&quot;</p>
-<p class="tip"><strong>Tip:</strong> Explain the design choices and the impact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What made it event-driven?</p><p>Business events triggering OIC.</p></div></div>
+<p class="tip"><strong>Tip:</strong> Explain the design choices and the impact.</p><div class="fu"><p class="fu-h">Likely follow-up</p><p class="fu-q">What made it event-driven?</p><p>Business events triggering OIC. For example, when a supplier was approved in Fusion, an event called OIC, which created the vendor in the bank's payment portal and the procurement network within a minute — no nightly batch and no manual double entry.</p></div></div>
 </details>
 <details class="q" data-topic="Behavioral" data-level="B">
   <summary><span class="qn">38</span><span class="qt">Tell me about a time you pushed back on a requirement.</span><span class="meta"><span class="tag">Behavioral</span><span class="tag lvl">Basic</span></span></summary>
